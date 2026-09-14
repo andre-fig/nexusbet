@@ -1,0 +1,631 @@
+{
+  "validatedAt": "2026-09-14T21:54:45Z",
+  "listingCounts": {
+    "cs2": 63,
+    "lol": 10,
+    "valorant": 9
+  },
+  "uiValidatedPriorityMarkets": 14,
+  "parsedLinesInThreeUiEvents": 254,
+  "matchedGroups": 18,
+  "withSuperbet": 16,
+  "threeProviders": 5,
+  "examples": [
+    {
+      "canonicalEvent": {
+        "esport": "cs2",
+        "tournament": "starladder starseries",
+        "teamA": "mouz",
+        "teamB": "nrg",
+        "startsAt": "2026-09-17T10:00:00.000Z"
+      },
+      "confidence": 1,
+      "confidenceMeaning": "rule score, not probability",
+      "evidence": {
+        "sameTeamPair": true,
+        "sameCompetitionAlias": true,
+        "timeDifferenceSeconds": 0
+      },
+      "providers": {
+        "bet365": {
+          "eventId": "201152866",
+          "rawTeamA": "MOUZ",
+          "rawTeamB": "NRG",
+          "normalizedTeamA": "mouz",
+          "normalizedTeamB": "nrg",
+          "startsAt": "2026-09-17T10:00:00.000Z",
+          "tournament": "CS2 - StarLadder StarSeries Fall",
+          "fetchedAt": "2026-09-14T21:52:59.749Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "201152866:1510001",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:59.749Z",
+              "selections": [
+                {
+                  "selectionId": "2127746078",
+                  "name": "MOUZ",
+                  "canonicalSide": "teamA",
+                  "odds": 1.1,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "2127746083",
+                  "name": "NRG",
+                  "canonicalSide": "teamB",
+                  "odds": 6.5,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        },
+        "betano": {
+          "eventId": "92353340",
+          "rawTeamA": "MOUZ",
+          "rawTeamB": "NRG Esports",
+          "normalizedTeamA": "mouz",
+          "normalizedTeamB": "nrg",
+          "startsAt": "2026-09-17T10:00:00.000Z",
+          "tournament": "StarLadder StarSeries",
+          "fetchedAt": "2026-09-14T21:52:58.518Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "92353340:2955060134",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:58.518Z",
+              "selections": [
+                {
+                  "selectionId": "10397016048",
+                  "name": "MOUZ",
+                  "canonicalSide": "teamA",
+                  "odds": 1.1,
+                  "suspended": null
+                },
+                {
+                  "selectionId": "10397016049",
+                  "name": "NRG Esports",
+                  "canonicalSide": "teamB",
+                  "odds": 6.1,
+                  "suspended": null
+                }
+              ]
+            }
+          ]
+        },
+        "superbet": {
+          "eventId": "14943371",
+          "rawTeamA": "MOUZ",
+          "rawTeamB": "NRG",
+          "normalizedTeamA": "mouz",
+          "normalizedTeamB": "nrg",
+          "startsAt": "2026-09-17T10:00:00.000Z",
+          "tournament": "StarSeries",
+          "fetchedAt": "2026-09-14T21:52:52.982Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "ae2548d8-3957-59f2-9ab9-7a54948817e1",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:52.982Z",
+              "selections": [
+                {
+                  "selectionId": "bc07cacd-9ff5-514a-bd40-43496d7f1dd4",
+                  "name": "MOUZ",
+                  "canonicalSide": "teamA",
+                  "odds": 1.12,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "f05397ef-b80d-54d3-b2a2-3adbe0af6263",
+                  "name": "NRG",
+                  "canonicalSide": "teamB",
+                  "odds": 5.6,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "canonicalEvent": {
+        "esport": "cs2",
+        "tournament": "starladder starseries",
+        "teamA": "natus vincere",
+        "teamB": "aurora",
+        "startsAt": "2026-09-17T15:00:00.000Z"
+      },
+      "confidence": 1,
+      "confidenceMeaning": "rule score, not probability",
+      "evidence": {
+        "sameTeamPair": true,
+        "sameCompetitionAlias": true,
+        "timeDifferenceSeconds": 0
+      },
+      "providers": {
+        "bet365": {
+          "eventId": "201152869",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Aurora",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "aurora",
+          "startsAt": "2026-09-17T15:00:00.000Z",
+          "tournament": "CS2 - StarLadder StarSeries Fall",
+          "fetchedAt": "2026-09-14T21:52:59.749Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "201152869:1510001",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:59.749Z",
+              "selections": [
+                {
+                  "selectionId": "2127746287",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 1.8,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "2127746288",
+                  "name": "Aurora",
+                  "canonicalSide": "teamB",
+                  "odds": 1.9,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        },
+        "betano": {
+          "eventId": "92353392",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Aurora",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "aurora",
+          "startsAt": "2026-09-17T15:00:00.000Z",
+          "tournament": "StarLadder StarSeries",
+          "fetchedAt": "2026-09-14T21:52:58.518Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "92353392:2955061676",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:58.518Z",
+              "selections": [
+                {
+                  "selectionId": "10397021985",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 1.8,
+                  "suspended": null
+                },
+                {
+                  "selectionId": "10397021986",
+                  "name": "Aurora",
+                  "canonicalSide": "teamB",
+                  "odds": 1.95,
+                  "suspended": null
+                }
+              ]
+            }
+          ]
+        },
+        "superbet": {
+          "eventId": "14943376",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Aurora",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "aurora",
+          "startsAt": "2026-09-17T15:00:00.000Z",
+          "tournament": "StarSeries",
+          "fetchedAt": "2026-09-14T21:52:52.982Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "1a27e768-d338-502f-8f0a-b35bef567b9b",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:52.982Z",
+              "selections": [
+                {
+                  "selectionId": "0a481a83-d65e-578a-b968-22086087d159",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 1.85,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "67757d57-6978-53ae-8a64-b51aff7fcb32",
+                  "name": "Aurora",
+                  "canonicalSide": "teamB",
+                  "odds": 1.9,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "canonicalEvent": {
+        "esport": "cs2",
+        "tournament": "starladder starseries",
+        "teamA": "furia",
+        "teamB": "mibr",
+        "startsAt": "2026-09-17T17:30:00.000Z"
+      },
+      "confidence": 1,
+      "confidenceMeaning": "rule score, not probability",
+      "evidence": {
+        "sameTeamPair": true,
+        "sameCompetitionAlias": true,
+        "timeDifferenceSeconds": 0
+      },
+      "providers": {
+        "bet365": {
+          "eventId": "201152870",
+          "rawTeamA": "FURIA",
+          "rawTeamB": "MIBR",
+          "normalizedTeamA": "furia",
+          "normalizedTeamB": "mibr",
+          "startsAt": "2026-09-17T17:30:00.000Z",
+          "tournament": "CS2 - StarLadder StarSeries Fall",
+          "fetchedAt": "2026-09-14T21:52:59.749Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "201152870:1510001",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:59.749Z",
+              "selections": [
+                {
+                  "selectionId": "2127746292",
+                  "name": "FURIA",
+                  "canonicalSide": "teamA",
+                  "odds": 1.36,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "2127746293",
+                  "name": "MIBR",
+                  "canonicalSide": "teamB",
+                  "odds": 3,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        },
+        "betano": {
+          "eventId": "92353393",
+          "rawTeamA": "FURIA",
+          "rawTeamB": "MIBR",
+          "normalizedTeamA": "furia",
+          "normalizedTeamB": "mibr",
+          "startsAt": "2026-09-17T17:30:00.000Z",
+          "tournament": "StarLadder StarSeries",
+          "fetchedAt": "2026-09-14T21:52:58.518Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "92353393:2955061899",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:58.518Z",
+              "selections": [
+                {
+                  "selectionId": "10397022612",
+                  "name": "FURIA",
+                  "canonicalSide": "teamA",
+                  "odds": 1.38,
+                  "suspended": null
+                },
+                {
+                  "selectionId": "10397022613",
+                  "name": "MIBR",
+                  "canonicalSide": "teamB",
+                  "odds": 2.9,
+                  "suspended": null
+                }
+              ]
+            }
+          ]
+        },
+        "superbet": {
+          "eventId": "14943375",
+          "rawTeamA": "FURIA",
+          "rawTeamB": "MIBR",
+          "normalizedTeamA": "furia",
+          "normalizedTeamB": "mibr",
+          "startsAt": "2026-09-17T17:30:00.000Z",
+          "tournament": "StarSeries",
+          "fetchedAt": "2026-09-14T21:52:52.982Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "30e2f155-9e70-56dd-8373-4571bbf20ea2",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:52.982Z",
+              "selections": [
+                {
+                  "selectionId": "c9885819-4100-5887-be6f-be6a47b30df0",
+                  "name": "FURIA",
+                  "canonicalSide": "teamA",
+                  "odds": 1.38,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "55de1a2f-3423-5457-8075-5a0ec8aa01a5",
+                  "name": "MIBR",
+                  "canonicalSide": "teamB",
+                  "odds": 2.92,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "canonicalEvent": {
+        "esport": "lol",
+        "tournament": "lec",
+        "teamA": "natus vincere",
+        "teamB": "movistar koi",
+        "startsAt": "2026-09-18T15:00:00.000Z"
+      },
+      "confidence": 1,
+      "confidenceMeaning": "rule score, not probability",
+      "evidence": {
+        "sameTeamPair": true,
+        "sameCompetitionAlias": true,
+        "timeDifferenceSeconds": 0
+      },
+      "providers": {
+        "bet365": {
+          "eventId": "201167218",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Movistar KOI",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "movistar koi",
+          "startsAt": "2026-09-18T15:00:00.000Z",
+          "tournament": "LOL - LEC Summer  Playoffs",
+          "fetchedAt": "2026-09-14T21:53:01.952Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "201167218:1510001",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:53:01.952Z",
+              "selections": [
+                {
+                  "selectionId": "2130235851",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 2.75,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "2130235854",
+                  "name": "Movistar KOI",
+                  "canonicalSide": "teamB",
+                  "odds": 1.4,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        },
+        "betano": {
+          "eventId": "92433328",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Movistar KOI",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "movistar koi",
+          "startsAt": "2026-09-18T15:00:00.000Z",
+          "tournament": "LEC",
+          "fetchedAt": "2026-09-14T21:52:58.906Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "92433328:2957539147",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:58.906Z",
+              "selections": [
+                {
+                  "selectionId": "10406936895",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 2.77,
+                  "suspended": null
+                },
+                {
+                  "selectionId": "10406936896",
+                  "name": "Movistar KOI",
+                  "canonicalSide": "teamB",
+                  "odds": 1.42,
+                  "suspended": null
+                }
+              ]
+            }
+          ]
+        },
+        "superbet": {
+          "eventId": "14961853",
+          "rawTeamA": "Natus Vincere",
+          "rawTeamB": "Movistar KOI",
+          "normalizedTeamA": "natus vincere",
+          "normalizedTeamB": "movistar koi",
+          "startsAt": "2026-09-18T15:00:00.000Z",
+          "tournament": "LEC",
+          "fetchedAt": "2026-09-14T21:52:53.246Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "4a26385b-67e6-5d2a-b8b9-943aca6ccf80",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:53.246Z",
+              "selections": [
+                {
+                  "selectionId": "c72b54e3-5c3e-569f-8d2e-37a82adf490a",
+                  "name": "Natus Vincere",
+                  "canonicalSide": "teamA",
+                  "odds": 2.85,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "45834abf-aa2b-51b9-8f2d-54236fe4e5a4",
+                  "name": "Movistar KOI",
+                  "canonicalSide": "teamB",
+                  "odds": 1.35,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "canonicalEvent": {
+        "esport": "lol",
+        "tournament": "cblol",
+        "teamA": "red canids",
+        "teamB": "keyd stars",
+        "startsAt": "2026-09-19T16:00:00.000Z"
+      },
+      "confidence": 1,
+      "confidenceMeaning": "rule score, not probability",
+      "evidence": {
+        "sameTeamPair": true,
+        "sameCompetitionAlias": true,
+        "timeDifferenceSeconds": 0
+      },
+      "providers": {
+        "bet365": {
+          "eventId": "200878588",
+          "rawTeamA": "RED Canids",
+          "rawTeamB": "Vivo Keyd Stars",
+          "normalizedTeamA": "red canids",
+          "normalizedTeamB": "keyd stars",
+          "startsAt": "2026-09-19T16:00:00.000Z",
+          "tournament": "LOL - CBLOL Split 2 Playoffs",
+          "fetchedAt": "2026-09-14T21:53:01.952Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "200878588:1510001",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:53:01.952Z",
+              "selections": [
+                {
+                  "selectionId": "2090028275",
+                  "name": "RED Canids",
+                  "canonicalSide": "teamA",
+                  "odds": 2.75,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "2090028278",
+                  "name": "Vivo Keyd Stars",
+                  "canonicalSide": "teamB",
+                  "odds": 1.4,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        },
+        "betano": {
+          "eventId": "92129854",
+          "rawTeamA": "RED Canids",
+          "rawTeamB": "Keyd Stars",
+          "normalizedTeamA": "red canids",
+          "normalizedTeamB": "keyd stars",
+          "startsAt": "2026-09-19T16:00:00.000Z",
+          "tournament": "CBLOL",
+          "fetchedAt": "2026-09-14T21:52:59.933Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "92129854:2948158896",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:59.933Z",
+              "selections": [
+                {
+                  "selectionId": "10369163939",
+                  "name": "RED Canids",
+                  "canonicalSide": "teamA",
+                  "odds": 2.75,
+                  "suspended": null
+                },
+                {
+                  "selectionId": "10369163940",
+                  "name": "Keyd Stars",
+                  "canonicalSide": "teamB",
+                  "odds": 1.42,
+                  "suspended": null
+                }
+              ]
+            }
+          ]
+        },
+        "superbet": {
+          "eventId": "14869199",
+          "rawTeamA": "Red Canids",
+          "rawTeamB": "Vivo Keyd Stars",
+          "normalizedTeamA": "red canids",
+          "normalizedTeamB": "keyd stars",
+          "startsAt": "2026-09-19T16:00:00.000Z",
+          "tournament": "CBLOL",
+          "fetchedAt": "2026-09-14T21:52:53.246Z",
+          "reversed": false,
+          "odds": [
+            {
+              "marketId": "ff3957ea-4e8d-52e4-97d2-35bea5ebc109",
+              "category": "match_winner",
+              "map": null,
+              "fetchedAt": "2026-09-14T21:52:53.246Z",
+              "selections": [
+                {
+                  "selectionId": "a93f72ca-4d63-5aeb-b1be-4ce50bc2b0e3",
+                  "name": "Red Canids",
+                  "canonicalSide": "teamA",
+                  "odds": 2.82,
+                  "suspended": false
+                },
+                {
+                  "selectionId": "1746d418-cc84-5f95-8b8a-e28192f48ba1",
+                  "name": "Vivo Keyd Stars",
+                  "canonicalSide": "teamB",
+                  "odds": 1.36,
+                  "suspended": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "naturalOddsChangesObserved": 0
+}

@@ -1,0 +1,1141 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:19:10.006Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/odds/red-canids-keyd-stars/92129854/?req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "event": {
+      "stats": [
+        {
+          "url": "/api/statistics/statsview?id=92129854",
+          "providerId": 3
+        }
+      ],
+      "sportId": "ESPS",
+      "shortName": "RED Canids - Keyd Stars",
+      "totalMarketsAvailable": 63,
+      "betRadarId": 0,
+      "notes": "",
+      "tvChannel": "",
+      "regionName": "League of Legends",
+      "regionId": "189377",
+      "leagueDescription": "CBLOL",
+      "leagueId": "193803",
+      "leagueName": "CBLOL",
+      "leagueUrl": "/sport/esports/league-of-legends/cblol/193803r/",
+      "streamOverlayMarketIds": [],
+      "willGoLive": true,
+      "matchComboAllowedMarketTypes": [],
+      "id": "92129854",
+      "name": "RED Canids - Keyd Stars",
+      "startTime": 1789833600000,
+      "url": "/odds/red-canids-keyd-stars/92129854/",
+      "markets": [
+        {
+          "id": "2948158896",
+          "uniqueId": "2948158896",
+          "name": "Vencedor",
+          "type": "H2HT",
+          "typeId": 3183,
+          "handicap": 0.0,
+          "displayOrder": 50,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_H2HT0",
+          "selections": [
+            {
+              "id": "10369163939",
+              "name": "RED Canids",
+              "price": 2.75,
+              "handicap": 0.0,
+              "betRef": "10369163939",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163940",
+              "name": "Keyd Stars",
+              "price": 1.42,
+              "handicap": 0.0,
+              "betRef": "10369163940",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158961",
+          "uniqueId": "2948158961",
+          "name": "Vencedor do mapa (Mapa 1)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW0",
+          "selections": [
+            {
+              "id": "10369164071",
+              "name": "RED Canids",
+              "price": 2.32,
+              "handicap": 0.0,
+              "betRef": "10369164071",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164070",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164070",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158963",
+          "uniqueId": "2948158963",
+          "name": "Vencedor do mapa (Mapa 2)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW1",
+          "selections": [
+            {
+              "id": "10369164075",
+              "name": "RED Canids",
+              "price": 2.32,
+              "handicap": 0.0,
+              "betRef": "10369164075",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164074",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164074",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158964",
+          "uniqueId": "2948158964",
+          "name": "Vencedor do mapa (Mapa 3)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW2",
+          "selections": [
+            {
+              "id": "10369164077",
+              "name": "RED Canids",
+              "price": 2.32,
+              "handicap": 0.0,
+              "betRef": "10369164077",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164076",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164076",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158960",
+          "uniqueId": "2948158960",
+          "name": "Vencedor do mapa (Mapa 4)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW3",
+          "selections": [
+            {
+              "id": "10369164069",
+              "name": "RED Canids",
+              "price": 2.25,
+              "handicap": 0.0,
+              "betRef": "10369164069",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164068",
+              "name": "Keyd Stars",
+              "price": 1.6,
+              "handicap": 0.0,
+              "betRef": "10369164068",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158962",
+          "uniqueId": "2948158962",
+          "name": "Vencedor do mapa (Mapa 5)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW4",
+          "selections": [
+            {
+              "id": "10369164073",
+              "name": "RED Canids",
+              "price": 2.15,
+              "handicap": 0.0,
+              "betRef": "10369164073",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164072",
+              "name": "Keyd Stars",
+              "price": 1.65,
+              "handicap": 0.0,
+              "betRef": "10369164072",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158902",
+          "uniqueId": "2948158902",
+          "name": "Handicap do Jogo",
+          "type": "FAHC",
+          "typeId": 3179,
+          "handicap": -2.5,
+          "displayOrder": 200,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_FAHC0",
+          "selections": [
+            {
+              "id": "10369163952",
+              "name": "RED Canids -2.5",
+              "price": 8.0,
+              "handicap": -2.5,
+              "betRef": "10369163952",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163953",
+              "name": "Keyd Stars +2.5",
+              "price": 1.05,
+              "handicap": 2.5,
+              "betRef": "10369163953",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            },
+            {
+              "id": "10369163956",
+              "name": "RED Canids -1.5",
+              "price": 4.35,
+              "handicap": -1.5,
+              "betRef": "10369163956",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163957",
+              "name": "Keyd Stars +1.5",
+              "price": 1.18,
+              "handicap": 1.5,
+              "betRef": "10369163957",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            },
+            {
+              "id": "10369163950",
+              "name": "RED Canids +1.5",
+              "price": 1.78,
+              "handicap": 1.5,
+              "betRef": "10369163950",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163951",
+              "name": "Keyd Stars -1.5",
+              "price": 1.93,
+              "handicap": -1.5,
+              "betRef": "10369163951",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            },
+            {
+              "id": "10369163954",
+              "name": "RED Canids +2.5",
+              "price": 1.24,
+              "handicap": 2.5,
+              "betRef": "10369163954",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163955",
+              "name": "Keyd Stars -2.5",
+              "price": 3.6,
+              "handicap": -2.5,
+              "betRef": "10369163955",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158971",
+          "uniqueId": "2948158971",
+          "name": "Total de Mapas",
+          "type": "TSMF",
+          "typeId": 3214,
+          "handicap": 3.5,
+          "displayOrder": 250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TSMF0",
+          "selections": [
+            {
+              "id": "10369164091",
+              "name": "Mais de 3.5",
+              "price": 1.35,
+              "handicap": 3.5,
+              "betRef": "10369164091",
+              "renderingLayout": 2,
+              "columnIndex": 0
+            },
+            {
+              "id": "10369164090",
+              "name": "Menos de 3.5",
+              "price": 3.05,
+              "handicap": 3.5,
+              "betRef": "10369164090",
+              "renderingLayout": 2,
+              "columnIndex": 1
+            },
+            {
+              "id": "10369164089",
+              "name": "Mais de 4.5",
+              "price": 2.6,
+              "handicap": 4.5,
+              "betRef": "10369164089",
+              "renderingLayout": 2,
+              "columnIndex": 0
+            },
+            {
+              "id": "10369164088",
+              "name": "Menos de 4.5",
+              "price": 1.45,
+              "handicap": 4.5,
+              "betRef": "10369164088",
+              "renderingLayout": 2,
+              "columnIndex": 1
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158895",
+          "uniqueId": "2948158895",
+          "name": "Resultado Correto",
+          "type": "BTOF",
+          "typeId": 3180,
+          "handicap": 0.0,
+          "displayOrder": 350,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 4,
+          "pinKey": "p_BTOF0",
+          "selections": [
+            {
+              "id": "10369164093",
+              "name": "1 - 3",
+              "price": 3.4,
+              "handicap": 0.0,
+              "betRef": "10369164093",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            },
+            {
+              "id": "10369164092",
+              "name": "0 - 3",
+              "price": 3.85,
+              "handicap": 0.0,
+              "betRef": "10369164092",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            },
+            {
+              "id": "10369164096",
+              "name": "2 - 3",
+              "price": 4.35,
+              "handicap": 0.0,
+              "betRef": "10369164096",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            },
+            {
+              "id": "10369164097",
+              "name": "3 - 2",
+              "price": 5.6,
+              "handicap": 0.0,
+              "betRef": "10369164097",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10369164094",
+              "name": "3 - 1",
+              "price": 7.0,
+              "handicap": 0.0,
+              "betRef": "10369164094",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10369164095",
+              "name": "3 - 0",
+              "price": 13.0,
+              "handicap": 0.0,
+              "betRef": "10369164095",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158951",
+          "uniqueId": "2948158951",
+          "name": "First Blood (Mapa 1)",
+          "type": "TDFB",
+          "typeId": 3197,
+          "handicap": 0.0,
+          "displayOrder": 450,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDFB0",
+          "selections": [
+            {
+              "id": "10369164050",
+              "name": "RED Canids",
+              "price": 1.93,
+              "handicap": 0.0,
+              "betRef": "10369164050",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164051",
+              "name": "Keyd Stars",
+              "price": 1.8,
+              "handicap": 0.0,
+              "betRef": "10369164051",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158954",
+          "uniqueId": "2948158954",
+          "name": "First Blood (Mapa 2)",
+          "type": "TDFB",
+          "typeId": 3197,
+          "handicap": 0.0,
+          "displayOrder": 450,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDFB1",
+          "selections": [
+            {
+              "id": "10369164056",
+              "name": "RED Canids",
+              "price": 1.93,
+              "handicap": 0.0,
+              "betRef": "10369164056",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164057",
+              "name": "Keyd Stars",
+              "price": 1.8,
+              "handicap": 0.0,
+              "betRef": "10369164057",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158953",
+          "uniqueId": "2948158953",
+          "name": "First Blood (Mapa 3)",
+          "type": "TDFB",
+          "typeId": 3197,
+          "handicap": 0.0,
+          "displayOrder": 450,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDFB2",
+          "selections": [
+            {
+              "id": "10369164054",
+              "name": "RED Canids",
+              "price": 1.93,
+              "handicap": 0.0,
+              "betRef": "10369164054",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164055",
+              "name": "Keyd Stars",
+              "price": 1.8,
+              "handicap": 0.0,
+              "betRef": "10369164055",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158950",
+          "uniqueId": "2948158950",
+          "name": "First Blood (Mapa 4)",
+          "type": "TDFB",
+          "typeId": 3197,
+          "handicap": 0.0,
+          "displayOrder": 450,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDFB3",
+          "selections": [
+            {
+              "id": "10369164048",
+              "name": "RED Canids",
+              "price": 1.93,
+              "handicap": 0.0,
+              "betRef": "10369164048",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164049",
+              "name": "Keyd Stars",
+              "price": 1.82,
+              "handicap": 0.0,
+              "betRef": "10369164049",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158952",
+          "uniqueId": "2948158952",
+          "name": "First Blood (Mapa 5)",
+          "type": "TDFB",
+          "typeId": 3197,
+          "handicap": 0.0,
+          "displayOrder": 450,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDFB4",
+          "selections": [
+            {
+              "id": "10369164052",
+              "name": "RED Canids",
+              "price": 1.91,
+              "handicap": 0.0,
+              "betRef": "10369164052",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164053",
+              "name": "Keyd Stars",
+              "price": 1.83,
+              "handicap": 0.0,
+              "betRef": "10369164053",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158908",
+          "uniqueId": "2948158908",
+          "name": "Primeiro Barão (Mapa 1)",
+          "type": "1000629",
+          "typeId": 1000629,
+          "handicap": 0.0,
+          "displayOrder": 500,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_10006290",
+          "selections": [
+            {
+              "id": "10369163964",
+              "name": "RED Canids",
+              "price": 2.2,
+              "handicap": 0.0,
+              "betRef": "10369163964",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163965",
+              "name": "Keyd Stars",
+              "price": 1.62,
+              "handicap": 0.0,
+              "betRef": "10369163965",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158906",
+          "uniqueId": "2948158906",
+          "name": "Primeiro Barão (Mapa 2)",
+          "type": "1000629",
+          "typeId": 1000629,
+          "handicap": 0.0,
+          "displayOrder": 500,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_10006291",
+          "selections": [
+            {
+              "id": "10369163960",
+              "name": "RED Canids",
+              "price": 2.2,
+              "handicap": 0.0,
+              "betRef": "10369163960",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163961",
+              "name": "Keyd Stars",
+              "price": 1.62,
+              "handicap": 0.0,
+              "betRef": "10369163961",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158905",
+          "uniqueId": "2948158905",
+          "name": "Primeiro Barão (Mapa 3)",
+          "type": "1000629",
+          "typeId": 1000629,
+          "handicap": 0.0,
+          "displayOrder": 500,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_10006292",
+          "selections": [
+            {
+              "id": "10369163958",
+              "name": "RED Canids",
+              "price": 2.2,
+              "handicap": 0.0,
+              "betRef": "10369163958",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163959",
+              "name": "Keyd Stars",
+              "price": 1.62,
+              "handicap": 0.0,
+              "betRef": "10369163959",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158907",
+          "uniqueId": "2948158907",
+          "name": "Primeiro Barão (Mapa 4)",
+          "type": "1000629",
+          "typeId": 1000629,
+          "handicap": 0.0,
+          "displayOrder": 500,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_10006293",
+          "selections": [
+            {
+              "id": "10369163962",
+              "name": "RED Canids",
+              "price": 2.12,
+              "handicap": 0.0,
+              "betRef": "10369163962",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163963",
+              "name": "Keyd Stars",
+              "price": 1.67,
+              "handicap": 0.0,
+              "betRef": "10369163963",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158909",
+          "uniqueId": "2948158909",
+          "name": "Primeiro Barão (Mapa 5)",
+          "type": "1000629",
+          "typeId": 1000629,
+          "handicap": 0.0,
+          "displayOrder": 500,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_10006294",
+          "selections": [
+            {
+              "id": "10369163966",
+              "name": "RED Canids",
+              "price": 2.07,
+              "handicap": 0.0,
+              "betRef": "10369163966",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369163967",
+              "name": "Keyd Stars",
+              "price": 1.7,
+              "handicap": 0.0,
+              "betRef": "10369163967",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158949",
+          "uniqueId": "2948158949",
+          "name": "Primeiro Inibidor (Mapa 1)",
+          "type": "TDNI",
+          "typeId": 3196,
+          "handicap": 0.0,
+          "displayOrder": 1250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDNI0",
+          "selections": [
+            {
+              "id": "10369164046",
+              "name": "RED Canids",
+              "price": 2.3,
+              "handicap": 0.0,
+              "betRef": "10369164046",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164047",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164047",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158948",
+          "uniqueId": "2948158948",
+          "name": "Primeiro Inibidor (Mapa 2)",
+          "type": "TDNI",
+          "typeId": 3196,
+          "handicap": 0.0,
+          "displayOrder": 1250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDNI1",
+          "selections": [
+            {
+              "id": "10369164044",
+              "name": "RED Canids",
+              "price": 2.3,
+              "handicap": 0.0,
+              "betRef": "10369164044",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164045",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164045",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158945",
+          "uniqueId": "2948158945",
+          "name": "Primeiro Inibidor (Mapa 3)",
+          "type": "TDNI",
+          "typeId": 3196,
+          "handicap": 0.0,
+          "displayOrder": 1250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDNI2",
+          "selections": [
+            {
+              "id": "10369164038",
+              "name": "RED Canids",
+              "price": 2.3,
+              "handicap": 0.0,
+              "betRef": "10369164038",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164039",
+              "name": "Keyd Stars",
+              "price": 1.57,
+              "handicap": 0.0,
+              "betRef": "10369164039",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158946",
+          "uniqueId": "2948158946",
+          "name": "Primeiro Inibidor (Mapa 4)",
+          "type": "TDNI",
+          "typeId": 3196,
+          "handicap": 0.0,
+          "displayOrder": 1250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDNI3",
+          "selections": [
+            {
+              "id": "10369164040",
+              "name": "RED Canids",
+              "price": 2.22,
+              "handicap": 0.0,
+              "betRef": "10369164040",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164041",
+              "name": "Keyd Stars",
+              "price": 1.62,
+              "handicap": 0.0,
+              "betRef": "10369164041",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2948158947",
+          "uniqueId": "2948158947",
+          "name": "Primeiro Inibidor (Mapa 5)",
+          "type": "TDNI",
+          "typeId": 3196,
+          "handicap": 0.0,
+          "displayOrder": 1250,
+          "marketCloseTimeMillis": 1789833600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TDNI4",
+          "selections": [
+            {
+              "id": "10369164042",
+              "name": "RED Canids",
+              "price": 2.12,
+              "handicap": 0.0,
+              "betRef": "10369164042",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1953114"
+            },
+            {
+              "id": "10369164043",
+              "name": "Keyd Stars",
+              "price": 1.67,
+              "handicap": 0.0,
+              "betRef": "10369164043",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1954093"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        }
+      ],
+      "participants": [
+        {
+          "name": "RED Canids",
+          "color": "",
+          "id": "1953114"
+        },
+        {
+          "name": "Keyd Stars",
+          "color": "",
+          "id": "1954093"
+        }
+      ]
+    },
+    "markets": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Objectives",
+        "type": "objectives"
+      },
+      {
+        "id": "3",
+        "name": "Kills",
+        "type": "kills"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "betBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "nonBetBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Objectives",
+        "type": "objectives"
+      },
+      {
+        "id": "3",
+        "name": "Kills",
+        "type": "kills"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports",
+        "title": "Esports",
+        "url": "/sport/esports/"
+      },
+      {
+        "name": "League of Legends",
+        "title": "League of Legends",
+        "url": "/sport/esports/competicoes/league-of-legends/189377/"
+      },
+      {
+        "name": "CBLOL",
+        "title": "CBLOL",
+        "url": "/sport/esports/league-of-legends/cblol/193803/"
+      },
+      {
+        "name": "RED Canids - Keyd Stars"
+      }
+    ],
+    "marketOffersData": {},
+    "metaData": {
+      "pageTitle": "RED Canids - Keyd Stars Esports Odds | Betano"
+    }
+  },
+  "status": 200
+}

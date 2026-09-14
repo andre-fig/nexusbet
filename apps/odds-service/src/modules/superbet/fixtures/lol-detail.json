@@ -1,0 +1,4842 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:37:30.637Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v2/pt-BR/events/14986522",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "error": false,
+    "dataIn": {
+      "eventId": 14986522,
+      "lang": "pt-BR"
+    },
+    "data": [
+      {
+        "uuid": "978aa573-c26f-5a1a-849a-7999b1e3bd36",
+        "eventId": 14986522,
+        "matchDate": "2026-09-15 08:00:00",
+        "homeTeamId": "327061",
+        "awayTeamId": "327059",
+        "matchCode": 2923,
+        "incrementId": 39,
+        "offerId": 14986522,
+        "sportId": 39,
+        "categoryId": 399,
+        "tournamentId": 84340,
+        "metadata": {
+          "status": "NOT_STARTED",
+          "bookingStatus": "Booked",
+          "brTimestamp": 1789419396139,
+          "brId": 74701650
+        },
+        "betradarId": "74701650",
+        "matchTags": "v2",
+        "matchPromotedLiveOrder": 10000,
+        "tournamentPromotedLiveOrder": 10000,
+        "matchTimestamp": 1789419396139,
+        "hasLive": true,
+        "matchName": "T1 Challengers·KT Rolster Challengers",
+        "specialOfferIds": null,
+        "offerStateStatus": {
+          "1": "active"
+        },
+        "marketCount": 16,
+        "counts": {
+          "odds": {
+            "1": 204,
+            "2": 0
+          },
+          "markets": {
+            "1": 16,
+            "2": 0
+          }
+        },
+        "odds": [
+          {
+            "uuid": "f6645512-e687-574b-9d59-997c0da04ce2",
+            "marketUuid": "fc8ba626-d4ec-5284-90e0-216c44cd9221",
+            "marketId": 2519,
+            "outcomeId": 6493,
+            "price": 1.35,
+            "status": "active",
+            "marketGroupOrder": 28825284,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "void_service,pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "1",
+            "marketName": "Vencedor",
+            "info": "T1 Challengers vencerá"
+          },
+          {
+            "uuid": "9754e30d-a6bb-5b40-8dc8-2d879681028b",
+            "marketUuid": "fc8ba626-d4ec-5284-90e0-216c44cd9221",
+            "marketId": 2519,
+            "outcomeId": 6494,
+            "price": 2.8,
+            "status": "active",
+            "marketGroupOrder": 28825284,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2,void_service",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "2",
+            "marketName": "Vencedor",
+            "info": "KT Rolster Challengers vencerá"
+          },
+          {
+            "uuid": "fa6d32dc-4121-5473-ac63-1e10dbcc2900",
+            "marketUuid": "b4d9c0a8-d614-5633-ad0e-4c48ee186e7a",
+            "marketId": 2512,
+            "outcomeId": 6478,
+            "price": 1.53,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 1 - T1 Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 1"
+          },
+          {
+            "uuid": "38c39dcb-52e0-5798-9576-89b97ae3b82c",
+            "marketUuid": "b4d9c0a8-d614-5633-ad0e-4c48ee186e7a",
+            "marketId": 2512,
+            "outcomeId": 6479,
+            "price": 2.25,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 1 - KT Rolster Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 1"
+          },
+          {
+            "uuid": "80aa93bd-5c1c-56f3-8587-4dc8c1c283b1",
+            "marketUuid": "959d6dd3-aea7-5a08-b235-42905b7b17f4",
+            "marketId": 2512,
+            "outcomeId": 6478,
+            "price": 1.53,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 2 - T1 Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 2"
+          },
+          {
+            "uuid": "a506b343-bb93-51b5-a94e-3b47e0b94a06",
+            "marketUuid": "959d6dd3-aea7-5a08-b235-42905b7b17f4",
+            "marketId": 2512,
+            "outcomeId": 6479,
+            "price": 2.25,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 2 - KT Rolster Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 2"
+          },
+          {
+            "uuid": "19df5a84-4596-53ea-a65f-4e5bf3d4b439",
+            "marketUuid": "29dd48be-f825-5b02-8501-c9110af9fe4c",
+            "marketId": 2512,
+            "outcomeId": 6478,
+            "price": 1.53,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 3 - T1 Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 3"
+          },
+          {
+            "uuid": "6e9a6544-0a72-5b57-bc6e-cb2c4e1923a2",
+            "marketUuid": "29dd48be-f825-5b02-8501-c9110af9fe4c",
+            "marketId": 2512,
+            "outcomeId": 6479,
+            "price": 2.25,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 3 - KT Rolster Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 3"
+          },
+          {
+            "uuid": "86cc25e2-7083-5179-a4b0-83ffcfce0105",
+            "marketUuid": "c13963fc-1fc4-5a03-aacc-128753975372",
+            "marketId": 2512,
+            "outcomeId": 6478,
+            "price": 1.53,
+            "specialBetValue": "4",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 4 - T1 Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 4"
+          },
+          {
+            "uuid": "027a99a3-3e40-5325-b47b-ac0fce4827c9",
+            "marketUuid": "c13963fc-1fc4-5a03-aacc-128753975372",
+            "marketId": 2512,
+            "outcomeId": 6479,
+            "price": 2.25,
+            "specialBetValue": "4",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 4 - KT Rolster Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 4"
+          },
+          {
+            "uuid": "d9d15767-f07f-5ad0-aec7-2a19b8b670a7",
+            "marketUuid": "e45a4eb3-e48c-5691-93ec-977414553896",
+            "marketId": 2512,
+            "outcomeId": 6478,
+            "price": 1.53,
+            "specialBetValue": "5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 5 - T1 Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 5"
+          },
+          {
+            "uuid": "307214d9-0a91-57a8-adc5-5589b033d841",
+            "marketUuid": "e45a4eb3-e48c-5691-93ec-977414553896",
+            "marketId": 2512,
+            "outcomeId": 6479,
+            "price": 2.25,
+            "specialBetValue": "5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 432379258,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mapa 5 - KT Rolster Challengers",
+            "marketName": "Mapa X - Vencedor",
+            "info": "Vencerá o mapa 5"
+          },
+          {
+            "uuid": "5653c386-081e-5b05-b415-c365c0beb012",
+            "marketUuid": "c4928227-9597-5c4a-bb7e-9aa5789c0f0a",
+            "marketId": 236737,
+            "outcomeId": 13556,
+            "price": 1.82,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 32 minutos",
+            "marketName": "1° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 1 acima de 32 minutos"
+          },
+          {
+            "uuid": "2db313cd-6b98-540c-8743-d06f83258ca6",
+            "marketUuid": "c4928227-9597-5c4a-bb7e-9aa5789c0f0a",
+            "marketId": 236737,
+            "outcomeId": 13555,
+            "price": 1.82,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 32 minutos",
+            "marketName": "1° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 1 abaixo de 32 minutos"
+          },
+          {
+            "uuid": "d6ccba19-f966-503a-99b0-48f6240b3cfc",
+            "marketUuid": "82f83853-6abd-5c59-9661-668dcaa86028",
+            "marketId": 236737,
+            "outcomeId": 13556,
+            "price": 1.82,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Mais de 32 minutos",
+            "marketName": "2° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 2 acima de 32 minutos"
+          },
+          {
+            "uuid": "fc522e81-84b7-5531-b036-96d8a8f43ae3",
+            "marketUuid": "82f83853-6abd-5c59-9661-668dcaa86028",
+            "marketId": 236737,
+            "outcomeId": 13555,
+            "price": 1.82,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Menos de 32 minutos",
+            "marketName": "2° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 2 abaixo de 32 minutos"
+          },
+          {
+            "uuid": "a881acbf-47e5-5778-b07f-0597b180711a",
+            "marketUuid": "199ac9e2-d21d-51e3-b318-30102a0fcbcb",
+            "marketId": 236737,
+            "outcomeId": 13556,
+            "price": 1.82,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Mais de 32 minutos",
+            "marketName": "3° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 3 acima de 32 minutos"
+          },
+          {
+            "uuid": "2c296d6c-1db3-587c-916d-22548ebaed15",
+            "marketUuid": "199ac9e2-d21d-51e3-b318-30102a0fcbcb",
+            "marketId": 236737,
+            "outcomeId": 13555,
+            "price": 1.82,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Menos de 32 minutos",
+            "marketName": "3° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 3 abaixo de 32 minutos"
+          },
+          {
+            "uuid": "d627e313-8057-5d57-9c32-39c25b8134fa",
+            "marketUuid": "1edac98d-cb25-52f7-8823-803fdd5faf80",
+            "marketId": 236737,
+            "outcomeId": 13556,
+            "price": 1.82,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Mais de 32 minutos",
+            "marketName": "4° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 4 acima de 32 minutos"
+          },
+          {
+            "uuid": "838dfec6-0e8b-5a2e-a1b5-e45e7c37c749",
+            "marketUuid": "1edac98d-cb25-52f7-8823-803fdd5faf80",
+            "marketId": 236737,
+            "outcomeId": 13555,
+            "price": 1.82,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Menos de 32 minutos",
+            "marketName": "4° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 4 abaixo de 32 minutos"
+          },
+          {
+            "uuid": "6e85693d-8ff6-57bf-a45e-6877e967886c",
+            "marketUuid": "7c94a9e9-4626-552f-9656-9253751d5c05",
+            "marketId": 236737,
+            "outcomeId": 13556,
+            "price": 1.82,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Mais de 32 minutos",
+            "marketName": "5° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 5 acima de 32 minutos"
+          },
+          {
+            "uuid": "3d6ca829-5e4d-5dab-8748-1d1f9dd8d6ec",
+            "marketUuid": "7c94a9e9-4626-552f-9656-9253751d5c05",
+            "marketId": 236737,
+            "outcomeId": 13555,
+            "price": 1.82,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 446791900,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "Menos de 32 minutos",
+            "marketName": "5° Mapa - Duração do Mapa",
+            "info": "Duração total do mapa 5 abaixo de 32 minutos"
+          },
+          {
+            "uuid": "99e4641f-08f4-5807-aa65-3cd3c051d031",
+            "marketUuid": "b30c5828-52de-5c1b-8740-0f75a943319e",
+            "marketId": 236738,
+            "outcomeId": 13558,
+            "price": 2.95,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 34.5",
+            "marketName": "1° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 1 & terá mais de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "5bcfe2c8-d8fd-52ee-b67b-700b55a4283b",
+            "marketUuid": "b30c5828-52de-5c1b-8740-0f75a943319e",
+            "marketId": 236738,
+            "outcomeId": 13557,
+            "price": 2.75,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 34.5",
+            "marketName": "1° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 1 & terá menos de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "514499bd-247b-520a-8b33-83e3fd1c9d18",
+            "marketUuid": "b30c5828-52de-5c1b-8740-0f75a943319e",
+            "marketId": 236738,
+            "outcomeId": 13560,
+            "price": 4.15,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 34.5",
+            "marketName": "1° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 1 & terá mais de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "6caef637-5229-5370-b8da-728b6606a332",
+            "marketUuid": "b30c5828-52de-5c1b-8740-0f75a943319e",
+            "marketId": 236738,
+            "outcomeId": 13559,
+            "price": 3.9,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 34.5",
+            "marketName": "1° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 1 & terá menos de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "3cddeaea-f35c-5515-93e0-0de606414278",
+            "marketUuid": "57fb080a-7b11-56e0-bf1b-872ea702a6fe",
+            "marketId": 236738,
+            "outcomeId": 13558,
+            "price": 2.95,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 34.5",
+            "marketName": "2° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 2 & terá mais de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "d14b6e37-0e7c-562c-b4d5-d87f012724fe",
+            "marketUuid": "57fb080a-7b11-56e0-bf1b-872ea702a6fe",
+            "marketId": 236738,
+            "outcomeId": 13557,
+            "price": 2.75,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 34.5",
+            "marketName": "2° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 2 & terá menos de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "8f19ba21-48ce-528f-b08c-2cfcead74fb0",
+            "marketUuid": "57fb080a-7b11-56e0-bf1b-872ea702a6fe",
+            "marketId": 236738,
+            "outcomeId": 13560,
+            "price": 4.15,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 34.5",
+            "marketName": "2° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 2 & terá mais de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "f601dc8c-b5f6-5941-8c2a-ca1f46014ba1",
+            "marketUuid": "57fb080a-7b11-56e0-bf1b-872ea702a6fe",
+            "marketId": 236738,
+            "outcomeId": 13559,
+            "price": 3.9,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 34.5",
+            "marketName": "2° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 2 & terá menos de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "03834b77-b065-5762-af2c-7aec5a527fd6",
+            "marketUuid": "cb97214b-bdeb-5e8f-97ae-c0f632a76e1c",
+            "marketId": 236738,
+            "outcomeId": 13558,
+            "price": 2.95,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 34.5",
+            "marketName": "3° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 3 & terá mais de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "6ce60287-62dc-5149-a6d0-555dcc2a1713",
+            "marketUuid": "cb97214b-bdeb-5e8f-97ae-c0f632a76e1c",
+            "marketId": 236738,
+            "outcomeId": 13557,
+            "price": 2.75,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 34.5",
+            "marketName": "3° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 3 & terá menos de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "a4b95c1b-c4bb-5125-b31c-35b61277fda6",
+            "marketUuid": "cb97214b-bdeb-5e8f-97ae-c0f632a76e1c",
+            "marketId": 236738,
+            "outcomeId": 13560,
+            "price": 4.15,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 34.5",
+            "marketName": "3° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 3 & terá mais de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "83e47e54-a353-5760-80d9-9c52f9d81460",
+            "marketUuid": "cb97214b-bdeb-5e8f-97ae-c0f632a76e1c",
+            "marketId": 236738,
+            "outcomeId": 13559,
+            "price": 3.9,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 34.5",
+            "marketName": "3° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 3 & terá menos de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "fdb232fd-fc5b-547a-ad2b-df62c4807ffb",
+            "marketUuid": "6961ad06-dac4-578d-9434-886ea35e9996",
+            "marketId": 236738,
+            "outcomeId": 13558,
+            "price": 2.95,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 34.5",
+            "marketName": "4° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 4 & terá mais de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "2ba61793-c19f-53a1-98d5-4c26c5f2160a",
+            "marketUuid": "6961ad06-dac4-578d-9434-886ea35e9996",
+            "marketId": 236738,
+            "outcomeId": 13557,
+            "price": 2.75,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 34.5",
+            "marketName": "4° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 4 & terá menos de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "43f341b9-75f4-5683-9a3e-c345ab16ffc0",
+            "marketUuid": "6961ad06-dac4-578d-9434-886ea35e9996",
+            "marketId": 236738,
+            "outcomeId": 13560,
+            "price": 4.15,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 34.5",
+            "marketName": "4° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 4 & terá mais de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "40cd20ec-ef26-5981-8b46-1050541cc59a",
+            "marketUuid": "6961ad06-dac4-578d-9434-886ea35e9996",
+            "marketId": 236738,
+            "outcomeId": 13559,
+            "price": 3.9,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 34.5",
+            "marketName": "4° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 4 & terá menos de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "6fc682a7-2c1f-511b-9c9b-b0b8b7b54fc7",
+            "marketUuid": "1046cac9-2ee0-5033-b9f1-a836fc68d78f",
+            "marketId": 236738,
+            "outcomeId": 13558,
+            "price": 2.95,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 34.5",
+            "marketName": "5° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 5 & terá mais de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "5a852d7e-43df-5300-ad5e-2565e5e45a4c",
+            "marketUuid": "1046cac9-2ee0-5033-b9f1-a836fc68d78f",
+            "marketId": 236738,
+            "outcomeId": 13557,
+            "price": 2.75,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 34.5",
+            "marketName": "5° Mapa - Vencedor & Total de Hero Kills",
+            "info": "T1 Challengers vencerá o mapa 5 & terá menos de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "463e7097-9fe2-5eaa-94a0-3b7e96f8d8da",
+            "marketUuid": "1046cac9-2ee0-5033-b9f1-a836fc68d78f",
+            "marketId": 236738,
+            "outcomeId": 13560,
+            "price": 4.15,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 34.5",
+            "marketName": "5° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 5 & terá mais de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "d2ac1e87-d78e-5961-bb6f-eabee80c938c",
+            "marketUuid": "1046cac9-2ee0-5033-b9f1-a836fc68d78f",
+            "marketId": 236738,
+            "outcomeId": 13559,
+            "price": 3.9,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 461204542,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 34.5",
+            "marketName": "5° Mapa - Vencedor & Total de Hero Kills",
+            "info": "KT Rolster Challengers vencerá o mapa 5 & terá menos de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "e54e4902-ee55-58a9-98fd-503351090969",
+            "marketUuid": "e05001dd-06cd-5cbd-81f4-1bf7a7f5047e",
+            "marketId": 236739,
+            "outcomeId": 13562,
+            "price": 2.85,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 32 minutos",
+            "marketName": "1° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 1 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "c76f69ae-5ee7-5d33-bbca-66072f5d6baf",
+            "marketUuid": "e05001dd-06cd-5cbd-81f4-1bf7a7f5047e",
+            "marketId": 236739,
+            "outcomeId": 13561,
+            "price": 2.85,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 32 minutos",
+            "marketName": "1° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 1 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "99d45d7d-f320-5276-bf09-b27683594371",
+            "marketUuid": "e05001dd-06cd-5cbd-81f4-1bf7a7f5047e",
+            "marketId": 236739,
+            "outcomeId": 13564,
+            "price": 4,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 32 minutos",
+            "marketName": "1° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 1 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "d0c448b3-a43a-58ba-a5b2-6bb582acb525",
+            "marketUuid": "e05001dd-06cd-5cbd-81f4-1bf7a7f5047e",
+            "marketId": 236739,
+            "outcomeId": 13563,
+            "price": 4,
+            "specialBetValue": "1-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 32 minutos",
+            "marketName": "1° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 1 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "9a0ea5a8-2eec-54a9-9c38-527ed61e43f0",
+            "marketUuid": "8967d22a-294a-55c0-bfc8-c71630a842a0",
+            "marketId": 236739,
+            "outcomeId": 13562,
+            "price": 2.85,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 32 minutos",
+            "marketName": "2° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 2 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "c154c48e-50cc-5545-9a8b-533cb0ed857f",
+            "marketUuid": "8967d22a-294a-55c0-bfc8-c71630a842a0",
+            "marketId": 236739,
+            "outcomeId": 13561,
+            "price": 2.85,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 32 minutos",
+            "marketName": "2° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 2 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "43a47326-0f53-56ae-a93a-f476501fe6a4",
+            "marketUuid": "8967d22a-294a-55c0-bfc8-c71630a842a0",
+            "marketId": 236739,
+            "outcomeId": 13564,
+            "price": 4,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 32 minutos",
+            "marketName": "2° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 2 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "98a9bbd8-374f-505d-84eb-efa9a1ea2332",
+            "marketUuid": "8967d22a-294a-55c0-bfc8-c71630a842a0",
+            "marketId": 236739,
+            "outcomeId": 13563,
+            "price": 4,
+            "specialBetValue": "2-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 32 minutos",
+            "marketName": "2° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 2 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "271f5eb7-cf2e-525a-9d8f-071a661ec2ef",
+            "marketUuid": "55bcecb6-d2f5-5033-9946-a0ce7acc51af",
+            "marketId": 236739,
+            "outcomeId": 13562,
+            "price": 2.85,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 32 minutos",
+            "marketName": "3° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 3 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "3c56d0ba-94a8-5a71-8ed1-cbed35de766b",
+            "marketUuid": "55bcecb6-d2f5-5033-9946-a0ce7acc51af",
+            "marketId": 236739,
+            "outcomeId": 13561,
+            "price": 2.85,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 32 minutos",
+            "marketName": "3° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 3 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "8144d14c-4879-54e8-b241-d24c8514b788",
+            "marketUuid": "55bcecb6-d2f5-5033-9946-a0ce7acc51af",
+            "marketId": 236739,
+            "outcomeId": 13564,
+            "price": 4,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 32 minutos",
+            "marketName": "3° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 3 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "91fe0cf6-83a9-53ec-b86b-e4f3ac64efb8",
+            "marketUuid": "55bcecb6-d2f5-5033-9946-a0ce7acc51af",
+            "marketId": 236739,
+            "outcomeId": 13563,
+            "price": 4,
+            "specialBetValue": "3-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 32 minutos",
+            "marketName": "3° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 3 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "38bd2b83-326b-5789-97f0-6c5ef52443df",
+            "marketUuid": "4c2438b2-ba1c-5f15-b3dc-3614e1ec8cbc",
+            "marketId": 236739,
+            "outcomeId": 13562,
+            "price": 2.85,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 32 minutos",
+            "marketName": "4° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 4 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "4cc3abfb-a776-5da2-8915-3536d62ce551",
+            "marketUuid": "4c2438b2-ba1c-5f15-b3dc-3614e1ec8cbc",
+            "marketId": 236739,
+            "outcomeId": 13561,
+            "price": 2.85,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 32 minutos",
+            "marketName": "4° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 4 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "708e82be-8aed-5edb-909f-3a6aec77f1a3",
+            "marketUuid": "4c2438b2-ba1c-5f15-b3dc-3614e1ec8cbc",
+            "marketId": 236739,
+            "outcomeId": 13564,
+            "price": 4,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 32 minutos",
+            "marketName": "4° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 4 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "549d262a-6f6c-59f6-91bb-d482c3ea93b9",
+            "marketUuid": "4c2438b2-ba1c-5f15-b3dc-3614e1ec8cbc",
+            "marketId": 236739,
+            "outcomeId": 13563,
+            "price": 4,
+            "specialBetValue": "4-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 32 minutos",
+            "marketName": "4° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 4 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "5201a33b-d49e-591a-8d6a-ba7afbf33026",
+            "marketUuid": "7ed0b6c5-1d87-5bb8-9cef-338ea9daf5cc",
+            "marketId": 236739,
+            "outcomeId": 13562,
+            "price": 2.85,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Mais de 32 minutos",
+            "marketName": "5° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 5 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "dc9d5a07-c0e5-5664-809c-8cf72199edbc",
+            "marketUuid": "7ed0b6c5-1d87-5bb8-9cef-338ea9daf5cc",
+            "marketId": 236739,
+            "outcomeId": 13561,
+            "price": 2.85,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "T1 Challengers & Menos de 32 minutos",
+            "marketName": "5° Mapa - Vencedor & Duração do Mapa",
+            "info": "T1 Challengers vencerá o mapa 5 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "879e42a7-b6b4-5666-9fb4-b77b17bd43d3",
+            "marketUuid": "7ed0b6c5-1d87-5bb8-9cef-338ea9daf5cc",
+            "marketId": 236739,
+            "outcomeId": 13564,
+            "price": 4,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Mais de 32 minutos",
+            "marketName": "5° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 5 & a duração será maior que 32 minutos"
+          },
+          {
+            "uuid": "392e15bf-7b8f-5d35-93c2-be44633a8395",
+            "marketUuid": "7ed0b6c5-1d87-5bb8-9cef-338ea9daf5cc",
+            "marketId": 236739,
+            "outcomeId": 13563,
+            "price": 4,
+            "specialBetValue": "5-32",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "32"
+            },
+            "marketGroupOrder": 475617184,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789419394237000000",
+              "feedPlatformTimestamp": "1789419394338607540",
+              "tags": "v2"
+            },
+            "name": "KT Rolster Challengers & Menos de 32 minutos",
+            "marketName": "5° Mapa - Vencedor & Duração do Mapa",
+            "info": "KT Rolster Challengers vencerá o mapa 5 & a duração será menor que 32 minutos"
+          },
+          {
+            "uuid": "d84d7a90-137a-51b6-93cf-c1098cb0154d",
+            "marketUuid": "a23f213d-0042-597a-9bfb-257c57253af6",
+            "marketId": 2520,
+            "outcomeId": 6496,
+            "price": 1.38,
+            "specialBetValue": "3.5",
+            "status": "active",
+            "specifiers": {
+              "total": "3.5"
+            },
+            "marketGroupOrder": 490029826,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 3.5",
+            "marketName": "Total de Mapas",
+            "info": "Mais de 3.5 mapas na partida"
+          },
+          {
+            "uuid": "8c55f868-518a-5fea-adf2-ae373aeb3008",
+            "marketUuid": "a23f213d-0042-597a-9bfb-257c57253af6",
+            "marketId": 2520,
+            "outcomeId": 6495,
+            "price": 2.72,
+            "specialBetValue": "3.5",
+            "status": "active",
+            "specifiers": {
+              "total": "3.5"
+            },
+            "marketGroupOrder": 490029826,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 3.5",
+            "marketName": "Total de Mapas",
+            "info": "Menos de 3.5 mapas na partida"
+          },
+          {
+            "uuid": "f18a1c43-431b-5012-a732-81c8eeea2789",
+            "marketUuid": "6bcbfe0e-73ed-5a4f-88b7-c941bccd952b",
+            "marketId": 2520,
+            "outcomeId": 6496,
+            "price": 2.7,
+            "specialBetValue": "4.5",
+            "status": "active",
+            "specifiers": {
+              "total": "4.5"
+            },
+            "marketGroupOrder": 490029826,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Total de Mapas",
+            "info": "Mais de 4.5 mapas na partida"
+          },
+          {
+            "uuid": "e30754e7-99d6-59cd-8311-70fc68639c9d",
+            "marketUuid": "6bcbfe0e-73ed-5a4f-88b7-c941bccd952b",
+            "marketId": 2520,
+            "outcomeId": 6495,
+            "price": 1.39,
+            "specialBetValue": "4.5",
+            "status": "active",
+            "specifiers": {
+              "total": "4.5"
+            },
+            "marketGroupOrder": 490029826,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Total de Mapas",
+            "info": "Menos de 4.5 mapas na partida"
+          },
+          {
+            "uuid": "a72376f6-f53f-54e4-9b89-2a8c29c99538",
+            "marketUuid": "7eec1425-6877-5ee5-a567-c47deffefca6",
+            "marketId": 2517,
+            "outcomeId": 6489,
+            "price": 3.55,
+            "specialBetValue": "-2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-2.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (-2.5)"
+          },
+          {
+            "uuid": "05246016-dcc2-51cf-a7e8-71684514041c",
+            "marketUuid": "7eec1425-6877-5ee5-a567-c47deffefca6",
+            "marketId": 2517,
+            "outcomeId": 6490,
+            "price": 1.24,
+            "specialBetValue": "-2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (2.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (2.5)"
+          },
+          {
+            "uuid": "ef91478a-dd01-5272-bdbd-1d45ada1eb96",
+            "marketUuid": "b30e9aa3-0e30-5ff9-b9ef-0d3b50f34e58",
+            "marketId": 2517,
+            "outcomeId": 6489,
+            "price": 1.87,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (-1.5)"
+          },
+          {
+            "uuid": "07735125-696f-5b65-8f9d-e0e27ff398d5",
+            "marketUuid": "b30e9aa3-0e30-5ff9-b9ef-0d3b50f34e58",
+            "marketId": 2517,
+            "outcomeId": 6490,
+            "price": 1.8,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (1.5)"
+          },
+          {
+            "uuid": "231471c5-6473-53c6-ac24-4ac8e6314d62",
+            "marketUuid": "ad98f002-002c-5c60-baf3-cff00f593b65",
+            "marketId": 2517,
+            "outcomeId": 6489,
+            "price": 1.17,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (1.5)"
+          },
+          {
+            "uuid": "49e5b390-0823-5032-8021-676a02428cfc",
+            "marketUuid": "ad98f002-002c-5c60-baf3-cff00f593b65",
+            "marketId": 2517,
+            "outcomeId": 6490,
+            "price": 4.3,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (-1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (-1.5)"
+          },
+          {
+            "uuid": "18f00ef5-33e0-537d-80e3-3f6aaeb0f237",
+            "marketUuid": "3c75a71f-bc7d-5250-806c-d464a97e59b7",
+            "marketId": 2517,
+            "outcomeId": 6489,
+            "price": 1.04,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (2.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (2.5)"
+          },
+          {
+            "uuid": "5f61ea77-5ae2-5da4-b241-8619ccd5f723",
+            "marketUuid": "3c75a71f-bc7d-5250-806c-d464a97e59b7",
+            "marketId": 2517,
+            "outcomeId": 6490,
+            "price": 8.1,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5"
+            },
+            "marketGroupOrder": 518855110,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (-2.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Cobrirá o handicap de mapas (-2.5)"
+          },
+          {
+            "uuid": "458f7490-ea89-5921-998a-b96543ee7874",
+            "marketUuid": "2557c47c-720e-5796-b0e6-e0d8c2740d28",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.75,
+            "specialBetValue": "1-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 33.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Mais de 33.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "f4ccce3f-20f7-5188-b8f0-56344ed2819c",
+            "marketUuid": "2557c47c-720e-5796-b0e6-e0d8c2740d28",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.9,
+            "specialBetValue": "1-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 33.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Menos de 33.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "ecf9da4d-7804-50aa-9c56-86b84b5d44c8",
+            "marketUuid": "28637d95-57fc-56b6-a5f9-3ef47d028fba",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.88,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 34.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Mais de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "9ee4f70e-7162-5b00-b7ca-f12e4df7199e",
+            "marketUuid": "28637d95-57fc-56b6-a5f9-3ef47d028fba",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.75,
+            "specialBetValue": "1-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 34.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Menos de 34.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "d9077848-063a-5466-a70a-0b0fdb6e23d2",
+            "marketUuid": "2aac2645-af2d-537f-82a5-aaf4fe0df9c9",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 2.05,
+            "specialBetValue": "1-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 35.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Mais de 35.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "1512d4a6-6b72-5ed4-bd28-5e6805b2a16d",
+            "marketUuid": "2aac2645-af2d-537f-82a5-aaf4fe0df9c9",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.64,
+            "specialBetValue": "1-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 35.5",
+            "marketName": "1° Mapa - Total de Hero Kills",
+            "info": "Menos de 35.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "32a10eb3-bb29-5dba-9545-43781d8e9e08",
+            "marketUuid": "0007bad2-863d-5334-af15-d2102a886308",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.75,
+            "specialBetValue": "2-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 33.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Mais de 33.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "c4344c29-474c-543e-a687-38f0d52b5893",
+            "marketUuid": "0007bad2-863d-5334-af15-d2102a886308",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.9,
+            "specialBetValue": "2-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 33.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Menos de 33.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "6cb564a8-104d-5e38-a00e-7362bf5ceafb",
+            "marketUuid": "e9dafff5-6c6c-5f5e-bb4b-1575a19cfaf7",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.88,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 34.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Mais de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "d017464b-8623-5354-bb85-2b02c7e53c21",
+            "marketUuid": "e9dafff5-6c6c-5f5e-bb4b-1575a19cfaf7",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.75,
+            "specialBetValue": "2-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 34.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Menos de 34.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "995c490a-556f-578b-83c1-966134019736",
+            "marketUuid": "5427485e-2fe3-5dff-89e4-60c8f7909ea0",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 2.05,
+            "specialBetValue": "2-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 35.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Mais de 35.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "fccb044f-f5c8-5613-8290-4078a380b2d2",
+            "marketUuid": "5427485e-2fe3-5dff-89e4-60c8f7909ea0",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.64,
+            "specialBetValue": "2-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 35.5",
+            "marketName": "2° Mapa - Total de Hero Kills",
+            "info": "Menos de 35.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "6045587f-d6d3-5626-8ce0-2285da16f6f4",
+            "marketUuid": "eeaee713-4896-5fd7-b8b4-e892ae2828e9",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.75,
+            "specialBetValue": "3-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 33.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Mais de 33.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "0c4ff5d7-aaef-5d02-a155-7aff174158ab",
+            "marketUuid": "eeaee713-4896-5fd7-b8b4-e892ae2828e9",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.9,
+            "specialBetValue": "3-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 33.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Menos de 33.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "9ed6e788-ec3e-593e-9f0b-6fe79632cdd6",
+            "marketUuid": "0282691b-d57e-5671-9fcd-dda87aa6eb7a",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.88,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 34.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Mais de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "1e5e2f9b-7bdc-514b-91bb-c8168e9c8a25",
+            "marketUuid": "0282691b-d57e-5671-9fcd-dda87aa6eb7a",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.75,
+            "specialBetValue": "3-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 34.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Menos de 34.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "80805e67-62b4-52b6-8c5b-51e8b7cd7309",
+            "marketUuid": "231b87dd-8a92-5e63-a819-29959bbaf707",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 2.05,
+            "specialBetValue": "3-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 35.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Mais de 35.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "94379192-101c-5994-8c02-1e6cdc24ae4a",
+            "marketUuid": "231b87dd-8a92-5e63-a819-29959bbaf707",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.64,
+            "specialBetValue": "3-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 35.5",
+            "marketName": "3° Mapa - Total de Hero Kills",
+            "info": "Menos de 35.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "1b7c2ab8-d9ee-5f25-aba6-5bd030c4cda8",
+            "marketUuid": "3d5a671d-b643-5a63-8c92-50f41d1b83aa",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.75,
+            "specialBetValue": "4-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 33.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Mais de 33.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "6d38a18e-0a29-5874-a881-c1a2a49a5188",
+            "marketUuid": "3d5a671d-b643-5a63-8c92-50f41d1b83aa",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.9,
+            "specialBetValue": "4-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 33.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Menos de 33.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "73ca91d9-6da8-5455-a67b-e4dc5aaaa395",
+            "marketUuid": "f4c84dce-f7ff-53f4-864b-b255c9dfd451",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.88,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 34.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Mais de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "3a33a3a1-a2ec-5e77-b4d9-a50491279053",
+            "marketUuid": "f4c84dce-f7ff-53f4-864b-b255c9dfd451",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.75,
+            "specialBetValue": "4-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 34.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Menos de 34.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "ab1a6f23-d453-5ff4-8f1e-39da73e56df2",
+            "marketUuid": "76697256-b355-5ba0-959b-99188b5afbe2",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 2.05,
+            "specialBetValue": "4-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 35.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Mais de 35.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "2155d04e-91d4-59b1-ba39-73095f870d0c",
+            "marketUuid": "76697256-b355-5ba0-959b-99188b5afbe2",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.64,
+            "specialBetValue": "4-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 35.5",
+            "marketName": "4° Mapa - Total de Hero Kills",
+            "info": "Menos de 35.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "08c0060d-0f94-56de-b7d3-1101f2454347",
+            "marketUuid": "29cbb0e6-2362-538a-8231-46733372a568",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.75,
+            "specialBetValue": "5-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 33.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Mais de 33.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "f90bbfa9-6e84-5e07-bf1e-9d732170ff96",
+            "marketUuid": "29cbb0e6-2362-538a-8231-46733372a568",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.9,
+            "specialBetValue": "5-33.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "33.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 33.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Menos de 33.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "f6b525e1-426d-5c8e-9de2-e9c699765293",
+            "marketUuid": "7c594626-ef38-5b29-b4fc-069019e676ba",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 1.88,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 34.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Mais de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "ba2c8df9-93e3-564b-ab45-a59db13c62f5",
+            "marketUuid": "7c594626-ef38-5b29-b4fc-069019e676ba",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.75,
+            "specialBetValue": "5-34.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "34.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 34.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Menos de 34.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "20fee2b0-5444-5b41-b637-11454fca23b3",
+            "marketUuid": "d6c21b4c-1059-5372-979c-e32d3e4d42a6",
+            "marketId": 231867,
+            "outcomeId": 4208268,
+            "price": 2.05,
+            "specialBetValue": "5-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 35.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Mais de 35.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "c1f6bbe5-abf5-562c-914b-05098f334957",
+            "marketUuid": "d6c21b4c-1059-5372-979c-e32d3e4d42a6",
+            "marketId": 231867,
+            "outcomeId": 4208267,
+            "price": 1.64,
+            "specialBetValue": "5-35.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "35.5"
+            },
+            "marketGroupOrder": 1095360786,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 35.5",
+            "marketName": "5° Mapa - Total de Hero Kills",
+            "info": "Menos de 35.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "b63b3490-e6a3-5606-8328-150e0fca7deb",
+            "marketUuid": "b40f9479-d2db-5895-8649-5121d93539b7",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 2,
+            "specialBetValue": "-7.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-7.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-7.5) no mapa 1"
+          },
+          {
+            "uuid": "3013c3b0-07fd-5ab2-b05c-484bd9b8d74f",
+            "marketUuid": "b40f9479-d2db-5895-8649-5121d93539b7",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.67,
+            "specialBetValue": "-7.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (7.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (7.5) no mapa 1"
+          },
+          {
+            "uuid": "4dd8450a-1aa9-5615-9085-3848f57c08b1",
+            "marketUuid": "2ed06ef7-e621-5b5f-a49b-c9e0c2927408",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.85,
+            "specialBetValue": "-6.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-6.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-6.5) no mapa 1"
+          },
+          {
+            "uuid": "7efb6a2c-eae3-5553-b033-2e8dc3f88de9",
+            "marketUuid": "2ed06ef7-e621-5b5f-a49b-c9e0c2927408",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.8,
+            "specialBetValue": "-6.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (6.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (6.5) no mapa 1"
+          },
+          {
+            "uuid": "eba71c50-f718-58db-8ab2-79e0f0bd6ce3",
+            "marketUuid": "2f5c0b00-e836-5dbb-993b-61c95543d729",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.75,
+            "specialBetValue": "-5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-5.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-5.5) no mapa 1"
+          },
+          {
+            "uuid": "3b7e4bfe-de5b-5efa-bd30-1c330d2819f8",
+            "marketUuid": "2f5c0b00-e836-5dbb-993b-61c95543d729",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.9,
+            "specialBetValue": "-5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (5.5)",
+            "marketName": "Mapa 1 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (5.5) no mapa 1"
+          },
+          {
+            "uuid": "f7132fc2-f8d0-58db-827d-0527e750a3c0",
+            "marketUuid": "ebf8fb5b-4f3c-52f6-8099-163b54f52c7c",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 2,
+            "specialBetValue": "-7.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-7.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-7.5) no mapa 2"
+          },
+          {
+            "uuid": "f5e12ed3-96fb-5472-ac79-58a1e02baaff",
+            "marketUuid": "ebf8fb5b-4f3c-52f6-8099-163b54f52c7c",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.67,
+            "specialBetValue": "-7.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (7.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (7.5) no mapa 2"
+          },
+          {
+            "uuid": "590585d3-59c0-564b-9cbe-439ab964df97",
+            "marketUuid": "6a73c660-8435-57e0-b4ca-6630512d0fb1",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.85,
+            "specialBetValue": "-6.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-6.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-6.5) no mapa 2"
+          },
+          {
+            "uuid": "14a78951-e5e5-5356-9206-9d6bbd4a80ba",
+            "marketUuid": "6a73c660-8435-57e0-b4ca-6630512d0fb1",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.8,
+            "specialBetValue": "-6.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (6.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (6.5) no mapa 2"
+          },
+          {
+            "uuid": "788b4c48-c425-52db-b0d9-b093f7697b00",
+            "marketUuid": "66c7673e-d98e-52e2-81c9-6f84cdae990b",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.75,
+            "specialBetValue": "-5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-5.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-5.5) no mapa 2"
+          },
+          {
+            "uuid": "61279f59-463a-582c-b802-554852e812d0",
+            "marketUuid": "66c7673e-d98e-52e2-81c9-6f84cdae990b",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.9,
+            "specialBetValue": "-5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (5.5)",
+            "marketName": "Mapa 2 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (5.5) no mapa 2"
+          },
+          {
+            "uuid": "320e5699-7951-5872-9a92-d0e8fc31416a",
+            "marketUuid": "daf2b9ed-2ae5-54f9-a838-7ef778a3e8a2",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 2,
+            "specialBetValue": "-7.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-7.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-7.5) no mapa 3"
+          },
+          {
+            "uuid": "e5627ee8-1159-5c2e-988d-94bbba07c280",
+            "marketUuid": "daf2b9ed-2ae5-54f9-a838-7ef778a3e8a2",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.67,
+            "specialBetValue": "-7.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (7.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (7.5) no mapa 3"
+          },
+          {
+            "uuid": "590c8571-9804-56e0-a043-c2f241db4bac",
+            "marketUuid": "d4c85d3f-eed7-5f99-b3c5-b3ab23eec2d9",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.85,
+            "specialBetValue": "-6.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-6.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-6.5) no mapa 3"
+          },
+          {
+            "uuid": "12f2c9ce-2c2a-541b-a713-0975d39e7574",
+            "marketUuid": "d4c85d3f-eed7-5f99-b3c5-b3ab23eec2d9",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.8,
+            "specialBetValue": "-6.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (6.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (6.5) no mapa 3"
+          },
+          {
+            "uuid": "d99f82c2-4d38-5cb6-8828-68004e5312a2",
+            "marketUuid": "be17a11b-c81e-5639-a8ad-c51ff0aab711",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.75,
+            "specialBetValue": "-5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-5.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-5.5) no mapa 3"
+          },
+          {
+            "uuid": "8922ea9d-3592-5b05-ae68-d1816e6f0149",
+            "marketUuid": "be17a11b-c81e-5639-a8ad-c51ff0aab711",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.9,
+            "specialBetValue": "-5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (5.5)",
+            "marketName": "Mapa 3 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (5.5) no mapa 3"
+          },
+          {
+            "uuid": "403f301c-bfd3-560a-9218-4d19e3719dc0",
+            "marketUuid": "33a46d04-b83a-5620-8fdf-75ca191758d9",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 2,
+            "specialBetValue": "-7.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-7.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-7.5) no mapa 4"
+          },
+          {
+            "uuid": "98c05af4-d082-5686-a010-6ddd37dea9ad",
+            "marketUuid": "33a46d04-b83a-5620-8fdf-75ca191758d9",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.67,
+            "specialBetValue": "-7.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (7.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (7.5) no mapa 4"
+          },
+          {
+            "uuid": "89329f0d-b8a7-5782-ad0b-95d3979d959b",
+            "marketUuid": "96113e4c-1a5f-5828-9c6f-9d9cf7d431e7",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.85,
+            "specialBetValue": "-6.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-6.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-6.5) no mapa 4"
+          },
+          {
+            "uuid": "7a2456c0-5a8e-5099-ae2e-873f0f77697f",
+            "marketUuid": "96113e4c-1a5f-5828-9c6f-9d9cf7d431e7",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.8,
+            "specialBetValue": "-6.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (6.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (6.5) no mapa 4"
+          },
+          {
+            "uuid": "997ef949-583e-5218-ac03-7074bc0f373b",
+            "marketUuid": "e9a75a80-85a6-5c4d-91b2-d640c8b41a84",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.75,
+            "specialBetValue": "-5.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-5.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-5.5) no mapa 4"
+          },
+          {
+            "uuid": "f065bed1-e07c-56d9-a2fb-59757c90c049",
+            "marketUuid": "e9a75a80-85a6-5c4d-91b2-d640c8b41a84",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.9,
+            "specialBetValue": "-5.5-4",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (5.5)",
+            "marketName": "Mapa 4 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (5.5) no mapa 4"
+          },
+          {
+            "uuid": "6fe0b934-3f35-5bc6-b5bf-cf113d803e6f",
+            "marketUuid": "d56c208b-179f-527d-ba8d-9635b00fa0c8",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 2,
+            "specialBetValue": "-7.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-7.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-7.5) no mapa 5"
+          },
+          {
+            "uuid": "b0d2835e-f6b0-572a-9ffc-66aff7b6519c",
+            "marketUuid": "d56c208b-179f-527d-ba8d-9635b00fa0c8",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.67,
+            "specialBetValue": "-7.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-7.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (7.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (7.5) no mapa 5"
+          },
+          {
+            "uuid": "d3ed4c58-7cdc-56bc-af77-8bf9828109ac",
+            "marketUuid": "07bcdb04-315e-5d68-945b-08e3a73f63c6",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.85,
+            "specialBetValue": "-6.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-6.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-6.5) no mapa 5"
+          },
+          {
+            "uuid": "c2c933fe-f7fd-5dcc-8892-48d66f2c8be2",
+            "marketUuid": "07bcdb04-315e-5d68-945b-08e3a73f63c6",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.8,
+            "specialBetValue": "-6.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-6.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (6.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (6.5) no mapa 5"
+          },
+          {
+            "uuid": "0095efaa-f5cc-5abe-8e05-9a08c4eba6bb",
+            "marketUuid": "eb5e93d4-c7dd-546b-88c5-a5d60b1bbbde",
+            "marketId": 231866,
+            "outcomeId": 4208265,
+            "price": 1.75,
+            "specialBetValue": "-5.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "T1 Challengers (-5.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (-5.5) no mapa 5"
+          },
+          {
+            "uuid": "dbb748b6-9998-5ce1-bf96-c886ca43b27e",
+            "marketUuid": "eb5e93d4-c7dd-546b-88c5-a5d60b1bbbde",
+            "marketId": 231866,
+            "outcomeId": 4208266,
+            "price": 1.9,
+            "specialBetValue": "-5.5-5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1109773428,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "KT Rolster Challengers (5.5)",
+            "marketName": "Mapa 5 - Handicap de Hero Kills",
+            "info": "Cobrirá o handicap de hero kills (5.5) no mapa 5"
+          },
+          {
+            "uuid": "4e8b4842-f19f-5059-9445-ff6dd2605a04",
+            "marketUuid": "d35bc003-455e-56c6-a192-0a4d21c1f7a3",
+            "marketId": 231868,
+            "outcomeId": 4208270,
+            "price": 1.82,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1° Mapa - Ímpar",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número ímpar de hero kills no mapa 1"
+          },
+          {
+            "uuid": "dbce324c-8d97-5964-b732-36cfec4499b0",
+            "marketUuid": "d35bc003-455e-56c6-a192-0a4d21c1f7a3",
+            "marketId": 231868,
+            "outcomeId": 4208269,
+            "price": 1.82,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1° Mapa - Par",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número par de hero kills no mapa 1"
+          },
+          {
+            "uuid": "cc9fc406-5bf8-5a30-b9a7-78456f74b259",
+            "marketUuid": "bf3c8ad6-7aad-54f7-b65c-7e45cd840d8e",
+            "marketId": 231868,
+            "outcomeId": 4208270,
+            "price": 1.82,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2° Mapa - Ímpar",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número ímpar de hero kills no mapa 2"
+          },
+          {
+            "uuid": "72fffb3c-fa52-5643-99c4-e2ede214876f",
+            "marketUuid": "bf3c8ad6-7aad-54f7-b65c-7e45cd840d8e",
+            "marketId": 231868,
+            "outcomeId": 4208269,
+            "price": 1.82,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2° Mapa - Par",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número par de hero kills no mapa 2"
+          },
+          {
+            "uuid": "4cfcc172-96c0-543f-93ce-fc36f4cf19aa",
+            "marketUuid": "e0137b5c-d580-5741-873f-654e89c3f4e8",
+            "marketId": 231868,
+            "outcomeId": 4208270,
+            "price": 1.82,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3° Mapa - Ímpar",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número ímpar de hero kills no mapa 3"
+          },
+          {
+            "uuid": "2b1fb627-e14f-5c52-beb6-6738fe55465a",
+            "marketUuid": "e0137b5c-d580-5741-873f-654e89c3f4e8",
+            "marketId": 231868,
+            "outcomeId": 4208269,
+            "price": 1.82,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3° Mapa - Par",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número par de hero kills no mapa 3"
+          },
+          {
+            "uuid": "da5641e7-49ee-59b3-9de5-91ff971930e5",
+            "marketUuid": "a57888e2-e542-5d74-ada7-88151c168a29",
+            "marketId": 231868,
+            "outcomeId": 4208270,
+            "price": 1.82,
+            "specialBetValue": "4",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "4° Mapa - Ímpar",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número ímpar de hero kills no mapa 4"
+          },
+          {
+            "uuid": "abda6e2a-898e-53a6-bcff-561a638152c4",
+            "marketUuid": "a57888e2-e542-5d74-ada7-88151c168a29",
+            "marketId": 231868,
+            "outcomeId": 4208269,
+            "price": 1.82,
+            "specialBetValue": "4",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "4° Mapa - Par",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número par de hero kills no mapa 4"
+          },
+          {
+            "uuid": "2fd348ee-7cec-5276-aaa4-37baea416ead",
+            "marketUuid": "d2ec0027-5004-5c77-a99e-ab7fae859131",
+            "marketId": 231868,
+            "outcomeId": 4208270,
+            "price": 1.82,
+            "specialBetValue": "5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "5° Mapa - Ímpar",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número ímpar de hero kills no mapa 5"
+          },
+          {
+            "uuid": "612a807f-d730-5a7c-8673-bd7522318911",
+            "marketUuid": "d2ec0027-5004-5c77-a99e-ab7fae859131",
+            "marketId": 231868,
+            "outcomeId": 4208269,
+            "price": 1.82,
+            "specialBetValue": "5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5"
+            },
+            "marketGroupOrder": 1124186070,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "5° Mapa - Par",
+            "marketName": "Mapa X - Total Hero Kills Ímpar/Par",
+            "info": "Número par de hero kills no mapa 5"
+          },
+          {
+            "uuid": "014ad62f-c2f6-5b23-9c38-21c8139b6a37",
+            "marketUuid": "fcf0173b-711c-5edd-8249-314625a94c05",
+            "marketId": 231869,
+            "outcomeId": 4208282,
+            "price": 2,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "Mapa 1 - Total de Torres Destruídas",
+            "info": "Mais de 12.5 torres destruídas no mapa 1"
+          },
+          {
+            "uuid": "74add924-3ac6-5712-926a-1eee03fa04ca",
+            "marketUuid": "fcf0173b-711c-5edd-8249-314625a94c05",
+            "marketId": 231869,
+            "outcomeId": 4208281,
+            "price": 1.67,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "Mapa 1 - Total de Torres Destruídas",
+            "info": "Menos de 12.5 torres destruídas no mapa 1"
+          },
+          {
+            "uuid": "210710ff-d70d-51dc-96cd-863f60c6aba1",
+            "marketUuid": "39017c54-8c33-517a-a81e-01ab8876d418",
+            "marketId": 231869,
+            "outcomeId": 4208282,
+            "price": 2,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "Mapa 2 - Total de Torres Destruídas",
+            "info": "Mais de 12.5 torres destruídas no mapa 2"
+          },
+          {
+            "uuid": "dff941fb-bf4a-545b-acf1-4f234e449919",
+            "marketUuid": "39017c54-8c33-517a-a81e-01ab8876d418",
+            "marketId": 231869,
+            "outcomeId": 4208281,
+            "price": 1.67,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "Mapa 2 - Total de Torres Destruídas",
+            "info": "Menos de 12.5 torres destruídas no mapa 2"
+          },
+          {
+            "uuid": "9ab1ee29-1cf1-56f4-8ac5-6ec02be523ad",
+            "marketUuid": "9fb1a7b6-918e-5633-a3fc-a318babd6722",
+            "marketId": 231869,
+            "outcomeId": 4208282,
+            "price": 2,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "Mapa 3 - Total de Torres Destruídas",
+            "info": "Mais de 12.5 torres destruídas no mapa 3"
+          },
+          {
+            "uuid": "cd5c04ab-d535-5506-a737-6498841c2f7d",
+            "marketUuid": "9fb1a7b6-918e-5633-a3fc-a318babd6722",
+            "marketId": 231869,
+            "outcomeId": 4208281,
+            "price": 1.67,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "Mapa 3 - Total de Torres Destruídas",
+            "info": "Menos de 12.5 torres destruídas no mapa 3"
+          },
+          {
+            "uuid": "8088a919-2181-5eb0-8fcc-42e930bbb3f6",
+            "marketUuid": "fe7a5c5c-bb69-50dd-a8b0-25ba6490132b",
+            "marketId": 231869,
+            "outcomeId": 4208282,
+            "price": 2,
+            "specialBetValue": "4-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "Mapa 4 - Total de Torres Destruídas",
+            "info": "Mais de 12.5 torres destruídas no mapa 4"
+          },
+          {
+            "uuid": "3873bf4a-6d51-55dc-ab1d-692e4c70556c",
+            "marketUuid": "fe7a5c5c-bb69-50dd-a8b0-25ba6490132b",
+            "marketId": 231869,
+            "outcomeId": 4208281,
+            "price": 1.67,
+            "specialBetValue": "4-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "Mapa 4 - Total de Torres Destruídas",
+            "info": "Menos de 12.5 torres destruídas no mapa 4"
+          },
+          {
+            "uuid": "fc08d8dc-6630-50ad-a5fe-4552b028ff9f",
+            "marketUuid": "b62c4ed3-ef3b-5a85-a0a1-c0e1db77047b",
+            "marketId": 231869,
+            "outcomeId": 4208282,
+            "price": 2,
+            "specialBetValue": "5-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "Mapa 5 - Total de Torres Destruídas",
+            "info": "Mais de 12.5 torres destruídas no mapa 5"
+          },
+          {
+            "uuid": "d9981383-4a9a-5522-a5fd-56d3307b2f94",
+            "marketUuid": "b62c4ed3-ef3b-5a85-a0a1-c0e1db77047b",
+            "marketId": 231869,
+            "outcomeId": 4208281,
+            "price": 1.67,
+            "specialBetValue": "5-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 1138598712,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "Mapa 5 - Total de Torres Destruídas",
+            "info": "Menos de 12.5 torres destruídas no mapa 5"
+          },
+          {
+            "uuid": "e8021f3b-0003-55d0-bbb2-5b3f1a0d48ba",
+            "marketUuid": "fe3054e0-efdb-5e0c-8cad-c7f1048f77a5",
+            "marketId": 231870,
+            "outcomeId": 4208284,
+            "price": 1.77,
+            "specialBetValue": "1-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 1 - Total de Inibidores Destruídos",
+            "info": "Mais de 1.5 inibidores destruídos no mapa 1"
+          },
+          {
+            "uuid": "5b39d2fa-61cd-57bd-adda-26fb592ab13a",
+            "marketUuid": "fe3054e0-efdb-5e0c-8cad-c7f1048f77a5",
+            "marketId": 231870,
+            "outcomeId": 4208283,
+            "price": 1.87,
+            "specialBetValue": "1-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 1 - Total de Inibidores Destruídos",
+            "info": "Menos de 1.5 inibidores destruídos no mapa 1"
+          },
+          {
+            "uuid": "acf3b2dc-4d66-57d0-9309-6e270cf4b7f4",
+            "marketUuid": "6e7e57c2-cf29-540c-9d83-5a7f1fcc3b5e",
+            "marketId": 231870,
+            "outcomeId": 4208284,
+            "price": 1.77,
+            "specialBetValue": "2-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 2 - Total de Inibidores Destruídos",
+            "info": "Mais de 1.5 inibidores destruídos no mapa 2"
+          },
+          {
+            "uuid": "09d617e8-0d7a-5c47-8233-98034e6dca1b",
+            "marketUuid": "6e7e57c2-cf29-540c-9d83-5a7f1fcc3b5e",
+            "marketId": 231870,
+            "outcomeId": 4208283,
+            "price": 1.87,
+            "specialBetValue": "2-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 2 - Total de Inibidores Destruídos",
+            "info": "Menos de 1.5 inibidores destruídos no mapa 2"
+          },
+          {
+            "uuid": "7475817d-26c7-5eab-b176-f8ceb1754235",
+            "marketUuid": "20722c9e-ac0c-5508-8b48-81436f280478",
+            "marketId": 231870,
+            "outcomeId": 4208284,
+            "price": 1.77,
+            "specialBetValue": "3-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 3 - Total de Inibidores Destruídos",
+            "info": "Mais de 1.5 inibidores destruídos no mapa 3"
+          },
+          {
+            "uuid": "35227030-9587-5065-bf97-69b88bf21fe0",
+            "marketUuid": "20722c9e-ac0c-5508-8b48-81436f280478",
+            "marketId": 231870,
+            "outcomeId": 4208283,
+            "price": 1.87,
+            "specialBetValue": "3-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 3 - Total de Inibidores Destruídos",
+            "info": "Menos de 1.5 inibidores destruídos no mapa 3"
+          },
+          {
+            "uuid": "0533e0bc-dcdb-5807-a13e-0984ff6242dd",
+            "marketUuid": "113fd558-fdd6-5296-a99e-f77b8e028f91",
+            "marketId": 231870,
+            "outcomeId": 4208284,
+            "price": 1.77,
+            "specialBetValue": "4-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 4 - Total de Inibidores Destruídos",
+            "info": "Mais de 1.5 inibidores destruídos no mapa 4"
+          },
+          {
+            "uuid": "02063a08-fc35-5ee2-9189-cc551e4cc5ca",
+            "marketUuid": "113fd558-fdd6-5296-a99e-f77b8e028f91",
+            "marketId": 231870,
+            "outcomeId": 4208283,
+            "price": 1.87,
+            "specialBetValue": "4-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 4 - Total de Inibidores Destruídos",
+            "info": "Menos de 1.5 inibidores destruídos no mapa 4"
+          },
+          {
+            "uuid": "4a94706d-03ca-50d6-a4b3-04834aa0ca4c",
+            "marketUuid": "a5445a13-2d35-5618-aa65-da0c5e2c8adb",
+            "marketId": 231870,
+            "outcomeId": 4208284,
+            "price": 1.77,
+            "specialBetValue": "5-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 5 - Total de Inibidores Destruídos",
+            "info": "Mais de 1.5 inibidores destruídos no mapa 5"
+          },
+          {
+            "uuid": "2e98e8e0-a884-53a1-8864-ad81ad1bdab7",
+            "marketUuid": "a5445a13-2d35-5618-aa65-da0c5e2c8adb",
+            "marketId": 231870,
+            "outcomeId": 4208283,
+            "price": 1.87,
+            "specialBetValue": "5-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1153011354,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 5 - Total de Inibidores Destruídos",
+            "info": "Menos de 1.5 inibidores destruídos no mapa 5"
+          },
+          {
+            "uuid": "8152d250-2ced-58a7-a088-ef6763d97c3d",
+            "marketUuid": "31e345b3-3df9-5022-a5a5-92e263f4e2a6",
+            "marketId": 231871,
+            "outcomeId": 4208286,
+            "price": 2.12,
+            "specialBetValue": "1-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 1 - Total de Baron Kills",
+            "info": "Mais de 1.5 Baron kills no mapa 1"
+          },
+          {
+            "uuid": "2d85a2aa-6163-54a9-8c7e-c458923280cd",
+            "marketUuid": "31e345b3-3df9-5022-a5a5-92e263f4e2a6",
+            "marketId": 231871,
+            "outcomeId": 4208285,
+            "price": 1.59,
+            "specialBetValue": "1-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 1 - Total de Baron Kills",
+            "info": "Menos de 1.5 Baron kills no mapa 1"
+          },
+          {
+            "uuid": "74c5cfa4-b3d2-55df-b69c-c37f4d80836c",
+            "marketUuid": "a04773f2-f8ae-5e5c-ab83-1b2ea0c66e05",
+            "marketId": 231871,
+            "outcomeId": 4208286,
+            "price": 2.12,
+            "specialBetValue": "2-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 2 - Total de Baron Kills",
+            "info": "Mais de 1.5 Baron kills no mapa 2"
+          },
+          {
+            "uuid": "579a64c2-0bfa-599d-9c84-2b1b6d0b3242",
+            "marketUuid": "a04773f2-f8ae-5e5c-ab83-1b2ea0c66e05",
+            "marketId": 231871,
+            "outcomeId": 4208285,
+            "price": 1.59,
+            "specialBetValue": "2-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 2 - Total de Baron Kills",
+            "info": "Menos de 1.5 Baron kills no mapa 2"
+          },
+          {
+            "uuid": "6e101cd3-6dbc-5fcb-a83d-c3f22b82fff2",
+            "marketUuid": "91633631-2e4c-5c82-b211-1c1c4b9923dd",
+            "marketId": 231871,
+            "outcomeId": 4208286,
+            "price": 2.12,
+            "specialBetValue": "3-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 3 - Total de Baron Kills",
+            "info": "Mais de 1.5 Baron kills no mapa 3"
+          },
+          {
+            "uuid": "4cd245d6-50ab-5d57-8ea9-c73d025bcb55",
+            "marketUuid": "91633631-2e4c-5c82-b211-1c1c4b9923dd",
+            "marketId": 231871,
+            "outcomeId": 4208285,
+            "price": 1.59,
+            "specialBetValue": "3-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 3 - Total de Baron Kills",
+            "info": "Menos de 1.5 Baron kills no mapa 3"
+          },
+          {
+            "uuid": "3e4143e9-18dd-586b-81ff-8ce18cd10ef6",
+            "marketUuid": "d7bd14a4-8602-548c-9bd6-08abc1171c0f",
+            "marketId": 231871,
+            "outcomeId": 4208286,
+            "price": 2.12,
+            "specialBetValue": "4-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 4 - Total de Baron Kills",
+            "info": "Mais de 1.5 Baron kills no mapa 4"
+          },
+          {
+            "uuid": "ca7befc6-97a8-5963-8d7b-ffc0138960f8",
+            "marketUuid": "d7bd14a4-8602-548c-9bd6-08abc1171c0f",
+            "marketId": 231871,
+            "outcomeId": 4208285,
+            "price": 1.59,
+            "specialBetValue": "4-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 4 - Total de Baron Kills",
+            "info": "Menos de 1.5 Baron kills no mapa 4"
+          },
+          {
+            "uuid": "ddb93a8c-e2ac-58a0-bac8-d3cb9f690f0f",
+            "marketUuid": "cba39782-6eb5-530e-a6f2-984a0a68966a",
+            "marketId": 231871,
+            "outcomeId": 4208286,
+            "price": 2.12,
+            "specialBetValue": "5-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Mapa 5 - Total de Baron Kills",
+            "info": "Mais de 1.5 Baron kills no mapa 5"
+          },
+          {
+            "uuid": "d8e5c5f5-a542-5727-850c-0f2f3cf8624d",
+            "marketUuid": "cba39782-6eb5-530e-a6f2-984a0a68966a",
+            "marketId": 231871,
+            "outcomeId": 4208285,
+            "price": 1.59,
+            "specialBetValue": "5-1.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "1.5"
+            },
+            "marketGroupOrder": 1167423996,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Mapa 5 - Total de Baron Kills",
+            "info": "Menos de 1.5 Baron kills no mapa 5"
+          },
+          {
+            "uuid": "a4cf3f47-7591-523e-b3b6-589f7ced1450",
+            "marketUuid": "5e36cc05-182a-5983-825c-4d3babf17ed2",
+            "marketId": 231872,
+            "outcomeId": 4208288,
+            "price": 1.77,
+            "specialBetValue": "1-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Mapa 1 - Total de Dragon Kills",
+            "info": "Mais de 4.5 dragon kills no mapa 1"
+          },
+          {
+            "uuid": "3e8efdaf-3b4f-562b-bec0-ad5b5ed17040",
+            "marketUuid": "5e36cc05-182a-5983-825c-4d3babf17ed2",
+            "marketId": 231872,
+            "outcomeId": 4208287,
+            "price": 1.87,
+            "specialBetValue": "1-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Mapa 1 - Total de Dragon Kills",
+            "info": "Menos de 4.5 dragon kills no mapa 1"
+          },
+          {
+            "uuid": "72b244c7-c5e5-5d9e-aefe-4f20144ae623",
+            "marketUuid": "8e45098f-0348-5708-a25a-adc54b008206",
+            "marketId": 231872,
+            "outcomeId": 4208288,
+            "price": 1.77,
+            "specialBetValue": "2-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Mapa 2 - Total de Dragon Kills",
+            "info": "Mais de 4.5 dragon kills no mapa 2"
+          },
+          {
+            "uuid": "a4c33741-4c6b-5ea4-b383-9d93be736db3",
+            "marketUuid": "8e45098f-0348-5708-a25a-adc54b008206",
+            "marketId": 231872,
+            "outcomeId": 4208287,
+            "price": 1.87,
+            "specialBetValue": "2-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Mapa 2 - Total de Dragon Kills",
+            "info": "Menos de 4.5 dragon kills no mapa 2"
+          },
+          {
+            "uuid": "60a6055d-8b66-51f0-8492-4ca11ee6afbd",
+            "marketUuid": "65a9be8c-1429-520e-be21-703468b11a96",
+            "marketId": 231872,
+            "outcomeId": 4208288,
+            "price": 1.77,
+            "specialBetValue": "3-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Mapa 3 - Total de Dragon Kills",
+            "info": "Mais de 4.5 dragon kills no mapa 3"
+          },
+          {
+            "uuid": "52ed7a19-ca88-5a52-9726-46e5e4a00fbb",
+            "marketUuid": "65a9be8c-1429-520e-be21-703468b11a96",
+            "marketId": 231872,
+            "outcomeId": 4208287,
+            "price": 1.87,
+            "specialBetValue": "3-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Mapa 3 - Total de Dragon Kills",
+            "info": "Menos de 4.5 dragon kills no mapa 3"
+          },
+          {
+            "uuid": "bfd83b4b-e2b6-5193-bf2d-51cfbe385133",
+            "marketUuid": "4b699917-89c2-5e9f-895a-95d388afac99",
+            "marketId": 231872,
+            "outcomeId": 4208288,
+            "price": 1.77,
+            "specialBetValue": "4-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Mapa 4 - Total de Dragon Kills",
+            "info": "Mais de 4.5 dragon kills no mapa 4"
+          },
+          {
+            "uuid": "335ff605-1ae6-50ce-8a8e-7ae47c82f4a3",
+            "marketUuid": "4b699917-89c2-5e9f-895a-95d388afac99",
+            "marketId": 231872,
+            "outcomeId": 4208287,
+            "price": 1.87,
+            "specialBetValue": "4-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Mapa 4 - Total de Dragon Kills",
+            "info": "Menos de 4.5 dragon kills no mapa 4"
+          },
+          {
+            "uuid": "37d4e34c-cef4-5deb-9be0-a25a2f3c16e4",
+            "marketUuid": "14810cca-b568-51f0-a18f-1f852956b0be",
+            "marketId": 231872,
+            "outcomeId": 4208288,
+            "price": 1.77,
+            "specialBetValue": "5-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 4.5",
+            "marketName": "Mapa 5 - Total de Dragon Kills",
+            "info": "Mais de 4.5 dragon kills no mapa 5"
+          },
+          {
+            "uuid": "947b16a6-150c-5f5b-aa48-a2470e96a2f4",
+            "marketUuid": "14810cca-b568-51f0-a18f-1f852956b0be",
+            "marketId": 231872,
+            "outcomeId": 4208287,
+            "price": 1.87,
+            "specialBetValue": "5-4.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "4.5"
+            },
+            "marketGroupOrder": 1181836638,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 4.5",
+            "marketName": "Mapa 5 - Total de Dragon Kills",
+            "info": "Menos de 4.5 dragon kills no mapa 5"
+          },
+          {
+            "uuid": "0d2bfe8d-0bf3-591e-8cdf-f48cbb3dce3e",
+            "marketUuid": "a4554d38-26ab-56a1-a96a-3cc3244a7285",
+            "marketId": 231873,
+            "outcomeId": 4208290,
+            "price": 1.87,
+            "specialBetValue": "1-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "1° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers mais de 19.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "605b497f-9529-5056-a05e-be3a273a0ad6",
+            "marketUuid": "a4554d38-26ab-56a1-a96a-3cc3244a7285",
+            "marketId": 231873,
+            "outcomeId": 4208289,
+            "price": 1.78,
+            "specialBetValue": "1-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "1° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers menos de 19.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "c3d08c7d-8b2a-5c7a-85fc-bcc78a976302",
+            "marketUuid": "609aeb39-91d0-5d60-b511-4668d5190dce",
+            "marketId": 231873,
+            "outcomeId": 4208290,
+            "price": 1.87,
+            "specialBetValue": "2-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "2° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers mais de 19.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "3d0be602-964c-54f5-961a-431bf90118f9",
+            "marketUuid": "609aeb39-91d0-5d60-b511-4668d5190dce",
+            "marketId": 231873,
+            "outcomeId": 4208289,
+            "price": 1.78,
+            "specialBetValue": "2-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "2° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers menos de 19.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "23b7aea3-b67b-5118-9b25-156cbdd2cb53",
+            "marketUuid": "252af3de-01e6-5b8b-aca0-7affaf2da846",
+            "marketId": 231873,
+            "outcomeId": 4208290,
+            "price": 1.87,
+            "specialBetValue": "3-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "3° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers mais de 19.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "4cf521fd-14f0-544e-bd5e-95d25369b685",
+            "marketUuid": "252af3de-01e6-5b8b-aca0-7affaf2da846",
+            "marketId": 231873,
+            "outcomeId": 4208289,
+            "price": 1.78,
+            "specialBetValue": "3-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "3° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers menos de 19.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "73f2b837-d087-5a0a-9ec2-b79e0d1bdb83",
+            "marketUuid": "d30ceef6-5638-5bb0-b89f-dd44ea53e122",
+            "marketId": 231873,
+            "outcomeId": 4208290,
+            "price": 1.87,
+            "specialBetValue": "4-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "4° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers mais de 19.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "10bd013e-6af8-57bf-bd95-7a7476d2d7f7",
+            "marketUuid": "d30ceef6-5638-5bb0-b89f-dd44ea53e122",
+            "marketId": 231873,
+            "outcomeId": 4208289,
+            "price": 1.78,
+            "specialBetValue": "4-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "4° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers menos de 19.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "8a3ff801-b362-53b5-bc3b-978ee013075a",
+            "marketUuid": "2487df4f-5972-546c-b2c1-f1e9eef5f7cc",
+            "marketId": 231873,
+            "outcomeId": 4208290,
+            "price": 1.87,
+            "specialBetValue": "5-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "5° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers mais de 19.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "d0696bc1-314c-533b-9885-e2c187306f91",
+            "marketUuid": "2487df4f-5972-546c-b2c1-f1e9eef5f7cc",
+            "marketId": 231873,
+            "outcomeId": 4208289,
+            "price": 1.78,
+            "specialBetValue": "5-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 1196249280,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "5° Mapa - Total de Hero Kills T1 Challengers",
+            "info": "T1 Challengers menos de 19.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "63ecf988-206e-50f2-9f64-b62e3b30e443",
+            "marketUuid": "a4564c12-2472-5e72-826b-72f014de6cd8",
+            "marketId": 231874,
+            "outcomeId": 4208292,
+            "price": 1.82,
+            "specialBetValue": "1-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 14.5",
+            "marketName": "1° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers mais de 14.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "908269da-1724-5db8-84cf-6086687ee2d8",
+            "marketUuid": "a4564c12-2472-5e72-826b-72f014de6cd8",
+            "marketId": 231874,
+            "outcomeId": 4208291,
+            "price": 1.82,
+            "specialBetValue": "1-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 14.5",
+            "marketName": "1° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers menos de 14.5 hero kills no mapa 1"
+          },
+          {
+            "uuid": "bbc730a6-7702-5063-8d86-47cee3d7781d",
+            "marketUuid": "2b72095c-9cc9-5feb-bf8f-d2f7b20cefe9",
+            "marketId": 231874,
+            "outcomeId": 4208292,
+            "price": 1.82,
+            "specialBetValue": "2-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 14.5",
+            "marketName": "2° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers mais de 14.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "c4bc4b00-241d-5975-a094-4c907155ad86",
+            "marketUuid": "2b72095c-9cc9-5feb-bf8f-d2f7b20cefe9",
+            "marketId": 231874,
+            "outcomeId": 4208291,
+            "price": 1.82,
+            "specialBetValue": "2-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 14.5",
+            "marketName": "2° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers menos de 14.5 hero kills no mapa 2"
+          },
+          {
+            "uuid": "496e2485-3538-5779-ad1b-2017ae1128fe",
+            "marketUuid": "e5322816-8007-57fc-9a4d-b5641edd78de",
+            "marketId": 231874,
+            "outcomeId": 4208292,
+            "price": 1.82,
+            "specialBetValue": "3-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 14.5",
+            "marketName": "3° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers mais de 14.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "8641b698-e5fb-5c10-8acd-2ad818c39d04",
+            "marketUuid": "e5322816-8007-57fc-9a4d-b5641edd78de",
+            "marketId": 231874,
+            "outcomeId": 4208291,
+            "price": 1.82,
+            "specialBetValue": "3-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 14.5",
+            "marketName": "3° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers menos de 14.5 hero kills no mapa 3"
+          },
+          {
+            "uuid": "5b102c83-f581-5324-9f4c-1205ee1377d1",
+            "marketUuid": "31fed6a4-0930-5494-bbfd-503b83ce6326",
+            "marketId": 231874,
+            "outcomeId": 4208292,
+            "price": 1.82,
+            "specialBetValue": "4-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 14.5",
+            "marketName": "4° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers mais de 14.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "85ab6b72-57e7-5f4e-950a-762987af4356",
+            "marketUuid": "31fed6a4-0930-5494-bbfd-503b83ce6326",
+            "marketId": 231874,
+            "outcomeId": 4208291,
+            "price": 1.82,
+            "specialBetValue": "4-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "4",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 14.5",
+            "marketName": "4° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers menos de 14.5 hero kills no mapa 4"
+          },
+          {
+            "uuid": "a78f180f-9866-5323-8d1c-01da5b1898d9",
+            "marketUuid": "e328355a-a7e4-5931-9317-2344a683f237",
+            "marketId": 231874,
+            "outcomeId": 4208292,
+            "price": 1.82,
+            "specialBetValue": "5-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 14.5",
+            "marketName": "5° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers mais de 14.5 hero kills no mapa 5"
+          },
+          {
+            "uuid": "a41203cc-af2e-537c-9003-32b30fe81e33",
+            "marketUuid": "e328355a-a7e4-5931-9317-2344a683f237",
+            "marketId": 231874,
+            "outcomeId": 4208291,
+            "price": 1.82,
+            "specialBetValue": "5-14.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "5",
+              "total": "14.5"
+            },
+            "marketGroupOrder": 1210661922,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 14.5",
+            "marketName": "5° Mapa - Total de Hero Kills KT Rolster Challengers",
+            "info": "KT Rolster Challengers menos de 14.5 hero kills no mapa 5"
+          }
+        ],
+        "oddsResults": null,
+        "matchResults": null,
+        "resolvingRules": null,
+        "utcDate": "2026-09-15T08:00:00Z",
+        "unixDateMillis": 1789459200000,
+        "streams": [
+          "PREMATCH"
+        ]
+      }
+    ]
+  }
+}

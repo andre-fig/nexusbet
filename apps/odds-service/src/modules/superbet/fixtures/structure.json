@@ -1,0 +1,760 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:33:03.137Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v2/pt-BR/struct",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "error": false,
+    "dataIn": {
+      "lang": "pt-BR"
+    },
+    "data": {
+      "sports": [
+        {
+          "id": "55",
+          "localNames": {
+            "pt-BR": "Counter-Strike 2"
+          },
+          "order": 583
+        },
+        {
+          "id": "39",
+          "localNames": {
+            "pt-BR": "League of Legends"
+          },
+          "order": 987
+        },
+        {
+          "id": "153",
+          "localNames": {
+            "pt-BR": "Valorant"
+          },
+          "order": 1037
+        }
+      ],
+      "tournaments": [
+        {
+          "id": "74245",
+          "localNames": {
+            "pt-BR": "LPL"
+          },
+          "order": 10,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "92642",
+          "localNames": {
+            "pt-BR": "NODWIN Clutch Series"
+          },
+          "order": 10,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "91920",
+          "localNames": {
+            "pt-BR": "CCT - EU"
+          },
+          "order": 55,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "65495",
+          "localNames": {
+            "pt-BR": "LEC"
+          },
+          "order": 58,
+          "orderPromoted": 111,
+          "footer": ""
+        },
+        {
+          "id": "102149",
+          "localNames": {
+            "pt-BR": "Logitech G Play Connect"
+          },
+          "order": 96,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "98318",
+          "localNames": {
+            "pt-BR": "CCT Challengers - SA"
+          },
+          "order": 96,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "50025",
+          "localNames": {
+            "pt-BR": "LCS"
+          },
+          "order": 469,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "97836",
+          "localNames": {
+            "pt-BR": "StarLadder Ranked"
+          },
+          "order": 587,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "28305",
+          "localNames": {
+            "pt-BR": "StarSeries"
+          },
+          "order": 2102,
+          "orderPromoted": 9223372036854776000,
+          "footer": "",
+          "superAdvantage": "SA_ALL"
+        },
+        {
+          "id": "36331",
+          "localNames": {
+            "pt-BR": "CBLOL"
+          },
+          "order": 2186,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "84340",
+          "localNames": {
+            "pt-BR": "LCK Challengers"
+          },
+          "order": 2338,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "79712",
+          "localNames": {
+            "pt-BR": "VCT Champions"
+          },
+          "order": 3242,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "101258",
+          "localNames": {
+            "pt-BR": "Stake Pulse Beat"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "101851",
+          "localNames": {
+            "pt-BR": "Fiesta Series"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "102616",
+          "localNames": {
+            "pt-BR": "Private Club"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "102889",
+          "localNames": {
+            "pt-BR": "WSCI - AM"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "73753",
+          "localNames": {
+            "pt-BR": "United21"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "86832",
+          "localNames": {
+            "pt-BR": "Rift Legends"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "91436",
+          "localNames": {
+            "pt-BR": "FME"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        },
+        {
+          "id": "92602",
+          "localNames": {
+            "pt-BR": "Game Changers - PAC (F)"
+          },
+          "order": 9223372036854776000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        }
+      ],
+      "outcomes": [
+        {
+          "id": 6401,
+          "columnName": "{mapnr} - Ímpar"
+        },
+        {
+          "id": 6402,
+          "columnName": "{mapnr} - Par"
+        },
+        {
+          "id": 6408,
+          "columnName": "{$competitor1}"
+        },
+        {
+          "id": 6409,
+          "columnName": "{$competitor2}"
+        },
+        {
+          "id": 6410,
+          "columnName": "{mapnr} - {$competitor1}"
+        },
+        {
+          "id": 6411,
+          "columnName": "{mapnr} - {$competitor2}"
+        },
+        {
+          "id": 6417,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 6418,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 6419,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 6420,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 6421,
+          "columnName": "2:0"
+        },
+        {
+          "id": 6422,
+          "columnName": "0:2"
+        },
+        {
+          "id": 6423,
+          "columnName": "2:1"
+        },
+        {
+          "id": 6424,
+          "columnName": "1:2"
+        },
+        {
+          "id": 6443,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 6444,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 6453,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 6454,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 6478,
+          "columnName": "Mapa {mapnr} - {$competitor1}"
+        },
+        {
+          "id": 6479,
+          "columnName": "Mapa {mapnr} - {$competitor2}"
+        },
+        {
+          "id": 6489,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 6490,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 6493,
+          "columnName": "1"
+        },
+        {
+          "id": 6494,
+          "columnName": "2"
+        },
+        {
+          "id": 6495,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 6496,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 7035,
+          "columnName": "2:0"
+        },
+        {
+          "id": 7036,
+          "columnName": "2:1"
+        },
+        {
+          "id": 7037,
+          "columnName": "1:2"
+        },
+        {
+          "id": 7038,
+          "columnName": "0:2"
+        },
+        {
+          "id": 7511,
+          "columnName": "13:0"
+        },
+        {
+          "id": 7512,
+          "columnName": "13:1"
+        },
+        {
+          "id": 7513,
+          "columnName": "13:2"
+        },
+        {
+          "id": 7514,
+          "columnName": "13:3"
+        },
+        {
+          "id": 7515,
+          "columnName": "13:4"
+        },
+        {
+          "id": 7516,
+          "columnName": "13:5"
+        },
+        {
+          "id": 7517,
+          "columnName": "13:6"
+        },
+        {
+          "id": 7518,
+          "columnName": "13:7"
+        },
+        {
+          "id": 7519,
+          "columnName": "13:8"
+        },
+        {
+          "id": 7520,
+          "columnName": "13:9"
+        },
+        {
+          "id": 7521,
+          "columnName": "13:10"
+        },
+        {
+          "id": 7522,
+          "columnName": "13:11"
+        },
+        {
+          "id": 7523,
+          "columnName": "12:12"
+        },
+        {
+          "id": 7524,
+          "columnName": "11:13"
+        },
+        {
+          "id": 7525,
+          "columnName": "10:13"
+        },
+        {
+          "id": 7526,
+          "columnName": "9:13"
+        },
+        {
+          "id": 7527,
+          "columnName": "8:13"
+        },
+        {
+          "id": 7528,
+          "columnName": "7:13"
+        },
+        {
+          "id": 7529,
+          "columnName": "6:13"
+        },
+        {
+          "id": 7530,
+          "columnName": "5:13"
+        },
+        {
+          "id": 7531,
+          "columnName": "4:13"
+        },
+        {
+          "id": 7532,
+          "columnName": "3:13"
+        },
+        {
+          "id": 7533,
+          "columnName": "2:13"
+        },
+        {
+          "id": 7534,
+          "columnName": "1:13"
+        },
+        {
+          "id": 13555,
+          "columnName": "Menos de {total} minutos"
+        },
+        {
+          "id": 13556,
+          "columnName": "Mais de {total} minutos"
+        },
+        {
+          "id": 13557,
+          "columnName": "{$competitor1} & Menos de {total}"
+        },
+        {
+          "id": 13558,
+          "columnName": "{$competitor1} & Mais de {total}"
+        },
+        {
+          "id": 13559,
+          "columnName": "{$competitor2} & Menos de {total}"
+        },
+        {
+          "id": 13560,
+          "columnName": "{$competitor2} & Mais de {total}"
+        },
+        {
+          "id": 13561,
+          "columnName": "{$competitor1} & Menos de {total} minutos"
+        },
+        {
+          "id": 13562,
+          "columnName": "{$competitor1} & Mais de {total} minutos"
+        },
+        {
+          "id": 13563,
+          "columnName": "{$competitor2} & Menos de {total} minutos"
+        },
+        {
+          "id": 13564,
+          "columnName": "{$competitor2} & Mais de {total} minutos"
+        },
+        {
+          "id": 4208265,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 4208266,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 4208267,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208268,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208269,
+          "columnName": "{mapnr}° Mapa - Par"
+        },
+        {
+          "id": 4208270,
+          "columnName": "{mapnr}° Mapa - Ímpar"
+        },
+        {
+          "id": 4208281,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208282,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208283,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208284,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208285,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208286,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208287,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208288,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208289,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208290,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208291,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208292,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208359,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208360,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208361,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208362,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208363,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 4208364,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 4208371,
+          "columnName": "Ímpar"
+        },
+        {
+          "id": 4208372,
+          "columnName": "Par"
+        },
+        {
+          "id": 4208376,
+          "columnName": "{$competitor1}"
+        },
+        {
+          "id": 4208377,
+          "columnName": "Empate"
+        },
+        {
+          "id": 4208378,
+          "columnName": "{$competitor2}"
+        },
+        {
+          "id": 4208379,
+          "columnName": "{mapnr} - {$competitor1}"
+        },
+        {
+          "id": 4208380,
+          "columnName": "{mapnr} - Empate"
+        },
+        {
+          "id": 4208381,
+          "columnName": "{mapnr} - {$competitor2}"
+        },
+        {
+          "id": 4208382,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208383,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208384,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4208385,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4208386,
+          "columnName": "Menos que {total}"
+        },
+        {
+          "id": 4208387,
+          "columnName": "Mais que {total}"
+        },
+        {
+          "id": 4208392,
+          "columnName": "Menos que {total}"
+        },
+        {
+          "id": 4208393,
+          "columnName": "Mais que {total}"
+        },
+        {
+          "id": 4208394,
+          "columnName": "Menos que {total}"
+        },
+        {
+          "id": 4208395,
+          "columnName": "Mais que {total}"
+        },
+        {
+          "id": 4208396,
+          "columnName": "Menos que {total}"
+        },
+        {
+          "id": 4208397,
+          "columnName": "Mais que {total}"
+        },
+        {
+          "id": 4208418,
+          "columnName": "{$competitor1} & Mais de {total}"
+        },
+        {
+          "id": 4208419,
+          "columnName": "{$competitor1} & Menos de {total}"
+        },
+        {
+          "id": 4208420,
+          "columnName": "{$competitor2} & Mais de {total}"
+        },
+        {
+          "id": 4208421,
+          "columnName": "{$competitor2} & Menos de {total}"
+        },
+        {
+          "id": 4209266,
+          "columnName": "1"
+        },
+        {
+          "id": 4209267,
+          "columnName": "2"
+        },
+        {
+          "id": 4209271,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 4209272,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 4209273,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4209274,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4209275,
+          "columnName": "{!mapnr} - {$competitor1}"
+        },
+        {
+          "id": 4209276,
+          "columnName": "{!mapnr} - {$competitor2}"
+        },
+        {
+          "id": 4209279,
+          "columnName": "{$competitor1} ({+hcp})"
+        },
+        {
+          "id": 4209280,
+          "columnName": "{$competitor2} ({-hcp})"
+        },
+        {
+          "id": 4209281,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4209282,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4209285,
+          "columnName": "{!mapnr} - Ímpar"
+        },
+        {
+          "id": 4209286,
+          "columnName": "{!mapnr} - Par"
+        },
+        {
+          "id": 4209287,
+          "columnName": "Menos de{total}"
+        },
+        {
+          "id": 4209288,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4209289,
+          "columnName": "Menos de {total}"
+        },
+        {
+          "id": 4209290,
+          "columnName": "Mais de {total}"
+        },
+        {
+          "id": 4209291,
+          "columnName": "{!mapnr}  - {$competitor1}"
+        },
+        {
+          "id": 4209292,
+          "columnName": "{!mapnr}  - Empate"
+        },
+        {
+          "id": 4209293,
+          "columnName": "{!mapnr} - {$competitor2}"
+        }
+      ]
+    }
+  }
+}

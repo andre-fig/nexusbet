@@ -1,0 +1,437 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:18:57.081Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/sport/esports/competicoes/league-of-legends/189377/?sl=193803&req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "leagueStandings": [],
+    "leagueGrouping": true,
+    "sport": {
+      "id": "ESPS",
+      "name": "Esports",
+      "region": "League of Legends",
+      "url": "/sport/esports/"
+    },
+    "parentMarkets": [
+      {
+        "id": "0",
+        "name": "Jogos",
+        "selected": true,
+        "type": "winner",
+        "triggerParentOrigin": "matches",
+        "markets": [
+          {
+            "id": "0",
+            "name": "Vencedor",
+            "selected": true,
+            "type": "winner"
+          },
+          {
+            "id": "1",
+            "name": "Total de mapas",
+            "type": "totalmaps"
+          },
+          {
+            "id": "2",
+            "name": "Handicap",
+            "type": "handicap"
+          }
+        ]
+      }
+    ],
+    "markets": [],
+    "blocks": [
+      {
+        "name": "League of Legends - CBLOL",
+        "shortName": "CBLOL",
+        "id": "193803",
+        "url": "/sport/esports/league-of-legends/cblol/193803/",
+        "headers": [
+          {
+            "marketTypes": [
+              "H2HT",
+              "MRES"
+            ],
+            "columns": [
+              {
+                "columnSpan": 2,
+                "name": "VENCEDOR"
+              }
+            ]
+          }
+        ],
+        "layout": 2,
+        "events": [
+          {
+            "stats": [
+              {
+                "url": "/api/statistics/statsview?id=92129854",
+                "providerId": 3
+              }
+            ],
+            "sportId": "ESPS",
+            "shortName": "RED Canids - Keyd Stars",
+            "totalMarketsAvailable": 63,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "League of Legends",
+            "regionId": "189377",
+            "leagueDescription": "CBLOL",
+            "leagueId": "193803",
+            "leagueName": "CBLOL",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92129854",
+            "name": "RED Canids - Keyd Stars",
+            "startTime": 1789833600000,
+            "url": "/odds/red-canids-keyd-stars/92129854/",
+            "markets": [
+              {
+                "id": "2948158896",
+                "uniqueId": "2948158896",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1789833600000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10369163939",
+                    "name": "RED Canids",
+                    "shortName": "",
+                    "price": 2.75,
+                    "handicap": 0.0,
+                    "betRef": "10369163939",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1953114"
+                  },
+                  {
+                    "id": "10369163940",
+                    "name": "Keyd Stars",
+                    "shortName": "",
+                    "price": 1.42,
+                    "handicap": 0.0,
+                    "betRef": "10369163940",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1954093"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "RED Canids",
+                "color": "",
+                "id": "1953114"
+              },
+              {
+                "name": "Keyd Stars",
+                "color": "",
+                "id": "1954093"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dropdownList": [
+      {
+        "id": "189374",
+        "name": "Counter Strike",
+        "nameLatin": "Counter Strike",
+        "regionCode": "counter-strike",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/counter-strike.png?",
+        "url": "/sport/esports/competicoes/counter-strike/189374/",
+        "leagues": [
+          {
+            "id": "206036",
+            "text": "CIS LAN Championship",
+            "textLatin": "CIS LAN Championship",
+            "url": "/sport/esports/counter-strike/cis-lan-championship/206036/"
+          },
+          {
+            "id": "206650",
+            "text": "Connect",
+            "textLatin": "Connect",
+            "url": "/sport/esports/counter-strike/connect/206650/"
+          },
+          {
+            "id": "206691",
+            "text": "Private Club",
+            "textLatin": "Private Club",
+            "url": "/sport/esports/counter-strike/private-club/206691/"
+          },
+          {
+            "id": "206485",
+            "text": "Stake Pulse",
+            "textLatin": "Stake Pulse",
+            "url": "/sport/esports/counter-strike/stake-pulse/206485/"
+          },
+          {
+            "id": "206188",
+            "text": "Stake Ranked",
+            "textLatin": "Stake Ranked",
+            "url": "/sport/esports/counter-strike/stake-ranked/206188/"
+          },
+          {
+            "id": "205214",
+            "text": "StarLadder StarSeries",
+            "textLatin": "StarLadder StarSeries",
+            "url": "/sport/esports/counter-strike/starladder-starseries/205214/"
+          }
+        ]
+      },
+      {
+        "id": "189377",
+        "name": "League of Legends",
+        "nameLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?",
+        "url": "/sport/esports/competicoes/league-of-legends/189377/",
+        "leagues": [
+          {
+            "id": "193759",
+            "text": "LEC",
+            "textLatin": "LEC",
+            "url": "/sport/esports/league-of-legends/lec/193759/"
+          },
+          {
+            "id": "193761",
+            "text": "LCS",
+            "textLatin": "LCS",
+            "url": "/sport/esports/league-of-legends/lcs/193761/"
+          },
+          {
+            "id": "193779",
+            "text": "LPL",
+            "textLatin": "LPL",
+            "url": "/sport/esports/league-of-legends/lpl/193779/"
+          },
+          {
+            "id": "193803",
+            "text": "CBLOL",
+            "textLatin": "CBLOL",
+            "url": "/sport/esports/league-of-legends/cblol/193803/",
+            "selected": true
+          },
+          {
+            "id": "204327",
+            "text": "Road Of Legends",
+            "textLatin": "Road Of Legends",
+            "url": "/sport/esports/league-of-legends/road-of-legends/204327/"
+          },
+          {
+            "id": "206754",
+            "text": "World Star Challengers",
+            "textLatin": "World Star Challengers",
+            "url": "/sport/esports/league-of-legends/world-star-challengers/206754/"
+          },
+          {
+            "id": "196030",
+            "text": "LCK Challengers League",
+            "textLatin": "LCK Challengers League",
+            "url": "/sport/esports/league-of-legends/lck-challengers-league/196030/"
+          }
+        ]
+      },
+      {
+        "id": "189513",
+        "name": "Valorant",
+        "nameLatin": "Valorant",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/valorant/189513/",
+        "leagues": [
+          {
+            "id": "198153",
+            "text": "Champions",
+            "textLatin": "Champions",
+            "url": "/sport/esports/valorant/champions/198153/"
+          }
+        ]
+      },
+      {
+        "id": "189393",
+        "name": "Rainbow Six",
+        "nameLatin": "Rainbow Six",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/rainbow-six/189393/",
+        "leagues": [
+          {
+            "id": "195136",
+            "text": "Asia Pacific League",
+            "textLatin": "Asia Pacific League",
+            "url": "/sport/esports/rainbow-six/asia-pacific-league/195136/"
+          },
+          {
+            "id": "195093",
+            "text": "European League",
+            "textLatin": "European League",
+            "url": "/sport/esports/rainbow-six/european-league/195093/"
+          },
+          {
+            "id": "195094",
+            "text": "North American League",
+            "textLatin": "North American League",
+            "url": "/sport/esports/rainbow-six/north-american-league/195094/"
+          }
+        ]
+      },
+      {
+        "id": "189919",
+        "name": "Mobile Legends",
+        "nameLatin": "Mobile Legends",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/mobile-legends/189919/",
+        "leagues": [
+          {
+            "id": "204409",
+            "text": "MPL Indonesia",
+            "textLatin": "MPL Indonesia",
+            "url": "/sport/esports/mobile-legends/mpl-indonesia/204409/"
+          },
+          {
+            "id": "204581",
+            "text": "MPL Malaysia",
+            "textLatin": "MPL Malaysia",
+            "url": "/sport/esports/mobile-legends/mpl-malaysia/204581/"
+          },
+          {
+            "id": "204364",
+            "text": "MPL Philippines",
+            "textLatin": "MPL Philippines",
+            "url": "/sport/esports/mobile-legends/mpl-philippines/204364/"
+          }
+        ]
+      },
+      {
+        "id": "189392",
+        "name": "Rocket League",
+        "nameLatin": "Rocket League",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/rocket-league/189392/",
+        "leagues": [
+          {
+            "id": "193937",
+            "text": "RLCS",
+            "textLatin": "RLCS",
+            "url": "/sport/esports/rocket-league/rlcs/193937/"
+          }
+        ]
+      }
+    ],
+    "selectedLeagues": [
+      {
+        "id": "193759",
+        "name": "LEC",
+        "nameLatin": "LEC",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "193761",
+        "name": "LCS",
+        "nameLatin": "LCS",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "193779",
+        "name": "LPL",
+        "nameLatin": "LPL",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "193803",
+        "name": "CBLOL",
+        "nameLatin": "CBLOL",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "selected": true,
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "204327",
+        "name": "Road Of Legends",
+        "nameLatin": "Road Of Legends",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "206754",
+        "name": "World Star Challengers",
+        "nameLatin": "World Star Challengers",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      },
+      {
+        "id": "196030",
+        "name": "LCK Challengers League",
+        "nameLatin": "LCK Challengers League",
+        "region": "League of Legends",
+        "regionId": "189377",
+        "regionLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?"
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports",
+        "title": "Esports",
+        "url": "/sport/esports/"
+      },
+      {
+        "name": "League of Legends",
+        "title": "League of Legends",
+        "url": "/sport/esports/competicoes/league-of-legends/189377/"
+      },
+      {
+        "name": "CBLOL"
+      }
+    ],
+    "metaData": {
+      "pageTitle": "Apostas CBLOL - Esports Odds, League of Legends   | Betano"
+    }
+  },
+  "status": 200
+}

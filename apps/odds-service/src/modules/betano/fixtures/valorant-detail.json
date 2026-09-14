@@ -1,0 +1,477 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:19:43.335Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/odds/100-thieves-t1-esports/92272948/?req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "event": {
+      "stats": [],
+      "sportId": "ESPS",
+      "shortName": "100 Thieves - T1 Esports",
+      "totalMarketsAvailable": 166,
+      "hasMatchCombo": true,
+      "matchComboUrl": "/odds/100-thieves-t1-esports/criar-aposta/92272948/",
+      "betRadarId": 0,
+      "notes": "",
+      "tvChannel": "",
+      "regionName": "Valorant",
+      "regionId": "189513",
+      "leagueDescription": "Champions",
+      "leagueId": "198153",
+      "leagueName": "Champions",
+      "leagueUrl": "/sport/esports/valorant/champions/198153r/",
+      "streamOverlayMarketIds": [],
+      "willGoLive": true,
+      "matchComboAllowedMarketTypes": [
+        3185
+      ],
+      "id": "92272948",
+      "name": "100 Thieves - T1 Esports",
+      "startTime": 1790499600000,
+      "url": "/odds/100-thieves-t1-esports/92272948/",
+      "markets": [
+        {
+          "id": "2952561823",
+          "uniqueId": "2952561823",
+          "name": "Vencedor",
+          "type": "H2HT",
+          "typeId": 3183,
+          "handicap": 0.0,
+          "displayOrder": 50,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_H2HT0",
+          "selections": [
+            {
+              "id": "10386966912",
+              "name": "100 Thieves",
+              "price": 1.4,
+              "handicap": 0.0,
+              "betRef": "10386966912",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386966913",
+              "name": "T1 Esports",
+              "price": 2.82,
+              "handicap": 0.0,
+              "betRef": "10386966913",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952561980",
+          "uniqueId": "2952561980",
+          "name": "Vencedor do mapa (Mapa 1)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW0",
+          "selections": [
+            {
+              "id": "10386967298",
+              "name": "100 Thieves",
+              "price": 1.5,
+              "handicap": 0.0,
+              "betRef": "10386967298",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386967297",
+              "name": "T1 Esports",
+              "price": 2.47,
+              "handicap": 0.0,
+              "betRef": "10386967297",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952561979",
+          "uniqueId": "2952561979",
+          "name": "Vencedor do mapa (Mapa 2)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW1",
+          "selections": [
+            {
+              "id": "10386967296",
+              "name": "100 Thieves",
+              "price": 1.5,
+              "handicap": 0.0,
+              "betRef": "10386967296",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386967295",
+              "name": "T1 Esports",
+              "price": 2.47,
+              "handicap": 0.0,
+              "betRef": "10386967295",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952561978",
+          "uniqueId": "2952561978",
+          "name": "Vencedor do mapa (Mapa 3)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW2",
+          "selections": [
+            {
+              "id": "10386967294",
+              "name": "100 Thieves",
+              "price": 1.55,
+              "handicap": 0.0,
+              "betRef": "10386967294",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386967293",
+              "name": "T1 Esports",
+              "price": 2.35,
+              "handicap": 0.0,
+              "betRef": "10386967293",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952562000",
+          "uniqueId": "2952562000",
+          "name": "Handicap do Jogo",
+          "type": "FAHC",
+          "typeId": 3179,
+          "handicap": -1.5,
+          "displayOrder": 200,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_FAHC0",
+          "selections": [
+            {
+              "id": "10386967400",
+              "name": "100 Thieves -1.5",
+              "price": 2.25,
+              "handicap": -1.5,
+              "betRef": "10386967400",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386967401",
+              "name": "T1 Esports +1.5",
+              "price": 1.57,
+              "handicap": 1.5,
+              "betRef": "10386967401",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            },
+            {
+              "id": "10386967398",
+              "name": "100 Thieves +1.5",
+              "price": 1.12,
+              "handicap": 1.5,
+              "betRef": "10386967398",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1952755"
+            },
+            {
+              "id": "10386967399",
+              "name": "T1 Esports -1.5",
+              "price": 5.3,
+              "handicap": -1.5,
+              "betRef": "10386967399",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1984968"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952562010",
+          "uniqueId": "2952562010",
+          "name": "Total de Mapas",
+          "type": "TSMF",
+          "typeId": 3214,
+          "handicap": 2.5,
+          "displayOrder": 250,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 2,
+          "pinKey": "p_TSMF0",
+          "selections": [
+            {
+              "id": "10386967427",
+              "name": "Mais de 2.5",
+              "price": 2.0,
+              "handicap": 2.5,
+              "betRef": "10386967427",
+              "renderingLayout": 2,
+              "columnIndex": 0
+            },
+            {
+              "id": "10386967426",
+              "name": "Menos de 2.5",
+              "price": 1.75,
+              "handicap": 2.5,
+              "betRef": "10386967426",
+              "renderingLayout": 2,
+              "columnIndex": 1
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2952561822",
+          "uniqueId": "2952561822",
+          "name": "Resultado Correto",
+          "type": "BTOF",
+          "typeId": 3180,
+          "handicap": 0.0,
+          "displayOrder": 350,
+          "marketCloseTimeMillis": 1790499600000,
+          "renderingLayout": 4,
+          "pinKey": "p_BTOF0",
+          "selections": [
+            {
+              "id": "10386967428",
+              "name": "2 - 0",
+              "price": 2.22,
+              "handicap": 0.0,
+              "betRef": "10386967428",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10386967430",
+              "name": "2 - 1",
+              "price": 3.0,
+              "handicap": 0.0,
+              "betRef": "10386967430",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10386967429",
+              "name": "1 - 2",
+              "price": 4.45,
+              "handicap": 0.0,
+              "betRef": "10386967429",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            },
+            {
+              "id": "10386967431",
+              "name": "0 - 2",
+              "price": 5.8,
+              "handicap": 0.0,
+              "betRef": "10386967431",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        }
+      ],
+      "participants": [
+        {
+          "name": "100 Thieves",
+          "color": "",
+          "id": "1952755"
+        },
+        {
+          "name": "T1 Esports",
+          "color": "",
+          "id": "1984968"
+        }
+      ]
+    },
+    "markets": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Combos",
+        "type": "combos"
+      },
+      {
+        "id": "6",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "betBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "nonBetBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Combos",
+        "type": "combos"
+      },
+      {
+        "id": "6",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports",
+        "title": "Esports",
+        "url": "/sport/esports/"
+      },
+      {
+        "name": "Valorant",
+        "title": "Valorant",
+        "url": "/sport/esports/competicoes/valorant/189513/"
+      },
+      {
+        "name": "Champions",
+        "title": "Champions",
+        "url": "/sport/esports/valorant/champions/198153/"
+      },
+      {
+        "name": "100 Thieves - T1 Esports"
+      }
+    ],
+    "marketOffersData": {},
+    "metaData": {
+      "pageTitle": "100 Thieves - T1 Esports Esports Odds | Betano"
+    }
+  },
+  "status": 200
+}

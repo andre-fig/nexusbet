@@ -1,0 +1,149 @@
+import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
+import { teamName, tournamentName } from "../../shared/utils/names.js";
+/** Compatibility entry point; all matching uses provider-scoped identities. */
+export function compareProviders(
+  a: NormalizedEvent[],
+  b: NormalizedEvent[],
+  toleranceMinutes = 15,
+) {
+  return compareAllProviders([...a, ...b], toleranceMinutes);
+}
+function pair(e: NormalizedEvent) {
+  return [teamName(e.teamA, e.esport), teamName(e.teamB, e.esport)]
+    .sort()
+    .join("|");
+}
+function eligible(e: NormalizedEvent, f: NormalizedEvent, tolerance: number) {
+  return (
+    e.provider !== f.provider &&
+    e.esport === f.esport &&
+    pair(e) === pair(f) &&
+    e.status === "scheduled" &&
+    f.status === "scheduled" &&
+    tournamentName(e.tournament, e.esport) ===
+      tournamentName(f.tournament, f.esport) &&
+    Math.abs(Date.parse(e.startsAt) - Date.parse(f.startsAt)) <=
+      tolerance * 60000
+  );
+}
+/** A component must be a complete, one-event-per-provider clique. No transitive fuzzy joins. */
+export function compareAllProviders(
+  events: NormalizedEvent[],
+  toleranceMinutes = 15,
+) {
+  const key = (e: NormalizedEvent) => e.provider + ":" + e.eventId;
+  const unique = new Map<string, NormalizedEvent>();
+  const conflicts = new Set<string>();
+  for (const e of events) {
+    const prior = unique.get(key(e));
+    if (prior && JSON.stringify(prior) !== JSON.stringify(e))
+      conflicts.add(key(e));
+    unique.set(key(e), e);
+  }
+  const all = [...unique.values()],
+    seen = new Set<string>(),
+    matched: ReturnType<typeof comparison>[] = [],
+    unmatched: {
+      provider: string;
+      eventId: string;
+      reason: string;
+      candidates?: string[];
+    }[] = [];
+  for (const e of all) {
+    if (seen.has(key(e))) continue;
+    const group: NormalizedEvent[] = [e];
+    seen.add(key(e));
+    for (let i = 0; i < group.length; i++)
+      for (const f of all)
+        if (!seen.has(key(f)) && eligible(group[i], f, toleranceMinutes)) {
+          seen.add(key(f));
+          group.push(f);
+        }
+    const valid =
+      group.length > 1 &&
+      new Set(group.map((x) => x.provider)).size === group.length &&
+      !group.some((x) => conflicts.has(key(x))) &&
+      group.every((x, i) =>
+        group.slice(i + 1).every((y) => eligible(x, y, toleranceMinutes)),
+      );
+    if (valid) matched.push(comparison(group));
+    else
+      for (const x of group)
+        unmatched.push({
+          provider: x.provider,
+          eventId: x.eventId,
+          reason:
+            group.length > 1 || conflicts.has(key(x))
+              ? "ambiguous"
+              : all.some(
+                    (f) =>
+                      f.provider !== x.provider &&
+                      f.esport === x.esport &&
+                      pair(f) === pair(x),
+                  )
+                ? "time_competition_or_status_mismatch"
+                : "no_team_pair",
+        });
+  }
+  return { matched, unmatched };
+}
+function comparison(group: NormalizedEvent[]) {
+  const e = group[0];
+  const prices = (x: NormalizedEvent, reversed = false) => ({
+    eventId: x.eventId,
+    rawTeamA: x.rawTeamA,
+    rawTeamB: x.rawTeamB,
+    normalizedTeamA: x.normalizedTeamA,
+    normalizedTeamB: x.normalizedTeamB,
+    startsAt: x.startsAt,
+    tournament: x.tournament,
+    fetchedAt: x.fetchedAt,
+    reversed,
+    odds: x.markets
+      .filter(
+        (m) => m.category === "match_winner" || m.category === "map_winner",
+      )
+      .map((m) => ({
+        marketId: m.marketId,
+        category: m.category,
+        map: m.map,
+        fetchedAt: m.fetchedAt || x.fetchedAt,
+        selections: m.selections.map((s) => ({
+          selectionId: s.selectionId,
+          name: s.name,
+          canonicalSide:
+            teamName(s.name, x.esport) === teamName(e.teamA, e.esport)
+              ? "teamA"
+              : teamName(s.name, x.esport) === teamName(e.teamB, e.esport)
+                ? "teamB"
+                : null,
+          odds: s.odds,
+          suspended: s.suspended,
+        })),
+      })),
+  });
+  return {
+    canonicalEvent: {
+      esport: e.esport,
+      tournament: tournamentName(e.tournament, e.esport),
+      teamA: e.normalizedTeamA,
+      teamB: e.normalizedTeamB,
+      startsAt: e.startsAt,
+    },
+    confidence: 1,
+    confidenceMeaning: "rule score, not probability",
+    evidence: {
+      sameTeamPair: true,
+      sameCompetitionAlias: true,
+      timeDifferenceSeconds:
+        Math.max(...group.map((x) => Date.parse(x.startsAt))) / 1000 -
+        Math.min(...group.map((x) => Date.parse(x.startsAt))) / 1000,
+    },
+    providers: Object.fromEntries(
+      group.map((x) => [
+        x.provider,
+        prices(x, teamName(e.teamA, e.esport) !== teamName(x.teamA, x.esport)),
+      ]),
+    ),
+  };
+}

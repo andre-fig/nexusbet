@@ -1,0 +1,213 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:16:49.992Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/sport/esports/?req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "topLeagues": [],
+    "regionGroups": [
+      {
+        "name": "TODAS AS COMPETIÇÕES",
+        "expanded": true,
+        "regions": [
+          {
+            "expanded": true,
+            "regionCode": "counter-strike",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/counter-strike.png?",
+            "leagues": [
+              {
+                "id": "205214",
+                "name": "StarLadder StarSeries",
+                "url": "/sport/esports/counter-strike/starladder-starseries/205214/"
+              },
+              {
+                "id": "206036",
+                "name": "CIS LAN Championship",
+                "url": "/sport/esports/counter-strike/cis-lan-championship/206036/"
+              },
+              {
+                "id": "206188",
+                "name": "Stake Ranked",
+                "url": "/sport/esports/counter-strike/stake-ranked/206188/"
+              },
+              {
+                "id": "206485",
+                "name": "Stake Pulse",
+                "url": "/sport/esports/counter-strike/stake-pulse/206485/"
+              },
+              {
+                "id": "206650",
+                "name": "Connect",
+                "url": "/sport/esports/counter-strike/connect/206650/"
+              },
+              {
+                "id": "206691",
+                "name": "Private Club",
+                "url": "/sport/esports/counter-strike/private-club/206691/"
+              }
+            ],
+            "id": "189374",
+            "name": "Counter Strike",
+            "url": "/sport/esports/competicoes/counter-strike/189374/"
+          },
+          {
+            "expanded": true,
+            "regionCode": "league-of-legends",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?",
+            "leagues": [
+              {
+                "id": "193759",
+                "name": "LEC",
+                "url": "/sport/esports/league-of-legends/lec/193759/"
+              },
+              {
+                "id": "193761",
+                "name": "LCS",
+                "url": "/sport/esports/league-of-legends/lcs/193761/"
+              },
+              {
+                "id": "193779",
+                "name": "LPL",
+                "url": "/sport/esports/league-of-legends/lpl/193779/"
+              },
+              {
+                "id": "193803",
+                "name": "CBLOL",
+                "url": "/sport/esports/league-of-legends/cblol/193803/"
+              },
+              {
+                "id": "204327",
+                "name": "Road Of Legends",
+                "url": "/sport/esports/league-of-legends/road-of-legends/204327/"
+              },
+              {
+                "id": "206754",
+                "name": "World Star Challengers",
+                "url": "/sport/esports/league-of-legends/world-star-challengers/206754/"
+              },
+              {
+                "id": "196030",
+                "name": "LCK Challengers League",
+                "url": "/sport/esports/league-of-legends/lck-challengers-league/196030/"
+              }
+            ],
+            "id": "189377",
+            "name": "League of Legends",
+            "url": "/sport/esports/competicoes/league-of-legends/189377/"
+          },
+          {
+            "regionCode": "default",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+            "leagues": [
+              {
+                "id": "198153",
+                "name": "Champions",
+                "url": "/sport/esports/valorant/champions/198153/"
+              }
+            ],
+            "id": "189513",
+            "name": "Valorant",
+            "url": "/sport/esports/competicoes/valorant/189513/"
+          },
+          {
+            "regionCode": "default",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+            "leagues": [
+              {
+                "id": "195093",
+                "name": "European League",
+                "url": "/sport/esports/rainbow-six/european-league/195093/"
+              },
+              {
+                "id": "195094",
+                "name": "North American League",
+                "url": "/sport/esports/rainbow-six/north-american-league/195094/"
+              },
+              {
+                "id": "195136",
+                "name": "Asia Pacific League",
+                "url": "/sport/esports/rainbow-six/asia-pacific-league/195136/"
+              }
+            ],
+            "id": "189393",
+            "name": "Rainbow Six",
+            "url": "/sport/esports/competicoes/rainbow-six/189393/"
+          },
+          {
+            "regionCode": "default",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+            "leagues": [
+              {
+                "id": "204364",
+                "name": "MPL Philippines",
+                "url": "/sport/esports/mobile-legends/mpl-philippines/204364/"
+              },
+              {
+                "id": "204409",
+                "name": "MPL Indonesia",
+                "url": "/sport/esports/mobile-legends/mpl-indonesia/204409/"
+              },
+              {
+                "id": "204581",
+                "name": "MPL Malaysia",
+                "url": "/sport/esports/mobile-legends/mpl-malaysia/204581/"
+              }
+            ],
+            "id": "189919",
+            "name": "Mobile Legends",
+            "url": "/sport/esports/competicoes/mobile-legends/189919/"
+          },
+          {
+            "regionCode": "default",
+            "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+            "leagues": [
+              {
+                "id": "193937",
+                "name": "RLCS",
+                "url": "/sport/esports/rocket-league/rlcs/193937/"
+              }
+            ],
+            "id": "189392",
+            "name": "Rocket League",
+            "url": "/sport/esports/competicoes/rocket-league/189392/"
+          }
+        ]
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports"
+      }
+    ],
+    "segments": [
+      {
+        "type": "leagues",
+        "name": "Competições",
+        "url": "/sport/esports/",
+        "selected": true
+      },
+      {
+        "type": "upcoming",
+        "name": "Próximos",
+        "url": "/sport/esports/jogos-de-hoje/"
+      }
+    ],
+    "id": "ESPS",
+    "name": "ESPORTS",
+    "nameNormalCase": "Esports",
+    "metaData": {
+      "pageTitle": "Apostas Esports - Bets Online | Betano"
+    }
+  },
+  "status": 200
+}

@@ -1,0 +1,4602 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:36:47.120Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v2/pt-BR/events/14983869",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "error": false,
+    "dataIn": {
+      "eventId": 14983869,
+      "lang": "pt-BR"
+    },
+    "data": [
+      {
+        "uuid": "0e383cf5-d8e1-5030-bd75-4251377026f6",
+        "eventId": 14983869,
+        "matchDate": "2026-09-15 08:00:00",
+        "homeTeamId": "484592",
+        "awayTeamId": "490001",
+        "matchCode": 1904,
+        "incrementId": 7,
+        "offerId": 14983869,
+        "sportId": 55,
+        "categoryId": 1993,
+        "tournamentId": 92642,
+        "metadata": {
+          "status": "NOT_STARTED",
+          "bookingStatus": "Booked",
+          "brTimestamp": 1789389263767,
+          "brId": 74665644
+        },
+        "betradarId": "74665644",
+        "matchTags": "v2",
+        "matchPromotedLiveOrder": 10000,
+        "tournamentPromotedLiveOrder": 10000,
+        "matchTimestamp": 1789389263767,
+        "hasLive": true,
+        "matchName": "Brute·G2 Ares",
+        "specialOfferIds": null,
+        "offerStateStatus": {
+          "1": "active"
+        },
+        "marketCount": 22,
+        "counts": {
+          "odds": {
+            "1": 200,
+            "2": 0
+          },
+          "markets": {
+            "1": 22,
+            "2": 0
+          }
+        },
+        "odds": [
+          {
+            "uuid": "5d0a6fb4-e239-58a0-a3f2-e390ce37a01b",
+            "marketUuid": "a45c83f7-8ca8-5924-a0e4-59f6e1a55887",
+            "marketId": 2483,
+            "outcomeId": 6408,
+            "price": 1.71,
+            "status": "active",
+            "marketGroupOrder": 2,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "void_service,pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "Brute",
+            "marketName": "Vencedor (Inc. prorrogação)",
+            "info": "Brute vence a partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "446f1c43-f4db-5ea3-bb2b-5fd525d9e04e",
+            "marketUuid": "a45c83f7-8ca8-5924-a0e4-59f6e1a55887",
+            "marketId": 2483,
+            "outcomeId": 6409,
+            "price": 2.02,
+            "status": "active",
+            "marketGroupOrder": 2,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2,void_service",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "G2 Ares",
+            "marketName": "Vencedor (Inc. prorrogação)",
+            "info": "G2 Ares vence a partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d010f34d-99f7-530f-a4f9-2af2afdbd959",
+            "marketUuid": "acd70edd-ce92-59d1-b499-fa1a8dd4426b",
+            "marketId": 2484,
+            "outcomeId": 6410,
+            "price": 1.75,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "1 - Brute",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "Brute vence o mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6024a522-204c-55c9-ad78-b689a0985a68",
+            "marketUuid": "acd70edd-ce92-59d1-b499-fa1a8dd4426b",
+            "marketId": 2484,
+            "outcomeId": 6411,
+            "price": 1.97,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "1 - G2 Ares",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "680148ae-8b51-53d1-9034-1fbc6304b803",
+            "marketUuid": "a52a0b0d-9950-5bd2-8d98-780c6d0d4aba",
+            "marketId": 2484,
+            "outcomeId": 6410,
+            "price": 1.75,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2 - Brute",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "Brute vence o mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "9bfbdd85-54f7-5fef-8c00-3f50feffc82f",
+            "marketUuid": "a52a0b0d-9950-5bd2-8d98-780c6d0d4aba",
+            "marketId": 2484,
+            "outcomeId": 6411,
+            "price": 1.97,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2 - G2 Ares",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "b9856a61-d4a4-5469-bf4e-3cb750116cf2",
+            "marketUuid": "cc8240bb-deaf-5e31-a44f-5847e3431e7d",
+            "marketId": 2484,
+            "outcomeId": 6410,
+            "price": 1.75,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "3 - Brute",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "Brute vence o mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "434ef544-3031-50cd-b269-26b1b1ad1ede",
+            "marketUuid": "cc8240bb-deaf-5e31-a44f-5847e3431e7d",
+            "marketId": 2484,
+            "outcomeId": 6411,
+            "price": 1.97,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 3,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "3 - G2 Ares",
+            "marketName": "X° Mapa - Vencedor (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "326e0caa-25af-5457-9fc0-be5e3d0c0d3d",
+            "marketUuid": "c037db06-5f91-5feb-b36b-0f926e3caafe",
+            "marketId": 2488,
+            "outcomeId": 6420,
+            "price": 1.88,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "total": "2.5"
+            },
+            "marketGroupOrder": 130,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789389262480000000",
+              "feedPlatformTimestamp": "1789389262610191720",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 2.5",
+            "marketName": "Total de Mapas",
+            "info": "Mais de 2.5 mapas na partida"
+          },
+          {
+            "uuid": "0924d84b-4450-59de-b929-f5bd912c6142",
+            "marketUuid": "c037db06-5f91-5feb-b36b-0f926e3caafe",
+            "marketId": 2488,
+            "outcomeId": 6419,
+            "price": 1.8,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "total": "2.5"
+            },
+            "marketGroupOrder": 130,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789389262480000000",
+              "feedPlatformTimestamp": "1789389262610191720",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 2.5",
+            "marketName": "Total de Mapas",
+            "info": "Menos de 2.5 mapas na partida"
+          },
+          {
+            "uuid": "f99d3198-5151-5a50-b2b8-e16e59d109b2",
+            "marketUuid": "4d2e90a9-b377-57db-8db4-cc196260bca9",
+            "marketId": 2487,
+            "outcomeId": 6417,
+            "price": 2.92,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 131,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute (-1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Brute cobre (-1.5) de handicap de mapas"
+          },
+          {
+            "uuid": "db7e707f-06d0-5000-83e8-13f820e62754",
+            "marketUuid": "4d2e90a9-b377-57db-8db4-cc196260bca9",
+            "marketId": 2487,
+            "outcomeId": 6418,
+            "price": 1.36,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 131,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares (1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "G2 Ares cobre (1.5) de handicap de mapas"
+          },
+          {
+            "uuid": "03737a6f-4614-50e1-b769-f77c69fbcc11",
+            "marketUuid": "a5aa03b1-446b-5034-bdb5-80cf873f86fb",
+            "marketId": 2487,
+            "outcomeId": 6417,
+            "price": 1.25,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 131,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "1",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute (1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "Brute cobre (1.5) de handicap de mapas"
+          },
+          {
+            "uuid": "6da2c6ad-57a9-5441-91bf-22cf086a1f3d",
+            "marketUuid": "a5aa03b1-446b-5034-bdb5-80cf873f86fb",
+            "marketId": 2487,
+            "outcomeId": 6418,
+            "price": 3.55,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 131,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares (-1.5)",
+            "marketName": "Handicap de Mapas",
+            "info": "G2 Ares cobre (-1.5) de handicap de mapas"
+          },
+          {
+            "uuid": "cf3cbe88-d01f-5fb9-8dc0-b416f96eab6e",
+            "marketUuid": "b6275439-4216-5b3f-a358-8b111748647e",
+            "marketId": 231538,
+            "outcomeId": 4208383,
+            "price": 1.24,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 135,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 0.5",
+            "marketName": "Brute - Total de Mapas",
+            "info": "Brute vence mais de 0.5 mapas"
+          },
+          {
+            "uuid": "f5a5345d-fa45-5162-8d8e-b7ae4667a219",
+            "marketUuid": "b6275439-4216-5b3f-a358-8b111748647e",
+            "marketId": 231538,
+            "outcomeId": 4208382,
+            "price": 3.5,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 135,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 0.5",
+            "marketName": "Brute - Total de Mapas",
+            "info": "Brute vence menos de 0.5 mapas"
+          },
+          {
+            "uuid": "09047391-c36b-5fea-b368-fd8b7239cabe",
+            "marketUuid": "5aa31aca-e236-5b13-9c54-b504ee1e5e59",
+            "marketId": 231538,
+            "outcomeId": 4208383,
+            "price": 1.69,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "total": "1.5"
+            },
+            "marketGroupOrder": 135,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 1.5",
+            "marketName": "Brute - Total de Mapas",
+            "info": "Brute vence mais de 1.5 mapas"
+          },
+          {
+            "uuid": "bb07aaf0-1ac7-5438-9fec-19a624692603",
+            "marketUuid": "5aa31aca-e236-5b13-9c54-b504ee1e5e59",
+            "marketId": 231538,
+            "outcomeId": 4208382,
+            "price": 2,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "total": "1.5"
+            },
+            "marketGroupOrder": 135,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 1.5",
+            "marketName": "Brute - Total de Mapas",
+            "info": "Brute vence menos de 1.5 mapas"
+          },
+          {
+            "uuid": "98ce942d-3dfa-514a-a883-52bcbc272d6f",
+            "marketUuid": "527fe39e-5367-57ca-9f0a-3df84406bd7d",
+            "marketId": 231543,
+            "outcomeId": 4208393,
+            "price": 1.35,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 136,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais que 0.5",
+            "marketName": "G2 Ares - Total de Mapas",
+            "info": "G2 Ares vence mais de 0.5 mapas"
+          },
+          {
+            "uuid": "347dd353-6013-5304-94fc-d52be194f5c7",
+            "marketUuid": "527fe39e-5367-57ca-9f0a-3df84406bd7d",
+            "marketId": 231543,
+            "outcomeId": 4208392,
+            "price": 2.87,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 136,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos que 0.5",
+            "marketName": "G2 Ares - Total de Mapas",
+            "info": "G2 Ares vence menos de 0.5 mapas"
+          },
+          {
+            "uuid": "4ad79d3f-e795-535c-8b8d-0b5776d60213",
+            "marketUuid": "5e68f90e-5428-54c9-a652-907957288797",
+            "marketId": 231543,
+            "outcomeId": 4208393,
+            "price": 2,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "total": "1.5"
+            },
+            "marketGroupOrder": 136,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais que 1.5",
+            "marketName": "G2 Ares - Total de Mapas",
+            "info": "G2 Ares vence mais de 1.5 mapas"
+          },
+          {
+            "uuid": "9e6d22b5-5412-51a7-989a-554b5ce8596e",
+            "marketUuid": "5e68f90e-5428-54c9-a652-907957288797",
+            "marketId": 231543,
+            "outcomeId": 4208392,
+            "price": 1.69,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "total": "1.5"
+            },
+            "marketGroupOrder": 136,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos que 1.5",
+            "marketName": "G2 Ares - Total de Mapas",
+            "info": "G2 Ares vence menos de 1.5 mapas"
+          },
+          {
+            "uuid": "c7ae82d9-e003-58c8-84da-ef946b7bbbfa",
+            "marketUuid": "b3a38d9a-eb1d-5492-bc68-38db92bdacd4",
+            "marketId": 231535,
+            "outcomeId": 4208376,
+            "price": 1.71,
+            "status": "active",
+            "marketGroupOrder": 145,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute",
+            "marketName": "Resultado (1X2) de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais rounds (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8d9fc459-6a0d-57a1-b3c7-26be7cd7665f",
+            "marketUuid": "b3a38d9a-eb1d-5492-bc68-38db92bdacd4",
+            "marketId": 231535,
+            "outcomeId": 4208377,
+            "price": 20,
+            "status": "active",
+            "marketGroupOrder": 145,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Empate",
+            "marketName": "Resultado (1X2) de Rounds (Inc. prorrogação)",
+            "info": "Ambos competidores vencem o mesmo número de rounds (Inc. prorrogação)"
+          },
+          {
+            "uuid": "96105079-14ec-5f44-a901-20800fcf87e4",
+            "marketUuid": "b3a38d9a-eb1d-5492-bc68-38db92bdacd4",
+            "marketId": 231535,
+            "outcomeId": 4208378,
+            "price": 2.02,
+            "status": "active",
+            "marketGroupOrder": 145,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares",
+            "marketName": "Resultado (1X2) de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais rounds (Inc. prorrogação)"
+          },
+          {
+            "uuid": "da4c5c46-894a-5681-a57c-a54a9c7e04f1",
+            "marketUuid": "a79e163f-7def-555d-a65a-271544439e60",
+            "marketId": 231527,
+            "outcomeId": 4208360,
+            "price": 1.85,
+            "specialBetValue": "52.5",
+            "status": "active",
+            "specifiers": {
+              "total": "52.5"
+            },
+            "marketGroupOrder": 146,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Mais de 52.5",
+            "marketName": "Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 52.5 rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6de4caf3-d4ff-5412-9cb3-cec539e6700a",
+            "marketUuid": "a79e163f-7def-555d-a65a-271544439e60",
+            "marketId": 231527,
+            "outcomeId": 4208359,
+            "price": 1.82,
+            "specialBetValue": "52.5",
+            "status": "active",
+            "specifiers": {
+              "total": "52.5"
+            },
+            "marketGroupOrder": 146,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Menos de 52.5",
+            "marketName": "Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 52.5 rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "fa570ae7-5499-5058-b483-b72dc20e3e79",
+            "marketUuid": "c836aa4a-af72-5051-8669-0c164d077719",
+            "marketId": 231529,
+            "outcomeId": 4208363,
+            "price": 1.87,
+            "specialBetValue": "-2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5"
+            },
+            "marketGroupOrder": 147,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-2.5)",
+            "marketName": "Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-2.5) de handicap de rounds (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d0c55d65-6193-5d54-bd40-09a517a30cbf",
+            "marketUuid": "c836aa4a-af72-5051-8669-0c164d077719",
+            "marketId": 231529,
+            "outcomeId": 4208364,
+            "price": 1.8,
+            "specialBetValue": "-2.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5"
+            },
+            "marketGroupOrder": 147,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (2.5)",
+            "marketName": "Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (2.5) de handicap de rounds (Inc. prorrogação)"
+          },
+          {
+            "uuid": "2252cbcb-56cc-5a8e-bfe9-fc24d63ff003",
+            "marketUuid": "2f978569-45cf-5f9c-afc5-8ecc1c7fe1de",
+            "marketId": 231539,
+            "outcomeId": 4208385,
+            "price": 1.9,
+            "specialBetValue": "26.5",
+            "status": "active",
+            "specifiers": {
+              "total": "26.5"
+            },
+            "marketGroupOrder": 150,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 26.5",
+            "marketName": "Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 26.5 de rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "7610b711-bc19-5db0-afa0-4a800dd9e119",
+            "marketUuid": "2f978569-45cf-5f9c-afc5-8ecc1c7fe1de",
+            "marketId": 231539,
+            "outcomeId": 4208384,
+            "price": 1.77,
+            "specialBetValue": "26.5",
+            "status": "active",
+            "specifiers": {
+              "total": "26.5"
+            },
+            "marketGroupOrder": 150,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 26.5",
+            "marketName": "Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 26.5 de rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "20585d15-4d5e-5413-bc73-9f00f2e9dd9b",
+            "marketUuid": "b9bc7516-96c3-5a7d-a43a-424f85cf087f",
+            "marketId": 231544,
+            "outcomeId": 4208395,
+            "price": 2,
+            "specialBetValue": "26.5",
+            "status": "active",
+            "specifiers": {
+              "total": "26.5"
+            },
+            "marketGroupOrder": 151,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 26.5",
+            "marketName": "G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 26.5 rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "0b4c0839-d458-5bfc-aee8-b06f319aae9b",
+            "marketUuid": "b9bc7516-96c3-5a7d-a43a-424f85cf087f",
+            "marketId": 231544,
+            "outcomeId": 4208394,
+            "price": 1.7,
+            "specialBetValue": "26.5",
+            "status": "active",
+            "specifiers": {
+              "total": "26.5"
+            },
+            "marketGroupOrder": 151,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 26.5",
+            "marketName": "G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 26.5 rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "77b76016-aaa5-5105-931f-4fdb9634cdb8",
+            "marketUuid": "459c5676-be54-5851-8f63-52327f73125d",
+            "marketId": 231533,
+            "outcomeId": 4208371,
+            "price": 1.83,
+            "status": "active",
+            "marketGroupOrder": 153,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Ímpar",
+            "marketName": "Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número ímpar de rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "a629c2be-d6f9-5115-9aaa-f4d0a4e343be",
+            "marketUuid": "459c5676-be54-5851-8f63-52327f73125d",
+            "marketId": 231533,
+            "outcomeId": 4208372,
+            "price": 1.82,
+            "status": "active",
+            "marketGroupOrder": 153,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Par",
+            "marketName": "Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número par de rounds na partida (Inc. prorrogação)"
+          },
+          {
+            "uuid": "f60913e2-a38b-55b2-b3af-df758c6f169c",
+            "marketUuid": "e2effc68-ae90-5cae-8640-9114602a7f3b",
+            "marketId": 231528,
+            "outcomeId": 4208362,
+            "price": 3.3,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 154,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 0.5",
+            "marketName": "Total de Prorrogações",
+            "info": "Mais de 0.5 prorrogações"
+          },
+          {
+            "uuid": "695f8492-41ec-5c0e-8f9e-80384ee8f776",
+            "marketUuid": "e2effc68-ae90-5cae-8640-9114602a7f3b",
+            "marketId": 231528,
+            "outcomeId": 4208361,
+            "price": 1.27,
+            "specialBetValue": "0.5",
+            "status": "active",
+            "specifiers": {
+              "total": "0.5"
+            },
+            "marketGroupOrder": 154,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 0.5",
+            "marketName": "Total de Prorrogações",
+            "info": "Menos de 0.5 prorrogações"
+          },
+          {
+            "uuid": "3b40c1fb-176c-5ae6-8a36-713cc3a7b909",
+            "marketUuid": "71743eec-1dc6-5763-9e74-eaabc7dfaa44",
+            "marketId": 2489,
+            "outcomeId": 6421,
+            "price": 2.92,
+            "status": "active",
+            "marketGroupOrder": 155,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "20",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2:0",
+            "marketName": "Resultado Correto de Mapas",
+            "info": "2:0"
+          },
+          {
+            "uuid": "75b616e2-b681-570f-9c21-3d548b41483a",
+            "marketUuid": "71743eec-1dc6-5763-9e74-eaabc7dfaa44",
+            "marketId": 2489,
+            "outcomeId": 6423,
+            "price": 3.55,
+            "status": "active",
+            "marketGroupOrder": 155,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "21",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2:1",
+            "marketName": "Resultado Correto de Mapas",
+            "info": "2:1"
+          },
+          {
+            "uuid": "887cb6f8-60a7-5a76-a7fb-f59737d0fb85",
+            "marketUuid": "71743eec-1dc6-5763-9e74-eaabc7dfaa44",
+            "marketId": 2489,
+            "outcomeId": 6424,
+            "price": 4,
+            "status": "active",
+            "marketGroupOrder": 155,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "12",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "1:2",
+            "marketName": "Resultado Correto de Mapas",
+            "info": "1:2"
+          },
+          {
+            "uuid": "746c3ec5-4180-5ec1-8d45-c70051a24eb9",
+            "marketUuid": "71743eec-1dc6-5763-9e74-eaabc7dfaa44",
+            "marketId": 2489,
+            "outcomeId": 6422,
+            "price": 3.55,
+            "status": "active",
+            "marketGroupOrder": 155,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "02",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "0:2",
+            "marketName": "Resultado Correto de Mapas",
+            "info": "0:2"
+          },
+          {
+            "uuid": "8e7db1d2-a01b-5470-9142-bbc139ab207d",
+            "marketUuid": "2ff96c01-4587-5804-9d48-950001008549",
+            "marketId": 231555,
+            "outcomeId": 4208418,
+            "price": 2.75,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Mais de 20.5",
+            "marketName": "1° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 1 e mais de 20.5 rounds no mapa 1 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "89b4a25e-6c15-59ab-840c-99071ebc64ea",
+            "marketUuid": "2ff96c01-4587-5804-9d48-950001008549",
+            "marketId": 231555,
+            "outcomeId": 4208419,
+            "price": 3.75,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Menos de 20.5",
+            "marketName": "1° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 1 e menos de 20.5 rounds no mapa 1 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8f85030d-8c24-5568-9af3-15ede84167e5",
+            "marketUuid": "2ff96c01-4587-5804-9d48-950001008549",
+            "marketId": 231555,
+            "outcomeId": 4208420,
+            "price": 2.95,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Mais de 20.5",
+            "marketName": "1° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 1 e mais de 20.5 rounds no mapa 1 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "3c07f7a3-5838-5a65-bdc9-3737c866ff2e",
+            "marketUuid": "2ff96c01-4587-5804-9d48-950001008549",
+            "marketId": 231555,
+            "outcomeId": 4208421,
+            "price": 4.35,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Menos de 20.5",
+            "marketName": "1° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 1 e menos de 20.5 rounds no mapa 1 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8665bba7-0839-52d1-9792-1a5f7495294e",
+            "marketUuid": "5dcc4e47-8f5b-52d7-b825-6ba0dd19afee",
+            "marketId": 231555,
+            "outcomeId": 4208418,
+            "price": 2.75,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Mais de 20.5",
+            "marketName": "2° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 2 e mais de 20.5 rounds no mapa 2 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "bf8f78ba-98ce-5adc-82c2-463d22243373",
+            "marketUuid": "5dcc4e47-8f5b-52d7-b825-6ba0dd19afee",
+            "marketId": 231555,
+            "outcomeId": 4208419,
+            "price": 3.75,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Menos de 20.5",
+            "marketName": "2° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 2 e menos de 20.5 rounds no mapa 2 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "a801b2f8-03eb-52ba-b60e-79457e82ff63",
+            "marketUuid": "5dcc4e47-8f5b-52d7-b825-6ba0dd19afee",
+            "marketId": 231555,
+            "outcomeId": 4208420,
+            "price": 2.95,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Mais de 20.5",
+            "marketName": "2° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 2 e mais de 20.5 rounds no mapa 2 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "04064807-0e86-5537-af7f-a6f836619c91",
+            "marketUuid": "5dcc4e47-8f5b-52d7-b825-6ba0dd19afee",
+            "marketId": 231555,
+            "outcomeId": 4208421,
+            "price": 4.35,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Menos de 20.5",
+            "marketName": "2° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 2 e menos de 20.5 rounds no mapa 2 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "68c4ff4a-d2b0-54c1-8a4f-430fe81ad47d",
+            "marketUuid": "ea45f0b8-b651-50aa-8779-1cacb3977169",
+            "marketId": 231555,
+            "outcomeId": 4208418,
+            "price": 2.75,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Mais de 20.5",
+            "marketName": "3° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 3 e mais de 20.5 rounds no mapa 3 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d037cc79-4e8c-5517-800b-92aa8ed38053",
+            "marketUuid": "ea45f0b8-b651-50aa-8779-1cacb3977169",
+            "marketId": 231555,
+            "outcomeId": 4208419,
+            "price": 3.75,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Brute & Menos de 20.5",
+            "marketName": "3° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence o mapa 3 e menos de 20.5 rounds no mapa 3 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "b92b3db1-dbe9-5fee-9258-3a3035db1310",
+            "marketUuid": "ea45f0b8-b651-50aa-8779-1cacb3977169",
+            "marketId": 231555,
+            "outcomeId": 4208420,
+            "price": 2.95,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Mais de 20.5",
+            "marketName": "3° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 3 e mais de 20.5 rounds no mapa 3 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "57c72fee-b503-5d7f-bd45-1b1666ee79c0",
+            "marketUuid": "ea45f0b8-b651-50aa-8779-1cacb3977169",
+            "marketId": 231555,
+            "outcomeId": 4208421,
+            "price": 4.35,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 194,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "G2 Ares & Menos de 20.5",
+            "marketName": "3° Mapa - Vencedor & Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence o mapa 3 e menos de 20.5 rounds no mapa 3 (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d0e2aa58-43a6-52cf-8818-b8bfd3539b4a",
+            "marketUuid": "643131c4-1807-5fba-a68c-1768daf050ec",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.54,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 20.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "36fb12a1-8a66-583a-b2ca-1f5a267b112d",
+            "marketUuid": "643131c4-1807-5fba-a68c-1768daf050ec",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 2.27,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 20.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d7ede4c5-1b6e-5127-a8df-31155fd3e92e",
+            "marketUuid": "ed1044b7-397a-5017-a5f3-da405974a5bc",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.87,
+            "specialBetValue": "1-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 21.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "872c0d67-5601-55b4-b913-a24846b2c748",
+            "marketUuid": "ed1044b7-397a-5017-a5f3-da405974a5bc",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.8,
+            "specialBetValue": "1-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 21.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "b393e5d5-c30f-5047-98f6-4de48543f13a",
+            "marketUuid": "e52ee137-0047-5273-9687-c0d0f065592c",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 2.4,
+            "specialBetValue": "1-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 22.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "00e0764a-7f7c-59dd-8580-5b8f063b10f6",
+            "marketUuid": "e52ee137-0047-5273-9687-c0d0f065592c",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.48,
+            "specialBetValue": "1-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "1° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 22.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "272d7f15-94f9-5ea2-846f-5ecd5b7fb8d0",
+            "marketUuid": "1271884c-65ac-5f0f-956d-53577d1b409e",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.54,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 20.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "33059971-9d2f-5623-b6d3-b4825546d5a5",
+            "marketUuid": "1271884c-65ac-5f0f-956d-53577d1b409e",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 2.27,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 20.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "49431aff-21c7-5dce-9560-7a9c9bb69e01",
+            "marketUuid": "89cc0490-0d17-558e-b5da-94bb3293bda3",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.87,
+            "specialBetValue": "2-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 21.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "30300a5e-b4f5-52ec-8ba9-67dcc4630503",
+            "marketUuid": "89cc0490-0d17-558e-b5da-94bb3293bda3",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.8,
+            "specialBetValue": "2-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 21.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "2bc53bdd-2312-5dd9-bc24-ac7e9e9250f6",
+            "marketUuid": "aafac97e-135c-50b2-9e13-9842b2bb8b1c",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 2.4,
+            "specialBetValue": "2-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 22.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8187cce2-4f66-5291-a535-834428103a6c",
+            "marketUuid": "aafac97e-135c-50b2-9e13-9842b2bb8b1c",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.48,
+            "specialBetValue": "2-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "2° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 22.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "762b8920-aa1b-58f3-98b2-c994a195dfc0",
+            "marketUuid": "19e54db0-a947-556e-88fd-528bffc94e82",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.54,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 20.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "9c92aa4d-2a5a-5374-8f79-512e60d972f4",
+            "marketUuid": "19e54db0-a947-556e-88fd-528bffc94e82",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 2.27,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 20.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d659f2a6-341f-562c-90bf-f523c73d8a83",
+            "marketUuid": "047837fa-e01b-5663-869c-442826e0a410",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 1.87,
+            "specialBetValue": "3-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 21.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "7d837e58-d3e3-5022-8e11-9bf291692c4a",
+            "marketUuid": "047837fa-e01b-5663-869c-442826e0a410",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.8,
+            "specialBetValue": "3-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 21.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "4a6f13c2-343f-5b4a-b3b0-3066b86410c1",
+            "marketUuid": "9cdb05b1-d645-5d2e-a091-5198bd0d66ce",
+            "marketId": 2501,
+            "outcomeId": 6454,
+            "price": 2.4,
+            "specialBetValue": "3-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "+",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Mais de 22.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "691cba5f-ef4a-5903-a0b0-f115b0b04786",
+            "marketUuid": "9cdb05b1-d645-5d2e-a091-5198bd0d66ce",
+            "marketId": 2501,
+            "outcomeId": 6453,
+            "price": 1.48,
+            "specialBetValue": "3-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 195,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "code": "-",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "3° Mapa - Total de Rounds (Inc. prorrogação)",
+            "info": "Menos de 22.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "0b2eccd5-7ba9-50d4-a7e4-60bbc189ea22",
+            "marketUuid": "7ed680a7-8fa4-5aa7-ae57-05edc580c682",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.58,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "1° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 11.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "a28b0551-9315-541c-89c3-cbc12af93f65",
+            "marketUuid": "7ed680a7-8fa4-5aa7-ae57-05edc580c682",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.2,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "1° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 11.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "2cb911bf-fbf1-5650-99ad-be0ff2bfe5e8",
+            "marketUuid": "0864ce8e-3af0-5747-a901-9a31f7ad09e6",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.6,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "1° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 12.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "50549254-973f-5d2a-ada2-f3282b9db1a1",
+            "marketUuid": "0864ce8e-3af0-5747-a901-9a31f7ad09e6",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.15,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "1° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 12.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "f2ce232d-a0be-5043-abc5-00a7d1014e7c",
+            "marketUuid": "3b89a1ec-c45d-5059-a919-a26221e19c34",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.58,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "2° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 11.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "123087b0-6b3d-57c3-8e75-afabfdbea999",
+            "marketUuid": "3b89a1ec-c45d-5059-a919-a26221e19c34",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.2,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "2° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 11.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "b0a23687-e3ca-53cb-b41c-277cbe8139a1",
+            "marketUuid": "bfc72f06-227e-5c7f-890a-087f3e408304",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.6,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "2° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 12.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "4f70591a-acc5-5624-9e8a-5b6c027b0663",
+            "marketUuid": "bfc72f06-227e-5c7f-890a-087f3e408304",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.15,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "2° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 12.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6067a35e-499c-5c73-a487-5e6bad4c5262",
+            "marketUuid": "7412e644-9341-5cbc-a783-65c0bd0e0112",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.58,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "3° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 11.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8fc0e78b-75c1-52cc-8a9b-68616e07ea5e",
+            "marketUuid": "7412e644-9341-5cbc-a783-65c0bd0e0112",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.2,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "3° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 11.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d9565c4b-a467-5187-8ffe-753b91da7371",
+            "marketUuid": "0265e4aa-82d7-541b-8fde-cdb5f40da8bb",
+            "marketId": 231540,
+            "outcomeId": 4208387,
+            "price": 1.6,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "3° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence mais de 12.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "02e126b8-b3ce-54d4-afdb-444f537bbfec",
+            "marketUuid": "0265e4aa-82d7-541b-8fde-cdb5f40da8bb",
+            "marketId": 231540,
+            "outcomeId": 4208386,
+            "price": 2.15,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 196,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "3° Mapa - Brute - Total de Rounds (Inc. prorrogação)",
+            "info": "Brute vence menos de 12.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "21f1fe7a-bd0d-5937-acea-bcc2a9550868",
+            "marketUuid": "6050688a-8ee6-5469-b5a5-b95d8380330c",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.73,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "1° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 11.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "68d8bcba-3816-54be-9873-3ad1ee7e06f3",
+            "marketUuid": "6050688a-8ee6-5469-b5a5-b95d8380330c",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.95,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "1° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 11.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "63d152e5-65cc-5082-a365-d4d090311e51",
+            "marketUuid": "e9422b6e-323b-533e-90d7-8f0cb692e3af",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.75,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "1° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 12.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "eddf54af-a419-58b5-ac30-0e3be0f40d1c",
+            "marketUuid": "e9422b6e-323b-533e-90d7-8f0cb692e3af",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.92,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "1° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 12.5 rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d5bba706-11d2-59eb-a339-a8ba400272a7",
+            "marketUuid": "f2213c46-81f8-5152-a285-96a103c20ce2",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.73,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "2° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 11.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "86967fe7-121a-58bd-ae5b-90675e452349",
+            "marketUuid": "f2213c46-81f8-5152-a285-96a103c20ce2",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.95,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "2° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 11.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "48293e8e-7d4a-5fb8-a538-d110614b998f",
+            "marketUuid": "768ebbf5-fd11-5729-a03d-389b214a1c48",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.75,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "2° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 12.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "111f317d-edba-5bf0-90ba-ff1c59408cc1",
+            "marketUuid": "768ebbf5-fd11-5729-a03d-389b214a1c48",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.92,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "2° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 12.5 rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d89e8fac-f087-505a-ac2a-d2da64ca3e3e",
+            "marketUuid": "d8a76182-bce4-5d1e-bfbb-aa3d9aab673f",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.73,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 11.5",
+            "marketName": "3° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 11.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6911bad5-8168-5c4c-bd32-516194402b38",
+            "marketUuid": "d8a76182-bce4-5d1e-bfbb-aa3d9aab673f",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.95,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 11.5",
+            "marketName": "3° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 11.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "ed5c27e6-905d-5f0a-96ce-e0dd0636fa65",
+            "marketUuid": "494dc02c-e539-5825-a3de-752c7b3367c4",
+            "marketId": 231545,
+            "outcomeId": 4208397,
+            "price": 1.75,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais que 12.5",
+            "marketName": "3° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence mais de 12.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "11d9a077-7f32-5f82-8e89-c081b42ff788",
+            "marketUuid": "494dc02c-e539-5825-a3de-752c7b3367c4",
+            "marketId": 231545,
+            "outcomeId": 4208396,
+            "price": 1.92,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 197,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos que 12.5",
+            "marketName": "3° Mapa - G2 Ares - Total de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares vence menos de 12.5 rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "b410be02-7ba5-5862-bb6b-5269a8b2f23c",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7511,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:0",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:0"
+          },
+          {
+            "uuid": "ba65b871-35b5-598c-b994-d7cee664a9b6",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7512,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:1",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:1"
+          },
+          {
+            "uuid": "6a61564b-46bf-5efd-ae23-4935290dbaf6",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7513,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:2",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:2"
+          },
+          {
+            "uuid": "b278290d-3af1-51df-be8f-85ef5557b17d",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7514,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:3",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:3"
+          },
+          {
+            "uuid": "f80d021d-1617-57af-ace5-112beef7d0a0",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7515,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:4",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:4"
+          },
+          {
+            "uuid": "c812c2b1-5b79-574b-8176-d52a9fc40c59",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7516,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:5",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:5"
+          },
+          {
+            "uuid": "0120ba41-ddbe-5c38-8b51-d0afc6d4bdd7",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7517,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:6",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:6"
+          },
+          {
+            "uuid": "8f7289eb-08c5-5aaf-9678-a4e301449478",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7518,
+            "price": 11,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:7",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:7"
+          },
+          {
+            "uuid": "849cf762-3591-5187-b546-c51bbcdeded5",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7519,
+            "price": 10,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:8",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:8"
+          },
+          {
+            "uuid": "a5e061d6-5b4c-5a13-98b9-532b0036d3f7",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7520,
+            "price": 9.9,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:9",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:9"
+          },
+          {
+            "uuid": "27becffe-1c05-5bec-b672-440126e05c79",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7521,
+            "price": 9.7,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:10",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:10"
+          },
+          {
+            "uuid": "2743eeb3-f4e7-5f3d-8b9c-433e971800a9",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7522,
+            "price": 9.7,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:11",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "13:11"
+          },
+          {
+            "uuid": "7109fddc-c345-506b-9c94-1b5ed2cf1997",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7523,
+            "price": 5.85,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "12:12",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "12:12"
+          },
+          {
+            "uuid": "6a42b6da-a5b6-5cec-af81-481cf603cf98",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7524,
+            "price": 10,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "11:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "11:13"
+          },
+          {
+            "uuid": "ddc7c957-cad5-5d87-85b1-42d437a69ece",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7525,
+            "price": 10,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "10:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "10:13"
+          },
+          {
+            "uuid": "051d62ef-8eeb-541b-bc19-1e96d7f5e5ff",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7526,
+            "price": 11,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "9:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "9:13"
+          },
+          {
+            "uuid": "f60f939a-b6e9-5f04-97dd-3ff15b517476",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7527,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "8:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "8:13"
+          },
+          {
+            "uuid": "b780a3d7-b03c-5042-b331-1c87d63d7404",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7528,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "7:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "7:13"
+          },
+          {
+            "uuid": "d83c7588-e4b1-5ee1-8b25-2fbd1bfa0fee",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7529,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "6:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "6:13"
+          },
+          {
+            "uuid": "30e7dd25-ebdf-5087-945b-126314f40ebe",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7530,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "5:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "5:13"
+          },
+          {
+            "uuid": "1537ee61-1f12-5633-9ba3-1e3e9a6acf1e",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7531,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "4:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "4:13"
+          },
+          {
+            "uuid": "7d424102-64d3-5077-ac9a-42747a98f224",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7532,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "3:13"
+          },
+          {
+            "uuid": "6b7fd6f5-d3b1-56ac-b860-700300ab05f9",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7533,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "2:13"
+          },
+          {
+            "uuid": "1273440c-50f1-5618-b0f0-59914852105f",
+            "marketUuid": "0a6c8f53-664c-5c55-b603-f9e8f96ace5f",
+            "marketId": 233691,
+            "outcomeId": 7534,
+            "price": 12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1:13",
+            "marketName": "1° Mapa - Resultado Correto de Rounds",
+            "info": "1:13"
+          },
+          {
+            "uuid": "cebf7885-7f6e-5da6-8d1a-c52fa1e2f0a1",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7511,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:0",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:0"
+          },
+          {
+            "uuid": "01f9bdd8-e0b8-5a52-a38d-4d5d05c02dd1",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7512,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:1",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:1"
+          },
+          {
+            "uuid": "28f7814f-4ad8-5ec5-933b-e1e5e4c7dac9",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7513,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:2",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:2"
+          },
+          {
+            "uuid": "9dfaa7c6-5cce-54c8-a4bd-b58bff63b6e1",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7514,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:3",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:3"
+          },
+          {
+            "uuid": "8e233100-3c1d-5848-9f39-5bfbd9fc61f6",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7515,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:4",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:4"
+          },
+          {
+            "uuid": "3d6f6f1e-5b3c-51a0-b74b-c567db58db10",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7516,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:5",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:5"
+          },
+          {
+            "uuid": "41a14cce-fae5-5119-b14c-c561f8a450cf",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7517,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:6",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:6"
+          },
+          {
+            "uuid": "15005130-bb13-5467-a8f0-dcb3b6497a01",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7518,
+            "price": 11,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:7",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:7"
+          },
+          {
+            "uuid": "b9415558-26c5-5c0e-8e5d-1dc4ef8cc354",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7519,
+            "price": 10,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:8",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:8"
+          },
+          {
+            "uuid": "3390af51-ec53-5804-950d-a6c08c416b39",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7520,
+            "price": 9.9,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:9",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:9"
+          },
+          {
+            "uuid": "f73a3ccc-da20-5615-9d2d-0d26a2dbf4a5",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7521,
+            "price": 9.7,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:10",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:10"
+          },
+          {
+            "uuid": "fae7b9f5-16af-543b-9990-dda6f2479d6b",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7522,
+            "price": 9.7,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:11",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "13:11"
+          },
+          {
+            "uuid": "132ca128-1b88-5711-b051-024fc3df998b",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7523,
+            "price": 5.85,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "12:12",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "12:12"
+          },
+          {
+            "uuid": "844d36c7-2414-57ec-b4b5-f172c0afb875",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7524,
+            "price": 10,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "11:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "11:13"
+          },
+          {
+            "uuid": "130cec3e-3b61-50c9-94dc-d0fa2b25c8bc",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7525,
+            "price": 10,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "10:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "10:13"
+          },
+          {
+            "uuid": "52393b09-0c04-5322-af84-4a40ab8e5292",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7526,
+            "price": 11,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "9:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "9:13"
+          },
+          {
+            "uuid": "a45fc74d-357a-5992-bbd1-6d2e1c3a1b88",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7527,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "8:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "8:13"
+          },
+          {
+            "uuid": "c44c6fdf-2f91-5a7e-bbcd-81152ef4a75f",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7528,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "7:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "7:13"
+          },
+          {
+            "uuid": "ce0bc368-f2ef-5d32-9252-c5f61db24234",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7529,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "6:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "6:13"
+          },
+          {
+            "uuid": "b774438f-0bfc-5fe6-8313-55cd20a7d6dc",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7530,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "5:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "5:13"
+          },
+          {
+            "uuid": "47953e73-395f-5980-affd-2d125032af87",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7531,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "4:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "4:13"
+          },
+          {
+            "uuid": "c19a996f-aa99-54a5-8638-80190b91b24f",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7532,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "3:13"
+          },
+          {
+            "uuid": "3d465e82-cfb4-5bf6-9eb4-9b208c569e85",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7533,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "2:13"
+          },
+          {
+            "uuid": "41472506-7200-5fb8-9f8d-b2da23168b71",
+            "marketUuid": "f8fa3f45-c0a6-571c-84b5-f7bd788d7d06",
+            "marketId": 233691,
+            "outcomeId": 7534,
+            "price": 12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1:13",
+            "marketName": "2° Mapa - Resultado Correto de Rounds",
+            "info": "1:13"
+          },
+          {
+            "uuid": "4f761838-216e-5be8-b1a6-26d2b3886ec9",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7511,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:0",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:0"
+          },
+          {
+            "uuid": "2f2f6399-0cd2-5ed7-8577-dd04a03c38d1",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7512,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:1",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:1"
+          },
+          {
+            "uuid": "578103aa-b240-54c6-aa8c-bf348c816184",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7513,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:2",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:2"
+          },
+          {
+            "uuid": "2f02e880-fc79-5597-8b06-24849b6da083",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7514,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:3",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:3"
+          },
+          {
+            "uuid": "cbef8dba-84d0-55bf-a269-19d3f3c47358",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7515,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:4",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:4"
+          },
+          {
+            "uuid": "88139ca4-ab62-5977-827f-9fe007735e6d",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7516,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:5",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:5"
+          },
+          {
+            "uuid": "71cfc0ab-566c-5fe5-b9ae-cfd75741965c",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7517,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:6",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:6"
+          },
+          {
+            "uuid": "3482f680-b584-5375-9e99-4d71a15d9a61",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7518,
+            "price": 11,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:7",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:7"
+          },
+          {
+            "uuid": "841b96e5-8197-5d1a-95b8-2f16412096a2",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7519,
+            "price": 10,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:8",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:8"
+          },
+          {
+            "uuid": "d06fcf49-66d0-5837-9b62-a5376d1da91d",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7520,
+            "price": 9.9,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:9",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:9"
+          },
+          {
+            "uuid": "1b5fab3d-f420-56a8-af75-8f095517397d",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7521,
+            "price": 9.7,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:10",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:10"
+          },
+          {
+            "uuid": "3b5633fd-730c-51f7-9acf-a200e58c0e40",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7522,
+            "price": 9.7,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "13:11",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "13:11"
+          },
+          {
+            "uuid": "be052388-8554-5610-b3b8-912bc66aff2a",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7523,
+            "price": 5.85,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "12:12",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "12:12"
+          },
+          {
+            "uuid": "2f1bc618-302a-57da-b159-b29c88747e4d",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7524,
+            "price": 10,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "11:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "11:13"
+          },
+          {
+            "uuid": "158f980a-067b-553d-bac1-22c3f704c5af",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7525,
+            "price": 10,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "10:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "10:13"
+          },
+          {
+            "uuid": "06d8401e-aa8b-5a81-950a-548604728299",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7526,
+            "price": 11,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "9:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "9:13"
+          },
+          {
+            "uuid": "9d84d4b3-2ba4-5f51-b675-e30fc02d6ef3",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7527,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "8:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "8:13"
+          },
+          {
+            "uuid": "17e3a8cb-1378-5c5e-8669-be6439cdab8d",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7528,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "7:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "7:13"
+          },
+          {
+            "uuid": "3abbbf2c-ae83-535f-b715-7a19e139ca9e",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7529,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "6:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "6:13"
+          },
+          {
+            "uuid": "4f6fb159-5ade-51ac-afc7-cd6c5baadafa",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7530,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "5:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "5:13"
+          },
+          {
+            "uuid": "32080e05-e83e-58d7-84c1-4b08c83112a2",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7531,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "4:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "4:13"
+          },
+          {
+            "uuid": "67857b34-d87c-5a21-b6e0-25714d6208b6",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7532,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "3:13"
+          },
+          {
+            "uuid": "e13a1b99-86ed-54c6-a095-933a24b3fc78",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7533,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "2:13"
+          },
+          {
+            "uuid": "c9f0301b-a9ec-5a7b-84b6-02cbe1b1acbd",
+            "marketUuid": "66dff3d4-820b-5d32-829d-fa70ecc7ea14",
+            "marketId": 233691,
+            "outcomeId": 7534,
+            "price": 12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 199,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1:13",
+            "marketName": "3° Mapa - Resultado Correto de Rounds",
+            "info": "1:13"
+          },
+          {
+            "uuid": "1ad9db2d-6dca-5214-8482-9405f26ef31c",
+            "marketUuid": "38aec5df-69c8-5dec-b539-ae19102477dd",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.52,
+            "specialBetValue": "-3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-3.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-3.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "c8fb3cb9-6d46-5947-be2d-66bcccedebf1",
+            "marketUuid": "38aec5df-69c8-5dec-b539-ae19102477dd",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.44,
+            "specialBetValue": "-3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (3.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (3.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "c6b844b4-d0a5-599e-824c-a4d77ed2d979",
+            "marketUuid": "d943de50-d6a6-5ff1-b753-14d78dd3385a",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.07,
+            "specialBetValue": "-2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-2.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-2.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6f874b73-859c-5645-ada0-820e77668691",
+            "marketUuid": "d943de50-d6a6-5ff1-b753-14d78dd3385a",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.65,
+            "specialBetValue": "-2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (2.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (2.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "e0b3f9bb-b2b3-5723-a5fa-eb31504a26b0",
+            "marketUuid": "c5c2deb2-3566-55d9-80d4-2f9bb3208f92",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 1.51,
+            "specialBetValue": "2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (2.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (2.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "c5f0b5fb-eb5b-5286-ad50-a50ba4562959",
+            "marketUuid": "c5c2deb2-3566-55d9-80d4-2f9bb3208f92",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 2.35,
+            "specialBetValue": "2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (-2.5)",
+            "marketName": "1° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (-2.5) de handicap no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "61bf5570-5c34-5e30-a07a-f9f2e871d475",
+            "marketUuid": "2e862bb6-7064-59af-ba13-382c54aa5929",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.52,
+            "specialBetValue": "-3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-3.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-3.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "6b721ad8-b8a3-511c-899a-0d4dd915028c",
+            "marketUuid": "2e862bb6-7064-59af-ba13-382c54aa5929",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.44,
+            "specialBetValue": "-3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (3.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (3.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "70beaecd-1e38-5d9e-b14c-f2119241d88c",
+            "marketUuid": "e8459b50-d7e2-5d49-a343-7f4b53043efb",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.07,
+            "specialBetValue": "-2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-2.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-2.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "1141cf1c-ba00-530f-880f-84d5f762cfa4",
+            "marketUuid": "e8459b50-d7e2-5d49-a343-7f4b53043efb",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.65,
+            "specialBetValue": "-2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (2.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (2.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "f217ee4a-3c2f-581a-b34f-a5fdce73bc98",
+            "marketUuid": "288e3e0a-5cd6-5b95-89c4-97d19544e0c9",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 1.51,
+            "specialBetValue": "2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (2.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (2.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "43b69330-b3e6-54f5-b303-708586b2141f",
+            "marketUuid": "288e3e0a-5cd6-5b95-89c4-97d19544e0c9",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 2.35,
+            "specialBetValue": "2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (-2.5)",
+            "marketName": "2° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (-2.5) de handicap no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "ce7cbb26-9e63-5f03-8a38-968ba4dc598e",
+            "marketUuid": "34a76aaa-ccc1-5766-8e46-ae1a4f0d4887",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.52,
+            "specialBetValue": "-3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-3.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-3.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d21260ae-8d93-5a7b-9280-5101b6123425",
+            "marketUuid": "34a76aaa-ccc1-5766-8e46-ae1a4f0d4887",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.44,
+            "specialBetValue": "-3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (3.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (3.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "9f6b94ea-50cf-52e8-8629-f75952b18ce9",
+            "marketUuid": "d54ddea8-df87-5aa2-a44b-b0ba2260c560",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 2.07,
+            "specialBetValue": "-2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (-2.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (-2.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "aee07066-e071-502a-ba64-39fec7b0c6b7",
+            "marketUuid": "d54ddea8-df87-5aa2-a44b-b0ba2260c560",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 1.65,
+            "specialBetValue": "-2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (2.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (2.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "57cbe5b0-531a-567a-9eff-21591a1c9527",
+            "marketUuid": "81e4bc51-d87b-56c6-b591-fec96ac1d9d2",
+            "marketId": 2496,
+            "outcomeId": 6443,
+            "price": 1.51,
+            "specialBetValue": "2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "1",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "Brute (2.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "Brute cobre (2.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d8413122-ff36-54f6-873e-8bd63943b700",
+            "marketUuid": "81e4bc51-d87b-56c6-b591-fec96ac1d9d2",
+            "marketId": 2496,
+            "outcomeId": 6444,
+            "price": 2.35,
+            "specialBetValue": "2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 200,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "code": "2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "G2 Ares (-2.5)",
+            "marketName": "3° Mapa - Handicap de Rounds (Inc. prorrogação)",
+            "info": "G2 Ares cobre (-2.5) de handicap no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "82421eee-3243-5a0e-aa9f-00484713b656",
+            "marketUuid": "22c40646-ba78-5f53-a1c5-b465311a5902",
+            "marketId": 2480,
+            "outcomeId": 6401,
+            "price": 2,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1 - Ímpar",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número ímpar de rounds no mapa 1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "9abdc2a4-ab03-5b8e-b03d-79dc325e6312",
+            "marketUuid": "22c40646-ba78-5f53-a1c5-b465311a5902",
+            "marketId": 2480,
+            "outcomeId": 6402,
+            "price": 1.67,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1 - Par",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número par de rounds no mapa  1. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "8de64ddb-d55a-59e4-a52f-778be7aa673d",
+            "marketUuid": "fcc3a8c0-c2ce-5869-8c56-5c70add5cde1",
+            "marketId": 2480,
+            "outcomeId": 6401,
+            "price": 2,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2 - Ímpar",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número ímpar de rounds no mapa 2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "655c3d8f-7bb6-569d-bb1d-a875b9bc1ac7",
+            "marketUuid": "fcc3a8c0-c2ce-5869-8c56-5c70add5cde1",
+            "marketId": 2480,
+            "outcomeId": 6402,
+            "price": 1.67,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2 - Par",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número par de rounds no mapa  2. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "d10cd81d-580a-5af5-8a80-d46ec9740fd1",
+            "marketUuid": "c6e055eb-8e48-50ff-a07c-6bd4c79221b5",
+            "marketId": 2480,
+            "outcomeId": 6401,
+            "price": 2,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3 - Ímpar",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número ímpar de rounds no mapa 3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "2e648ddf-4350-5581-b5ee-4ad385038b22",
+            "marketUuid": "c6e055eb-8e48-50ff-a07c-6bd4c79221b5",
+            "marketId": 2480,
+            "outcomeId": 6402,
+            "price": 1.67,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 216,
+            "marketTags": "donotshowingroupfilter",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3 - Par",
+            "marketName": "X° Mapa - Rounds Ímpar/Par (Inc. prorrogação)",
+            "info": "Número par de rounds no mapa  3. (Inc. prorrogação)"
+          },
+          {
+            "uuid": "eae3b74c-d2a4-5d91-8f91-7d83dfac3ac5",
+            "marketUuid": "7d81c04f-5a91-54aa-b650-628a64856cbd",
+            "marketId": 231537,
+            "outcomeId": 4208379,
+            "price": 1.95,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1 - Brute",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Brute vence mais rounds no mapa 1."
+          },
+          {
+            "uuid": "1949b6d4-1c50-5caa-ab72-199f7c5da3b0",
+            "marketUuid": "7d81c04f-5a91-54aa-b650-628a64856cbd",
+            "marketId": 231537,
+            "outcomeId": 4208380,
+            "price": 5.85,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1 - Empate",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Ambos competidores vencem o mesmo número de rounds no mapa 1."
+          },
+          {
+            "uuid": "82c22ac8-8763-50d4-9cab-00cd41ac125f",
+            "marketUuid": "7d81c04f-5a91-54aa-b650-628a64856cbd",
+            "marketId": 231537,
+            "outcomeId": 4208381,
+            "price": 2.17,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "1 - G2 Ares",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "G2 Ares vence mais rounds no mapa 1."
+          },
+          {
+            "uuid": "76585f76-4135-54a3-9b3c-ffb0f6a63e31",
+            "marketUuid": "11b5e7d1-83fc-5fe1-8a69-4137d3a1ef63",
+            "marketId": 231537,
+            "outcomeId": 4208379,
+            "price": 1.95,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2 - Brute",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Brute vence mais rounds no mapa 2."
+          },
+          {
+            "uuid": "a369df16-43a5-56ee-bf38-ca9d2710a556",
+            "marketUuid": "11b5e7d1-83fc-5fe1-8a69-4137d3a1ef63",
+            "marketId": 231537,
+            "outcomeId": 4208380,
+            "price": 5.85,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2 - Empate",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Ambos competidores vencem o mesmo número de rounds no mapa 2."
+          },
+          {
+            "uuid": "5de23174-f545-58d7-b757-a3218512c286",
+            "marketUuid": "11b5e7d1-83fc-5fe1-8a69-4137d3a1ef63",
+            "marketId": 231537,
+            "outcomeId": 4208381,
+            "price": 2.17,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "2 - G2 Ares",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "G2 Ares vence mais rounds no mapa 2."
+          },
+          {
+            "uuid": "2e5c5681-b67b-538f-b2cf-b9b35436e2f9",
+            "marketUuid": "bfc2a240-afd5-50c6-aab7-bfb88e9761e9",
+            "marketId": 231537,
+            "outcomeId": 4208379,
+            "price": 1.95,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3 - Brute",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Brute vence mais rounds no mapa 3."
+          },
+          {
+            "uuid": "39e2fade-a33f-5429-afa1-93766d31a50b",
+            "marketUuid": "bfc2a240-afd5-50c6-aab7-bfb88e9761e9",
+            "marketId": 231537,
+            "outcomeId": 4208380,
+            "price": 5.85,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3 - Empate",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "Ambos competidores vencem o mesmo número de rounds no mapa 3."
+          },
+          {
+            "uuid": "f76c7920-4735-5c04-ba65-914858011f5e",
+            "marketUuid": "bfc2a240-afd5-50c6-aab7-bfb88e9761e9",
+            "marketId": 231537,
+            "outcomeId": 4208381,
+            "price": 2.17,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 217,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "tags": "v2"
+            },
+            "name": "3 - G2 Ares",
+            "marketName": "X° Mapa - Resultado (1X2) de Rounds",
+            "info": "G2 Ares vence mais rounds no mapa 3."
+          }
+        ],
+        "oddsResults": null,
+        "matchResults": null,
+        "resolvingRules": null,
+        "utcDate": "2026-09-15T08:00:00Z",
+        "unixDateMillis": 1789459200000,
+        "streams": [
+          "PREMATCH"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,5397 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:38:22.432Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v2/pt-BR/events/14900724",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "error": false,
+    "dataIn": {
+      "eventId": 14900724,
+      "lang": "pt-BR"
+    },
+    "data": [
+      {
+        "uuid": "56444935-5091-5552-95f8-f3213e1e4e7c",
+        "eventId": 14900724,
+        "matchDate": "2026-09-24 09:00:00",
+        "homeTeamId": "474730",
+        "awayTeamId": "474740",
+        "matchCode": 8638,
+        "incrementId": 12,
+        "offerId": 14900724,
+        "sportId": 153,
+        "categoryId": 1678,
+        "tournamentId": 79712,
+        "metadata": {
+          "status": "NOT_STARTED",
+          "bookingStatus": "Booked",
+          "brTimestamp": 1789038600177
+        },
+        "matchTags": "v2",
+        "matchPromotedLiveOrder": 10000,
+        "tournamentPromotedLiveOrder": 10000,
+        "matchTimestamp": 1789038600177,
+        "hasLive": true,
+        "matchName": "TyLoo·G2",
+        "specialOfferIds": null,
+        "offerStateStatus": {
+          "1": "active"
+        },
+        "marketCount": 11,
+        "counts": {
+          "odds": {
+            "1": 207,
+            "2": 0
+          },
+          "markets": {
+            "1": 11,
+            "2": 0
+          }
+        },
+        "odds": [
+          {
+            "uuid": "3f444aeb-f402-5adc-9082-6f5c0dde21b6",
+            "marketUuid": "00b72b1b-d6cb-5552-9d2d-04c935cc3a81",
+            "marketId": 232494,
+            "outcomeId": 4209266,
+            "price": 3.3,
+            "status": "active",
+            "marketGroupOrder": 1,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "void_service,pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "1",
+            "marketName": "Vencedor (Incl. Prorrogação)",
+            "info": "TyLoo vencerá a partida"
+          },
+          {
+            "uuid": "4c14c053-773a-5a83-933b-ec044dc8b877",
+            "marketUuid": "00b72b1b-d6cb-5552-9d2d-04c935cc3a81",
+            "marketId": 232494,
+            "outcomeId": 4209267,
+            "price": 1.27,
+            "status": "active",
+            "marketGroupOrder": 1,
+            "marketTags": "preselected",
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2,void_service",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2,void_service"
+            },
+            "name": "2",
+            "marketName": "Vencedor (Incl. Prorrogação)",
+            "info": "G2 vencerá a partida"
+          },
+          {
+            "uuid": "3528d489-b4a7-54cb-b67e-b732c99b446e",
+            "marketUuid": "8738ded9-bc79-5c00-9e91-5c541f02f9bb",
+            "marketId": 232498,
+            "outcomeId": 4209275,
+            "price": 2.62,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "1. - TyLoo",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "TyLoo vencerá o 1º mapa"
+          },
+          {
+            "uuid": "7537ae77-4078-5eb8-9249-b630b32949d0",
+            "marketUuid": "8738ded9-bc79-5c00-9e91-5c541f02f9bb",
+            "marketId": 232498,
+            "outcomeId": 4209276,
+            "price": 1.41,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "1. - G2",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "G2 vencerá o 1º mapa"
+          },
+          {
+            "uuid": "e2827947-e530-5d42-846f-d83a36c3f8b7",
+            "marketUuid": "37f5905a-9fb1-50bf-85a5-ac058714ab87",
+            "marketId": 232498,
+            "outcomeId": 4209275,
+            "price": 2.62,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2. - TyLoo",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "TyLoo vencerá o 2º mapa"
+          },
+          {
+            "uuid": "4e8a1fe0-dd8c-530c-a3f6-a11e6952afaa",
+            "marketUuid": "37f5905a-9fb1-50bf-85a5-ac058714ab87",
+            "marketId": 232498,
+            "outcomeId": 4209276,
+            "price": 1.41,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "2. - G2",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "G2 vencerá o 2º mapa"
+          },
+          {
+            "uuid": "99de96ec-09dc-5d5c-a4e2-98cf06822414",
+            "marketUuid": "aa036969-761f-52fd-a861-4da48458a420",
+            "marketId": 232498,
+            "outcomeId": 4209275,
+            "price": 2.62,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "3. - TyLoo",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "TyLoo vencerá o 3º mapa"
+          },
+          {
+            "uuid": "2ca33915-5595-515e-b1d3-2ad235632769",
+            "marketUuid": "aa036969-761f-52fd-a861-4da48458a420",
+            "marketId": 232498,
+            "outcomeId": 4209276,
+            "price": 1.41,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 3,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "3. - G2",
+            "marketName": "X° Mapa - Vencedor (Incl. Prorrogação)",
+            "info": "G2 vencerá o 3º mapa"
+          },
+          {
+            "uuid": "53c6656b-1e8c-5d99-a1b8-7c617aeff01a",
+            "marketUuid": "eaaf9336-3064-5881-b172-69a9ef0ffbd6",
+            "marketId": 232497,
+            "outcomeId": 4209274,
+            "price": 2.12,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "total": "2.5"
+            },
+            "marketGroupOrder": 14,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Mais de 2.5",
+            "marketName": "Mapas Totais (incl. Prorrogação)",
+            "info": "Mais de 2.5 mapas na partida"
+          },
+          {
+            "uuid": "05e23fb9-3586-5b31-b679-3fec5ee5aeb7",
+            "marketUuid": "eaaf9336-3064-5881-b172-69a9ef0ffbd6",
+            "marketId": 232497,
+            "outcomeId": 4209273,
+            "price": 1.61,
+            "specialBetValue": "2.5",
+            "status": "active",
+            "specifiers": {
+              "total": "2.5"
+            },
+            "marketGroupOrder": 14,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "pm_boostable_market,v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "pm_boostable_market,v2"
+            },
+            "name": "Menos de 2.5",
+            "marketName": "Mapas Totais (incl. Prorrogação)",
+            "info": "Menos de 2.5 mapas na partida"
+          },
+          {
+            "uuid": "78d1aa84-6b69-55f4-ab96-10070e9cf112",
+            "marketUuid": "b0b34c9a-280b-56c3-9d7b-0b2884edda08",
+            "marketId": 232496,
+            "outcomeId": 4209271,
+            "price": 5.65,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 15,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-1.5)",
+            "marketName": "Handicap do Mapa (incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o handicap (-1.5)"
+          },
+          {
+            "uuid": "8d506356-2224-5429-9a7f-1470ecdf342e",
+            "marketUuid": "b0b34c9a-280b-56c3-9d7b-0b2884edda08",
+            "marketId": 232496,
+            "outcomeId": 4209272,
+            "price": 1.09,
+            "specialBetValue": "-1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-1.5"
+            },
+            "marketGroupOrder": 15,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (1.5)",
+            "marketName": "Handicap do Mapa (incl. Prorrogação)",
+            "info": "G2 irá cobrir o handicap (1.5)"
+          },
+          {
+            "uuid": "e73f695a-c0e3-5996-8954-221fff3ef058",
+            "marketUuid": "fa02fe6e-2fb2-5e83-a999-c029aacc9a29",
+            "marketId": 232496,
+            "outcomeId": 4209271,
+            "price": 1.72,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 15,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (1.5)",
+            "marketName": "Handicap do Mapa (incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o handicap (1.5)"
+          },
+          {
+            "uuid": "adb335c8-aaff-5a2c-bc3e-7546ed3f2588",
+            "marketUuid": "fa02fe6e-2fb2-5e83-a999-c029aacc9a29",
+            "marketId": 232496,
+            "outcomeId": 4209272,
+            "price": 1.97,
+            "specialBetValue": "1.5",
+            "status": "active",
+            "specifiers": {
+              "hcp": "1.5"
+            },
+            "marketGroupOrder": 15,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-1.5)",
+            "marketName": "Handicap do Mapa (incl. Prorrogação)",
+            "info": "G2 irá cobrir o handicap (-1.5)"
+          },
+          {
+            "uuid": "15356fb9-719e-5636-9ba9-be4760df6949",
+            "marketUuid": "30ab4ad0-d1d8-5e92-a6a1-ab09c4e44621",
+            "marketId": 232499,
+            "outcomeId": 4209291,
+            "price": 2.95,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1.  - TyLoo",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "TyLoo irá vencer o 1º mapa"
+          },
+          {
+            "uuid": "e2cb57c7-89e4-5b69-b863-b55c684fdf86",
+            "marketUuid": "30ab4ad0-d1d8-5e92-a6a1-ab09c4e44621",
+            "marketId": 232499,
+            "outcomeId": 4209292,
+            "price": 6.8,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1.  - Empate",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "Empate no 1º mapa"
+          },
+          {
+            "uuid": "1434f7d0-da92-56e4-a075-867b8289760c",
+            "marketUuid": "30ab4ad0-d1d8-5e92-a6a1-ab09c4e44621",
+            "marketId": 232499,
+            "outcomeId": 4209293,
+            "price": 1.56,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1. - G2",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "G2 rá vencer o 1º mapa"
+          },
+          {
+            "uuid": "f2acd368-d360-5338-8178-8dbef2db1c68",
+            "marketUuid": "eab511ce-de83-5aab-8dc4-bc8a2f181ff3",
+            "marketId": 232499,
+            "outcomeId": 4209291,
+            "price": 2.95,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2.  - TyLoo",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "TyLoo irá vencer o 2º mapa"
+          },
+          {
+            "uuid": "ec54cefb-5a71-5e33-9d01-6e899ac3279c",
+            "marketUuid": "eab511ce-de83-5aab-8dc4-bc8a2f181ff3",
+            "marketId": 232499,
+            "outcomeId": 4209292,
+            "price": 6.8,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2.  - Empate",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "Empate no 2º mapa"
+          },
+          {
+            "uuid": "6897082a-8e90-5a13-9ab7-1b587c2fa0a7",
+            "marketUuid": "eab511ce-de83-5aab-8dc4-bc8a2f181ff3",
+            "marketId": 232499,
+            "outcomeId": 4209293,
+            "price": 1.56,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2. - G2",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "G2 rá vencer o 2º mapa"
+          },
+          {
+            "uuid": "f3f88f1f-0e53-53ab-8cf9-c2fbe26c9c30",
+            "marketUuid": "3699ec52-1271-5e94-adc1-69b8593b35ee",
+            "marketId": 232499,
+            "outcomeId": 4209291,
+            "price": 2.95,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "3.  - TyLoo",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "TyLoo irá vencer o 3º mapa"
+          },
+          {
+            "uuid": "fdd898bd-bbbf-5856-a8a4-dfe15096daee",
+            "marketUuid": "3699ec52-1271-5e94-adc1-69b8593b35ee",
+            "marketId": 232499,
+            "outcomeId": 4209292,
+            "price": 6.8,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "3.  - Empate",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "Empate no 3º mapa"
+          },
+          {
+            "uuid": "ffb9fc0d-82ff-5b64-8172-ae62dbba76be",
+            "marketUuid": "3699ec52-1271-5e94-adc1-69b8593b35ee",
+            "marketId": 232499,
+            "outcomeId": 4209293,
+            "price": 1.56,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 16,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "3. - G2",
+            "marketName": "Xº Mapa - Resultado (1x2)",
+            "info": "G2 rá vencer o 3º mapa"
+          },
+          {
+            "uuid": "1f5605f1-eda1-5466-a54f-433d1d6bcc5f",
+            "marketUuid": "fce76056-ea32-572f-b054-97936ff430dd",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.07,
+            "specialBetValue": "1-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 16.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 16.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "83c44b1b-f8c1-5408-92d8-b571a79dfe6d",
+            "marketUuid": "fce76056-ea32-572f-b054-97936ff430dd",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 6.3,
+            "specialBetValue": "1-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 16.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 16.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "257a2c34-1a94-5f71-99d3-4e72b20d4715",
+            "marketUuid": "96df9fac-6a71-5b86-8caf-c53aaa628d40",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.16,
+            "specialBetValue": "1-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 17.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 17.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "14398d11-a909-5eca-9f50-2680f7e7f33e",
+            "marketUuid": "96df9fac-6a71-5b86-8caf-c53aaa628d40",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 4.4,
+            "specialBetValue": "1-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 17.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 17.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "7d7a7a10-a081-55eb-9ccd-108278d5a6fe",
+            "marketUuid": "2d188d00-c0e8-5df5-89a1-b82a30de89ef",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.28,
+            "specialBetValue": "1-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 18.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 18.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "242c0dc2-059b-5538-8734-0c357bd56bb7",
+            "marketUuid": "2d188d00-c0e8-5df5-89a1-b82a30de89ef",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 3.25,
+            "specialBetValue": "1-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 18.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 18.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "6ec14017-1c5f-5054-9303-3bb8af60f7e9",
+            "marketUuid": "504dd727-1b72-571d-b020-b066d9450e20",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.45,
+            "specialBetValue": "1-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 19.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "ec385ccd-a128-59c8-911b-32e01f8d4586",
+            "marketUuid": "504dd727-1b72-571d-b020-b066d9450e20",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2.5,
+            "specialBetValue": "1-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 19.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "05eff73b-28c0-586e-92e4-d4a87128ea30",
+            "marketUuid": "78e18d5c-ad86-5a3f-aafa-975d721bba7d",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.7,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 20.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "a2733804-7eda-5f57-9f86-e1cdfcb0eba6",
+            "marketUuid": "78e18d5c-ad86-5a3f-aafa-975d721bba7d",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2,
+            "specialBetValue": "1-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 20.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "dc31b086-f7e1-5a17-aa14-bfd523dbc9bc",
+            "marketUuid": "57bdfcbc-3cd1-5d08-bb52-ed79a5654ee8",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.07,
+            "specialBetValue": "1-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 21.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "49f8fe7a-c3b6-56a8-b4ba-18662d19494f",
+            "marketUuid": "57bdfcbc-3cd1-5d08-bb52-ed79a5654ee8",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.64,
+            "specialBetValue": "1-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 21.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "016d6e48-50b6-592b-be74-0fe4a8fa3668",
+            "marketUuid": "df969754-d82b-5d1c-a1a6-e31746ebfb61",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.7,
+            "specialBetValue": "1-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 22.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "c9c7f408-d90b-5e6f-baa5-cde97611e788",
+            "marketUuid": "df969754-d82b-5d1c-a1a6-e31746ebfb61",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.39,
+            "specialBetValue": "1-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 22.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "c5c6835e-72e0-5bb5-8351-eb72778e6fec",
+            "marketUuid": "5f23aab4-f41d-5241-bcc2-a6a23f84df0c",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 3.85,
+            "specialBetValue": "1-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 23.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 23.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "3a2e967b-9157-5dc9-89fa-59c1168b3919",
+            "marketUuid": "5f23aab4-f41d-5241-bcc2-a6a23f84df0c",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.2,
+            "specialBetValue": "1-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 23.5",
+            "marketName": "1º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 23.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "0a792c53-79b5-5a95-8b61-247d4632659e",
+            "marketUuid": "68698a96-6bb8-5012-9d92-a84955be687d",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.07,
+            "specialBetValue": "2-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 16.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 16.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "219bc9e8-bf95-5b56-ae92-a82d23eff8f4",
+            "marketUuid": "68698a96-6bb8-5012-9d92-a84955be687d",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 6.3,
+            "specialBetValue": "2-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 16.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 16.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "4489b21e-da29-51eb-b1e6-adbec0df7390",
+            "marketUuid": "97600baf-6d41-5e76-b163-cc0a9efa6e3c",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.16,
+            "specialBetValue": "2-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 17.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 17.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "ac9303d8-ad4c-5db3-813f-b51c8e16aaa0",
+            "marketUuid": "97600baf-6d41-5e76-b163-cc0a9efa6e3c",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 4.4,
+            "specialBetValue": "2-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 17.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 17.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "95ce080a-0ff0-55d8-b8f7-9ba222d11d4f",
+            "marketUuid": "bcb47645-74fb-57e6-80f9-5fd18e8f83b4",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.28,
+            "specialBetValue": "2-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 18.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 18.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "684add0b-9a1d-5321-a944-1b08a437fd3a",
+            "marketUuid": "bcb47645-74fb-57e6-80f9-5fd18e8f83b4",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 3.25,
+            "specialBetValue": "2-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 18.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 18.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "ed39f747-c457-57bd-ac9b-1df8f405a447",
+            "marketUuid": "a8ccdb3a-e8c5-5c5e-afa7-def43d05a6de",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.45,
+            "specialBetValue": "2-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 19.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "35d1f76a-b56e-5958-992b-7f58afe7786c",
+            "marketUuid": "a8ccdb3a-e8c5-5c5e-afa7-def43d05a6de",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2.5,
+            "specialBetValue": "2-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 19.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "d6f7b616-85ea-563e-91d9-ca8c756040ac",
+            "marketUuid": "7cda55bb-21bc-5b2c-9167-3fcc5b7fa9ee",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.7,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 20.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "6a264353-e2eb-511e-9169-9084ffc040c5",
+            "marketUuid": "7cda55bb-21bc-5b2c-9167-3fcc5b7fa9ee",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2,
+            "specialBetValue": "2-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 20.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "4d76e534-54eb-5261-a30b-5d7dca605153",
+            "marketUuid": "8ea72ce3-3fe4-5a7d-921f-0d5bbefdec96",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.07,
+            "specialBetValue": "2-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 21.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "a76b4e53-971a-55fa-b18b-2c0281e832a0",
+            "marketUuid": "8ea72ce3-3fe4-5a7d-921f-0d5bbefdec96",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.64,
+            "specialBetValue": "2-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 21.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "ce685648-bf1c-5120-8864-42ab7eeefec1",
+            "marketUuid": "a435edad-3e19-5ddf-91d8-a609108e9c9a",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.7,
+            "specialBetValue": "2-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 22.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "499a7e6e-850f-533c-8213-5c5716e3ba86",
+            "marketUuid": "a435edad-3e19-5ddf-91d8-a609108e9c9a",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.39,
+            "specialBetValue": "2-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 22.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "af0ed6c8-59ff-5de9-ac64-131bda0c754c",
+            "marketUuid": "a037a257-e3af-54bc-bfb5-a167cf8f9bbe",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 3.85,
+            "specialBetValue": "2-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 23.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 23.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "7f582c0c-2a81-5150-839c-5d5710dc7f06",
+            "marketUuid": "a037a257-e3af-54bc-bfb5-a167cf8f9bbe",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.2,
+            "specialBetValue": "2-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 23.5",
+            "marketName": "2º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 23.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "ec25bd70-25c6-5870-b68a-5785ec807dca",
+            "marketUuid": "7d17b7d7-1dee-5698-8cb0-1011a12183c8",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.07,
+            "specialBetValue": "3-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 16.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 16.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "943fe64b-ea23-5945-8d85-7134913cf2c2",
+            "marketUuid": "7d17b7d7-1dee-5698-8cb0-1011a12183c8",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 6.3,
+            "specialBetValue": "3-16.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "16.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 16.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 16.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "894247ce-c5e6-5982-a9d0-617dd691612e",
+            "marketUuid": "861718be-35ed-50f9-906e-26e01c61740c",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.16,
+            "specialBetValue": "3-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 17.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 17.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "0e8c8109-96e2-5882-924d-4b4ae3e09222",
+            "marketUuid": "861718be-35ed-50f9-906e-26e01c61740c",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 4.4,
+            "specialBetValue": "3-17.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "17.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 17.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 17.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "cd4837b5-74d6-579e-aa93-2638bfdf6ed2",
+            "marketUuid": "4e30ddbe-30ba-5cb7-9bf6-e94ea9be222d",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.28,
+            "specialBetValue": "3-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 18.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 18.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "fb6efa27-25e1-59a6-8a20-83a96f875550",
+            "marketUuid": "4e30ddbe-30ba-5cb7-9bf6-e94ea9be222d",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 3.25,
+            "specialBetValue": "3-18.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "18.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 18.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 18.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "d911ad81-d683-56e8-a8e2-db42f72fe922",
+            "marketUuid": "3b786258-109c-5adc-9bdd-37233b8117ec",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.45,
+            "specialBetValue": "3-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 19.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 19.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "d0aa8e91-ef6f-5875-8958-244716dfddc5",
+            "marketUuid": "3b786258-109c-5adc-9bdd-37233b8117ec",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2.5,
+            "specialBetValue": "3-19.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "19.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 19.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 19.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "76f5e8c3-904f-5098-ac9f-eeeaef099fa2",
+            "marketUuid": "b3444c64-025c-5f8d-b009-d103219ee4e1",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 1.7,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 20.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 20.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "9c25f718-d538-5c76-ad57-52714e04737d",
+            "marketUuid": "b3444c64-025c-5f8d-b009-d103219ee4e1",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 2,
+            "specialBetValue": "3-20.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "20.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 20.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 20.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "4675e6b5-9e8b-5b60-a768-2962272a3c5d",
+            "marketUuid": "6039d6e6-97a6-51bc-a52a-00f1f4727417",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.07,
+            "specialBetValue": "3-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 21.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 21.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "96dd786a-f175-54be-bd43-a523cd0e5a5b",
+            "marketUuid": "6039d6e6-97a6-51bc-a52a-00f1f4727417",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.64,
+            "specialBetValue": "3-21.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "21.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 21.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 21.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "f108253e-e4c1-5ee4-a674-118b5dd59034",
+            "marketUuid": "66537ab5-b9aa-5ea8-924a-9bb7f868dca9",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 2.7,
+            "specialBetValue": "3-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 22.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 22.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "d88ddaa6-e079-5831-b300-f4e8803e68ad",
+            "marketUuid": "66537ab5-b9aa-5ea8-924a-9bb7f868dca9",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.39,
+            "specialBetValue": "3-22.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "22.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 22.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 22.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "f0a1adb8-4149-50a3-b961-8ccb8a8b6031",
+            "marketUuid": "d37ae45a-b639-51d4-819d-d74152688913",
+            "marketId": 232501,
+            "outcomeId": 4209282,
+            "price": 3.85,
+            "specialBetValue": "3-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 23.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Mais de 23.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "90643d3d-ee1b-5fc3-86f6-a0cacfc6ef03",
+            "marketUuid": "d37ae45a-b639-51d4-819d-d74152688913",
+            "marketId": 232501,
+            "outcomeId": 4209281,
+            "price": 1.2,
+            "specialBetValue": "3-23.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "23.5"
+            },
+            "marketGroupOrder": 17,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 23.5",
+            "marketName": "3º  Mapa - Total de Rodadas (Incl. Prorrogação)",
+            "info": "Menos de 23.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "c8000449-947f-5947-8a1b-ffa74d2b779f",
+            "marketUuid": "5407bfd1-7a4b-5a02-879a-53efacd50af9",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.56,
+            "specialBetValue": "1-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 8.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "2caa98d3-7591-5c81-aaf7-834fed96266f",
+            "marketUuid": "5407bfd1-7a4b-5a02-879a-53efacd50af9",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 2.25,
+            "specialBetValue": "1-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de8.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 8.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "ced3eb7d-f2b3-555e-9099-f2b6c2e82f2a",
+            "marketUuid": "f7f7df66-f094-5fe1-8f56-27ce9b543cf6",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.74,
+            "specialBetValue": "1-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 9.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "c1189ce5-ec8c-5fc3-b6e2-dd67a1a11926",
+            "marketUuid": "f7f7df66-f094-5fe1-8f56-27ce9b543cf6",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.95,
+            "specialBetValue": "1-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de9.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 9.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "6d4bb23c-71c7-5322-981d-92b18369664a",
+            "marketUuid": "16bd6fb3-f6c8-5eff-9497-cc3e73f02ce6",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.97,
+            "specialBetValue": "1-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 10.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "f7133ee6-a593-55b3-8c2e-2a0ecfbb4e52",
+            "marketUuid": "16bd6fb3-f6c8-5eff-9497-cc3e73f02ce6",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.72,
+            "specialBetValue": "1-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de10.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 10.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "128e554d-7224-5791-87d6-5aa40610fabf",
+            "marketUuid": "d9d7119d-7f8e-53ce-9ed6-541bdfb735d0",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.25,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 11.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "4237d401-7f4a-5f8f-85c8-4b50297eafb1",
+            "marketUuid": "d9d7119d-7f8e-53ce-9ed6-541bdfb735d0",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.55,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de11.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 11.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "e141f212-da9b-50c5-bf40-5f1695afebda",
+            "marketUuid": "a8fd01ad-7cbd-5d54-a9ea-886018d604ab",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.42,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 12.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "6e56f6ae-3fe3-59db-878d-0f5b563a3046",
+            "marketUuid": "a8fd01ad-7cbd-5d54-a9ea-886018d604ab",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.48,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de12.5",
+            "marketName": "1º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 12.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "4ea8f9f8-7fa5-5a7e-ab8a-851137009748",
+            "marketUuid": "d1f5dc66-ea17-53b4-8896-fcc239b517b6",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.56,
+            "specialBetValue": "2-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 8.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "ea7c88fb-6c39-5c79-8cfb-4440ac22c4ea",
+            "marketUuid": "d1f5dc66-ea17-53b4-8896-fcc239b517b6",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 2.25,
+            "specialBetValue": "2-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de8.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 8.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "56b44973-91d6-5e3e-80af-301e21b49614",
+            "marketUuid": "d1dabaf1-e3ad-555e-ab57-dc75e268f160",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.74,
+            "specialBetValue": "2-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 9.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "d8586333-a4f9-58c2-ae92-ce367db264b3",
+            "marketUuid": "d1dabaf1-e3ad-555e-ab57-dc75e268f160",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.95,
+            "specialBetValue": "2-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de9.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 9.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "c8a48f08-cde8-59aa-b42d-d66757761462",
+            "marketUuid": "58514858-a751-56a9-986e-75a63371c3c9",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.97,
+            "specialBetValue": "2-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 10.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "29ee94af-61c8-5c4b-847b-5c8b584f003c",
+            "marketUuid": "58514858-a751-56a9-986e-75a63371c3c9",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.72,
+            "specialBetValue": "2-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de10.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 10.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "6f5025f0-8039-5f49-9b8f-a383e6bb5d2f",
+            "marketUuid": "88d1116b-2e6b-58cc-960a-b85699853a4b",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.25,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 11.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "b0c79293-33cd-5ee3-bdaf-d74469787413",
+            "marketUuid": "88d1116b-2e6b-58cc-960a-b85699853a4b",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.55,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de11.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 11.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "692aac0d-7893-57a9-b5f8-c8e7c532b5df",
+            "marketUuid": "426914d9-7625-5137-a7bc-a15063523dd7",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.42,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 12.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "40bdc36a-5742-5299-b585-c4bb5b0ec5a7",
+            "marketUuid": "426914d9-7625-5137-a7bc-a15063523dd7",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.48,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de12.5",
+            "marketName": "2º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 12.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "f5b17e92-d3b2-593e-bb08-4abfb6892eaa",
+            "marketUuid": "51527787-cb1a-5ae4-9eb3-4b1ba5baf4d9",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.56,
+            "specialBetValue": "3-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 8.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "5dc61187-ba01-50d7-a853-3f9b431c9084",
+            "marketUuid": "51527787-cb1a-5ae4-9eb3-4b1ba5baf4d9",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 2.25,
+            "specialBetValue": "3-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de8.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 8.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "aab3388a-e814-575e-8a7a-176427279af0",
+            "marketUuid": "42cebe95-37b8-5442-850f-7c340372a2b8",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.74,
+            "specialBetValue": "3-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 9.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "d0bdbae6-d83d-5dbd-8711-193e7424fefc",
+            "marketUuid": "42cebe95-37b8-5442-850f-7c340372a2b8",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.95,
+            "specialBetValue": "3-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de9.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 9.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "282d891c-e0a2-5af5-835f-b29fb529e475",
+            "marketUuid": "c3203370-52fa-50f5-8dab-df0ed77f5905",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 1.97,
+            "specialBetValue": "3-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 10.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "bd6bb297-84f3-5050-87ff-f3dc23add728",
+            "marketUuid": "c3203370-52fa-50f5-8dab-df0ed77f5905",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.72,
+            "specialBetValue": "3-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de10.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 10.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "1f6cb2bb-d922-56a5-b605-db1cf44e9fd1",
+            "marketUuid": "b14b9c29-e577-5931-a038-876f89c9f48f",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.25,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 11.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "9ba3705a-9324-55f0-9d29-d8ae696c7495",
+            "marketUuid": "b14b9c29-e577-5931-a038-876f89c9f48f",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.55,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de11.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 11.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "7cb96323-34cc-55ac-9e1c-6edcd3d9ea42",
+            "marketUuid": "b387a3b1-6785-5a34-a79b-6e753779713d",
+            "marketId": 232504,
+            "outcomeId": 4209288,
+            "price": 2.42,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá mais de 12.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "94a69e68-b53e-5fd2-a790-ec4fcee620c3",
+            "marketUuid": "b387a3b1-6785-5a34-a79b-6e753779713d",
+            "marketId": 232504,
+            "outcomeId": 4209287,
+            "price": 1.48,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 18,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de12.5",
+            "marketName": "3º Mapa - TyLoo - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "TyLoo vencerá menos de 12.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "177192b4-ed54-569e-bec0-cc2c260a8e41",
+            "marketUuid": "e20f5560-b50c-5e87-8b6e-0a90b8ff9a34",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.13,
+            "specialBetValue": "1-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 8.5 rounds no 1º  mapa"
+          },
+          {
+            "uuid": "cf351c77-45f6-59d6-a11b-6c96d9b2c147",
+            "marketUuid": "e20f5560-b50c-5e87-8b6e-0a90b8ff9a34",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4.85,
+            "specialBetValue": "1-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 8.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 8.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "e598d07f-7862-57a6-91fa-cb81530cc42d",
+            "marketUuid": "f5e5dfc2-67b1-58e5-936d-11829795fd56",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.19,
+            "specialBetValue": "1-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 9.5 rounds no 1º  mapa"
+          },
+          {
+            "uuid": "1e0fec8d-9974-54a0-bbaa-23125f2d3ea3",
+            "marketUuid": "f5e5dfc2-67b1-58e5-936d-11829795fd56",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4,
+            "specialBetValue": "1-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 9.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 9.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "420b3dc8-2678-571c-92bf-b868e75d6567",
+            "marketUuid": "36772199-dcef-54ca-a460-0d15430dc355",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.26,
+            "specialBetValue": "1-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 10.5 rounds no 1º  mapa"
+          },
+          {
+            "uuid": "4be243ec-5cac-51e0-bcc2-b3dd5b6322aa",
+            "marketUuid": "36772199-dcef-54ca-a460-0d15430dc355",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 3.4,
+            "specialBetValue": "1-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 10.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 10.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "e1e2fcd7-0fed-508e-ae3a-d08ea57b50f1",
+            "marketUuid": "dd421498-c4c0-53a9-8bf4-899011bf57fd",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.33,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 11.5 rounds no 1º  mapa"
+          },
+          {
+            "uuid": "64d20855-812b-57a1-9bd0-b81bed60389b",
+            "marketUuid": "dd421498-c4c0-53a9-8bf4-899011bf57fd",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.95,
+            "specialBetValue": "1-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 11.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 11.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "1e1da2a3-478a-5b64-98b8-21be8bcacd16",
+            "marketUuid": "1336642a-0939-5476-93bb-2d0158d05494",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.37,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 12.5 rounds no 1º  mapa"
+          },
+          {
+            "uuid": "985b651f-a4fb-5226-bd93-8e1968918bed",
+            "marketUuid": "1336642a-0939-5476-93bb-2d0158d05494",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.77,
+            "specialBetValue": "1-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "1º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 12.5 rounds no 1º mapa"
+          },
+          {
+            "uuid": "61a217cb-ea26-5b29-8474-30032205b024",
+            "marketUuid": "48c788c7-3330-5a9a-92eb-6a10ed8856d3",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.13,
+            "specialBetValue": "2-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 8.5 rounds no 2º  mapa"
+          },
+          {
+            "uuid": "cc73d9f4-962a-540c-871e-96aca8efb202",
+            "marketUuid": "48c788c7-3330-5a9a-92eb-6a10ed8856d3",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4.85,
+            "specialBetValue": "2-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 8.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 8.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "f929ddf7-fd71-5956-9737-c7a8c79f156a",
+            "marketUuid": "7d8be2a0-ba2d-566c-a8f1-76f9658e4537",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.19,
+            "specialBetValue": "2-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 9.5 rounds no 2º  mapa"
+          },
+          {
+            "uuid": "d109afae-e6ff-5e5f-8f73-27154849290a",
+            "marketUuid": "7d8be2a0-ba2d-566c-a8f1-76f9658e4537",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4,
+            "specialBetValue": "2-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 9.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 9.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "8ca252c2-6edd-5fc3-a7fe-1f5d2fc81393",
+            "marketUuid": "d1adf271-c8d5-5ecc-be36-99497ce66f73",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.26,
+            "specialBetValue": "2-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 10.5 rounds no 2º  mapa"
+          },
+          {
+            "uuid": "8aaf1376-bd20-5b2b-b559-85a8979874b9",
+            "marketUuid": "d1adf271-c8d5-5ecc-be36-99497ce66f73",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 3.4,
+            "specialBetValue": "2-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 10.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 10.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "f6a5e68d-f870-511b-92bf-28a0b8ee740c",
+            "marketUuid": "824c4adc-5c4f-5d13-950e-2d0f4e96d8ef",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.33,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 11.5 rounds no 2º  mapa"
+          },
+          {
+            "uuid": "a7ae0d52-99d9-5648-88dd-3bf0355c9f48",
+            "marketUuid": "824c4adc-5c4f-5d13-950e-2d0f4e96d8ef",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.95,
+            "specialBetValue": "2-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 11.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 11.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "531eea82-27c3-59ab-af96-a0cbd59f69f7",
+            "marketUuid": "694017d3-627e-5d03-a828-a93a5bdea23e",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.37,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 12.5 rounds no 2º  mapa"
+          },
+          {
+            "uuid": "8800718c-0bf9-5153-b481-93c3cdccb258",
+            "marketUuid": "694017d3-627e-5d03-a828-a93a5bdea23e",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.77,
+            "specialBetValue": "2-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "2º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 12.5 rounds no 2º mapa"
+          },
+          {
+            "uuid": "e43fc0bb-d141-531c-87f3-d48fa0eeab92",
+            "marketUuid": "652b8928-1d86-5c4a-ab5c-bfa7a0927c87",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.13,
+            "specialBetValue": "3-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 8.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 8.5 rounds no 3º  mapa"
+          },
+          {
+            "uuid": "4a3997f9-eb3b-546d-bb18-11bda63c7ff0",
+            "marketUuid": "652b8928-1d86-5c4a-ab5c-bfa7a0927c87",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4.85,
+            "specialBetValue": "3-8.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "8.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 8.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 8.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "62af2253-f103-5458-bb5a-a505548f86a6",
+            "marketUuid": "52f16129-247a-584e-8cc2-4e95e340b277",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.19,
+            "specialBetValue": "3-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 9.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 9.5 rounds no 3º  mapa"
+          },
+          {
+            "uuid": "b4b36657-154f-53f4-856b-3ec8f06afde6",
+            "marketUuid": "52f16129-247a-584e-8cc2-4e95e340b277",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 4,
+            "specialBetValue": "3-9.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "9.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 9.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 9.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "127a50cc-412f-59ba-9b53-8e3f699a548c",
+            "marketUuid": "634cd90c-bdae-51db-9d69-fd3114d44ffc",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.26,
+            "specialBetValue": "3-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 10.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 10.5 rounds no 3º  mapa"
+          },
+          {
+            "uuid": "f52e5c40-a6b8-512f-b1e2-06927f33f12a",
+            "marketUuid": "634cd90c-bdae-51db-9d69-fd3114d44ffc",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 3.4,
+            "specialBetValue": "3-10.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "10.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 10.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 10.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "1c7b8ce7-7a12-5a33-a918-acd2b977b12e",
+            "marketUuid": "14f501a0-823b-5c25-a054-4c1255e83830",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.33,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 11.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 11.5 rounds no 3º  mapa"
+          },
+          {
+            "uuid": "0fa12b0f-3c6f-5c30-b197-e90b35d181ff",
+            "marketUuid": "14f501a0-823b-5c25-a054-4c1255e83830",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.95,
+            "specialBetValue": "3-11.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "11.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 11.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 11.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "09e21ef7-c696-502a-957e-7e6ce53c5ccc",
+            "marketUuid": "83de6455-0610-5b2f-bc0d-c57f2d1a4b1c",
+            "marketId": 232505,
+            "outcomeId": 4209290,
+            "price": 1.37,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Mais de 12.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá mais de 12.5 rounds no 3º  mapa"
+          },
+          {
+            "uuid": "ab0b5607-0fe3-5722-9348-9588935170a4",
+            "marketUuid": "83de6455-0610-5b2f-bc0d-c57f2d1a4b1c",
+            "marketId": 232505,
+            "outcomeId": 4209289,
+            "price": 2.77,
+            "specialBetValue": "3-12.5",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3",
+              "total": "12.5"
+            },
+            "marketGroupOrder": 19,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "Menos de 12.5",
+            "marketName": "3º Mapa - G2 - Rodadas Vencidas (Incl. Prorrogação)",
+            "info": "G2 vencerá menos de 12.5 rounds no 3º mapa"
+          },
+          {
+            "uuid": "f03e3f96-75f8-52fa-966c-768922f07470",
+            "marketUuid": "b6b3a5c1-be4f-5029-b213-9fcd6c50fcfa",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 5.9,
+            "specialBetValue": "-5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-5.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "54eb62b1-052b-544b-aa6f-c53bf55c7c33",
+            "marketUuid": "b6b3a5c1-be4f-5029-b213-9fcd6c50fcfa",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.09,
+            "specialBetValue": "-5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (5.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "ae0d3160-380a-507b-a975-9a8676d63cf8",
+            "marketUuid": "7e7eba70-519f-5863-a6c0-d36db2f5c46c",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4.85,
+            "specialBetValue": "-4.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-4.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "17ebafba-9bef-53ae-851f-b921dbb0bb31",
+            "marketUuid": "7e7eba70-519f-5863-a6c0-d36db2f5c46c",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.13,
+            "specialBetValue": "-4.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (4.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "5dd10888-84c4-55ff-9ffd-f9f7ca2b1761",
+            "marketUuid": "6a29445f-03b8-5b69-ab9f-a119c8a74780",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4,
+            "specialBetValue": "-3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-3.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "0dfc2470-01a9-5873-bd81-dc96f1edec77",
+            "marketUuid": "6a29445f-03b8-5b69-ab9f-a119c8a74780",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.19,
+            "specialBetValue": "-3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (3.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "3c4cdeb1-ad08-5531-857c-c2789f48104e",
+            "marketUuid": "e2d4c9f2-3fd4-536c-8430-48ecf4125c9c",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 3.4,
+            "specialBetValue": "-2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-2.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "4997d30c-eb5e-5e4d-8554-3e60d912a6ea",
+            "marketUuid": "e2d4c9f2-3fd4-536c-8430-48ecf4125c9c",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.26,
+            "specialBetValue": "-2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (2.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "aaec6b9f-c964-52ec-9d4c-899924427e14",
+            "marketUuid": "eddd8d61-7711-596c-9074-3955bde535dd",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.97,
+            "specialBetValue": "2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (2.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "80ddd40e-9e28-56e7-89a9-90536f5279d5",
+            "marketUuid": "eddd8d61-7711-596c-9074-3955bde535dd",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.72,
+            "specialBetValue": "2.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-2.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "3b395f2e-3f8e-538f-891e-d273a3a3f197",
+            "marketUuid": "b7f61061-64a1-5817-bd86-700643667385",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.74,
+            "specialBetValue": "3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (3.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "66bf4e9a-91e0-5550-be8a-4fbfdde8e9c0",
+            "marketUuid": "b7f61061-64a1-5817-bd86-700643667385",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.95,
+            "specialBetValue": "3.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-3.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "06c6b463-b8d6-5569-89c0-d60296c2cdfb",
+            "marketUuid": "0499e44f-5fee-5fa9-bd05-70704ae45de0",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.56,
+            "specialBetValue": "4.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (4.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "a5af61c5-d25e-5591-ab3a-fbc1991e4999",
+            "marketUuid": "0499e44f-5fee-5fa9-bd05-70704ae45de0",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.25,
+            "specialBetValue": "4.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-4.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "aefbfc80-8ae3-5ed8-96e1-9be018cac5c4",
+            "marketUuid": "2359f2f4-bfb8-5892-a319-7bf204aedb7b",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.4,
+            "specialBetValue": "5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (5.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "d96ab8d6-8609-5c12-8805-bc8df4a2ac1a",
+            "marketUuid": "2359f2f4-bfb8-5892-a319-7bf204aedb7b",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.65,
+            "specialBetValue": "5.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-5.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "125378a3-bd57-5f0c-994c-c605daac10e0",
+            "marketUuid": "a94ed681-2bb3-5ab6-95de-b2d5a96d040d",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.28,
+            "specialBetValue": "6.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (6.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (6.5)"
+          },
+          {
+            "uuid": "e45be3a5-0900-511e-949b-49be512a7676",
+            "marketUuid": "a94ed681-2bb3-5ab6-95de-b2d5a96d040d",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 3.25,
+            "specialBetValue": "6.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-6.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-6.5)"
+          },
+          {
+            "uuid": "84343728-4414-52b6-b2c3-c93f412a8825",
+            "marketUuid": "ee9b9cac-5b7b-5f84-8fbe-cd071bb0cc9f",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.18,
+            "specialBetValue": "7.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (7.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (7.5)"
+          },
+          {
+            "uuid": "9c7a99e8-6005-5847-b755-31cc513ad93d",
+            "marketUuid": "ee9b9cac-5b7b-5f84-8fbe-cd071bb0cc9f",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 4.1,
+            "specialBetValue": "7.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-7.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-7.5)"
+          },
+          {
+            "uuid": "177c4603-b922-516f-b8e4-f10f20920050",
+            "marketUuid": "cf8848b5-36a4-5b7c-a31c-552a2d8cfe51",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.11,
+            "specialBetValue": "8.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (8.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (8.5)"
+          },
+          {
+            "uuid": "cb9af7ac-927a-5f0a-a827-dccb16c56c24",
+            "marketUuid": "cf8848b5-36a4-5b7c-a31c-552a2d8cfe51",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 5.4,
+            "specialBetValue": "8.5-1",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-8.5)",
+            "marketName": "1º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-8.5)"
+          },
+          {
+            "uuid": "a575138c-f135-50c5-b8fe-0a204f4c2499",
+            "marketUuid": "054fe0d8-3f40-5e3e-ac05-4c248f5da9f0",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 5.9,
+            "specialBetValue": "-5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-5.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "e325fb96-2092-5186-9c6f-1bb15313ee14",
+            "marketUuid": "054fe0d8-3f40-5e3e-ac05-4c248f5da9f0",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.09,
+            "specialBetValue": "-5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (5.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "1b5fba92-a2df-5c7b-b2f9-71a1e583e27c",
+            "marketUuid": "654b8cf7-86f5-57be-9b69-ab5a2b30a199",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4.85,
+            "specialBetValue": "-4.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-4.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "880d9c75-ed0b-53c6-b496-4065f00bc8e8",
+            "marketUuid": "654b8cf7-86f5-57be-9b69-ab5a2b30a199",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.13,
+            "specialBetValue": "-4.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (4.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "fa046b3e-4c36-58d6-bf49-d8dcc7148833",
+            "marketUuid": "3ca5f1a1-c6a0-534a-be9e-2de22dd81575",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4,
+            "specialBetValue": "-3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-3.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "24482145-f3be-5f5e-91c6-94bddef7e21d",
+            "marketUuid": "3ca5f1a1-c6a0-534a-be9e-2de22dd81575",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.19,
+            "specialBetValue": "-3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (3.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "7a1d6215-a323-5ca7-b1b2-a5c62aa92edc",
+            "marketUuid": "ec961033-ef7c-5a05-9b68-0361e26d8bf3",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 3.4,
+            "specialBetValue": "-2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-2.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "a5d82e73-9e5a-53b5-8e7a-17a424e7be85",
+            "marketUuid": "ec961033-ef7c-5a05-9b68-0361e26d8bf3",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.26,
+            "specialBetValue": "-2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (2.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "b8918a5a-6c23-5943-989c-9920c0daffc8",
+            "marketUuid": "734c1c7b-b58b-5c39-bc5e-1268823e57e4",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.97,
+            "specialBetValue": "2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (2.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "e8d0ccd4-38b0-51de-9370-a5e24585b4ab",
+            "marketUuid": "734c1c7b-b58b-5c39-bc5e-1268823e57e4",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.72,
+            "specialBetValue": "2.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-2.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "96160d9c-bb50-5225-a937-c302046966f5",
+            "marketUuid": "8211ea91-7135-505f-84d7-f4d235d8f3d3",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.74,
+            "specialBetValue": "3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (3.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "e7052039-78af-5e3f-b42c-1b687bab7655",
+            "marketUuid": "8211ea91-7135-505f-84d7-f4d235d8f3d3",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.95,
+            "specialBetValue": "3.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-3.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "45aca55c-2250-5d41-bdbb-18cad1588df1",
+            "marketUuid": "fac430c8-b5c8-5845-92cc-2b7fd645150c",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.56,
+            "specialBetValue": "4.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (4.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "f399f938-b93b-5892-a13f-467e521753f2",
+            "marketUuid": "fac430c8-b5c8-5845-92cc-2b7fd645150c",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.25,
+            "specialBetValue": "4.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-4.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "2c1d6767-e676-5e22-bc94-d097cab52609",
+            "marketUuid": "5fe53b3d-ecf8-542d-a0fe-f590c2679d6e",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.4,
+            "specialBetValue": "5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (5.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "0e89f83e-be5b-53a7-a8c7-dbd5d32b7f32",
+            "marketUuid": "5fe53b3d-ecf8-542d-a0fe-f590c2679d6e",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.65,
+            "specialBetValue": "5.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-5.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "d775eb7b-2a9f-5060-9575-0dd949ce91a7",
+            "marketUuid": "8fe998ea-9000-530c-bb62-c3b75b4ad770",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.28,
+            "specialBetValue": "6.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (6.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (6.5)"
+          },
+          {
+            "uuid": "46b4770d-0ef8-5d44-9ff3-1b6f0f97dba4",
+            "marketUuid": "8fe998ea-9000-530c-bb62-c3b75b4ad770",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 3.25,
+            "specialBetValue": "6.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-6.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-6.5)"
+          },
+          {
+            "uuid": "459015c9-b0d4-59b8-a4eb-226fa49781ef",
+            "marketUuid": "e73ec09b-8fbb-5787-8678-b9139a7f7b77",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.18,
+            "specialBetValue": "7.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (7.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (7.5)"
+          },
+          {
+            "uuid": "ba705857-e6e6-5595-a920-8aa21d951ae4",
+            "marketUuid": "e73ec09b-8fbb-5787-8678-b9139a7f7b77",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 4.1,
+            "specialBetValue": "7.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-7.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-7.5)"
+          },
+          {
+            "uuid": "26407746-990d-57a2-bc41-b848c71f0c74",
+            "marketUuid": "dfdf9840-d867-5c44-abe6-d2f9646f89f1",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.11,
+            "specialBetValue": "8.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (8.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (8.5)"
+          },
+          {
+            "uuid": "6c01e69e-1c4d-520c-a4ce-4fe9216447ce",
+            "marketUuid": "dfdf9840-d867-5c44-abe6-d2f9646f89f1",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 5.4,
+            "specialBetValue": "8.5-2",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-8.5)",
+            "marketName": "2º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-8.5)"
+          },
+          {
+            "uuid": "a6def307-a288-50de-9cb8-cca207558a9b",
+            "marketUuid": "9d9adf54-d71b-5767-8dfd-736b7c623a36",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 5.9,
+            "specialBetValue": "-5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-5.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "9777ff98-85f6-51a6-864f-97f3a467e0bf",
+            "marketUuid": "9d9adf54-d71b-5767-8dfd-736b7c623a36",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.09,
+            "specialBetValue": "-5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (5.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "df3c2a25-1a36-580b-b374-53a23a337ab5",
+            "marketUuid": "bdd50e60-b0c9-5fe6-ac99-6e7c17d15b41",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4.85,
+            "specialBetValue": "-4.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-4.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "8e267012-85c7-5e5e-8922-82a05f5d54b5",
+            "marketUuid": "bdd50e60-b0c9-5fe6-ac99-6e7c17d15b41",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.13,
+            "specialBetValue": "-4.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-4.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (4.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "52f8526a-6c11-5e40-ab31-5c085786cfab",
+            "marketUuid": "940ebf14-4f15-5424-8914-a0fa9695abdf",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 4,
+            "specialBetValue": "-3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-3.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "d3240025-ce6a-55e8-a21e-9610728d8705",
+            "marketUuid": "940ebf14-4f15-5424-8914-a0fa9695abdf",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.19,
+            "specialBetValue": "-3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (3.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "fcaa9777-ba8a-5ab0-bc72-08054d353d66",
+            "marketUuid": "16a7dc20-c4d0-5f3e-b8f7-f6f4376d9ec4",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 3.4,
+            "specialBetValue": "-2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (-2.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "a3a20383-b7b3-5e04-9621-9e172a1eab88",
+            "marketUuid": "16a7dc20-c4d0-5f3e-b8f7-f6f4376d9ec4",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.26,
+            "specialBetValue": "-2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "-2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (2.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "87c4da2f-c511-50c2-b953-ab85baddb4c2",
+            "marketUuid": "56e46f4e-3566-5eab-8492-7e10804b7e03",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.97,
+            "specialBetValue": "2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (2.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (2.5)"
+          },
+          {
+            "uuid": "bfa23e81-65a4-5e62-9f8f-cfd3083a0eb9",
+            "marketUuid": "56e46f4e-3566-5eab-8492-7e10804b7e03",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.72,
+            "specialBetValue": "2.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "2.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-2.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-2.5)"
+          },
+          {
+            "uuid": "144941c2-725b-5bb3-ba60-e07abbe2de00",
+            "marketUuid": "831120b9-567b-5e6a-809c-c5bda479a3b0",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.74,
+            "specialBetValue": "3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (3.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (3.5)"
+          },
+          {
+            "uuid": "dc200c33-7186-5a2c-9e5f-0627a3dde02b",
+            "marketUuid": "831120b9-567b-5e6a-809c-c5bda479a3b0",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 1.95,
+            "specialBetValue": "3.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "3.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-3.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-3.5)"
+          },
+          {
+            "uuid": "735ad431-e54a-5089-b480-18485de2e5e8",
+            "marketUuid": "d772cc1a-a817-5afd-a523-de72b108e886",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.56,
+            "specialBetValue": "4.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (4.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (4.5)"
+          },
+          {
+            "uuid": "840fd99f-ff8d-5079-89c4-4cea8a144b8f",
+            "marketUuid": "d772cc1a-a817-5afd-a523-de72b108e886",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.25,
+            "specialBetValue": "4.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "4.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-4.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-4.5)"
+          },
+          {
+            "uuid": "876011d0-b373-5f0d-af30-43947376d9bc",
+            "marketUuid": "86a723f4-94e9-53d4-a344-1cfcb2fe1bfc",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.4,
+            "specialBetValue": "5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (5.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (5.5)"
+          },
+          {
+            "uuid": "af6815a1-697f-580c-bff3-9e8459d0a2d7",
+            "marketUuid": "86a723f4-94e9-53d4-a344-1cfcb2fe1bfc",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 2.65,
+            "specialBetValue": "5.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "5.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-5.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-5.5)"
+          },
+          {
+            "uuid": "a67dec58-dc2c-5070-ae7c-7d05c9b11519",
+            "marketUuid": "ae571fc3-98c2-57ac-a896-ffcd814e16e3",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.28,
+            "specialBetValue": "6.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (6.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (6.5)"
+          },
+          {
+            "uuid": "f6d11539-e832-5650-81d0-f04de829ca3a",
+            "marketUuid": "ae571fc3-98c2-57ac-a896-ffcd814e16e3",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 3.25,
+            "specialBetValue": "6.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "6.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-6.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-6.5)"
+          },
+          {
+            "uuid": "3c6f05cd-f592-5172-8a5d-fb909db768fe",
+            "marketUuid": "0465522d-bc25-51b6-9b86-1590efd71f51",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.18,
+            "specialBetValue": "7.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (7.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (7.5)"
+          },
+          {
+            "uuid": "925eb5c1-b9ab-512d-991b-dc9b54dd8b21",
+            "marketUuid": "0465522d-bc25-51b6-9b86-1590efd71f51",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 4.1,
+            "specialBetValue": "7.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "7.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-7.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-7.5)"
+          },
+          {
+            "uuid": "453c480f-daa0-5146-876a-a4720a5f64ad",
+            "marketUuid": "8117dfb8-68ee-547a-b4b8-1aae33e3a34d",
+            "marketId": 232500,
+            "outcomeId": 4209279,
+            "price": 1.11,
+            "specialBetValue": "8.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "TyLoo (8.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "TyLoo irá cobrir o Handicap (8.5)"
+          },
+          {
+            "uuid": "1a321ed1-b601-5ed0-8d0a-d352f01463a9",
+            "marketUuid": "8117dfb8-68ee-547a-b4b8-1aae33e3a34d",
+            "marketId": 232500,
+            "outcomeId": 4209280,
+            "price": 5.4,
+            "specialBetValue": "8.5-3",
+            "status": "active",
+            "specifiers": {
+              "hcp": "8.5",
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 20,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "G2 (-8.5)",
+            "marketName": "3º  Mapa - Handicap de Rodadas (Incl. Prorrogação)",
+            "info": "G2 irá cobrir o Handicap (-8.5)"
+          },
+          {
+            "uuid": "982c410c-0aa8-524a-9ec1-17c557e5e763",
+            "marketUuid": "751787b3-0e5f-524b-acbe-789deaa8263a",
+            "marketId": 233856,
+            "outcomeId": 7035,
+            "price": 5.5,
+            "status": "active",
+            "marketGroupOrder": 22,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2:0",
+            "marketName": "Resultado Correto Mapas",
+            "info": "2:0"
+          },
+          {
+            "uuid": "43279cef-bfba-5171-ba2e-81e5668c22ab",
+            "marketUuid": "751787b3-0e5f-524b-acbe-789deaa8263a",
+            "marketId": 233856,
+            "outcomeId": 7036,
+            "price": 5.6,
+            "status": "active",
+            "marketGroupOrder": 22,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2:1",
+            "marketName": "Resultado Correto Mapas",
+            "info": "2:1"
+          },
+          {
+            "uuid": "9015ee1b-c8a3-5200-bf7b-ba43a2279cc3",
+            "marketUuid": "751787b3-0e5f-524b-acbe-789deaa8263a",
+            "marketId": 233856,
+            "outcomeId": 7037,
+            "price": 3.05,
+            "status": "active",
+            "marketGroupOrder": 22,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1:2",
+            "marketName": "Resultado Correto Mapas",
+            "info": "1:2"
+          },
+          {
+            "uuid": "8d67b947-bbd0-5c2f-b694-e66f45146f10",
+            "marketUuid": "751787b3-0e5f-524b-acbe-789deaa8263a",
+            "marketId": 233856,
+            "outcomeId": 7038,
+            "price": 1.95,
+            "status": "active",
+            "marketGroupOrder": 22,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "0:2",
+            "marketName": "Resultado Correto Mapas",
+            "info": "0:2"
+          },
+          {
+            "uuid": "683fc31b-79e8-5e96-80d5-ce2dd5a9ff41",
+            "marketUuid": "b2d91303-659d-5fb3-8aa8-8533c5f173c2",
+            "marketId": 232503,
+            "outcomeId": 4209285,
+            "price": 2.12,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1. - Ímpar",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número Ímpar de rounds no 1º mapa"
+          },
+          {
+            "uuid": "6f989006-42a2-542e-af2d-b45859315339",
+            "marketUuid": "b2d91303-659d-5fb3-8aa8-8533c5f173c2",
+            "marketId": 232503,
+            "outcomeId": 4209286,
+            "price": 1.59,
+            "specialBetValue": "1",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "1"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "1. - Par",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número par de rounds no 1º mapa"
+          },
+          {
+            "uuid": "16b45cf6-c97d-5dbb-be11-873b3bcd857f",
+            "marketUuid": "b261af36-d3f5-5e9a-ba24-4f8ff93a3d5b",
+            "marketId": 232503,
+            "outcomeId": 4209285,
+            "price": 2.12,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2. - Ímpar",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número Ímpar de rounds no 2º mapa"
+          },
+          {
+            "uuid": "cfb9e24f-db48-58bc-a06a-c86e1158f4c3",
+            "marketUuid": "b261af36-d3f5-5e9a-ba24-4f8ff93a3d5b",
+            "marketId": 232503,
+            "outcomeId": 4209286,
+            "price": 1.59,
+            "specialBetValue": "2",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "2"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "2. - Par",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número par de rounds no 2º mapa"
+          },
+          {
+            "uuid": "90fbbc05-929e-5ed1-af71-ce496cdfc733",
+            "marketUuid": "d88603b8-a7d5-5cea-a820-c38b4297b4e4",
+            "marketId": 232503,
+            "outcomeId": 4209285,
+            "price": 2.12,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "3. - Ímpar",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número Ímpar de rounds no 3º mapa"
+          },
+          {
+            "uuid": "f549ad56-5205-5711-9d32-835f246e12a8",
+            "marketUuid": "d88603b8-a7d5-5cea-a820-c38b4297b4e4",
+            "marketId": 232503,
+            "outcomeId": 4209286,
+            "price": 1.59,
+            "specialBetValue": "3",
+            "status": "active",
+            "specifiers": {
+              "mapnr": "3"
+            },
+            "marketGroupOrder": 23,
+            "offerStateId": 1,
+            "showSpecialBetValue": "0",
+            "tags": "v2",
+            "extra": {
+              "FeedID": "be",
+              "feedOriginTimestamp": "1789038598305000000",
+              "feedPlatformTimestamp": "1789038598428691451",
+              "tags": "v2"
+            },
+            "name": "3. - Par",
+            "marketName": "X° Mapa - Rodadas Totais Ímpar/Par (Incl. Prorrogação)",
+            "info": "Número par de rounds no 3º mapa"
+          }
+        ],
+        "oddsResults": null,
+        "matchResults": null,
+        "resolvingRules": null,
+        "utcDate": "2026-09-24T09:00:00Z",
+        "unixDateMillis": 1790240400000,
+        "streams": [
+          "PREMATCH"
+        ]
+      }
+    ]
+  }
+}

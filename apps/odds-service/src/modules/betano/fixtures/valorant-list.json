@@ -1,0 +1,876 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:19:30.330Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/sport/esports/competicoes/valorant/189513/?req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "leagueStandings": [],
+    "leagueGrouping": true,
+    "sport": {
+      "id": "ESPS",
+      "name": "Esports",
+      "region": "Valorant",
+      "url": "/sport/esports/"
+    },
+    "parentMarkets": [
+      {
+        "id": "0",
+        "name": "Jogos",
+        "selected": true,
+        "type": "winner",
+        "triggerParentOrigin": "matches",
+        "markets": [
+          {
+            "id": "0",
+            "name": "Vencedor",
+            "selected": true,
+            "type": "winner"
+          },
+          {
+            "id": "1",
+            "name": "Total de mapas",
+            "type": "totalmaps"
+          },
+          {
+            "id": "2",
+            "name": "Handicap",
+            "type": "handicap"
+          }
+        ]
+      }
+    ],
+    "markets": [],
+    "blocks": [
+      {
+        "name": "Valorant - Champions",
+        "shortName": "Champions",
+        "id": "198153",
+        "url": "/sport/esports/valorant/champions/198153/",
+        "headers": [
+          {
+            "marketTypes": [
+              "H2HT",
+              "MRES"
+            ],
+            "columns": [
+              {
+                "columnSpan": 2,
+                "name": "VENCEDOR"
+              }
+            ]
+          }
+        ],
+        "layout": 2,
+        "events": [
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "Team Liquid - Paper Rex",
+            "totalMarketsAvailable": 164,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272724",
+            "name": "Team Liquid - Paper Rex",
+            "startTime": 1790240400000,
+            "url": "/odds/team-liquid-paper-rex/92272724/",
+            "markets": [
+              {
+                "id": "2952546688",
+                "uniqueId": "2952546688",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790240400000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386916356",
+                    "name": "Team Liquid",
+                    "shortName": "",
+                    "price": 2.6,
+                    "handicap": 0.0,
+                    "betRef": "10386916356",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1952073"
+                  },
+                  {
+                    "id": "10386916357",
+                    "name": "Paper Rex",
+                    "shortName": "",
+                    "price": 1.45,
+                    "handicap": 0.0,
+                    "betRef": "10386916357",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1968283"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "Team Liquid",
+                "color": "",
+                "id": "1952073"
+              },
+              {
+                "name": "Paper Rex",
+                "color": "",
+                "id": "1968283"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "TyLoo - G2 Esports",
+            "totalMarketsAvailable": 162,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272954",
+            "name": "TyLoo - G2 Esports",
+            "startTime": 1790251200000,
+            "url": "/odds/tyloo-g2-esports/92272954/",
+            "markets": [
+              {
+                "id": "2952562597",
+                "uniqueId": "2952562597",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790251200000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386969019",
+                    "name": "TyLoo",
+                    "shortName": "",
+                    "price": 3.3,
+                    "handicap": 0.0,
+                    "betRef": "10386969019",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1968992"
+                  },
+                  {
+                    "id": "10386969020",
+                    "name": "G2 Esports",
+                    "shortName": "",
+                    "price": 1.3,
+                    "handicap": 0.0,
+                    "betRef": "10386969020",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1950269"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "TyLoo",
+                "color": "",
+                "id": "1968992"
+              },
+              {
+                "name": "G2 Esports",
+                "color": "",
+                "id": "1950269"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "Nongshim RedForce - NRG Esports",
+            "totalMarketsAvailable": 168,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272952",
+            "name": "Nongshim RedForce - NRG Esports",
+            "startTime": 1790326800000,
+            "url": "/odds/nongshim-redforce-nrg-esports/92272952/",
+            "markets": [
+              {
+                "id": "2952562408",
+                "uniqueId": "2952562408",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790326800000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386968495",
+                    "name": "Nongshim RedForce",
+                    "shortName": "",
+                    "price": 1.7,
+                    "handicap": 0.0,
+                    "betRef": "10386968495",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1982453"
+                  },
+                  {
+                    "id": "10386968496",
+                    "name": "NRG Esports",
+                    "shortName": "",
+                    "price": 2.07,
+                    "handicap": 0.0,
+                    "betRef": "10386968496",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1953647"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "Nongshim RedForce",
+                "color": "",
+                "id": "1982453"
+              },
+              {
+                "name": "NRG Esports",
+                "color": "",
+                "id": "1953647"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "Karmine Corp - XLG Esports",
+            "totalMarketsAvailable": 162,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272951",
+            "name": "Karmine Corp - XLG Esports",
+            "startTime": 1790337600000,
+            "url": "/odds/karmine-corp-xlg-esports/92272951/",
+            "markets": [
+              {
+                "id": "2952562385",
+                "uniqueId": "2952562385",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790337600000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386967969",
+                    "name": "Karmine Corp",
+                    "shortName": "",
+                    "price": 1.27,
+                    "handicap": 0.0,
+                    "betRef": "10386967969",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1983593"
+                  },
+                  {
+                    "id": "10386967970",
+                    "name": "XLG Esports",
+                    "shortName": "",
+                    "price": 3.5,
+                    "handicap": 0.0,
+                    "betRef": "10386967970",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "2058767"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "Karmine Corp",
+                "color": "",
+                "id": "1983593"
+              },
+              {
+                "name": "XLG Esports",
+                "color": "",
+                "id": "2058767"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "Global Esports - Team Vitality",
+            "totalMarketsAvailable": 168,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272950",
+            "name": "Global Esports - Team Vitality",
+            "startTime": 1790413200000,
+            "url": "/odds/global-esports-team-vitality/92272950/",
+            "markets": [
+              {
+                "id": "2952562037",
+                "uniqueId": "2952562037",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790413200000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386967481",
+                    "name": "Global Esports",
+                    "shortName": "",
+                    "price": 2.07,
+                    "handicap": 0.0,
+                    "betRef": "10386967481",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1955856"
+                  },
+                  {
+                    "id": "10386967482",
+                    "name": "Team Vitality",
+                    "shortName": "",
+                    "price": 1.7,
+                    "handicap": 0.0,
+                    "betRef": "10386967482",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1952398"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "Global Esports",
+                "color": "",
+                "id": "1955856"
+              },
+              {
+                "name": "Team Vitality",
+                "color": "",
+                "id": "1952398"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "LOUD - Edward Gaming",
+            "totalMarketsAvailable": 166,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272949",
+            "name": "LOUD - Edward Gaming",
+            "startTime": 1790424000000,
+            "url": "/odds/loud-edward-gaming/92272949/",
+            "markets": [
+              {
+                "id": "2952561837",
+                "uniqueId": "2952561837",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790424000000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386966947",
+                    "name": "LOUD",
+                    "shortName": "",
+                    "price": 1.44,
+                    "handicap": 0.0,
+                    "betRef": "10386966947",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1983536"
+                  },
+                  {
+                    "id": "10386966948",
+                    "name": "Edward Gaming",
+                    "shortName": "",
+                    "price": 2.65,
+                    "handicap": 0.0,
+                    "betRef": "10386966948",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1952327"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "LOUD",
+                "color": "",
+                "id": "1983536"
+              },
+              {
+                "name": "Edward Gaming",
+                "color": "",
+                "id": "1952327"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "100 Thieves - T1 Esports",
+            "totalMarketsAvailable": 166,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272948",
+            "name": "100 Thieves - T1 Esports",
+            "startTime": 1790499600000,
+            "url": "/odds/100-thieves-t1-esports/92272948/",
+            "markets": [
+              {
+                "id": "2952561823",
+                "uniqueId": "2952561823",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790499600000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386966912",
+                    "name": "100 Thieves",
+                    "shortName": "",
+                    "price": 1.4,
+                    "handicap": 0.0,
+                    "betRef": "10386966912",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1952755"
+                  },
+                  {
+                    "id": "10386966913",
+                    "name": "T1 Esports",
+                    "shortName": "",
+                    "price": 2.82,
+                    "handicap": 0.0,
+                    "betRef": "10386966913",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "1984968"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "100 Thieves",
+                "color": "",
+                "id": "1952755"
+              },
+              {
+                "name": "T1 Esports",
+                "color": "",
+                "id": "1984968"
+              }
+            ]
+          },
+          {
+            "stats": [],
+            "sportId": "ESPS",
+            "shortName": "JD Gaming - FUT Esports",
+            "totalMarketsAvailable": 162,
+            "betRadarId": 0,
+            "notes": "",
+            "tvChannel": "",
+            "regionName": "Valorant",
+            "regionId": "189513",
+            "leagueDescription": "Champions",
+            "leagueId": "198153",
+            "leagueName": "Champions",
+            "streamOverlayMarketIds": [],
+            "willGoLive": true,
+            "matchComboAllowedMarketTypes": [],
+            "id": "92272947",
+            "name": "JD Gaming - FUT Esports",
+            "startTime": 1790510400000,
+            "url": "/odds/jd-gaming-fut-esports/92272947/",
+            "markets": [
+              {
+                "id": "2952561636",
+                "uniqueId": "2952561636",
+                "name": "Vencedor",
+                "type": "H2HT",
+                "typeId": 3183,
+                "handicap": 0.0,
+                "displayOrder": 50,
+                "marketCloseTimeMillis": 1790510400000,
+                "renderingLayout": 2,
+                "selections": [
+                  {
+                    "id": "10386966402",
+                    "name": "JD Gaming",
+                    "shortName": "",
+                    "price": 3.3,
+                    "handicap": 0.0,
+                    "betRef": "10386966402",
+                    "renderingLayout": 2,
+                    "columnIndex": 0,
+                    "teamId": "1952295"
+                  },
+                  {
+                    "id": "10386966403",
+                    "name": "FUT Esports",
+                    "shortName": "",
+                    "price": 1.3,
+                    "handicap": 0.0,
+                    "betRef": "10386966403",
+                    "renderingLayout": 2,
+                    "columnIndex": 1,
+                    "teamId": "2023012"
+                  }
+                ],
+                "scorerSelections": [],
+                "exactScoreSelections": []
+              }
+            ],
+            "participants": [
+              {
+                "name": "JD Gaming",
+                "color": "",
+                "id": "1952295"
+              },
+              {
+                "name": "FUT Esports",
+                "color": "",
+                "id": "2023012"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dropdownList": [
+      {
+        "id": "189374",
+        "name": "Counter Strike",
+        "nameLatin": "Counter Strike",
+        "regionCode": "counter-strike",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/counter-strike.png?",
+        "url": "/sport/esports/competicoes/counter-strike/189374/",
+        "leagues": [
+          {
+            "id": "206036",
+            "text": "CIS LAN Championship",
+            "textLatin": "CIS LAN Championship",
+            "url": "/sport/esports/counter-strike/cis-lan-championship/206036/"
+          },
+          {
+            "id": "206650",
+            "text": "Connect",
+            "textLatin": "Connect",
+            "url": "/sport/esports/counter-strike/connect/206650/"
+          },
+          {
+            "id": "206691",
+            "text": "Private Club",
+            "textLatin": "Private Club",
+            "url": "/sport/esports/counter-strike/private-club/206691/"
+          },
+          {
+            "id": "206485",
+            "text": "Stake Pulse",
+            "textLatin": "Stake Pulse",
+            "url": "/sport/esports/counter-strike/stake-pulse/206485/"
+          },
+          {
+            "id": "206188",
+            "text": "Stake Ranked",
+            "textLatin": "Stake Ranked",
+            "url": "/sport/esports/counter-strike/stake-ranked/206188/"
+          },
+          {
+            "id": "205214",
+            "text": "StarLadder StarSeries",
+            "textLatin": "StarLadder StarSeries",
+            "url": "/sport/esports/counter-strike/starladder-starseries/205214/"
+          }
+        ]
+      },
+      {
+        "id": "189377",
+        "name": "League of Legends",
+        "nameLatin": "League of Legends",
+        "regionCode": "league-of-legends",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/league-of-legends.png?",
+        "url": "/sport/esports/competicoes/league-of-legends/189377/",
+        "leagues": [
+          {
+            "id": "193759",
+            "text": "LEC",
+            "textLatin": "LEC",
+            "url": "/sport/esports/league-of-legends/lec/193759/"
+          },
+          {
+            "id": "193761",
+            "text": "LCS",
+            "textLatin": "LCS",
+            "url": "/sport/esports/league-of-legends/lcs/193761/"
+          },
+          {
+            "id": "193779",
+            "text": "LPL",
+            "textLatin": "LPL",
+            "url": "/sport/esports/league-of-legends/lpl/193779/"
+          },
+          {
+            "id": "193803",
+            "text": "CBLOL",
+            "textLatin": "CBLOL",
+            "url": "/sport/esports/league-of-legends/cblol/193803/"
+          },
+          {
+            "id": "204327",
+            "text": "Road Of Legends",
+            "textLatin": "Road Of Legends",
+            "url": "/sport/esports/league-of-legends/road-of-legends/204327/"
+          },
+          {
+            "id": "206754",
+            "text": "World Star Challengers",
+            "textLatin": "World Star Challengers",
+            "url": "/sport/esports/league-of-legends/world-star-challengers/206754/"
+          },
+          {
+            "id": "196030",
+            "text": "LCK Challengers League",
+            "textLatin": "LCK Challengers League",
+            "url": "/sport/esports/league-of-legends/lck-challengers-league/196030/"
+          }
+        ]
+      },
+      {
+        "id": "189513",
+        "name": "Valorant",
+        "nameLatin": "Valorant",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/valorant/189513/",
+        "leagues": [
+          {
+            "id": "198153",
+            "text": "Champions",
+            "textLatin": "Champions",
+            "url": "/sport/esports/valorant/champions/198153/",
+            "selected": true
+          }
+        ]
+      },
+      {
+        "id": "189393",
+        "name": "Rainbow Six",
+        "nameLatin": "Rainbow Six",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/rainbow-six/189393/",
+        "leagues": [
+          {
+            "id": "195136",
+            "text": "Asia Pacific League",
+            "textLatin": "Asia Pacific League",
+            "url": "/sport/esports/rainbow-six/asia-pacific-league/195136/"
+          },
+          {
+            "id": "195093",
+            "text": "European League",
+            "textLatin": "European League",
+            "url": "/sport/esports/rainbow-six/european-league/195093/"
+          },
+          {
+            "id": "195094",
+            "text": "North American League",
+            "textLatin": "North American League",
+            "url": "/sport/esports/rainbow-six/north-american-league/195094/"
+          }
+        ]
+      },
+      {
+        "id": "189919",
+        "name": "Mobile Legends",
+        "nameLatin": "Mobile Legends",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/mobile-legends/189919/",
+        "leagues": [
+          {
+            "id": "204409",
+            "text": "MPL Indonesia",
+            "textLatin": "MPL Indonesia",
+            "url": "/sport/esports/mobile-legends/mpl-indonesia/204409/"
+          },
+          {
+            "id": "204581",
+            "text": "MPL Malaysia",
+            "textLatin": "MPL Malaysia",
+            "url": "/sport/esports/mobile-legends/mpl-malaysia/204581/"
+          },
+          {
+            "id": "204364",
+            "text": "MPL Philippines",
+            "textLatin": "MPL Philippines",
+            "url": "/sport/esports/mobile-legends/mpl-philippines/204364/"
+          }
+        ]
+      },
+      {
+        "id": "189392",
+        "name": "Rocket League",
+        "nameLatin": "Rocket League",
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?",
+        "url": "/sport/esports/competicoes/rocket-league/189392/",
+        "leagues": [
+          {
+            "id": "193937",
+            "text": "RLCS",
+            "textLatin": "RLCS",
+            "url": "/sport/esports/rocket-league/rlcs/193937/"
+          }
+        ]
+      }
+    ],
+    "selectedLeagues": [
+      {
+        "id": "198153",
+        "name": "Champions",
+        "nameLatin": "Champions",
+        "region": "Valorant",
+        "regionId": "189513",
+        "regionLatin": "Valorant",
+        "selected": true,
+        "regionCode": "default",
+        "flagUrl": "https://static.gmlinteractive.com/desktop/images/regionFlags/default.png?"
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports",
+        "title": "Esports",
+        "url": "/sport/esports/"
+      },
+      {
+        "name": "Valorant",
+        "title": "Valorant",
+        "url": "/sport/esports/competicoes/valorant/189513/"
+      },
+      {
+        "name": "Champions"
+      }
+    ],
+    "metaData": {
+      "pageTitle": "Apostas Champions - Esports Odds, Valorant   | Betano"
+    }
+  },
+  "status": 200
+}

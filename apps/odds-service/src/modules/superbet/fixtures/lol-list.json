@@ -1,0 +1,959 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:39:31.548Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v3/pt-BR/events?startDate=2026-09-14T21:00:00.000Z&endDate=2027-03-13T21:00:00.000Z&index=active-prematch&sports=39",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "events": [
+      {
+        "event_id": 14869199,
+        "increment_id": 42,
+        "fixture": {
+          "uuid": "7afa2c2f-8830-5667-8ce9-7ee8ab6996e3",
+          "away_team_id": "206619",
+          "category_id": 399,
+          "home_team_id": "479150",
+          "event_code": 6704,
+          "event_date": "2026-09-19 16:00:00",
+          "event_name": "Red Canids·Vivo Keyd Stars",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 36331,
+          "utc_date": "2026-09-19T16:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789833600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 20,
+              "2": 0
+            },
+            "odds": {
+              "1": 418,
+              "2": 0
+            }
+          },
+          "market_count": 20
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "a93f72ca-4d63-5aeb-b1be-4ce50bc2b0e3",
+                "price": 2.82,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Red Canids vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "ff3957ea-4e8d-52e4-97d2-35bea5ebc109",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "1746d418-cc84-5f95-8b8a-e28192f48ba1",
+                "price": 1.36,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Vivo Keyd Stars vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "ff3957ea-4e8d-52e4-97d2-35bea5ebc109",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14878963,
+        "increment_id": 18,
+        "fixture": {
+          "uuid": "fd9747a0-80c5-5653-8f3e-6edc437a80bf",
+          "betradar_id": "74553854",
+          "away_team_id": "188261",
+          "category_id": 1508,
+          "home_team_id": "187340",
+          "event_code": 5589,
+          "event_date": "2026-09-18 09:00:00",
+          "event_name": "Team WE·JD Gaming",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 74245,
+          "utc_date": "2026-09-18T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789722000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 16,
+              "2": 0
+            },
+            "odds": {
+              "1": 204,
+              "2": 0
+            }
+          },
+          "market_count": 16
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "5d7cabfd-bc8d-5489-9021-993a35b3da08",
+                "price": 2.12,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Team WE vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "3df0d10c-1e7b-5af6-b0e5-bd03f348bccf",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "a180ba08-266c-5d2c-865c-afcc6b1edc78",
+                "price": 1.6,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "JD Gaming vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "3df0d10c-1e7b-5af6-b0e5-bd03f348bccf",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14929484,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "9dc4d650-b0d5-55b4-9fed-c24769d038ce",
+          "betradar_id": "74565050",
+          "away_team_id": "581405",
+          "category_id": 1889,
+          "home_team_id": "480839",
+          "event_code": 1406,
+          "event_date": "2026-09-19 15:00:00",
+          "event_name": "Forsaken·Bomba",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 86832,
+          "utc_date": "2026-09-19T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789830000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 7,
+              "2": 0
+            },
+            "odds": {
+              "1": 54,
+              "2": 0
+            }
+          },
+          "market_count": 7
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "cf10d9de-68af-59c1-a09b-54b3e436098e",
+                "price": 1.67,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Forsaken vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "62368cc8-9593-53eb-94a7-e8e679837064",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "b2e33721-b783-52d8-bd52-0e50fe20bed7",
+                "price": 2.02,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Bomba vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "62368cc8-9593-53eb-94a7-e8e679837064",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14959655,
+        "increment_id": 15,
+        "fixture": {
+          "uuid": "82d8a76a-4a57-58b5-ada9-a6ed9162467f",
+          "away_team_id": "612052",
+          "category_id": 1508,
+          "home_team_id": "473809",
+          "event_code": 3321,
+          "event_date": "2026-09-16 23:00:00",
+          "event_name": "Fuego·9z Team",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 102889,
+          "utc_date": "2026-09-16T23:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789599600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 7,
+              "2": 0
+            },
+            "odds": {
+              "1": 52,
+              "2": 0
+            }
+          },
+          "market_count": 7
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "50d9ab05-18d3-5e3d-938f-e1a7a8c7b249",
+                "price": 1.26,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Fuego vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "a8ef482f-1fd2-5703-8336-aad5ce51ff23",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "cc8ced39-d286-50ce-827f-52d4ee0811b0",
+                "price": 3.25,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "9z Team vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "a8ef482f-1fd2-5703-8336-aad5ce51ff23",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14961853,
+        "increment_id": 37,
+        "fixture": {
+          "uuid": "b6dd6c25-cb35-58ac-83e4-2011d30f1e54",
+          "away_team_id": "465787",
+          "category_id": 399,
+          "home_team_id": "549544",
+          "event_code": 8781,
+          "event_date": "2026-09-18 15:00:00",
+          "event_name": "Natus Vincere·Movistar KOI",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 65495,
+          "utc_date": "2026-09-18T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789743600000
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 18,
+              "2": 0
+            },
+            "odds": {
+              "1": 514,
+              "2": 0
+            }
+          },
+          "market_count": 18
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "c72b54e3-5c3e-569f-8d2e-37a82adf490a",
+                "price": 2.85,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Natus Vincere vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "4a26385b-67e6-5d2a-b8b9-943aca6ccf80",
+                  "is_preselected": true,
+                  "extra": {
+                    "kambi_tags": "OFFERED_PREMATCH"
+                  },
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "45834abf-aa2b-51b9-8f2d-54236fe4e5a4",
+                "price": 1.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Movistar KOI vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "4a26385b-67e6-5d2a-b8b9-943aca6ccf80",
+                  "is_preselected": true,
+                  "extra": {
+                    "kambi_tags": "OFFERED_PREMATCH"
+                  },
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14963364,
+        "increment_id": 18,
+        "fixture": {
+          "uuid": "0cf1a1a9-fa97-549b-85bb-fa26d840b0bd",
+          "betradar_id": "74629890",
+          "away_team_id": "112481",
+          "category_id": 399,
+          "home_team_id": "518537",
+          "event_code": 3533,
+          "event_date": "2026-09-19 20:00:00",
+          "event_name": "LYON·Cloud9",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 50025,
+          "utc_date": "2026-09-19T20:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "streams": {
+            "5": "lcs"
+          },
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789848000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 19,
+              "2": 0
+            },
+            "odds": {
+              "1": 242,
+              "2": 0
+            }
+          },
+          "market_count": 19
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "f3a81e8e-45d7-5d7e-a45b-23d2af95c712",
+                "price": 1.28,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "LYON vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "72320271-98cc-5480-9247-8c27a6f6eaf5",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "09ed2808-0158-55e0-acaa-980db5877f46",
+                "price": 3.25,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Cloud9 vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "72320271-98cc-5480-9247-8c27a6f6eaf5",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14963380,
+        "increment_id": 17,
+        "fixture": {
+          "uuid": "3627b2f0-d6ce-5fa1-8e21-951a437c17e2",
+          "away_team_id": "187680",
+          "category_id": 1508,
+          "home_team_id": "187688",
+          "event_code": 2008,
+          "event_date": "2026-09-17 09:00:00",
+          "event_name": "Invictus Gaming·Top Esports",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 74245,
+          "utc_date": "2026-09-17T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789635600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 19,
+              "2": 0
+            },
+            "odds": {
+              "1": 244,
+              "2": 0
+            }
+          },
+          "market_count": 19
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "19dd5679-6895-5478-949f-99a1acff3f69",
+                "price": 1.48,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Invictus Gaming vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "e9e81380-f83c-5ae2-bd57-b4eaf483a6b1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "5d047ed5-bab1-55fb-98fa-0aeab7ac2464",
+                "price": 2.45,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Top Esports vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "e9e81380-f83c-5ae2-bd57-b4eaf483a6b1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14977202,
+        "increment_id": 15,
+        "fixture": {
+          "uuid": "78a4224e-23ba-5b95-ba20-b82189042069",
+          "betradar_id": "74668026",
+          "away_team_id": "188092",
+          "category_id": 399,
+          "home_team_id": "476936",
+          "event_code": 7303,
+          "event_date": "2026-09-20 20:00:00",
+          "event_name": "Team Liquid·FlyQuest",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 50025,
+          "utc_date": "2026-09-20T20:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789934400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 8,
+              "2": 0
+            },
+            "odds": {
+              "1": 72,
+              "2": 0
+            }
+          },
+          "market_count": 8
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "9d18e467-7763-5a15-acc6-6a68ffc31eac",
+                "price": 1.16,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Team Liquid vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "6af85fdf-0f5a-50a8-9a8d-35baa7eb9587",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "0b4dbe5b-e2b5-5961-b81b-f153a5afb198",
+                "price": 4.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "FlyQuest vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "6af85fdf-0f5a-50a8-9a8d-35baa7eb9587",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14977738,
+        "increment_id": 19,
+        "fixture": {
+          "uuid": "ae288dbf-22e0-5f8d-83f3-8a10b0b2c195",
+          "betradar_id": "74668024",
+          "away_team_id": "577436",
+          "category_id": 399,
+          "home_team_id": "461669",
+          "event_code": 8443,
+          "event_date": "2026-09-18 20:00:00",
+          "event_name": "Shopify Rebellion·Sentinels",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 50025,
+          "utc_date": "2026-09-18T20:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789761600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 8,
+              "2": 0
+            },
+            "odds": {
+              "1": 72,
+              "2": 0
+            }
+          },
+          "market_count": 8
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "fa5a62e9-d0fa-5f8b-9d91-222e9fc3bfcc",
+                "price": 3.85,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "Shopify Rebellion vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "6bc03237-004e-5538-8224-b5c7355dbe73",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "4a583e90-e7c5-5c26-a0ac-92cba1d51264",
+                "price": 1.2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "Sentinels vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "6bc03237-004e-5538-8224-b5c7355dbe73",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14986522,
+        "increment_id": 40,
+        "fixture": {
+          "uuid": "978aa573-c26f-5a1a-849a-7999b1e3bd36",
+          "betradar_id": "74701650",
+          "away_team_id": "327059",
+          "category_id": 399,
+          "home_team_id": "327061",
+          "event_code": 2923,
+          "event_date": "2026-09-15 08:00:00",
+          "event_name": "T1 Challengers·KT Rolster Challengers",
+          "event_tags": "v2",
+          "sport_id": 39,
+          "tournament_id": 84340,
+          "utc_date": "2026-09-15T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789459200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 16,
+              "2": 0
+            },
+            "odds": {
+              "1": 204,
+              "2": 0
+            }
+          },
+          "market_count": 16
+        },
+        "markets": [
+          {
+            "name": "Vencedor",
+            "id": 2519,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 28825284
+            },
+            "odds": [
+              {
+                "uuid": "f6645512-e687-574b-9d59-997c0da04ce2",
+                "price": 1.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6493,
+                  "info": "T1 Challengers vencerá",
+                  "name": "1",
+                  "code": "1",
+                  "market_line_uuid": "fc8ba626-d4ec-5284-90e0-216c44cd9221",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "9754e30d-a6bb-5b40-8dc8-2d879681028b",
+                "price": 2.8,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6494,
+                  "info": "KT Rolster Challengers vencerá",
+                  "name": "2",
+                  "code": "2",
+                  "market_line_uuid": "fc8ba626-d4ec-5284-90e0-216c44cd9221",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      }
+    ]
+  }
+}

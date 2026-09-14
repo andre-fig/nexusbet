@@ -1,0 +1,483 @@
+{
+  "provider": "betano",
+  "capturedAt": "2026-09-14T20:30:01.486Z",
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "capture": "chrome-cdp-response",
+    "authenticated": false,
+    "url": "https://www.betano.bet.br/api/odds/mouz-nrg-esports/92353340/?req=la,s,stnf,c,mb"
+  },
+  "data": {
+    "event": {
+      "stats": [
+        {
+          "url": "/api/statistics/statsview?id=92353340",
+          "providerId": 3
+        }
+      ],
+      "sportId": "ESPS",
+      "shortName": "MOUZ - NRG Esports",
+      "totalMarketsAvailable": 148,
+      "hasMatchCombo": true,
+      "matchComboUrl": "/odds/mouz-nrg-esports/criar-aposta/92353340/",
+      "betRadarId": 0,
+      "notes": "",
+      "tvChannel": "",
+      "streamingAvailable": true,
+      "regionName": "Counter Strike",
+      "regionId": "189374",
+      "leagueDescription": "StarLadder StarSeries",
+      "leagueId": "205214",
+      "leagueName": "StarLadder StarSeries",
+      "leagueUrl": "/sport/esports/counter-strike/starladder-starseries/205214r/",
+      "streamOverlayMarketIds": [],
+      "willGoLive": true,
+      "matchComboAllowedMarketTypes": [
+        3185
+      ],
+      "id": "92353340",
+      "name": "MOUZ - NRG Esports",
+      "startTime": 1789639200000,
+      "url": "/odds/mouz-nrg-esports/92353340/",
+      "markets": [
+        {
+          "id": "2955060134",
+          "uniqueId": "2955060134",
+          "name": "Vencedor",
+          "type": "H2HT",
+          "typeId": 3183,
+          "handicap": 0.0,
+          "displayOrder": 50,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_H2HT0",
+          "selections": [
+            {
+              "id": "10397016048",
+              "name": "MOUZ",
+              "price": 1.11,
+              "handicap": 0.0,
+              "betRef": "10397016048",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016049",
+              "name": "NRG Esports",
+              "price": 5.9,
+              "handicap": 0.0,
+              "betRef": "10397016049",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060278",
+          "uniqueId": "2955060278",
+          "name": "Vencedor do mapa (Mapa 1)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW0",
+          "selections": [
+            {
+              "id": "10397016407",
+              "name": "MOUZ",
+              "price": 1.31,
+              "handicap": 0.0,
+              "betRef": "10397016407",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016406",
+              "name": "NRG Esports",
+              "price": 3.3,
+              "handicap": 0.0,
+              "betRef": "10397016406",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060276",
+          "uniqueId": "2955060276",
+          "name": "Vencedor do mapa (Mapa 2)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW1",
+          "selections": [
+            {
+              "id": "10397016403",
+              "name": "MOUZ",
+              "price": 1.21,
+              "handicap": 0.0,
+              "betRef": "10397016403",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016402",
+              "name": "NRG Esports",
+              "price": 4.1,
+              "handicap": 0.0,
+              "betRef": "10397016402",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060277",
+          "uniqueId": "2955060277",
+          "name": "Vencedor do mapa (Mapa 3)",
+          "type": "TMPW",
+          "typeId": 3185,
+          "handicap": 0.0,
+          "displayOrder": 150,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_TMPW2",
+          "selections": [
+            {
+              "id": "10397016405",
+              "name": "MOUZ",
+              "price": 1.28,
+              "handicap": 0.0,
+              "betRef": "10397016405",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016404",
+              "name": "NRG Esports",
+              "price": 3.5,
+              "handicap": 0.0,
+              "betRef": "10397016404",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060290",
+          "uniqueId": "2955060290",
+          "name": "Handicap do Jogo",
+          "type": "FAHC",
+          "typeId": 3179,
+          "handicap": -1.5,
+          "displayOrder": 200,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_FAHC0",
+          "selections": [
+            {
+              "id": "10397016512",
+              "name": "MOUZ -1.5",
+              "price": 1.57,
+              "handicap": -1.5,
+              "betRef": "10397016512",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016513",
+              "name": "NRG Esports +1.5",
+              "price": 2.25,
+              "handicap": 1.5,
+              "betRef": "10397016513",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            },
+            {
+              "id": "10397016514",
+              "name": "MOUZ +1.5",
+              "price": 1.04,
+              "handicap": 1.5,
+              "betRef": "10397016514",
+              "renderingLayout": 2,
+              "columnIndex": 0,
+              "teamId": "1997130"
+            },
+            {
+              "id": "10397016515",
+              "name": "NRG Esports -1.5",
+              "price": 8.25,
+              "handicap": -1.5,
+              "betRef": "10397016515",
+              "renderingLayout": 2,
+              "columnIndex": 1,
+              "teamId": "1953647"
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060298",
+          "uniqueId": "2955060298",
+          "name": "Total de Mapas",
+          "type": "TSMF",
+          "typeId": 3214,
+          "handicap": 2.5,
+          "displayOrder": 250,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 2,
+          "pinKey": "p_TSMF0",
+          "selections": [
+            {
+              "id": "10397016550",
+              "name": "Mais de 2.5",
+              "price": 2.57,
+              "handicap": 2.5,
+              "betRef": "10397016550",
+              "renderingLayout": 2,
+              "columnIndex": 0
+            },
+            {
+              "id": "10397016549",
+              "name": "Menos de 2.5",
+              "price": 1.47,
+              "handicap": 2.5,
+              "betRef": "10397016549",
+              "renderingLayout": 2,
+              "columnIndex": 1
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        },
+        {
+          "id": "2955060133",
+          "uniqueId": "2955060133",
+          "name": "Resultado Correto",
+          "type": "BTOF",
+          "typeId": 3180,
+          "handicap": 0.0,
+          "displayOrder": 350,
+          "marketCloseTimeMillis": 1789639200000,
+          "renderingLayout": 4,
+          "pinKey": "p_BTOF0",
+          "selections": [
+            {
+              "id": "10397016555",
+              "name": "2 - 0",
+              "price": 1.53,
+              "handicap": 0.0,
+              "betRef": "10397016555",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10397016557",
+              "name": "2 - 1",
+              "price": 3.0,
+              "handicap": 0.0,
+              "betRef": "10397016557",
+              "renderingLayout": 4,
+              "columnIndex": 0
+            },
+            {
+              "id": "10397016556",
+              "name": "1 - 2",
+              "price": 7.8,
+              "handicap": 0.0,
+              "betRef": "10397016556",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            },
+            {
+              "id": "10397016558",
+              "name": "0 - 2",
+              "price": 11.25,
+              "handicap": 0.0,
+              "betRef": "10397016558",
+              "renderingLayout": 4,
+              "columnIndex": 1
+            }
+          ],
+          "scorerSelections": [],
+          "exactScoreSelections": []
+        }
+      ],
+      "participants": [
+        {
+          "name": "MOUZ",
+          "color": "",
+          "id": "1997130"
+        },
+        {
+          "name": "NRG Esports",
+          "color": "",
+          "id": "1953647"
+        }
+      ]
+    },
+    "markets": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Combos",
+        "type": "combos"
+      },
+      {
+        "id": "6",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "betBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "nonBetBuilderTabs": [
+      {
+        "id": "0",
+        "name": "Populares",
+        "selected": true,
+        "type": "popular"
+      },
+      {
+        "id": "1",
+        "name": "Mercados de Mapa",
+        "type": "mapmarkets"
+      },
+      {
+        "id": "2",
+        "name": "Mercados de Rounds",
+        "type": "roundmarkets"
+      },
+      {
+        "id": "3",
+        "name": "Mercados Rápidos",
+        "type": "fastmarkets"
+      },
+      {
+        "id": "4",
+        "name": "Outros especiais",
+        "type": "otherspecials"
+      },
+      {
+        "id": "5",
+        "name": "Combos",
+        "type": "combos"
+      },
+      {
+        "id": "6",
+        "name": "Todos",
+        "type": "all"
+      }
+    ],
+    "breadcrumb": [
+      {
+        "name": "Página principal",
+        "title": "Betano",
+        "url": "/"
+      },
+      {
+        "name": "Esports",
+        "title": "Esports",
+        "url": "/sport/esports/"
+      },
+      {
+        "name": "Counter Strike",
+        "title": "Counter Strike",
+        "url": "/sport/esports/competicoes/counter-strike/189374/"
+      },
+      {
+        "name": "StarLadder StarSeries",
+        "title": "StarLadder StarSeries",
+        "url": "/sport/esports/counter-strike/starladder-starseries/205214/"
+      },
+      {
+        "name": "MOUZ - NRG Esports"
+      }
+    ],
+    "marketOffersData": {},
+    "metaData": {
+      "pageTitle": "MOUZ - NRG Esports Esports Odds | Betano"
+    }
+  },
+  "status": 200
+}

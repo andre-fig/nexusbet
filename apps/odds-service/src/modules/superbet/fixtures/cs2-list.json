@@ -1,0 +1,5876 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:38:49.431Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v3/pt-BR/events?startDate=2026-09-14T21:00:00.000Z&endDate=2027-03-13T21:00:00.000Z&index=active-prematch&sports=55",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "events": [
+      {
+        "event_id": 14916485,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "50d7ebfb-2abe-5c72-ab0d-3374adb6ef76",
+          "betradar_id": "74570874",
+          "away_team_id": "521298",
+          "category_id": 1614,
+          "home_team_id": "209357",
+          "event_code": 7287,
+          "event_date": "2026-09-18 11:00:00",
+          "event_name": "3DMAX·Inner Circle",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789729200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "7166ad40-aeee-517a-8807-fdaa0fe83232",
+                "price": 2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "1",
+                  "market_line_uuid": "726e8249-e843-51cf-b8fe-3ecc7f9609a1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "a96fb5c4-4843-5dfb-bc41-1c7a1a89e65a",
+                "price": 1.72,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Inner Circle vence a partida (Inc. prorrogação)",
+                  "name": "Inner Circle",
+                  "code": "2",
+                  "market_line_uuid": "726e8249-e843-51cf-b8fe-3ecc7f9609a1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916486,
+        "increment_id": 15,
+        "fixture": {
+          "uuid": "3b7b378f-52ae-55da-abfd-c9a337e8691c",
+          "betradar_id": "74570886",
+          "away_team_id": "209357",
+          "category_id": 1614,
+          "home_team_id": "333119",
+          "event_code": 9522,
+          "event_date": "2026-09-18 15:00:00",
+          "event_name": "Infinite Gaming·3DMAX",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789743600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "a2d44cb2-496c-5c26-9bd7-f87b7cfbe124",
+                "price": 2.77,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Infinite Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Infinite Gaming",
+                  "code": "1",
+                  "market_line_uuid": "ae849aa1-41d3-5ad3-966c-8f160ec307fa",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "ed1ba711-c594-597f-8781-ea03425be60d",
+                "price": 1.39,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "2",
+                  "market_line_uuid": "ae849aa1-41d3-5ad3-966c-8f160ec307fa",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916487,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "f713470b-f04a-543e-8f64-9f5eb434e4ed",
+          "betradar_id": "74570884",
+          "away_team_id": "383039",
+          "category_id": 1614,
+          "home_team_id": "333119",
+          "event_code": 7230,
+          "event_date": "2026-09-18 14:00:00",
+          "event_name": "Infinite Gaming·Eyeballers",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789740000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "bf55483f-3417-51e1-8174-c7800a74424c",
+                "price": 2.12,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Infinite Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Infinite Gaming",
+                  "code": "1",
+                  "market_line_uuid": "c5350175-0565-55ba-ac82-bfabdfe8d647",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "3dd38937-2bab-559c-bb42-621d7515c221",
+                "price": 1.64,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "2",
+                  "market_line_uuid": "c5350175-0565-55ba-ac82-bfabdfe8d647",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916488,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "6da0abca-97af-5755-b6f4-f8b290866465",
+          "away_team_id": "243281",
+          "category_id": 1614,
+          "home_team_id": "340499",
+          "event_code": 3721,
+          "event_date": "2026-09-17 10:00:00",
+          "event_name": "B8·GamerLegion",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789639200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "28f70332-ef05-566d-b778-15704214dc35",
+                "price": 1.61,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "1",
+                  "market_line_uuid": "d68f009d-e945-5c81-9745-9cee7a25e029",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "f31fce65-a73f-5975-9d20-609b51286597",
+                "price": 2.17,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "2",
+                  "market_line_uuid": "d68f009d-e945-5c81-9745-9cee7a25e029",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916489,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "910e7702-7ab2-5564-9584-37e0412de77d",
+          "betradar_id": "74554592",
+          "away_team_id": "340499",
+          "category_id": 1614,
+          "home_team_id": "189737",
+          "event_code": 8106,
+          "event_date": "2026-09-17 12:00:00",
+          "event_name": "Luminosity Gaming·B8",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789646400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5523f03d-6e9e-5bbf-9626-969c9479ee1c",
+                "price": 2.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "1",
+                  "market_line_uuid": "207f1e25-420c-5e9a-9f97-d3f773b1742a",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "a0a78c60-4385-55f8-a724-e9e67c05a49c",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "2",
+                  "market_line_uuid": "207f1e25-420c-5e9a-9f97-d3f773b1742a",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916490,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "e1fb9194-74f9-5a41-b436-caca7dc1c494",
+          "betradar_id": "74570866",
+          "away_team_id": "619940",
+          "category_id": 1614,
+          "home_team_id": "383039",
+          "event_code": 2359,
+          "event_date": "2026-09-18 13:00:00",
+          "event_name": "Eyeballers·BBL",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T13:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789736400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "e110fcff-b590-5705-9ab8-ef9eedcbe30c",
+                "price": 1.56,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "1",
+                  "market_line_uuid": "a9d554e2-b685-5722-ba65-ebe7642cebb7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "f9c2c70e-7bd9-5dec-9250-d5adc9959967",
+                "price": 2.27,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "2",
+                  "market_line_uuid": "a9d554e2-b685-5722-ba65-ebe7642cebb7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916491,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "2eb92772-d65e-5081-b544-b29ef15d850e",
+          "away_team_id": "187409",
+          "category_id": 1614,
+          "home_team_id": "619940",
+          "event_code": 5493,
+          "event_date": "2026-09-18 14:00:00",
+          "event_name": "BBL·Liquid",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789740000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "81b8795d-2ea5-5d98-a353-1a318c96a531",
+                "price": 3.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "1",
+                  "market_line_uuid": "0c599174-3956-5179-9ab3-3c16ac822091",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "0bf4bda1-e9c2-5283-bd0b-c72a10ad3b33",
+                "price": 1.28,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Liquid vence a partida (Inc. prorrogação)",
+                  "name": "Liquid",
+                  "code": "2",
+                  "market_line_uuid": "0c599174-3956-5179-9ab3-3c16ac822091",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916492,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "0f892ec9-1b0c-50fe-a978-39f337c6587b",
+          "away_team_id": "367910",
+          "category_id": 1614,
+          "home_team_id": "340499",
+          "event_code": 7022,
+          "event_date": "2026-09-17 08:00:00",
+          "event_name": "B8·Metizport",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789632000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "81766406-bab3-5bd0-94fc-a7db77fdd6c1",
+                "price": 1.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "1",
+                  "market_line_uuid": "06c2b2c2-1738-5811-a198-3302d21c8e82",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "c94e3ffb-9ef2-5c14-afbc-312f724ed51f",
+                "price": 2.95,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Metizport vence a partida (Inc. prorrogação)",
+                  "name": "Metizport",
+                  "code": "2",
+                  "market_line_uuid": "06c2b2c2-1738-5811-a198-3302d21c8e82",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916493,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "ca74068c-f830-5a7a-8b79-3e1eefb53722",
+          "betradar_id": "74554512",
+          "away_team_id": "474742",
+          "category_id": 1614,
+          "home_team_id": "340499",
+          "event_code": 1850,
+          "event_date": "2026-09-17 15:00:00",
+          "event_name": "B8·M80",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789657200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "3861f773-58cf-5a3c-af30-b890e995f734",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "1",
+                  "market_line_uuid": "f02e6638-d355-5bae-a833-b2280205d5e7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "865cf3dc-ade1-5b2c-a05b-9ccfe31b62c9",
+                "price": 2.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "M80 vence a partida (Inc. prorrogação)",
+                  "name": "M80",
+                  "code": "2",
+                  "market_line_uuid": "f02e6638-d355-5bae-a833-b2280205d5e7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916494,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "e497ae46-c8fe-5d2b-805f-4c50a7aaeeec",
+          "betradar_id": "74554520",
+          "away_team_id": "340499",
+          "category_id": 1614,
+          "home_team_id": "191256",
+          "event_code": 2915,
+          "event_date": "2026-09-17 11:00:00",
+          "event_name": "Ninjas in Pyjamas·B8",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789642800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "553bd92d-c7dd-54d6-8ca9-e163bc2ded5e",
+                "price": 2.22,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "1",
+                  "market_line_uuid": "b968e11d-15c1-5a69-9611-b9db4fbeb5a0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "9cec98ee-e03c-5c29-9d2f-6b359e806b93",
+                "price": 1.59,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "2",
+                  "market_line_uuid": "b968e11d-15c1-5a69-9611-b9db4fbeb5a0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916495,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "3e6f0daf-2ffe-57f3-a4f9-40fe12b56b54",
+          "away_team_id": "191256",
+          "category_id": 1614,
+          "home_team_id": "189737",
+          "event_code": 6651,
+          "event_date": "2026-09-17 15:00:00",
+          "event_name": "Luminosity Gaming·Ninjas in Pyjamas",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789657200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "c990c4b4-7546-59dc-85fe-489a09414c1e",
+                "price": 1.92,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "1",
+                  "market_line_uuid": "92cafe68-98c4-57f7-97bc-7fd2626e9960",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "6b92dce9-7005-5376-96d1-bbf92312c478",
+                "price": 1.78,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "2",
+                  "market_line_uuid": "92cafe68-98c4-57f7-97bc-7fd2626e9960",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916496,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "e26cd08c-a528-5474-8824-2089baad9bf2",
+          "away_team_id": "367910",
+          "category_id": 1614,
+          "home_team_id": "474742",
+          "event_code": 7033,
+          "event_date": "2026-09-17 13:00:00",
+          "event_name": "M80·Metizport",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T13:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789650000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "0dba08ef-ac99-50c7-96c2-fb5b3b70011a",
+                "price": 1.61,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "M80 vence a partida (Inc. prorrogação)",
+                  "name": "M80",
+                  "code": "1",
+                  "market_line_uuid": "726fb475-9531-5df6-9d6f-6d0b92e18f55",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "796cc609-0c07-5303-b076-1ddeeadeebe8",
+                "price": 2.17,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Metizport vence a partida (Inc. prorrogação)",
+                  "name": "Metizport",
+                  "code": "2",
+                  "market_line_uuid": "726fb475-9531-5df6-9d6f-6d0b92e18f55",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916497,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "b24fb1da-5460-5c27-9bcd-000b36db756b",
+          "away_team_id": "209357",
+          "category_id": 1614,
+          "home_team_id": "619940",
+          "event_code": 6609,
+          "event_date": "2026-09-18 12:00:00",
+          "event_name": "BBL·3DMAX",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789732800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "7a1666e0-3799-5c58-b9d2-6141d65a1cc6",
+                "price": 3.05,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "1",
+                  "market_line_uuid": "8280a4dc-60f2-52b7-aad3-463998968af3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "1009d958-32bf-555b-965b-1fb09d08656e",
+                "price": 1.33,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "2",
+                  "market_line_uuid": "8280a4dc-60f2-52b7-aad3-463998968af3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916498,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "73392b2c-53bf-5ae2-a98e-9351c8fe154c",
+          "away_team_id": "243281",
+          "category_id": 1614,
+          "home_team_id": "367910",
+          "event_code": 6303,
+          "event_date": "2026-09-17 14:00:00",
+          "event_name": "Metizport·GamerLegion",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789653600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "696b82dd-bee7-5891-ac18-b2f43f77f4ec",
+                "price": 2.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Metizport vence a partida (Inc. prorrogação)",
+                  "name": "Metizport",
+                  "code": "1",
+                  "market_line_uuid": "10164581-9153-5d72-bb56-920051edbf89",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "e9bde05b-ae26-5878-8178-b82a96222d8e",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "2",
+                  "market_line_uuid": "10164581-9153-5d72-bb56-920051edbf89",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916499,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "032d6f7e-6a0e-5f07-a9be-70e2edc831db",
+          "betradar_id": "74554504",
+          "away_team_id": "474742",
+          "category_id": 1614,
+          "home_team_id": "191256",
+          "event_code": 7040,
+          "event_date": "2026-09-17 09:00:00",
+          "event_name": "Ninjas in Pyjamas·M80",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789635600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "cb72e8b2-59de-5588-bff2-d66013bd9941",
+                "price": 1.82,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "1",
+                  "market_line_uuid": "97442c93-b429-5a91-a178-d4666ce306ac",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "4ff31bac-aa45-5a1d-9a49-863c3b3692a2",
+                "price": 1.88,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "M80 vence a partida (Inc. prorrogação)",
+                  "name": "M80",
+                  "code": "2",
+                  "market_line_uuid": "97442c93-b429-5a91-a178-d4666ce306ac",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916500,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "509bcece-0363-55b1-8c88-18e4e564a8ea",
+          "betradar_id": "74554650",
+          "away_team_id": "474742",
+          "category_id": 1614,
+          "home_team_id": "189737",
+          "event_code": 1780,
+          "event_date": "2026-09-17 14:00:00",
+          "event_name": "Luminosity Gaming·M80",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789653600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "e280d3ce-5d54-5af3-be4c-720248f1344f",
+                "price": 1.92,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "1",
+                  "market_line_uuid": "09cdfe29-3651-559c-a817-d560b0e7b96d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "1d22afa8-fa4a-5539-a109-e0d0d7ed5db5",
+                "price": 1.78,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "M80 vence a partida (Inc. prorrogação)",
+                  "name": "M80",
+                  "code": "2",
+                  "market_line_uuid": "09cdfe29-3651-559c-a817-d560b0e7b96d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916501,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "c93f313c-7e2c-5421-aaf5-983c091dd9af",
+          "away_team_id": "243281",
+          "category_id": 1614,
+          "home_team_id": "474742",
+          "event_code": 2969,
+          "event_date": "2026-09-17 11:00:00",
+          "event_name": "M80·GamerLegion",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789642800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "0bc478ad-b1b1-5563-be74-4cf0a8afa0be",
+                "price": 1.85,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "M80 vence a partida (Inc. prorrogação)",
+                  "name": "M80",
+                  "code": "1",
+                  "market_line_uuid": "6a85a36a-e952-57c7-8783-74f7a60063e4",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "49faaf80-0026-54d9-8d65-36ce080a9cc5",
+                "price": 1.85,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "2",
+                  "market_line_uuid": "6a85a36a-e952-57c7-8783-74f7a60063e4",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916502,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "208f8c8f-1573-554f-b962-32662ff8b0a4",
+          "betradar_id": "74554502",
+          "away_team_id": "191256",
+          "category_id": 1614,
+          "home_team_id": "367910",
+          "event_code": 1311,
+          "event_date": "2026-09-17 12:00:00",
+          "event_name": "Metizport·Ninjas in Pyjamas",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789646400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "631193ac-bd80-5d38-85fb-ee417587b4f2",
+                "price": 2.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Metizport vence a partida (Inc. prorrogação)",
+                  "name": "Metizport",
+                  "code": "1",
+                  "market_line_uuid": "ab7be114-acb7-56fb-a565-407062b59ce0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "566755cc-7fb1-52a5-9be5-2918219761cd",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "2",
+                  "market_line_uuid": "ab7be114-acb7-56fb-a565-407062b59ce0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916503,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "7e86a32a-f98d-5b4e-996c-34af9cead90d",
+          "betradar_id": "74554508",
+          "away_team_id": "191256",
+          "category_id": 1614,
+          "home_team_id": "243281",
+          "event_code": 9026,
+          "event_date": "2026-09-17 13:00:00",
+          "event_name": "GamerLegion·Ninjas in Pyjamas",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T13:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789650000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5c88bcc9-98a5-5259-8dda-ed2249c22b89",
+                "price": 1.82,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "1",
+                  "market_line_uuid": "cc3c0025-052e-5979-b17d-3ce81a8d2b15",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "bbb807d7-e83e-5a4c-993b-196acacd379f",
+                "price": 1.88,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "2",
+                  "market_line_uuid": "cc3c0025-052e-5979-b17d-3ce81a8d2b15",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916504,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "a5447ebb-f4c9-56cf-8063-2fe0bd18e18e",
+          "betradar_id": "74570786",
+          "away_team_id": "619940",
+          "category_id": 1614,
+          "home_team_id": "521298",
+          "event_code": 9115,
+          "event_date": "2026-09-18 08:00:00",
+          "event_name": "Inner Circle·BBL",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789718400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "a747fff2-4167-5071-b55e-6f8d5fd898cb",
+                "price": 1.33,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Inner Circle vence a partida (Inc. prorrogação)",
+                  "name": "Inner Circle",
+                  "code": "1",
+                  "market_line_uuid": "67e44571-60de-5956-92fd-31c1728afcad",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "6588d274-c713-566c-8266-b9eb43bccc66",
+                "price": 3.05,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "2",
+                  "market_line_uuid": "67e44571-60de-5956-92fd-31c1728afcad",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916505,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "7285c8d0-6e73-5f18-a0af-043c4d4648c2",
+          "away_team_id": "383039",
+          "category_id": 1614,
+          "home_team_id": "521298",
+          "event_code": 3197,
+          "event_date": "2026-09-18 15:00:00",
+          "event_name": "Inner Circle·Eyeballers",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789743600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "99e1cc18-4c8e-5bed-907d-ae5d163bf517",
+                "price": 1.56,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Inner Circle vence a partida (Inc. prorrogação)",
+                  "name": "Inner Circle",
+                  "code": "1",
+                  "market_line_uuid": "97f6a883-56b9-5426-bef3-f839316262a8",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "e7ce644e-c85e-5fb9-a1cc-681992ddeec7",
+                "price": 2.27,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "2",
+                  "market_line_uuid": "97f6a883-56b9-5426-bef3-f839316262a8",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916506,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "34ce8b60-060c-5056-a1e0-9793560a8d17",
+          "away_team_id": "333119",
+          "category_id": 1614,
+          "home_team_id": "619940",
+          "event_code": 5229,
+          "event_date": "2026-09-18 10:00:00",
+          "event_name": "BBL·Infinite Gaming",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789725600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5da8e4b1-69d6-5a9c-bcfe-1a034adf9420",
+                "price": 1.82,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "1",
+                  "market_line_uuid": "20a41b72-2cae-5446-9e9c-b0257e2429b6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "459b19bf-5f4e-5399-98b9-6cfd2e358f58",
+                "price": 1.88,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Infinite Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Infinite Gaming",
+                  "code": "2",
+                  "market_line_uuid": "20a41b72-2cae-5446-9e9c-b0257e2429b6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916507,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "b2ee727b-2688-5f5d-be8d-cc86c2175dfe",
+          "away_team_id": "383039",
+          "category_id": 1614,
+          "home_team_id": "209357",
+          "event_code": 4160,
+          "event_date": "2026-09-18 09:00:00",
+          "event_name": "3DMAX·Eyeballers",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789722000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "78047540-3a99-5c9c-8ef5-895f9dba526d",
+                "price": 1.69,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "1",
+                  "market_line_uuid": "d931dadd-49d3-5008-94cd-eabf420224ed",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "6fe96354-6495-5dd6-994f-7466e7f14a18",
+                "price": 2.05,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "2",
+                  "market_line_uuid": "d931dadd-49d3-5008-94cd-eabf420224ed",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916508,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "1a86d4c2-fec7-5fa1-afeb-36d58cf53355",
+          "away_team_id": "333119",
+          "category_id": 1614,
+          "home_team_id": "187409",
+          "event_code": 6110,
+          "event_date": "2026-09-18 09:00:00",
+          "event_name": "Liquid·Infinite Gaming",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789722000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "fdf41d83-c902-5654-be0b-90c463495066",
+                "price": 1.25,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Liquid vence a partida (Inc. prorrogação)",
+                  "name": "Liquid",
+                  "code": "1",
+                  "market_line_uuid": "9b095b9a-309c-5a0e-9a87-18f3ba9b829e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "32090a0c-3a33-515e-ba37-fb7858aef681",
+                "price": 3.55,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Infinite Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Infinite Gaming",
+                  "code": "2",
+                  "market_line_uuid": "9b095b9a-309c-5a0e-9a87-18f3ba9b829e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916509,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "d7f3f837-112e-5e37-b756-e9f708e67f78",
+          "away_team_id": "209357",
+          "category_id": 1614,
+          "home_team_id": "187409",
+          "event_code": 4313,
+          "event_date": "2026-09-18 13:00:00",
+          "event_name": "Liquid·3DMAX",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T13:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789736400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "a531317b-368c-51a1-86fe-33987d7a0cf1",
+                "price": 1.75,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Liquid vence a partida (Inc. prorrogação)",
+                  "name": "Liquid",
+                  "code": "1",
+                  "market_line_uuid": "75db49f3-db89-5ba2-bad3-5ea6fe374b82",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "46da8650-836a-5cd9-a15a-35145aa14d35",
+                "price": 1.97,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "2",
+                  "market_line_uuid": "75db49f3-db89-5ba2-bad3-5ea6fe374b82",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916510,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "fdeabfa1-48ee-5dbe-a84e-b3774c4f4e08",
+          "away_team_id": "187409",
+          "category_id": 1614,
+          "home_team_id": "521298",
+          "event_code": 8233,
+          "event_date": "2026-09-18 10:00:00",
+          "event_name": "Inner Circle·Liquid",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789725600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "512d009e-3350-5754-a13e-82e3a4602667",
+                "price": 2.17,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Inner Circle vence a partida (Inc. prorrogação)",
+                  "name": "Inner Circle",
+                  "code": "1",
+                  "market_line_uuid": "70234635-b4fb-5772-85f4-19ca3d6a2c15",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "caeb10c3-91b4-5bc0-befa-e8b8aea60723",
+                "price": 1.61,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Liquid vence a partida (Inc. prorrogação)",
+                  "name": "Liquid",
+                  "code": "2",
+                  "market_line_uuid": "70234635-b4fb-5772-85f4-19ca3d6a2c15",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916511,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "d245f17f-a085-51ea-a30e-020eaf88e2b4",
+          "betradar_id": "74570882",
+          "away_team_id": "521298",
+          "category_id": 1614,
+          "home_team_id": "333119",
+          "event_code": 8861,
+          "event_date": "2026-09-18 12:00:00",
+          "event_name": "Infinite Gaming·Inner Circle",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789732800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "02bfd9b0-4062-56ab-b447-511d3fe08c71",
+                "price": 2.95,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Infinite Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Infinite Gaming",
+                  "code": "1",
+                  "market_line_uuid": "f10892a8-cb6c-52b2-aec2-5f777cfe8cda",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "be8a10c4-7043-5ed6-a480-af73f3b68de4",
+                "price": 1.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Inner Circle vence a partida (Inc. prorrogação)",
+                  "name": "Inner Circle",
+                  "code": "2",
+                  "market_line_uuid": "f10892a8-cb6c-52b2-aec2-5f777cfe8cda",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916512,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "e2137c94-cb47-5120-b3b6-717201e17e4e",
+          "betradar_id": "74554590",
+          "away_team_id": "189737",
+          "category_id": 1614,
+          "home_team_id": "243281",
+          "event_code": 6865,
+          "event_date": "2026-09-17 09:00:00",
+          "event_name": "GamerLegion·Luminosity Gaming",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789635600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "bd94b39b-ec9a-55a1-bff8-7f89e146b767",
+                "price": 1.72,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "1",
+                  "market_line_uuid": "28f83700-6a73-5e08-a224-463d783e65d6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "8b4d3642-6e51-5760-a915-8ec779676f36",
+                "price": 2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "2",
+                  "market_line_uuid": "28f83700-6a73-5e08-a224-463d783e65d6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916513,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "6348ef6b-d14f-58f0-a186-760d63857643",
+          "betradar_id": "74570880",
+          "away_team_id": "187409",
+          "category_id": 1614,
+          "home_team_id": "383039",
+          "event_code": 8047,
+          "event_date": "2026-09-18 11:00:00",
+          "event_name": "Eyeballers·Liquid",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-18T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789729200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "8b1fe87a-0ddc-591a-8586-1b914abbd769",
+                "price": 2.32,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "1",
+                  "market_line_uuid": "470edc5d-e3f4-5b85-9532-479814266028",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "490ed5e9-0c6f-517e-8281-24ddadf452a2",
+                "price": 1.54,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Liquid vence a partida (Inc. prorrogação)",
+                  "name": "Liquid",
+                  "code": "2",
+                  "market_line_uuid": "470edc5d-e3f4-5b85-9532-479814266028",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14916514,
+        "increment_id": 10,
+        "fixture": {
+          "uuid": "b449b481-6922-57bb-b004-209d8e547783",
+          "betradar_id": "74554588",
+          "away_team_id": "189737",
+          "category_id": 1614,
+          "home_team_id": "367910",
+          "event_code": 4995,
+          "event_date": "2026-09-17 10:00:00",
+          "event_name": "Metizport·Luminosity Gaming",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102149,
+          "utc_date": "2026-09-17T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789639200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 17,
+              "2": 0
+            },
+            "odds": {
+              "1": 75,
+              "2": 0
+            }
+          },
+          "market_count": 17
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "a0cfff82-8b02-5c91-b7fb-3fbae3c0beb1",
+                "price": 2.32,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Metizport vence a partida (Inc. prorrogação)",
+                  "name": "Metizport",
+                  "code": "1",
+                  "market_line_uuid": "e36d9ff4-5bc4-5a5e-90d0-db9f02197db3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "c425690e-7433-5ff6-952e-56375cb498df",
+                "price": 1.54,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "2",
+                  "market_line_uuid": "e36d9ff4-5bc4-5a5e-90d0-db9f02197db3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14925844,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "28070c6a-e995-5049-b088-5141b5c7a3aa",
+          "away_team_id": "189737",
+          "category_id": 607,
+          "home_team_id": "340499",
+          "event_code": 8248,
+          "event_date": "2026-10-01 10:00:00",
+          "event_name": "B8·Luminosity Gaming",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 97836,
+          "utc_date": "2026-10-01T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790848800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 25,
+              "2": 0
+            },
+            "odds": {
+              "1": 325,
+              "2": 0
+            }
+          },
+          "market_count": 25
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "b4496938-4825-5b26-b5fe-d0c15d1caa3b",
+                "price": 1.4,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "B8 vence a partida (Inc. prorrogação)",
+                  "name": "B8",
+                  "code": "1",
+                  "market_line_uuid": "1a369651-c1dd-5234-81a4-dc8bc056a4c3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "d886b883-5c3b-5275-a5d3-e67c82601089",
+                "price": 2.8,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Luminosity Gaming vence a partida (Inc. prorrogação)",
+                  "name": "Luminosity Gaming",
+                  "code": "2",
+                  "market_line_uuid": "1a369651-c1dd-5234-81a4-dc8bc056a4c3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14925845,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "3a29d745-06cb-5758-bf51-d9fd4428409f",
+          "away_team_id": "187420",
+          "category_id": 607,
+          "home_team_id": "187408",
+          "event_code": 2723,
+          "event_date": "2026-10-01 12:30:00",
+          "event_name": "BIG·fnatic",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 97836,
+          "utc_date": "2026-10-01T12:30:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790857800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 25,
+              "2": 0
+            },
+            "odds": {
+              "1": 325,
+              "2": 0
+            }
+          },
+          "market_count": 25
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "b43f722e-ad60-569a-acbb-a40350d476b7",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "BIG vence a partida (Inc. prorrogação)",
+                  "name": "BIG",
+                  "code": "1",
+                  "market_line_uuid": "0052dcce-a614-56b8-9d31-2a03d2e500d9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "65d87d2f-2447-5ea8-a2f3-018f9d964235",
+                "price": 2.47,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "fnatic vence a partida (Inc. prorrogação)",
+                  "name": "fnatic",
+                  "code": "2",
+                  "market_line_uuid": "0052dcce-a614-56b8-9d31-2a03d2e500d9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14925846,
+        "increment_id": 18,
+        "fixture": {
+          "uuid": "ad8fd13c-a4b8-5022-9ec8-e98a376dda22",
+          "away_team_id": "448327",
+          "category_id": 607,
+          "home_team_id": "187414",
+          "event_code": 3392,
+          "event_date": "2026-10-01 15:00:00",
+          "event_name": "Astralis·Alliance",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 97836,
+          "utc_date": "2026-10-01T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790866800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 25,
+              "2": 0
+            },
+            "odds": {
+              "1": 325,
+              "2": 0
+            }
+          },
+          "market_count": 25
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "509cc26b-e040-5ed2-b345-afb3869f891d",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Astralis vence a partida (Inc. prorrogação)",
+                  "name": "Astralis",
+                  "code": "1",
+                  "market_line_uuid": "c8b9da80-03bd-5507-8a5c-cd5bb50fd92c",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "94d06aeb-29f8-5f5f-a76c-ed5ee1749061",
+                "price": 2.47,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Alliance vence a partida (Inc. prorrogação)",
+                  "name": "Alliance",
+                  "code": "2",
+                  "market_line_uuid": "c8b9da80-03bd-5507-8a5c-cd5bb50fd92c",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14925847,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "a68e565a-2bfd-56ae-8456-cca11c616464",
+          "away_team_id": "189551",
+          "category_id": 607,
+          "home_team_id": "187421",
+          "event_code": 1524,
+          "event_date": "2026-10-01 17:30:00",
+          "event_name": "FaZe·Nemiga",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 97836,
+          "utc_date": "2026-10-01T17:30:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790875800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 25,
+              "2": 0
+            },
+            "odds": {
+              "1": 325,
+              "2": 0
+            }
+          },
+          "market_count": 25
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "e26e66bc-d9eb-5f4a-bd64-79f5c60437b9",
+                "price": 1.35,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "FaZe vence a partida (Inc. prorrogação)",
+                  "name": "FaZe",
+                  "code": "1",
+                  "market_line_uuid": "6d0c889a-dd80-5a00-9520-ba14eed93df2",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "7084b026-43ab-5545-8ddf-96154ca57da8",
+                "price": 3.05,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Nemiga vence a partida (Inc. prorrogação)",
+                  "name": "Nemiga",
+                  "code": "2",
+                  "market_line_uuid": "6d0c889a-dd80-5a00-9520-ba14eed93df2",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927339,
+        "increment_id": 7,
+        "fixture": {
+          "uuid": "04abff28-12d8-5203-8588-3e144d09c9df",
+          "betradar_id": "74571106",
+          "away_team_id": "296995",
+          "category_id": 1491,
+          "home_team_id": "187414",
+          "event_code": 9627,
+          "event_date": "2026-09-21 10:00:00",
+          "event_name": "Astralis·Sangal",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-21T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789984800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5e21a580-fe43-58fe-a282-0da513033861",
+                "price": 1.21,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Astralis vence a partida (Inc. prorrogação)",
+                  "name": "Astralis",
+                  "code": "1",
+                  "market_line_uuid": "9a688ab1-da22-56d6-943a-39d1bbd796a0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "f2cf374c-f18f-5d6c-a0b6-146f76078668",
+                "price": 3.9,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Sangal vence a partida (Inc. prorrogação)",
+                  "name": "Sangal",
+                  "code": "2",
+                  "market_line_uuid": "9a688ab1-da22-56d6-943a-39d1bbd796a0",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927340,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "d6fc3d79-7c6c-59ba-bc3b-ab57da49e83f",
+          "betradar_id": "74571194",
+          "away_team_id": "572809",
+          "category_id": 1491,
+          "home_team_id": "383660",
+          "event_code": 6158,
+          "event_date": "2026-09-21 10:00:00",
+          "event_name": "Sashi·FOKUS",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-21T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789984800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "f13a5979-4523-5c60-946e-74915e10aff8",
+                "price": 2.3,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Sashi vence a partida (Inc. prorrogação)",
+                  "name": "Sashi",
+                  "code": "1",
+                  "market_line_uuid": "c42bd619-5431-5f24-8d5f-1991b08f968e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "d8128331-b9d3-5769-b77a-05d020def03f",
+                "price": 1.55,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "FOKUS vence a partida (Inc. prorrogação)",
+                  "name": "FOKUS",
+                  "code": "2",
+                  "market_line_uuid": "c42bd619-5431-5f24-8d5f-1991b08f968e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927342,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "af63fe9c-e4c8-529e-9b98-50347a8b0b8e",
+          "betradar_id": "74571252",
+          "away_team_id": "522466",
+          "category_id": 1491,
+          "home_team_id": "187420",
+          "event_code": 3219,
+          "event_date": "2026-09-23 10:00:00",
+          "event_name": "fnatic·Phantom",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-23T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790157600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "0b768fb1-1b69-51ce-a479-bcdf8eb6208a",
+                "price": 1.51,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "fnatic vence a partida (Inc. prorrogação)",
+                  "name": "fnatic",
+                  "code": "1",
+                  "market_line_uuid": "22801863-907f-573c-9a41-d998275f3eed",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "61e00674-6a0e-5ae6-8c3e-918c685b1d6c",
+                "price": 2.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Phantom vence a partida (Inc. prorrogação)",
+                  "name": "Phantom",
+                  "code": "2",
+                  "market_line_uuid": "22801863-907f-573c-9a41-d998275f3eed",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927343,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "6f0b9200-654e-5623-b1a4-1848c5a5b8f9",
+          "away_team_id": "596608",
+          "category_id": 1491,
+          "home_team_id": "189836",
+          "event_code": 1591,
+          "event_date": "2026-09-23 10:00:00",
+          "event_name": "100 Thieves·EA Copenhagen",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-23T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790157600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "a6928af3-e1aa-5bff-b328-51088a97e450",
+                "price": 1.25,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "100 Thieves vence a partida (Inc. prorrogação)",
+                  "name": "100 Thieves",
+                  "code": "1",
+                  "market_line_uuid": "7c923e76-a22f-5458-a192-a99ef64af88d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "e2909abe-26c3-5af8-b9ce-a9cfb8420fb5",
+                "price": 3.6,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "EA Copenhagen vence a partida (Inc. prorrogação)",
+                  "name": "EA Copenhagen",
+                  "code": "2",
+                  "market_line_uuid": "7c923e76-a22f-5458-a192-a99ef64af88d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927344,
+        "increment_id": 7,
+        "fixture": {
+          "uuid": "30dc49b4-9377-5215-ad92-dd5c5b6be957",
+          "betradar_id": "74571108",
+          "away_team_id": "462196",
+          "category_id": 1491,
+          "home_team_id": "189542",
+          "event_code": 1657,
+          "event_date": "2026-09-22 10:00:00",
+          "event_name": "Heroic·Johny Speeds",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-22T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790071200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "97d4d023-531b-5777-9bdc-b726dd0d8ba3",
+                "price": 1.21,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Heroic vence a partida (Inc. prorrogação)",
+                  "name": "Heroic",
+                  "code": "1",
+                  "market_line_uuid": "0335a4e0-0d63-562e-9e36-de4b3deb0c78",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "234e1bfe-3c4e-5159-aa18-e1895917102e",
+                "price": 3.9,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Johny Speeds vence a partida (Inc. prorrogação)",
+                  "name": "Johny Speeds",
+                  "code": "2",
+                  "market_line_uuid": "0335a4e0-0d63-562e-9e36-de4b3deb0c78",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927345,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "75d416df-3041-58b6-83fd-f9db511331de",
+          "betradar_id": "74571110",
+          "away_team_id": "619940",
+          "category_id": 1491,
+          "home_team_id": "187410",
+          "event_code": 1433,
+          "event_date": "2026-09-22 10:00:00",
+          "event_name": "Virtus.pro·BBL",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-22T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790071200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 200,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "0a2b63da-c226-5191-8620-ab6b5000c176",
+                "price": 1.97,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Virtus.pro vence a partida (Inc. prorrogação)",
+                  "name": "Virtus.pro",
+                  "code": "1",
+                  "market_line_uuid": "b3083314-6ef4-5012-88ad-35c674611f08",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "6eb29fc6-540d-5c40-9420-645b778182e0",
+                "price": 1.75,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "BBL vence a partida (Inc. prorrogação)",
+                  "name": "BBL",
+                  "code": "2",
+                  "market_line_uuid": "b3083314-6ef4-5012-88ad-35c674611f08",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927347,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "2b19cd7f-73dc-52ac-8a72-28a3c490f524",
+          "betradar_id": "74571126",
+          "away_team_id": "568155",
+          "category_id": 1491,
+          "home_team_id": "495262",
+          "event_code": 2509,
+          "event_date": "2026-09-24 10:00:00",
+          "event_name": "Apogee·ASTRAL",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-24T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790244000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "6190c443-1637-5280-8ac4-80c4df5f850a",
+                "price": 1.48,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Apogee vence a partida (Inc. prorrogação)",
+                  "name": "Apogee",
+                  "code": "1",
+                  "market_line_uuid": "90d1d130-65ff-5d95-bcc7-265a1294b1b9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "8a0a2b5f-1fe3-5f26-913b-4c3c9dd4edaa",
+                "price": 2.47,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "ASTRAL vence a partida (Inc. prorrogação)",
+                  "name": "ASTRAL",
+                  "code": "2",
+                  "market_line_uuid": "90d1d130-65ff-5d95-bcc7-265a1294b1b9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14927349,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "059dbc36-e92a-55cd-8712-ba2e38fdc0a0",
+          "betradar_id": "74571622",
+          "away_team_id": "351508",
+          "category_id": 1491,
+          "home_team_id": "266999",
+          "event_code": 7973,
+          "event_date": "2026-09-24 10:00:00",
+          "event_name": "JiJieHao·Eternal Fire",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101258,
+          "utc_date": "2026-09-24T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790244000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 206,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "d4ea0e45-fda9-5c03-9315-07b23449a890",
+                "price": 2.47,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "JiJieHao vence a partida (Inc. prorrogação)",
+                  "name": "JiJieHao",
+                  "code": "1",
+                  "market_line_uuid": "8c73ea23-7fb8-52be-b09a-412de1c4aa39",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "b01f4892-fe6a-53d4-ac97-1ed33a940404",
+                "price": 1.48,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eternal Fire vence a partida (Inc. prorrogação)",
+                  "name": "Eternal Fire",
+                  "code": "2",
+                  "market_line_uuid": "8c73ea23-7fb8-52be-b09a-412de1c4aa39",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14943371,
+        "increment_id": 76,
+        "fixture": {
+          "uuid": "438cff94-616f-50b9-81d8-1e1cff32b635",
+          "betradar_id": "74614772",
+          "away_team_id": "189837",
+          "category_id": 607,
+          "home_team_id": "187415",
+          "event_code": 7291,
+          "event_date": "2026-09-17 10:00:00",
+          "event_name": "MOUZ·NRG",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 28305,
+          "utc_date": "2026-09-17T10:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "super_advantage": "SA_ALL",
+          "unix_date_millis": 1789639200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 28,
+              "2": 0
+            },
+            "odds": {
+              "1": 340,
+              "2": 0
+            }
+          },
+          "market_count": 28
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "bc07cacd-9ff5-514a-bd40-43496d7f1dd4",
+                "price": 1.12,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "MOUZ vence a partida (Inc. prorrogação)",
+                  "name": "MOUZ",
+                  "code": "1",
+                  "market_line_uuid": "ae2548d8-3957-59f2-9ab9-7a54948817e1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "f05397ef-b80d-54d3-b2a2-3adbe0af6263",
+                "price": 5.6,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "NRG vence a partida (Inc. prorrogação)",
+                  "name": "NRG",
+                  "code": "2",
+                  "market_line_uuid": "ae2548d8-3957-59f2-9ab9-7a54948817e1",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14943374,
+        "increment_id": 32,
+        "fixture": {
+          "uuid": "0fdd9b33-69c0-56f6-b6c4-46bdca52c2a3",
+          "away_team_id": "578338",
+          "category_id": 607,
+          "home_team_id": "225668",
+          "event_code": 7357,
+          "event_date": "2026-09-17 12:30:00",
+          "event_name": "Vitality·Magic",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 28305,
+          "utc_date": "2026-09-17T12:30:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "super_advantage": "SA_ALL",
+          "unix_date_millis": 1789648200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 28,
+              "2": 0
+            },
+            "odds": {
+              "1": 341,
+              "2": 0
+            }
+          },
+          "market_count": 28
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "8c0ffdbf-fe53-56dc-b76f-e2a42966759e",
+                "price": 1.12,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Vitality vence a partida (Inc. prorrogação)",
+                  "name": "Vitality",
+                  "code": "1",
+                  "market_line_uuid": "3cda5da3-2785-576e-a327-1b644f0822c6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "8cb36bf3-16ee-5de1-8e50-585f5526f677",
+                "price": 5.6,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Magic vence a partida (Inc. prorrogação)",
+                  "name": "Magic",
+                  "code": "2",
+                  "market_line_uuid": "3cda5da3-2785-576e-a327-1b644f0822c6",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14943375,
+        "increment_id": 40,
+        "fixture": {
+          "uuid": "b05328d8-8166-53b6-ae24-d207b9321627",
+          "away_team_id": "209913",
+          "category_id": 607,
+          "home_team_id": "200542",
+          "event_code": 2296,
+          "event_date": "2026-09-17 17:30:00",
+          "event_name": "FURIA·MIBR",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 28305,
+          "utc_date": "2026-09-17T17:30:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "super_advantage": "SA_ALL",
+          "unix_date_millis": 1789666200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 28,
+              "2": 0
+            },
+            "odds": {
+              "1": 345,
+              "2": 0
+            }
+          },
+          "market_count": 28
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "c9885819-4100-5887-be6f-be6a47b30df0",
+                "price": 1.38,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "FURIA vence a partida (Inc. prorrogação)",
+                  "name": "FURIA",
+                  "code": "1",
+                  "market_line_uuid": "30e2f155-9e70-56dd-8373-4571bbf20ea2",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "55de1a2f-3423-5457-8075-5a0ec8aa01a5",
+                "price": 2.92,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "MIBR vence a partida (Inc. prorrogação)",
+                  "name": "MIBR",
+                  "code": "2",
+                  "market_line_uuid": "30e2f155-9e70-56dd-8373-4571bbf20ea2",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14943376,
+        "increment_id": 26,
+        "fixture": {
+          "uuid": "7df32a2f-31e9-5dc6-822a-78fea343b754",
+          "away_team_id": "471551",
+          "category_id": 607,
+          "home_team_id": "187413",
+          "event_code": 6327,
+          "event_date": "2026-09-17 15:00:00",
+          "event_name": "Natus Vincere·Aurora",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 28305,
+          "utc_date": "2026-09-17T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "super_advantage": "SA_ALL",
+          "unix_date_millis": 1789657200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 28,
+              "2": 0
+            },
+            "odds": {
+              "1": 337,
+              "2": 0
+            }
+          },
+          "market_count": 28
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "0a481a83-d65e-578a-b968-22086087d159",
+                "price": 1.85,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Natus Vincere vence a partida (Inc. prorrogação)",
+                  "name": "Natus Vincere",
+                  "code": "1",
+                  "market_line_uuid": "1a27e768-d338-502f-8f0a-b35bef567b9b",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "67757d57-6978-53ae-8a64-b51aff7fcb32",
+                "price": 1.9,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Aurora vence a partida (Inc. prorrogação)",
+                  "name": "Aurora",
+                  "code": "2",
+                  "market_line_uuid": "1a27e768-d338-502f-8f0a-b35bef567b9b",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14946763,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "38c3e556-c0f8-5590-bd29-2119665d4172",
+          "away_team_id": "209357",
+          "category_id": 2183,
+          "home_team_id": "191256",
+          "event_code": 8107,
+          "event_date": "2026-09-25 12:00:00",
+          "event_name": "Ninjas in Pyjamas·3DMAX",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102616,
+          "utc_date": "2026-09-25T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790337600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "13e201c7-3429-5958-bb5f-299bd8cb9cd6",
+                "price": 1.78,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Ninjas in Pyjamas vence a partida (Inc. prorrogação)",
+                  "name": "Ninjas in Pyjamas",
+                  "code": "1",
+                  "market_line_uuid": "3251e3c2-69ff-5a64-a186-fd0804dc77a3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "0c8cbdb2-8b1c-5219-9ad0-c95586643342",
+                "price": 1.88,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "3DMAX vence a partida (Inc. prorrogação)",
+                  "name": "3DMAX",
+                  "code": "2",
+                  "market_line_uuid": "3251e3c2-69ff-5a64-a186-fd0804dc77a3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14946764,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "4f186f94-c8a6-526a-8531-0807f0383cbd",
+          "away_team_id": "289289",
+          "category_id": 2183,
+          "home_team_id": "448327",
+          "event_code": 2972,
+          "event_date": "2026-09-25 09:00:00",
+          "event_name": "Alliance·Sinners",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102616,
+          "utc_date": "2026-09-25T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790326800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5d03ba40-619b-5b09-9f6c-b7c87b6783f8",
+                "price": 1.65,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Alliance vence a partida (Inc. prorrogação)",
+                  "name": "Alliance",
+                  "code": "1",
+                  "market_line_uuid": "896a4f3e-468e-5aa8-a66c-0c76fe2c761f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "053601b4-867d-5541-b4d0-346a10929bbe",
+                "price": 2.07,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Sinners vence a partida (Inc. prorrogação)",
+                  "name": "Sinners",
+                  "code": "2",
+                  "market_line_uuid": "896a4f3e-468e-5aa8-a66c-0c76fe2c761f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14946765,
+        "increment_id": 14,
+        "fixture": {
+          "uuid": "fff32b50-e8db-5d48-9128-83e05a930b5a",
+          "betradar_id": "74619546",
+          "away_team_id": "383039",
+          "category_id": 2183,
+          "home_team_id": "578338",
+          "event_code": 1942,
+          "event_date": "2026-09-25 15:00:00",
+          "event_name": "Magic·Eyeballers",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102616,
+          "utc_date": "2026-09-25T15:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790348400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "3a0c1d75-5f2f-5fef-820b-33a6431dc69b",
+                "price": 1.28,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Magic vence a partida (Inc. prorrogação)",
+                  "name": "Magic",
+                  "code": "1",
+                  "market_line_uuid": "614b6f23-5519-5b84-93ea-5a4203fe86f3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "d66cc928-e8f2-581b-8e89-06e445d25806",
+                "price": 3.2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eyeballers vence a partida (Inc. prorrogação)",
+                  "name": "Eyeballers",
+                  "code": "2",
+                  "market_line_uuid": "614b6f23-5519-5b84-93ea-5a4203fe86f3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14946766,
+        "increment_id": 11,
+        "fixture": {
+          "uuid": "f2af8ad6-2abb-5156-ba9f-f8e770457ffc",
+          "betradar_id": "74619550",
+          "away_team_id": "490107",
+          "category_id": 2183,
+          "home_team_id": "243281",
+          "event_code": 7993,
+          "event_date": "2026-09-25 18:00:00",
+          "event_name": "GamerLegion·K27",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 102616,
+          "utc_date": "2026-09-25T18:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790359200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "1af6bb52-e1a1-5ffc-ba74-f6f8b9535ccf",
+                "price": 1.58,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "GamerLegion vence a partida (Inc. prorrogação)",
+                  "name": "GamerLegion",
+                  "code": "1",
+                  "market_line_uuid": "bc96111b-a99b-5c94-9d48-9b3606d5c895",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "591c8a23-3493-5039-9aa2-69e86289ac31",
+                "price": 2.2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "K27 vence a partida (Inc. prorrogação)",
+                  "name": "K27",
+                  "code": "2",
+                  "market_line_uuid": "bc96111b-a99b-5c94-9d48-9b3606d5c895",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14957858,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "6f4c56a6-7183-51b0-ad20-16f0c0863a03",
+          "away_team_id": "567666",
+          "category_id": 1667,
+          "home_team_id": "616969",
+          "event_code": 4114,
+          "event_date": "2026-09-15 08:00:00",
+          "event_name": "EA Copenhagen Extra·Phantom Academy",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 73753,
+          "utc_date": "2026-09-15T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789459200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "553adb78-22dd-57bc-bd92-1fa745ae10a2",
+                "price": 2.52,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "EA Copenhagen Extra vence a partida (Inc. prorrogação)",
+                  "name": "EA Copenhagen Extra",
+                  "code": "1",
+                  "market_line_uuid": "30ae84ad-57d2-5e86-9878-5860e0841090",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "7d2c11b4-41ad-5cd4-a939-99dc412d7735",
+                "price": 1.44,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Phantom Academy vence a partida (Inc. prorrogação)",
+                  "name": "Phantom Academy",
+                  "code": "2",
+                  "market_line_uuid": "30ae84ad-57d2-5e86-9878-5860e0841090",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14972778,
+        "increment_id": 5,
+        "fixture": {
+          "uuid": "e7d5348a-d188-597e-8cbd-a8d92f7c4529",
+          "away_team_id": "364576",
+          "category_id": 1667,
+          "home_team_id": "594732",
+          "event_code": 7799,
+          "event_date": "2026-09-15 10:30:00",
+          "event_name": "Gatorian·Eternal Fire Academy",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 73753,
+          "utc_date": "2026-09-15T10:30:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789468200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "28ca129f-58a9-5f07-9131-ca6a69a69621",
+                "price": 1.78,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Gatorian vence a partida (Inc. prorrogação)",
+                  "name": "Gatorian",
+                  "code": "1",
+                  "market_line_uuid": "3e861e89-ce53-5054-8ef7-8336c982f8f9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "96438f8e-e7cf-579f-8299-18fe61058e9c",
+                "price": 1.88,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Eternal Fire Academy vence a partida (Inc. prorrogação)",
+                  "name": "Eternal Fire Academy",
+                  "code": "2",
+                  "market_line_uuid": "3e861e89-ce53-5054-8ef7-8336c982f8f9",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14979910,
+        "increment_id": 24,
+        "fixture": {
+          "uuid": "66c7ad9c-19cb-5913-b8c8-e75d3f717192",
+          "away_team_id": "590596",
+          "category_id": 2110,
+          "home_team_id": "617687",
+          "event_code": 8584,
+          "event_date": "2026-09-14 23:45:00",
+          "event_name": "underw0rld·QUINTESSENCIA",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 98318,
+          "utc_date": "2026-09-14T23:45:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789429500000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "ec29ef59-1227-5245-a19c-48241ba2e930",
+                "price": 6.7,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "underw0rld vence a partida (Inc. prorrogação)",
+                  "name": "underw0rld",
+                  "code": "1",
+                  "market_line_uuid": "830b8078-c703-501e-b85c-1dcf2ad72c77",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "fa947bae-437f-509e-a11e-b490298090dd",
+                "price": 1.07,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "QUINTESSENCIA vence a partida (Inc. prorrogação)",
+                  "name": "QUINTESSENCIA",
+                  "code": "2",
+                  "market_line_uuid": "830b8078-c703-501e-b85c-1dcf2ad72c77",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14979911,
+        "increment_id": 9,
+        "fixture": {
+          "uuid": "8219d92c-1f2b-54cf-8fa0-47ca07704992",
+          "betradar_id": "74670262",
+          "away_team_id": "621070",
+          "category_id": 2110,
+          "home_team_id": "506697",
+          "event_code": 2537,
+          "event_date": "2026-09-14 23:45:00",
+          "event_name": "Bestia Academy·your end",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 98318,
+          "utc_date": "2026-09-14T23:45:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789429500000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "6fd3ffec-84e5-5121-a3dc-7f079f5e418d",
+                "price": 1.1,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Bestia Academy vence a partida (Inc. prorrogação)",
+                  "name": "Bestia Academy",
+                  "code": "1",
+                  "market_line_uuid": "8217c337-7ad4-55e6-bff1-9c47702e7fb3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "1375e991-de07-5390-a790-a8a9643931cd",
+                "price": 5.5,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "your end vence a partida (Inc. prorrogação)",
+                  "name": "your end",
+                  "code": "2",
+                  "market_line_uuid": "8217c337-7ad4-55e6-bff1-9c47702e7fb3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14983646,
+        "increment_id": 6,
+        "fixture": {
+          "uuid": "29775e41-a5ce-5ae6-8c81-9d3102d7e2b2",
+          "away_team_id": "523813",
+          "category_id": 1973,
+          "home_team_id": "523811",
+          "event_code": 1064,
+          "event_date": "2026-09-15 11:00:00",
+          "event_name": "Des0ut Team·Perfecto Team",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 91436,
+          "utc_date": "2026-09-15T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789470000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "db795aa5-5b81-5ca8-b5e3-b7f36517f00e",
+                "price": 1.41,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Des0ut Team vence a partida (Inc. prorrogação)",
+                  "name": "Des0ut Team",
+                  "code": "1",
+                  "market_line_uuid": "5c1aa6f7-1f48-5b5e-b3ce-a0602d56cb60",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "e5deebb4-d930-5737-9ef5-16d4812df7b2",
+                "price": 2.62,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Perfecto Team vence a partida (Inc. prorrogação)",
+                  "name": "Perfecto Team",
+                  "code": "2",
+                  "market_line_uuid": "5c1aa6f7-1f48-5b5e-b3ce-a0602d56cb60",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14983867,
+        "increment_id": 8,
+        "fixture": {
+          "uuid": "28e5bc42-c9dc-52ec-919b-ef1a9ab5044c",
+          "away_team_id": "517903",
+          "category_id": 1993,
+          "home_team_id": "573150",
+          "event_code": 2364,
+          "event_date": "2026-09-15 14:00:00",
+          "event_name": "33·Leo Team",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 92642,
+          "utc_date": "2026-09-15T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789480800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "22086aba-bd68-513f-a987-17c5e66378d6",
+                "price": 1.39,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "33 vence a partida (Inc. prorrogação)",
+                  "name": "33",
+                  "code": "1",
+                  "market_line_uuid": "0d6b2ed8-a346-552e-b9f4-9bbc976ff51f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "51420439-a513-5361-a9e6-8a1101ed2b9a",
+                "price": 2.75,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Leo Team vence a partida (Inc. prorrogação)",
+                  "name": "Leo Team",
+                  "code": "2",
+                  "market_line_uuid": "0d6b2ed8-a346-552e-b9f4-9bbc976ff51f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14983868,
+        "increment_id": 5,
+        "fixture": {
+          "uuid": "9c327ba6-b21a-5b18-a9e0-2f93f233c2ca",
+          "away_team_id": "588702",
+          "category_id": 1993,
+          "home_team_id": "611363",
+          "event_code": 9116,
+          "event_date": "2026-09-15 11:00:00",
+          "event_name": "Black Phoenix·Just Players",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 92642,
+          "utc_date": "2026-09-15T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789470000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "fa9b2d21-44b7-56f2-88fe-502cec802860",
+                "price": 1.97,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Black Phoenix vence a partida (Inc. prorrogação)",
+                  "name": "Black Phoenix",
+                  "code": "1",
+                  "market_line_uuid": "ca20bb24-ece6-5995-b328-0b1b56cd7535",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "b65b6fe4-8670-5acf-8b7f-6c97db83f05e",
+                "price": 1.75,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Just Players vence a partida (Inc. prorrogação)",
+                  "name": "Just Players",
+                  "code": "2",
+                  "market_line_uuid": "ca20bb24-ece6-5995-b328-0b1b56cd7535",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14983869,
+        "increment_id": 7,
+        "fixture": {
+          "uuid": "0e383cf5-d8e1-5030-bd75-4251377026f6",
+          "betradar_id": "74665644",
+          "away_team_id": "490001",
+          "category_id": 1993,
+          "home_team_id": "484592",
+          "event_code": 1904,
+          "event_date": "2026-09-15 08:00:00",
+          "event_name": "Brute·G2 Ares",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 92642,
+          "utc_date": "2026-09-15T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789459200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 200,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "5d0a6fb4-e239-58a0-a3f2-e390ce37a01b",
+                "price": 1.71,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Brute vence a partida (Inc. prorrogação)",
+                  "name": "Brute",
+                  "code": "1",
+                  "market_line_uuid": "a45c83f7-8ca8-5924-a0e4-59f6e1a55887",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "446f1c43-f4db-5ea3-bb2b-5fd525d9e04e",
+                "price": 2.02,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "G2 Ares vence a partida (Inc. prorrogação)",
+                  "name": "G2 Ares",
+                  "code": "2",
+                  "market_line_uuid": "a45c83f7-8ca8-5924-a0e4-59f6e1a55887",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14985803,
+        "increment_id": 4,
+        "fixture": {
+          "uuid": "74f22e14-41f4-5752-99e7-6b2186979f61",
+          "away_team_id": "623313",
+          "category_id": 1973,
+          "home_team_id": "550603",
+          "event_code": 8255,
+          "event_date": "2026-09-15 14:00:00",
+          "event_name": "Aunkere Team·chopper Team",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 91436,
+          "utc_date": "2026-09-15T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789480800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "32f20e08-044a-53b4-a649-5174bb69d9db",
+                "price": 1.47,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Aunkere Team vence a partida (Inc. prorrogação)",
+                  "name": "Aunkere Team",
+                  "code": "1",
+                  "market_line_uuid": "f018c832-9c50-5106-bd2a-6e556d7394b4",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "a40a402f-d6f9-58f3-acb2-e5cbf31039f5",
+                "price": 2.45,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "chopper Team vence a partida (Inc. prorrogação)",
+                  "name": "chopper Team",
+                  "code": "2",
+                  "market_line_uuid": "f018c832-9c50-5106-bd2a-6e556d7394b4",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14991029,
+        "increment_id": 4,
+        "fixture": {
+          "uuid": "92ea4e6b-8b79-51a1-a3b7-c82b0e656ec5",
+          "away_team_id": "567666",
+          "category_id": 1793,
+          "home_team_id": "192090",
+          "event_code": 4441,
+          "event_date": "2026-09-15 08:00:00",
+          "event_name": "Unity·Phantom Academy",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 101851,
+          "utc_date": "2026-09-15T08:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789459200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 10,
+              "2": 0
+            },
+            "odds": {
+              "1": 38,
+              "2": 0
+            }
+          },
+          "market_count": 10
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "aaf00bb4-74a7-5e9c-8cbb-77a8bc65ec01",
+                "price": 1.36,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Unity vence a partida (Inc. prorrogação)",
+                  "name": "Unity",
+                  "code": "1",
+                  "market_line_uuid": "babcca2c-25ba-5f17-93fd-2dd2a371098f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "989aaf08-77ae-5362-8af8-5b72873692da",
+                "price": 2.82,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Phantom Academy vence a partida (Inc. prorrogação)",
+                  "name": "Phantom Academy",
+                  "code": "2",
+                  "market_line_uuid": "babcca2c-25ba-5f17-93fd-2dd2a371098f",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14991201,
+        "increment_id": 5,
+        "fixture": {
+          "uuid": "1edcf85c-e7d4-5cf6-855d-a15cd0fcef27",
+          "away_team_id": "536761",
+          "category_id": 1614,
+          "home_team_id": "517903",
+          "event_code": 7953,
+          "event_date": "2026-09-15 11:00:00",
+          "event_name": "Leo Team·Bushido Wildcats",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 91920,
+          "utc_date": "2026-09-15T11:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789470000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "e0234dd1-2065-5a6c-84f2-6947dd172455",
+                "price": 2.1,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "Leo Team vence a partida (Inc. prorrogação)",
+                  "name": "Leo Team",
+                  "code": "1",
+                  "market_line_uuid": "fc64cc52-13f3-5ab0-9090-d28c9d99b42e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "e8a52924-87bc-56a3-80fc-5317e71bd1ad",
+                "price": 1.66,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Bushido Wildcats vence a partida (Inc. prorrogação)",
+                  "name": "Bushido Wildcats",
+                  "code": "2",
+                  "market_line_uuid": "fc64cc52-13f3-5ab0-9090-d28c9d99b42e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14991207,
+        "increment_id": 5,
+        "fixture": {
+          "uuid": "b7a68c92-8ca0-58ec-9a9a-a84e48b7bacc",
+          "away_team_id": "468174",
+          "category_id": 1614,
+          "home_team_id": "465697",
+          "event_code": 9549,
+          "event_date": "2026-09-15 14:00:00",
+          "event_name": "BAKS·Spirit Academy",
+          "event_tags": "v2",
+          "sport_id": 55,
+          "tournament_id": 91920,
+          "utc_date": "2026-09-15T14:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789480800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 22,
+              "2": 0
+            },
+            "odds": {
+              "1": 200,
+              "2": 0
+            }
+          },
+          "market_count": 22
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Inc. prorrogação)",
+            "id": 2483,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 2
+            },
+            "odds": [
+              {
+                "uuid": "f5273492-6a4a-5e6a-859f-980f2ea48efe",
+                "price": 1.75,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6408,
+                  "info": "BAKS vence a partida (Inc. prorrogação)",
+                  "name": "BAKS",
+                  "code": "1",
+                  "market_line_uuid": "f3a3d650-69dd-57f6-88de-0a3a2f4bf325",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "0a8ee982-b3a5-5410-8a9b-20ef3dfe10f7",
+                "price": 1.97,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 6409,
+                  "info": "Spirit Academy vence a partida (Inc. prorrogação)",
+                  "name": "Spirit Academy",
+                  "code": "2",
+                  "market_line_uuid": "f3a3d650-69dd-57f6-88de-0a3a2f4bf325",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      }
+    ]
+  }
+}

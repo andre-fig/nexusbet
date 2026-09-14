@@ -1,0 +1,46 @@
+{
+  "devDependencies": {
+    "@nestjs/testing": "^12.0.2",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.1",
+    "@types/ws": "^8.18.1",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "name": "odds-service",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "test": "tsx --test src/modules/*/tests/*.test.ts",
+    "check": "tsc",
+    "capture": "tsx src/modules/collection/collection.cli.ts",
+    "normalize": "tsx src/modules/bet365/cli/normalize.ts",
+    "collect": "tsx src/modules/collection/collection.cli.ts --loop",
+    "replay-snapshots": "tsx src/modules/bet365/cli/replay-snapshots.ts",
+    "test:browser": "BROWSER_TESTS=1 tsx --test src/modules/bet365/tests/browser-feed.test.ts",
+    "capture:betano": "tsx src/modules/collection/collection.cli.ts --betano",
+    "collect:betano": "tsx src/modules/collection/collection.cli.ts --betano --loop",
+    "start:prod": "node dist/main.js",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "capture:superbet": "tsx src/modules/collection/collection.cli.ts --superbet"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.2",
+    "@nestjs/config": "^12.0.0",
+    "@nestjs/core": "^12.0.2",
+    "@nestjs/platform-express": "^12.0.2",
+    "playwright-core": "^1.63.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "ws": "^8.21.3"
+  }
+}

@@ -1,0 +1,844 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:38:04.141Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v3/pt-BR/events?startDate=2026-09-14T21:00:00.000Z&endDate=2027-03-13T21:00:00.000Z&index=active-prematch&sports=153",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "events": [
+      {
+        "event_id": 14900715,
+        "increment_id": 15,
+        "fixture": {
+          "uuid": "2dd82f28-273f-5523-bfc4-8497d76014b6",
+          "away_team_id": "474739",
+          "category_id": 1678,
+          "home_team_id": "474737",
+          "event_code": 8249,
+          "event_date": "2026-09-27 09:00:00",
+          "event_name": "100 Thieves·T1 Esports",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-27T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790499600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "44737594-fe9d-5cd1-8c96-617135588db3",
+                "price": 1.37,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "100 Thieves vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "c3ecc3fd-094e-5b6a-8f87-107d3305a743",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "ba319f0f-f3b0-5081-8e76-0753146fe588",
+                "price": 2.8,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "T1 Esports vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "c3ecc3fd-094e-5b6a-8f87-107d3305a743",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900716,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "718934d6-7dbc-52ed-949a-31b8e050a200",
+          "away_team_id": "474178",
+          "category_id": 1678,
+          "home_team_id": "474738",
+          "event_code": 5671,
+          "event_date": "2026-09-27 12:00:00",
+          "event_name": "JD·FUT",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-27T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790510400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "f9e5d743-f45b-562c-9bd3-120a1158e819",
+                "price": 3,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "JD vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "90e7ae19-248c-5cc4-929e-88e08daa537e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "46669e6c-c152-5ff9-8b81-7bb5bbe63a55",
+                "price": 1.32,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "FUT vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "90e7ae19-248c-5cc4-929e-88e08daa537e",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900717,
+        "increment_id": 13,
+        "fixture": {
+          "uuid": "4b7fcb5d-104b-5713-ac1a-ee80e8a3ed2c",
+          "away_team_id": "474732",
+          "category_id": 1678,
+          "home_team_id": "326567",
+          "event_code": 5858,
+          "event_date": "2026-09-26 12:00:00",
+          "event_name": "LOUD·EDward",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-26T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790424000000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "a23963c4-7200-5ff2-af68-8cc3dad2fd87",
+                "price": 1.39,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "LOUD vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "9944e1a4-c82a-55a3-a618-81c21304abb3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "cfe90d26-bcbf-5e1f-a3f4-fc2f84d5c075",
+                "price": 2.7,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "EDward vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "9944e1a4-c82a-55a3-a618-81c21304abb3",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900718,
+        "increment_id": 21,
+        "fixture": {
+          "uuid": "07ba994c-2198-586f-a74b-2cda06964ddb",
+          "away_team_id": "474177",
+          "category_id": 1678,
+          "home_team_id": "473104",
+          "event_code": 9905,
+          "event_date": "2026-09-26 09:00:00",
+          "event_name": "Global·Vitality",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-26T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790413200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "d55eeadd-dd9c-593b-8b83-79f124728672",
+                "price": 2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "Global vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "c09d2ebd-d659-5ff0-a6c5-695be2ae7341",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "3c20ff87-420d-5d4d-9761-9e47eb95504c",
+                "price": 1.7,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "Vitality vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "c09d2ebd-d659-5ff0-a6c5-695be2ae7341",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900723,
+        "increment_id": 14,
+        "fixture": {
+          "uuid": "befbe97c-da2d-5904-afa1-b8b9738c247d",
+          "away_team_id": "487526",
+          "category_id": 1678,
+          "home_team_id": "474171",
+          "event_code": 7274,
+          "event_date": "2026-09-25 09:00:00",
+          "event_name": "Karmine Corp·XLG Esports",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-25T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790326800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "087bb37b-999b-511a-8c7e-68356be21b8f",
+                "price": 1.27,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "Karmine Corp vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "bd0873ad-d7de-5bac-a585-3f36edef246d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "52ea5363-2fd8-5af6-8e6f-79aa3901f076",
+                "price": 3.3,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "XLG Esports vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "bd0873ad-d7de-5bac-a585-3f36edef246d",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900724,
+        "increment_id": 12,
+        "fixture": {
+          "uuid": "56444935-5091-5552-95f8-f3213e1e4e7c",
+          "away_team_id": "474740",
+          "category_id": 1678,
+          "home_team_id": "474730",
+          "event_code": 8638,
+          "event_date": "2026-09-24 09:00:00",
+          "event_name": "TyLoo·G2",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-24T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790240400000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "3f444aeb-f402-5adc-9082-6f5c0dde21b6",
+                "price": 3.3,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "TyLoo vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "00b72b1b-d6cb-5552-9d2d-04c935cc3a81",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "4c14c053-773a-5a83-933b-ec044dc8b877",
+                "price": 1.27,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "G2 vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "00b72b1b-d6cb-5552-9d2d-04c935cc3a81",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900725,
+        "increment_id": 24,
+        "fixture": {
+          "uuid": "253a96ab-1775-5be1-9a24-a505c527d6b5",
+          "away_team_id": "473160",
+          "category_id": 1678,
+          "home_team_id": "474174",
+          "event_code": 1887,
+          "event_date": "2026-09-24 12:00:00",
+          "event_name": "Liquid·Paper Rex",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-24T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790251200000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "e573f20b-c381-5247-9b0c-f584e116d524",
+                "price": 2.6,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "Liquid vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "4ea01d88-da61-583f-95e3-a57efe279027",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "c9527f4f-a94a-5f1b-bdfb-77408012cce2",
+                "price": 1.42,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "Paper Rex vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "4ea01d88-da61-583f-95e3-a57efe279027",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14900726,
+        "increment_id": 20,
+        "fixture": {
+          "uuid": "36163bcf-ba5d-5235-a71b-40876e821b06",
+          "away_team_id": "473739",
+          "category_id": 1678,
+          "home_team_id": "480921",
+          "event_code": 6275,
+          "event_date": "2026-09-25 12:00:00",
+          "event_name": "Nongshim RedForce·NRG",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 79712,
+          "utc_date": "2026-09-25T12:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1790337600000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 11,
+              "2": 0
+            },
+            "odds": {
+              "1": 207,
+              "2": 0
+            }
+          },
+          "market_count": 11
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "5da6643e-3902-504a-b89e-a56080077250",
+                "price": 1.7,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "Nongshim RedForce vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "ea08de31-90cb-5c22-9811-957b05e3c2c7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "0f17726a-791e-5cb7-98bb-be462c325eb5",
+                "price": 2,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "NRG vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "ea08de31-90cb-5c22-9811-957b05e3c2c7",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      },
+      {
+        "event_id": 14985732,
+        "increment_id": 5,
+        "fixture": {
+          "uuid": "346620f7-fc31-5942-ac9d-98f6ca01c0b9",
+          "away_team_id": "475513",
+          "category_id": 1709,
+          "home_team_id": "594718",
+          "event_code": 7405,
+          "event_date": "2026-09-15 09:00:00",
+          "event_name": "Gen.G GC·FENNEL (F)",
+          "event_tags": "v2",
+          "sport_id": 153,
+          "tournament_id": 92602,
+          "utc_date": "2026-09-15T09:00:00Z",
+          "event_promoted_in_play_order": 10000,
+          "tournament_promoted_in_play_order": 10000,
+          "offer_state_status": {
+            "1": 1
+          },
+          "unix_date_millis": 1789462800000
+        },
+        "inplay_stats": {
+          "away_team_score": "0",
+          "home_team_score": "0",
+          "periods": [
+            {
+              "away_team_score": "0",
+              "home_team_score": "0",
+              "num": 1,
+              "type": 4
+            }
+          ]
+        },
+        "inplay_stats_metadata": {
+          "status": "NOT_STARTED",
+          "counts": {
+            "markets": {
+              "1": 2,
+              "2": 0
+            },
+            "odds": {
+              "1": 8,
+              "2": 0
+            }
+          },
+          "market_count": 2
+        },
+        "markets": [
+          {
+            "name": "Vencedor (Incl. Prorrogação)",
+            "id": 232494,
+            "metadata": {
+              "tags": "preselected",
+              "market_group_order": 1
+            },
+            "odds": [
+              {
+                "uuid": "7b95fda2-a527-55b8-b552-6820dfb33cb5",
+                "price": 1.62,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209266,
+                  "info": "Gen.G GC vencerá a partida",
+                  "name": "1",
+                  "market_line_uuid": "9f3cd81b-09cb-5079-9f53-acd2a0d84adc",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              },
+              {
+                "uuid": "4fa36313-8251-580a-8aa9-7f4b8028d5de",
+                "price": 2.12,
+                "status": 1,
+                "display": true,
+                "metadata": {
+                  "outcome_id": 4209267,
+                  "info": "FENNEL (F) vencerá a partida",
+                  "name": "2",
+                  "market_line_uuid": "9f3cd81b-09cb-5079-9f53-acd2a0d84adc",
+                  "is_preselected": true,
+                  "offer_state_id": 1,
+                  "tags": "pm_boostable_market,v2,void_service"
+                }
+              }
+            ]
+          }
+        ],
+        "is_full_market_update": true
+      }
+    ]
+  }
+}

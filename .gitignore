@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+credentials.txt
+.env
+.env.*
+apps/odds-service/dist/
+apps/odds-service/data/
+apps/odds-service/inbox/
+apps/odds-service/detail-inbox/
+apps/odds-service/betano-inbox/
+apps/odds-service/captures/
+apps/odds-service/superbet-inbox/

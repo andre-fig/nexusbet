@@ -1,0 +1,32 @@
+{
+  "provider": "superbet",
+  "capturedAt": "2026-09-14T21:33:03.137Z",
+  "status": 200,
+  "source": {
+    "transport": "xhr",
+    "method": "GET",
+    "url": "https://production-superbet-offer-br.freetls.fastly.net/v2/pt-BR/struct",
+    "capture": "chrome-cdp-response",
+    "authenticated": false
+  },
+  "data": {
+    "error": false,
+    "dataIn": {
+      "lang": "pt-BR"
+    },
+    "data": {
+      "tournaments": [
+        {
+          "id": "44717",
+          "localNames": {
+            "pt-BR": ""
+          },
+          "order": 237840000,
+          "orderPromoted": 9223372036854776000,
+          "footer": ""
+        }
+      ],
+      "outcomes": []
+    }
+  }
+}
