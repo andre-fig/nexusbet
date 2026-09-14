@@ -10,6 +10,7 @@ export interface CollectOptions {
   mainOnly?: boolean;
   eventId?: string;
 }
+/** Read-only provider boundary. IDs and capture timestamps remain provider-scoped. */
 export interface OddsProvider {
   readonly name: Provider;
   collectEvents(options: CollectOptions): Promise<NormalizedEvent[]>;
@@ -18,6 +19,7 @@ export interface OddsProvider {
     options: CollectOptions,
   ): Promise<NormalizedEvent>;
 }
+/** Store/lifecycle adapter used by the registry; global polling policy stays in Collection. */
 export interface ProviderRuntime extends OddsProvider {
   readonly pollCadence: "esport" | "round";
   readEvents(esports: Esport[]): NormalizedEvent[];

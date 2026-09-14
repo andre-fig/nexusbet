@@ -2,6 +2,8 @@
 
 Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes bet365, Betano e Superbet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma para persistência e mantém os journals locais durante a migração. Não depende de frontend ou BFF.
 
+Guia de entrada: [README da raiz](../../README.md). Instruções de trabalho: [AGENTS.md](../../AGENTS.md). Documentação aprofundada: [índice](../../README.md#documentation).
+
 ## Executar
 
 A partir da raiz do repositório:
@@ -19,7 +21,7 @@ npm start
 npm run start:prod
 ```
 
-Execute apenas uma instância de cada vez. A API atende em `127.0.0.1:3650` por padrão (`PORT`). O scheduler começa automaticamente após o startup delay. Para somente API/ingestão, sem coletar nos sites:
+Execute apenas uma instância de cada vez. A API atende em `127.0.0.1:3650` por padrão (`PORT`). Com COLLECTION_ENABLED=true, o scheduler começa automaticamente após o startup delay. Para somente API/ingestão, sem coletar nos sites:
 
 ```sh
 COLLECTION_ENABLED=false npm start
@@ -51,7 +53,7 @@ Testes comuns usam mocks/fixtures e não consultam as casas. Fixtures e testes f
 
 ## API
 
-Somente GET; dados ausentes/vencidos retornam 503, demais métodos retornam 405.
+Somente GET; rotas normalizadas retornam 503 para dados ausentes/vencidos, demais métodos retornam 405. Consultas SQL são históricas e não aplicam esse TTL automaticamente.
 
 - `/health`: saúde operacional, scheduler, providers e estado da conexão de persistência.
 - `/events`, `/providers`, `/provider-events`, `/issues`, `/selections/:id/odds-history`: consultas persistentes PostgreSQL; limites e semântica em [docs/postgres.md](docs/postgres.md).
@@ -99,7 +101,7 @@ npm run collect:betano -- --detail
 
 `modules/bet365`, `modules/betano` e `modules/superbet` contêm protocolos, transportes, parsers e stores específicos. `collection` coordena a agenda; `snapshots` mantém o journal; `matching` recebe somente o domínio normalizado; `shared` contém domínio e infraestrutura neutra.
 
-A coleta Betano cobre a aba popular. Bet365 captura as abas anunciadas e aceitas, excluindo Criar Aposta. Nem todo evento listado retorna detalhe utilizável; falhas preservam o estado anterior e aplicam backoff/circuit breaker. Intervalos são alvos, sujeitos à capacidade, fila e jitter. A API continua aplicando TTL. O encerramento fecha apenas abas próprias; contextos anônimos vazios ficam para o ciclo de vida do Chrome, pois sua destruição explícita já causou crashes na instalação testada.
+A coleta Betano cobre a aba popular. Bet365 captura as abas anunciadas e aceitas, excluindo Criar Aposta. Nem todo evento listado retorna detalhe utilizável; falhas preservam o estado anterior e aplicam backoff/circuit breaker. Intervalos são alvos, sujeitos à capacidade, fila e jitter. A API continua aplicando TTL. No headless, o encerramento fecha o browser e perfil temporário próprios. No modo de Chrome externo, fecha apenas abas próprias; contextos anônimos vazios ficam para o ciclo de vida do Chrome, pois sua destruição explícita já causou crashes na instalação testada.
 
 - [Configuração e funcionamento do scheduler](docs/scheduler.md)
 - [Campos e endpoints dos protocolos](docs/protocols.md)

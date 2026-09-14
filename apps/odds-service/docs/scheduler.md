@@ -1,6 +1,6 @@
 # Scheduler
 
-`npm start` ou `npm run start:prod` iniciam a coleta automaticamente, após 3 segundos mais jitter de até 5 segundos. Chrome existente com CDP autorizado continua necessário. Não há cron externo ou fila distribuída.
+Com COLLECTION_ENABLED=true, `npm start` ou `npm run start:prod` iniciam a coleta após 3 segundos mais jitter de até 5 segundos. O código habilita por default, mas .env.example usa false. HEADLESS=true lança Chrome próprio invisível; Chrome existente com CDP autorizado só é necessário no diagnóstico HEADLESS=false. Não há cron externo ou fila distribuída.
 
 O ciclo é: **startup → tick global → listagens vencidas → catálogo normalizado → detalhes vencidos por proximidade → coleta/validação → publicação → journals/snapshots**. Listagens têm prioridade para manter contexto atual. O tick de 1 segundo só coordena memória; ele não consulta os sites a cada segundo. A fila é derivada das entradas únicas de estado, sem timer por evento.
 
@@ -15,7 +15,7 @@ O ciclo é: **startup → tick global → listagens vencidas → catálogo norma
 | DETAIL_INTERVAL_1H_6H_MS | 120000 |
 | DETAIL_INTERVAL_LT_1H_MS | 60000 |
 | COLLECTION_JITTER_MS | 5000 |
-| BET365_MAX_CONCURRENCY / BETANO_MAX_CONCURRENCY | 1 |
+| BET365_MAX_CONCURRENCY / BETANO_MAX_CONCURRENCY / SUPERBET_MAX_CONCURRENCY | 1 |
 | PROVIDER_LIST_TIMEOUT_MS / PROVIDER_DETAIL_TIMEOUT_MS | 60000 |
 | PROVIDER_FAILURE_THRESHOLD | 5 |
 | PROVIDER_COOLDOWN_MS | 300000 |
@@ -27,7 +27,7 @@ O ciclo é: **startup → tick global → listagens vencidas → catálogo norma
 
 Exatamente 24h ou 6h usa a faixa 6h–24h; exatamente 1h usa a faixa 1h–6h. Datas inválidas e eventos iniciados não recebem detalhe. Eventos removidos/iniciados não são marcados como finished pelo scheduler. Snapshots antigos permanecem no journal e a API aplica o TTL anterior.
 
-Cada provider tem limite efetivo 1 porque seu transporte usa uma sessão mutável; valores maiores configurados são limitados a 1 e expostos no health. Providers diferentes podem usar simultaneamente sessões/abas distintas em uma única conexão CDP compartilhada por referência. Fechar uma aba não encerra a conexão do outro coletor. Nenhuma sessão da conta é copiada.
+Cada provider tem limite efetivo 1 porque seu transporte usa uma sessão mutável; valores maiores configurados são limitados a 1 e expostos no health. No headless, providers usam browsers próprios distintos. No diagnóstico com Chrome externo, podem usar sessões/abas distintas em uma conexão CDP compartilhada por referência. Fechar uma aba não encerra a conexão do outro coletor. Nenhuma sessão da conta é copiada.
 
 Timeout cancela a coleta, descarta publicações pendentes e fecha o transporte próprio. O lock só é liberado após drenagem segura, para não sobrepor uma operação tardia. Falhas mantêm o catálogo anterior e aplicam backoff por evento; rejeições de parsing preservam uma sessão utilizável e não impedem outros detalhes. Falhas de transporte/timeout fecham a sessão. Após cinco falhas globais consecutivas o provider pausa por cinco minutos. Qualquer sucesso global zera essa sequência; falhas por evento permanecem independentes até seu sucesso. Uma conexão fechada exige nova listagem antes de detalhes. Os journals existentes registram as mudanças; o scheduler não cria um journal paralelo.
 
@@ -39,3 +39,5 @@ Os intervalos são alvos de elegibilidade, não garantia de latência para todo 
 
 
 A Superbet participa do mesmo registry, com estado, lock, backoff e circuit breaker próprios. Sua coleta usa HTTP direto; o limite conservador efetivo continua sendo uma operação por provider. Intervalos, timeout e TTL são os compartilhados.
+
+Referência consolidada: [Collection](../../../docs/COLLECTION.md) e [Configuration](../../../docs/CONFIGURATION.md).
