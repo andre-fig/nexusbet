@@ -1,3 +1,4 @@
+import { openHeadlessFeed } from "../../shared/browser/headless-feed.js";
 import { Injectable, Inject } from "@nestjs/common";
 import { AppConfiguration } from "../../config/configuration.js";
 import { nativeDebugEndpoint } from "../../shared/browser/endpoint.js";
@@ -11,6 +12,10 @@ export class BetanoClient {
   async open() {
     try {
       const c = this.config.settings;
+      if (c.headless)
+        return await openHeadlessFeed((endpoint) =>
+          BetanoBrowser.open(endpoint),
+        );
       return await BetanoBrowser.open(
         c.cdpUrl || (await nativeDebugEndpoint(c.chromeDebugPortFile)),
       );

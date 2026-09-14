@@ -7,6 +7,8 @@ import { ConfigService } from "@nestjs/config";
 import { resolve } from "node:path";
 import type { Esport } from "../shared/types/common.js";
 export interface Settings {
+  persistenceMode: "file" | "postgres";
+  databaseUrl?: string;
   collection: CollectionSettings;
   ingestEnabled: boolean;
   port: number;
@@ -41,7 +43,19 @@ export function configuration() {
   ) as Esport[];
   if (esports.some((g) => !["cs2", "lol", "valorant"].includes(g)))
     throw Error("Invalid ESPORTS");
+  const persistenceMode =
+    process.env.PERSISTENCE_MODE ||
+    (process.env.DATABASE_URL ? "postgres" : "file");
+  if (!["file", "postgres"].includes(persistenceMode))
+    throw Error("Invalid PERSISTENCE_MODE");
+  if (persistenceMode === "postgres" && !process.env.DATABASE_URL)
+    throw Error("DATABASE_URL required for PostgreSQL");
+  const headless = process.env.HEADLESS ?? "true";
+  if (!["true", "false", "1", "0"].includes(headless))
+    throw Error("Invalid HEADLESS");
   const settings: Settings = {
+    persistenceMode: persistenceMode as "file" | "postgres",
+    databaseUrl: process.env.DATABASE_URL,
     collection: collectionConfiguration(),
     ingestEnabled: process.env.INBOX_INGEST_ENABLED !== "0",
     port: positive("PORT", 3650, 0),
@@ -63,7 +77,7 @@ export function configuration() {
     ),
     cdpUrl: process.env.CDP_URL,
     chromeDebugPortFile: process.env.CHROME_DEBUG_PORT_FILE,
-    headless: process.env.HEADLESS === "1",
+    headless: headless === "1" || headless === "true",
     browserTests: process.env.BROWSER_TESTS === "1",
     esports,
     eventId: process.env.EVENT_ID,

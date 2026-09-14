@@ -1,0 +1,282 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum EventStatus {
+  scheduled
+  live
+  suspended
+  finished
+}
+
+enum MatchStatus {
+  matched
+  partial
+  low_confidence
+  manual
+  unmatched
+}
+
+enum IssueStatus {
+  open
+  resolved
+  ignored
+}
+
+model Provider {
+  id        String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug      String          @unique
+  name      String
+  enabled   Boolean         @default(true)
+  events    ProviderEvent[]
+  scopes    FeedScope[]
+  issues    DataIssue[]
+  createdAt DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("providers")
+}
+
+model CanonicalEvent {
+  id         String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  esport     String
+  tournament String
+  teamA      String          @map("team_a")
+  teamB      String          @map("team_b")
+  startsAt   DateTime        @map("starts_at") @db.Timestamptz(3)
+  status     EventStatus
+  endedAt    DateTime?       @map("ended_at") @db.Timestamptz(3)
+  metadata   Json?           @db.JsonB
+  matches    EventMatch[]
+  decisions  MatchDecision[]
+  issues     DataIssue[]
+  createdAt  DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt  DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@index([startsAt])
+  @@index([status])
+  @@map("canonical_events")
+}
+
+model ProviderEvent {
+  id                   String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  providerId           String          @map("provider_id") @db.Uuid
+  provider             Provider        @relation(fields: [providerId], references: [id], onDelete: Restrict)
+  providerEventId      String          @map("provider_event_id")
+  esport               String
+  rawTeamA             String          @map("raw_team_a")
+  rawTeamB             String          @map("raw_team_b")
+  normalizedTeamA      String          @map("normalized_team_a")
+  normalizedTeamB      String          @map("normalized_team_b")
+  rawTournament        String          @map("raw_tournament")
+  normalizedTournament String          @map("normalized_tournament")
+  startsAt             DateTime        @map("starts_at") @db.Timestamptz(3)
+  providerStatus       String          @map("provider_status")
+  inPlay               Boolean?        @map("in_play")
+  suspended            Boolean?
+  lastSeenAt           DateTime        @map("last_seen_at") @db.Timestamptz(3)
+  fetchedAt            DateTime        @map("fetched_at") @db.Timestamptz(3)
+  listed               Boolean         @default(true)
+  removedAt            DateTime?       @map("removed_at") @db.Timestamptz(3)
+  rawData              Json            @map("raw_data") @db.JsonB
+  markets              Market[]
+  match                EventMatch?
+  decisions            MatchDecision[]
+  issues               DataIssue[]
+  createdAt            DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt            DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([providerId, providerEventId])
+  @@index([providerId, startsAt])
+  @@index([lastSeenAt])
+  @@index([providerStatus])
+  @@map("provider_events")
+}
+
+model EventMatch {
+  id                String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  providerEventId   String          @unique @map("provider_event_id") @db.Uuid
+  providerEvent     ProviderEvent   @relation(fields: [providerEventId], references: [id], onDelete: Restrict)
+  canonicalEventId  String?         @map("canonical_event_id") @db.Uuid
+  canonicalEvent    CanonicalEvent? @relation(fields: [canonicalEventId], references: [id], onDelete: Restrict)
+  confidence        Decimal         @db.Decimal(6, 5)
+  status            MatchStatus
+  reason            String?
+  startDeltaSeconds Int?            @map("start_delta_seconds")
+  matchedAt         DateTime        @map("matched_at") @db.Timestamptz(3)
+  createdAt         DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@index([canonicalEventId])
+  @@index([status])
+  @@map("event_matches")
+}
+
+model MatchDecision {
+  id               String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  providerEventId  String          @map("provider_event_id") @db.Uuid
+  providerEvent    ProviderEvent   @relation(fields: [providerEventId], references: [id], onDelete: Restrict)
+  canonicalEventId String?         @map("canonical_event_id") @db.Uuid
+  canonicalEvent   CanonicalEvent? @relation(fields: [canonicalEventId], references: [id], onDelete: Restrict)
+  status           MatchStatus
+  confidence       Decimal         @db.Decimal(6, 5)
+  reason           String?
+  detectedAt       DateTime        @map("detected_at") @db.Timestamptz(3)
+
+  @@index([providerEventId, detectedAt(sort: Desc)])
+  @@map("match_decisions")
+}
+
+model Market {
+  id               String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  providerEventId  String        @map("provider_event_id") @db.Uuid
+  providerEvent    ProviderEvent @relation(fields: [providerEventId], references: [id], onDelete: Restrict)
+  providerMarketId String        @map("provider_market_id")
+  rawMarketId      String        @map("raw_market_id")
+  category         String
+  name             String
+  mapNumber        Int?          @map("map_number")
+  line             Decimal?      @db.Decimal(24, 12)
+  period           String?
+  suspended        Boolean?
+  inPlay           Boolean?      @map("in_play")
+  rawData          Json          @map("raw_data") @db.JsonB
+  firstSeenAt      DateTime      @map("first_seen_at") @db.Timestamptz(3)
+  lastSeenAt       DateTime      @map("last_seen_at") @db.Timestamptz(3)
+  selections       Selection[]
+  issues           DataIssue[]
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([providerEventId, providerMarketId])
+  @@index([category, mapNumber])
+  @@map("markets")
+}
+
+model Selection {
+  id                  String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  marketId            String         @map("market_id") @db.Uuid
+  market              Market         @relation(fields: [marketId], references: [id], onDelete: Restrict)
+  providerSelectionId String         @map("provider_selection_id")
+  name                String
+  side                String?
+  line                Decimal?       @db.Decimal(24, 12)
+  suspended           Boolean?
+  rawData             Json           @map("raw_data") @db.JsonB
+  fetchedAt           DateTime       @map("fetched_at") @db.Timestamptz(3)
+  snapshots           OddsSnapshot[]
+  issues              DataIssue[]
+  createdAt           DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime       @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([marketId, providerSelectionId])
+  @@map("selections")
+}
+
+model OddsSnapshot {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  selectionId   String      @map("selection_id") @db.Uuid
+  selection     Selection   @relation(fields: [selectionId], references: [id], onDelete: Restrict)
+  publicationId String      @map("publication_id") @db.Uuid
+  publication   Publication @relation(fields: [publicationId], references: [id], onDelete: Restrict)
+  sourceScope   String      @map("source_scope")
+  odds          Decimal?    @db.Decimal(24, 12)
+  line          Decimal?    @db.Decimal(24, 12)
+  mapNumber     Int?        @map("map_number")
+  suspended     Boolean?
+  inPlay        Boolean?    @map("in_play")
+  fetchedAt     DateTime    @map("fetched_at") @db.Timestamptz(3)
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([publicationId, selectionId, sourceScope, fetchedAt])
+  @@index([selectionId, fetchedAt(sort: Desc), createdAt(sort: Desc)])
+  @@map("odds_snapshots")
+}
+
+model DataIssue {
+  id               String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dedupeKey        String            @unique @map("dedupe_key")
+  type             String
+  severity         String
+  providerId       String?           @map("provider_id") @db.Uuid
+  provider         Provider?         @relation(fields: [providerId], references: [id], onDelete: Restrict)
+  canonicalEventId String?           @map("canonical_event_id") @db.Uuid
+  canonicalEvent   CanonicalEvent?   @relation(fields: [canonicalEventId], references: [id], onDelete: Restrict)
+  providerEventId  String?           @map("provider_event_id") @db.Uuid
+  providerEvent    ProviderEvent?    @relation(fields: [providerEventId], references: [id], onDelete: Restrict)
+  marketId         String?           @map("market_id") @db.Uuid
+  market           Market?           @relation(fields: [marketId], references: [id], onDelete: Restrict)
+  selectionId      String?           @map("selection_id") @db.Uuid
+  selection        Selection?        @relation(fields: [selectionId], references: [id], onDelete: Restrict)
+  message          String
+  details          Json?             @db.JsonB
+  status           IssueStatus       @default(open)
+  detectedAt       DateTime          @map("detected_at") @db.Timestamptz(3)
+  resolvedAt       DateTime?         @map("resolved_at") @db.Timestamptz(3)
+  history          IssueTransition[]
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime          @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@index([status, severity, detectedAt(sort: Desc)])
+  @@index([providerId])
+  @@index([canonicalEventId])
+  @@index([providerEventId])
+  @@map("data_issues")
+}
+
+model IssueTransition {
+  id      String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  issueId String      @map("issue_id") @db.Uuid
+  issue   DataIssue   @relation(fields: [issueId], references: [id], onDelete: Restrict)
+  status  IssueStatus
+  at      DateTime    @db.Timestamptz(3)
+
+  @@index([issueId, at(sort: Desc)])
+  @@map("issue_transitions")
+}
+
+model FeedScope {
+  id           String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String        @unique
+  providerId   String        @map("provider_id") @db.Uuid
+  provider     Provider      @relation(fields: [providerId], references: [id], onDelete: Restrict)
+  esport       String
+  kind         String
+  fetchedAt    DateTime?     @map("fetched_at") @db.Timestamptz(3)
+  events       Json          @db.JsonB
+  observations Json          @db.JsonB
+  publications Publication[]
+
+  @@index([providerId, kind])
+  @@map("feed_scopes")
+}
+
+model Publication {
+  id        String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  scopeId   String         @map("scope_id") @db.Uuid
+  scope     FeedScope      @relation(fields: [scopeId], references: [id], onDelete: Restrict)
+  fetchedAt DateTime       @map("fetched_at") @db.Timestamptz(3)
+  hash      String
+  changes   Json           @db.JsonB
+  snapshots OddsSnapshot[]
+  createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([scopeId, fetchedAt])
+  @@map("publications")
+}
+
+model LegacyCheckpoint {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  key       String   @unique
+  payload   Json     @db.JsonB
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("legacy_checkpoints")
+}

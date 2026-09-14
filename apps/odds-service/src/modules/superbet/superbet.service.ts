@@ -33,7 +33,11 @@ export class SuperbetService implements ProviderRuntime {
     @Inject(SnapshotsService) snapshots: SnapshotsService,
   ) {
     const path = join(config.settings.dataDir, "superbet");
-    this.store = new SuperbetStore(path, snapshots.createJournal(path));
+    this.store = new SuperbetStore(
+      path,
+      snapshots.createJournal(path),
+      snapshots.persistence,
+    );
   }
   refresh() {
     if (!this.config.settings.ingestEnabled) return Promise.resolve();

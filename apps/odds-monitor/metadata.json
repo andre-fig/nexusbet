@@ -1,0 +1,7 @@
+{
+  "name": "Odds Monitor",
+  "description": "Real-time esports odds monitoring, bookmaker feed reconciliation, and market divergence detection dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

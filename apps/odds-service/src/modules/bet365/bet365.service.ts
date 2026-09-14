@@ -35,9 +35,13 @@ export class Bet365Service implements ProviderRuntime {
     @Inject(Bet365Collector) private readonly collector: Bet365Collector,
     @Inject(SnapshotsService) snapshots: SnapshotsService,
   ) {
-    this.store = new Store(config.settings.dataDir);
+    this.store = new Store(config.settings.dataDir, snapshots.persistence);
     const path = join(config.settings.dataDir, "details");
-    this.details = new DetailStore(path, snapshots.createJournal(path));
+    this.details = new DetailStore(
+      path,
+      snapshots.createJournal(path),
+      snapshots.persistence,
+    );
   }
   refresh() {
     if (!this.config.settings.ingestEnabled) return Promise.resolve();

@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-surface-dim: #111317;
+  --color-surface-container-lowest: #0c0e11;
+  --color-surface-container-low: #1a1c1f;
+  --color-surface-container: #1e2023;
+  --color-surface-container-high: #282a2d;
+  --color-surface-container-highest: #333538;
+  --color-surface-bright: #37393d;
+  --color-surface-variant: #333538;
+
+  --color-on-surface: #e2e2e6;
+  --color-on-surface-variant: #c3c6d6;
+  --color-outline: #8d909f;
+  --color-outline-variant: #434653;
+
+  --color-primary: #b2c5ff;
+  --color-primary-container: #5b8cff;
+  --color-on-primary: #002c72;
+  --color-primary-fixed: #dae2ff;
+
+  --color-tertiary: #a7c8ff;
+  --color-tertiary-container: #5492e7;
+  --color-secondary: #c2c6d2;
+  --color-secondary-container: #424751;
+  --color-secondary-fixed: #dee2ef;
+
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-container-lowest);
+    color: var(--color-on-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Light mode overrides when not in dark class */
+:root:not(.dark) {
+  --color-surface-dim: #e4e7ec;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f5f8;
+  --color-surface-container: #eceef2;
+  --color-surface-container-high: #e2e5eb;
+  --color-surface-container-highest: #d7dbe3;
+  --color-surface-bright: #ffffff;
+  --color-surface-variant: #e2e5eb;
+
+  --color-on-surface: #111317;
+  --color-on-surface-variant: #4b5262;
+  --color-outline: #727785;
+  --color-outline-variant: #d0d4dd;
+
+  --color-primary: #1e50d8;
+  --color-primary-container: #2563eb;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #dbeafe;
+
+  --color-tertiary: #0284c7;
+  --color-tertiary-container: #0369a1;
+  --color-secondary: #475467;
+  --color-secondary-container: #e2e8f0;
+  --color-secondary-fixed: #f1f5f9;
+
+  --color-error: #dc2626;
+  --color-error-container: #fee2e2;
+  --color-on-error-container: #991b1b;
+}

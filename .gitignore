@@ -10,3 +10,5 @@ apps/odds-service/detail-inbox/
 apps/odds-service/betano-inbox/
 apps/odds-service/captures/
 apps/odds-service/superbet-inbox/
+!apps/odds-service/.env.example
+apps/odds-service/src/generated/

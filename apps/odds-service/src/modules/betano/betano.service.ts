@@ -33,7 +33,11 @@ export class BetanoService implements ProviderRuntime {
     @Inject(SnapshotsService) snapshots: SnapshotsService,
   ) {
     const path = join(config.settings.dataDir, "betano");
-    this.store = new BetanoStore(path, snapshots.createJournal(path));
+    this.store = new BetanoStore(
+      path,
+      snapshots.createJournal(path),
+      snapshots.persistence,
+    );
   }
   refresh() {
     if (!this.config.settings.ingestEnabled) return Promise.resolve();

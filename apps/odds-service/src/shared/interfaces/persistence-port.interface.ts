@@ -1,0 +1,22 @@
+import type { NormalizedEvent } from "../domain/normalized-event.js";
+import type { MarketBatch } from "../domain/market-model.js";
+export interface PersistencePublication {
+  provider: string;
+  esport: string;
+  kind: "list" | "detail";
+  scope: string;
+  fetchedAt: string;
+  events: NormalizedEvent[];
+  observations: MarketBatch[];
+  checkpoint: { key: string; payload: unknown };
+}
+/** Storage boundary: provider adapters have no dependency on Prisma/SQL. */
+export interface PersistencePort {
+  readonly enabled: boolean;
+  catalogEvents?(): Promise<NormalizedEvent[]>;
+  equivalentObservation?(a: MarketBatch, b: MarketBatch): boolean;
+  baselines(): Promise<MarketBatch[]>;
+  commit(publication: PersistencePublication): Promise<void>;
+  restore<T>(key: string): Promise<T | undefined>;
+}
+export const PERSISTENCE = Symbol("PERSISTENCE");

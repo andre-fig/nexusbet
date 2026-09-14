@@ -1,6 +1,6 @@
 # NexusBet
 
-O backend de coleta de odds está em [apps/odds-service](apps/odds-service/README.md).
+O backend NestJS está em [apps/odds-service](apps/odds-service/README.md). Consulte esse README para configurar PostgreSQL, executar migrations e iniciar a coleta.
 
 ```sh
 cd apps/odds-service
@@ -9,6 +9,4 @@ npm run build
 npm start
 ```
 
-O scheduler começa automaticamente. Bet365 e Betano precisam do Chrome com CDP autorizado; Superbet usa HTTP direto sem login. Para iniciar somente a API, use `COLLECTION_ENABLED=false npm start`.
-
-As pastas `apps/bff` e `apps/web` estão reservadas; esta aplicação não depende delas.
+Bet365 e Betano usam Chrome headless por padrão; Superbet usa HTTP público. Limitações de acesso em headless estão documentadas no README do serviço. A coleta é controlada por `COLLECTION_ENABLED`. `apps/odds-monitor` é uma aplicação separada e não é dependência do serviço.

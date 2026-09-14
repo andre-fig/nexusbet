@@ -1,6 +1,10 @@
+import {
+  PERSISTENCE,
+  type PersistencePort,
+} from "../../shared/interfaces/persistence-port.interface.js";
 import { AdaptiveScheduler } from "./adaptive-scheduler.js";
 import { scheduledOperation } from "./scheduled-operation.js";
-import { Injectable, Inject, Logger } from "@nestjs/common";
+import { Injectable, Inject, Logger, Optional } from "@nestjs/common";
 import { setTimeout as delay } from "node:timers/promises";
 import { ProviderRegistry } from "./provider-registry.js";
 import { AppConfiguration } from "../../config/configuration.js";
@@ -25,6 +29,9 @@ export class CollectionService {
   constructor(
     @Inject(ProviderRegistry) private readonly registry: ProviderRegistry,
     @Inject(AppConfiguration) private readonly config: AppConfiguration,
+    @Optional()
+    @Inject(PERSISTENCE)
+    private readonly persistence?: PersistencePort,
   ) {
     this.scheduler = new AdaptiveScheduler(
       config.settings.collection,
@@ -47,6 +54,10 @@ export class CollectionService {
       },
       (entry) => this.logger.log(JSON.stringify(entry)),
     );
+  }
+  async restoreCatalog() {
+    if (this.persistence?.enabled && this.persistence.catalogEvents)
+      this.scheduler.restoreCatalog(await this.persistence.catalogEvents());
   }
   async refresh() {
     const outcomes = await Promise.allSettled(

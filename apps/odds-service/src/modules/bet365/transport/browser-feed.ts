@@ -57,7 +57,9 @@ export class BrowserFeed {
       ? await chromium.connectOverCDP(endpoint, { timeout: 45000 })
       : await chromium.launch({
           channel: "chrome",
-          headless: options.headless ?? process.env.HEADLESS === "1",
+          headless:
+            options.headless ??
+            !["0", "false"].includes(process.env.HEADLESS ?? "true"),
         });
     const context = endpoint
       ? browser.contexts()[0]

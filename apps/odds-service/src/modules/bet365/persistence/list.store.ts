@@ -1,3 +1,5 @@
+import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
+import { normalizedBet365 } from "../mappers/bet365.mapper.js";
 import { listMarkets } from "../mappers/list.mapper.js";
 import { snapshots, marketChanges } from "../../snapshots/market-journal.js";
 import { createHash } from "node:crypto";
@@ -82,9 +84,17 @@ interface State {
 }
 export class Store {
   state: State = { matches: [], provenance: {}, latest: {} };
-  constructor(readonly directory: string) {}
+  constructor(
+    readonly directory: string,
+    private readonly persistence?: PersistencePort,
+  ) {}
   async load() {
     await mkdir(this.directory, { recursive: true });
+    if (this.persistence?.enabled) {
+      this.state =
+        (await this.persistence.restore<State>("bet365:list")) ?? this.state;
+      return;
+    }
     try {
       this.state = JSON.parse(
         await readFile(join(this.directory, "latest.json"), "utf8"),
@@ -133,6 +143,24 @@ export class Store {
     };
     for (const m of previous)
       if (!parsed.provenance[m.eventId]) delete next.provenance[m.eventId];
+    await this.persistence?.commit({
+      provider: "bet365",
+      esport: capture.esport,
+      kind: "list",
+      scope: "bet365:list:" + capture.esport,
+      fetchedAt: capture.capturedAt,
+      events: normalizedBet365(parsed.matches, parsed.provenance),
+      observations: [
+        {
+          scope: "bet365:list:" + capture.esport,
+          complete: true,
+          matches: listMarkets(parsed),
+          fetchedAt: capture.capturedAt,
+          source: capture.source,
+        },
+      ],
+      checkpoint: { key: "bet365:list", payload: next },
+    });
     // The authoritative journal includes both snapshot and associated changes in one append.
     await appendFile(
       join(this.directory, "snapshots.ndjson"),

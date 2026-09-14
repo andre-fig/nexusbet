@@ -1,3 +1,4 @@
+import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
 import { join } from "node:path";
 import { MarketJournal } from "../../snapshots/market-journal.js";
@@ -33,15 +34,27 @@ export class BetanoStore {
   constructor(
     readonly directory: string,
     journal?: MarketJournal,
+    private readonly persistence?: PersistencePort,
   ) {
     this.journal = journal ?? new MarketJournal(directory);
   }
   async load() {
     await this.journal.load();
     try {
-      const state = JSON.parse(
-        await readFile(join(this.directory, "latest.json"), "utf8"),
-      );
+      const state = this.persistence?.enabled
+        ? await this.persistence.restore<{
+            listings: Array<
+              [
+                Esport,
+                { at: string; matches: NormalizedEvent[]; coverage: string[] },
+              ]
+            >;
+            details: Array<[string, NormalizedEvent]>;
+          }>("betano:state")
+        : JSON.parse(
+            await readFile(join(this.directory, "latest.json"), "utf8"),
+          );
+      if (!state) return;
       for (const [k, v] of state.listings) this.listings.set(k, v);
       for (const [k, v] of state.details) this.details.set(k, v);
     } catch (e) {
@@ -59,6 +72,29 @@ export class BetanoStore {
       ({ at, source, scope, matches } = normalized);
       const expected = normalized.coverage;
       if (this.listings.get(round.esport)?.at! > at) return;
+      const nextListings = new Map(this.listings);
+      nextListings.set(round.esport, { at, matches, coverage: [...expected] });
+      await this.persistence?.commit({
+        provider: "betano",
+        esport: round.esport,
+        kind: "list",
+        scope,
+        fetchedAt: at,
+        events: matches,
+        observations: [
+          {
+            scope,
+            complete: true,
+            fetchedAt: at,
+            source,
+            matches: matches.map((e) => ({ ...e, fetchedAt: at })),
+          },
+        ],
+        checkpoint: {
+          key: "betano:state",
+          payload: { listings: [...nextListings], details: [...this.details] },
+        },
+      });
       // Round-level additions/removals; each market retains its original response timestamp.
       await this.journal.ingest({
         scope,
@@ -83,6 +119,23 @@ export class BetanoStore {
       scope = "betano:detail:" + event.eventId + ":popular";
       source = round.capture.source;
       matches = [event];
+      const nextDetails = new Map(this.details);
+      nextDetails.set(event.eventId, event);
+      await this.persistence?.commit({
+        provider: "betano",
+        esport: round.esport,
+        kind: "detail",
+        scope,
+        fetchedAt: at,
+        events: matches,
+        observations: [
+          { scope, complete: true, fetchedAt: at, source, matches },
+        ],
+        checkpoint: {
+          key: "betano:state",
+          payload: { listings: [...this.listings], details: [...nextDetails] },
+        },
+      });
       await this.journal.ingest({
         scope,
         complete: true,

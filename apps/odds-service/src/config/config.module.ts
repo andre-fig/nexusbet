@@ -6,7 +6,7 @@ import { AppConfiguration, configuration } from "./configuration.js";
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      ignoreEnvFile: true,
+      ignoreEnvFile: false,
       load: [configuration],
     }),
   ],

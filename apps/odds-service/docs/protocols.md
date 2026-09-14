@@ -92,4 +92,58 @@ O CLI manual escolhe uma partida por modalidade com preferência por maior ofert
 
 ## Transporte e limites
 
-A coleta usa somente o tráfego normal de contextos anônimos próprios no Chrome existente, via CDP. HTTP direto recebeu 403 nos testes anteriores; não há contorno, reprodução de tokens ou login automático. Headless não foi validado. Valores de cookies/headers não são exportados. A ausência de odds ou cobertura incompleta impede publicação; desconhecidos são preservados genericamente.
+A coleta usa somente o tráfego normal de contextos anônimos próprios via CDP. O padrão headless lança um Chrome invisível separado; o Chrome existente exige HEADLESS=false explícito. HTTP direto recebeu 403 nos testes anteriores; não há contorno, reprodução de tokens ou login automático. A validação headless deste ambiente recebeu HTTP 403/splash sem feed utilizável; não há fallback visível. Valores de cookies/headers não são exportados. A ausência de odds ou cobertura incompleta impede publicação; desconhecidos são preservados genericamente.
+
+# Superbet
+
+## Coleta e protocolo observado
+
+Navegação real em uma sessão anônima própria do Chrome: `/apostas/counter-strike-2`, `/apostas/league-of-legends`, `/apostas/valorant`; calendário **Todos** e links `/odds/<modalidade>/<times>-<eventId>`. Responses de rede capturadas por CDP, sem DevTools manual, coordenadas ou clipboard. O parser usa exclusivamente JSON de rede; a tela foi consultada somente para comparar valores.
+
+Origem pública usada pelo frontend: `https://production-superbet-offer-br.freetls.fastly.net`.
+
+| Método e caminho | Uso e parâmetros |
+|---|---|
+| GET `/v2/pt-BR/struct` | Dicionários de torneios e outcomes; sem query/body |
+| GET `/v3/pt-BR/events` | `index=active-prematch`, `sports=55/39/153`, `startDate`, `endDate` em UTC |
+| GET `/v2/pt-BR/events/{eventId}` | Detalhe completo, sem query/body; somente o ID numérico é necessário |
+| GET `/v2/pt-BR/sport/{sportId}/phase/prematch/market-groups` | Organização de mercados observada; não necessária para os mercados prioritários |
+| GET `/v3/subscription/pt-BR/prematch` e `/v3/subscription/pt-BR/events` | Atualizações observadas no frontend; não usadas pelo scheduler pré-jogo |
+
+`index` escolhe o catálogo, **não é um número de página**. O calendário Todos consulta uma janela de 180 dias, sem cursor ou paginação observados. O coletor replica essa janela por modalidade. `startDate` precisa ter precisão de hora inteira: datas com minutos/segundos causam HTTP 400 (`startDate must be whole-hour precision`). Essa exigência foi descoberta na validação e coberta por teste. `endDate = startDate + 180 dias`. A listagem rejeita escopos/janelas diferentes antes de publicar remoções.
+
+HTTP direto retornou 200 sem cookies, autenticação, assinaturas, headers personalizados ou reprodução de tokens. O Chrome enviava, entre outros, Referer, User-Agent e X-Client-Id; nenhum foi copiado. Redirecionamentos são rejeitados pelo cliente. HTTP 403/erros não acionam tentativas de contorno: seguem timeout/backoff/circuit breaker. As credenciais não foram usadas.
+
+## Campos e normalização
+
+| Domínio | Listagem v3 | Detalhe v2 |
+|---|---|---|
+| eventId | `event_id` | `eventId` |
+| modalidade | `fixture.sport_id`: CS2=55, LoL=39, Valorant=153 | `sportId` |
+| competição | `fixture.tournament_id` + `struct.data.tournaments[].localNames.pt-BR` | `tournamentId`, mesmo dicionário |
+| região/categoria | `fixture.category_id` | `categoryId` |
+| equipes/IDs | `fixture.event_name`, `home_team_id`, `away_team_id` | `matchName`, `homeTeamId`, `awayTeamId` |
+| horário UTC | `fixture.utc_date` | `matchDate` em UTC; `utcDate`/`unixDateMillis` preservados no bruto |
+| estado | `inplay_stats_metadata.status` | `metadata.status`; variante observada usa `streams: ["PREMATCH"]` |
+| oferta pré-jogo | `fixture.offer_state_status[1]` | `offerStateStatus[1]`, `odds[].offerStateId=1` |
+| tipo de mercado | `markets[].id` | `odds[].marketId` |
+| identidade da linha | `odds[].metadata.market_line_uuid` | `odds[].marketUuid` |
+| selectionId | `odds[].uuid` | `odds[].uuid` |
+| nome/odd | `markets[].name`, metadata da seleção, `price` | `marketName`, `name`, `price` |
+| mapa | specifiers quando oferecido | `specifiers.mapnr`, sem limite de mapas |
+| seleção/time | `metadata.code/name/outcome_id` | `code/name/outcomeId` e templates do dicionário (`competitor1/2`) |
+| suspensão | status numérico ativo=1; display e campos brutos preservados | `status=active` ativo; suspended/inactive/blocked indisponível; valor desconhecido fica null |
+
+`matchName` separa as duas equipes pelo caractere `·`. Os nomes originais e normalizados são preservados. “1” e “2” no vencedor de LoL/Valorant são mapeados para mandante/visitante por campos estruturados, nunca pela ordem das seleções.
+
+O `marketId` normalizado é o UUID da linha, estável entre listagem e detalhe. `rawMarketId` conserva o tipo numérico. Assim, mapas ou linhas do mesmo tipo não colidem. `marketGroupOrder` é preservado como ordenação, não tratado como ID de grupo.
+
+| Modalidade | match_winner | map_winner |
+|---|---|---|
+| CS2 | 2483 | 2484 |
+| LoL | 2519 | 2512 |
+| Valorant | 232494 | 232498 |
+
+São IDs de protocolo observados, não odds codificadas. Outros tipos permanecem `unknown`, com seleções, preços, specifiers e campos brutos. Handicap/props não receberam interpretação de produto: handicap permanece nos specifiers brutos, sem atribuir uma linha incorreta à seleção visitante. `display=false` representa indisponibilidade na normalização, preservando separadamente o status bruto. `hasLive=true` indica disponibilidade de cobertura e não significa partida ao vivo. Apenas oferta pré-jogo é normalizada. Metadados de estado desconhecidos são rejeitados; a variante sem metadata só é aceita quando traz explicitamente o único stream PREMATCH.
+
+O detalhe valida `counts.odds[1]` contra UUIDs únicos recebidos, evitando publicar resposta incompleta. Duplicatas idênticas são deduplicadas; conflitos são rejeitados. Traduções vazias de torneios não utilizados no diretório global são ignoradas; torneio referenciado sem nome continua sendo erro.

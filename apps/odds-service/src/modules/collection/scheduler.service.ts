@@ -19,6 +19,7 @@ export class SchedulerService
   ) {}
   async onApplicationBootstrap() {
     await this.collection.refresh();
+    await this.collection.restoreCatalog();
     const c = this.config.settings;
     if (c.scanEnabled)
       this.inboxTimer = setInterval(() => {

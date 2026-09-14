@@ -1,3 +1,4 @@
+import type { PersistencePort } from "../../shared/interfaces/persistence-port.interface.js";
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -105,13 +106,28 @@ interface Entry {
   snapshots: OddsSnapshot[];
   changes: MarketChange[];
 }
-// One writer per directory. The append-only journal is authoritative, including after restart.
+// One writer per directory. PostgreSQL restores baselines when enabled; otherwise the file journal is authoritative.
 export class MarketJournal {
   private latest = new Map<string, Entry>();
   private queue: Promise<unknown> = Promise.resolve();
-  constructor(readonly directory: string) {}
+  constructor(
+    readonly directory: string,
+    private readonly persistence?: PersistencePort,
+  ) {}
   async load() {
     await mkdir(this.directory, { recursive: true });
+    if (this.persistence?.enabled) {
+      for (const batch of await this.persistence.baselines())
+        this.latest.set(batch.scope, {
+          batch,
+          hash: createHash("sha256")
+            .update(JSON.stringify(batch))
+            .digest("hex"),
+          snapshots: snapshots(batch.matches),
+          changes: [],
+        });
+      return;
+    }
     let text: string;
     try {
       text = await readFile(
@@ -178,7 +194,14 @@ export class MarketJournal {
       throw Error("Mixed provider batch");
     if (last && batch.fetchedAt < last.batch.fetchedAt) return null;
     if (last && batch.fetchedAt === last.batch.fetchedAt) {
-      if (hash !== last.hash) throw Error("Conflicting snapshot at same time");
+      if (
+        hash !== last.hash &&
+        !(
+          this.persistence?.enabled &&
+          this.persistence.equivalentObservation?.(last.batch, batch)
+        )
+      )
+        throw Error("Conflicting snapshot at same time");
       return null;
     }
     const entry: Entry = {

@@ -1,3 +1,4 @@
+import { openHeadlessFeed } from "../../shared/browser/headless-feed.js";
 import { Injectable, Inject } from "@nestjs/common";
 import { AppConfiguration } from "../../config/configuration.js";
 import { CdpFeed } from "./transport/cdp-feed.js";
@@ -13,6 +14,10 @@ export class Bet365Client {
   async open(options: CollectOptions) {
     try {
       const c = this.config.settings;
+      if (c.headless)
+        return await openHeadlessFeed((endpoint) =>
+          CdpFeed.open(endpoint, { anonymous: true }),
+        );
       const endpoint =
         c.cdpUrl ||
         (options.existing

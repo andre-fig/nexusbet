@@ -3,8 +3,10 @@
     "@nestjs/testing": "^12.0.2",
     "@types/express": "^5.0.6",
     "@types/node": "^26.5.1",
+    "@types/pg": "8.23.1",
     "@types/ws": "^8.18.1",
     "prettier": "^3.9.6",
+    "prisma": "7.10.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   },
@@ -17,30 +19,41 @@
   },
   "scripts": {
     "start": "tsx src/main.ts",
-    "test": "tsx --test src/modules/*/tests/*.test.ts",
-    "check": "tsc",
+    "test": "PERSISTENCE_MODE=file tsx --test src/modules/*/tests/*.test.ts",
     "capture": "tsx src/modules/collection/collection.cli.ts",
-    "normalize": "tsx src/modules/bet365/cli/normalize.ts",
     "collect": "tsx src/modules/collection/collection.cli.ts --loop",
-    "replay-snapshots": "tsx src/modules/bet365/cli/replay-snapshots.ts",
-    "test:browser": "BROWSER_TESTS=1 tsx --test src/modules/bet365/tests/browser-feed.test.ts",
+    "test:browser": "PERSISTENCE_MODE=file BROWSER_TESTS=1 tsx --test src/modules/bet365/tests/browser-feed.test.ts",
     "capture:betano": "tsx src/modules/collection/collection.cli.ts --betano",
     "collect:betano": "tsx src/modules/collection/collection.cli.ts --betano --loop",
     "start:prod": "node dist/main.js",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "typecheck": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "capture:superbet": "tsx src/modules/collection/collection.cli.ts --superbet"
+    "capture:superbet": "tsx src/modules/collection/collection.cli.ts --superbet",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "db:status": "prisma migrate status",
+    "postinstall": "prisma generate",
+    "test:db": "tsx --test src/modules/persistence/tests/postgres.integration.ts",
+    "db:import-legacy": "tsx src/modules/persistence/import-legacy.cli.ts"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.2",
     "@nestjs/config": "^12.0.0",
     "@nestjs/core": "^12.0.2",
     "@nestjs/platform-express": "^12.0.2",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "pg": "8.23.0",
     "playwright-core": "^1.63.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "ws": "^8.21.3"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.2",
+    "mysql2": "3.24.4"
   }
 }

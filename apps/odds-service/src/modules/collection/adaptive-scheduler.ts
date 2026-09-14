@@ -308,6 +308,16 @@ export class AdaptiveScheduler {
       }
     })();
   }
+  restoreCatalog(events: NormalizedEvent[]) {
+    if (this.enabled || this.jobs.size)
+      throw Error("Cannot restore a running scheduler");
+    for (const provider of this.providers.keys())
+      this.reconcile(
+        provider,
+        events.filter((e) => e.provider === provider),
+      );
+    this.catalogChanges.clear();
+  }
   private reconcile(provider: Provider, events: NormalizedEvent[]) {
     const next = new Map(events.map((e) => [key(provider, e.eventId), e])),
       changes: CatalogChange[] = [];
