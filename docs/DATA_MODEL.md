@@ -95,7 +95,7 @@ Estratégia A: último snapshot por seleção, ordenado por fetched_at DESC e cr
 
 ## Migrations e desenvolvimento
 
-Migration atual: `202609150001_initial_odds`, mais migration_lock.toml. `db:migrate` aplica; `db:status` verifica; startup valida nomes/checksums/conclusão, sem aplicar DDL. Seed idempotente insere/atualiza nomes dos três providers sem apagar enabled.
+Migration atual: `202609150001_initial_odds`, mais migration_lock.toml. `db:migrate` aplica; `db:status` verifica; startup valida nomes/checksums/conclusão, sem aplicar DDL. Seed idempotente insere/atualiza nomes dos cinco providers sem apagar enabled.
 
 Para mudar schema: edite schema.prisma, crie **nova** migration em banco de desenvolvimento com `npx prisma migrate dev --name descricao`, revise SQL, execute db:generate/build/typecheck/test:db e versione schema/migration. Esse comando pode pedir reset se houver drift: não aceite reset de banco útil; diagnostique primeiro. Não edite migration já aplicada nem use db push como entrega.
 

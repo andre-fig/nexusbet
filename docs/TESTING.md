@@ -85,3 +85,27 @@ Antes de merge rode build/typecheck/formatação/suíte normal. Para browser alt
 ## Validação desta revisão documental
 
 Build, typecheck e format:check passaram. `BROWSER_TESTS=1 npm test`: 90/90, sem skips; `test:db`: 23/23 em PostgreSQL descartável. Total 113 testes aprovados. Links relativos de arquivos e cobertura das variáveis da configuração central no .env.example foram conferidos. Não houve coleta remota nessa validação nem alteração de parser/regra de negócio. Esses resultados são um registro da revisão, não garantia permanente de disponibilidade dos sites.
+
+## Browser persistente e comparação real opcional
+
+`owned-browser.test.ts` testa configuração, isolamento, reuse, recuperação explícita, sanitização e comparador. Com BROWSER_TESTS=1, Chrome local verifica cinco ciclos, storage/cookie/cache/IndexedDB/service worker após restart e WebSocket local. Também verifica que CDP está na mesma page/contexto persistente. Não acessa casas.
+
+Scripts novos: `npm run browser:diagnose -- --headed` (ou sem --headed para headless), `--betano`, `--five-cycles`; `npm run browser:compare -- <headed.json> <headless.json>`. São diagnósticos opcionais, sem publicação em snapshots. Primeira falha encerra a rodada. Docker e resultados em [HEADLESS_DIAGNOSTICS](HEADLESS_DIAGNOSTICS.md).
+
+## Runtime Linux/Xvfb
+
+`runtime.test.ts` verifica SIGTERM/drenagem antes de desligar display, falha de Xvfb e rejeição de headless no entrypoint. O supervisor usa Bash 5 do Debian; no Mac os testes usam `/opt/homebrew/bin/bash` quando instalado (o Bash 3 do sistema não tem `wait -n`). Sem Bash 5 esses dois testes de supervisor são pulados; para validá-los, use Linux/container.
+
+A suíte opcional `owned-browser.test.ts` usa Chrome headed quando DISPLAY existe e feeds HTTP/WS locais; cinco ciclos de storage não são cinco coletas de bookmaker. Resultados e execução real: [PRODUCTION_RUNTIME](PRODUCTION_RUNTIME.md).
+
+## Browser compartilhado
+
+`browser-manager.test.ts` acrescenta testes de ownership/locks/recovery e um teste opcional Linux/Xvfb com cinco ciclos reais de Chrome sobre HTTP local. Também simula SPA/feed Bet365 com route interception de todas as requisições: captura sucesso/503 e verifica remoção dos listeners temporários, sem internet. Resultado corrente: [SHARED_BROWSER](SHARED_BROWSER.md).
+
+## Blaze
+
+`src/modules/blaze/tests` cobre fixture real, mapas 1–5, IDs compostos, odds inválidas/suspensão, snapshots, projeção de captura, matching com quatro providers, isolamento Nest/API, HTTP/timeout e scheduler/backoff. `test:db` inclui seed Blaze, upserts e histórico canônico entre quatro providers. Nenhum teste normal chama a Blaze real.
+
+## EstrelaBet
+
+`src/modules/estrelabet/tests` cobre 17 testes offline com fixtures reais: protocolo paginado, detalhe, mapas 1–5, precisão, IDs, unknown, suspensão, dedupe, snapshots, isolamento Nest, HTTP/timeout, scheduler/backoff e matching de cinco providers. `test:db` testa persistência, histórico e vínculos canônicos. `npm run capture:estrelabet -- --detail` é captura real opcional, fora da suíte normal. [Resultados e evidências](ESTRELABET.md).

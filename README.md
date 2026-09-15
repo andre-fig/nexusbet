@@ -1,17 +1,25 @@
 # NexusBet — odds-service
 
-Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betano e Superbet, normaliza mercados, compara eventos equivalentes e conserva histórico em PostgreSQL. O serviço NestJS vive em `apps/odds-service` e funciona sem frontend ou BFF.
+Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betano, Superbet, Blaze e EstrelaBet, normaliza mercados, compara eventos equivalentes e conserva histórico em PostgreSQL. O serviço NestJS vive em `apps/odds-service` e funciona sem frontend ou BFF.
 
 O escopo atual cobre CS2, League of Legends e Valorant. Os mercados prioritários são vencedor da partida e vencedor dos mapas 1–3; o parser aceita mapas adicionais e preserva mercados desconhecidos. Não há apostas, carteira, pagamentos, cálculo de odds próprias ou coleta live.
 
 `apps/odds-monitor` é uma aplicação React/Vite separada com dados mockados, ainda sem integração com este backend. Não é necessário instalá-la para trabalhar no odds-service. Não há workspace npm ou comando de instalação na raiz.
+
+## Runtime suportado: desenvolvimento local
+
+Bet365 e Betano usam exclusivamente **`BROWSER_RUNTIME=local-cdp` no macOS**, conectando ao Chrome headed existente e gerenciando somente suas próprias tabs. **Linux/Xvfb e headless não são suportados** para esses providers. Em Railway: `BET365_ENABLED=false`, `BETANO_ENABLED=false`, `BROWSER_RUNTIME=disabled`. Superbet, Blaze e EstrelaBet mantêm HTTP independente.
+
+Preparação do Chrome, flags, ownership, indisponibilidade e shutdown: [Local CDP](docs/LOCAL_CDP.md).
 
 ## Arquitetura
 
 ```text
 Bet365 (Chrome) ─┐
 Betano (Chrome) ─┼→ módulos de provider → validação / domínio normalizado
-Superbet (HTTP) ─┘                         ↓
+Superbet (HTTP) ─┤
+Blaze (HTTP) ────┤
+EstrelaBet (HTTP)┘                         ↓
 Collection: agenda → coleta → inbox → stores → PersistencePort
                                          ↓
                       PostgreSQL: entidades + snapshots + matching
@@ -25,7 +33,7 @@ Stack: Node.js, TypeScript strict/ESM, NestJS 12, Prisma 7, PostgreSQL 16, Playw
 
 ## Primeira execução
 
-Requisitos: Node **22.12+ na linha 22, ou 24+**, npm, Docker com Compose e Google Chrome instalado para Bet365/Betano. Prisma exige uma versão mais específica que o `>=22` do package.json. Use o lockfile versionado.
+Requisitos: Node **22.12+ na linha 22, ou 24+**, npm, Docker com Compose e macOS e Google Chrome headed existente com CDP habilitado para Bet365/Betano. Prisma exige uma versão mais específica que o `>=22` do package.json. Use o lockfile versionado.
 
 ```sh
 cd apps/odds-service
@@ -52,7 +60,7 @@ O exemplo desliga a coleta (`COLLECTION_ENABLED=false`), permitindo validar banc
 
 Para coleta contínua, pare a instância anterior e execute `COLLECTION_ENABLED=true npm start`. Para executar o build, use `npm run start:prod`. Não há script `dev`/watch do servidor: `npm start` executa TypeScript, sem recarga automática. Encerre com Ctrl+C e aguarde a drenagem. Execute uma instância escritora/coletora por instalação.
 
-**Limite atual:** Chrome é headless por padrão, sem abrir páginas na tela nem fallback visível. Na última validação deste ambiente, Bet365 recebeu bloqueio 403/Cloudflare e Betano 403/splash sem feed utilizável. O transporte foi testado, mas a coleta real dessas duas fontes em headless não foi validada com sucesso. Superbet usa HTTP público. Não contorne proteções nem interprete testes com fixtures como garantia de disponibilidade externa.
+**Runtime atual:** Bet365/Betano somente via Chrome existente no Mac (`local-cdp`). Em Railway/Linux ambos ficam desabilitados; Superbet, Blaze e EstrelaBet mantêm HTTP. Veja [Local CDP](docs/LOCAL_CDP.md).
 
 ## Configuração
 
@@ -64,7 +72,7 @@ ConfigModule lê `.env` dentro do diretório do serviço; ambiente do processo t
 | Banco | `DATABASE_URL`, `PERSISTENCE_MODE`, `POSTGRES_*` | PostgreSQL explícito no exemplo; modo file disponível |
 | Coleta | `COLLECTION_ENABLED`, `COLLECTION_LIST_INTERVAL_MS`, `DETAIL_INTERVAL_*` | Listagem 60s; detalhes adaptativos |
 | Falhas | `PROVIDER_*`, `COLLECTION_BACKOFF_*`, `SHUTDOWN_GRACE_MS` | Timeout, cooldown e drenagem |
-| Browser | `HEADLESS`, `CDP_URL`, `CHROME_DEBUG_PORT_FILE` | Headless true; CDP externo apenas no diagnóstico visível |
+| Browser | `BROWSER_MODE`, `BROWSER_PROFILE_DIR`, `BROWSER_LOCALE` | Chrome próprio headed, Xvfb no container |
 | Arquivos/testes | `DATA_DIR`, `*_INBOX_DIR`, `BROWSER_TESTS`, `TEST_DATABASE_URL` | Journal, ingestão e testes opcionais |
 
 Referência completa de todas as variáveis e seus defaults: [Configuration](docs/CONFIGURATION.md) e [.env.example](apps/odds-service/.env.example). Nunca copie segredos para exemplos, fixtures ou documentação.
@@ -109,7 +117,7 @@ O banco separa providers, eventos canônicos, versões por provider, decisões d
 
 ## API atual
 
-Somente GET, em `127.0.0.1`; não há autenticação de usuário nem API pública pronta para exposição externa.
+Somente GET; bind local `127.0.0.1`, container `0.0.0.0` via `HOST`; não há autenticação de usuário nem API pública pronta para exposição externa.
 
 | Rota | Uso |
 |---|---|
@@ -128,7 +136,7 @@ Rotas normalizadas aplicam TTL; rotas SQL são históricas e exigem inspecionar 
 
 ## Limitações e troubleshooting
 
-Listagem tem prioridade sobre detalhes, e os intervalos não garantem atualização de todo o catálogo dentro do TTL. Matching é conservador e não produz consenso de odds. Journal de arquivos e checkpoints de compatibilidade continuam presentes. Não há retenção automática, coordenação distribuída, paginação completa ou integração Sentry/Railway configurada neste repositório.
+Listagem tem prioridade sobre detalhes, e os intervalos não garantem atualização de todo o catálogo dentro do TTL. Matching é conservador e não produz consenso de odds. Journal de arquivos e checkpoints de compatibilidade continuam presentes. Não há retenção automática, coordenação distribuída, paginação completa ou integração Sentry. Dockerfile e guia de deploy preparam o runtime, sem comprovar deploy remoto.
 
 Se não houver dados, consulte `/health`, logs de Collection, timestamps e cobertura do provider antes de alterar parsers ou TTL. Para migrations pendentes use `db:status`; para muitos unmatched revise nomes/competição/horário. O roteiro completo está em [Operations](docs/OPERATIONS.md).
 
@@ -146,3 +154,17 @@ Se não houver dados, consulte `/health`, logs de Collection, timestamps e cober
 - [Decisions](docs/DECISIONS.md) — decisões, divergências e limites atuais.
 - [Configuration](docs/CONFIGURATION.md) — referência completa de ambiente.
 - [README do serviço](apps/odds-service/README.md) — operação local e guias técnicos anteriores.
+
+- [Diagnóstico headed/headless](docs/HEADLESS_DIAGNOSTICS.md) — configuração, comparação real, Linux e limites encontrados.
+
+- [Produção Linux/Xvfb](docs/PRODUCTION_RUNTIME.md) — Docker, Railway, volume, shutdown e validação real.
+
+- [Chrome compartilhado](docs/SHARED_BROWSER.md) — ownership, locks, recovery, métricas e validação.
+
+### Blaze
+
+Blaze está integrada por HTTP público, sem Chrome/login, com CS2/LoL/Valorant, mercados de partida/mapas, snapshots e PostgreSQL. Veja [protocolo, validação e limites](docs/BLAZE.md).
+
+### EstrelaBet
+
+Quinto provider, HTTP Altenar anônimo para listagens paginadas e detalhes. Sem browser/login; integrado a scheduler, snapshots, matching e PostgreSQL. [Protocolo, validação real e operação](docs/ESTRELABET.md).

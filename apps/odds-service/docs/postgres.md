@@ -148,3 +148,7 @@ O build compilado, a recuperação sem arquivos locais e o shutdown foram valida
 - O journal de arquivo e as projeções JSONB de compatibilidade são legado deliberadamente mantido. Não há migração destrutiva de arquivos.
 - Bet365/Betano usam Chrome headless por padrão, sem fallback visível. Neste ambiente, o headless recebeu bloqueio e não forneceu os feeds; o modo visível é diagnóstico explícito via HEADLESS=false. Superbet usa HTTP público. Nenhuma credencial de bookmaker foi necessária nesta tarefa.
 - Overrides pontuais de `deepmerge-ts` e `mysql2` atualizam dependências transitivas da CLI Prisma. O config usado é composto por objetos simples; generate/migrate/seed foram testados com essas versões. [Notas do deepmerge-ts 8](https://github.com/RebeccaStevens/deepmerge-ts/releases/tag/v8.0.0). `npm audit` não reportou vulnerabilidades após a atualização.
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](../../../docs/HEADLESS_DIAGNOSTICS.md).

@@ -1,3 +1,4 @@
+import { LocalCdpService } from "../../shared/browser/local-cdp.service.js";
 import {
   PERSISTENCE,
   type PersistencePort,
@@ -32,10 +33,15 @@ export class CollectionService {
     @Optional()
     @Inject(PERSISTENCE)
     private readonly persistence?: PersistencePort,
+    @Optional()
+    @Inject(LocalCdpService)
+    private readonly localCdp?: LocalCdpService,
   ) {
     this.scheduler = new AdaptiveScheduler(
       config.settings.collection,
-      registry.providers.map((p) => p.name),
+      registry.providers
+        .filter((p) => this.runtimeEnabled(p.name))
+        .map((p) => p.name),
       async (job, signal, commit) => {
         if (this.active.has(job.provider))
           throw Error("Provider already collecting");
@@ -54,6 +60,41 @@ export class CollectionService {
       },
       (entry) => this.logger.log(JSON.stringify(entry)),
     );
+  }
+  private runtimeEnabled(name: string) {
+    if (name === "estrelabet") return this.config.settings.estrelabetEnabled;
+    if (name === "blaze") return this.config.settings.blazeEnabled;
+    if (name !== "bet365" && name !== "betano") return true;
+    return (
+      this.config.settings.providerEnabled[name] &&
+      this.config.settings.browser.runtime === "local-cdp" &&
+      process.platform === "darwin"
+    );
+  }
+  operationalHealth() {
+    const health = this.scheduler.health();
+    const providers: Record<string, unknown> = { ...health.providers };
+    if (this.localCdp)
+      for (const name of ["bet365", "betano"] as const) {
+        const status = this.localCdp.availability(name);
+        if (status === "disabled" || status === "unavailable")
+          providers[name] = {
+            ...(health.providers[name] ?? {
+              lastListAttemptAt: null,
+              lastListSuccessAt: null,
+              nextListRunAt: null,
+              consecutiveFailures: 0,
+              lastError: null,
+              cooldownUntil: null,
+              activeJobs: 0,
+              configuredConcurrency:
+                this.config.settings.collection.concurrency[name],
+              effectiveConcurrency: 1,
+            }),
+            status,
+          };
+      }
+    return { ...health, providers };
   }
   async restoreCatalog() {
     if (this.persistence?.enabled && this.persistence.catalogEvents)

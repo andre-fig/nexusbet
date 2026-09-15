@@ -1,0 +1,2032 @@
+{
+  "provider": "estrelabet",
+  "capturedAt": "2026-09-15T02:12:35.777Z",
+  "status": 200,
+  "source": {
+    "transport": "http",
+    "url": "https://sb2frontend-altenar2.biahosted.com/api/widget/GetEventDetails?culture=pt-BR&timezoneOffset=180&integration=estrelabet&deviceType=1&numFormat=en-GB&eventId=17707439",
+    "method": "GET",
+    "capture": "direct-http",
+    "authenticated": false
+  },
+  "data": {
+    "detail": {
+      "id": 17707439,
+      "feedEventId": 23767372,
+      "name": "Team Brute vs. G2 Ares",
+      "et": 0,
+      "sport": {
+        "typeId": 317,
+        "iconName": "e-sports-+",
+        "hasLiveEvents": false,
+        "id": 145,
+        "name": "E-sports +\t\t"
+      },
+      "champ": {
+        "hasLiveEvents": false,
+        "id": 63462,
+        "name": "NODWIN Clutch Series 12"
+      },
+      "category": {
+        "iso": "e03",
+        "hasLiveEvents": false,
+        "id": 1534,
+        "name": "Counter-Strike"
+      },
+      "competitors": [
+        {
+          "hasConfigLogo": true,
+          "hasOrigJersey": true,
+          "abbreviation": "TB",
+          "id": 160149,
+          "name": "Team Brute"
+        },
+        {
+          "hasConfigLogo": true,
+          "hasOrigJersey": true,
+          "abbreviation": "ARE",
+          "id": 1071413,
+          "name": "G2 Ares"
+        }
+      ],
+      "marketGroups": [
+        {
+          "type": 0,
+          "marketIds": [
+            31046,
+            1732121407,
+            1732121509,
+            1732121530,
+            1732121432,
+            1732121513
+          ],
+          "isBundle": false,
+          "sortOrder": 0,
+          "id": 1,
+          "name": "Popular"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1732121556,
+            1732121408,
+            1732121522,
+            1732121511,
+            1732121422,
+            1732121562,
+            1732121563,
+            1732121560,
+            1732121561,
+            1732121514,
+            1732121515,
+            1732121533
+          ],
+          "isBundle": false,
+          "sortOrder": 1,
+          "id": 1645,
+          "name": "Mapa 1"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1732121557,
+            1732121409,
+            1732121524,
+            1732121512,
+            1732121423,
+            1732121566,
+            1732121567,
+            1732121564,
+            1732121565,
+            1732121516,
+            1732121517,
+            1732121534
+          ],
+          "isBundle": false,
+          "sortOrder": 2,
+          "id": 1646,
+          "name": "Mapa 2"
+        }
+      ],
+      "childMarketGroups": [],
+      "markets": [
+        {
+          "desktopOddIds": [],
+          "mobileOddIds": [],
+          "isBB": false,
+          "variant": 7,
+          "so": 1,
+          "typeId": 31046,
+          "sportMarketId": 0,
+          "id": 31046,
+          "name": "Boosted Odds"
+        },
+        {
+          "shortName": "Vencedor da partida",
+          "desktopOddIds": [
+            [
+              4499161413
+            ],
+            [
+              4499161414
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161413
+            ],
+            [
+              4499161414
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 30001,
+          "sportMarketId": 72780,
+          "id": 1732121407,
+          "name": "Vencedor da partida"
+        },
+        {
+          "shortName": "Handicap de Mapa",
+          "desktopOddIds": [
+            [
+              4499161663
+            ],
+            [
+              4499161664
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161663
+            ],
+            [
+              4499161664
+            ]
+          ],
+          "isBB": false,
+          "so": 8,
+          "typeId": 327,
+          "sportMarketId": 73039,
+          "sv": "-1.5",
+          "id": 1732121509,
+          "name": "Handicap de Mapa"
+        },
+        {
+          "shortName": "Placar correto da partida",
+          "desktopOddIds": [
+            [
+              4499161707,
+              4499161708
+            ],
+            [
+              4499161709,
+              4499161710
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161707,
+              4499161708
+            ],
+            [
+              4499161709,
+              4499161710
+            ]
+          ],
+          "isBB": false,
+          "so": 10,
+          "typeId": 30004,
+          "sportMarketId": 72782,
+          "id": 1732121530,
+          "name": "Placar correto da partida"
+        },
+        {
+          "shortName": "Total mapas",
+          "desktopOddIds": [
+            [
+              4499161465
+            ],
+            [
+              4499161466
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161465
+            ],
+            [
+              4499161466
+            ]
+          ],
+          "isBB": false,
+          "so": 12,
+          "typeId": 328,
+          "sportMarketId": 73826,
+          "sv": "2.5",
+          "id": 1732121432,
+          "name": "Total mapas"
+        },
+        {
+          "shortName": "Mapas Ímpares/Pares",
+          "desktopOddIds": [
+            [
+              4499161673
+            ],
+            [
+              4499161674
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161673
+            ],
+            [
+              4499161674
+            ]
+          ],
+          "isBB": false,
+          "so": 18,
+          "typeId": 24471,
+          "sportMarketId": 75459,
+          "id": 1732121513,
+          "name": "Mapas Ímpares/Pares"
+        },
+        {
+          "shortName": "Primeiro Mapa - Vencedor",
+          "desktopOddIds": [
+            [
+              4499161789
+            ],
+            [
+              4499161790
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161789
+            ],
+            [
+              4499161790
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 330,
+          "sportMarketId": 75450,
+          "sv": "1",
+          "id": 1732121556,
+          "name": "Primeiro Mapa - Vencedor"
+        },
+        {
+          "shortName": "Primeiro Mapa - Handicap de Rounds",
+          "desktopOddIds": [
+            [
+              4499161439,
+              4499161435,
+              4499161431,
+              4499161415,
+              4499161419,
+              4499161423,
+              4499161427
+            ],
+            [
+              4499161440,
+              4499161436,
+              4499161432,
+              4499161416,
+              4499161420,
+              4499161424,
+              4499161428
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161439,
+              4499161435,
+              4499161431,
+              4499161415,
+              4499161419,
+              4499161423,
+              4499161427
+            ],
+            [
+              4499161440,
+              4499161436,
+              4499161432,
+              4499161416,
+              4499161420,
+              4499161424,
+              4499161428
+            ]
+          ],
+          "isBB": false,
+          "so": 15,
+          "typeId": 30011,
+          "sportMarketId": 72787,
+          "sv": "-2.5|1",
+          "id": 1732121408,
+          "name": "Primeiro Mapa - Handicap de Rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa - Total de Rounds (excl. Prol.)",
+          "desktopOddIds": [
+            [
+              4499161683,
+              4499161685,
+              4499161687,
+              4499161689,
+              4499161691,
+              4499161693
+            ],
+            [
+              4499161684,
+              4499161686,
+              4499161688,
+              4499161690,
+              4499161692,
+              4499161694
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161683,
+              4499161685,
+              4499161687,
+              4499161689,
+              4499161691,
+              4499161693
+            ],
+            [
+              4499161684,
+              4499161686,
+              4499161688,
+              4499161690,
+              4499161692,
+              4499161694
+            ]
+          ],
+          "isBB": false,
+          "so": 44,
+          "typeId": 332,
+          "sportMarketId": 75451,
+          "sv": "1|22.5",
+          "id": 1732121522,
+          "name": "Primeiro Mapa - Total de Rounds (excl. Prol.)"
+        },
+        {
+          "shortName": "Primeiro Mapa - 1x2",
+          "desktopOddIds": [
+            [
+              4499161667
+            ],
+            [
+              4499161668
+            ],
+            [
+              4499161669
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161667
+            ],
+            [
+              4499161668
+            ],
+            [
+              4499161669
+            ]
+          ],
+          "isBB": false,
+          "so": 46,
+          "typeId": 334,
+          "sportMarketId": 75452,
+          "sv": "1",
+          "id": 1732121511,
+          "name": "Primeiro Mapa - 1x2"
+        },
+        {
+          "shortName": "Primeiro Mapa - Haverá prorrogação?",
+          "desktopOddIds": [
+            [
+              4499161443
+            ],
+            [
+              4499161444
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161443
+            ],
+            [
+              4499161444
+            ]
+          ],
+          "isBB": false,
+          "so": 47,
+          "typeId": 335,
+          "sportMarketId": 75453,
+          "sv": "1",
+          "id": 1732121422,
+          "name": "Primeiro Mapa - Haverá prorrogação?"
+        },
+        {
+          "shortName": "Primeiro Mapa - Corrida para 4 rounds",
+          "desktopOddIds": [
+            [
+              4499161801
+            ],
+            [
+              4499161802
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161801
+            ],
+            [
+              4499161802
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "1|4",
+          "id": 1732121562,
+          "name": "Primeiro Mapa - Corrida para 4 rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa - Corrida para 7 rounds",
+          "desktopOddIds": [
+            [
+              4499161803
+            ],
+            [
+              4499161804
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161803
+            ],
+            [
+              4499161804
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "1|7",
+          "id": 1732121563,
+          "name": "Primeiro Mapa - Corrida para 7 rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa - Corrida para 10 rounds",
+          "desktopOddIds": [
+            [
+              4499161797
+            ],
+            [
+              4499161798
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161797
+            ],
+            [
+              4499161798
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "1|10",
+          "id": 1732121560,
+          "name": "Primeiro Mapa - Corrida para 10 rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa - Corrida para 13 rounds",
+          "desktopOddIds": [
+            [
+              4499161799
+            ],
+            [
+              4499161800
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161799
+            ],
+            [
+              4499161800
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "1|13",
+          "id": 1732121561,
+          "name": "Primeiro Mapa - Corrida para 13 rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa: Vencedor do Round de Pistolas da primeiro ª Ronda",
+          "desktopOddIds": [
+            [
+              4499161675
+            ],
+            [
+              4499161676
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161675
+            ],
+            [
+              4499161676
+            ]
+          ],
+          "isBB": false,
+          "so": 69,
+          "typeId": 20089,
+          "sportMarketId": 75458,
+          "sv": "1|1",
+          "id": 1732121514,
+          "name": "Primeiro Mapa: Vencedor do Round de Pistolas da primeiro ª Ronda"
+        },
+        {
+          "shortName": "Primeiro Mapa: Vencedor do Round de Pistolas da segundo ª Ronda",
+          "desktopOddIds": [
+            [
+              4499161677
+            ],
+            [
+              4499161678
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161677
+            ],
+            [
+              4499161678
+            ]
+          ],
+          "isBB": false,
+          "so": 69,
+          "typeId": 20089,
+          "sportMarketId": 75458,
+          "sv": "1|2",
+          "id": 1732121515,
+          "name": "Primeiro Mapa: Vencedor do Round de Pistolas da segundo ª Ronda"
+        },
+        {
+          "shortName": "Primeiro mapa - Pontuação correta dos rounds de pistolas",
+          "desktopOddIds": [
+            [
+              4499161715
+            ],
+            [
+              4499161716
+            ],
+            [
+              4499161717
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161715
+            ],
+            [
+              4499161716
+            ],
+            [
+              4499161717
+            ]
+          ],
+          "isBB": false,
+          "so": 90,
+          "typeId": 24495,
+          "sportMarketId": 75573,
+          "sv": "1",
+          "id": 1732121533,
+          "name": "Primeiro mapa - Pontuação correta dos rounds de pistolas"
+        },
+        {
+          "shortName": "Segundo Mapa - Vencedor",
+          "desktopOddIds": [
+            [
+              4499161791
+            ],
+            [
+              4499161792
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161791
+            ],
+            [
+              4499161792
+            ]
+          ],
+          "isBB": false,
+          "so": 2,
+          "typeId": 330,
+          "sportMarketId": 75450,
+          "sv": "2",
+          "id": 1732121557,
+          "name": "Segundo Mapa - Vencedor"
+        },
+        {
+          "shortName": "Segundo Mapa - Handicap de Rounds",
+          "desktopOddIds": [
+            [
+              4499161437,
+              4499161433,
+              4499161417,
+              4499161421,
+              4499161425,
+              4499161429,
+              4501720787
+            ],
+            [
+              4499161438,
+              4499161434,
+              4499161418,
+              4499161422,
+              4499161426,
+              4499161430,
+              4501720788
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161437,
+              4499161433,
+              4499161417,
+              4499161421,
+              4499161425,
+              4499161429,
+              4501720787
+            ],
+            [
+              4499161438,
+              4499161434,
+              4499161418,
+              4499161422,
+              4499161426,
+              4499161430,
+              4501720788
+            ]
+          ],
+          "isBB": false,
+          "so": 15,
+          "typeId": 30011,
+          "sportMarketId": 72787,
+          "sv": "-2.5|2",
+          "id": 1732121409,
+          "name": "Segundo Mapa - Handicap de Rounds"
+        },
+        {
+          "shortName": "Segundo Mapa - Total de Rounds (excl. Prol.)",
+          "desktopOddIds": [
+            [
+              4499161695,
+              4499161697,
+              4499161699,
+              4499161701,
+              4499161703,
+              4499161705
+            ],
+            [
+              4499161696,
+              4499161698,
+              4499161700,
+              4499161702,
+              4499161704,
+              4499161706
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161695,
+              4499161697,
+              4499161699,
+              4499161701,
+              4499161703,
+              4499161705
+            ],
+            [
+              4499161696,
+              4499161698,
+              4499161700,
+              4499161702,
+              4499161704,
+              4499161706
+            ]
+          ],
+          "isBB": false,
+          "so": 44,
+          "typeId": 332,
+          "sportMarketId": 75451,
+          "sv": "2|18.5",
+          "id": 1732121524,
+          "name": "Segundo Mapa - Total de Rounds (excl. Prol.)"
+        },
+        {
+          "shortName": "Segundo Mapa - 1x2",
+          "desktopOddIds": [
+            [
+              4499161670
+            ],
+            [
+              4499161671
+            ],
+            [
+              4499161672
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161670
+            ],
+            [
+              4499161671
+            ],
+            [
+              4499161672
+            ]
+          ],
+          "isBB": false,
+          "so": 46,
+          "typeId": 334,
+          "sportMarketId": 75452,
+          "sv": "2",
+          "id": 1732121512,
+          "name": "Segundo Mapa - 1x2"
+        },
+        {
+          "shortName": "Segundo Mapa - Haverá prorrogação?",
+          "desktopOddIds": [
+            [
+              4499161445
+            ],
+            [
+              4499161446
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161445
+            ],
+            [
+              4499161446
+            ]
+          ],
+          "isBB": false,
+          "so": 47,
+          "typeId": 335,
+          "sportMarketId": 75453,
+          "sv": "2",
+          "id": 1732121423,
+          "name": "Segundo Mapa - Haverá prorrogação?"
+        },
+        {
+          "shortName": "Segundo Mapa - Corrida para 4 rounds",
+          "desktopOddIds": [
+            [
+              4499161809
+            ],
+            [
+              4499161810
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161809
+            ],
+            [
+              4499161810
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "2|4",
+          "id": 1732121566,
+          "name": "Segundo Mapa - Corrida para 4 rounds"
+        },
+        {
+          "shortName": "Segundo Mapa - Corrida para 7 rounds",
+          "desktopOddIds": [
+            [
+              4499161811
+            ],
+            [
+              4499161812
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161811
+            ],
+            [
+              4499161812
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "2|7",
+          "id": 1732121567,
+          "name": "Segundo Mapa - Corrida para 7 rounds"
+        },
+        {
+          "shortName": "Segundo Mapa - Corrida para 10 rounds",
+          "desktopOddIds": [
+            [
+              4499161805
+            ],
+            [
+              4499161806
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161805
+            ],
+            [
+              4499161806
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "2|10",
+          "id": 1732121564,
+          "name": "Segundo Mapa - Corrida para 10 rounds"
+        },
+        {
+          "shortName": "Segundo Mapa - Corrida para 13 rounds",
+          "desktopOddIds": [
+            [
+              4499161807
+            ],
+            [
+              4499161808
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161807
+            ],
+            [
+              4499161808
+            ]
+          ],
+          "isBB": false,
+          "so": 50,
+          "typeId": 620,
+          "sportMarketId": 75455,
+          "sv": "2|13",
+          "id": 1732121565,
+          "name": "Segundo Mapa - Corrida para 13 rounds"
+        },
+        {
+          "shortName": "Segundo Mapa: Vencedor do Round de Pistolas da primeiro ª Ronda",
+          "desktopOddIds": [
+            [
+              4499161679
+            ],
+            [
+              4499161680
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161679
+            ],
+            [
+              4499161680
+            ]
+          ],
+          "isBB": false,
+          "so": 69,
+          "typeId": 20089,
+          "sportMarketId": 75458,
+          "sv": "2|1",
+          "id": 1732121516,
+          "name": "Segundo Mapa: Vencedor do Round de Pistolas da primeiro ª Ronda"
+        },
+        {
+          "shortName": "Segundo Mapa: Vencedor do Round de Pistolas da segundo ª Ronda",
+          "desktopOddIds": [
+            [
+              4499161681
+            ],
+            [
+              4499161682
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161681
+            ],
+            [
+              4499161682
+            ]
+          ],
+          "isBB": false,
+          "so": 69,
+          "typeId": 20089,
+          "sportMarketId": 75458,
+          "sv": "2|2",
+          "id": 1732121517,
+          "name": "Segundo Mapa: Vencedor do Round de Pistolas da segundo ª Ronda"
+        },
+        {
+          "shortName": "Segundo mapa - Pontuação correta dos rounds de pistolas",
+          "desktopOddIds": [
+            [
+              4499161718
+            ],
+            [
+              4499161719
+            ],
+            [
+              4499161720
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499161718
+            ],
+            [
+              4499161719
+            ],
+            [
+              4499161720
+            ]
+          ],
+          "isBB": false,
+          "so": 90,
+          "typeId": 24495,
+          "sportMarketId": 75573,
+          "sv": "2",
+          "id": 1732121534,
+          "name": "Segundo mapa - Pontuação correta dos rounds de pistolas"
+        }
+      ],
+      "childMarkets": [],
+      "odds": [
+        {
+          "typeId": 1,
+          "price": 1.5264,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 160149,
+          "id": 4499161413,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 1071413,
+          "id": 4499161414,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.6,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "-1.5",
+          "competitorId": 160149,
+          "id": 4499161663,
+          "name": "Team Brute (-1.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.4167,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "-1.5",
+          "competitorId": 1071413,
+          "id": 4499161664,
+          "name": "G2 Ares (+1.5)"
+        },
+        {
+          "typeId": 116,
+          "price": 2.65,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161707,
+          "name": "2:0"
+        },
+        {
+          "typeId": 138,
+          "price": 4,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161709,
+          "name": "0:2"
+        },
+        {
+          "typeId": 130,
+          "price": 3.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161708,
+          "name": "2:1"
+        },
+        {
+          "typeId": 140,
+          "price": 4.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161710,
+          "name": "1:2"
+        },
+        {
+          "typeId": 12,
+          "price": 2.05,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "2.5",
+          "id": 4499161465,
+          "name": "Mais de 2.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.7143,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "2.5",
+          "id": 4499161466,
+          "name": "Menos de 2.5"
+        },
+        {
+          "typeId": 70,
+          "price": 2.05,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161673,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499161674,
+          "name": "Par"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 160149,
+          "id": 4499161789,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 1071413,
+          "id": 4499161790,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.2667,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+4.5|1",
+          "competitorId": 160149,
+          "id": 4499161439,
+          "name": "Team Brute (+4.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.3847,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+3.5|1",
+          "competitorId": 160149,
+          "id": 4499161435,
+          "name": "Team Brute (+3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.5264,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+2.5|1",
+          "competitorId": 160149,
+          "id": 4499161431,
+          "name": "Team Brute (+2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|1",
+          "competitorId": 160149,
+          "id": 4499161415,
+          "name": "Team Brute (-2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|1",
+          "competitorId": 160149,
+          "id": 4499161419,
+          "name": "Team Brute (-3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 3.05,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|1",
+          "competitorId": 160149,
+          "id": 4499161423,
+          "name": "Team Brute (-4.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 3.75,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-5.5|1",
+          "competitorId": 160149,
+          "id": 4499161427,
+          "name": "Team Brute (-5.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 3.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+4.5|1",
+          "competitorId": 1071413,
+          "id": 4499161440,
+          "name": "G2 Ares (-4.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 2.7,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+3.5|1",
+          "competitorId": 1071413,
+          "id": 4499161436,
+          "name": "G2 Ares (-3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 2.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+2.5|1",
+          "competitorId": 1071413,
+          "id": 4499161432,
+          "name": "G2 Ares (-2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.625,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|1",
+          "competitorId": 1071413,
+          "id": 4499161416,
+          "name": "G2 Ares (+2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.4445,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|1",
+          "competitorId": 1071413,
+          "id": 4499161420,
+          "name": "G2 Ares (+3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.3077,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|1",
+          "competitorId": 1071413,
+          "id": 4499161424,
+          "name": "G2 Ares (+4.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.2106,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-5.5|1",
+          "competitorId": 1071413,
+          "id": 4499161428,
+          "name": "G2 Ares (+5.5)"
+        },
+        {
+          "typeId": 12,
+          "price": 1.2353,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "18.5",
+          "id": 4499161683,
+          "name": "Mais de 18.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.3847,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4499161685,
+          "name": "Mais de 19.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.5883,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499161687,
+          "name": "Mais de 20.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.9524,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499161689,
+          "name": "Mais de 21.5"
+        },
+        {
+          "typeId": 12,
+          "price": 2.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499161691,
+          "name": "Mais de 22.5"
+        },
+        {
+          "typeId": 12,
+          "price": 3.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "23.5",
+          "id": 4499161693,
+          "name": "Mais de 23.5"
+        },
+        {
+          "typeId": 13,
+          "price": 3.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "18.5",
+          "id": 4499161684,
+          "name": "Menos de 18.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.7,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4499161686,
+          "name": "Menos de 19.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.15,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499161688,
+          "name": "Menos de 20.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.7143,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499161690,
+          "name": "Menos de 21.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.4445,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499161692,
+          "name": "Menos de 22.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.2353,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "23.5",
+          "id": 4499161694,
+          "name": "Menos de 23.5"
+        },
+        {
+          "typeId": 1,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 160149,
+          "id": 4499161667,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 2,
+          "price": 7.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161668,
+          "name": "Empate"
+        },
+        {
+          "typeId": 3,
+          "price": 2.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 1071413,
+          "id": 4499161669,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 74,
+          "price": 6.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161443,
+          "name": "Sim"
+        },
+        {
+          "typeId": 76,
+          "price": 1.091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161444,
+          "name": "Não"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|4",
+          "competitorId": 160149,
+          "id": 4499161801,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|4",
+          "competitorId": 1071413,
+          "id": 4499161802,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|7",
+          "competitorId": 160149,
+          "id": 4499161803,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|7",
+          "competitorId": 1071413,
+          "id": 4499161804,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|10",
+          "competitorId": 160149,
+          "id": 4499161797,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|10",
+          "competitorId": 1071413,
+          "id": 4499161798,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|13",
+          "competitorId": 160149,
+          "id": 4499161799,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|13",
+          "competitorId": 1071413,
+          "id": 4499161800,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|1",
+          "competitorId": 160149,
+          "id": 4499161675,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.8696,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|1",
+          "competitorId": 1071413,
+          "id": 4499161676,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|2",
+          "competitorId": 160149,
+          "id": 4499161677,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.8696,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1|2",
+          "competitorId": 1071413,
+          "id": 4499161678,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 116,
+          "price": 3.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161715,
+          "name": "2:0"
+        },
+        {
+          "typeId": 128,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161716,
+          "name": "1:1"
+        },
+        {
+          "typeId": 138,
+          "price": 3.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499161717,
+          "name": "0:2"
+        },
+        {
+          "typeId": 1,
+          "price": 1.625,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 160149,
+          "id": 4499161791,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.2,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 1071413,
+          "id": 4499161792,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.2667,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+3.5|2",
+          "competitorId": 160149,
+          "id": 4499161437,
+          "name": "Team Brute (+3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.3637,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+2.5|2",
+          "competitorId": 160149,
+          "id": 4499161433,
+          "name": "Team Brute (+2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.7693,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|2",
+          "competitorId": 160149,
+          "id": 4499161417,
+          "name": "Team Brute (-2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|2",
+          "competitorId": 160149,
+          "id": 4499161421,
+          "name": "Team Brute (-3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|2",
+          "competitorId": 160149,
+          "id": 4499161425,
+          "name": "Team Brute (-4.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.95,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-5.5|2",
+          "competitorId": 160149,
+          "id": 4499161429,
+          "name": "Team Brute (-5.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 3.75,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-6.5|2",
+          "competitorId": 160149,
+          "id": 4501720787,
+          "name": "Team Brute (-6.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 3.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+3.5|2",
+          "competitorId": 1071413,
+          "id": 4499161438,
+          "name": "G2 Ares (-3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 2.8,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "+2.5|2",
+          "competitorId": 1071413,
+          "id": 4499161434,
+          "name": "G2 Ares (-2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|2",
+          "competitorId": 1071413,
+          "id": 4499161418,
+          "name": "G2 Ares (+2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.625,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|2",
+          "competitorId": 1071413,
+          "id": 4499161422,
+          "name": "G2 Ares (+3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.4445,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|2",
+          "competitorId": 1071413,
+          "id": 4499161426,
+          "name": "G2 Ares (+4.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.3334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-5.5|2",
+          "competitorId": 1071413,
+          "id": 4499161430,
+          "name": "G2 Ares (+5.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.2106,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-6.5|2",
+          "competitorId": 1071413,
+          "id": 4501720788,
+          "name": "G2 Ares (+6.5)"
+        },
+        {
+          "typeId": 12,
+          "price": 1.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "18.5",
+          "id": 4499161695,
+          "name": "Mais de 18.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4499161697,
+          "name": "Mais de 19.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.625,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499161699,
+          "name": "Mais de 20.5"
+        },
+        {
+          "typeId": 12,
+          "price": 2,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499161701,
+          "name": "Mais de 21.5"
+        },
+        {
+          "typeId": 12,
+          "price": 2.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499161703,
+          "name": "Mais de 22.5"
+        },
+        {
+          "typeId": 12,
+          "price": 3.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "23.5",
+          "id": 4499161705,
+          "name": "Mais de 23.5"
+        },
+        {
+          "typeId": 13,
+          "price": 3.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "18.5",
+          "id": 4499161696,
+          "name": "Menos de 18.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.65,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4499161698,
+          "name": "Menos de 19.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499161700,
+          "name": "Menos de 20.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.6897,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499161702,
+          "name": "Menos de 21.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.4167,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499161704,
+          "name": "Menos de 22.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.2223,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "23.5",
+          "id": 4499161706,
+          "name": "Menos de 23.5"
+        },
+        {
+          "typeId": 1,
+          "price": 1.6667,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 160149,
+          "id": 4499161670,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 2,
+          "price": 7.75,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161671,
+          "name": "Empate"
+        },
+        {
+          "typeId": 3,
+          "price": 2.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 1071413,
+          "id": 4499161672,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 74,
+          "price": 6.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161445,
+          "name": "Sim"
+        },
+        {
+          "typeId": 76,
+          "price": 1.091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161446,
+          "name": "Não"
+        },
+        {
+          "typeId": 1,
+          "price": 1.6667,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|4",
+          "competitorId": 160149,
+          "id": 4499161809,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|4",
+          "competitorId": 1071413,
+          "id": 4499161810,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.625,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|7",
+          "competitorId": 160149,
+          "id": 4499161811,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.2,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|7",
+          "competitorId": 1071413,
+          "id": 4499161812,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.5883,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|10",
+          "competitorId": 160149,
+          "id": 4499161805,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|10",
+          "competitorId": 1071413,
+          "id": 4499161806,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.5556,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|13",
+          "competitorId": 160149,
+          "id": 4499161807,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 2.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|13",
+          "competitorId": 1071413,
+          "id": 4499161808,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.7408,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|1",
+          "competitorId": 160149,
+          "id": 4499161679,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|1",
+          "competitorId": 1071413,
+          "id": 4499161680,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 1,
+          "price": 1.7408,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|2",
+          "competitorId": 160149,
+          "id": 4499161681,
+          "name": "Team Brute"
+        },
+        {
+          "typeId": 3,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2|2",
+          "competitorId": 1071413,
+          "id": 4499161682,
+          "name": "G2 Ares"
+        },
+        {
+          "typeId": 116,
+          "price": 3.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161718,
+          "name": "2:0"
+        },
+        {
+          "typeId": 128,
+          "price": 1.8696,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161719,
+          "name": "1:1"
+        },
+        {
+          "typeId": 138,
+          "price": 3.85,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499161720,
+          "name": "0:2"
+        }
+      ],
+      "boosts": [],
+      "nonBoosts": [],
+      "isParlay": false,
+      "eventCode": 8805,
+      "rc": false,
+      "startDate": "2026-09-15T08:00:00Z",
+      "showAll": true
+    }
+  }
+}

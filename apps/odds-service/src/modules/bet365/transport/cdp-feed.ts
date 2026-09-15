@@ -1,3 +1,5 @@
+import { setTimeout as delay } from "node:timers/promises";
+import type { Page } from "playwright-core";
 import { ChromeTab } from "../../../shared/browser/chrome-tab.js";
 export { CdpConnection } from "../../../shared/browser/cdp-connection.js";
 import {
@@ -9,20 +11,53 @@ import {
 } from "./browser-feed.js";
 import type { Esport } from "../types/model.js";
 // Attach only to our own tab. Avoid auto-attachment to the user's unrelated tabs.
+const configuredPages = new WeakSet<Page>();
 export class CdpFeed extends ChromeTab {
+  private warmup: (action: () => Promise<void>) => Promise<void> = (action) =>
+    action();
   private currentUrl = "about:blank";
   private authenticated: boolean | null = null;
   private busy = false;
+  private managedPage?: Page;
+  private warmed = false;
+  private reuseTarget = false;
   readonly page = { url: () => this.currentUrl };
-  static async open(endpoint: string, options: { anonymous?: boolean } = {}) {
+  static async open(
+    endpoint: string,
+    options: {
+      reuseTarget?: boolean;
+      anonymous?: boolean;
+      targetId?: string;
+      page?: Page;
+      warmup?: (action: () => Promise<void>) => Promise<void>;
+    } = {},
+  ) {
     const tab = await ChromeTab.open(endpoint, options);
-    return new CdpFeed(
+    const feed = new CdpFeed(
       tab.cdp,
       tab.targetId,
       tab.sessionId,
       tab.browserContextId,
       tab.releaseConnection,
     );
+    feed.managedPage = options.page;
+    feed.reuseTarget = options.reuseTarget ?? false;
+    if (options.warmup) feed.warmup = options.warmup;
+    if (options.page && !configuredPages.has(options.page)) {
+      const consent = options.page.getByText("Somente os essenciais", {
+        exact: true,
+      });
+      try {
+        await options.page.addLocatorHandler(consent, async () => {
+          await consent.click();
+        });
+        configuredPages.add(options.page);
+      } catch (error) {
+        await feed.detach();
+        throw error;
+      }
+    }
+    return feed;
   }
   async capture(
     esport: Esport,
@@ -44,16 +79,18 @@ export class CdpFeed extends ChromeTab {
     const result = new Promise<FeedCapture>((resolve, reject) => {
       settle = resolve;
       fail = reject;
-      timer = setTimeout(
+    });
+    const armTimeout = () => {
+      timer ??= setTimeout(
         () =>
-          reject(
+          fail(
             Error(
               "Frontend did not provide requested feed; retaining previous snapshot",
             ),
           ),
         timeout,
       );
-    });
+    };
     void result.catch(() => {});
     const onDisconnect = () =>
       fail(Error("Chrome disconnected during capture"));
@@ -137,7 +174,11 @@ export class CdpFeed extends ChromeTab {
     this.cdp.on("disconnected", onDisconnect);
     try {
       const url = pageUrl(pd);
-      if (this.currentUrl !== "about:blank") {
+      if (
+        !this.reuseTarget &&
+        !this.managedPage &&
+        this.currentUrl !== "about:blank"
+      ) {
         const oldTarget = this.targetId;
         const created = await this.cdp.send("Target.createTarget", {
           url: "about:blank",
@@ -156,12 +197,68 @@ export class CdpFeed extends ChromeTab {
         await this.cdp.send("Network.enable", {}, this.sessionId);
         await this.cdp.send("Target.closeTarget", { targetId: oldTarget });
       }
-      const navigation = await this.cdp.send(
-        "Page.navigate",
-        { url },
-        this.sessionId,
-      );
-      if (navigation.errorText) throw Error("Page navigation failed");
+      if (this.managedPage) {
+        if (!this.warmed) {
+          await this.warmup(async () => {
+            armTimeout();
+            const response = await this.managedPage!.goto(origin + "/", {
+              waitUntil: "domcontentloaded",
+              timeout,
+            });
+            if (response && response.status() >= 400)
+              throw Error(`Homepage HTTP ${response.status()}`);
+            await this.managedPage!.getByText(/^e-?sports$/i)
+              .first()
+              .click({ timeout });
+            this.warmed = true;
+          });
+        }
+        armTimeout();
+        // PD is a frontend route advertised by the accepted listing/coupon, never an API URL.
+        if (this.managedPage.url() === url)
+          await this.managedPage.reload({
+            waitUntil: "domcontentloaded",
+            timeout,
+          });
+        else
+          await this.managedPage.goto(url, {
+            waitUntil: "domcontentloaded",
+            timeout,
+          });
+      } else {
+        if (this.reuseTarget && !this.warmed) {
+          await this.warmup(async () => {
+            await this.cdp.send(
+              "Page.navigate",
+              { url: origin + "/" },
+              this.sessionId,
+            );
+            const until = Date.now() + timeout;
+            let clicked = false;
+            while (Date.now() < until && !clicked) {
+              const state = await this.cdp.send(
+                "Runtime.evaluate",
+                {
+                  expression: `(()=>{const visible=e=>!!(e.offsetWidth||e.offsetHeight);const consent=[...document.querySelectorAll('button')].find(e=>visible(e)&&e.textContent.trim()==='Somente os essenciais');if(consent){consent.click();return false}const es=[...document.querySelectorAll('a,button,span,div')].filter(e=>visible(e)&&/^e-?sports$/i.test(e.textContent.trim()));const e=es.sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length)[0];if(!e)return false;e.click();return true})()`,
+                  returnByValue: true,
+                },
+                this.sessionId,
+              );
+              clicked = state.result?.value === true;
+              if (!clicked) await delay(200);
+            }
+            if (!clicked) throw Error("Bet365 eSports navigation unavailable");
+            this.warmed = true;
+          });
+        }
+        armTimeout();
+        const navigation = await this.cdp.send(
+          "Page.navigate",
+          { url },
+          this.sessionId,
+        );
+        if (navigation.errorText) throw Error("Page navigation failed");
+      }
       this.currentUrl = url;
       return await result;
     } finally {

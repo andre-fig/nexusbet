@@ -1,3 +1,8 @@
+import { EstrelaBetModule } from "../estrelabet/estrelabet.module.js";
+import { EstrelaBetService } from "../estrelabet/estrelabet.service.js";
+import { BlazeModule } from "../blaze/blaze.module.js";
+import { BlazeService } from "../blaze/blaze.service.js";
+import { BrowserModule } from "../../shared/browser/browser.module.js";
 import { Module } from "@nestjs/common";
 import { AppConfigModule } from "../../config/config.module.js";
 import { Bet365Module } from "../bet365/bet365.module.js";
@@ -10,16 +15,32 @@ import { CollectionService } from "./collection.service.js";
 import { SchedulerService } from "./scheduler.service.js";
 import { ODDS_PROVIDERS, ProviderRegistry } from "./provider-registry.js";
 @Module({
-  imports: [AppConfigModule, Bet365Module, BetanoModule, SuperbetModule],
+  imports: [
+    BrowserModule,
+    AppConfigModule,
+    Bet365Module,
+    BetanoModule,
+    SuperbetModule,
+    BlazeModule,
+    EstrelaBetModule,
+  ],
   providers: [
     {
       provide: ODDS_PROVIDERS,
-      useFactory: (a: Bet365Service, b: BetanoService, c: SuperbetService) => [
-        a,
-        b,
-        c,
+      useFactory: (
+        a: Bet365Service,
+        b: BetanoService,
+        c: SuperbetService,
+        d: BlazeService,
+        e: EstrelaBetService,
+      ) => [a, b, c, d, e],
+      inject: [
+        Bet365Service,
+        BetanoService,
+        SuperbetService,
+        BlazeService,
+        EstrelaBetService,
       ],
-      inject: [Bet365Service, BetanoService, SuperbetService],
     },
     ProviderRegistry,
     CollectionService,

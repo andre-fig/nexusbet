@@ -147,3 +147,7 @@ O `marketId` normalizado é o UUID da linha, estável entre listagem e detalhe. 
 São IDs de protocolo observados, não odds codificadas. Outros tipos permanecem `unknown`, com seleções, preços, specifiers e campos brutos. Handicap/props não receberam interpretação de produto: handicap permanece nos specifiers brutos, sem atribuir uma linha incorreta à seleção visitante. `display=false` representa indisponibilidade na normalização, preservando separadamente o status bruto. `hasLive=true` indica disponibilidade de cobertura e não significa partida ao vivo. Apenas oferta pré-jogo é normalizada. Metadados de estado desconhecidos são rejeitados; a variante sem metadata só é aceita quando traz explicitamente o único stream PREMATCH.
 
 O detalhe valida `counts.odds[1]` contra UUIDs únicos recebidos, evitando publicar resposta incompleta. Duplicatas idênticas são deduplicadas; conflitos são rejeitados. Traduções vazias de torneios não utilizados no diretório global são ignoradas; torneio referenciado sem nome continua sendo erro.
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](../../../docs/HEADLESS_DIAGNOSTICS.md).

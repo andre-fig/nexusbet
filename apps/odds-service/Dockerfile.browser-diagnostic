@@ -1,0 +1,18 @@
+# Diagnostic environment only. Google Chrome Stable is distributed for Linux amd64.
+FROM --platform=linux/amd64 node:22-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl fonts-liberation xvfb x11-utils tini gosu \
+ && curl -fsSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb \
+ && apt-get install -y --no-install-recommends /tmp/chrome.deb \
+ && rm /tmp/chrome.deb && rm -rf /var/lib/apt/lists/*
+WORKDIR /service
+COPY package.json package-lock.json ./
+# No database/client generation is needed for transport-only diagnostics.
+RUN npm ci --ignore-scripts
+COPY tsconfig.json ./
+COPY src ./src
+RUN mkdir -p /service/data /service/evidence && chown -R node:node /service
+COPY runtime ./runtime
+USER node
+ENV DISPLAY=:99 BROWSER_MODE=headed CHROME_CHANNEL=chrome BROWSER_PERSISTENT=true
+ENTRYPOINT ["/usr/bin/tini", "--", "/service/runtime/entrypoint.sh"]
+CMD ["npm", "run", "browser:diagnose", "--", "--five-cycles"]

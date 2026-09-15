@@ -1,0 +1,724 @@
+{
+  "provider": "estrelabet",
+  "capturedAt": "2026-09-15T02:12:35.816Z",
+  "status": 200,
+  "source": {
+    "transport": "http",
+    "url": "https://sb2frontend-altenar2.biahosted.com/api/widget/GetEventDetails?culture=pt-BR&timezoneOffset=180&integration=estrelabet&deviceType=1&numFormat=en-GB&eventId=17688530",
+    "method": "GET",
+    "capture": "direct-http",
+    "authenticated": false
+  },
+  "data": {
+    "detail": {
+      "id": 17688530,
+      "feedEventId": 23724963,
+      "name": "⁠9z Globant vs. Fuego",
+      "et": 0,
+      "sport": {
+        "typeId": 317,
+        "iconName": "e-sports-+",
+        "hasLiveEvents": false,
+        "id": 145,
+        "name": "E-sports +\t\t"
+      },
+      "champ": {
+        "hasLiveEvents": false,
+        "id": 63432,
+        "name": "WSCI 2026 Americas Qualifier"
+      },
+      "category": {
+        "iso": "e15",
+        "hasLiveEvents": false,
+        "id": 1531,
+        "name": "League of Legends"
+      },
+      "competitors": [
+        {
+          "hasOrigJersey": true,
+          "id": 2988983,
+          "name": "⁠9z Globant"
+        },
+        {
+          "hasConfigLogo": true,
+          "hasOrigJersey": true,
+          "id": 797416,
+          "name": "Fuego"
+        }
+      ],
+      "marketGroups": [
+        {
+          "type": 0,
+          "marketIds": [
+            31046,
+            1728611771,
+            1728611780,
+            1728611781,
+            1728611782,
+            1728611774,
+            1732891227,
+            1728611776
+          ],
+          "isBundle": false,
+          "sortOrder": 0,
+          "id": 1,
+          "name": "Popular"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1728611777,
+            1728611783,
+            1728611780
+          ],
+          "isBundle": false,
+          "sortOrder": 1,
+          "id": 1645,
+          "name": "Mapa 1"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1728611778,
+            1728611784,
+            1728611781
+          ],
+          "isBundle": false,
+          "sortOrder": 2,
+          "id": 1646,
+          "name": "Mapa 2"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1728611779,
+            1728611785,
+            1728611782
+          ],
+          "isBundle": false,
+          "sortOrder": 3,
+          "id": 1647,
+          "name": "Mapa 3"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1728611783,
+            1728611784,
+            1728611785
+          ],
+          "isBundle": false,
+          "sortOrder": 6,
+          "id": 1652,
+          "name": "Kills"
+        }
+      ],
+      "childMarketGroups": [],
+      "markets": [
+        {
+          "desktopOddIds": [],
+          "mobileOddIds": [],
+          "isBB": false,
+          "variant": 7,
+          "so": 1,
+          "typeId": 31046,
+          "sportMarketId": 0,
+          "id": 31046,
+          "name": "Boosted Odds"
+        },
+        {
+          "shortName": "Vencedor da partida",
+          "desktopOddIds": [
+            [
+              4489473466
+            ],
+            [
+              4489473467
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473466
+            ],
+            [
+              4489473467
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 30001,
+          "sportMarketId": 72780,
+          "id": 1728611771,
+          "name": "Vencedor da partida"
+        },
+        {
+          "shortName": "Primeiro Mapa: Qual equipe fará o primeiro abate?",
+          "desktopOddIds": [
+            [
+              4489473484
+            ],
+            [
+              4489473485
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473484
+            ],
+            [
+              4489473485
+            ]
+          ],
+          "isBB": false,
+          "so": 6,
+          "typeId": 20057,
+          "sportMarketId": 75480,
+          "sv": "1",
+          "id": 1728611780,
+          "name": "Primeiro Mapa: Qual equipe fará o primeiro abate?"
+        },
+        {
+          "shortName": "Segundo Mapa: Qual equipe fará o primeiro abate?",
+          "desktopOddIds": [
+            [
+              4489473486
+            ],
+            [
+              4489473487
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473486
+            ],
+            [
+              4489473487
+            ]
+          ],
+          "isBB": false,
+          "so": 6,
+          "typeId": 20057,
+          "sportMarketId": 75480,
+          "sv": "2",
+          "id": 1728611781,
+          "name": "Segundo Mapa: Qual equipe fará o primeiro abate?"
+        },
+        {
+          "shortName": "Terceiro Mapa: Qual equipe fará o primeiro abate?",
+          "desktopOddIds": [
+            [
+              4489473488
+            ],
+            [
+              4489473489
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473488
+            ],
+            [
+              4489473489
+            ]
+          ],
+          "isBB": false,
+          "so": 6,
+          "typeId": 20057,
+          "sportMarketId": 75480,
+          "sv": "3",
+          "id": 1728611782,
+          "name": "Terceiro Mapa: Qual equipe fará o primeiro abate?"
+        },
+        {
+          "shortName": "Handicap de Mapa",
+          "desktopOddIds": [
+            [
+              4489473472
+            ],
+            [
+              4489473473
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473472
+            ],
+            [
+              4489473473
+            ]
+          ],
+          "isBB": false,
+          "so": 8,
+          "typeId": 327,
+          "sportMarketId": 73039,
+          "sv": "+1.5",
+          "id": 1728611774,
+          "name": "Handicap de Mapa"
+        },
+        {
+          "shortName": "Total mapas",
+          "desktopOddIds": [
+            [
+              4501278719
+            ],
+            [
+              4501278720
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4501278719
+            ],
+            [
+              4501278720
+            ]
+          ],
+          "isBB": false,
+          "so": 12,
+          "typeId": 328,
+          "sportMarketId": 73826,
+          "sv": "3.5",
+          "id": 1732891227,
+          "name": "Total mapas"
+        },
+        {
+          "shortName": "Mapas Ímpares/Pares",
+          "desktopOddIds": [
+            [
+              4489473476
+            ],
+            [
+              4489473477
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473476
+            ],
+            [
+              4489473477
+            ]
+          ],
+          "isBB": false,
+          "so": 18,
+          "typeId": 24471,
+          "sportMarketId": 75459,
+          "id": 1728611776,
+          "name": "Mapas Ímpares/Pares"
+        },
+        {
+          "shortName": "Primeiro mapa - vencedor (incl. Prorrogação)",
+          "desktopOddIds": [
+            [
+              4489473478
+            ],
+            [
+              4489473479
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473478
+            ],
+            [
+              4489473479
+            ]
+          ],
+          "isBB": false,
+          "so": 2,
+          "typeId": 395,
+          "sportMarketId": 73825,
+          "sv": "1",
+          "id": 1728611777,
+          "name": "Primeiro mapa - vencedor (incl. Prorrogação)"
+        },
+        {
+          "shortName": "Primeiro Mapa - Total Kills Ímpar/Par",
+          "desktopOddIds": [
+            [
+              4489473490
+            ],
+            [
+              4489473491
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473490
+            ],
+            [
+              4489473491
+            ]
+          ],
+          "isBB": false,
+          "so": 61,
+          "typeId": 20022,
+          "sportMarketId": 75479,
+          "sv": "1",
+          "id": 1728611783,
+          "name": "Primeiro Mapa - Total Kills Ímpar/Par"
+        },
+        {
+          "shortName": "Segundo mapa - vencedor (incl. Prorrogação)",
+          "desktopOddIds": [
+            [
+              4489473480
+            ],
+            [
+              4489473481
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473480
+            ],
+            [
+              4489473481
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 395,
+          "sportMarketId": 73825,
+          "sv": "2",
+          "id": 1728611778,
+          "name": "Segundo mapa - vencedor (incl. Prorrogação)"
+        },
+        {
+          "shortName": "Segundo Mapa - Total Kills Ímpar/Par",
+          "desktopOddIds": [
+            [
+              4489473492
+            ],
+            [
+              4489473493
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473492
+            ],
+            [
+              4489473493
+            ]
+          ],
+          "isBB": false,
+          "so": 61,
+          "typeId": 20022,
+          "sportMarketId": 75479,
+          "sv": "2",
+          "id": 1728611784,
+          "name": "Segundo Mapa - Total Kills Ímpar/Par"
+        },
+        {
+          "shortName": "Terceiro mapa - vencedor (incl. Prorrogação)",
+          "desktopOddIds": [
+            [
+              4489473482
+            ],
+            [
+              4489473483
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473482
+            ],
+            [
+              4489473483
+            ]
+          ],
+          "isBB": false,
+          "so": 2,
+          "typeId": 395,
+          "sportMarketId": 73825,
+          "sv": "3",
+          "id": 1728611779,
+          "name": "Terceiro mapa - vencedor (incl. Prorrogação)"
+        },
+        {
+          "shortName": "Terceiro Mapa - Total Kills Ímpar/Par",
+          "desktopOddIds": [
+            [
+              4489473494
+            ],
+            [
+              4489473495
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4489473494
+            ],
+            [
+              4489473495
+            ]
+          ],
+          "isBB": false,
+          "so": 61,
+          "typeId": 20022,
+          "sportMarketId": 75479,
+          "sv": "3",
+          "id": 1728611785,
+          "name": "Terceiro Mapa - Total Kills Ímpar/Par"
+        }
+      ],
+      "childMarkets": [],
+      "odds": [
+        {
+          "typeId": 1,
+          "price": 3.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 2988983,
+          "id": 4489473466,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 797416,
+          "id": 4489473467,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 1,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 2988983,
+          "id": 4489473484,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 797416,
+          "id": 4489473485,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 1,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 2988983,
+          "id": 4489473486,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 797416,
+          "id": 4489473487,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 1,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "competitorId": 2988983,
+          "id": 4489473488,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "competitorId": 797416,
+          "id": 4489473489,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.15,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "+1.5",
+          "competitorId": 2988983,
+          "id": 4489473472,
+          "name": "⁠9z Globant (+1.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.5883,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "+1.5",
+          "competitorId": 797416,
+          "id": 4489473473,
+          "name": "Fuego (-1.5)"
+        },
+        {
+          "typeId": 12,
+          "price": 1.5,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "3.5",
+          "id": 4501278719,
+          "name": "Mais de 3.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.4,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "3.5",
+          "id": 4501278720,
+          "name": "Menos de 3.5"
+        },
+        {
+          "typeId": 70,
+          "price": 1.4546,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4489473476,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 2.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4489473477,
+          "name": "Par"
+        },
+        {
+          "typeId": 1,
+          "price": 2.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 2988983,
+          "id": 4489473478,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.4348,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 797416,
+          "id": 4489473479,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 70,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4489473490,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4489473491,
+          "name": "Par"
+        },
+        {
+          "typeId": 1,
+          "price": 2.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 2988983,
+          "id": 4489473480,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.4348,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 797416,
+          "id": 4489473481,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 70,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4489473492,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4489473493,
+          "name": "Par"
+        },
+        {
+          "typeId": 1,
+          "price": 2.6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "competitorId": 2988983,
+          "id": 4489473482,
+          "name": "⁠9z Globant"
+        },
+        {
+          "typeId": 3,
+          "price": 1.4348,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "competitorId": 797416,
+          "id": 4489473483,
+          "name": "Fuego"
+        },
+        {
+          "typeId": 70,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "id": 4489473494,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "3",
+          "id": 4489473495,
+          "name": "Par"
+        }
+      ],
+      "boosts": [],
+      "nonBoosts": [],
+      "isParlay": false,
+      "eventCode": 5125,
+      "rc": false,
+      "startDate": "2026-09-16T21:00:00Z",
+      "showAll": true
+    }
+  }
+}

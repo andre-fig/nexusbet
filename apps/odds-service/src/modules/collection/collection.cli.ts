@@ -11,11 +11,15 @@ const app = await NestFactory.createApplicationContext(AppModule);
 const collection = app.get(CollectionService),
   c = app.get(AppConfiguration).settings;
 const names = [
-  process.argv.includes("--superbet")
-    ? "superbet"
-    : process.argv.includes("--betano")
-      ? "betano"
-      : "bet365",
+  process.argv.includes("--estrelabet")
+    ? "estrelabet"
+    : process.argv.includes("--blaze")
+      ? "blaze"
+      : process.argv.includes("--superbet")
+        ? "superbet"
+        : process.argv.includes("--betano")
+          ? "betano"
+          : "bet365",
 ];
 const options = {
   esports: c.esports,

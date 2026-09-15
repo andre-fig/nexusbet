@@ -1,3 +1,4 @@
+import { BrowserModule } from "../../shared/browser/browser.module.js";
 import { Module } from "@nestjs/common";
 import { AppConfigModule } from "../../config/config.module.js";
 import { SnapshotsModule } from "../snapshots/snapshots.module.js";
@@ -6,7 +7,7 @@ import { BetanoController } from "./betano.controller.js";
 import { BetanoCollector } from "./betano.collector.js";
 import { BetanoClient } from "./betano.client.js";
 @Module({
-  imports: [AppConfigModule, SnapshotsModule],
+  imports: [AppConfigModule, SnapshotsModule, BrowserModule],
   controllers: [BetanoController],
   providers: [BetanoService, BetanoCollector, BetanoClient],
   exports: [BetanoService],

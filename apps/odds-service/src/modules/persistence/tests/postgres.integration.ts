@@ -146,7 +146,7 @@ beforeEach(async () => {
 });
 test("seed is idempotent and provider slug has a database unique constraint", async () => {
   await seedProviders(database.db);
-  assert.equal(await database.db.provider.count(), 3);
+  assert.equal(await database.db.provider.count(), 5);
   await assert.rejects(
     database.db.provider.create({
       data: { slug: "bet365", name: "Duplicate" },
@@ -611,6 +611,8 @@ test("Nest API restores provider state and scheduler catalogue, keeps TTL, valid
       detailInboxDir: join(root, "detail"),
       betanoInboxDir: join(root, "betano"),
       superbetInboxDir: join(root, "superbet"),
+      blazeInboxDir: join(root, "blaze"),
+      estrelabetInboxDir: join(root, "estrelabet"),
       scanEnabled: false,
       ttlMs: 1,
       collection: { ...config.settings.collection, enabled: false },
@@ -786,6 +788,98 @@ test("failed database reads expose a typed 503 without driver details and recove
     { message: "PostgreSQL read unavailable", status: 503 },
   );
   assert.equal(database.operationFailed, true);
-  assert.equal((await new OddsReadRepository(database).providers()).length, 3);
+  assert.equal((await new OddsReadRepository(database).providers()).length, 5);
   assert.equal(database.operationFailed, false);
+});
+
+import { parseDetail as parseBlazeDetail } from "../../blaze/parsers/feed.parser.js";
+test("Blaze real fixture persists maps and IDs, joins canonical peers, restores checkpoint and preserves odds history", async () => {
+  const capture = JSON.parse(
+    await (
+      await import("node:fs/promises")
+    ).readFile(
+      new URL("../../blaze/fixtures/prematch.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const e = parseBlazeDetail(capture, "cs2", "2711247139689869329");
+  await service.commit(publication(e));
+  const count = await database.db.selection.count();
+  await service.commit(publication(e));
+  assert.equal(await database.db.providerEvent.count(), 1);
+  assert.equal(await database.db.selection.count(), count);
+  const newer = structuredClone(e);
+  newer.fetchedAt = new Date(Date.parse(e.fetchedAt) + 60000).toISOString();
+  for (const m of newer.markets) m.fetchedAt = newer.fetchedAt;
+  newer.markets.find((m) => m.category === "match_winner")!.selections[0].odds =
+    1.68;
+  await service.commit(publication(newer));
+  for (const provider of ["bet365", "betano", "superbet"] as const)
+    await service.commit(publication({ ...structuredClone(newer), provider }));
+  assert.equal(await database.db.providerEvent.count(), 4);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(await database.db.eventMatch.count(), 4);
+  const history = await database.db.oddsSnapshot.findMany({
+    where: {
+      selection: {
+        providerSelectionId: "4",
+        market: {
+          providerMarketId: "186",
+          providerEvent: { provider: { slug: "blaze" } },
+        },
+      },
+    },
+    orderBy: { fetchedAt: "asc" },
+  });
+  assert.deepEqual(
+    history.map((s) => Number(s.odds)),
+    [1.7, 1.68],
+  );
+  assert.ok(await service.restore("blaze:test"));
+});
+
+import { parseDetail as parseEstrelaBetDetail } from "../../estrelabet/parsers/feed.parser.js";
+test("EstrelaBet real fixture persists maps and IDs, joins canonical peers, restores checkpoint and preserves odds history", async () => {
+  const capture = JSON.parse(
+    await (
+      await import("node:fs/promises")
+    ).readFile(
+      new URL("../../estrelabet/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const e = parseEstrelaBetDetail(capture, "cs2", "17707439");
+  await service.commit(publication(e));
+  const count = await database.db.selection.count();
+  await service.commit(publication(e));
+  assert.equal(await database.db.providerEvent.count(), 1);
+  assert.equal(await database.db.selection.count(), count);
+  const newer = structuredClone(e);
+  newer.fetchedAt = new Date(Date.parse(e.fetchedAt) + 60000).toISOString();
+  for (const m of newer.markets) m.fetchedAt = newer.fetchedAt;
+  newer.markets.find((m) => m.category === "match_winner")!.selections[0].odds =
+    1.68;
+  await service.commit(publication(newer));
+  for (const provider of ["bet365", "betano", "superbet", "blaze"] as const)
+    await service.commit(publication({ ...structuredClone(newer), provider }));
+  assert.equal(await database.db.providerEvent.count(), 5);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(await database.db.eventMatch.count(), 5);
+  const history = await database.db.oddsSnapshot.findMany({
+    where: {
+      selection: {
+        providerSelectionId: "4499161413",
+        market: {
+          providerMarketId: "1732121407",
+          providerEvent: { provider: { slug: "estrelabet" } },
+        },
+      },
+    },
+    orderBy: { fetchedAt: "asc" },
+  });
+  assert.deepEqual(
+    history.map((s) => Number(s.odds)),
+    [1.5264, 1.68],
+  );
+  assert.ok(await service.restore("estrelabet:test"));
 });

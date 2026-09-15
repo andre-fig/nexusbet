@@ -1,3 +1,4 @@
+import { LocalCdpService } from "../../../shared/browser/local-cdp.service.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { access, writeFile } from "node:fs/promises";
@@ -7,11 +8,11 @@ import { openHeadlessFeed } from "../../../shared/browser/headless-feed.js";
 import { ChromeTab } from "../../../shared/browser/chrome-tab.js";
 import { configuration } from "../../../config/configuration.js";
 
-test("headless defaults on, supports explicit diagnostic opt-out and rejects invalid configuration", () => {
+test("headed defaults on, supports explicit legacy headless selection and rejects invalid configuration", () => {
   const original = process.env.HEADLESS;
   try {
     delete process.env.HEADLESS;
-    assert.equal(configuration().settings.headless, true);
+    assert.equal(configuration().settings.headless, false);
     for (const value of ["1", "true"]) {
       process.env.HEADLESS = value;
       assert.equal(configuration().settings.headless, true);
@@ -90,7 +91,7 @@ test(
   },
 );
 
-test("headless launch failure never falls back to personal CDP even with existing/reuse options", async (t) => {
+test("unsupported runtime never launches Chrome or falls back even with existing/reuse options", async (t) => {
   const { Bet365Client } = await import("../../bet365/bet365.client.js");
   const { BetanoClient } = await import("../../betano/betano.client.js");
   const { AppConfiguration } = await import("../../../config/configuration.js");
@@ -98,6 +99,10 @@ test("headless launch failure never falls back to personal CDP even with existin
   const settings = {
     ...configuration().settings,
     headless: true,
+    browser: {
+      ...configuration().settings.browser,
+      runtime: "disabled" as const,
+    },
     cdpUrl: "ws://127.0.0.1:1/devtools/browser/personal",
   };
   const config = new AppConfiguration(new ConfigService({ settings }));
@@ -111,15 +116,18 @@ test("headless launch failure never falls back to personal CDP even with existin
   const verify = (error: unknown) =>
     error instanceof Error &&
     error.cause instanceof Error &&
-    error.cause.message === "headless launch unavailable";
+    error.cause.message.includes("unavailable");
   await assert.rejects(
-    new Bet365Client(config).open({
+    new Bet365Client(config, new LocalCdpService(config)).open({
       esports: ["cs2"],
       existing: true,
       reuseProfile: true,
     }),
     verify,
   );
-  await assert.rejects(new BetanoClient(config).open(), verify);
-  assert.equal(launch.mock.callCount(), 2);
+  await assert.rejects(
+    new BetanoClient(config, new LocalCdpService(config)).open(),
+    verify,
+  );
+  assert.equal(launch.mock.callCount(), 0);
 });

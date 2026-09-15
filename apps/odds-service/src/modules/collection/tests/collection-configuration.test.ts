@@ -44,7 +44,7 @@ test("startup delay and positive jitter use one global tick and cap single-sessi
     ...collectionConfiguration(),
     startupDelayMs: 3000,
     jitterMs: 1000,
-    concurrency: { bet365: 8, betano: 1, superbet: 1 },
+    concurrency: { bet365: 8, betano: 1, superbet: 1, blaze: 1, estrelabet: 1 },
   };
   const s = new AdaptiveScheduler(
     config,

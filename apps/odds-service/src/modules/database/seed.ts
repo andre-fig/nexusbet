@@ -4,6 +4,8 @@ export async function seedProviders(db: PrismaClient) {
     ["bet365", "Bet365"],
     ["betano", "Betano"],
     ["superbet", "Superbet"],
+    ["blaze", "Blaze"],
+    ["estrelabet", "EstrelaBet"],
   ])
     await db.provider.upsert({
       where: { slug },

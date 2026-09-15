@@ -69,3 +69,11 @@ SIGTERM/SIGINT: para timers e novos jobs, aguarda até SHUTDOWN_GRACE_MS=30000, 
 CLIs `capture*` fazem ciclo manual; `--detail` escolhe um evento por modalidade. `collect*` são loops legados com CAPTURE_INTERVAL_SECONDS=180, não a agenda adaptativa. Eles desabilitam scheduler/ingestão próprios e escrevem inboxes. Não rode coletor manual junto com scheduler ativo da mesma instalação.
 
 Intervalos são metas de elegibilidade. Listagens demoradas, prioridade de discovery e capacidade 1 podem atrasar detalhes. Testes de relógio falso, publicação tardia e shutdown estão em collection/tests; não é necessário consultar sites para validar a agenda.
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](HEADLESS_DIAGNOSTICS.md).
+
+## Atualização: Chrome compartilhado
+
+O fluxo atual usa `BrowserModule`/`LocalCdpService`: CDP no Chrome pessoal existente do Mac, targets próprios reutilizados, sem fechar o browser pessoal. Superbet segue HTTP. Chrome próprio compartilhado/Xvfb é histórico, fora da DI desses providers.

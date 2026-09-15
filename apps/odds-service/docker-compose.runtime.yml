@@ -1,0 +1,32 @@
+# Combine with docker-compose.yml; PostgreSQL remains the existing service.
+services:
+  odds-service:
+    image: odds-service:local
+    platform: linux/amd64
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-odds}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-odds_service}
+      PERSISTENCE_MODE: postgres
+      COLLECTION_ENABLED: "true"
+      BROWSER_RUNTIME: disabled
+      BET365_ENABLED: "false"
+      BETANO_ENABLED: "false"
+      BROWSER_MODE: headed
+      DISPLAY: ":99"
+      SHUTDOWN_GRACE_MS: "30000"
+    ports:
+      - "127.0.0.1:3650:3650"
+    volumes:
+      - odds_runtime:/service/data
+    shm_size: 1gb
+    stop_grace_period: 90s
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+process.env.PORT+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  odds_runtime:

@@ -1,6 +1,6 @@
 # Project Overview
 
-NexusBet contém o backend NestJS de leitura `apps/odds-service`: odds pré-jogo de CS2, LoL e Valorant de Bet365, Betano e Superbet. Coleta, normaliza, publica snapshots, preserva histórico PostgreSQL/journal e compara eventos. Não implementa apostas, pagamentos, carteira, BFF ou live. `apps/odds-monitor` é separado e usa mocks; não é dependência do backend.
+NexusBet contém o backend NestJS de leitura `apps/odds-service`: odds pré-jogo de CS2, LoL e Valorant de Bet365, Betano, Superbet, Blaze e EstrelaBet. Coleta, normaliza, publica snapshots, preserva histórico PostgreSQL/journal e compara eventos. Não implementa apostas, pagamentos, carteira, BFF ou live. `apps/odds-monitor` é separado e usa mocks; não é dependência do backend.
 
 Leia [README](README.md), depois o documento da área em [docs](docs/ARCHITECTURE.md). Código, schema, migrations e testes atuais são a fonte principal; registre divergências em vez de mudar comportamento para corresponder a uma descrição antiga.
 
@@ -9,7 +9,7 @@ Leia [README](README.md), depois o documento da área em [docs](docs/ARCHITECTUR
 Todos os caminhos abaixo partem de `apps/odds-service`:
 
 - `src/main.ts`, `bootstrap.ts`, `app.module.ts`: bootstrap Nest e API GET local.
-- `src/modules/bet365`, `betano`, `superbet`: service/client/collector/parser, stores, fixtures e testes específicos.
+- `src/modules/bet365`, `betano`, `superbet`, `blaze`, `estrelabet`: service/client/collector/parser, stores, fixtures e testes específicos.
 - `src/modules/collection`: registry, orquestração, agenda adaptativa e CLI.
 - `src/modules/snapshots`: snapshots e journal comum.
 - `src/modules/matching`: comparação do domínio; não interpreta protocolos.
@@ -23,7 +23,7 @@ Não crie camadas vazias ou reorganize em MVC. Veja [Architecture](docs/ARCHITEC
 
 # Provider Isolation
 
-Os três providers são contextos independentes. Não importe parser/store de outro bookmaker. Protocolo, IDs de navegação, mapeamentos e validações ficam no módulo correspondente. Compartilhe domínio e infraestrutura neutra, como a conexão CDP; não transforme formatos diferentes em um parser universal. Providers não importam Prisma/SQL: usam a porta de persistência pelo pipeline existente.
+Os cinco providers são contextos independentes. Não importe parser/store de outro bookmaker. Protocolo, IDs de navegação, mapeamentos e validações ficam no módulo correspondente. Compartilhe domínio e infraestrutura neutra, como a conexão CDP; não transforme formatos diferentes em um parser universal. Providers não importam Prisma/SQL: usam a porta de persistência pelo pipeline existente.
 
 # Normalized Domain
 
@@ -72,7 +72,7 @@ npm test
 
 Antes de merge, os checks acima devem passar. Alterações em persistência exigem `npm run test:db` com `TEST_DATABASE_URL` de banco **descartável terminado em _test**: a suíte aplica migrations e TRUNCATE. Nunca aponte para banco útil. Browser opcional: `BROWSER_TESTS=1 npm test` usa Chrome invisível/feeds locais, sem bookmaker real. Preserve fixtures reais, não ajuste odds/IDs para mascarar regressão.
 
-Comandos operacionais: `npm start`, `npm run start:prod`, `db:generate`, `db:migrate`, `db:seed`, `db:status`. Captura: `capture`, `capture:betano`, `capture:superbet`; loops CLI legados: `collect`, `collect:betano`. Importação opcional: `db:import-legacy`. `format` modifica arquivos; `format:check` só verifica. Lista completa/efeitos: [Testing](docs/TESTING.md).
+Comandos operacionais: `npm start`, `npm run start:prod`, `db:generate`, `db:migrate`, `db:seed`, `db:status`. Captura: `capture`, `capture:betano`, `capture:superbet`, `capture:blaze`, `capture:estrelabet`; loops CLI legados: `collect`, `collect:betano`. Importação opcional: `db:import-legacy`. `format` modifica arquivos; `format:check` só verifica. Lista completa/efeitos: [Testing](docs/TESTING.md).
 
 # Development Rules
 
@@ -89,7 +89,7 @@ Comandos operacionais: `npm start`, `npm run start:prod`, `db:generate`, `db:mig
 
 Coleta somente leitura. Nunca commite `credentials.txt`, `.env`, perfis Chrome ou capturas com segredos. Não logue login/senha/cookies/tokens; use sanitizador antes de persistir raw. Não automatize apostas, CAPTCHA, 2FA ou contorno anti-bot.
 
-`HEADLESS=true` é padrão. Não abra browser visível nem reutilize perfil pessoal como fallback. Bloqueios devem ser reportados. Não use testes reais para alterar conta. A API local não possui autenticação; não a exponha como API pública sem tarefa específica de segurança.
+Bet365/Betano usam somente `BROWSER_RUNTIME=local-cdp` no macOS, Chrome pessoal/headed já funcional. `LocalCdpService` cria/reutiliza exclusivamente targets próprios; nunca navegue/feche tabs preexistentes, encerre Chrome/contexto pessoal, copie cookies, altere storage ou faça logout. Não há launch nem fallback. Fora de local-cdp/macOS, ficam disabled/unavailable. Em Railway, BET365_ENABLED=false e BETANO_ENABLED=false. Não retome investigação headless/Linux/Xvfb/replay HTTP nesta etapa. Relatórios históricos não autorizam novos experimentos. Veja [Local CDP](docs/LOCAL_CDP.md).
 
 # How to Add a New Provider
 
@@ -122,4 +122,10 @@ Procedimentos: [Operations](docs/OPERATIONS.md).
 
 # Do Not
 
-Não apostar, inferir finished por ausência, apagar histórico, misturar protocolos, relaxar validações para passar testes, iniciar polling indefinidamente para documentar ou implementar frontend/BFF/risk engine por iniciativa própria. Não apresentar Sentry/Railway, dashboard integrado ou disponibilidade headless como implementados: veja [Decisions](docs/DECISIONS.md).
+Não apostar, inferir finished por ausência, apagar histórico, misturar protocolos, relaxar validações para passar testes, iniciar polling indefinidamente para documentar ou implementar frontend/BFF/risk engine por iniciativa própria. Não apresentar deploy Railway, Sentry ou dashboard integrado como validados: o runtime está preparado, a implantação remota exige validação. Veja [produção](docs/PRODUCTION_RUNTIME.md).
+
+Diagnóstico de browser: [HEADLESS_DIAGNOSTICS.md](docs/HEADLESS_DIAGNOSTICS.md). `browser:diagnose` não publica snapshots; `browser:compare` compara metadados sanitizados. A validação atual usa targets próprios no Chrome pessoal existente; não copia cookies.
+
+Blaze usa HTTP anônimo e snapshot completo fragmentado, sem browser. Respeite a cadeia de versões e a conclusão antes da publicação; não confunda o endpoint individual bloqueado com o feed completo funcional. [Guia Blaze](docs/BLAZE.md).
+
+EstrelaBet usa HTTP Altenar anônimo: todas as páginas GetUpcoming antes da publicação e GetEventDetails para detalhes. Preserve IDs, precisão original (UI trunca a duas casas), tipos 30001/330/395 e sv de mapa. Sem fallback de browser. [Guia EstrelaBet](docs/ESTRELABET.md).

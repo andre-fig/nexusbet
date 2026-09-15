@@ -1,16 +1,20 @@
+# Suporte atual
+
+[Local CDP](LOCAL_CDP.md) é o único modo suportado para Bet365/Betano. LOCAL MAC/CDP: SUPPORTED; LINUX/XVFB: UNSUPPORTED; HEADLESS: UNSUPPORTED. Desabilitar ambos em Railway. Os relatos de experimentos abaixo são históricos.
+
 # Providers
 
 [Índice](../README.md#documentation) · [Campos/URLs detalhados observados](../apps/odds-service/docs/protocols.md)
 
 ## Contrato e cobertura comuns
 
-Módulos ficam em `apps/odds-service/src/modules/{bet365,betano,superbet}`. Cada service implementa ProviderRuntime, extensão de OddsProvider. Client/collector obtêm dados estruturados; parser valida e normaliza; store publica snapshots via porta comum. Não existe um parser compartilhado entre bookmakers.
+Módulos ficam em `apps/odds-service/src/modules/{bet365,betano,superbet,blaze,estrelabet}`. Cada service implementa ProviderRuntime, extensão de OddsProvider. Client/collector obtêm dados estruturados; parser valida e normaliza; store publica snapshots via porta comum. Não existe um parser compartilhado entre bookmakers.
 
 Listagem e detalhe são coberturas distintas. IDs conflitantes, odds inválidas e respostas incompletas devem causar erro, não uma publicação vazia. Mapas 4/5 são aceitos; mercados extras permanecem unknown/raw quando não interpretados. Suspensão desconhecida permanece null. Dados live não são alvo da coleta.
 
 ## Bet365
 
-- **Transporte:** Chrome headless isolado por padrão, iniciado via Playwright Core; CdpFeed intercepta respostas da navegação real. BrowserFeed e conexão a Chrome existente continuam como modos explícitos de diagnóstico.
+- **Transporte:** `LocalCdpService` conecta ao Chrome pessoal/headed existente no macOS; CdpFeed intercepta responses em targets próprios reutilizados. Somente `BROWSER_RUNTIME=local-cdp`. Linux/Xvfb/headless: UNSUPPORTED.
 - **Discovery:** `/contentdata/othersportsmatchmarketscontentapi/list`; rotas por modalidade e catálogo preservam FI e PD. Códigos de modalidade: CS2=2, LoL=3, Valorant=8 no contexto de eSports usado pelo coletor.
 - **Detalhe:** `/contentdata/othersportsmatchbettingcontentapi/coupon`. FI é a identidade do evento; PD contém rota do frontend. O componente `#E...#` não é FI e não há conversão validada de FI isolado para essa rota. Abas anunciam PD próprios; são capturadas as abas de leitura aceitas, excluindo Criar Aposta.
 - **Protocolo:** registros textuais EV/MG/MA/PA. MG identifica grupos; MA/PA e contexto de layout identificam mercados/seleções. PA.OD é fracionário, convertido com truncamento já validado; não use arredondamento genérico em substituição. Horários da listagem exigem tratamento do fuso de Londres/DST.
@@ -21,7 +25,7 @@ Listagem e detalhe são coberturas distintas. IDs conflitantes, odds inválidas 
 
 ## Betano
 
-- **Transporte:** BetanoBrowser via CDP em Chrome headless próprio. Navega links/abas reais e intercepta JSON, sem reconstruir tokens/headers de sessão. HTTP direto recebeu 403 e não é o transporte de produção implementado.
+- **Transporte:** BetanoBrowser via CDP em tab própria do Chrome pessoal/headed existente no macOS. Somente `BROWSER_RUNTIME=local-cdp`; navega links/abas reais sem reconstruir tokens. Linux/Xvfb/headless: UNSUPPORTED.
 - **Discovery:** GET `/api/sport/esports/?req=la,s,stnf,c,mb`, depois competições. regionId CS2=189374, LoL=189377, Valorant=189513. `regionGroups[].regions[].leagues`/selectedLeagues indicam cobertura; apenas a competição inicialmente selecionada não é catálogo completo. O coletor percorre competições anunciadas e valida a rodada agregada.
 - **Detalhe:** GET `/api/odds/<slug>/<eventId>/?req=la,s,stnf,c,mb`, capturado pela navegação. Cobertura implementada **popular**, não todos os mercados anunciados no cabeçalho da página.
 - **Protocolo:** event.id, participants, startTime Unix ms, markets/selections e price decimal. H2HT/typeId3183 identifica vencedor; TMPW/typeId3185 vencedor de mapa, com número no nome estruturado. Não derive mapa de displayOrder.
@@ -43,7 +47,9 @@ Listagem e detalhe são coberturas distintas. IDs conflitantes, odds inválidas 
 
 ## Browser, privacidade e validação real
 
-`shared/browser/headless-feed.ts` lança perfil temporário Chrome, descobre seu CDP local e fecha processo/perfil próprios. HEADLESS=true ignora CDP_URL/--existing/reuseProfile. HEADLESS=false é diagnóstico visível explícito; conexão nativa pode pedir autorização manual. Não copie perfil pessoal nem automatize desafio anti-bot.
+`LocalCdpService` anexa CDP ao Chrome pessoal existente e cria targets próprios. Não usa OwnedBrowser, headless, perfil novo ou Xvfb. `owned-browser.ts`/`headless-feed.ts` permanecem apenas em utilitários e testes históricos; não são fallback dos providers.
+
+A primeira resposta da homepage foi 200 headed versus 403 headless nos dois providers, antes dos feeds. Uma repetição headed da Betano também recebeu 403: não há prova de exclusividade do bloqueio a headless. [Relatório e reprodução](HEADLESS_DIAGNOSTICS.md).
 
 Sem login foi o ponto inicial das investigações; nenhuma credencial é necessária para o código atual. Isso não promete que um site nunca bloqueará uma sessão nova. Evidência de UI/protocolo preservada nos guias/fixtures é histórica e deve ser rotulada como tal.
 
@@ -61,3 +67,15 @@ Para uma mudança de feed, capture somente rede de leitura, sanitizada; compare 
 8. Atualize seed e env/docs. O schema providers aceita novos slugs sem migration só para o nome; mudanças de estrutura exigem migration.
 9. Teste parser/coverage/IDs/mapas/suspensão/unknown, snapshots, dedupe, timeout, isolamento, restart e matching ambíguo. Mantenha os testes antigos.
 10. Faça validação remota limitada e autorizada, encerre recursos e documente bloqueios. Não amplie para contas/apostas ou live.
+
+## Atualização: Chrome compartilhado
+
+O fluxo atual usa `BrowserModule`/`LocalCdpService`: CDP no Chrome pessoal existente do Mac, targets próprios reutilizados, sem fechar o browser pessoal. Superbet segue HTTP. Chrome próprio compartilhado/Xvfb é histórico, fora da DI desses providers.
+
+## Blaze
+
+Provider independente em `src/modules/blaze`, transporte HTTP público Betby. Listagem e detalhe usam manifesto + shards completos, sem browser/login; o endpoint individual observado retornou 403 e não é utilizado. Seed, registry, scheduler, matching e stores incluem Blaze. [Guia completo e campos do protocolo](BLAZE.md).
+
+## EstrelaBet
+
+Módulo independente em `src/modules/estrelabet`, HTTP público Altenar sem sessão/browser. GetUpcoming paginado e GetEventDetails; tipos de vencedor 30001, 330/395; mapas em sv. Seed, registry, scheduler, matching, snapshots e PostgreSQL usam o pipeline existente. [Protocolo, fixtures, UI e validação](ESTRELABET.md).

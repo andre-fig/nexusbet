@@ -1,3 +1,12 @@
+# Runtime atual Bet365/Betano
+
+- `BROWSER_RUNTIME`: `local-cdp` ou `disabled` (default disabled).
+- `BET365_ENABLED`, `BETANO_ENABLED`: booleanos; true por default somente com local-cdp explícito fora de NODE_ENV=production. Configure false em Railway.
+- `CDP_ENDPOINT`: WebSocket local opcional, alias prioritário a CDP_URL. Ausente: CHROME_DEBUG_PORT_FILE/DevToolsActivePort do Chrome Mac.
+- `CDP_RECONNECT_COOLDOWN_MS`: 300000, mínimo 60000.
+
+[Local CDP](LOCAL_CDP.md) define suporte/ownership. BROWSER_MODE/HEADLESS/profile/flags de Chrome próprio abaixo são legado de testes e não alteram a estratégia desses providers.
+
 # Referência de configuração
 
 [Índice](../README.md#documentation) · [.env.example](../apps/odds-service/.env.example) · Fontes: [configuration.ts](../apps/odds-service/src/config/configuration.ts), [collection.configuration.ts](../apps/odds-service/src/config/collection.configuration.ts).
@@ -8,7 +17,7 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 
 | Variável | Default / exemplo | Uso |
 |---|---|---|
-| `PORT` | `3650` | Porta; bind fixo 127.0.0.1; mínimo configurável 0 |
+| `PORT` | `3650` | Porta; mínimo configurável 0 |
 | `ESPORTS` | `cs2,lol,valorant` | Lista separada por vírgulas sem espaços |
 | `MAX_AGE_SECONDS` | `600` | TTL em segundos, mínimo 1 |
 | `DATA_DIR` | `data` | Diretório dos estados/journals |
@@ -77,9 +86,20 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 
 ## Browser/CDP
 
-| Variável | Default / exemplo | Uso |
+| Variável | Default | Uso |
 |---|---|---|
-| `HEADLESS` | `true` | Aceita true/false/1/0; modo true ignora CDP externo; sem fallback visível |
+| BROWSER_MODE | headed | Precede HEADLESS; runtime de produção exige headed |
+| CHROME_CHANNEL | chrome | Somente Google Chrome Stable |
+| BROWSER_PROFILE_DIR | data/chrome-profile | Diretório do perfil compartilhado; sem subdiretórios por provider |
+| BROWSER_PERSISTENT | true | true/false/1/0; false cria perfil temporário descartável |
+| BROWSER_LOCALE | pt-BR | Locale do contexto, sem User-Agent inventado |
+| BROWSER_TIMEZONE | America/Sao_Paulo | Timezone validado por Intl |
+| BROWSER_VIEWPORT_WIDTH | 1440 | Inteiro 320–7680 |
+| BROWSER_VIEWPORT_HEIGHT | 900 | Inteiro 320–7680; screen igual ao viewport |
+| BROWSER_EVIDENCE_DIR | evidence/browser | Metadados sanitizados e screenshot no fechamento |
+| HEADLESS | false | Compatibilidade: seleciona modo somente quando BROWSER_MODE não existe |
+
+Light colorScheme, deviceScaleFactor=1 e serviceWorkers=allow ficam centralizados em launchOptions. Não há bloqueio de recursos nem interceptação para modificar respostas. Perfil persistente contém cookies técnicos legítimos: é privado, ignorado pelo Git e não é exportado como evidência.
 
 ## Testing
 
@@ -94,15 +114,15 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 | `POLLING_ENABLED` | `0` | Compatibilidade: fallback de COLLECTION_ENABLED somente se esta estiver ausente; prefira COLLECTION_ENABLED |
 | `EVENT_ID` | `id-externo` | Seleção manual Bet365; restrinja ESPORTS |
 | `BETANO_EVENT_ID` | `id-externo` | Seleção manual Betano; restrinja ESPORTS |
-| `CDP_URL` | `http://127.0.0.1:9222` | Endpoint CDP autorizado, somente diagnóstico HEADLESS=false |
-| `CHROME_DEBUG_PORT_FILE` | `/caminho/para/DevToolsActivePort` | Arquivo do Chrome externo, somente diagnóstico visível |
+| `CDP_URL` | `http://127.0.0.1:9222` | Legado de transporte externo; não usado pelos clients gerenciados atuais |
+| `CHROME_DEBUG_PORT_FILE` | `/caminho/para/DevToolsActivePort` | Arquivo do Chrome externo; somente utilitário legado |
 | `TEST_DATABASE_URL` | `postgresql://odds:local_development_only@127.0.0.1:5433/odds_service_test` | Banco descartável *_test; suíte SQL TRUNCA tabelas |
 
 ## Detalhes operacionais
 
 - Variáveis de collection numéricas exigem inteiros seguros e mínimos indicados. O config geral valida finitude/mínimo, sem prometer a mesma validação de inteiros.
 - CODE default COLLECTION_ENABLED=true contrasta deliberadamente com exemplo false. Se COLLECTION_ENABLED não existir, POLLING_ENABLED é fallback; não configure ambas para controlar loops concorrentes.
-- HEADLESS=true não usa CDP_URL, --existing ou perfil pessoal. Diagnóstico HEADLESS=false pode exigir autorização de Chrome nativo. Sem CHROME_DEBUG_PORT_FILE, endpoint.ts procura o arquivo padrão do Chrome no ambiente suportado; isso não provisiona Chrome remotamente.
+- Os clients atuais usam Chrome próprio em ambos os modos. CDP_URL/--existing/reuseProfile não selecionam o browser pessoal. HEADLESS=false é fallback para headed somente sem BROWSER_MODE; prefira BROWSER_MODE=headed. Utilitários de CDP externo permanecem para compatibilidade/testes, fora desse fluxo.
 - INBOX_SCAN_ENABLED=0 para o timer não impede o refresh inicial; INBOX_INGEST_ENABLED=0 controla ingestão. Não troque esses flags por false: o código legado só reconhece 0 para desabilitar.
 - PERSISTENCE_MODE=file não sincroniza automaticamente com PostgreSQL. Modo postgres com URL inválida falha, sem fallback silencioso.
 - Alterar POSTGRES_USER/PASSWORD/DB no Compose não recria usuários de um volume já inicializado. Não apague o volume para solucionar isso sem backup e plano de migração.
@@ -110,3 +130,26 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 - Não há SUPERBET_EVENT_ID nem URL remota configurável por env no cliente Superbet atual; não invente variáveis que o código não lê.
 - O app separado odds-monitor lê DISABLE_HMR no vite.config.ts (`true` desliga HMR/watch). Essa variável não pertence ao backend nem é necessária para executá-lo.
 
+
+## Runtime Linux/Xvfb
+
+`HOST` default local 127.0.0.1; imagem define 0.0.0.0. `DISPLAY` default :99 no entrypoint. O Xvfb usa as mesmas BROWSER_VIEWPORT_WIDTH/HEIGHT do Chrome, 24 bits, sem TCP. `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=90` e `RAILWAY_DEPLOYMENT_OVERLAP_SECONDS=0` são variáveis da plataforma. Volume `/service/data`; detalhes em [produção](PRODUCTION_RUNTIME.md).
+
+## Chrome compartilhado
+
+- `BROWSER_SHARED_INSTANCE=true`, `BROWSER_SHARED_CONTEXT=true`, `PROVIDER_MAIN_TAB=true`: somente true/1 são suportados; false falha na configuração, sem fallback para múltiplos browsers.
+- `PROVIDER_DETAIL_TAB_MAX=1`: 0 ou 1. Os providers atuais não precisam da tab extra; quando usada via gerenciador, fecha ao concluir/falhar.
+- `BROWSER_PROFILE_DIR=data/chrome-profile`: caminho do próprio perfil, sem sufixo do provider. Imagem: `/service/data/chrome-profile`, no volume persistente.
+- Concorrência continua 1 por provider, além do mutex de page. Blaze e EstrelaBet usam HTTP independente, com flags ENABLED e limites próprios no scheduler.
+
+Veja [SHARED_BROWSER](SHARED_BROWSER.md).
+
+O BrowserManagerService exige persistência habilitada; BROWSER_PERSISTENT=false não é suportado no fluxo compartilhado. Utilitários legados de teste ainda podem usar contexto temporário isolado.
+
+## Blaze HTTP
+
+`BLAZE_ENABLED=true` habilita coleta; `BLAZE_MAX_CONCURRENCY=1` usa limite global por provider; `BLAZE_INBOX_DIR=blaze-inbox` seleciona inbox opcional. Utiliza timeouts/intervalos globais, sem configuração de cookies/login/browser. [Protocolo](BLAZE.md).
+
+## EstrelaBet HTTP
+
+`ESTRELABET_ENABLED=true`, `ESTRELABET_MAX_CONCURRENCY=1`, `ESTRELABET_INBOX_DIR=estrelabet-inbox` (opcional). Usa os intervalos e timeouts globais, sem cookies ou browser. [Protocolo e operação](ESTRELABET.md).

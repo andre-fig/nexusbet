@@ -9,7 +9,6 @@ import {
 import { Injectable, Inject, Logger } from "@nestjs/common";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { setTimeout as delay } from "node:timers/promises";
 import { BetanoClient } from "./betano.client.js";
 import { AppConfiguration } from "../../config/configuration.js";
 import { saveJson } from "../../shared/utils/files.js";
@@ -57,11 +56,20 @@ export class BetanoCollector {
     await saveJson(join(this.out, `${++this.number}.json`), c);
     return c;
   }
-  async collectEvents(options: CollectOptions) {
+  collectEvents(options: CollectOptions) {
+    return this.factory.run(
+      () => this.collectEventsUnlocked(options),
+      options.signal,
+    );
+  }
+  private async collectEventsUnlocked(options: CollectOptions) {
     options.signal?.throwIfAborted();
-    await this.close();
     this.signal = options.signal;
-    const opened = await this.factory.open();
+    if (this.browser?.isCurrent?.() === false) {
+      await this.browser.close();
+      this.browser = undefined;
+    }
+    const opened = this.browser ?? (await this.factory.open());
     if (options.signal?.aborted) {
       await opened.close();
       options.signal.throwIfAborted();
@@ -144,26 +152,33 @@ export class BetanoCollector {
     }
     return events;
   }
-  async collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
+  collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
+    return this.factory.run(
+      () => this.collectEventDetailsUnlocked(ref, options),
+      options.signal,
+    );
+  }
+  private async collectEventDetailsUnlocked(
+    ref: ProviderEventRef,
+    options: CollectOptions,
+  ) {
     options.signal?.throwIfAborted();
     this.signal = options.signal;
     if (this.browser) this.browser.signal = options.signal;
     const context = this.contexts.get(ref.esport),
       b = this.browser;
-    if (!context || !b)
+    if (!context || !b || b.isCurrent?.() === false)
       throw new ProviderParseError("betano", Error("Missing listing context"));
     const event = context.events.find((e) => e.eventId === ref.eventId);
     if (!event)
       throw new ProviderParseError("betano", Error("Event not found"));
     await collectionStep(b.clickLink(context.region.url), options.signal);
-    await delay(500);
     const league = context.leagues.find(
       (l) => String(l.id) === String(event.provenance.leagueId),
     );
     if (!league)
       throw new ProviderParseError("betano", Error("League not found"));
     await collectionStep(b.clickText(league.name), options.signal);
-    await delay(500);
     const detail = await this.capture(
         () => b.clickLink(String(event.provenance.url)),
         (u) => u.pathname === "/api" + event.provenance.url,
@@ -188,7 +203,6 @@ export class BetanoCollector {
     await writeFile(join(this.out, ref.esport + "-ui.png"), evidence.png);
     this.logger.log(`${ref.esport}: ${parsed.markets.length} markets`);
     await collectionStep(b.clickLink("/sport/esports/"), options.signal);
-    await delay(500);
     return parsed;
   }
   async recordFailure(operation: string, error: unknown) {

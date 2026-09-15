@@ -10,7 +10,7 @@ Este registro descreve decisões verificáveis no código e limites explícitos 
 | Módulos específicos por provider | Protocolos/validações não são intercambiáveis | bet365/betano/superbet |
 | Domínio normalizado sem ORM | Matching/collectors não dependem de schema SQL | shared/domain e interfaces |
 | Pré-jogo primeiro | Eventos iniciados deixam agenda, sem finished inferido | scheduling-policy/scheduled-operation |
-| Headless por padrão | Não abrir páginas na tela; perfil temporário próprio | headless-feed e clients |
+| Headless por padrão | Não abrir páginas na tela; perfil técnico persistente próprio | owned-browser e clients |
 | HTTP Superbet / browser Bet365 e Betano | Reutiliza transporte validado, sem reproduzir tokens | clients e guias de protocolo |
 | Scheduler em memória no Nest | Sem Redis, fila externa ou cron por evento | AdaptiveScheduler/SchedulerService |
 | Concorrência efetiva 1/provider | Protege transporte mutável; pode atrasar detalhes | AdaptiveScheduler |
@@ -43,3 +43,15 @@ Este registro descreve decisões verificáveis no código e limites explícitos 
 - Não há garantia de detalhe atualizado para todo o catálogo dentro do TTL, nem coleta Bet365/Betano headless real bem-sucedida na última validação deste ambiente.
 
 Esses itens não devem ser apresentados como funcionalidades atuais. Uma futura tarefa pode implementá-los; esta documentação não os autoriza nem muda a arquitetura para antecipá-los.
+
+## Evolução do browser persistente
+
+Os clients agora usam OwnedBrowser nos dois modos; o perfil técnico não é removido ao fechar. O antigo contexto anônimo interno e o fechamento da Betano em toda listagem deixaram de fazer parte desse fluxo. BROWSER_MODE=headed seleciona Chrome próprio, não CDP pessoal. A investigação demonstrou divergência na resposta inicial da homepage, mas não coleta headless funcional; detalhes em [HEADLESS_DIAGNOSTICS](HEADLESS_DIAGNOSTICS.md). As descrições anteriores de perfil temporário/CDP externo neste log são históricas.
+
+## Produção: Chrome headed em display virtual
+
+Após a matriz homepage Linux headed 200/headless 403, o padrão passa a headed + Xvfb. Docker usa Chrome Stable amd64 e um volume para profiles/journals, sem cópia de cookies ou fallback headless. Tini entrega sinal ao supervisor, que drena Nest antes de encerrar o display. Uma réplica; sem coordenador distribuído. Ver [runtime e limitações verificadas](PRODUCTION_RUNTIME.md). As decisões headless anteriores permanecem como histórico.
+
+## Um browser/contexto, tabs por provider
+
+O custo do processo e do contexto é compartilhado, mantendo parser/collector e locks separados por provider. Storage continua sujeito às origens normais do Chrome; não há evidência que justifique contextos isolados. Não abrir tabs para coletores HTTP. Contexto persistente é dono do Chrome, portanto falha real do contexto/processo exige recriação conjunta; falhas de página só substituem a tab. Não mesclar perfis antigos nem copiar cookies para formar o perfil compartilhado. Ver [SHARED_BROWSER](SHARED_BROWSER.md).

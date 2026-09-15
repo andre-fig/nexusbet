@@ -1,18 +1,52 @@
+import type { Page } from "playwright-core";
 import { ChromeTab } from "../../../shared/browser/chrome-tab.js";
 import { nativeDebugEndpoint } from "../../../shared/browser/endpoint.js";
 import { setTimeout as delay } from "node:timers/promises";
 import { origin, safeUrl, type BetanoCapture } from "../parsers/feed.parser.js";
-// Only the owned anonymous context/tab is used. No fetch replay or token construction.
+// The client attaches only to its owned target in existing Chrome. No HTTP replay or token construction.
+const configuredPages = new WeakSet<Page>();
 export class BetanoBrowser {
+  private warmed = false;
+  private warmup: (action: () => Promise<void>) => Promise<void> = (action) =>
+    action();
   signal?: AbortSignal;
-  private constructor(readonly owner: ChromeTab) {}
-  static async open(endpoint?: string) {
-    return new BetanoBrowser(
+  private constructor(
+    readonly owner: ChromeTab,
+    readonly page?: Page,
+  ) {}
+  static async open(
+    endpoint?: string,
+    options: {
+      targetId?: string;
+      page?: Page;
+      warmup?: (action: () => Promise<void>) => Promise<void>;
+    } = {},
+  ) {
+    if (options.page && !configuredPages.has(options.page)) {
+      configuredPages.add(options.page);
+      const page = options.page;
+      const cookies = page.getByRole("button", {
+        name: "Rejeitar Todos",
+        exact: true,
+      });
+      await page.addLocatorHandler(cookies, async () => {
+        await cookies.click();
+      });
+      const age = page.locator('[data-qa="age-verification-modal-ok-button"]');
+      // The adult user explicitly authorized this confirmation in this session.
+      await page.addLocatorHandler(age, async () => {
+        await age.click();
+      });
+    }
+    const browser = new BetanoBrowser(
       await ChromeTab.open(
         endpoint || process.env.CDP_URL || (await nativeDebugEndpoint()),
-        { anonymous: true },
+        { anonymous: !options.targetId, targetId: options.targetId },
       ),
+      options.page,
     );
+    if (options.warmup) browser.warmup = options.warmup;
+    return browser;
   }
   async evaluate(expression: string) {
     this.signal?.throwIfAborted();
@@ -36,6 +70,13 @@ export class BetanoBrowser {
       path.includes("criar-aposta")
     )
       throw Error("Not an allowed navigation");
+    if (this.page) {
+      await this.page
+        .locator(`a[href=${JSON.stringify(path)}]`)
+        .first()
+        .click({ timeout: 25000 });
+      return;
+    }
     let ok = false;
     for (let i = 0; i < 40 && !ok; i++) {
       ok = await this.evaluate(
@@ -47,6 +88,13 @@ export class BetanoBrowser {
   }
   async clickText(name: string) {
     await this.confirmAge();
+    if (this.page) {
+      await this.page
+        .getByText(name, { exact: true })
+        .first()
+        .click({ timeout: 25000 });
+      return;
+    }
     let ok = false;
     for (let i = 0; i < 40 && !ok; i++) {
       ok = await this.evaluate(
@@ -57,6 +105,27 @@ export class BetanoBrowser {
     if (!ok) throw Error("Navigation label unavailable: " + name);
   }
   async start() {
+    if (this.warmed) return this.startNavigation();
+    return this.warmup(async () => {
+      await this.startNavigation();
+      this.warmed = true;
+    });
+  }
+  private async startNavigation() {
+    if (this.page) {
+      const response = await this.page.goto(origin + "/", {
+        waitUntil: "domcontentloaded",
+        timeout: 25000,
+      });
+      if (response && response.status() >= 400)
+        throw Error(`Homepage HTTP ${response.status()}`);
+      await this.confirmAge();
+      await this.page
+        .locator('a[href="/sport/esports/"]')
+        .first()
+        .waitFor({ state: "visible", timeout: 25000 });
+      return;
+    }
     await this.owner.cdp.send(
       "Page.navigate",
       { url: origin + "/" },

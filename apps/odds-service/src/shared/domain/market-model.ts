@@ -30,7 +30,7 @@ export interface Market {
   raw: RawFields;
 }
 export interface DetailedMatch {
-  provider: "bet365" | "betano" | "superbet";
+  provider: "bet365" | "betano" | "superbet" | "blaze" | "estrelabet";
   esport: Esport;
   eventId: string;
   teamA: string;
@@ -41,7 +41,7 @@ export interface DetailedMatch {
   fetchedAt: string;
 }
 export interface OddsSnapshot {
-  provider: "bet365" | "betano" | "superbet";
+  provider: "bet365" | "betano" | "superbet" | "blaze" | "estrelabet";
   map: number | null;
   eventId: string;
   marketId: string;
@@ -61,7 +61,7 @@ export type ChangeType =
   | "EventAdded"
   | "EventRemoved";
 export interface MarketChange {
-  provider?: "bet365" | "betano" | "superbet";
+  provider?: "bet365" | "betano" | "superbet" | "blaze" | "estrelabet";
   type: ChangeType;
   eventId: string;
   marketId?: string;

@@ -17,7 +17,13 @@ export interface CollectionSettings {
   listIntervalMs: number;
   detail: DetailIntervals;
   jitterMs: number;
-  concurrency: { bet365: number; betano: number; superbet: number };
+  concurrency: {
+    bet365: number;
+    betano: number;
+    superbet: number;
+    blaze: number;
+    estrelabet: number;
+  };
   listTimeoutMs: number;
   detailTimeoutMs: number;
   failureThreshold: number;
@@ -63,6 +69,8 @@ export function collectionConfiguration(): CollectionSettings {
       bet365: n("BET365_MAX_CONCURRENCY", 1),
       betano: n("BETANO_MAX_CONCURRENCY", 1),
       superbet: n("SUPERBET_MAX_CONCURRENCY", 1),
+      estrelabet: n("ESTRELABET_MAX_CONCURRENCY", 1),
+      blaze: n("BLAZE_MAX_CONCURRENCY", 1),
     },
     listTimeoutMs: n("PROVIDER_LIST_TIMEOUT_MS", 60000),
     detailTimeoutMs: n("PROVIDER_DETAIL_TIMEOUT_MS", 60000),

@@ -15,6 +15,8 @@ O backend é um processo NestJS independente, em [apps/odds-service](../apps/odd
 | `modules/bet365/` | Protocolo textual, listagem/coupon, abas, CDP e stores específicos |
 | `modules/betano/` | Diretório/competições JSON, detalhes populares, browser e store |
 | `modules/superbet/` | HTTP público, dicionários, listagem/detalhe JSON e store |
+| `modules/blaze/` | HTTP público Betby, manifesto/shards e store |
+| `modules/estrelabet/` | HTTP público Altenar, paginação, detalhe e store |
 | `modules/collection/` | ProviderRegistry, CollectionService, AdaptiveScheduler, SchedulerService e CLI |
 | `modules/snapshots/` | MarketJournal, cálculo de mudanças e instâncias de stores |
 | `modules/matching/` | Comparação pura e acesso às listagens normalizadas |
@@ -23,7 +25,7 @@ O backend é um processo NestJS independente, em [apps/odds-service](../apps/odd
 | `modules/health/` | Agregação de saúde operacional e compatibilidade |
 | `shared/` | Domínio, portas, erros, utilitários e infraestrutura CDP neutra |
 
-AppModule importa configuração, CollectionModule, MatchingModule e HealthModule. CollectionModule importa os três módulos de provider e injeta a lista `ODDS_PROVIDERS` no registry. Providers usam SnapshotsModule; este alcança PersistenceModule/DatabaseModule. Não existe importação do parser de um bookmaker por outro.
+AppModule importa configuração, CollectionModule, MatchingModule e HealthModule. CollectionModule importa os cinco módulos de provider e injeta a lista `ODDS_PROVIDERS` no registry. Providers usam SnapshotsModule; este alcança PersistenceModule/DatabaseModule. Não existe importação do parser de um bookmaker por outro.
 
 ```mermaid
 flowchart TD
@@ -31,9 +33,13 @@ flowchart TD
   R --> B[Bet365Service]
   R --> T[BetanoService]
   R --> S[SuperbetService]
+  R --> Z[BlazeService]
+  R --> E[EstrelaBetService]
   B --> P[Collectors / clients / parsers próprios]
   T --> P
   S --> P
+  Z --> P
+  E --> P
   P --> N[NormalizedEvent e publicações diferidas]
   N --> I[Inboxes e refresh dos stores]
   I --> V[Validação e MarketJournal]
@@ -65,7 +71,7 @@ As setas mostram fluxo, não que parsers compartilhem implementação. A valida�
 5. PersistenceService grava entidades, snapshots, scopes, mudanças, matching e checkpoint em transação.
 6. Confirmado SQL, atualiza journal em arquivo e projeção em memória. A leitura confirma aceitação da captura.
 
-A unidade atômica é um scope de publicação, não uma rodada global de três providers. Falha SQL não publica projeção parcial. PostgreSQL e arquivo não têm transação conjunta: falha de arquivo após commit pode deixá-lo atrasado. Restart restaura PostgreSQL. Mais detalhes em [Data model](DATA_MODEL.md) e [Odds history](ODDS_HISTORY.md).
+A unidade atômica é um scope de publicação, não uma rodada global de providers. Falha SQL não publica projeção parcial. PostgreSQL e arquivo não têm transação conjunta: falha de arquivo após commit pode deixá-lo atrasado. Restart restaura PostgreSQL. Mais detalhes em [Data model](DATA_MODEL.md) e [Odds history](ODDS_HISTORY.md).
 
 ## Leitura, erros e stale
 
@@ -80,3 +86,15 @@ Conexão/migrations/seed precedem restauração de stores e catálogo. O schedul
 ## Extensão segura
 
 Alterações de provider devem passar pelo domínio comum, sem SQL no parser. Matching continua puro. Configuração global pertence a config/collection; detalhes de transporte pertencem ao provider ou à infraestrutura neutra de browser. Não crie mapper/DTO/repository vazio apenas para simetria: Betano e Superbet mapeiam no parser atual.
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](HEADLESS_DIAGNOSTICS.md).
+
+## Processo de produção
+
+O Dockerfile do serviço executa tini → supervisor Bash → Xvfb + Nest compilado. Chrome Stable headed é filho do serviço, com profiles por provider no volume persistente. HOST=0.0.0.0 no container; local continua loopback. Shutdown mantém o display até a drenagem e fechamento dos browsers. [Runtime](PRODUCTION_RUNTIME.md).
+
+## Atualização: Chrome compartilhado
+
+O fluxo atual usa `BrowserModule`/`LocalCdpService`: CDP no Chrome pessoal existente do Mac, targets próprios reutilizados, sem fechar o browser pessoal. Superbet segue HTTP. Chrome próprio compartilhado/Xvfb é histórico, fora da DI desses providers.

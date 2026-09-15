@@ -8,7 +8,10 @@ export class ChromeTab {
     readonly browserContextId?: string,
     readonly releaseConnection: () => void = () => cdp.close(),
   ) {}
-  static async open(endpoint: string, options: { anonymous?: boolean } = {}) {
+  static async open(
+    endpoint: string,
+    options: { anonymous?: boolean; targetId?: string } = {},
+  ) {
     const lease = await acquireCdp(endpoint);
     const cdp = lease.cdp;
     let targetId: string | undefined, browserContextId: string | undefined;
@@ -18,10 +21,12 @@ export class ChromeTab {
           "Target.createBrowserContext",
           {},
         ));
-      ({ targetId } = await cdp.send("Target.createTarget", {
-        url: "about:blank",
-        ...(browserContextId ? { browserContextId } : {}),
-      }));
+      if (options.targetId) targetId = options.targetId;
+      else
+        ({ targetId } = await cdp.send("Target.createTarget", {
+          url: "about:blank",
+          ...(browserContextId ? { browserContextId } : {}),
+        }));
       const { sessionId } = await cdp.send("Target.attachToTarget", {
         targetId,
         flatten: true,
@@ -37,10 +42,19 @@ export class ChromeTab {
       await cdp.send("Network.enable", {}, sessionId);
       return client;
     } catch (e) {
-      if (targetId)
+      if (targetId && !options.targetId)
         await cdp.send("Target.closeTarget", { targetId }).catch(() => {});
       lease.release();
       throw e;
+    }
+  }
+  async detach() {
+    try {
+      await this.cdp
+        .send("Target.detachFromTarget", { sessionId: this.sessionId })
+        .catch(() => {});
+    } finally {
+      this.releaseConnection();
     }
   }
   // Native Chrome in this environment crashes on disposeBrowserContext. Leave the empty

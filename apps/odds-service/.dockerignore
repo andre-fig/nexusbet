@@ -1,0 +1,13 @@
+node_modules
+.env
+.env.*
+credentials.txt
+data
+evidence
+captures
+inbox
+detail-inbox
+betano-inbox
+superbet-inbox
+dist
+src/generated

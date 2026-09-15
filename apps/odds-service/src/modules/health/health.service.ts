@@ -1,3 +1,4 @@
+import { LocalCdpService } from "../../shared/browser/local-cdp.service.js";
 import { DatabaseService } from "../database/database.service.js";
 import { CollectionService } from "../collection/collection.service.js";
 import { Injectable, Inject, Optional } from "@nestjs/common";
@@ -10,11 +11,15 @@ export class HealthService {
     @Optional()
     @Inject(DatabaseService)
     private readonly database?: DatabaseService,
+    @Optional()
+    @Inject(LocalCdpService)
+    private readonly browser?: LocalCdpService,
   ) {}
   legacy() {
     return {
       ...this.bet365.legacyHealth(),
-      ...this.collection.scheduler.health(),
+      ...this.collection.operationalHealth(),
+      browser: this.browser?.health(),
       database: {
         mode: this.database?.enabled ? "postgres" : "file",
         status: this.database?.enabled

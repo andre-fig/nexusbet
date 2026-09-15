@@ -36,6 +36,10 @@ export class Bet365Collector {
     @Inject(AppConfiguration) private readonly config: AppConfiguration,
   ) {}
   private async open(options: CollectOptions) {
+    if (this.client?.isCurrent?.() === false) {
+      await this.client.close();
+      this.client = undefined;
+    }
     if (!this.client) {
       const opened = await this.factory.open(options);
       if (options.signal?.aborted) {
@@ -53,7 +57,13 @@ export class Bet365Collector {
     }
     return this.client;
   }
-  async collectEvents(options: CollectOptions) {
+  collectEvents(options: CollectOptions) {
+    return this.factory.run(
+      () => this.collectEventsUnlocked(options),
+      options.signal,
+    );
+  }
+  private async collectEventsUnlocked(options: CollectOptions) {
     options.signal?.throwIfAborted();
     const client = await this.open(options);
     const events = [];
@@ -90,7 +100,16 @@ export class Bet365Collector {
     }
     return events;
   }
-  async collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
+  collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
+    return this.factory.run(
+      () => this.collectEventDetailsUnlocked(ref, options),
+      options.signal,
+    );
+  }
+  private async collectEventDetailsUnlocked(
+    ref: ProviderEventRef,
+    options: CollectOptions,
+  ) {
     const listing = this.listings.get(ref.esport);
     if (!listing)
       throw new ProviderParseError("bet365", Error("Missing listing context"));

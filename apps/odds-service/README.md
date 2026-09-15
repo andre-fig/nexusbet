@@ -1,5 +1,12 @@
 # Odds Service
 
+## Runtime suportado: desenvolvimento local
+
+Bet365 e Betano usam exclusivamente **`BROWSER_RUNTIME=local-cdp` no macOS**, conectando ao Chrome headed existente e gerenciando somente suas próprias tabs. **Linux/Xvfb e headless não são suportados** para esses providers. Em Railway: `BET365_ENABLED=false`, `BETANO_ENABLED=false`, `BROWSER_RUNTIME=disabled`. Superbet, Blaze e EstrelaBet mantêm HTTP independente.
+
+Preparação do Chrome, flags, ownership, indisponibilidade e shutdown: [Local CDP](../../docs/LOCAL_CDP.md).
+
+
 Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes bet365, Betano e Superbet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma para persistência e mantém os journals locais durante a migração. Não depende de frontend ou BFF.
 
 Guia de entrada: [README da raiz](../../README.md). Instruções de trabalho: [AGENTS.md](../../AGENTS.md). Documentação aprofundada: [índice](../../README.md#documentation).
@@ -27,11 +34,11 @@ Execute apenas uma instância de cada vez. A API atende em `127.0.0.1:3650` por 
 COLLECTION_ENABLED=false npm start
 ```
 
-O padrão é `HEADLESS=true`: Bet365 e Betano usam processos Chrome invisíveis, isolados e encerrados pelo serviço. Não é necessário abrir seu Chrome nem autorizar CDP pessoal. `CDP_URL`, `--existing` e o perfil pessoal não são usados nesse modo; não há fallback para janelas visíveis. Chrome precisa estar instalado. Superbet continua usando HTTP público.
+Bet365/Betano usam `BROWSER_RUNTIME=local-cdp` no macOS. O serviço não inicia outro Chrome nem fecha o Chrome pessoal; Superbet, Blaze e EstrelaBet mantêm HTTP público.
 
-Na validação deste ambiente, a sessão headless recebeu bloqueio HTTP 403 na Bet365 (Cloudflare) e na Betano (splash sem conteúdo utilizável). Portanto o transporte invisível funciona, mas a coleta real dessas duas fontes em headless não foi validada com sucesso. Falhas seguem backoff/circuit breaker e preservam snapshots até o TTL, sem contorno de proteção.
+Use [LOCAL_CDP.md](../../docs/LOCAL_CDP.md) para desenvolvimento local. Em produção, BET365_ENABLED=false, BETANO_ENABLED=false e BROWSER_RUNTIME=disabled. Relatórios de Xvfb permanecem históricos.
 
-Somente para diagnóstico visível explícito, `HEADLESS=false` restaura o transporte anterior: habilite a depuração remota nativa em `chrome://inspect/#remote-debugging`. `CHROME_DEBUG_PORT_FILE` ou `CDP_URL` configuram outro endpoint local autorizado.
+A validação real usa o mesmo runtime local-cdp, parser e rotas. Flags HEADLESS/BROWSER_MODE não selecionam alternativas para os dois providers.
 
 O exemplo local inicia com `COLLECTION_ENABLED=false`. Use `COLLECTION_ENABLED=true npm start` para coleta contínua. Instalação, schema, migrations, importação, consultas e limitações: [PostgreSQL](docs/postgres.md).
 
@@ -101,9 +108,19 @@ npm run collect:betano -- --detail
 
 `modules/bet365`, `modules/betano` e `modules/superbet` contêm protocolos, transportes, parsers e stores específicos. `collection` coordena a agenda; `snapshots` mantém o journal; `matching` recebe somente o domínio normalizado; `shared` contém domínio e infraestrutura neutra.
 
-A coleta Betano cobre a aba popular. Bet365 captura as abas anunciadas e aceitas, excluindo Criar Aposta. Nem todo evento listado retorna detalhe utilizável; falhas preservam o estado anterior e aplicam backoff/circuit breaker. Intervalos são alvos, sujeitos à capacidade, fila e jitter. A API continua aplicando TTL. No headless, o encerramento fecha o browser e perfil temporário próprios. No modo de Chrome externo, fecha apenas abas próprias; contextos anônimos vazios ficam para o ciclo de vida do Chrome, pois sua destruição explícita já causou crashes na instalação testada.
+A coleta Betano cobre a aba popular. Bet365 captura as abas anunciadas e aceitas, excluindo Criar Aposta. Nem todo evento listado retorna detalhe utilizável; falhas preservam o estado anterior e aplicam backoff/circuit breaker. Intervalos são alvos, sujeitos à capacidade, fila e jitter. A API continua aplicando TTL. O encerramento fecha somente targets próprios e desconecta CDP; o contexto/Chrome pessoal não é fechado nem alterado.
 
 - [Configuração e funcionamento do scheduler](docs/scheduler.md)
 - [Campos e endpoints dos protocolos](docs/protocols.md)
 
-A comparação aceita duas ou três fontes e conserva unmatched quando há ambiguidade; uma fonte sem dados frescos não impede a comparação das demais.
+A comparação aceita múltiplas fontes (cinco providers implementados) e conserva unmatched quando há ambiguidade; uma fonte sem dados frescos não impede a comparação das demais.
+
+- [Chrome compartilhado](../../docs/SHARED_BROWSER.md) — ownership, locks, recovery, métricas e validação.
+
+## Blaze — HTTP anônimo
+
+`BLAZE_ENABLED=true` (default), `BLAZE_MAX_CONCURRENCY=1`. Execute `npm run capture:blaze -- --detail` para um ciclo ou use o scheduler normal. Não precisa de browser. API: `/providers/blaze/events`, `/providers/blaze/events/:id`, `/providers/blaze/health`. [Arquitetura, protocolo, testes e validação](../../docs/BLAZE.md).
+
+## EstrelaBet — HTTP anônimo
+
+`ESTRELABET_ENABLED=true`, `ESTRELABET_MAX_CONCURRENCY=1`. Captura: `npm run capture:estrelabet -- --detail`; scheduler: `npm start`. Rotas `/providers/estrelabet/events`, `/providers/estrelabet/events/:id`, `/providers/estrelabet/health`. [Protocolo e dois ciclos reais com PostgreSQL](../../docs/ESTRELABET.md).

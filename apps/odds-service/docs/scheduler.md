@@ -41,3 +41,7 @@ Os intervalos são alvos de elegibilidade, não garantia de latência para todo 
 A Superbet participa do mesmo registry, com estado, lock, backoff e circuit breaker próprios. Sua coleta usa HTTP direto; o limite conservador efetivo continua sendo uma operação por provider. Intervalos, timeout e TTL são os compartilhados.
 
 Referência consolidada: [Collection](../../../docs/COLLECTION.md) e [Configuration](../../../docs/CONFIGURATION.md).
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](../../../docs/HEADLESS_DIAGNOSTICS.md).

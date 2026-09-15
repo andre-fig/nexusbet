@@ -12,3 +12,10 @@ apps/odds-service/captures/
 apps/odds-service/superbet-inbox/
 !apps/odds-service/.env.example
 apps/odds-service/src/generated/
+
+# Owned technical browser state and sanitized diagnostic artifacts
+apps/odds-service/evidence/
+
+apps/odds-service/blaze-inbox/
+
+apps/odds-service/estrelabet-inbox/

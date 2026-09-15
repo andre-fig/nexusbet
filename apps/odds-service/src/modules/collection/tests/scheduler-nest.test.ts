@@ -20,15 +20,26 @@ import { normalizeListingRound } from "../../betano/persistence/betano.store.js"
 import { publishCapture } from "../../../shared/utils/collection-operation.js";
 import type { CollectOptions } from "../../../shared/interfaces/odds-provider.interface.js";
 import { CollectionService } from "../collection.service.js";
-test("Nest lifecycle starts both providers immediately; health, journals and graceful close use real stores", async () => {
+test("Nest lifecycle starts both providers immediately; health, journals and graceful close use real stores", async (t) => {
+  const platform = Object.getOwnPropertyDescriptor(process, "platform")!;
+  Object.defineProperty(process, "platform", { value: "darwin" });
+  t.after(() => Object.defineProperty(process, "platform", platform));
   const dir = await mkdtemp(join(tmpdir(), "scheduler-nest-"));
   const settings = {
     ...configuration().settings,
+    browser: {
+      ...configuration().settings.browser,
+      runtime: "local-cdp" as const,
+    },
+    providerEnabled: { bet365: true, betano: true },
     esports: ["cs2"] as const,
     ingestEnabled: true,
+    blazeEnabled: false,
     scanEnabled: false,
     ttlMs: 1e12,
     dataDir: join(dir, "data"),
+    estrelabetEnabled: false,
+    estrelabetInboxDir: join(dir, "estrelabet"),
     inboxDir: join(dir, "inbox"),
     detailInboxDir: join(dir, "details"),
     betanoInboxDir: join(dir, "betano"),

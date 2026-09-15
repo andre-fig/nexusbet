@@ -41,6 +41,8 @@ async function setup() {
     pollingEnabled: false,
     ttlMs: 1e12,
     dataDir: join(dir, "data"),
+    estrelabetEnabled: false,
+    estrelabetInboxDir: join(dir, "estrelabet"),
     inboxDir: join(dir, "inbox"),
     detailInboxDir: join(dir, "detail"),
     betanoInboxDir: join(dir, "betano"),
@@ -150,6 +152,15 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       (await fetch(url + "/matches", { method: "POST" })).status,
       405,
     );
+    // Disabled local transport must not erase accepted provider snapshots or comparison.
+    settings.providerEnabled.bet365 = false;
+    settings.providerEnabled.betano = false;
+    const beforeA = (await get("/providers/bet365/events")).body;
+    const beforeB = (await get("/providers/betano/events")).body;
+    await assert.rejects(a.collectEvents({ esports: ["cs2"] }));
+    await assert.rejects(b.collectEvents({ esports: ["cs2"] }));
+    assert.deepEqual((await get("/providers/bet365/events")).body, beforeA);
+    assert.deepEqual((await get("/providers/betano/events")).body, beforeB);
     settings.ttlMs = 1;
     for (const path of [
       "/matches",

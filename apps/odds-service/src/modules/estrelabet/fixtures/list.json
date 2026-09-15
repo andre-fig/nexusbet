@@ -1,0 +1,4992 @@
+{
+  "provider": "estrelabet",
+  "capturedAt": "2026-09-15T02:12:35.742Z",
+  "status": 200,
+  "source": {
+    "transport": "http",
+    "url": "https://sb2frontend-altenar2.biahosted.com/api/widget/GetUpcoming?culture=pt-BR&timezoneOffset=180&integration=estrelabet&deviceType=1&numFormat=en-GB&sportId=145&eventCount=20",
+    "method": "GET",
+    "capture": "direct-http",
+    "authenticated": false
+  },
+  "data": {
+    "pages": [
+      {
+        "topSports": [
+          {
+            "id": 66,
+            "name": "Futebol",
+            "iconName": "soccer",
+            "hasStream": false,
+            "count": 956
+          },
+          {
+            "id": 67,
+            "name": "Basquete",
+            "iconName": "basketball",
+            "hasStream": false,
+            "count": 60
+          },
+          {
+            "id": 68,
+            "name": "Tênis",
+            "iconName": "tennis",
+            "hasStream": false,
+            "count": 377
+          },
+          {
+            "id": 145,
+            "name": "E-sports +\t\t",
+            "iconName": "e-sports-+",
+            "hasStream": false,
+            "count": 106
+          },
+          {
+            "id": 146,
+            "name": "E-Football",
+            "iconName": "e-football",
+            "hasStream": false,
+            "count": 113
+          },
+          {
+            "id": 75,
+            "name": "Fut. Americano",
+            "iconName": "american-football",
+            "hasStream": false,
+            "count": 17
+          },
+          {
+            "id": 76,
+            "name": "Beisebol",
+            "iconName": "baseball",
+            "hasStream": false,
+            "count": 25
+          },
+          {
+            "id": 84,
+            "name": "MMA",
+            "iconName": "mma",
+            "hasStream": false,
+            "count": 29
+          },
+          {
+            "id": 69,
+            "name": "Vôlei",
+            "iconName": "volleyball",
+            "hasStream": false,
+            "count": 18
+          },
+          {
+            "id": -1,
+            "name": "Other",
+            "iconName": "Other",
+            "hasStream": false,
+            "count": 483
+          }
+        ],
+        "headers": [
+          {
+            "typeId": 30001,
+            "name": "Vencedor da partida",
+            "mst": 0,
+            "odds": [
+              {
+                "id": 1,
+                "name": "1"
+              },
+              {
+                "id": 3,
+                "name": "2"
+              }
+            ]
+          }
+        ],
+        "pageCount": 4,
+        "page": 1,
+        "markets": [
+          {
+            "oddIds": [
+              4501774639,
+              4501774640
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "sv": "way:two|two",
+            "id": 1733052995,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501848428,
+              4501848429
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "sv": "way:two|two",
+            "id": 1733080593,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499161413,
+              4499161414
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732121407,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499927823,
+              4499927824
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361957,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501119855,
+              4501119856
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732832683,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499927904,
+              4499927905
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361994,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499739107,
+              4499739108
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732293144,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499928010,
+              4499928011
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732362046,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501740920,
+              4501740921
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1733038486,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499928381,
+              4499928382
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732362205,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501121664,
+              4501121665
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732833471,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501742680,
+              4501742681
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1733039130,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501007019,
+              4501007020
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732785437,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501252291,
+              4501252292
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732880593,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501254192,
+              4501254193
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732881415,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501255824,
+              4501255825
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732882009,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499216574,
+              4499216575
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732141697,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501123291,
+              4501123292
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732834205,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499926353,
+              4499926354
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361317,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4443430330,
+              4443430331
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1714043913,
+            "name": "Vencedor da partida"
+          }
+        ],
+        "odds": [
+          {
+            "typeId": 1,
+            "price": 1.2106,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1587431,
+            "id": 4501774639,
+            "name": "N3xus"
+          },
+          {
+            "typeId": 3,
+            "price": 3.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2352002,
+            "id": 4501774640,
+            "name": "D4gger"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1587431,
+            "id": 4501848428,
+            "name": "N3xus"
+          },
+          {
+            "typeId": 3,
+            "price": 4.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2292884,
+            "id": 4501848429,
+            "name": "Om3ga"
+          },
+          {
+            "typeId": 1,
+            "price": 1.5264,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 160149,
+            "id": 4499161413,
+            "name": "Team Brute"
+          },
+          {
+            "typeId": 3,
+            "price": 2.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1071413,
+            "id": 4499161414,
+            "name": "G2 Ares"
+          },
+          {
+            "typeId": 1,
+            "price": 2.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3287698,
+            "id": 4499927823,
+            "name": "Arcade Esports"
+          },
+          {
+            "typeId": 3,
+            "price": 1.4445,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2970165,
+            "id": 4499927824,
+            "name": "Shaiikademy"
+          },
+          {
+            "typeId": 1,
+            "price": 3.05,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2183860,
+            "id": 4501119855,
+            "name": "Kalmychata"
+          },
+          {
+            "typeId": 3,
+            "price": 1.3077,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3160669,
+            "id": 4501119856,
+            "name": "Two Move"
+          },
+          {
+            "typeId": 1,
+            "price": 1.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3587058,
+            "id": 4499927904,
+            "name": "7VEN"
+          },
+          {
+            "typeId": 3,
+            "price": 2.35,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2686922,
+            "id": 4499927905,
+            "name": "Team Anios"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4762,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3137829,
+            "id": 4499739107,
+            "name": "Gen.G GC"
+          },
+          {
+            "typeId": 3,
+            "price": 2.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2533687,
+            "id": 4499739108,
+            "name": "FENNEL GC"
+          },
+          {
+            "typeId": 1,
+            "price": 1.6897,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 302716,
+            "id": 4499928010,
+            "name": "Circular Spheres"
+          },
+          {
+            "typeId": 3,
+            "price": 2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 739983,
+            "id": 4499928011,
+            "name": "Man eSports LFO"
+          },
+          {
+            "typeId": 1,
+            "price": 2.65,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 260365,
+            "id": 4501740920,
+            "name": "BakS eSports"
+          },
+          {
+            "typeId": 3,
+            "price": 1.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 404664,
+            "id": 4501740921,
+            "name": "CYBERSHOKE"
+          },
+          {
+            "typeId": 1,
+            "price": 1.9091,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2214925,
+            "id": 4499928381,
+            "name": "ENTERPRISE Esports"
+          },
+          {
+            "typeId": 3,
+            "price": 1.7693,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 161695,
+            "id": 4499928382,
+            "name": "Chiefs ESC"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3565420,
+            "id": 4501121664,
+            "name": "Team Synapse"
+          },
+          {
+            "typeId": 3,
+            "price": 4.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158709,
+            "id": 4501121665,
+            "name": "PuckChamp"
+          },
+          {
+            "typeId": 1,
+            "price": 3.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1241115,
+            "id": 4501742680,
+            "name": "Ww Team"
+          },
+          {
+            "typeId": 3,
+            "price": 1.2858,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2380377,
+            "id": 4501742681,
+            "name": "Nemesis"
+          },
+          {
+            "typeId": 1,
+            "price": 1.2106,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2539915,
+            "id": 4501007019,
+            "name": "Falcons Force"
+          },
+          {
+            "typeId": 3,
+            "price": 3.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2838634,
+            "id": 4501007020,
+            "name": "Fortress"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1539,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 160138,
+            "id": 4501252291,
+            "name": "9INE"
+          },
+          {
+            "typeId": 3,
+            "price": 4.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1528078,
+            "id": 4501252292,
+            "name": "Aimclub"
+          },
+          {
+            "typeId": 1,
+            "price": 1.6897,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2497936,
+            "id": 4501254192,
+            "name": "Astral eSports"
+          },
+          {
+            "typeId": 3,
+            "price": 2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2944854,
+            "id": 4501254193,
+            "name": "Rune Eaters Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3125,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1311190,
+            "id": 4501255824,
+            "name": "Phantom"
+          },
+          {
+            "typeId": 3,
+            "price": 3.05,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1071413,
+            "id": 4501255825,
+            "name": "G2 Ares"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2225308,
+            "id": 4499216574,
+            "name": "Team 33"
+          },
+          {
+            "typeId": 3,
+            "price": 2.65,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 334439,
+            "id": 4499216575,
+            "name": "L&G"
+          },
+          {
+            "typeId": 1,
+            "price": 2.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158707,
+            "id": 4501123291,
+            "name": "Nemiga Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5556,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1458730,
+            "id": 4501123292,
+            "name": "Zero Tenacity"
+          },
+          {
+            "typeId": 1,
+            "price": 3.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2866251,
+            "id": 4499926353,
+            "name": "Team Heretics"
+          },
+          {
+            "typeId": 3,
+            "price": 1.2106,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 417737,
+            "id": 4499926354,
+            "name": "Twisted Minds"
+          },
+          {
+            "typeId": 1,
+            "price": 1.2667,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2235897,
+            "id": 4443430330,
+            "name": "Virtus.pro"
+          },
+          {
+            "typeId": 3,
+            "price": 3.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3615072,
+            "id": 4443430331,
+            "name": "Bigodes"
+          }
+        ],
+        "events": [
+          {
+            "marketIds": [
+              1733052995
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 9396,
+            "hasStream": false,
+            "extId": "fp37_od:match:3202825",
+            "sc": 104,
+            "mc": 14,
+            "rc": false,
+            "pId": 37,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1587431,
+              2352002
+            ],
+            "sportId": 145,
+            "catId": 2193,
+            "champId": 63452,
+            "status": 0,
+            "startDate": "2026-09-15T02:16:00Z",
+            "id": 17714310,
+            "name": "N3xus vs. D4gger"
+          },
+          {
+            "marketIds": [
+              1733080593
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 5587,
+            "hasStream": false,
+            "extId": "fp37_od:match:3202826",
+            "sc": 102,
+            "mc": 14,
+            "rc": false,
+            "pId": 37,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1587431,
+              2292884
+            ],
+            "sportId": 145,
+            "catId": 2193,
+            "champId": 63452,
+            "status": 0,
+            "startDate": "2026-09-15T02:36:00Z",
+            "id": 17714311,
+            "name": "N3xus vs. Om3ga"
+          },
+          {
+            "marketIds": [
+              1732121407
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 8805,
+            "hasStream": false,
+            "extId": "fp56_db:match:e1454087-ef53-4a6f-bed3-796ca6a38d2a",
+            "sc": 158,
+            "mc": 14,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              160149,
+              1071413
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63462,
+            "status": 0,
+            "startDate": "2026-09-15T08:00:00Z",
+            "id": 17707439,
+            "name": "Team Brute vs. G2 Ares"
+          },
+          {
+            "marketIds": [
+              1732361957
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1506,
+            "hasStream": false,
+            "extId": "fp56_db:match:df45d478-f739-4459-a98c-eac86f1996e0",
+            "sc": 17,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3287698,
+              2970165
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63184,
+            "status": 0,
+            "startDate": "2026-09-15T08:00:00Z",
+            "id": 17709416,
+            "name": "Arcade Esports vs. Shaiikademy"
+          },
+          {
+            "marketIds": [
+              1732832683
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 995,
+            "hasStream": false,
+            "extId": "fp56_db:match:09397e46-406d-4098-abb4-fbd09556cf2e",
+            "sc": 46,
+            "mc": 7,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2183860,
+              3160669
+            ],
+            "sportId": 145,
+            "catId": 1533,
+            "champId": 63424,
+            "status": 0,
+            "startDate": "2026-09-15T09:00:00Z",
+            "id": 17713803,
+            "name": "Kalmychata vs. Two Move"
+          },
+          {
+            "marketIds": [
+              1732361994
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 590,
+            "hasStream": false,
+            "extId": "fp56_db:match:28668807-278d-444c-8472-84132916965a",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3587058,
+              2686922
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63184,
+            "status": 0,
+            "startDate": "2026-09-15T09:00:00Z",
+            "id": 17709417,
+            "name": "7VEN vs. Team Anios"
+          },
+          {
+            "marketIds": [
+              1732293144
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 4231,
+            "hasStream": false,
+            "extId": "fp56_db:match:1e5b7aad-f3ac-48b4-9897-2748769f51fe",
+            "sc": 62,
+            "mc": 11,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3137829,
+              2533687
+            ],
+            "sportId": 145,
+            "catId": 1532,
+            "champId": 63416,
+            "status": 0,
+            "startDate": "2026-09-15T09:00:00Z",
+            "id": 17708904,
+            "name": "Gen.G GC vs. FENNEL GC"
+          },
+          {
+            "marketIds": [
+              1732362046
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 81,
+            "hasStream": false,
+            "extId": "fp56_db:match:90cff197-ecf1-498b-bcfa-f149591daa55",
+            "sc": 7,
+            "mc": 3,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              302716,
+              739983
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63184,
+            "status": 0,
+            "startDate": "2026-09-15T10:00:00Z",
+            "id": 17709418,
+            "name": "Circular Spheres vs. Man eSports LFO"
+          },
+          {
+            "marketIds": [
+              1733038486
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4844,
+            "hasStream": false,
+            "extId": "fp56_db:match:555dc612-7002-43d2-95ba-edf9f81fde9f",
+            "sc": 106,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              260365,
+              404664
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63426,
+            "status": 0,
+            "startDate": "2026-09-15T10:00:00Z",
+            "id": 17715059,
+            "name": "BakS eSports vs. CYBERSHOKE"
+          },
+          {
+            "marketIds": [
+              1732362205
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 415,
+            "hasStream": false,
+            "extId": "fp56_db:match:2178de98-54ea-4143-9240-b5c79c39e456",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2214925,
+              161695
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63184,
+            "status": 0,
+            "startDate": "2026-09-15T11:00:00Z",
+            "id": 17709421,
+            "name": "ENTERPRISE Esports vs. Chiefs ESC"
+          },
+          {
+            "marketIds": [
+              1732833471
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1024,
+            "hasStream": false,
+            "extId": "fp56_db:match:f38fbc68-3233-4004-a198-c268a8bcef89",
+            "sc": 26,
+            "mc": 8,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3565420,
+              158709
+            ],
+            "sportId": 145,
+            "catId": 1533,
+            "champId": 63424,
+            "status": 0,
+            "startDate": "2026-09-15T12:00:00Z",
+            "id": 17713820,
+            "name": "Team Synapse vs. PuckChamp"
+          },
+          {
+            "marketIds": [
+              1733039130
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4950,
+            "hasStream": false,
+            "extId": "fp56_db:match:f68646f2-4d0f-4e63-a47a-f3343eda5d4c",
+            "sc": 108,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1241115,
+              2380377
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63426,
+            "status": 0,
+            "startDate": "2026-09-15T13:00:00Z",
+            "id": 17715063,
+            "name": "Ww Team vs. Nemesis"
+          },
+          {
+            "marketIds": [
+              1732785437
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4027,
+            "hasStream": false,
+            "extId": "fp56_db:match:d1a5d527-7009-44ed-99d2-16ba90b59a55",
+            "sc": 110,
+            "mc": 12,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2539915,
+              2838634
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63409,
+            "status": 0,
+            "startDate": "2026-09-15T14:00:00Z",
+            "id": 17713589,
+            "name": "Falcons Force vs. Fortress"
+          },
+          {
+            "marketIds": [
+              1732880593
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7251,
+            "hasStream": false,
+            "extId": "fp56_db:match:3f6b8629-29da-47b7-8fe5-fdc5b8618310",
+            "sc": 62,
+            "mc": 11,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              160138,
+              1528078
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63467,
+            "status": 0,
+            "startDate": "2026-09-15T14:00:00Z",
+            "id": 17714090,
+            "name": "9INE vs. aimclub"
+          },
+          {
+            "marketIds": [
+              1732881415
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7519,
+            "hasStream": false,
+            "extId": "fp56_db:match:ca0f12dd-f435-4138-bba4-7aa18197ede8",
+            "sc": 56,
+            "mc": 12,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2497936,
+              2944854
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63467,
+            "status": 0,
+            "startDate": "2026-09-15T14:00:00Z",
+            "id": 17714108,
+            "name": "Astral eSports vs. Rune Eaters Esports"
+          },
+          {
+            "marketIds": [
+              1732882009
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7566,
+            "hasStream": false,
+            "extId": "fp56_db:match:f2a8c8a2-a616-436f-8b9a-e6f699815540",
+            "sc": 60,
+            "mc": 12,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1311190,
+              1071413
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63467,
+            "status": 0,
+            "startDate": "2026-09-15T14:00:00Z",
+            "id": 17714110,
+            "name": "Phantom vs. G2 Ares"
+          },
+          {
+            "marketIds": [
+              1732141697
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 7077,
+            "hasStream": false,
+            "extId": "fp56_db:match:332c5be7-b658-4cc2-b06f-3ba8f37152c3",
+            "sc": 110,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2225308,
+              334439
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63462,
+            "status": 0,
+            "startDate": "2026-09-15T14:00:00Z",
+            "id": 17707479,
+            "name": "Team 33 vs. L&G"
+          },
+          {
+            "marketIds": [
+              1732834205
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1121,
+            "hasStream": false,
+            "extId": "fp56_db:match:1b849885-a0b2-424a-8e9c-9c770e2b763d",
+            "sc": 26,
+            "mc": 8,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158707,
+              1458730
+            ],
+            "sportId": 145,
+            "catId": 1533,
+            "champId": 63424,
+            "status": 0,
+            "startDate": "2026-09-15T15:00:00Z",
+            "id": 17713821,
+            "name": "Nemiga Gaming vs. Zero Tenacity"
+          },
+          {
+            "marketIds": [
+              1732361317
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 5254,
+            "hasStream": false,
+            "extId": "fp56_db:match:989aa52a-37c3-4b04-99d1-bc1686dce933",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2866251,
+              417737
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63173,
+            "status": 0,
+            "startDate": "2026-09-15T16:00:00Z",
+            "id": 17709409,
+            "name": "Team Heretics vs. Twisted Minds"
+          },
+          {
+            "marketIds": [
+              1714043913
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6051,
+            "hasStream": false,
+            "extId": "fp56_db:match:3eb706bb-e518-440a-a02a-cc2a98d7d37b",
+            "sc": 14,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2235897,
+              3615072
+            ],
+            "sportId": 145,
+            "catId": 1609,
+            "champId": 63296,
+            "status": 0,
+            "startDate": "2026-09-15T16:00:00Z",
+            "id": 17593039,
+            "name": "Virtus.pro vs. Bigodes"
+          }
+        ],
+        "sports": [
+          {
+            "catIds": [
+              2193,
+              1534,
+              1539,
+              1533,
+              1532,
+              1609
+            ],
+            "typeId": 317,
+            "iconName": "e-sports-+",
+            "hasLiveEvents": false,
+            "id": 145,
+            "name": "E-sports +\t\t"
+          }
+        ],
+        "categories": [
+          {
+            "champIds": [
+              63452
+            ],
+            "iso": "e05",
+            "hasLiveEvents": false,
+            "id": 2193,
+            "name": "Dota 2 Duels"
+          },
+          {
+            "champIds": [
+              63462,
+              63426,
+              63409,
+              63467
+            ],
+            "iso": "e03",
+            "hasLiveEvents": false,
+            "id": 1534,
+            "name": "Counter-Strike"
+          },
+          {
+            "champIds": [
+              63184,
+              63173
+            ],
+            "iso": "e24",
+            "hasLiveEvents": false,
+            "id": 1539,
+            "name": "Rainbow Six"
+          },
+          {
+            "champIds": [
+              63424
+            ],
+            "iso": "e05",
+            "hasLiveEvents": false,
+            "id": 1533,
+            "name": "Dota2"
+          },
+          {
+            "champIds": [
+              63416
+            ],
+            "iso": "e37",
+            "hasLiveEvents": false,
+            "id": 1532,
+            "name": "Valorant"
+          },
+          {
+            "champIds": [
+              63296
+            ],
+            "iso": "e33",
+            "hasLiveEvents": false,
+            "id": 1609,
+            "name": "Rocket League"
+          }
+        ],
+        "champs": [
+          {
+            "hasLiveEvents": false,
+            "id": 63452,
+            "name": "Berserk Dota 2 League 2026 Week #38"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63462,
+            "name": "NODWIN Clutch Series 12"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63184,
+            "name": "Asia Pacific League 2026 - Oceania - Stage 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63424,
+            "name": "European Pro League Season 40"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63416,
+            "name": "VCT 2026: Game Changers Pacific"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63426,
+            "name": "CIS LAN Championship 7"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63409,
+            "name": "Fiesta Series 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63467,
+            "name": "Ranked Episode 5: Open Qualifier"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63173,
+            "name": "Europe MENA League 2026 - Stage 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63296,
+            "name": "RLCS 2026 - World Championship"
+          }
+        ],
+        "competitors": [
+          {
+            "id": 1587431,
+            "name": "N3xus"
+          },
+          {
+            "id": 2352002,
+            "name": "D4gger"
+          },
+          {
+            "id": 2292884,
+            "name": "Om3ga"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TB",
+            "id": 160149,
+            "name": "Team Brute"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "ARE",
+            "id": 1071413,
+            "name": "G2 Ares"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "ARCADE",
+            "id": 3287698,
+            "name": "Arcade Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 2970165,
+            "name": "Shaiikademy"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Kalmych",
+            "id": 2183860,
+            "name": "Kalmychata"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "TM",
+            "id": 3160669,
+            "name": "Two Move"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3587058,
+            "name": "7VEN"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 2686922,
+            "name": "Team Anios"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3137829,
+            "name": "Gen.G GC"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FL Fe",
+            "id": 2533687,
+            "name": "FENNEL GC"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 302716,
+            "name": "Circular Spheres"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 739983,
+            "name": "Man eSports LFO"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 260365,
+            "name": "BakS eSports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "CYBERSHOKE",
+            "id": 404664,
+            "name": "CYBERSHOKE"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "ENTERPRISE",
+            "id": 2214925,
+            "name": "ENTERPRISE Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 161695,
+            "name": "Chiefs ESC"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3565420,
+            "name": "Team Synapse"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 158709,
+            "name": "PuckChamp"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TEA",
+            "id": 1241115,
+            "name": "Ww Team"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Nem",
+            "id": 2380377,
+            "name": "Nemesis"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 2539915,
+            "name": "Falcons Force"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FRTG",
+            "id": 2838634,
+            "name": "Fortress"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 160138,
+            "name": "9INE"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1528078,
+            "name": "aimclub"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "AST",
+            "id": 2497936,
+            "name": "Astral eSports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "RET",
+            "id": 2944854,
+            "name": "Rune Eaters Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "PHE",
+            "id": 1311190,
+            "name": "Phantom"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "33",
+            "id": 2225308,
+            "name": "Team 33"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "L&G",
+            "id": 334439,
+            "name": "L&G"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 158707,
+            "name": "Nemiga Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Z10",
+            "id": 1458730,
+            "name": "Zero Tenacity"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TH",
+            "id": 2866251,
+            "name": "Team Heretics"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Twisted Minds",
+            "id": 417737,
+            "name": "Twisted Minds"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 2235897,
+            "name": "Virtus.pro"
+          },
+          {
+            "id": 3615072,
+            "name": "Bigodes"
+          }
+        ]
+      },
+      {
+        "topSports": [
+          {
+            "id": 66,
+            "name": "Futebol",
+            "iconName": "soccer",
+            "hasStream": false,
+            "count": 956
+          },
+          {
+            "id": 67,
+            "name": "Basquete",
+            "iconName": "basketball",
+            "hasStream": false,
+            "count": 60
+          },
+          {
+            "id": 68,
+            "name": "Tênis",
+            "iconName": "tennis",
+            "hasStream": false,
+            "count": 377
+          },
+          {
+            "id": 145,
+            "name": "E-sports +\t\t",
+            "iconName": "e-sports-+",
+            "hasStream": false,
+            "count": 106
+          },
+          {
+            "id": 146,
+            "name": "E-Football",
+            "iconName": "e-football",
+            "hasStream": false,
+            "count": 113
+          },
+          {
+            "id": 75,
+            "name": "Fut. Americano",
+            "iconName": "american-football",
+            "hasStream": false,
+            "count": 17
+          },
+          {
+            "id": 76,
+            "name": "Beisebol",
+            "iconName": "baseball",
+            "hasStream": false,
+            "count": 25
+          },
+          {
+            "id": 84,
+            "name": "MMA",
+            "iconName": "mma",
+            "hasStream": false,
+            "count": 29
+          },
+          {
+            "id": 69,
+            "name": "Vôlei",
+            "iconName": "volleyball",
+            "hasStream": false,
+            "count": 18
+          },
+          {
+            "id": -1,
+            "name": "Other",
+            "iconName": "Other",
+            "hasStream": false,
+            "count": 483
+          }
+        ],
+        "headers": [
+          {
+            "typeId": 30001,
+            "name": "Vencedor da partida",
+            "mst": 0,
+            "odds": [
+              {
+                "id": 1,
+                "name": "1"
+              },
+              {
+                "id": 3,
+                "name": "2"
+              }
+            ]
+          }
+        ],
+        "pageCount": 4,
+        "page": 2,
+        "markets": [
+          {
+            "oddIds": [
+              4443429831,
+              4443429832
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1714043693,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4443433609,
+              4443433610
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1714045174,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4443432087,
+              4443432088
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1714044621,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499926547,
+              4499926548
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361397,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499218773,
+              4499218774
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732142600,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501123792,
+              4501123793
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732834414,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499926646,
+              4499926647
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361442,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501747287,
+              4501747288
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1733041054,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499927040,
+              4499927041
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361619,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499927144,
+              4499927145
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732361659,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499333866,
+              4499333867
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732149387,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4490335469,
+              4490335470
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1728953070,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501009592,
+              4501009593
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732786564,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499337749,
+              4499337750
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732150920,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501326349,
+              4501326350
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732905322,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4489473466,
+              4489473467
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1728611771,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4495127308,
+              4495127309
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1730696698,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473710880,
+              4473710881
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723792408,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4491240801,
+              4491240802
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1729316706,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473714816,
+              4473714817
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723793606,
+            "name": "Vencedor da partida"
+          }
+        ],
+        "odds": [
+          {
+            "typeId": 1,
+            "price": 10,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2923528,
+            "id": 4443429831,
+            "name": "Five Fears"
+          },
+          {
+            "typeId": 3,
+            "price": 0,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 3615071,
+            "id": 4443429832,
+            "name": "Mate y Tapa"
+          },
+          {
+            "typeId": 1,
+            "price": 1.0715,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 221167,
+            "id": 4443433609,
+            "name": "Team Falcons"
+          },
+          {
+            "typeId": 3,
+            "price": 6.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1916863,
+            "id": 4443433610,
+            "name": "FUT Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 3.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1716183,
+            "id": 4443432087,
+            "name": "TSM"
+          },
+          {
+            "typeId": 3,
+            "price": 1.2667,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1283488,
+            "id": 4443432088,
+            "name": "R8 Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4167,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 161698,
+            "id": 4499926547,
+            "name": "Virtus.pro"
+          },
+          {
+            "typeId": 3,
+            "price": 2.6,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 285395,
+            "id": 4499926548,
+            "name": "Geekay Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3111750,
+            "id": 4499218773,
+            "name": "INOX Division"
+          },
+          {
+            "typeId": 3,
+            "price": 2.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3005716,
+            "id": 4499218774,
+            "name": "Drama eSports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1880640,
+            "id": 4501123792,
+            "name": "Yellow Submarine"
+          },
+          {
+            "typeId": 3,
+            "price": 5.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 217014,
+            "id": 4501123793,
+            "name": "Uralan"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 307471,
+            "id": 4499926646,
+            "name": "Team Falcons"
+          },
+          {
+            "typeId": 3,
+            "price": 2.65,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2792281,
+            "id": 4499926647,
+            "name": "Shifters"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158897,
+            "id": 4501747287,
+            "name": "Nemiga Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 2.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2225308,
+            "id": 4501747288,
+            "name": "Team 33"
+          },
+          {
+            "typeId": 1,
+            "price": 4.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3044160,
+            "id": 4499927040,
+            "name": "Rebels Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 1.1667,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 160875,
+            "id": 4499927041,
+            "name": "G2 Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 161687,
+            "id": 4499927144,
+            "name": "Fnatic"
+          },
+          {
+            "typeId": 3,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 161700,
+            "id": 4499927145,
+            "name": "Team Secret"
+          },
+          {
+            "typeId": 1,
+            "price": 1.5556,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1984963,
+            "id": 4499333866,
+            "name": "Sparta"
+          },
+          {
+            "typeId": 3,
+            "price": 2.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 260365,
+            "id": 4499333867,
+            "name": "BakS eSports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3847,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3019989,
+            "id": 4490335469,
+            "name": "Lavked"
+          },
+          {
+            "typeId": 3,
+            "price": 2.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3628466,
+            "id": 4490335470,
+            "name": "Saint Sinners"
+          },
+          {
+            "typeId": 1,
+            "price": 2.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3468626,
+            "id": 4501009592,
+            "name": "Teletubisie"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5715,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2723703,
+            "id": 4501009593,
+            "name": "Ex-Zero Tenacity"
+          },
+          {
+            "typeId": 1,
+            "price": 1.6897,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 206219,
+            "id": 4499337749,
+            "name": "Team QUAZAR"
+          },
+          {
+            "typeId": 3,
+            "price": 2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3445924,
+            "id": 4499337750,
+            "name": "Ex-RUSTEC"
+          },
+          {
+            "typeId": 1,
+            "price": 2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1324284,
+            "id": 4501326349,
+            "name": "ZOTIX"
+          },
+          {
+            "typeId": 3,
+            "price": 1.6897,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1086611,
+            "id": 4501326350,
+            "name": "Banger Gang"
+          },
+          {
+            "typeId": 1,
+            "price": 3.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2988983,
+            "id": 4489473466,
+            "name": "⁠9z Globant"
+          },
+          {
+            "typeId": 3,
+            "price": 1.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 797416,
+            "id": 4489473467,
+            "name": "Fuego"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4445,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1071413,
+            "id": 4495127308,
+            "name": "G2 Ares"
+          },
+          {
+            "typeId": 3,
+            "price": 2.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2268029,
+            "id": 4495127309,
+            "name": "Misa eSports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158863,
+            "id": 4473710880,
+            "name": "B8"
+          },
+          {
+            "typeId": 3,
+            "price": 2.95,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 195489,
+            "id": 4473710881,
+            "name": "Metizport"
+          },
+          {
+            "typeId": 1,
+            "price": 2.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 183996,
+            "id": 4491240801,
+            "name": "Top Esports"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5715,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1820364,
+            "id": 4491240802,
+            "name": "Invictus Gaming"
+          },
+          {
+            "typeId": 1,
+            "price": 1.7143,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 159133,
+            "id": 4473714816,
+            "name": "GamerLegion"
+          },
+          {
+            "typeId": 3,
+            "price": 1.9524,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3378901,
+            "id": 4473714817,
+            "name": "Luminosity Gaming"
+          }
+        ],
+        "events": [
+          {
+            "marketIds": [
+              1714043693
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6518,
+            "hasStream": false,
+            "extId": "fp56_db:match:0729bded-a3d9-4ec3-bf0d-e23afe96da4e",
+            "sc": 10,
+            "mc": 3,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2923528,
+              3615071
+            ],
+            "sportId": 145,
+            "catId": 1609,
+            "champId": 63296,
+            "status": 0,
+            "startDate": "2026-09-15T16:00:00Z",
+            "id": 17593037,
+            "name": "Five Fears vs. Mate y Tapa"
+          },
+          {
+            "marketIds": [
+              1714045174
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6166,
+            "hasStream": false,
+            "extId": "fp56_db:match:a79d4d12-48b7-4637-ad3e-cf7f6aa8535f",
+            "sc": 14,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              221167,
+              1916863
+            ],
+            "sportId": 145,
+            "catId": 1609,
+            "champId": 63296,
+            "status": 0,
+            "startDate": "2026-09-15T17:00:00Z",
+            "id": 17593038,
+            "name": "Team Falcons vs. FUT Esports"
+          },
+          {
+            "marketIds": [
+              1714044621
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7338,
+            "hasStream": false,
+            "extId": "fp56_db:match:219b848a-5d6d-4b40-97eb-24dc7e4a516b",
+            "sc": 14,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1716183,
+              1283488
+            ],
+            "sportId": 145,
+            "catId": 1609,
+            "champId": 63296,
+            "status": 0,
+            "startDate": "2026-09-15T17:00:00Z",
+            "id": 17593036,
+            "name": "TSM vs. R8 Esports"
+          },
+          {
+            "marketIds": [
+              1732361397
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 5349,
+            "hasStream": false,
+            "extId": "fp56_db:match:2ed4f893-fea4-470a-be60-a4ac53736b45",
+            "sc": 17,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              161698,
+              285395
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63173,
+            "status": 0,
+            "startDate": "2026-09-15T17:00:00Z",
+            "id": 17709410,
+            "name": "Virtus.pro vs. Geekay Esports"
+          },
+          {
+            "marketIds": [
+              1732142600
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6661,
+            "hasStream": false,
+            "extId": "fp56_db:match:96b87eac-261f-4a1e-baa1-7d8f2ab33246",
+            "sc": 6,
+            "mc": 2,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3111750,
+              3005716
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63462,
+            "status": 0,
+            "startDate": "2026-09-15T17:00:00Z",
+            "id": 17707489,
+            "name": "INOX Division vs. Drama eSports"
+          },
+          {
+            "marketIds": [
+              1732834414
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1162,
+            "hasStream": false,
+            "extId": "fp56_db:match:fdc72dc4-4043-4ba9-a1d6-69ec0ef53f40",
+            "sc": 26,
+            "mc": 8,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1880640,
+              217014
+            ],
+            "sportId": 145,
+            "catId": 1533,
+            "champId": 63424,
+            "status": 0,
+            "startDate": "2026-09-15T18:00:00Z",
+            "id": 17713822,
+            "name": "Yellow Submarine vs. Uralan"
+          },
+          {
+            "marketIds": [
+              1732361442
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 2561,
+            "hasStream": false,
+            "extId": "fp56_db:match:b9b6a46f-8276-442a-868a-355866545ee9",
+            "sc": 17,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              307471,
+              2792281
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63173,
+            "status": 0,
+            "startDate": "2026-09-15T18:00:00Z",
+            "id": 17709411,
+            "name": "Team Falcons vs. Shifters"
+          },
+          {
+            "marketIds": [
+              1733041054
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4964,
+            "hasStream": false,
+            "extId": "fp56_db:match:3214cacf-1764-449d-8737-053be9f3dd1a",
+            "sc": 6,
+            "mc": 2,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158897,
+              2225308
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63426,
+            "status": 0,
+            "startDate": "2026-09-15T19:00:00Z",
+            "id": 17715067,
+            "name": "Nemiga Gaming vs. Team 33"
+          },
+          {
+            "marketIds": [
+              1732361619
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1741,
+            "hasStream": false,
+            "extId": "fp56_db:match:8c3196c2-2594-49b1-a176-7af6bc29f837",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3044160,
+              160875
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63173,
+            "status": 0,
+            "startDate": "2026-09-15T19:00:00Z",
+            "id": 17709412,
+            "name": "Rebels Gaming vs. G2 Esports"
+          },
+          {
+            "marketIds": [
+              1732361659
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1885,
+            "hasStream": false,
+            "extId": "fp56_db:match:9d312896-2a58-4eaa-a5ca-f9ee794e133d",
+            "sc": 17,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              161687,
+              161700
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63173,
+            "status": 0,
+            "startDate": "2026-09-15T20:00:00Z",
+            "id": 17709414,
+            "name": "Fnatic vs. Team Secret"
+          },
+          {
+            "marketIds": [
+              1732149387
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4998,
+            "hasStream": false,
+            "extId": "fp56_db:match:8b8edba7-9970-4ebb-a084-6c919ddfb480",
+            "sc": 158,
+            "mc": 14,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1984963,
+              260365
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63462,
+            "status": 0,
+            "startDate": "2026-09-16T08:00:00Z",
+            "id": 17707608,
+            "name": "Sparta vs. BakS eSports"
+          },
+          {
+            "marketIds": [
+              1728953070
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 935,
+            "hasStream": false,
+            "extId": "fp56_db:match:26ef9ccf-172f-471e-8342-0712f788e3cb",
+            "sc": 6,
+            "mc": 2,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3019989,
+              3628466
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63419,
+            "status": 0,
+            "startDate": "2026-09-16T08:00:00Z",
+            "id": 17689511,
+            "name": "Lavked vs. Saint Sinners"
+          },
+          {
+            "marketIds": [
+              1732786564
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 4425,
+            "hasStream": false,
+            "extId": "fp56_db:match:0db8bc5a-6cd9-4eaa-8f8f-cd75d1db59c3",
+            "sc": 6,
+            "mc": 2,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3468626,
+              2723703
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63409,
+            "status": 0,
+            "startDate": "2026-09-16T08:00:00Z",
+            "id": 17713590,
+            "name": "Teletubisie vs. ex-Zero Tenacity"
+          },
+          {
+            "marketIds": [
+              1732150920
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 5317,
+            "hasStream": false,
+            "extId": "fp56_db:match:5ebc3eea-eba5-4756-9d2e-18a72840eb31",
+            "sc": 158,
+            "mc": 14,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              206219,
+              3445924
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63462,
+            "status": 0,
+            "startDate": "2026-09-16T14:00:00Z",
+            "id": 17707847,
+            "name": "Team QUAZAR vs. ex-RUSTEC"
+          },
+          {
+            "marketIds": [
+              1732905322
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7687,
+            "hasStream": false,
+            "extId": "fp56_db:match:4fac03bc-2a85-4c60-b386-1ec2ec004b09",
+            "sc": 106,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1324284,
+              1086611
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 62489,
+            "status": 0,
+            "startDate": "2026-09-16T17:30:00Z",
+            "id": 17714169,
+            "name": "ZOTIX vs. Banger Gang"
+          },
+          {
+            "marketIds": [
+              1728611771
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 5125,
+            "hasStream": false,
+            "extId": "fp56_db:match:45c8c4cc-f68f-4570-9bd9-a6e41d0c45b7",
+            "sc": 32,
+            "mc": 7,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2988983,
+              797416
+            ],
+            "sportId": 145,
+            "catId": 1531,
+            "champId": 63432,
+            "status": 0,
+            "startDate": "2026-09-16T21:00:00Z",
+            "id": 17688530,
+            "name": "⁠9z Globant vs. Fuego"
+          },
+          {
+            "marketIds": [
+              1730696698
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 3607,
+            "hasStream": false,
+            "extId": "fp56_db:match:d5b5ae89-535f-4c1a-bb6b-0f4e9de287be",
+            "sc": 106,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1071413,
+              2268029
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63419,
+            "status": 0,
+            "startDate": "2026-09-17T08:00:00Z",
+            "id": 17699268,
+            "name": "G2 Ares vs. Misa eSports"
+          },
+          {
+            "marketIds": [
+              1723792408
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6673,
+            "hasStream": false,
+            "extId": "fp56_db:match:dca66423-8fa6-467a-939f-4cae8a8eca28",
+            "sc": 143,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158863,
+              195489
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T08:00:00Z",
+            "id": 17653792,
+            "name": "B8 vs. Metizport"
+          },
+          {
+            "marketIds": [
+              1729316706
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 7235,
+            "hasStream": false,
+            "extId": "fp56_db:match:0c72e497-eb41-49e9-9da5-c62a14962128",
+            "sc": 394,
+            "mc": 24,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              183996,
+              1820364
+            ],
+            "sportId": 145,
+            "catId": 1531,
+            "champId": 63387,
+            "status": 0,
+            "startDate": "2026-09-17T09:00:00Z",
+            "id": 17691067,
+            "name": "Top Esports vs. Invictus Gaming"
+          },
+          {
+            "marketIds": [
+              1723793606
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7173,
+            "hasStream": false,
+            "extId": "fp56_db:match:5fda7ed4-b838-46ec-8f45-fe0542d73c8b",
+            "sc": 150,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              159133,
+              3378901
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T09:00:00Z",
+            "id": 17653790,
+            "name": "GamerLegion vs. Luminosity Gaming"
+          }
+        ],
+        "sports": [
+          {
+            "catIds": [
+              1609,
+              1539,
+              1534,
+              1533,
+              1531
+            ],
+            "typeId": 317,
+            "iconName": "e-sports-+",
+            "hasLiveEvents": false,
+            "id": 145,
+            "name": "E-sports +\t\t"
+          }
+        ],
+        "categories": [
+          {
+            "champIds": [
+              63296
+            ],
+            "iso": "e33",
+            "hasLiveEvents": false,
+            "id": 1609,
+            "name": "Rocket League"
+          },
+          {
+            "champIds": [
+              63173
+            ],
+            "iso": "e24",
+            "hasLiveEvents": false,
+            "id": 1539,
+            "name": "Rainbow Six"
+          },
+          {
+            "champIds": [
+              63462,
+              63426,
+              63419,
+              63409,
+              62489,
+              63392
+            ],
+            "iso": "e03",
+            "hasLiveEvents": false,
+            "id": 1534,
+            "name": "Counter-Strike"
+          },
+          {
+            "champIds": [
+              63424
+            ],
+            "iso": "e05",
+            "hasLiveEvents": false,
+            "id": 1533,
+            "name": "Dota2"
+          },
+          {
+            "champIds": [
+              63432,
+              63387
+            ],
+            "iso": "e15",
+            "hasLiveEvents": false,
+            "id": 1531,
+            "name": "League of Legends"
+          }
+        ],
+        "champs": [
+          {
+            "hasLiveEvents": false,
+            "id": 63296,
+            "name": "RLCS 2026 - World Championship"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63173,
+            "name": "Europe MENA League 2026 - Stage 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63462,
+            "name": "NODWIN Clutch Series 12"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63424,
+            "name": "European Pro League Season 40"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63426,
+            "name": "CIS LAN Championship 7"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63419,
+            "name": "European Pro League Series 9"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63409,
+            "name": "Fiesta Series 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 62489,
+            "name": "ESEA Advanced Season 58 Europe"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63432,
+            "name": "WSCI 2026 Americas Qualifier"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63392,
+            "name": "G Play Connect 2026"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63387,
+            "name": "LPL 2026 Regional Finals"
+          }
+        ],
+        "competitors": [
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FF",
+            "id": 2923528,
+            "name": "Five Fears"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "MyT",
+            "id": 3615071,
+            "name": "Mate y Tapa"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Falcons",
+            "id": 221167,
+            "name": "Team Falcons"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FUT",
+            "id": 1916863,
+            "name": "FUT Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TSM",
+            "id": 1716183,
+            "name": "TSM"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1283488,
+            "name": "R8 Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 161698,
+            "name": "Virtus.pro"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "GK",
+            "id": 285395,
+            "name": "Geekay Esports"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3111750,
+            "name": "INOX Division"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "Drama",
+            "id": 3005716,
+            "name": "Drama eSports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Yellow Submarine",
+            "id": 1880640,
+            "name": "Yellow Submarine"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 217014,
+            "name": "Uralan"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FALCONS",
+            "id": 307471,
+            "name": "Team Falcons"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "SHFT",
+            "id": 2792281,
+            "name": "Shifters"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 158897,
+            "name": "Nemiga Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "33",
+            "id": 2225308,
+            "name": "Team 33"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "Rebels",
+            "id": 3044160,
+            "name": "Rebels Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "G2",
+            "id": 160875,
+            "name": "G2 Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 161687,
+            "name": "Fnatic"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Secret",
+            "id": 161700,
+            "name": "Team Secret"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1984963,
+            "name": "Sparta"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 260365,
+            "name": "BakS eSports"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3019989,
+            "name": "Lavked"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3628466,
+            "name": "Saint Sinners"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "TLTBS",
+            "id": 3468626,
+            "name": "Teletubisie"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "ex-Z10",
+            "id": 2723703,
+            "name": "ex-Zero Tenacity"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "QUAZAR",
+            "id": 206219,
+            "name": "Team QUAZAR"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3445924,
+            "name": "ex-RUSTEC"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1324284,
+            "name": "ZOTIX"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1086611,
+            "name": "Banger Gang"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 2988983,
+            "name": "⁠9z Globant"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 797416,
+            "name": "Fuego"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "ARE",
+            "id": 1071413,
+            "name": "G2 Ares"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Misa",
+            "id": 2268029,
+            "name": "Misa eSports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 158863,
+            "name": "B8"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 195489,
+            "name": "Metizport"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TES",
+            "id": 183996,
+            "name": "Top Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1820364,
+            "name": "Invictus Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TEA",
+            "id": 159133,
+            "name": "GamerLegion"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3378901,
+            "name": "Luminosity Gaming"
+          }
+        ]
+      },
+      {
+        "topSports": [
+          {
+            "id": 66,
+            "name": "Futebol",
+            "iconName": "soccer",
+            "hasStream": false,
+            "count": 956
+          },
+          {
+            "id": 67,
+            "name": "Basquete",
+            "iconName": "basketball",
+            "hasStream": false,
+            "count": 60
+          },
+          {
+            "id": 68,
+            "name": "Tênis",
+            "iconName": "tennis",
+            "hasStream": false,
+            "count": 377
+          },
+          {
+            "id": 145,
+            "name": "E-sports +\t\t",
+            "iconName": "e-sports-+",
+            "hasStream": false,
+            "count": 106
+          },
+          {
+            "id": 146,
+            "name": "E-Football",
+            "iconName": "e-football",
+            "hasStream": false,
+            "count": 113
+          },
+          {
+            "id": 75,
+            "name": "Fut. Americano",
+            "iconName": "american-football",
+            "hasStream": false,
+            "count": 17
+          },
+          {
+            "id": 76,
+            "name": "Beisebol",
+            "iconName": "baseball",
+            "hasStream": false,
+            "count": 25
+          },
+          {
+            "id": 84,
+            "name": "MMA",
+            "iconName": "mma",
+            "hasStream": false,
+            "count": 29
+          },
+          {
+            "id": 69,
+            "name": "Vôlei",
+            "iconName": "volleyball",
+            "hasStream": false,
+            "count": 18
+          },
+          {
+            "id": -1,
+            "name": "Other",
+            "iconName": "Other",
+            "hasStream": false,
+            "count": 483
+          }
+        ],
+        "headers": [
+          {
+            "typeId": 30001,
+            "name": "Vencedor da partida",
+            "mst": 0,
+            "odds": [
+              {
+                "id": 1,
+                "name": "1"
+              },
+              {
+                "id": 3,
+                "name": "2"
+              }
+            ]
+          }
+        ],
+        "pageCount": 4,
+        "page": 3,
+        "markets": [
+          {
+            "oddIds": [
+              4473715791,
+              4473715792
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723794011,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473723375,
+              4473723376
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723796778,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473724641,
+              4473724642
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723797313,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4485423171,
+              4485423172
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1727332823,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473725281,
+              4473725282
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723797575,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473726324,
+              4473726325
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723798021,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473736955,
+              4473736956
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723801599,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473737698,
+              4473737699
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723801898,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4485421588,
+              4485421589
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1727332088,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473738615,
+              4473738616
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723802238,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473739461,
+              4473739462
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723802575,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473745041,
+              4473745042
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723804405,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473740853,
+              4473740854
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723803099,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473746735,
+              4473746736
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723805126,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4485420006,
+              4485420007
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1727331365,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4473745805,
+              4473745806
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1723804696,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4485418447,
+              4485418448
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1727330642,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499947661,
+              4499947662
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732369636,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499947920,
+              4499947921
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732369752,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4501782486,
+              4501782487
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1733056266,
+            "name": "Vencedor da partida"
+          }
+        ],
+        "odds": [
+          {
+            "typeId": 1,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158836,
+            "id": 4473715791,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "typeId": 3,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 376346,
+            "id": 4473715792,
+            "name": "M80"
+          },
+          {
+            "typeId": 1,
+            "price": 1.625,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158863,
+            "id": 4473723375,
+            "name": "B8"
+          },
+          {
+            "typeId": 3,
+            "price": 2.1,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 159133,
+            "id": 4473723376,
+            "name": "GamerLegion"
+          },
+          {
+            "typeId": 1,
+            "price": 2.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 195489,
+            "id": 4473724641,
+            "name": "Metizport"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5264,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3378901,
+            "id": 4473724642,
+            "name": "Luminosity Gaming"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 172039,
+            "id": 4485423171,
+            "name": "MOUZ"
+          },
+          {
+            "typeId": 3,
+            "price": 4.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 529068,
+            "id": 4485423172,
+            "name": "NRG Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 2.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158836,
+            "id": 4473725281,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5715,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158863,
+            "id": 4473725282,
+            "name": "B8"
+          },
+          {
+            "typeId": 1,
+            "price": 1.8696,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 376346,
+            "id": 4473726324,
+            "name": "M80"
+          },
+          {
+            "typeId": 3,
+            "price": 1.8,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 159133,
+            "id": 4473726325,
+            "name": "GamerLegion"
+          },
+          {
+            "typeId": 1,
+            "price": 2.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3378901,
+            "id": 4473736955,
+            "name": "Luminosity Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5264,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158863,
+            "id": 4473736956,
+            "name": "B8"
+          },
+          {
+            "typeId": 1,
+            "price": 2.35,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 195489,
+            "id": 4473737698,
+            "name": "Metizport"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158836,
+            "id": 4473737699,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1112,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158856,
+            "id": 4485421588,
+            "name": "Team Vitality"
+          },
+          {
+            "typeId": 3,
+            "price": 5.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2821043,
+            "id": 4485421589,
+            "name": "Magic"
+          },
+          {
+            "typeId": 1,
+            "price": 1.625,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 376346,
+            "id": 4473738615,
+            "name": "M80"
+          },
+          {
+            "typeId": 3,
+            "price": 2.1,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 195489,
+            "id": 4473738616,
+            "name": "Metizport"
+          },
+          {
+            "typeId": 1,
+            "price": 1.7693,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 159133,
+            "id": 4473739461,
+            "name": "GamerLegion"
+          },
+          {
+            "typeId": 3,
+            "price": 1.9091,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158836,
+            "id": 4473739462,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "typeId": 1,
+            "price": 2.35,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 195489,
+            "id": 4473745041,
+            "name": "Metizport"
+          },
+          {
+            "typeId": 3,
+            "price": 1.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 159133,
+            "id": 4473745042,
+            "name": "GamerLegion"
+          },
+          {
+            "typeId": 1,
+            "price": 1.7143,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3378901,
+            "id": 4473740853,
+            "name": "Luminosity Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 1.9524,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 376346,
+            "id": 4473740854,
+            "name": "M80"
+          },
+          {
+            "typeId": 1,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3378901,
+            "id": 4473746735,
+            "name": "Luminosity Gaming"
+          },
+          {
+            "typeId": 3,
+            "price": 1.8334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158836,
+            "id": 4473746736,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "typeId": 1,
+            "price": 1.8,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158878,
+            "id": 4485420006,
+            "name": "Natus Vincere"
+          },
+          {
+            "typeId": 3,
+            "price": 1.8696,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 238350,
+            "id": 4485420007,
+            "name": "Aurora"
+          },
+          {
+            "typeId": 1,
+            "price": 1.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158863,
+            "id": 4473745805,
+            "name": "B8"
+          },
+          {
+            "typeId": 3,
+            "price": 2.35,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 376346,
+            "id": 4473745806,
+            "name": "M80"
+          },
+          {
+            "typeId": 1,
+            "price": 1.3847,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158781,
+            "id": 4485418447,
+            "name": "FURIA Esports"
+          },
+          {
+            "typeId": 3,
+            "price": 2.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 161383,
+            "id": 4485418448,
+            "name": "MIBR"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4445,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 969530,
+            "id": 4499947661,
+            "name": "Wildcard"
+          },
+          {
+            "typeId": 3,
+            "price": 2.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158754,
+            "id": 4499947662,
+            "name": "Spacestation Gaming"
+          },
+          {
+            "typeId": 1,
+            "price": 2.95,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 3024094,
+            "id": 4499947920,
+            "name": "100 Thieves"
+          },
+          {
+            "typeId": 3,
+            "price": 1.3334,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1758660,
+            "id": 4499947921,
+            "name": "Shopify Rebellion"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4762,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1750501,
+            "id": 4501782486,
+            "name": "Shopify Rebellion Gold"
+          },
+          {
+            "typeId": 3,
+            "price": 2.45,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1311989,
+            "id": 4501782487,
+            "name": "FlyQuest RED"
+          }
+        ],
+        "events": [
+          {
+            "marketIds": [
+              1723794011
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7188,
+            "hasStream": false,
+            "extId": "fp56_db:match:81fc1db6-f9fd-4b5a-bfdc-cb29a3bdaa0a",
+            "sc": 248,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158836,
+              376346
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T09:00:00Z",
+            "id": 17653791,
+            "name": "Ninjas in Pyjamas vs. M80"
+          },
+          {
+            "marketIds": [
+              1723796778
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6975,
+            "hasStream": false,
+            "extId": "fp56_db:match:16703a87-4681-4e20-ad34-f7237a5ede27",
+            "sc": 240,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158863,
+              159133
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T10:00:00Z",
+            "id": 17653806,
+            "name": "B8 vs. GamerLegion"
+          },
+          {
+            "marketIds": [
+              1723797313
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7097,
+            "hasStream": false,
+            "extId": "fp56_db:match:e43b748a-4208-446c-9a81-c2a0ec19f48d",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              195489,
+              3378901
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T10:00:00Z",
+            "id": 17653807,
+            "name": "Metizport vs. Luminosity Gaming"
+          },
+          {
+            "marketIds": [
+              1727332823
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6282,
+            "hasStream": false,
+            "extId": "fp56_db:match:5edb8244-fc2c-47d3-9ac5-a118a5fd55bd",
+            "sc": 502,
+            "mc": 23,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              172039,
+              529068
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63365,
+            "status": 0,
+            "startDate": "2026-09-17T10:00:00Z",
+            "id": 17679779,
+            "name": "MOUZ vs. NRG Esports"
+          },
+          {
+            "marketIds": [
+              1723797575
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 7120,
+            "hasStream": false,
+            "extId": "fp56_db:match:61f17f0d-a2ca-4c00-9958-19e3a55280ed",
+            "sc": 240,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158836,
+              158863
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T11:00:00Z",
+            "id": 17653809,
+            "name": "Ninjas in Pyjamas vs. B8"
+          },
+          {
+            "marketIds": [
+              1723798021
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6018,
+            "hasStream": false,
+            "extId": "fp56_db:match:b63a6dff-4426-43a3-a336-df115bf666bf",
+            "sc": 248,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              376346,
+              159133
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T11:00:00Z",
+            "id": 17653811,
+            "name": "M80 vs. GamerLegion"
+          },
+          {
+            "marketIds": [
+              1723801599
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 5976,
+            "hasStream": false,
+            "extId": "fp56_db:match:998c1e97-b31d-4034-a084-74651ee9c650",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3378901,
+              158863
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T12:00:00Z",
+            "id": 17653823,
+            "name": "Luminosity Gaming vs. B8"
+          },
+          {
+            "marketIds": [
+              1723801898
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 5984,
+            "hasStream": false,
+            "extId": "fp56_db:match:f47a258e-1e19-4745-a545-6556eb5cc567",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              195489,
+              158836
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T12:00:00Z",
+            "id": 17653847,
+            "name": "Metizport vs. Ninjas in Pyjamas"
+          },
+          {
+            "marketIds": [
+              1727332088
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6279,
+            "hasStream": false,
+            "extId": "fp56_db:match:db22847b-dff7-4361-a48b-2e5a093272df",
+            "sc": 500,
+            "mc": 23,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158856,
+              2821043
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63365,
+            "status": 0,
+            "startDate": "2026-09-17T12:30:00Z",
+            "id": 17679766,
+            "name": "Team Vitality vs. magic"
+          },
+          {
+            "marketIds": [
+              1723802238
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6372,
+            "hasStream": false,
+            "extId": "fp56_db:match:2b91e74d-a38d-4630-8234-7c0ff0f5b22e",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              376346,
+              195489
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T13:00:00Z",
+            "id": 17653848,
+            "name": "M80 vs. Metizport"
+          },
+          {
+            "marketIds": [
+              1723802575
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 6218,
+            "hasStream": false,
+            "extId": "fp56_db:match:a825fdd3-e860-464a-92cd-470c3a2684d2",
+            "sc": 242,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              159133,
+              158836
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T13:00:00Z",
+            "id": 17653849,
+            "name": "GamerLegion vs. Ninjas in Pyjamas"
+          },
+          {
+            "marketIds": [
+              1723804405
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 5691,
+            "hasStream": false,
+            "extId": "fp56_db:match:9852350b-7a92-4158-957a-91aca2908988",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              195489,
+              159133
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T14:00:00Z",
+            "id": 17653873,
+            "name": "Metizport vs. GamerLegion"
+          },
+          {
+            "marketIds": [
+              1723803099
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 5221,
+            "hasStream": false,
+            "extId": "fp56_db:match:2da9bae8-3364-41c7-b0ef-2c149e7e6440",
+            "sc": 150,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3378901,
+              376346
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T14:00:00Z",
+            "id": 17653850,
+            "name": "Luminosity Gaming vs. M80"
+          },
+          {
+            "marketIds": [
+              1723805126
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 861,
+            "hasStream": false,
+            "extId": "fp56_db:match:844fcada-f0df-4138-8ea4-5050fd9b3c13",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3378901,
+              158836
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T15:00:00Z",
+            "id": 17653875,
+            "name": "Luminosity Gaming vs. Ninjas in Pyjamas"
+          },
+          {
+            "marketIds": [
+              1727331365
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6456,
+            "hasStream": false,
+            "extId": "fp56_db:match:33672ab7-3b8e-4aad-aca0-195fb59d536f",
+            "sc": 514,
+            "mc": 23,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158878,
+              238350
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63365,
+            "status": 0,
+            "startDate": "2026-09-17T15:00:00Z",
+            "id": 17679748,
+            "name": "Natus Vincere vs. Aurora"
+          },
+          {
+            "marketIds": [
+              1723804696
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 4729,
+            "hasStream": false,
+            "extId": "fp56_db:match:6af1bba2-f637-4987-a93d-0ca360d6a38d",
+            "sc": 144,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158863,
+              376346
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63392,
+            "status": 0,
+            "startDate": "2026-09-17T15:00:00Z",
+            "id": 17653874,
+            "name": "B8 vs. M80"
+          },
+          {
+            "marketIds": [
+              1727330642
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6958,
+            "hasStream": false,
+            "extId": "fp56_db:match:ac0b99c0-b6fb-4803-a978-cf13267c4372",
+            "sc": 507,
+            "mc": 23,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              158781,
+              161383
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 63365,
+            "status": 0,
+            "startDate": "2026-09-17T17:30:00Z",
+            "id": 17679744,
+            "name": "FURIA Esports vs. MIBR"
+          },
+          {
+            "marketIds": [
+              1732369636
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 9549,
+            "hasStream": false,
+            "extId": "fp56_db:match:d717c311-3537-4412-8892-36e93c3c58e1",
+            "sc": 17,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              969530,
+              158754
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63171,
+            "status": 0,
+            "startDate": "2026-09-17T19:00:00Z",
+            "id": 17709470,
+            "name": "Wildcard vs. Spacestation Gaming"
+          },
+          {
+            "marketIds": [
+              1732369752
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 9684,
+            "hasStream": false,
+            "extId": "fp56_db:match:a93a473d-0801-4227-bb59-6216bbc50db1",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              3024094,
+              1758660
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63171,
+            "status": 0,
+            "startDate": "2026-09-17T20:00:00Z",
+            "id": 17709471,
+            "name": "100 Thieves vs. Shopify Rebellion"
+          },
+          {
+            "marketIds": [
+              1733056266
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 9543,
+            "hasStream": false,
+            "extId": "fp56_db:match:6ba90fa4-56d2-42f8-a0c0-5fb80ad39866",
+            "sc": 525,
+            "mc": 19,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              1750501,
+              1311989
+            ],
+            "sportId": 145,
+            "catId": 1532,
+            "champId": 62575,
+            "status": 0,
+            "startDate": "2026-09-17T21:00:00Z",
+            "id": 17715115,
+            "name": "Shopify Rebellion Gold vs. FlyQuest RED"
+          }
+        ],
+        "sports": [
+          {
+            "catIds": [
+              1534,
+              1539,
+              1532
+            ],
+            "typeId": 317,
+            "iconName": "e-sports-+",
+            "hasLiveEvents": false,
+            "id": 145,
+            "name": "E-sports +\t\t"
+          }
+        ],
+        "categories": [
+          {
+            "champIds": [
+              63392,
+              63365
+            ],
+            "iso": "e03",
+            "hasLiveEvents": false,
+            "id": 1534,
+            "name": "Counter-Strike"
+          },
+          {
+            "champIds": [
+              63171
+            ],
+            "iso": "e24",
+            "hasLiveEvents": false,
+            "id": 1539,
+            "name": "Rainbow Six"
+          },
+          {
+            "champIds": [
+              62575
+            ],
+            "iso": "e37",
+            "hasLiveEvents": false,
+            "id": 1532,
+            "name": "Valorant"
+          }
+        ],
+        "champs": [
+          {
+            "hasLiveEvents": false,
+            "id": 63392,
+            "name": "G Play Connect 2026"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63365,
+            "name": "StarLadder StarSeries Fall 2026"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63171,
+            "name": "North America League 2026 - Stage 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 62575,
+            "name": "VCT 2026: Game Changers North America Stage 2"
+          }
+        ],
+        "competitors": [
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "NiP",
+            "id": 158836,
+            "name": "Ninjas in Pyjamas"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "M80",
+            "id": 376346,
+            "name": "M80"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 158863,
+            "name": "B8"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TEA",
+            "id": 159133,
+            "name": "GamerLegion"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 195489,
+            "name": "Metizport"
+          },
+          {
+            "hasOrigJersey": true,
+            "id": 3378901,
+            "name": "Luminosity Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 172039,
+            "name": "MOUZ"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "NRG",
+            "id": 529068,
+            "name": "NRG Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "TEA",
+            "id": 158856,
+            "name": "Team Vitality"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 2821043,
+            "name": "magic"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "NaVi",
+            "id": 158878,
+            "name": "Natus Vincere"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Aurora",
+            "id": 238350,
+            "name": "Aurora"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "FUR",
+            "id": 158781,
+            "name": "FURIA Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "MIB",
+            "id": 161383,
+            "name": "MIBR"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 969530,
+            "name": "Wildcard"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "SPA",
+            "id": 158754,
+            "name": "Spacestation Gaming"
+          },
+          {
+            "hasOrigJersey": true,
+            "abbreviation": "100T",
+            "id": 3024094,
+            "name": "100 Thieves"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "SHO",
+            "id": 1758660,
+            "name": "Shopify Rebellion"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "SRG",
+            "id": 1750501,
+            "name": "Shopify Rebellion Gold"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 1311989,
+            "name": "FlyQuest RED"
+          }
+        ]
+      },
+      {
+        "topSports": [
+          {
+            "id": 66,
+            "name": "Futebol",
+            "iconName": "soccer",
+            "hasStream": false,
+            "count": 956
+          },
+          {
+            "id": 67,
+            "name": "Basquete",
+            "iconName": "basketball",
+            "hasStream": false,
+            "count": 60
+          },
+          {
+            "id": 68,
+            "name": "Tênis",
+            "iconName": "tennis",
+            "hasStream": false,
+            "count": 377
+          },
+          {
+            "id": 145,
+            "name": "E-sports +\t\t",
+            "iconName": "e-sports-+",
+            "hasStream": false,
+            "count": 106
+          },
+          {
+            "id": 146,
+            "name": "E-Football",
+            "iconName": "e-football",
+            "hasStream": false,
+            "count": 113
+          },
+          {
+            "id": 75,
+            "name": "Fut. Americano",
+            "iconName": "american-football",
+            "hasStream": false,
+            "count": 17
+          },
+          {
+            "id": 76,
+            "name": "Beisebol",
+            "iconName": "baseball",
+            "hasStream": false,
+            "count": 25
+          },
+          {
+            "id": 84,
+            "name": "MMA",
+            "iconName": "mma",
+            "hasStream": false,
+            "count": 29
+          },
+          {
+            "id": 69,
+            "name": "Vôlei",
+            "iconName": "volleyball",
+            "hasStream": false,
+            "count": 18
+          },
+          {
+            "id": -1,
+            "name": "Other",
+            "iconName": "Other",
+            "hasStream": false,
+            "count": 483
+          }
+        ],
+        "headers": [
+          {
+            "typeId": 30001,
+            "name": "Vencedor da partida",
+            "mst": 0,
+            "odds": [
+              {
+                "id": 1,
+                "name": "1"
+              },
+              {
+                "id": 3,
+                "name": "2"
+              }
+            ]
+          }
+        ],
+        "pageCount": 4,
+        "page": 4,
+        "markets": [
+          {
+            "oddIds": [
+              4499948413,
+              4499948414
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732369968,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4499948553,
+              4499948554
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1732370030,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4493560334,
+              4493560335
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1730205849,
+            "name": "Vencedor da partida"
+          },
+          {
+            "oddIds": [
+              4491996801,
+              4491996802
+            ],
+            "typeId": 30001,
+            "sportMarketId": 72780,
+            "id": 1729636909,
+            "name": "Vencedor da partida"
+          }
+        ],
+        "odds": [
+          {
+            "typeId": 1,
+            "price": 2.85,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2059051,
+            "id": 4499948413,
+            "name": "Cloud9"
+          },
+          {
+            "typeId": 3,
+            "price": 1.3449,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 158752,
+            "id": 4499948414,
+            "name": "Darkzero Esports"
+          },
+          {
+            "typeId": 1,
+            "price": 1.1667,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 288687,
+            "id": 4499948553,
+            "name": "M80"
+          },
+          {
+            "typeId": 3,
+            "price": 4.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1216854,
+            "id": 4499948554,
+            "name": "Team OUTLAST"
+          },
+          {
+            "typeId": 1,
+            "price": 1.4762,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2378452,
+            "id": 4493560334,
+            "name": "SB Expert"
+          },
+          {
+            "typeId": 3,
+            "price": 2.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 675199,
+            "id": 4493560335,
+            "name": "Lag Gaming"
+          },
+          {
+            "typeId": 1,
+            "price": 2.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2347262,
+            "id": 4491996801,
+            "name": "Natus Vincere"
+          },
+          {
+            "typeId": 3,
+            "price": 1.3847,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 186025,
+            "id": 4491996802,
+            "name": "KOI"
+          }
+        ],
+        "events": [
+          {
+            "marketIds": [
+              1732369968
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 2704,
+            "hasStream": false,
+            "extId": "fp56_db:match:248e0281-b259-40e9-9aa7-f9aacb020f84",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2059051,
+              158752
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63171,
+            "status": 0,
+            "startDate": "2026-09-17T21:00:00Z",
+            "id": 17709472,
+            "name": "Cloud9 vs. Darkzero Esports"
+          },
+          {
+            "marketIds": [
+              1732370030
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 2948,
+            "hasStream": false,
+            "extId": "fp56_db:match:b0e8c03a-bad1-4878-a8dc-0a446299b34f",
+            "sc": 15,
+            "mc": 5,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              288687,
+              1216854
+            ],
+            "sportId": 145,
+            "catId": 1539,
+            "champId": 63171,
+            "status": 0,
+            "startDate": "2026-09-17T22:00:00Z",
+            "id": 17709473,
+            "name": "M80 vs. Team OUTLAST"
+          },
+          {
+            "marketIds": [
+              1730205849
+            ],
+            "isBooked": false,
+            "isParlay": false,
+            "code": 2467,
+            "hasStream": false,
+            "extId": "fp56_db:match:32a63921-abcc-44d4-97f9-48ecb442a077",
+            "sc": 106,
+            "mc": 13,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2378452,
+              675199
+            ],
+            "sportId": 145,
+            "catId": 1534,
+            "champId": 62501,
+            "status": 0,
+            "startDate": "2026-09-18T00:30:00Z",
+            "id": 17695160,
+            "name": "SB Expert vs. Lag Gaming"
+          },
+          {
+            "marketIds": [
+              1729636909
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 3252,
+            "hasStream": false,
+            "extId": "fp56_db:match:ef23796e-6171-4ebe-8d39-7be23928f684",
+            "sc": 630,
+            "mc": 27,
+            "rc": false,
+            "pId": 56,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+              2347262,
+              186025
+            ],
+            "sportId": 145,
+            "catId": 1531,
+            "champId": 63155,
+            "status": 0,
+            "startDate": "2026-09-18T15:00:00Z",
+            "id": 17692379,
+            "name": "Natus Vincere vs. KOI"
+          }
+        ],
+        "sports": [
+          {
+            "catIds": [
+              1539,
+              1534,
+              1531
+            ],
+            "typeId": 317,
+            "iconName": "e-sports-+",
+            "hasLiveEvents": false,
+            "id": 145,
+            "name": "E-sports +\t\t"
+          }
+        ],
+        "categories": [
+          {
+            "champIds": [
+              63171
+            ],
+            "iso": "e24",
+            "hasLiveEvents": false,
+            "id": 1539,
+            "name": "Rainbow Six"
+          },
+          {
+            "champIds": [
+              62501
+            ],
+            "iso": "e03",
+            "hasLiveEvents": false,
+            "id": 1534,
+            "name": "Counter-Strike"
+          },
+          {
+            "champIds": [
+              63155
+            ],
+            "iso": "e15",
+            "hasLiveEvents": false,
+            "id": 1531,
+            "name": "League of Legends"
+          }
+        ],
+        "champs": [
+          {
+            "hasLiveEvents": false,
+            "id": 63171,
+            "name": "North America League 2026 - Stage 2"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 62501,
+            "name": "ESEA Advanced Season 58 North America"
+          },
+          {
+            "hasLiveEvents": false,
+            "id": 63155,
+            "name": "LEC 2026 Summer Playoffs"
+          }
+        ],
+        "competitors": [
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "C9",
+            "id": 2059051,
+            "name": "Cloud9"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "DAR",
+            "id": 158752,
+            "name": "Darkzero Esports"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "M80",
+            "id": 288687,
+            "name": "M80"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "OUTLAST",
+            "id": 1216854,
+            "name": "Team OUTLAST"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "SPBEX",
+            "id": 2378452,
+            "name": "SB Expert"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "Lag",
+            "id": 675199,
+            "name": "Lag Gaming"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "abbreviation": "NaVi",
+            "id": 2347262,
+            "name": "Natus Vincere"
+          },
+          {
+            "hasConfigLogo": true,
+            "hasOrigJersey": true,
+            "id": 186025,
+            "name": "KOI"
+          }
+        ]
+      }
+    ]
+  }
+}

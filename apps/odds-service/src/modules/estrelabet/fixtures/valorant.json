@@ -1,0 +1,1186 @@
+{
+  "provider": "estrelabet",
+  "capturedAt": "2026-09-15T02:12:36.089Z",
+  "status": 200,
+  "source": {
+    "transport": "http",
+    "url": "https://sb2frontend-altenar2.biahosted.com/api/widget/GetEventDetails?culture=pt-BR&timezoneOffset=180&integration=estrelabet&deviceType=1&numFormat=en-GB&eventId=17708904",
+    "method": "GET",
+    "capture": "direct-http",
+    "authenticated": false
+  },
+  "data": {
+    "detail": {
+      "id": 17708904,
+      "feedEventId": 23770467,
+      "name": "Gen.G GC vs. FENNEL GC",
+      "et": 0,
+      "sport": {
+        "typeId": 317,
+        "iconName": "e-sports-+",
+        "hasLiveEvents": false,
+        "id": 145,
+        "name": "E-sports +\t\t"
+      },
+      "champ": {
+        "hasLiveEvents": false,
+        "id": 63416,
+        "name": "VCT 2026: Game Changers Pacific"
+      },
+      "category": {
+        "iso": "e37",
+        "hasLiveEvents": false,
+        "id": 1532,
+        "name": "Valorant"
+      },
+      "competitors": [
+        {
+          "hasOrigJersey": true,
+          "id": 3137829,
+          "name": "Gen.G GC"
+        },
+        {
+          "hasConfigLogo": true,
+          "hasOrigJersey": true,
+          "abbreviation": "FL Fe",
+          "id": 2533687,
+          "name": "FENNEL GC"
+        }
+      ],
+      "marketGroups": [
+        {
+          "type": 0,
+          "marketIds": [
+            31046,
+            1732293144,
+            1732293226,
+            1732293237,
+            1732293155,
+            1732293230
+          ],
+          "isBundle": false,
+          "sortOrder": 0,
+          "id": 1,
+          "name": "Popular"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1732293255,
+            1732293145,
+            1732293231,
+            1732293228,
+            1732293153,
+            1732293240
+          ],
+          "isBundle": false,
+          "sortOrder": 1,
+          "id": 1645,
+          "name": "Mapa 1"
+        },
+        {
+          "type": 0,
+          "marketIds": [
+            1732293256,
+            1732293148,
+            1732293234,
+            1732293229,
+            1732293154,
+            1732293241
+          ],
+          "isBundle": false,
+          "sortOrder": 2,
+          "id": 1646,
+          "name": "Mapa 2"
+        }
+      ],
+      "childMarketGroups": [],
+      "markets": [
+        {
+          "desktopOddIds": [],
+          "mobileOddIds": [],
+          "isBB": false,
+          "variant": 7,
+          "so": 1,
+          "typeId": 31046,
+          "sportMarketId": 0,
+          "id": 31046,
+          "name": "Boosted Odds"
+        },
+        {
+          "shortName": "Vencedor da partida",
+          "desktopOddIds": [
+            [
+              4499739107
+            ],
+            [
+              4499739108
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739107
+            ],
+            [
+              4499739108
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 30001,
+          "sportMarketId": 72780,
+          "id": 1732293144,
+          "name": "Vencedor da partida"
+        },
+        {
+          "shortName": "Handicap de Mapa",
+          "desktopOddIds": [
+            [
+              4499739315
+            ],
+            [
+              4499739316
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739315
+            ],
+            [
+              4499739316
+            ]
+          ],
+          "isBB": false,
+          "so": 8,
+          "typeId": 327,
+          "sportMarketId": 73039,
+          "sv": "-1.5",
+          "id": 1732293226,
+          "name": "Handicap de Mapa"
+        },
+        {
+          "shortName": "Placar correto da partida",
+          "desktopOddIds": [
+            [
+              4499739339,
+              4499739340
+            ],
+            [
+              4499739341,
+              4499739342
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739339,
+              4499739340
+            ],
+            [
+              4499739341,
+              4499739342
+            ]
+          ],
+          "isBB": false,
+          "so": 10,
+          "typeId": 30004,
+          "sportMarketId": 72782,
+          "id": 1732293237,
+          "name": "Placar correto da partida"
+        },
+        {
+          "shortName": "Total mapas",
+          "desktopOddIds": [
+            [
+              4499739129
+            ],
+            [
+              4499739130
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739129
+            ],
+            [
+              4499739130
+            ]
+          ],
+          "isBB": false,
+          "so": 12,
+          "typeId": 328,
+          "sportMarketId": 73826,
+          "sv": "2.5",
+          "id": 1732293155,
+          "name": "Total mapas"
+        },
+        {
+          "shortName": "Mapas Ímpares/Pares",
+          "desktopOddIds": [
+            [
+              4499739325
+            ],
+            [
+              4499739326
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739325
+            ],
+            [
+              4499739326
+            ]
+          ],
+          "isBB": false,
+          "so": 18,
+          "typeId": 24471,
+          "sportMarketId": 75459,
+          "id": 1732293230,
+          "name": "Mapas Ímpares/Pares"
+        },
+        {
+          "shortName": "Primeiro Mapa - Vencedor",
+          "desktopOddIds": [
+            [
+              4499739385
+            ],
+            [
+              4499739386
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739385
+            ],
+            [
+              4499739386
+            ]
+          ],
+          "isBB": false,
+          "so": 4,
+          "typeId": 330,
+          "sportMarketId": 75450,
+          "sv": "1",
+          "id": 1732293255,
+          "name": "Primeiro Mapa - Vencedor"
+        },
+        {
+          "shortName": "Primeiro Mapa - Handicap de Rounds",
+          "desktopOddIds": [
+            [
+              4499739109,
+              4499739113,
+              4501387490
+            ],
+            [
+              4499739110,
+              4499739114,
+              4501387491
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739109,
+              4499739113,
+              4501387490
+            ],
+            [
+              4499739110,
+              4499739114,
+              4501387491
+            ]
+          ],
+          "isBB": false,
+          "so": 15,
+          "typeId": 30011,
+          "sportMarketId": 72787,
+          "sv": "-2.5|1",
+          "id": 1732293145,
+          "name": "Primeiro Mapa - Handicap de Rounds"
+        },
+        {
+          "shortName": "Primeiro Mapa - Total de Rounds (excl. Prol.)",
+          "desktopOddIds": [
+            [
+              4501390705,
+              4499739327,
+              4499739329,
+              4499739331
+            ],
+            [
+              4501390706,
+              4499739328,
+              4499739330,
+              4499739332
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4501390705,
+              4499739327,
+              4499739329,
+              4499739331
+            ],
+            [
+              4501390706,
+              4499739328,
+              4499739330,
+              4499739332
+            ]
+          ],
+          "isBB": false,
+          "so": 44,
+          "typeId": 332,
+          "sportMarketId": 75451,
+          "sv": "1|20.5",
+          "id": 1732293231,
+          "name": "Primeiro Mapa - Total de Rounds (excl. Prol.)"
+        },
+        {
+          "shortName": "Primeiro Mapa - 1x2",
+          "desktopOddIds": [
+            [
+              4499739319
+            ],
+            [
+              4499739320
+            ],
+            [
+              4499739321
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739319
+            ],
+            [
+              4499739320
+            ],
+            [
+              4499739321
+            ]
+          ],
+          "isBB": false,
+          "so": 46,
+          "typeId": 334,
+          "sportMarketId": 75452,
+          "sv": "1",
+          "id": 1732293228,
+          "name": "Primeiro Mapa - 1x2"
+        },
+        {
+          "shortName": "Primeiro Mapa - Haverá prorrogação?",
+          "desktopOddIds": [
+            [
+              4499739125
+            ],
+            [
+              4499739126
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739125
+            ],
+            [
+              4499739126
+            ]
+          ],
+          "isBB": false,
+          "so": 47,
+          "typeId": 335,
+          "sportMarketId": 75453,
+          "sv": "1",
+          "id": 1732293153,
+          "name": "Primeiro Mapa - Haverá prorrogação?"
+        },
+        {
+          "shortName": "Primeiro mapa - Pontuação correta dos rounds de pistolas",
+          "desktopOddIds": [
+            [
+              4499739347
+            ],
+            [
+              4499739348
+            ],
+            [
+              4499739349
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739347
+            ],
+            [
+              4499739348
+            ],
+            [
+              4499739349
+            ]
+          ],
+          "isBB": false,
+          "so": 90,
+          "typeId": 24495,
+          "sportMarketId": 75573,
+          "sv": "1",
+          "id": 1732293240,
+          "name": "Primeiro mapa - Pontuação correta dos rounds de pistolas"
+        },
+        {
+          "shortName": "Segundo Mapa - Vencedor",
+          "desktopOddIds": [
+            [
+              4499739387
+            ],
+            [
+              4499739388
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739387
+            ],
+            [
+              4499739388
+            ]
+          ],
+          "isBB": false,
+          "so": 2,
+          "typeId": 330,
+          "sportMarketId": 75450,
+          "sv": "2",
+          "id": 1732293256,
+          "name": "Segundo Mapa - Vencedor"
+        },
+        {
+          "shortName": "Segundo Mapa - Handicap de Rounds",
+          "desktopOddIds": [
+            [
+              4499739111,
+              4499739115,
+              4501387492
+            ],
+            [
+              4499739112,
+              4499739116,
+              4501387493
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739111,
+              4499739115,
+              4501387492
+            ],
+            [
+              4499739112,
+              4499739116,
+              4501387493
+            ]
+          ],
+          "isBB": false,
+          "so": 15,
+          "typeId": 30011,
+          "sportMarketId": 72787,
+          "sv": "-3.5|2",
+          "id": 1732293148,
+          "name": "Segundo Mapa - Handicap de Rounds"
+        },
+        {
+          "shortName": "Segundo Mapa - Total de Rounds (excl. Prol.)",
+          "desktopOddIds": [
+            [
+              4501387498,
+              4499739333,
+              4499739335,
+              4499739337
+            ],
+            [
+              4501387499,
+              4499739334,
+              4499739336,
+              4499739338
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4501387498,
+              4499739333,
+              4499739335,
+              4499739337
+            ],
+            [
+              4501387499,
+              4499739334,
+              4499739336,
+              4499739338
+            ]
+          ],
+          "isBB": false,
+          "so": 44,
+          "typeId": 332,
+          "sportMarketId": 75451,
+          "sv": "2|20.5",
+          "id": 1732293234,
+          "name": "Segundo Mapa - Total de Rounds (excl. Prol.)"
+        },
+        {
+          "shortName": "Segundo Mapa - 1x2",
+          "desktopOddIds": [
+            [
+              4499739322
+            ],
+            [
+              4499739323
+            ],
+            [
+              4499739324
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739322
+            ],
+            [
+              4499739323
+            ],
+            [
+              4499739324
+            ]
+          ],
+          "isBB": false,
+          "so": 46,
+          "typeId": 334,
+          "sportMarketId": 75452,
+          "sv": "2",
+          "id": 1732293229,
+          "name": "Segundo Mapa - 1x2"
+        },
+        {
+          "shortName": "Segundo Mapa - Haverá prorrogação?",
+          "desktopOddIds": [
+            [
+              4499739127
+            ],
+            [
+              4499739128
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739127
+            ],
+            [
+              4499739128
+            ]
+          ],
+          "isBB": false,
+          "so": 47,
+          "typeId": 335,
+          "sportMarketId": 75453,
+          "sv": "2",
+          "id": 1732293154,
+          "name": "Segundo Mapa - Haverá prorrogação?"
+        },
+        {
+          "shortName": "Segundo mapa - Pontuação correta dos rounds de pistolas",
+          "desktopOddIds": [
+            [
+              4499739350
+            ],
+            [
+              4499739351
+            ],
+            [
+              4499739352
+            ]
+          ],
+          "mobileOddIds": [
+            [
+              4499739350
+            ],
+            [
+              4499739351
+            ],
+            [
+              4499739352
+            ]
+          ],
+          "isBB": false,
+          "so": 90,
+          "typeId": 24495,
+          "sportMarketId": 75573,
+          "sv": "2",
+          "id": 1732293241,
+          "name": "Segundo mapa - Pontuação correta dos rounds de pistolas"
+        }
+      ],
+      "childMarkets": [],
+      "odds": [
+        {
+          "typeId": 1,
+          "price": 1.4762,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 3137829,
+          "id": 4499739107,
+          "name": "Gen.G GC"
+        },
+        {
+          "typeId": 3,
+          "price": 2.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "competitorId": 2533687,
+          "id": 4499739108,
+          "name": "FENNEL GC"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.35,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "-1.5",
+          "competitorId": 3137829,
+          "id": 4499739315,
+          "name": "Gen.G GC (-1.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.5,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "-1.5",
+          "competitorId": 2533687,
+          "id": 4499739316,
+          "name": "FENNEL GC (+1.5)"
+        },
+        {
+          "typeId": 116,
+          "price": 2.35,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739339,
+          "name": "2:0"
+        },
+        {
+          "typeId": 138,
+          "price": 4.3,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739341,
+          "name": "0:2"
+        },
+        {
+          "typeId": 140,
+          "price": 4.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739342,
+          "name": "1:2"
+        },
+        {
+          "typeId": 130,
+          "price": 3.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739340,
+          "name": "2:1"
+        },
+        {
+          "typeId": 12,
+          "price": 2.15,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "2.5",
+          "id": 4499739129,
+          "name": "Mais de 2.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.6471,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "2.5",
+          "id": 4499739130,
+          "name": "Menos de 2.5"
+        },
+        {
+          "typeId": 70,
+          "price": 2.15,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739325,
+          "name": "Ímpar"
+        },
+        {
+          "typeId": 72,
+          "price": 1.6471,
+          "isMB": false,
+          "oddStatus": 0,
+          "id": 4499739326,
+          "name": "Par"
+        },
+        {
+          "typeId": 1,
+          "price": 1.5715,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 3137829,
+          "id": 4499739385,
+          "name": "Gen.G GC"
+        },
+        {
+          "typeId": 3,
+          "price": 2.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 2533687,
+          "id": 4499739386,
+          "name": "FENNEL GC"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|1",
+          "competitorId": 3137829,
+          "id": 4499739109,
+          "name": "Gen.G GC (-2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|1",
+          "competitorId": 3137829,
+          "id": 4499739113,
+          "name": "Gen.G GC (-3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.65,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|1",
+          "competitorId": 3137829,
+          "id": 4501387490,
+          "name": "Gen.G GC (-4.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|1",
+          "competitorId": 2533687,
+          "id": 4499739110,
+          "name": "FENNEL GC (+2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.5556,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|1",
+          "competitorId": 2533687,
+          "id": 4499739114,
+          "name": "FENNEL GC (+3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|1",
+          "competitorId": 2533687,
+          "id": 4501387491,
+          "name": "FENNEL GC (+4.5)"
+        },
+        {
+          "typeId": 12,
+          "price": 1.3449,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4501390705,
+          "name": "Mais de 19.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.5715,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499739327,
+          "name": "Mais de 20.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.8696,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499739329,
+          "name": "Mais de 21.5"
+        },
+        {
+          "typeId": 12,
+          "price": 2.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499739331,
+          "name": "Mais de 22.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.85,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4501390706,
+          "name": "Menos de 19.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.2,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499739328,
+          "name": "Menos de 20.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.8,
+          "isMB": true,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499739330,
+          "name": "Menos de 21.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.4762,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499739332,
+          "name": "Menos de 22.5"
+        },
+        {
+          "typeId": 1,
+          "price": 1.6897,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 3137829,
+          "id": 4499739319,
+          "name": "Gen.G GC"
+        },
+        {
+          "typeId": 2,
+          "price": 7,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739320,
+          "name": "Empate"
+        },
+        {
+          "typeId": 3,
+          "price": 2.5,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "competitorId": 2533687,
+          "id": 4499739321,
+          "name": "FENNEL GC"
+        },
+        {
+          "typeId": 74,
+          "price": 6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739125,
+          "name": "Sim"
+        },
+        {
+          "typeId": 76,
+          "price": 1.091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739126,
+          "name": "Não"
+        },
+        {
+          "typeId": 116,
+          "price": 3.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739347,
+          "name": "2:0"
+        },
+        {
+          "typeId": 128,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739348,
+          "name": "1:1"
+        },
+        {
+          "typeId": 138,
+          "price": 3.75,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "1",
+          "id": 4499739349,
+          "name": "0:2"
+        },
+        {
+          "typeId": 1,
+          "price": 1.5883,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 3137829,
+          "id": 4499739387,
+          "name": "Gen.G GC"
+        },
+        {
+          "typeId": 3,
+          "price": 2.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 2533687,
+          "id": 4499739388,
+          "name": "FENNEL GC"
+        },
+        {
+          "typeId": 1714,
+          "price": 1.9524,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|2",
+          "competitorId": 3137829,
+          "id": 4499739111,
+          "name": "Gen.G GC (-2.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.25,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|2",
+          "competitorId": 3137829,
+          "id": 4499739115,
+          "name": "Gen.G GC (-3.5)"
+        },
+        {
+          "typeId": 1714,
+          "price": 2.65,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|2",
+          "competitorId": 3137829,
+          "id": 4501387492,
+          "name": "Gen.G GC (-4.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.7143,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-2.5|2",
+          "competitorId": 2533687,
+          "id": 4499739112,
+          "name": "FENNEL GC (+2.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.5556,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-3.5|2",
+          "competitorId": 2533687,
+          "id": 4499739116,
+          "name": "FENNEL GC (+3.5)"
+        },
+        {
+          "typeId": 1715,
+          "price": 1.4,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "-4.5|2",
+          "competitorId": 2533687,
+          "id": 4501387493,
+          "name": "FENNEL GC (+4.5)"
+        },
+        {
+          "typeId": 12,
+          "price": 1.3572,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4501387498,
+          "name": "Mais de 19.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.5715,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499739333,
+          "name": "Mais de 20.5"
+        },
+        {
+          "typeId": 12,
+          "price": 1.9091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499739335,
+          "name": "Mais de 21.5"
+        },
+        {
+          "typeId": 12,
+          "price": 2.45,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499739337,
+          "name": "Mais de 22.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.8,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "19.5",
+          "id": 4501387499,
+          "name": "Menos de 19.5"
+        },
+        {
+          "typeId": 13,
+          "price": 2.2,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "20.5",
+          "id": 4499739334,
+          "name": "Menos de 20.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.7693,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "21.5",
+          "id": 4499739336,
+          "name": "Menos de 21.5"
+        },
+        {
+          "typeId": 13,
+          "price": 1.4546,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "22.5",
+          "id": 4499739338,
+          "name": "Menos de 22.5"
+        },
+        {
+          "typeId": 1,
+          "price": 1.7408,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 3137829,
+          "id": 4499739322,
+          "name": "Gen.G GC"
+        },
+        {
+          "typeId": 2,
+          "price": 6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739323,
+          "name": "Empate"
+        },
+        {
+          "typeId": 3,
+          "price": 2.55,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "competitorId": 2533687,
+          "id": 4499739324,
+          "name": "FENNEL GC"
+        },
+        {
+          "typeId": 74,
+          "price": 6,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739127,
+          "name": "Sim"
+        },
+        {
+          "typeId": 76,
+          "price": 1.091,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739128,
+          "name": "Não"
+        },
+        {
+          "typeId": 116,
+          "price": 3.1,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739350,
+          "name": "2:0"
+        },
+        {
+          "typeId": 128,
+          "price": 1.8334,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739351,
+          "name": "1:1"
+        },
+        {
+          "typeId": 138,
+          "price": 3.75,
+          "isMB": false,
+          "oddStatus": 0,
+          "sv": "2",
+          "id": 4499739352,
+          "name": "0:2"
+        }
+      ],
+      "boosts": [],
+      "nonBoosts": [],
+      "isParlay": false,
+      "eventCode": 4231,
+      "rc": false,
+      "startDate": "2026-09-15T09:00:00Z",
+      "showAll": true
+    }
+  }
+}

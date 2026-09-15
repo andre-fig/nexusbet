@@ -99,7 +99,7 @@ export class Bet365Service implements ProviderRuntime {
     return {
       ...this.health(),
       collector:
-        "Chrome CDP response capture; anonymous browser context by default",
+        "Chrome CDP response capture; shared persistent context with provider tab",
       now: new Date().toISOString(),
     };
   }

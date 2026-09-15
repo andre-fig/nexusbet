@@ -1,8 +1,12 @@
+# Operação local dos providers de browser
+
+Bet365/Betano: use [LOCAL_CDP.md](LOCAL_CDP.md) para habilitar CDP no Chrome Mac existente. `/health` apresenta disabled/unavailable quando flags/runtime/CDP não permitem coleta. Cooldown de reconexão padrão 5min; não fique reiniciando para evitá-lo. Em produção/Railway desabilite ambos. Nunca feche Chrome/tabs pessoais, limpe profile ou copie cookies para recuperar coleta.
+
 # Operação e diagnóstico
 
 [Índice](../README.md#documentation) · [Configuration](CONFIGURATION.md) · [Testing](TESTING.md)
 
-Comandos deste documento partem de `apps/odds-service`. Use uma instância escritora/coletora. Não há Sentry/Railway integrados no código atual; investigue logs Nest, respostas sanitizadas, fixtures e PostgreSQL. Não depende de contexto externo ou dashboard.
+Comandos deste documento partem de `apps/odds-service`. Use uma instância escritora/coletora. Não há Sentry nem deploy Railway validado; investigue logs Nest, respostas sanitizadas, fixtures e PostgreSQL. Não depende de contexto externo ou dashboard.
 
 ## Checklist de saúde
 
@@ -28,16 +32,16 @@ ESPORTS=cs2 npm run capture:betano -- --detail
 ESPORTS=cs2 npm run capture:superbet -- --detail
 ```
 
-`--detail` seleciona um evento por modalidade, não todos. EVENT_ID escolhe Bet365; BETANO_EVENT_ID escolhe Betano, com ESPORTS restrito. `--main-only` controla diagnóstico Bet365. `--existing`/`--reuse-profile` não reutilizam Chrome em HEADLESS=true. Não há endpoint HTTP de trigger de coleta.
+`--detail` seleciona um evento por modalidade, não todos. EVENT_ID escolhe Bet365; BETANO_EVENT_ID escolhe Betano, com ESPORTS restrito. `--main-only` controla diagnóstico Bet365. `BROWSER_RUNTIME=local-cdp` usa Chrome existente; `--existing`/`--reuse-profile` não mudam essa política. Não há endpoint HTTP de trigger de coleta.
 
-Para consumir capturas sem novo polling: `COLLECTION_ENABLED=false npm start`; INBOX_INGEST_ENABLED deve permitir ingestão. Não deixe `collect`/`collect:betano` rodando após diagnóstico. Browser invisível é padrão; 403/CAPTCHA devem ser documentados, não contornados.
+Para consumir capturas sem novo polling: `COLLECTION_ENABLED=false npm start`; INBOX_INGEST_ENABLED deve permitir ingestão. Não deixe `collect`/`collect:betano` rodando após diagnóstico. Somente Chrome pessoal/headed macOS para Bet365/Betano; indisponibilidade preserva dados até TTL, sem fallback.
 
 ## Sintomas e investigação
 
 | Sintoma | Possível causa | Onde investigar |
 |---|---|---|
 | 0 eventos / 503 normalizado | Sem captura inicial, cobertura parcial, bloqueio remoto | client/collector/parser do provider; health e inbox sanitizada |
-| Bet365/Betano splash ou 403 | Proteção remota em sessão headless | headless-feed, transporte e logs; não force fallback visível |
+| Bet365/Betano splash ou 403 | Proteção remota, possível mesmo em headed | local-cdp.service, configuração/CDP e transportes; não tente Linux/headless ou contorno |
 | Parser rejeita captura | Endpoint/layout/IDs ou cardinalidade alterados | parsers/ e fixture real equivalente; preserve erro |
 | Queda grande de event count | Filtro de tempo/competição/cobertura ou oferta real menor | metadados da rodada e comparação com captura anterior; não assumir detector automático |
 | Dados antigos | Fila, backoff, cooldown, coleta desabilitada | Collection/config, nextRunAt, lastSuccessAt, timestamps |
@@ -87,3 +91,23 @@ Sem --apply não conecta/grava. Lê inbox/detail-inbox/betano-inbox/superbet-inb
 ## Evidência de incidente
 
 Registre provider/esport/eventId, timestamp UTC, endpoint sem segredos, cobertura esperada/recebida, erro sanitizado e teste que reproduz. Mantenha fixtures reais intactas; crie fixture adicional sanitizada se necessário. Nunca anexe cookies, perfis, credentials.txt ou dumps de headers. Compare odds com UI somente em navegação de leitura autorizada, encerrando recursos ao final.
+
+## Atualização: browser persistente
+
+BROWSER_MODE=headless/headed agora seleciona Chrome próprio em ambos os modos. O perfil técnico persiste por provider; não há cópia de perfil pessoal nem contexto incognito adicional. HEADLESS é fallback legado; CDP_URL não seleciona transporte externo nos clients atuais. Betano conserva o browser entre listagens. O scheduler continua com os mesmos locks/backoff/TTL. [Diagnóstico e limites atuais](HEADLESS_DIAGNOSTICS.md).
+
+## Runtime de produção
+
+Bet365/Betano têm suporte somente em local-cdp no Mac; desabilite ambos em Railway/Linux. Consulte [LOCAL_CDP](LOCAL_CDP.md). O runtime Xvfb documentado anteriormente é histórico.
+
+## Atualização: Chrome compartilhado
+
+O fluxo atual usa `BrowserModule`/`LocalCdpService`: CDP no Chrome pessoal existente do Mac, targets próprios reutilizados, sem fechar o browser pessoal. Superbet segue HTTP. Chrome próprio compartilhado/Xvfb é histórico, fora da DI desses providers.
+
+## Blaze
+
+Use `npm run capture:blaze -- --detail` e `/providers/blaze/health`. Em falha, verifique status HTTP do manifesto/shards, cadeia de versões e marcador de snapshot completo. Não publique captura parcial, não tente replay do endpoint individual bloqueado e não abra Chrome para compensar uma falha HTTP. [Procedimento e limitações](BLAZE.md).
+
+## EstrelaBet
+
+Use `npm run capture:estrelabet -- --detail`, `/providers/estrelabet/health` e `/health`. HTTP 403/non-JSON ou mudança de pageCount interrompem a rodada; não copie cookies nem abra Chrome como fallback. Valide todas as páginas de GetUpcoming e referências de IDs antes de substituir catálogo. Mercado auxiliar com novo ID pode produzir MarketAdded/Removed legítimos. Compare odds com a UI considerando truncamento de apresentação, preservando precisão no domínio. [Diagnóstico completo](ESTRELABET.md).
