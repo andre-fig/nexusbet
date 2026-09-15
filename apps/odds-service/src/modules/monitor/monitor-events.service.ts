@@ -152,6 +152,17 @@ export class MonitorEventsService implements OnModuleInit, OnModuleDestroy {
       };
     });
   }
+  memoryDiagnostics() {
+    return {
+      subscribers: this.subscribers,
+      previousEvents: this.previous?.events.length ?? 0,
+      previousIssues: this.previous?.issues.length ?? 0,
+      staleProviders: this.stale.size,
+      timers: this.timer ? 1 : 0,
+      notificationSubscription:
+        this.subscription && !this.subscription.closed ? 1 : 0,
+    };
+  }
   async onModuleDestroy() {
     this.subscription?.unsubscribe();
     if (this.timer) clearInterval(this.timer);

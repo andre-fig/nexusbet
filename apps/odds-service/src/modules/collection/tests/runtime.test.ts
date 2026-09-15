@@ -14,7 +14,7 @@ const shell = existsSync("/opt/homebrew/bin/bash")
 const supportedShell =
   spawnSync(shell, ["-c", 'test "${BASH_VERSINFO[0]}" -ge 5']).status === 0;
 
-async function harness(crashDisplay = false) {
+async function harness(crashDisplay = false, browserRuntime = "local-cdp") {
   const dir = await mkdtemp(join(tmpdir(), "odds-runtime-"));
   const log = join(dir, "order");
   const executable = async (name: string, body: string) => {
@@ -56,6 +56,7 @@ console.log('APP_READY');
         ...process.env,
         PATH: dir + ":" + process.env.PATH,
         BROWSER_MODE: "headed",
+        BROWSER_RUNTIME: browserRuntime,
         RUNTIME_TEST_LOG: log,
       },
       stdio: ["ignore", "pipe", "pipe"],
@@ -118,9 +119,34 @@ test(
   },
 );
 
+test(
+  "disabled browser runtime does not start Xvfb and still drains the application",
+  { timeout: 10000, skip: !supportedShell },
+  async () => {
+    const run = await harness(false, "disabled");
+    try {
+      await run.ready;
+      run.child.kill("SIGTERM");
+      assert.equal((await run.exit)[0], 0);
+      const order = (await readFile(run.log, "utf8")).trim().split("\n");
+      assert.deepEqual(order, [
+        "app-start",
+        "draining",
+        "commit-and-browser-close",
+      ]);
+    } finally {
+      await run.cleanup();
+    }
+  },
+);
+
 test("production runtime rejects headless instead of silently falling back", async () => {
   const child = spawn(shell, [resolve("runtime/entrypoint.sh"), "true"], {
-    env: { ...process.env, BROWSER_MODE: "headless" },
+    env: {
+      ...process.env,
+      BROWSER_MODE: "headless",
+      BROWSER_RUNTIME: "local-cdp",
+    },
     stdio: "ignore",
   });
   assert.equal((await once(child, "exit"))[0], 64);

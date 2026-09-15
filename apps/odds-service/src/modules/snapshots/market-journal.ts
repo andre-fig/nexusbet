@@ -8,6 +8,10 @@ import type {
   MarketChange,
   OddsSnapshot,
 } from "../../shared/domain/market-model.js";
+import {
+  approximateBytes,
+  retainedDomainCounts,
+} from "../../shared/utils/memory-diagnostics.js";
 export function snapshots(matches: DetailedMatch[]): OddsSnapshot[] {
   return matches.flatMap((e) =>
     e.markets.flatMap((m) =>
@@ -114,6 +118,19 @@ export class MarketJournal {
     readonly directory: string,
     private readonly persistence?: PersistencePort,
   ) {}
+  memoryDiagnostics() {
+    const entries = [...this.latest.values()];
+    return {
+      scopes: this.latest.size,
+      snapshots: entries.reduce((n, entry) => n + entry.snapshots.length, 0),
+      changes: entries.reduce((n, entry) => n + entry.changes.length, 0),
+      retainedEntryBytes: entries.reduce(
+        (n, entry) => n + Math.max(0, approximateBytes(entry)),
+        0,
+      ),
+      ...retainedDomainCounts(entries.flatMap((entry) => entry.batch.matches)),
+    };
+  }
   async load() {
     if (this.persistence?.enabled) {
       for (const batch of await this.persistence.baselines())

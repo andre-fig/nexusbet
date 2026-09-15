@@ -31,6 +31,11 @@ export interface Settings {
   rawCaptureEnabled: boolean;
   rawCaptureRetentionHours: number;
   rawCaptureDir: string;
+  memoryDiagnosticsEnabled: boolean;
+  memoryDiagnosticsIntervalMs: number;
+  memoryDiagnosticsStartupDelayMs: number;
+  memoryDiagnosticsHeapSnapshots: boolean;
+  memoryDiagnosticsHeapSnapshotAfterMs: number;
   dataDir: string;
   inboxDir: string;
   detailInboxDir: string;
@@ -133,6 +138,27 @@ export function configuration() {
       process.env.DEBUG_CAPTURE_RAW === "1",
     rawCaptureRetentionHours: positive("RAW_CAPTURE_RETENTION_HOURS", 24),
     rawCaptureDir: resolve(process.env.RAW_CAPTURE_DIR || "evidence/raw"),
+    memoryDiagnosticsEnabled:
+      process.env.MEMORY_DIAGNOSTICS_ENABLED === "true" ||
+      process.env.MEMORY_DIAGNOSTICS_ENABLED === "1",
+    memoryDiagnosticsIntervalMs: positive(
+      "MEMORY_DIAGNOSTICS_INTERVAL_MS",
+      300000,
+      60000,
+    ),
+    memoryDiagnosticsStartupDelayMs: positive(
+      "MEMORY_DIAGNOSTICS_STARTUP_DELAY_MS",
+      30000,
+      0,
+    ),
+    memoryDiagnosticsHeapSnapshots:
+      process.env.MEMORY_DIAGNOSTICS_HEAP_SNAPSHOTS === "true" ||
+      process.env.MEMORY_DIAGNOSTICS_HEAP_SNAPSHOTS === "1",
+    memoryDiagnosticsHeapSnapshotAfterMs: positive(
+      "MEMORY_DIAGNOSTICS_HEAP_SNAPSHOT_AFTER_MS",
+      1800000,
+      300000,
+    ),
     dataDir: resolve(process.env.DATA_DIR || "data"),
     inboxDir: resolve(process.env.INBOX_DIR || "inbox"),
     detailInboxDir: resolve(process.env.DETAIL_INBOX_DIR || "detail-inbox"),

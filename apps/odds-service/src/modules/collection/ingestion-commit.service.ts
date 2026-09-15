@@ -65,4 +65,13 @@ export class IngestionCommitService {
     if (this.generations.get(run.provider) === run.id)
       this.generations.delete(run.provider);
   }
+
+  memoryDiagnostics() {
+    return {
+      maps: {
+        generations: this.generations.size,
+        tails: this.tails.size,
+      },
+    };
+  }
 }

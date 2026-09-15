@@ -18,6 +18,10 @@ import {
   StaleDataError,
   ProviderUnavailableError,
 } from "../../shared/errors/domain-errors.js";
+import {
+  combineDomainCounts,
+  retainedDomainCounts,
+} from "../../shared/utils/memory-diagnostics.js";
 @Injectable()
 export class SuperbetService implements ProviderRuntime {
   readonly name = "superbet" as const;
@@ -70,6 +74,23 @@ export class SuperbetService implements ProviderRuntime {
         at: v.at,
       })),
       authenticated: false,
+    };
+  }
+  memoryDiagnostics() {
+    const listings = retainedDomainCounts(
+        [...this.store.listings.values()].flatMap((value) => value.matches),
+      ),
+      details = retainedDomainCounts(this.store.details.values()),
+      journal = this.store.journal.memoryDiagnostics();
+    return {
+      ...combineDomainCounts([listings, details, journal]),
+      snapshots: journal.snapshots,
+      maps: {
+        listings: this.store.listings.size,
+        details: this.store.details.size,
+        journalScopes: journal.scopes,
+      },
+      structures: { listings, details, journal },
     };
   }
   readEvents(games: Esport[]) {

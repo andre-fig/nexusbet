@@ -21,6 +21,11 @@ import {
   StaleDataError,
   ProviderUnavailableError,
 } from "../../shared/errors/domain-errors.js";
+import {
+  approximateBytes,
+  combineDomainCounts,
+  retainedDomainCounts,
+} from "../../shared/utils/memory-diagnostics.js";
 @Injectable()
 export class Bet365Service implements ProviderRuntime {
   readonly name = "bet365" as const;
@@ -72,6 +77,36 @@ export class Bet365Service implements ProviderRuntime {
       provider: this.name,
       lastError: this.lastError,
       latest: this.store.state.latest,
+    };
+  }
+  memoryDiagnostics() {
+    const listings = retainedDomainCounts(this.store.state.matches),
+      details = retainedDomainCounts(
+        [...this.details.latest.values()].map((value) => value.match),
+      ),
+      detailParts = retainedDomainCounts(
+        [...this.details.latest.values()].flatMap((value) =>
+          value.parts.map((part) => part.match),
+        ),
+      ),
+      journal = this.details.journal.memoryDiagnostics();
+    return {
+      ...combineDomainCounts([listings, details, detailParts, journal]),
+      snapshots: journal.snapshots,
+      maps: {
+        provenance: Object.keys(this.store.state.provenance).length,
+        details: this.details.latest.size,
+        journalScopes: journal.scopes,
+      },
+      structures: {
+        listings,
+        details,
+        detailParts,
+        journal,
+        provenanceApproximateBytes: approximateBytes(
+          this.store.state.provenance,
+        ),
+      },
     };
   }
   legacyHealth() {

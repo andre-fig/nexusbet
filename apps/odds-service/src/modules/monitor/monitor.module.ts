@@ -5,9 +5,15 @@ import { MonitorRepository } from "../persistence/repositories/monitor.repositor
 import { MonitorService } from "./monitor.service.js";
 import { MonitorEventsService } from "./monitor-events.service.js";
 import { MonitorController } from "./monitor.controller.js";
+import { MemoryDiagnosticsService } from "./memory-diagnostics.service.js";
 @Module({
   imports: [PersistenceModule, CollectionModule],
-  providers: [MonitorRepository, MonitorService, MonitorEventsService],
+  providers: [
+    MonitorRepository,
+    MonitorService,
+    MonitorEventsService,
+    MemoryDiagnosticsService,
+  ],
   controllers: [MonitorController],
 })
 export class MonitorModule {}

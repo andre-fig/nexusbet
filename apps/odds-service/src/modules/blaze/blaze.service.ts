@@ -18,6 +18,10 @@ import {
   StaleDataError,
   ProviderUnavailableError,
 } from "../../shared/errors/domain-errors.js";
+import {
+  combineDomainCounts,
+  retainedDomainCounts,
+} from "../../shared/utils/memory-diagnostics.js";
 @Injectable()
 export class BlazeService implements ProviderRuntime {
   readonly name = "blaze" as const;
@@ -81,6 +85,23 @@ export class BlazeService implements ProviderRuntime {
           .map((e) => e.fetchedAt)
           .sort()
           .at(-1) ?? null,
+    };
+  }
+  memoryDiagnostics() {
+    const listings = retainedDomainCounts(
+        [...this.store.listings.values()].flatMap((value) => value.matches),
+      ),
+      details = retainedDomainCounts(this.store.details.values()),
+      journal = this.store.journal.memoryDiagnostics();
+    return {
+      ...combineDomainCounts([listings, details, journal]),
+      snapshots: journal.snapshots,
+      maps: {
+        listings: this.store.listings.size,
+        details: this.store.details.size,
+        journalScopes: journal.scopes,
+      },
+      structures: { listings, details, journal },
     };
   }
   readEvents(games: Esport[]) {

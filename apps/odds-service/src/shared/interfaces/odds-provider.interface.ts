@@ -1,6 +1,7 @@
 import type { NormalizedEvent, Provider } from "../domain/normalized-event.js";
 import type { ProviderEventRef } from "../domain/provider-event-ref.js";
 import type { Esport } from "../types/common.js";
+import type { ProviderMemoryDiagnostics } from "../utils/memory-diagnostics.js";
 export interface CollectOptions {
   signal?: AbortSignal;
   publications?: Array<() => Promise<void>>;
@@ -33,4 +34,5 @@ export interface ProviderRuntime extends OddsProvider {
     options: CollectOptions,
   ): ProviderEventRef | undefined;
   closeCollection(): Promise<void>;
+  memoryDiagnostics?(): ProviderMemoryDiagnostics;
 }

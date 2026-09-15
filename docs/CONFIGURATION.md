@@ -135,7 +135,9 @@ Light colorScheme, deviceScaleFactor=1 e serviceWorkers=allow ficam centralizado
 
 ## Runtime Linux/Xvfb
 
-`HOST` default local 127.0.0.1; imagem define 0.0.0.0. `DISPLAY` default :99 no entrypoint. O Xvfb usa as mesmas BROWSER_VIEWPORT_WIDTH/HEIGHT do Chrome, 24 bits, sem TCP. `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=90` e `RAILWAY_DEPLOYMENT_OVERLAP_SECONDS=0` são variáveis da plataforma. Volume `/service/data`; detalhes em [produção](PRODUCTION_RUNTIME.md).
+`HOST` default local 127.0.0.1; imagem define 0.0.0.0. `DISPLAY` default :99 no entrypoint. Com `BROWSER_RUNTIME=disabled`, o entrypoint não inicia Xvfb. Quando habilitado, o Xvfb usa as mesmas BROWSER_VIEWPORT_WIDTH/HEIGHT do Chrome, 24 bits, sem TCP. `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=90` e `RAILWAY_DEPLOYMENT_OVERLAP_SECONDS=0` são variáveis da plataforma. Volume `/service/data`; detalhes em [produção](PRODUCTION_RUNTIME.md).
+
+O diagnóstico temporário de memória é habilitado por `MEMORY_DIAGNOSTICS_ENABLED=true`; `MEMORY_DIAGNOSTICS_INTERVAL_MS` (default 300000) e `MEMORY_DIAGNOSTICS_STARTUP_DELAY_MS` (default 30000) controlam as amostras. Heap snapshots opcionais no volume usam `MEMORY_DIAGNOSTICS_HEAP_SNAPSHOTS=true` e `MEMORY_DIAGNOSTICS_HEAP_SNAPSHOT_AFTER_MS` (default 1800000). Mantenha desabilitado fora de uma investigação, pois snapshots pausam o processo e ocupam disco.
 
 ## Chrome compartilhado
 

@@ -388,6 +388,21 @@ export class AdaptiveScheduler {
       this.log({ event: "scheduler_stopped", activeJobs: this.jobs.size });
     }
   }
+  memoryDiagnostics() {
+    return {
+      maps: {
+        providers: this.providers.size,
+        details: this.details.size,
+        catalog: this.catalog.size,
+        catalogChanges: this.catalogChanges.size,
+        jobs: this.jobs.size,
+      },
+      catalogChanges: [...this.catalogChanges.values()].reduce(
+        (count, changes) => count + changes.length,
+        0,
+      ),
+    };
+  }
   health() {
     const now = this.now();
     const iso = (v: number | null) =>

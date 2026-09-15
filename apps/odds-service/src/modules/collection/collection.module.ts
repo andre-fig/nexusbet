@@ -48,6 +48,6 @@ import { IngestionCommitService } from "./ingestion-commit.service.js";
     CollectionService,
     SchedulerService,
   ],
-  exports: [ProviderRegistry, CollectionService],
+  exports: [ProviderRegistry, CollectionService, IngestionCommitService],
 })
 export class CollectionModule {}

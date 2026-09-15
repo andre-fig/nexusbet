@@ -331,4 +331,11 @@ export class CollectionService {
       this.registry.providers.map((p) => p.closeCollection()),
     );
   }
+  memoryDiagnostics() {
+    return {
+      sets: { active: this.active.size, loops: this.loops.size },
+      scheduler: this.scheduler.memoryDiagnostics(),
+      ingestion: this.ingestion.memoryDiagnostics(),
+    };
+  }
 }
