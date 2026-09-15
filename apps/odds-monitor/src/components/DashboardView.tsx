@@ -6,6 +6,7 @@ import { DataState, timestamp, panel, control } from "./DataState";
 import { OddsValue } from "./OddsValue";
 import {
   healthStatusColor,
+  ProviderStatus,
   providerStatusPresentation,
 } from "../lib/api/status";
 import {
@@ -251,7 +252,13 @@ export function DashboardView({
                     const status = !p.active
                       ? providerStatusPresentation(p)
                       : feed
-                        ? providerStatusPresentation(feed)
+                        ? providerStatusPresentation({
+                            ...feed,
+                            status:
+                              feed.matchWinner.status === ProviderStatus.Stale
+                                ? ProviderStatus.Stale
+                                : feed.status,
+                          })
                         : null;
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">
@@ -293,17 +300,6 @@ export function DashboardView({
                                       : undefined
                                   }
                                 />
-                                {feed?.matchWinner.status === "stale" &&
-                                  (side === "teamA"
-                                    ? feed.matchWinner.displayTeamA
-                                    : feed.matchWinner.displayTeamB) && (
-                                    <span
-                                      className="text-amber-600 dark:text-amber-400"
-                                      title="This market exceeded the freshness TTL. The last observed odd is shown for diagnosis and excluded from comparisons."
-                                    >
-                                      · stale
-                                    </span>
-                                  )}
                               </span>
                             );
                           })}
@@ -318,6 +314,11 @@ export function DashboardView({
                         )}
                         <div
                           className={`text-[10px] mt-1 ${status?.color ?? "text-on-surface-variant"}`}
+                          title={
+                            feed?.matchWinner.status === ProviderStatus.Stale
+                              ? "This market exceeded the freshness TTL. The last observed odds are shown for diagnosis and excluded from comparisons."
+                              : undefined
+                          }
                         >
                           {status?.label ?? "Not observed"}
                         </div>

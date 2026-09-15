@@ -52,12 +52,17 @@ test("detail shows stale retained odds, incomplete market and missing provider m
   assert.match(html, /other markets can still be compared/);
 });
 
-test("dashboard marks stale odds and Needs attention identifies the stale market", () => {
+test("dashboard shows one stale label below odds even when the provider is healthy", () => {
   const row = structuredClone(fixture.events.items[0]);
+  row.providers[0].status = "healthy";
   row.providers[0].matchWinner.status = "stale";
+  const overview = structuredClone(fixture.overview);
+  overview.providers.find(
+    (p: { id: string }) => p.id === row.providers[0].provider,
+  ).status = "healthy";
   const dashboard = renderToStaticMarkup(
     <DashboardView
-      overview={resource(fixture.overview) as never}
+      overview={resource(overview) as never}
       events={
         resource({
           items: [row],
@@ -79,7 +84,10 @@ test("dashboard marks stale odds and Needs attention identifies the stale market
       onOpenEventDetail={() => {}}
     />,
   );
-  assert.match(dashboard, /1,53.*· stale/);
+  assert.match(dashboard, /1,53/);
+  assert.match(dashboard, /2,30/);
+  assert.doesNotMatch(dashboard, /· stale/);
+  assert.equal(dashboard.match(/>Stale</g)?.length, 1);
   assert.match(dashboard, /excluded from comparisons/);
   const issue = {
     ...fixture.issues.items[0],
