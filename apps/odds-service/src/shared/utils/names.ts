@@ -8,21 +8,8 @@ export function cleanName(value: string): string {
     .trim()
     .replace(/\s+/g, " ");
 }
-// Explicit, sport-scoped equivalences observed in the provider feeds. No edit-distance matching.
-export const teamAliases: Record<string, Record<string, string>> = {
-  lol: {
-    "movistar koi": "koi",
-    "vivo keyd stars": "keyd stars",
-  },
-  cs2: { navi: "natus vincere" },
-  valorant: {},
-};
-export function teamName(value: string, esport: Esport): string {
-  const n = cleanName(value)
-    .replace(/\besports\b/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-  return teamAliases[esport]?.[n] ?? n;
+export function teamName(value: string, _esport: Esport): string {
+  return cleanName(value);
 }
 // Competition equivalences are reviewed entries, not automatic stripping of season/phase.
 export const tournamentAliases: Record<string, Record<string, string>> = {

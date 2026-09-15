@@ -38,7 +38,7 @@ test("real fixtures match three providers, two providers, one provider, and dive
   ]);
   assert.equal(red.confidence, 1);
   assert.equal(red.providers.superbet.rawTeamB, "Vivo Keyd Stars");
-  assert.equal(red.providers.superbet.normalizedTeamB, "keyd stars");
+  assert.equal(red.providers.superbet.normalizedTeamB, "vivo keyd stars");
   assert.ok(result.matched.some((m) => Object.keys(m.providers).length === 2));
   assert.ok(result.unmatched.some((m) => m.provider === "superbet"));
   assert.ok(compareAllProviders([...a, ...c]).matched.length);

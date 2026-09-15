@@ -1,8 +1,8 @@
-import { teamName } from "../../../shared/utils/names.js";
 import { Injectable, Inject } from "@nestjs/common";
 import type { Prisma } from "../../../generated/prisma/client.js";
 import type { NormalizedEvent } from "../../../shared/domain/normalized-event.js";
 import { compareAllProviders } from "../../matching/matching.js";
+import { canonicalTeamName } from "../../matching/team-aliases.js";
 import { DataIssuesRepository } from "./issues.repository.js";
 @Injectable()
 export class MatchingRepository {
@@ -67,7 +67,9 @@ export class MatchingRepository {
       );
       const c = group.canonicalEvent;
       const sameTeams = (a: string, b: string) =>
-        [teamName(a, c.esport), teamName(b, c.esport)].sort().join("\0");
+        [canonicalTeamName(a, c.esport), canonicalTeamName(b, c.esport)]
+          .sort()
+          .join("\0");
       const historicalId = (r: (typeof members)[number]) => {
         const h = r.decisions[0]?.canonicalEvent;
         return h &&

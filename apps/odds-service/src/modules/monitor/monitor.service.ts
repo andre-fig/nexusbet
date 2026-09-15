@@ -7,7 +7,7 @@ import {
 import { AppConfiguration } from "../../config/configuration.js";
 import { sanitize } from "../persistence/sanitize.js";
 import { ServiceError } from "../../shared/errors/domain-errors.js";
-import { teamName } from "../../shared/utils/names.js";
+import { canonicalTeamName } from "../matching/team-aliases.js";
 import {
   validate,
   uuid,
@@ -124,8 +124,8 @@ export class MonitorService {
     const odd = (name: string) =>
       winner?.selections.find(
         (s) =>
-          teamName(s.name, g.esport as "cs2" | "lol" | "valorant") ===
-          teamName(name, g.esport as "cs2" | "lol" | "valorant"),
+          canonicalTeamName(s.name, g.esport as "cs2" | "lol" | "valorant") ===
+          canonicalTeamName(name, g.esport as "cs2" | "lol" | "valorant"),
       )?.odds ?? null;
     return {
       id: p.id,

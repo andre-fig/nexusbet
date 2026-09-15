@@ -1,5 +1,6 @@
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
-import { teamName, tournamentName } from "../../shared/utils/names.js";
+import { tournamentName } from "../../shared/utils/names.js";
+import { canonicalTeamName } from "./team-aliases.js";
 /** Compatibility entry point; all matching uses provider-scoped identities. */
 export function compareProviders(a: NormalizedEvent[], b: NormalizedEvent[]) {
   return compareAllProviders(
@@ -11,7 +12,10 @@ export type EligibleProviders = Readonly<
   Partial<Record<NormalizedEvent["esport"], readonly string[]>>
 >;
 function pair(e: NormalizedEvent) {
-  return [teamName(e.teamA, e.esport), teamName(e.teamB, e.esport)]
+  return [
+    canonicalTeamName(e.teamA, e.esport),
+    canonicalTeamName(e.teamB, e.esport),
+  ]
     .sort()
     .join("|");
 }
@@ -130,9 +134,11 @@ function comparison(group: NormalizedEvent[]) {
           selectionId: s.selectionId,
           name: s.name,
           canonicalSide:
-            teamName(s.name, x.esport) === teamName(e.teamA, e.esport)
+            canonicalTeamName(s.name, x.esport) ===
+            canonicalTeamName(e.teamA, e.esport)
               ? "teamA"
-              : teamName(s.name, x.esport) === teamName(e.teamB, e.esport)
+              : canonicalTeamName(s.name, x.esport) ===
+                  canonicalTeamName(e.teamB, e.esport)
                 ? "teamB"
                 : null,
           odds: s.odds,
@@ -144,8 +150,8 @@ function comparison(group: NormalizedEvent[]) {
     canonicalEvent: {
       esport: e.esport,
       tournament: tournamentName(e.tournament, e.esport),
-      teamA: e.normalizedTeamA,
-      teamB: e.normalizedTeamB,
+      teamA: canonicalTeamName(e.teamA, e.esport),
+      teamB: canonicalTeamName(e.teamB, e.esport),
       startsAt: e.startsAt,
     },
     confidence: sameCompetitionAlias ? 1 : 0.9,
@@ -160,7 +166,11 @@ function comparison(group: NormalizedEvent[]) {
     providers: Object.fromEntries(
       group.map((x) => [
         x.provider,
-        prices(x, teamName(e.teamA, e.esport) !== teamName(x.teamA, x.esport)),
+        prices(
+          x,
+          canonicalTeamName(e.teamA, e.esport) !==
+            canonicalTeamName(x.teamA, x.esport),
+        ),
       ]),
     ),
   };

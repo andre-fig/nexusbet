@@ -10,11 +10,11 @@ A identidade SQL CanonicalEvent é separada. Sua ligação atual é `event_match
 
 ## Normalização auditável
 
-A função de limpeza aplica NFKD, remove marcas de acentuação, converte para minúsculas, substitui pontuação por espaços e compacta espaços. Nomes de times removem a palavra `esports`. Nomes originais não são perdidos.
+A função de limpeza aplica NFKD, remove marcas de acentuação, converte para minúsculas, substitui pontuação por espaços e compacta espaços. Nomes originais não são perdidos.
 
-Aliases de times são explícitos e por esporte: CS2 `navi` → `natus vincere`; LoL `vivo keyd stars` → `keyd stars` e `movistar koi` → `koi`. Não há distância de edição ou fuzzy matching agressivo. Remover `esports` é uma regra já existente; preserve testes de colisão ao ampliá-la.
+Aliases de times são aplicados somente na camada de matching, de forma explícita e por esporte: CS2 inclui `navi` → `natus vincere`, `nrg esports` → `nrg` e `team brute` → `brute`; LoL inclui `vivo keyd stars` → `keyd stars` e `movistar koi` → `koi`; Valorant inclui `t1 esports` → `t1`. Os campos raw e normalized de cada provider continuam preservando seus valores próprios; o alias define apenas a identidade canônica usada na comparação. Não há remoção genérica de `team`, `esports` ou `gaming`, distância de edição ou fuzzy matching agressivo. Preserve testes de colisão ao adicionar aliases.
 
-Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. A tabela executável está em shared/utils/names.ts; adicionar alias requer evidência de equivalência e teste negativo de times/competições parecidos.
+Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. As tabelas executáveis ficam em `modules/matching/team-aliases.ts` para equipes e `shared/utils/names.ts` para torneios; adicionar alias requer evidência de equivalência e teste negativo de nomes parecidos.
 
 ## Regras exatas
 
