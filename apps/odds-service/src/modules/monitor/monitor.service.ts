@@ -53,7 +53,11 @@ export class MonitorService {
   }
   async expectedProviders() {
     const active = (await this.providers())
-      .filter((provider) => provider.active)
+      .filter(
+        (provider) =>
+          provider.active &&
+          !(provider.status === "degraded" && provider.eventCount === 0),
+      )
       .map((provider) => provider.id);
     return Object.fromEntries(
       this.config.settings.esports.map((esport) => [esport, [...active]]),

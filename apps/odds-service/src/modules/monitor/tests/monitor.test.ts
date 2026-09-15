@@ -9,10 +9,49 @@ import { MonitorEventsService } from "../monitor-events.service.js";
 import { MonitorRepository } from "../../persistence/repositories/monitor.repository.js";
 import { PersistenceNotifications } from "../../persistence/persistence-notifications.js";
 import { AppConfiguration } from "../../../config/configuration.js";
+import { CollectionService } from "../../collection/collection.service.js";
 import { configureHttp } from "../../../bootstrap.js";
 import { validate, date, uuid } from "../dto/monitor.dto.js";
 const id = "7a62b705-3498-4e51-8364-37ea25cda527";
 const at = "2026-09-15T00:00:00.000Z";
+test("degraded provider with no listed events is excluded from matching coverage", async () => {
+  const providers = [
+    { id: "superbet", enabled: true, eventCount: 1, lastUpdatedAt: new Date() },
+    { id: "blaze", enabled: true, eventCount: 1, lastUpdatedAt: new Date() },
+    { id: "estrelabet", enabled: true, eventCount: 0, lastUpdatedAt: null },
+  ];
+  const repo = { providers: async () => providers } as MonitorRepository;
+  let degraded = true;
+  const collection = {
+    operationalHealth: () => ({
+      providers: {
+        estrelabet: { status: degraded ? "degraded" : "ok" },
+      },
+    }),
+    providerRuntime: () => ({
+      active: true,
+      status: "active",
+      reason: "active",
+    }),
+  } as unknown as CollectionService;
+  const monitor = new MonitorService(
+    repo,
+    { settings: { ttlMs: 600000, esports: ["cs2"] } } as AppConfiguration,
+    collection,
+  );
+  assert.deepEqual(await monitor.expectedProviders(), {
+    cs2: ["superbet", "blaze"],
+  });
+  degraded = false;
+  assert.deepEqual(await monitor.expectedProviders(), {
+    cs2: ["superbet", "blaze", "estrelabet"],
+  });
+  degraded = true;
+  providers[2].eventCount = 1;
+  assert.deepEqual(await monitor.expectedProviders(), {
+    cs2: ["superbet", "blaze", "estrelabet"],
+  });
+});
 function setup() {
   let state: Awaited<ReturnType<MonitorRepository["state"]>> = {
     events: [],
