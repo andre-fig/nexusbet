@@ -88,15 +88,16 @@ type Candidate = {
 };
 const round = (value: number) => Math.round(value * 100) / 100;
 const percent = (value: number) =>
-  value.toLocaleString("pt-BR", {
+  value.toLocaleString("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
 const money = (value: number) =>
-  value.toLocaleString("pt-BR", {
+  value.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+const tooltipOdds = (value: number) => value.toFixed(2);
 const providerName = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 function median(values: number[]) {
@@ -220,7 +221,7 @@ export function analyzeMarkets(input: {
         displayOdds: displayOdds(best.odds)!,
         nextBestOdds,
         displayNextBestOdds: displayOdds(nextBestOdds),
-        tooltip: `Best price: ${providerName(best.provider)} oferece ${displayOdds(best.odds)} para ${best.selection}; a próxima melhor é ${displayOdds(nextBestOdds)}. Maior odd disponível entre providers válidos.`,
+        tooltip: `Best price available for this selection across eligible providers. Best price: ${tooltipOdds(best.odds)} at ${providerName(best.provider)} for ${best.selection}. Next best: ${tooltipOdds(nextBestOdds)}.`,
       });
       if (candidates.length < 3) continue;
       const medianOdds = median(candidates.map((candidate) => candidate.odds));
@@ -233,7 +234,7 @@ export function analyzeMarkets(input: {
           medianOdds,
           displayMedianOdds: displayOdds(medianOdds)!,
           deviationPercent: round(deviation),
-          tooltip: `${providerName(candidate.provider)} oferece ${displayOdds(candidate.odds)}. Mediana dos providers: ${displayOdds(medianOdds)}. Diferença: ${deviation >= 0 ? "+" : ""}${percent(deviation)}%. Esta odd diverge das demais; não indica erro do provider.`,
+          tooltip: `This price deviates significantly from the median across providers. Outlier: ${tooltipOdds(candidate.odds)} at ${providerName(candidate.provider)} vs provider median ${tooltipOdds(medianOdds)} (${deviation >= 0 ? "+" : ""}${percent(deviation)}%). This signals divergence, not an error.`,
         });
       }
     }
@@ -254,11 +255,11 @@ export function analyzeMarkets(input: {
         exists: true,
         inverseSum,
         marginPercent,
-        displayMarginPercent: `${money(marginPercent)}%`,
+        displayMarginPercent: `${marginPercent.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`,
         stakeReference,
         expectedReturn: round(expectedReturn),
         legs,
-        tooltip: `${bestA.selection} @ ${displayOdds(bestA.odds)} na ${providerName(bestA.provider)} + ${bestB.selection} @ ${displayOdds(bestB.odds)} na ${providerName(bestB.provider)} formam arbitragem teórica de ${money(marginPercent)}%. Para R$100: R$${money(stakeA)} em ${bestA.selection}; R$${money(stakeB)} em ${bestB.selection}; retorno teórico ~R$${money(expectedReturn)}. Risco operacional ainda existe: mudança de odds, limites, void ou regras diferentes.`,
+        tooltip: `This price is part of an arbitrage opportunity across providers. ${bestA.selection} @ ${tooltipOdds(bestA.odds)} at ${providerName(bestA.provider)} + ${bestB.selection} @ ${tooltipOdds(bestB.odds)} at ${providerName(bestB.provider)}. Estimated theoretical edge +${money(marginPercent)}%. For R$100: R$${money(stakeA)} on ${bestA.selection}; R$${money(stakeB)} on ${bestB.selection}; estimated theoretical return ~R$${money(expectedReturn)}. Operational risks remain: odds changes, limits, voids or differing rules.`,
       };
     }
     results.push({

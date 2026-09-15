@@ -1,47 +1,44 @@
 import React, { useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { odd } from "./DataState";
 
 type Kind = "best_price" | "outlier" | "arbitrage";
-const appearance: Record<
-  Kind,
-  { label: string; icon: string; className: string }
-> = {
-  best_price: {
-    label: "BEST PRICE",
-    icon: "★",
-    className: "text-analytics-best bg-analytics-best-bg",
-  },
-  outlier: {
-    label: "OUTLIER",
-    icon: "!",
-    className: "text-analytics-outlier bg-analytics-outlier-bg",
-  },
-  arbitrage: {
-    label: "ARBITRAGE",
-    icon: "↔",
-    className: "text-status-healthy bg-analytics-arbitrage-bg",
-  },
+const appearance: Record<Kind, { label: string; className: string }> = {
+  best_price: { label: "Best price", className: "text-analytics-best" },
+  outlier: { label: "Outlier", className: "text-analytics-outlier" },
+  arbitrage: { label: "Arbitrage", className: "text-analytics-arbitrage" },
 };
 
-export function AnalyticsBadge({
-  kind,
-  tooltip,
-  label,
+export function OddsValue({
+  value,
+  bestPrice,
+  outlier,
+  arbitrage,
 }: {
-  kind: Kind;
-  tooltip: string;
-  label?: string;
+  value: string | null | undefined;
+  bestPrice?: string;
+  outlier?: string;
+  arbitrage?: string;
 }) {
-  const button = useRef<HTMLButtonElement>(null);
+  const number = useRef<HTMLButtonElement>(null);
   const id = useId();
   const [position, setPosition] = useState<{
     top: number;
     left: number;
     above: boolean;
   } | null>(null);
+  const kind: Kind | null = arbitrage
+    ? "arbitrage"
+    : outlier
+      ? "outlier"
+      : bestPrice
+        ? "best_price"
+        : null;
+  const tooltip = arbitrage ?? outlier ?? bestPrice;
+  if (!value || !kind || !tooltip) return <span>{odd(value)}</span>;
   const visual = appearance[kind];
   const show = () => {
-    const rect = button.current?.getBoundingClientRect();
+    const rect = number.current?.getBoundingClientRect();
     if (!rect) return;
     const above = rect.bottom > window.innerHeight - 170;
     setPosition({
@@ -53,18 +50,18 @@ export function AnalyticsBadge({
   return (
     <>
       <button
-        ref={button}
+        ref={number}
         type="button"
-        aria-label={visual.label}
+        aria-label={`Odds ${value}, ${visual.label}`}
         aria-describedby={position ? id : undefined}
         title={tooltip}
         onMouseEnter={show}
         onMouseLeave={() => setPosition(null)}
         onFocus={show}
         onBlur={() => setPosition(null)}
-        className={`inline-flex items-center justify-center rounded px-1.5 py-0.5 text-[10px] font-semibold leading-none cursor-help focus:outline focus:outline-2 focus:outline-offset-2 ${visual.className}`}
+        className={`font-mono font-semibold cursor-help focus:outline focus:outline-2 focus:outline-offset-2 rounded-sm ${visual.className}`}
       >
-        {label ?? visual.icon}
+        {value}
       </button>
       {position &&
         typeof document !== "undefined" &&

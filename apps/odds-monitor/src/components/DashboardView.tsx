@@ -2,8 +2,8 @@ import React from "react";
 import { Search, ArrowRight, AlertTriangle } from "lucide-react";
 import type { Overview, EventPage, Filters } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
-import { DataState, timestamp, odd, panel, control } from "./DataState";
-import { AnalyticsBadge } from "./AnalyticsBadge";
+import { DataState, timestamp, panel, control } from "./DataState";
+import { OddsValue } from "./OddsValue";
 import {
   healthStatusColor,
   providerStatusPresentation,
@@ -238,19 +238,6 @@ export function DashboardView({
                         ? "Single provider"
                         : e.matching.status}
                     </span>
-                    {e.analytics?.find((market) => market.arbitrage?.exists)
-                      ?.arbitrage && (
-                      <span className="ml-1">
-                        <AnalyticsBadge
-                          kind="arbitrage"
-                          tooltip={
-                            e.analytics.find(
-                              (market) => market.arbitrage?.exists,
-                            )!.arbitrage!.tooltip
-                          }
-                        />
-                      </span>
-                    )}
                     <div className="text-on-surface-variant mt-2">
                       {e.matching.providerCount}/
                       {e.matching.expectedProviderCount} providers
@@ -288,11 +275,24 @@ export function DashboardView({
                                     /
                                   </span>
                                 )}
-                                {odd(
-                                  side === "teamA"
-                                    ? feed?.matchWinner.displayTeamA
-                                    : feed?.matchWinner.displayTeamB,
-                                )}
+                                <OddsValue
+                                  value={
+                                    side === "teamA"
+                                      ? feed?.matchWinner.displayTeamA
+                                      : feed?.matchWinner.displayTeamB
+                                  }
+                                  bestPrice={best?.tooltip}
+                                  outlier={outlier?.tooltip}
+                                  arbitrage={
+                                    winner?.arbitrage?.legs.some(
+                                      (leg) =>
+                                        leg.side === side &&
+                                        leg.provider === p.id,
+                                    )
+                                      ? winner.arbitrage.tooltip
+                                      : undefined
+                                  }
+                                />
                                 {feed?.matchWinner.status === "stale" &&
                                   (side === "teamA"
                                     ? feed.matchWinner.displayTeamA
@@ -304,18 +304,6 @@ export function DashboardView({
                                       · stale
                                     </span>
                                   )}
-                                {best && (
-                                  <AnalyticsBadge
-                                    kind="best_price"
-                                    tooltip={best.tooltip}
-                                  />
-                                )}
-                                {outlier && (
-                                  <AnalyticsBadge
-                                    kind="outlier"
-                                    tooltip={outlier.tooltip}
-                                  />
-                                )}
                               </span>
                             );
                           })}

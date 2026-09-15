@@ -8,7 +8,7 @@ import { ArrowLeft, RefreshCw, Code2 } from "lucide-react";
 import type { Detail, History } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
 import { DataState, timestamp, odd, panel, control } from "./DataState";
-import { AnalyticsBadge } from "./AnalyticsBadge";
+import { OddsValue } from "./OddsValue";
 interface Props {
   detail: Resource<Detail>;
   history: Resource<History>;
@@ -190,9 +190,6 @@ export function EventDetailView({
                         : m.category === "map_winner" && m.mapNumber === map,
                     );
                     if (!markets.length) return [];
-                    const arbitrage = markets.find(
-                      (m) => m.analytics?.arbitrage?.exists,
-                    )?.analytics?.arbitrage;
                     return [
                       <tr
                         key={String(map)}
@@ -200,15 +197,6 @@ export function EventDetailView({
                       >
                         <td className="p-3 font-semibold">
                           {map === null ? "Match winner" : `Map ${map} winner`}
-                          {arbitrage && (
-                            <span className="ml-2 inline-flex">
-                              <AnalyticsBadge
-                                kind="arbitrage"
-                                label={`Arbitrage +${arbitrage.displayMarginPercent}`}
-                                tooltip={arbitrage.tooltip}
-                              />
-                            </span>
-                          )}
                         </td>
                         {event.providers.map((p) => {
                           const providerMarkets = markets.filter(
@@ -249,19 +237,19 @@ export function EventDetailView({
                                                 : undefined
                                           }
                                         >
-                                          {odd(s.displayOdds)}
-                                          {best && (
-                                            <AnalyticsBadge
-                                              kind="best_price"
-                                              tooltip={best.tooltip}
-                                            />
-                                          )}
-                                          {outlier && (
-                                            <AnalyticsBadge
-                                              kind="outlier"
-                                              tooltip={outlier.tooltip}
-                                            />
-                                          )}
+                                          <OddsValue
+                                            value={s.displayOdds}
+                                            bestPrice={best?.tooltip}
+                                            outlier={outlier?.tooltip}
+                                            arbitrage={
+                                              m.analytics?.arbitrage?.legs.some(
+                                                (leg) =>
+                                                  leg.selectionId === s.id,
+                                              )
+                                                ? m.analytics.arbitrage.tooltip
+                                                : undefined
+                                            }
+                                          />
                                           {s.status && s.status !== "healthy"
                                             ? ` · ${s.status}`
                                             : ""}

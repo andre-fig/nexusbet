@@ -1063,12 +1063,20 @@ test("Monitor API compares only current matched provider markets and leaves odds
   assert.equal(page.items[0].analytics.length, 1);
   const analysis = page.items[0].analytics[0];
   assert.equal(analysis.bestPrices[0].provider, "superbet");
+  assert.match(
+    analysis.bestPrices[0].tooltip,
+    /Best price available for this selection/,
+  );
   assert.equal(analysis.bestPrices[1].provider, "blaze");
   assert.deepEqual(
     analysis.outliers.map((x) => x.provider),
     ["estrelabet"],
   );
   assert.equal(analysis.arbitrage?.marginPercent, 7.44);
+  assert.match(
+    analysis.arbitrage?.tooltip ?? "",
+    /Estimated theoretical edge \+7\.44%/,
+  );
   assert.equal(analysis.arbitrage?.displayMarginPercent, "7,44%");
   const detail = await monitor.detail(page.items[0].id);
   assert.equal(detail.markets.filter((m) => m.analytics !== null).length, 3);

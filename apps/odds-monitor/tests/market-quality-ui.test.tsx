@@ -43,7 +43,7 @@ test("detail shows stale retained odds, incomplete market and missing provider m
       onSyncEvent={() => {}}
     />,
   );
-  assert.match(html, /1,53 · stale/);
+  assert.match(html, /1,53<\/span> · stale/);
   assert.match(html, /Last observed .*excluded from comparisons/);
   assert.match(html, /Incomplete market/);
   assert.match(html, /fewer than two valid selections/);

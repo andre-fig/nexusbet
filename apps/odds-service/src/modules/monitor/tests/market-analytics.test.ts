@@ -74,6 +74,8 @@ test("best price chooses the highest valid odd and breaks ties by provider name"
   assert.equal(result.bestPrices[0].odds, 1.8);
   assert.equal(result.bestPrices[0].displayOdds, "1,80");
   assert.equal(result.bestPrices[0].nextBestOdds, 1.75);
+  assert.match(result.bestPrices[0].tooltip, /Best price: 1\.80/);
+  assert.match(result.bestPrices[0].tooltip, /Next best: 1\.75/);
   const [tie] = analyze([
     provider("betano", 1.8, 1.9),
     provider("blaze", 1.8, 1.9),
@@ -109,8 +111,8 @@ test("outlier uses the median and the configurable threshold without blaming pro
   assert.equal(result.outliers[0].provider, "blaze");
   assert.equal(result.outliers[0].medianOdds, 1.71);
   assert.equal(result.outliers[0].deviationPercent, 19.88);
-  assert.match(result.outliers[0].tooltip, /Mediana dos providers: 1,71/);
-  assert.doesNotMatch(result.outliers[0].tooltip, /errad[ao]/i);
+  assert.match(result.outliers[0].tooltip, /provider median 1\.71/);
+  assert.doesNotMatch(result.outliers[0].tooltip, /wrong/i);
   assert.equal(
     analyze(providers, { outlierThresholdPercent: 25 })[0].outliers.length,
     0,
@@ -134,8 +136,9 @@ test("arbitrage computes inverse sum, stake split and equal theoretical returns"
       0.03,
   );
   assert.equal(arb.expectedReturn, 107.44);
-  assert.match(arb.tooltip, /Para R\$100/);
-  assert.match(arb.tooltip, /Risco operacional ainda existe/);
+  assert.match(arb.tooltip, /Estimated theoretical edge \+7\.44%/);
+  assert.match(arb.tooltip, /For R\$100/);
+  assert.match(arb.tooltip, /Operational risks remain/);
 });
 
 test("no arbitrage is reported when the best inverse sum is at least one", () => {
