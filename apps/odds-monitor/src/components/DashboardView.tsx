@@ -20,6 +20,7 @@ export function DashboardView({
   onOpenEventDetail,
 }: Props) {
   const providers = overview.data?.providers ?? [],
+    tableProviders = providers.filter((provider) => provider.eventCount > 0),
     health = overview.data?.health,
     pagination = events.data?.pagination;
   const providerStatus = (provider: (typeof providers)[number]) => {
@@ -183,7 +184,7 @@ export function DashboardView({
                   "Event / tournament",
                   "Start",
                   "Matching",
-                  ...providers.map((p) => p.name),
+                  ...tableProviders.map((p) => p.name),
                   "Issues",
                   "",
                 ].map((h, i) => (
@@ -231,7 +232,7 @@ export function DashboardView({
                       {e.matching.expectedProviderCount} providers
                     </div>
                   </td>
-                  {providers.map((p) => {
+                  {tableProviders.map((p) => {
                     const feed = e.providers.find((f) => f.provider === p.id);
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">

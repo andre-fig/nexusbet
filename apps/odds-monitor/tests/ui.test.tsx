@@ -66,6 +66,53 @@ test("not-applicable matching is rendered as neutral single-provider coverage", 
   assert.match(html, /Only one eligible provider is currently available\./);
   assert.doesNotMatch(html, />UNMATCHED<\/span/i);
 });
+test("event table omits provider columns with zero events", () => {
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <DashboardView
+      overview={resource(fixture.overview) as never}
+      events={resource(fixture.events) as never}
+      filters={{
+        search: "",
+        esport: "",
+        status: "",
+        start: "",
+        provider: "",
+        attentionOnly: "false",
+        page: "1",
+        limit: "50",
+      }}
+      onFilter={() => {}}
+      onOpenIssuesDrawer={() => {}}
+      onOpenEventDetail={() => {}}
+    />,
+  );
+  const dom = new JSDOM(html);
+  const headings = [...dom.window.document.querySelectorAll("table th")].map(
+    (heading) => heading.textContent,
+  );
+  assert.deepEqual(headings, [
+    "Event / tournament",
+    "Start",
+    "Matching",
+    "Bet365",
+    "Betano",
+    "EstrelaBet",
+    "Issues",
+    "",
+  ]);
+  for (const row of dom.window.document.querySelectorAll("table tbody tr"))
+    assert.equal(row.querySelectorAll("td").length, headings.length);
+  const cards = dom.window.document.querySelector(".grid")?.textContent;
+  assert.match(cards ?? "", /Blaze/);
+  assert.match(cards ?? "", /Superbet/);
+  dom.window.close();
+});
 test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filtering and manual refresh", async () => {
   const dom = new JSDOM("<html><body></body></html>", {
     url: "http://localhost:3000",
