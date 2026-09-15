@@ -175,6 +175,80 @@ test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scope
     0,
   );
 });
+test("Just players vs Natus Vincere Juniors matches the singular Junior team only", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-19T09:00:00.000Z";
+  const event = (
+    provider: "bet365" | "blaze",
+    eventId: string,
+    teamA: string,
+    teamB: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    startsAt,
+  });
+  const left = event(
+    "bet365",
+    "just-players-natus-vincere-juniors",
+    "Just players",
+    "Natus Vincere Juniors",
+  );
+  const right = event(
+    "blaze",
+    "just-players-natus-vincere-junior",
+    "just players",
+    "natus vincere junior",
+  );
+  assert.equal(
+    canonicalTeamName("Natus Vincere Juniors", "cs2"),
+    "natus vincere junior",
+  );
+  assert.equal(
+    canonicalTeamName("Natus Vincere Junior", "cs2"),
+    "natus vincere junior",
+  );
+  assert.equal(canonicalTeamName("Natus Vincere", "cs2"), "natus vincere");
+  assert.equal(
+    canonicalTeamName("Natus Juniors Academy", "cs2"),
+    "natus juniors academy",
+  );
+  const result = compareAllProviders([left, right]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "just players");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "natus vincere junior");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(
+    result.matched[0].providers.bet365.rawTeamB,
+    "Natus Vincere Juniors",
+  );
+  assert.equal(
+    result.matched[0].providers.blaze.rawTeamB,
+    "natus vincere junior",
+  );
+  assert.equal(
+    compareAllProviders([
+      left,
+      event("blaze", "just-players-main-navi", "just players", "Natus Vincere"),
+    ]).matched.length,
+    0,
+  );
+});
 
 test("ex-RUSTEC vs Nexus Gaming matches ex-RUSTEC vs Nexus without a Nexus alias", async () => {
   const raw = JSON.parse(

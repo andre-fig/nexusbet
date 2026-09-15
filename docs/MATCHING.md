@@ -20,6 +20,8 @@ O alias específico de CS2 `wraith pcific` → `pcific` une `Wraith Pcific` com 
 
 O alias específico de LoL `mibr los` → `los` une `MIBR LOS` com `LOS`. `MIBR` permanece em outros nomes e esports.
 
+Na chave de matching, o token final `juniors` vira `junior`: `Natus Vincere Juniors` e `Natus Vincere Junior` equivalem, mas ambos continuam distintos de `Natus Vincere`. O token não muda quando aparece no meio do nome, e os nomes raw permanecem intactos.
+
 ## Regras exatas
 
 `compareAllProviders(events)` exige:

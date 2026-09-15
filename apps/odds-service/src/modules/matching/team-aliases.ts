@@ -29,7 +29,7 @@ export function canonicalTeamName(value: string, esport: Esport): string {
   const normalized = teamName(
     femaleMarker ? value.replace(/\s*\(f\)\s*$/i, "") : value,
     esport,
-  );
+  ).replace(/\bjuniors$/, "junior");
   const withoutPrefix = normalized.replace(/^team /, "");
   // Punctuation is already normalized, so "e-sports" becomes "e sports".
   const key = withoutPrefix
