@@ -1,5 +1,7 @@
 # Server e collector-agent
 
+> Transição em andamento: [`apps/odds-collector-extension`](../apps/odds-collector-extension/README.md) é um projeto separado do monitor que captura, normaliza e agenda os cinco providers no Chrome, com entrega HTTPS ao mesmo server. O agent abaixo continua como único escritor até a extensão instalada provar captura real e entrega. O supervisor Windows já prepara o bundle da main em uma pasta fixa, mas a recarga no Chrome ainda precisa de validação.
+
 O mesmo `apps/odds-service` produz dois entrypoints. **Todos os cinco coletores rodam no PC dedicado. Railway recebe exclusivamente HTTPS.** Não existe conexão do agent ao PostgreSQL.
 
 | Processo | Entrada | Responsabilidades |

@@ -15,3 +15,8 @@ fi
 
 echo "[pre-push] odds-monitor build + tests"
 (cd "$root/apps/odds-monitor" && npm run build && npm test && npm run test:container)
+
+if [ -d "$root/apps/odds-collector-extension" ]; then
+  echo "[pre-push] odds-collector-extension build + tests"
+  (cd "$root/apps/odds-collector-extension" && npm run build && npm test)
+fi

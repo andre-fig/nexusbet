@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <meta charset="utf-8" />
+  <style>
+    body { font: 13px system-ui, sans-serif; min-width: 280px; margin: 14px; }
+    h1 { font-size: 16px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: 5px 3px; border-bottom: 1px solid #ddd; }
+    td:last-child { text-align: right; }
+  </style>
+  <body>
+    <h1>NexusBet Collector</h1>
+    <p id="status">Configuração pendente</p>
+    <button id="toggle" type="button" disabled>Ativar coleta</button>
+    <button id="preview-button" type="button">Testar sem enviar</button>
+    <button id="preview-bet365" type="button">Testar Bet365</button>
+    <p id="pending"></p>
+    <small id="version"></small>
+    <table>
+      <thead><tr><th>Provider</th><th>Eventos</th><th>Última coleta</th><th>Estado</th></tr></thead>
+      <tbody id="providers"></tbody>
+    </table>
+    <pre id="preview"></pre>
+    <script src="popup.js"></script>
+  </body>
+</html>

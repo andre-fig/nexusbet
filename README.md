@@ -2,6 +2,8 @@
 
 > Runtime atual: [server + collector-agent](docs/RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
 
+`apps/odds-collector-extension` é o novo projeto de coleta por extensão Chrome, separado de `apps/odds-monitor`. Ele incorpora os parsers puros existentes no bundle, agenda listagem/detalhes e prepara publicações HTTPS para Railway. Ainda não substituiu o collector-agent em produção; instalação, entrega real e atualização automática da extensão exigem validação. [Guia da extensão](apps/odds-collector-extension/README.md).
+
 Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betano, Superbet, Blaze e EstrelaBet, normaliza mercados, compara eventos equivalentes e conserva histórico em PostgreSQL. O serviço NestJS vive em `apps/odds-service` e funciona sem frontend ou BFF.
 
 O escopo atual cobre CS2, League of Legends e Valorant. Os mercados prioritários são vencedor da partida e vencedor dos mapas 1–3; o parser aceita mapas adicionais e preserva mercados desconhecidos. Não há apostas, carteira, pagamentos, cálculo de odds próprias ou coleta live.

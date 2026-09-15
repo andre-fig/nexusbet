@@ -12,6 +12,7 @@ $failedPath = Join-Path $root 'failed.txt'
 $pidPath = Join-Path $root 'agent.pid'
 $stopPath = Join-Path $root 'agent.stop'
 $logPath = Join-Path $root 'logs\supervisor.log'
+$extensionPath = Join-Path $root 'collector-extension'
 $mutex = New-Object System.Threading.Mutex($false, 'Local\NexusBetAgentReconcile')
 if (-not $mutex.WaitOne(0)) { exit 0 }
 
@@ -31,6 +32,20 @@ function AgentProcess {
   $command = (Get-CimInstance Win32_Process -Filter "ProcessId=$agentPid").CommandLine
   if ($command -notmatch 'collector-agent\.main\.js') { return $null }
   return $process
+}
+
+function StageExtension([string] $release, [string] $sha) {
+  $dist = Join-Path $release 'apps\odds-collector-extension\dist'
+  if (-not (Test-Path -LiteralPath $dist)) { return }
+  $extensionFull = [IO.Path]::GetFullPath($extensionPath)
+  $rootPrefix = [IO.Path]::GetFullPath($root).TrimEnd('\') + '\'
+  if (-not $extensionFull.StartsWith($rootPrefix, [StringComparison]::OrdinalIgnoreCase)) { throw 'Extension target escapes agent root' }
+  New-Item -ItemType Directory -Force -Path $extensionPath | Out-Null
+  foreach ($name in @('manifest.json','background.js','popup.html','popup.js')) {
+    Copy-Item -LiteralPath (Join-Path $dist $name) -Destination (Join-Path $extensionPath $name) -Force
+  }
+  Copy-Item -LiteralPath (Join-Path $dist 'build-id.txt') -Destination (Join-Path $extensionPath 'build-id.txt') -Force
+  Log "Extension files staged at $sha"
 }
 
 try {
@@ -110,6 +125,17 @@ try {
             if ($testProcess.ExitCode -ne 0) { throw "tests failed (exit $($testProcess.ExitCode))" }
           } finally { $testProcess.Dispose() }
         } finally { Pop-Location }
+        $extensionSource = Join-Path $release 'apps\odds-collector-extension'
+        if (Test-Path -LiteralPath $extensionSource) {
+          Push-Location $extensionSource
+          try {
+            & $npm ci; CheckExit 'extension npm ci'
+            & $npm run typecheck; CheckExit 'extension typecheck'
+            & $npm run format:check; CheckExit 'extension format check'
+            & $npm test; CheckExit 'extension tests'
+            & $npm run build; CheckExit 'extension build'
+          } finally { Pop-Location }
+        }
         Set-Content -LiteralPath $verifiedPath -Value $target -Encoding ascii
         Log "Release $target passed checks"
       }
@@ -120,6 +146,7 @@ try {
     }
 
     if ($prepared) {
+      StageExtension $release $target
       $old = AgentProcess
       if ($old) {
         New-Item -ItemType File -Force -Path $stopPath | Out-Null
@@ -134,13 +161,20 @@ try {
     }
   }
 
+  $privateConfig = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
+  $agentEnabled = ([string]$privateConfig.NEXUSBET_AGENT_ENABLED -ne 'false')
   $running = AgentProcess
-  if (-not $running -and $current) {
+  if (-not $agentEnabled -and $running) {
+    New-Item -ItemType File -Force -Path $stopPath | Out-Null
+    Log "Collector-agent disabled; requesting graceful stop of PID $($running.Id)"
+    if (-not $running.WaitForExit(180000)) { Stop-Process -Id $running.Id -Force }
+    $running = $null
+  }
+  if ($agentEnabled -and -not $running -and $current) {
     $release = Join-Path $releases $current
     $service = Join-Path $release 'apps\odds-service'
     if (-not (Test-Path -LiteralPath (Join-Path $service 'dist\collector-agent.main.js'))) { throw 'Current release missing build' }
-    $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
-    foreach ($property in $config.PSObject.Properties) {
+    foreach ($property in $privateConfig.PSObject.Properties) {
       [Environment]::SetEnvironmentVariable($property.Name, [string]$property.Value, 'Process')
     }
     [Environment]::SetEnvironmentVariable('ODDS_AGENT_STOP_FILE', $stopPath, 'Process')
@@ -156,6 +190,7 @@ try {
       Log "Release $current exited during startup; restoring $previous"
       Set-Content -LiteralPath $failedPath -Value $current -Encoding ascii
       Set-Content -LiteralPath $currentPath -Value $previous -Encoding ascii
+      StageExtension (Join-Path $releases $previous) $previous
       $previousService = Join-Path (Join-Path $releases $previous) 'apps\odds-service'
       $fallback = Start-Process -FilePath $node -ArgumentList 'dist/collector-agent.main.js' -WorkingDirectory $previousService -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $root "logs\agent-$stamp-rollback.out.log") -RedirectStandardError (Join-Path $root "logs\agent-$stamp-rollback.err.log")
       Set-Content -LiteralPath $pidPath -Value $fallback.Id -Encoding ascii

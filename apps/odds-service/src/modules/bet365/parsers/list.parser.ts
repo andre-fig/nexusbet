@@ -86,7 +86,9 @@ export function londonTime(raw: string): string {
 export function label(s: string): string {
   // DevTools Copy response exposed UTF-8 as Latin-1 in these fixtures. Repair only if reversible.
   if (!/[ÃÂ]/.test(s)) return s;
-  const decoded = Buffer.from(s, "latin1").toString("utf8");
+  const bytes = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) bytes[i] = s.charCodeAt(i) & 0xff;
+  const decoded = new TextDecoder("utf-8").decode(bytes);
   return decoded.includes("\uFFFD") ? s : decoded;
 }
 export function validateCapture(input: unknown): Capture {

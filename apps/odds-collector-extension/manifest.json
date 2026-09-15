@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "NexusBet Collector",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "description": "Read-only collection of five esports odds providers for NexusBet.",
+  "permissions": ["debugger", "alarms", "storage"],
+  "host_permissions": [
+    "https://www.bet365.bet.br/*",
+    "https://www.betano.bet.br/*",
+    "https://production-superbet-offer-br.freetls.fastly.net/*",
+    "https://api-31-sp-c7818b61-584.sptpub.com/*",
+    "https://sb2frontend-altenar2.biahosted.com/*",
+    "https://odds-service-production-f25c.up.railway.app/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html" }
+}

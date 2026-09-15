@@ -15,6 +15,7 @@ apps/odds-service/src/generated/
 
 # Owned technical browser state and sanitized diagnostic artifacts
 apps/odds-service/evidence/
+apps/odds-service/browser-extension-probe/
 
 apps/odds-service/blaze-inbox/
 
@@ -23,3 +24,7 @@ apps/odds-service/estrelabet-inbox/
 # Internal monitor build output / local environment
 apps/odds-monitor/dist/
 !apps/odds-monitor/.env.example
+
+# Chrome collection extension build and private local configuration
+apps/odds-collector-extension/dist/
+apps/odds-collector-extension/private-config.json

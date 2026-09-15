@@ -8,3 +8,8 @@ echo "[pre-commit] odds-service format + typecheck"
 
 echo "[pre-commit] odds-monitor lint/typecheck"
 (cd "$root/apps/odds-monitor" && npm run lint)
+
+if [ -d "$root/apps/odds-collector-extension" ]; then
+  echo "[pre-commit] odds-collector-extension format + typecheck"
+  (cd "$root/apps/odds-collector-extension" && npm run format:check && npm run typecheck)
+fi
