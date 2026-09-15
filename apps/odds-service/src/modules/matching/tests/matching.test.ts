@@ -540,6 +540,67 @@ test("CS2 aliases match Astral eSports vs Rune Eaters Esports despite tournament
   assert.equal(result.matched[0].providers.blaze.rawTeamB, "Rune Eaters");
 });
 
+test("CS2 aliases match Team Vitality vs magic with Vitality vs Magic despite tournament variants", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "superbet" as const,
+    eventId: "team-vitality-magic",
+    teamA: "Team Vitality",
+    teamB: "magic",
+    rawTeamA: "Team Vitality",
+    rawTeamB: "magic",
+    normalizedTeamA: teamName("Team Vitality", "cs2"),
+    normalizedTeamB: teamName("magic", "cs2"),
+    tournament: "StarLadder StarSeries Fall 2026",
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "blaze" as const,
+    eventId: "vitality-magic",
+    teamA: "Vitality",
+    teamB: "Magic",
+    rawTeamA: "Vitality",
+    rawTeamB: "Magic",
+    normalizedTeamA: teamName("Vitality", "cs2"),
+    normalizedTeamB: teamName("Magic", "cs2"),
+    tournament: "StarSeries",
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("Team Vitality", "cs2"), "vitality");
+  assert.equal(canonicalTeamName("Vitality", "cs2"), "vitality");
+  assert.equal(canonicalTeamName("magic", "cs2"), "magic");
+  assert.equal(canonicalTeamName("Magic", "cs2"), "magic");
+  assert.notEqual(
+    canonicalTeamName("Team Vitality", "valorant"),
+    canonicalTeamName("Vitality", "valorant"),
+  );
+  assert.equal(left.normalizedTeamA, "team vitality");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "vitality");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "magic");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.equal(result.matched[0].evidence.sameCompetitionAlias, false);
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "Team Vitality");
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "magic");
+  assert.equal(result.matched[0].providers.blaze.rawTeamA, "Vitality");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "Magic");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(

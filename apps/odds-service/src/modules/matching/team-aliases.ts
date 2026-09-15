@@ -13,6 +13,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
     "nrg esports": "nrg",
     "rune eaters esports": "rune eaters",
     "team brute": "brute",
+    "team vitality": "vitality",
   },
   lol: {
     "movistar koi": "koi",
