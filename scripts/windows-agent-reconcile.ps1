@@ -44,6 +44,14 @@ function StageExtension([string] $release, [string] $sha) {
   $rootPrefix = [IO.Path]::GetFullPath($root).TrimEnd('\') + '\'
   if (-not $extensionFull.StartsWith($rootPrefix, [StringComparison]::OrdinalIgnoreCase)) { throw 'Extension target escapes agent root' }
   New-Item -ItemType Directory -Force -Path $extensionPath | Out-Null
+  $sourceBuildId = (Get-Content -LiteralPath (Join-Path $dist 'build-id.txt') -Raw).Trim()
+  $destinationBuildId = Join-Path $extensionPath 'build-id.txt'
+  if ((Test-Path -LiteralPath $destinationBuildId) -and
+      (Get-Content -LiteralPath $destinationBuildId -Raw).Trim() -eq $sourceBuildId -and
+      @('manifest.json','background.js','popup.html','popup.js').Where({ Test-Path -LiteralPath (Join-Path $extensionPath $_) }).Count -eq 4) {
+    Log "Extension bundle unchanged at $sha"
+    return
+  }
   foreach ($name in @('manifest.json','background.js','popup.html','popup.js')) {
     Copy-Item -LiteralPath (Join-Path $dist $name) -Destination (Join-Path $extensionPath $name) -Force
   }

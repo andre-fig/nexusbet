@@ -1,5 +1,6 @@
 import { build } from "esbuild";
-import { mkdir, copyFile, writeFile, rm } from "node:fs/promises";
+import { mkdir, copyFile, writeFile, rm, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -28,4 +29,14 @@ try {
   if (error.code !== "ENOENT") throw error;
   await rm(join(outdir, "private-config.json"), { force: true });
 }
-await writeFile(join(outdir, "build-id.txt"), new Date().toISOString());
+const hash = createHash("sha256");
+for (const name of [
+  "manifest.json",
+  "background.js",
+  "popup.html",
+  "popup.js",
+]) {
+  hash.update(name);
+  hash.update(await readFile(join(outdir, name)));
+}
+await writeFile(join(outdir, "build-id.txt"), hash.digest("hex").slice(0, 20));
