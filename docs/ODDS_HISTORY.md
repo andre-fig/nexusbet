@@ -42,7 +42,7 @@ A transação grava entidades, snapshots, publications.changes, feed_scopes e le
 
 Unique `(publication_id, selection_id, source_scope, fetched_at)` impede duplicação da mesma observação na publicação. A consulta atual usa último snapshot por seleção, ordenado por fetchedAt DESC e createdAt DESC; não há current_odds separado.
 
-Em modo postgres, checkpoints JSONB e feed scopes são a recuperação persistente; o journal mantém somente baselines em memória e não duplica NDJSON/latest no filesystem. Falha SQL mantém memória/journal anterior. Journals em arquivo permanecem apenas no modo file para testes/replay e o importador legado lê capturas antigas explicitamente.
+Em modo postgres, checkpoints JSONB e feed scopes são a recuperação persistente; cada journal restaura somente os baselines dos feed scopes pertencentes ao seu provider (relação `provider_id` no banco), mesmo quando o nome interno do scope não tem prefixo do provider. Não duplica NDJSON/latest no filesystem. Falha SQL mantém memória/journal anterior. Journals em arquivo permanecem apenas no modo file para testes/replay e o importador legado lê capturas antigas explicitamente.
 
 ## Inspeção e reprocessamento
 

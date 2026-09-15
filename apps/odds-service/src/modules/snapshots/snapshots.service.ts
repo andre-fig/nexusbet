@@ -1,5 +1,6 @@
 import { Injectable, Inject, Optional } from "@nestjs/common";
 import { MarketJournal } from "./market-journal.js";
+import type { Provider } from "../../shared/domain/normalized-event.js";
 import {
   PERSISTENCE,
   type PersistencePort,
@@ -9,7 +10,7 @@ export class SnapshotsService {
   constructor(
     @Optional() @Inject(PERSISTENCE) readonly persistence?: PersistencePort,
   ) {}
-  createJournal(directory: string) {
-    return new MarketJournal(directory, this.persistence);
+  createJournal(directory: string, provider: Provider) {
+    return new MarketJournal(directory, this.persistence, provider);
   }
 }

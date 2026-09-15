@@ -50,12 +50,15 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
   equivalentObservation(a: MarketBatch, b: MarketBatch) {
     return isDeepStrictEqual(sanitize(a), sanitize(b));
   }
-  async baselines() {
+  async baselines(provider: NormalizedEvent["provider"]) {
     if (!this.enabled) return [];
     return latestBatches(
-      (await this.database.db.feedScope.findMany()).flatMap(
-        (s) => s.observations as unknown as MarketBatch[],
-      ),
+      (
+        await this.database.db.feedScope.findMany({
+          where: { provider: { slug: provider } },
+          select: { observations: true },
+        })
+      ).flatMap((s) => s.observations as unknown as MarketBatch[]),
     );
   }
   async commit(

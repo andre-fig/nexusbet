@@ -335,12 +335,13 @@ test("restart reconstructs scopes, catalogue, matching, issues and checkpoints w
   await service.commit(publication(event()));
   await service.commit(publication(event("betano")));
   const before = await service.restore("superbet:test");
-  const baseline = await service.baselines();
+  const baseline = await service.baselines("superbet");
   const canonical = (await database.db.canonicalEvent.findFirstOrThrow()).id;
   await database.onApplicationShutdown();
   await connect();
   assert.deepEqual(await service.restore("superbet:test"), before);
-  assert.deepEqual(await service.baselines(), baseline);
+  assert.deepEqual(await service.baselines("superbet"), baseline);
+  assert.equal((await service.baselines("betano")).length, 1);
   assert.equal((await service.catalogEvents()).length, 2);
   assert.equal(
     (await database.db.canonicalEvent.findFirstOrThrow()).id,
@@ -412,7 +413,7 @@ for (const provider of ["bet365", "betano", "superbet"] as const)
         const fileDetails = new DetailStore(join(root, "file-details")),
           pgDetails = new DetailStore(
             join(root, "pg-details"),
-            new MarketJournal(join(root, "pg-details"), service),
+            new MarketJournal(join(root, "pg-details"), service, "bet365"),
             service,
           );
         await fileDetails.load();
@@ -435,7 +436,7 @@ for (const provider of ["bet365", "betano", "superbet"] as const)
         assert.deepEqual(reloaded.state, file.state);
         const restoredDetails = new DetailStore(
           join(root, "empty-details"),
-          new MarketJournal(join(root, "empty-details"), service),
+          new MarketJournal(join(root, "empty-details"), service, "bet365"),
           service,
         );
         await restoredDetails.load();
@@ -460,12 +461,20 @@ for (const provider of ["bet365", "betano", "superbet"] as const)
           provider === "betano"
             ? new BetanoStore(
                 path,
-                new MarketJournal(path, persist ? service : undefined),
+                new MarketJournal(
+                  path,
+                  persist ? service : undefined,
+                  provider,
+                ),
                 persist ? service : undefined,
               )
             : new SuperbetStore(
                 path,
-                new MarketJournal(path, persist ? service : undefined),
+                new MarketJournal(
+                  path,
+                  persist ? service : undefined,
+                  provider,
+                ),
                 persist ? service : undefined,
               );
         const file = create(join(root, "file")),
@@ -544,7 +553,7 @@ test("separate scope timestamps and suspension are retained, baseline restoratio
   assert.equal(row.fetchedAt.toISOString(), "2026-09-14T23:59:55.000Z");
   const root = await mkdtemp(join(tmpdir(), "odds-pg-baseline-"));
   try {
-    const journal = new MarketJournal(root, service);
+    const journal = new MarketJournal(root, service, "superbet");
     await journal.load();
     assert.equal(
       await journal.ingest(publication(first, "detail").observations[0]),
@@ -596,7 +605,7 @@ test("Nest API restores provider state and scheduler catalogue, keeps TTL, valid
   const root = await mkdtemp(join(tmpdir(), "odds-pg-nest-"));
   const store = new SuperbetStore(
     join(root, "seed"),
-    new MarketJournal(join(root, "seed"), service),
+    new MarketJournal(join(root, "seed"), service, "superbet"),
     service,
   );
   await store.load();
@@ -692,7 +701,7 @@ test("database publication failure leaves provider memory and PostgreSQL history
   try {
     const store = new SuperbetStore(
       root,
-      new MarketJournal(root, service),
+      new MarketJournal(root, service, "superbet"),
       service,
     );
     await store.load();
@@ -716,7 +725,7 @@ test("database publication failure leaves provider memory and PostgreSQL history
     );
     const failing = new SuperbetStore(
       root,
-      new MarketJournal(root, broken),
+      new MarketJournal(root, broken, "superbet"),
       broken,
     );
     await failing.load();
@@ -766,9 +775,9 @@ test("overlapping coverage variants share the original journal baseline and do n
       rows.flatMap((r) => r.changes as object[]),
       sanitize(observations),
     );
-    assert.equal((await service.baselines()).length, 1);
+    assert.equal((await service.baselines("bet365")).length, 1);
     assert.equal(
-      (await service.baselines())[0].fetchedAt,
+      (await service.baselines("bet365"))[0].fetchedAt,
       "2026-09-15T00:02:00.000Z",
     );
     const duplicate = publication(

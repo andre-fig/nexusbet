@@ -38,7 +38,7 @@ export class BetanoService implements ProviderRuntime {
     const path = join(config.settings.dataDir, "betano");
     this.store = new BetanoStore(
       path,
-      snapshots.createJournal(path),
+      snapshots.createJournal(path, this.name),
       snapshots.persistence,
     );
   }

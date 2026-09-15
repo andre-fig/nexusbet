@@ -38,7 +38,7 @@ export class SuperbetService implements ProviderRuntime {
     const path = join(config.settings.dataDir, "superbet");
     this.store = new SuperbetStore(
       path,
-      snapshots.createJournal(path),
+      snapshots.createJournal(path, this.name),
       snapshots.persistence,
     );
   }

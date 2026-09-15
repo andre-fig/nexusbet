@@ -1,4 +1,5 @@
 import type { PersistencePort } from "../../shared/interfaces/persistence-port.interface.js";
+import type { Provider } from "../../shared/domain/normalized-event.js";
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -117,6 +118,7 @@ export class MarketJournal {
   constructor(
     readonly directory: string,
     private readonly persistence?: PersistencePort,
+    readonly provider?: Provider,
   ) {}
   memoryDiagnostics() {
     const entries = [...this.latest.values()];
@@ -133,7 +135,9 @@ export class MarketJournal {
   }
   async load() {
     if (this.persistence?.enabled) {
-      for (const batch of await this.persistence.baselines())
+      if (!this.provider)
+        throw Error("Journal provider required for SQL restore");
+      for (const batch of await this.persistence.baselines(this.provider))
         this.latest.set(batch.scope, {
           batch,
           hash: createHash("sha256")

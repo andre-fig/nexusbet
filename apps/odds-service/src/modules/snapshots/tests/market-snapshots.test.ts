@@ -8,6 +8,7 @@ import type {
   DetailedMatch,
   MarketBatch,
 } from "../../../shared/domain/market-model.js";
+import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
 // All scenarios in this file are synthetic; real protocol validation lives in fixture tests.
 function match(): DetailedMatch {
   return {
@@ -73,6 +74,27 @@ function batch(e = match()): MarketBatch {
     },
   };
 }
+test("SQL journals request only their provider baseline; unscoped SQL restore fails", async () => {
+  const requested: string[] = [];
+  const port = {
+    enabled: true,
+    baselines: async (provider) => {
+      requested.push(provider);
+      return provider === "bet365" ? [batch()] : [];
+    },
+  } as PersistencePort;
+  const own = new MarketJournal("unused", port, "bet365");
+  const other = new MarketJournal("unused", port, "superbet");
+  await own.load();
+  await other.load();
+  assert.deepEqual(requested, ["bet365", "superbet"]);
+  assert.equal(own.memoryDiagnostics().scopes, 1);
+  assert.equal(other.memoryDiagnostics().scopes, 0);
+  await assert.rejects(
+    new MarketJournal("unused", port).load(),
+    /Journal provider required/,
+  );
+});
 test("selection snapshots retain two observed prices as separate records and survive restart", async () => {
   const dir = await mkdtemp(join(tmpdir(), "nexusbet-journal-"));
   try {

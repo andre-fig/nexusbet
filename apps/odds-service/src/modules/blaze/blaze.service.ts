@@ -38,7 +38,7 @@ export class BlazeService implements ProviderRuntime {
     const path = join(config.settings.dataDir, "blaze");
     this.store = new BlazeStore(
       path,
-      snapshots.createJournal(path),
+      snapshots.createJournal(path, this.name),
       snapshots.persistence,
     );
   }

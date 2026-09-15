@@ -9,6 +9,7 @@ import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { clearLogs as clearPrismaDebugLogs } from "@prisma/debug";
 import { PrismaClient } from "../../generated/prisma/client.js";
 import { AppConfiguration } from "../../config/configuration.js";
 import { ServiceError } from "../../shared/errors/domain-errors.js";
@@ -16,6 +17,7 @@ import { ServiceError } from "../../shared/errors/domain-errors.js";
 export class DatabaseService implements OnModuleInit, OnApplicationShutdown {
   readonly enabled: boolean;
   private client?: PrismaClient;
+  private debugRetentionTimer?: ReturnType<typeof setInterval>;
   connected = false;
   operationFailed = false;
   constructor(@Inject(AppConfiguration) readonly config: AppConfiguration) {
@@ -28,6 +30,13 @@ export class DatabaseService implements OnModuleInit, OnApplicationShutdown {
   }
   async onModuleInit() {
     if (!this.enabled || this.connected) return;
+    // Prisma 7's internal debug helper retains the last 100 query arguments
+    // even when DEBUG is unset. Large JSON arguments must not survive in production.
+    if (process.env.NODE_ENV === "production" && !this.debugRetentionTimer) {
+      this.debugRetentionTimer = setInterval(clearPrismaDebugLogs, 1000);
+      this.debugRetentionTimer.unref();
+      clearPrismaDebugLogs();
+    }
     this.client = new PrismaClient({
       adapter: new PrismaPg({
         connectionString: this.config.settings.databaseUrl,
@@ -90,6 +99,9 @@ export class DatabaseService implements OnModuleInit, OnApplicationShutdown {
       throw Error("Failed migration");
   }
   async onApplicationShutdown() {
+    clearInterval(this.debugRetentionTimer);
+    this.debugRetentionTimer = undefined;
+    clearPrismaDebugLogs();
     await this.client?.$disconnect();
     this.connected = false;
   }

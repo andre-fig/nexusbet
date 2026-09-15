@@ -44,7 +44,7 @@ export class Bet365Service implements ProviderRuntime {
     const path = join(config.settings.dataDir, "details");
     this.details = new DetailStore(
       path,
-      snapshots.createJournal(path),
+      snapshots.createJournal(path, this.name),
       snapshots.persistence,
     );
   }

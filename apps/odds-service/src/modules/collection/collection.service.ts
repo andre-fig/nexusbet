@@ -188,14 +188,15 @@ export class CollectionService {
       this.scheduler.restoreCatalog(await this.persistence.catalogEvents());
   }
   async refresh() {
+    const providers = this.registry.providers.filter(
+      (provider) => this.providerRuntime(provider.name).active,
+    );
     const outcomes = await Promise.allSettled(
-      this.registry.providers.map((p) => p.refresh()),
+      providers.map((provider) => provider.refresh()),
     );
     outcomes.forEach((r, i) => {
       if (r.status === "rejected")
-        this.logger.warn(
-          `${this.registry.providers[i].name}: persisted state unavailable`,
-        );
+        this.logger.warn(`${providers[i].name}: persisted state unavailable`);
     });
     return outcomes;
   }

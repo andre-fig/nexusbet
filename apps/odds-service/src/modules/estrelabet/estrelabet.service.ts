@@ -39,7 +39,7 @@ export class EstrelaBetService implements ProviderRuntime {
     const path = join(config.settings.dataDir, "estrelabet");
     this.store = new EstrelaBetStore(
       path,
-      snapshots.createJournal(path),
+      snapshots.createJournal(path, this.name),
       snapshots.persistence,
     );
   }

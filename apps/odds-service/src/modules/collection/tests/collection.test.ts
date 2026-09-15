@@ -50,7 +50,7 @@ test("matching eligibility excludes stale and runtime-disabled providers per esp
   });
 });
 for (const failing of ["bet365", "betano"] as const)
-  test(`${failing} failure leaves the other provider available`, async () => {
+  test(`${failing} manual failure does not restore disabled browser stores`, async () => {
     const a = provider("bet365"),
       b = provider("betano");
     const bad = failing === "bet365" ? a : b;
@@ -67,8 +67,34 @@ for (const failing of ["bet365", "betano"] as const)
     assert.equal(results.find((r) => r.provider === failing)?.status, "failed");
     assert.equal(results.find((r) => r.provider !== failing)?.status, "ok");
     const refresh = await service.refresh();
-    assert.equal(refresh.filter((r) => r.status === "fulfilled").length, 1);
+    assert.equal(refresh.length, 0);
   });
+test("refresh restores only runtime-active providers and isolates their failures", async () => {
+  const a = provider("bet365"),
+    b = provider("betano"),
+    c = provider("superbet"),
+    d = provider("blaze"),
+    e = provider("estrelabet");
+  const called: string[] = [];
+  for (const p of [a, b, c, d, e])
+    p.refresh = async () => {
+      called.push(p.name);
+      if (p.name === "blaze") throw Error("offline");
+    };
+  const settings = structuredClone(config.settings);
+  settings.browser.runtime = "disabled";
+  settings.blazeEnabled = true;
+  settings.estrelabetEnabled = false;
+  const service = new CollectionService(new ProviderRegistry([a, b, c, d, e]), {
+    settings,
+  } as AppConfiguration);
+  const result = await service.refresh();
+  assert.deepEqual(called, ["superbet", "blaze"]);
+  assert.deepEqual(
+    result.map((item) => item.status),
+    ["fulfilled", "rejected"],
+  );
+});
 test("unknown provider is isolated and partial listing survives detail failure", async () => {
   const a = provider("bet365"),
     event = {

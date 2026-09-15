@@ -58,7 +58,7 @@ Listagem válida reconcilia catálogo e agenda: adiciona eventos novos, remove t
 
 ## Startup e shutdown
 
-Código default habilita coleta; `.env.example` escolhe false para onboarding seguro. Após startup normal, restaura/ingere estado, espera 3000ms + jitter e executa primeira discovery sem aguardar 300s completos.
+Código default habilita coleta; `.env.example` escolhe false para onboarding seguro. Após startup normal, restaura os stores/journals somente dos providers ativos no runtime, restaura o catálogo persistido, espera 3000ms + jitter e executa primeira discovery sem aguardar 300s completos. Dados históricos de providers desabilitados continuam no PostgreSQL e no monitor.
 
 SIGTERM/SIGINT: para timers e novos jobs, aguarda até SHUTDOWN_GRACE_MS=30000, aborta operações ainda fora de commit, drena trabalhos e fecha clientes. Commits já iniciados são aguardados mesmo além do grace period; disco/transporte bloqueado pode prolongar shutdown. PostgreSQL desconecta no hook final, depois da drenagem.
 

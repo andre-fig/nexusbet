@@ -1,5 +1,6 @@
 import type { NormalizedEvent } from "../domain/normalized-event.js";
 import type { MarketBatch } from "../domain/market-model.js";
+import type { Provider } from "../domain/normalized-event.js";
 export interface PersistencePublication {
   provider: string;
   esport: string;
@@ -15,7 +16,7 @@ export interface PersistencePort {
   readonly enabled: boolean;
   catalogEvents?(): Promise<NormalizedEvent[]>;
   equivalentObservation?(a: MarketBatch, b: MarketBatch): boolean;
-  baselines(): Promise<MarketBatch[]>;
+  baselines(provider: Provider): Promise<MarketBatch[]>;
   commit(
     publication: PersistencePublication,
     afterCommit?: () => Promise<void> | void,

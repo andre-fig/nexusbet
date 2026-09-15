@@ -115,27 +115,27 @@ if (args.includes("--apply")) {
     const list = new Store(join(work, "bet365"), persistence);
     const detail = new DetailStore(
       join(work, "details"),
-      new MarketJournal(join(work, "details"), persistence),
+      new MarketJournal(join(work, "details"), persistence, "bet365"),
       persistence,
     );
     const betano = new BetanoStore(
       join(work, "betano"),
-      new MarketJournal(join(work, "betano"), persistence),
+      new MarketJournal(join(work, "betano"), persistence, "betano"),
       persistence,
     );
     const superbet = new SuperbetStore(
       join(work, "superbet"),
-      new MarketJournal(join(work, "superbet"), persistence),
+      new MarketJournal(join(work, "superbet"), persistence, "superbet"),
       persistence,
     );
     const blaze = new BlazeStore(
       join(work, "blaze"),
-      new MarketJournal(join(work, "blaze"), persistence),
+      new MarketJournal(join(work, "blaze"), persistence, "blaze"),
       persistence,
     );
     const estrelabet = new EstrelaBetStore(
       join(work, "estrelabet"),
-      new MarketJournal(join(work, "estrelabet"), persistence),
+      new MarketJournal(join(work, "estrelabet"), persistence, "estrelabet"),
       persistence,
     );
     await Promise.all([
