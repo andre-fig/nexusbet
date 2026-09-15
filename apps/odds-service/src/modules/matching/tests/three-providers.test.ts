@@ -56,19 +56,19 @@ test("real fixtures match three providers, two providers, one provider, and dive
 test("eligibility quorum distinguishes not-applicable from a real unmatched event", async () => {
   const { c } = await sources();
   const event = c[0];
-  const alone = compareAllProviders([event], 15, ["superbet"]);
+  const alone = compareAllProviders([event], ["superbet"]);
   assert.equal(alone.notApplicable.length, 1);
   assert.equal(alone.unmatched.length, 0);
-  const withAnotherEligibleProvider = compareAllProviders([event], 15, [
-    "superbet",
-    "blaze",
-  ]);
+  const withAnotherEligibleProvider = compareAllProviders(
+    [event],
+    ["superbet", "blaze"],
+  );
   assert.equal(withAnotherEligibleProvider.notApplicable.length, 0);
   assert.deepEqual(withAnotherEligibleProvider.unmatched, [
     { provider: "superbet", eventId: event.eventId, reason: "no_team_pair" },
   ]);
 });
-test("provider-scoped equal IDs do not collide; ambiguity, transitive time chains and false positives stay unmatched", async () => {
+test("provider-scoped equal IDs do not collide; ambiguity, different starts and false positives stay unmatched", async () => {
   const { c } = await sources(),
     e = c[0];
   const a = { ...e, provider: "bet365" as const },
@@ -92,11 +92,12 @@ test("provider-scoped equal IDs do not collide; ambiguity, transitive time chain
     ]).matched.length,
     0,
   );
-  assert.equal(
-    compareAllProviders([a, { ...e, tournament: "Unrelated season" }]).matched
-      .length,
-    0,
-  );
+  const differentTournament = compareAllProviders([
+    a,
+    { ...e, tournament: "Unrelated season" },
+  ]).matched[0];
+  assert.equal(differentTournament.confidence, 0.9);
+  assert.equal(differentTournament.evidence.sameCompetitionAlias, false);
   assert.equal(
     compareAllProviders([a, { ...e, esport: "valorant" }]).matched.length,
     0,

@@ -1,4 +1,4 @@
-import { teamName, tournamentName } from "../../../shared/utils/names.js";
+import { teamName } from "../../../shared/utils/names.js";
 import { Injectable, Inject } from "@nestjs/common";
 import type { Prisma } from "../../../generated/prisma/client.js";
 import type { NormalizedEvent } from "../../../shared/domain/normalized-event.js";
@@ -35,7 +35,7 @@ export class MatchingRepository {
         ],
       ]),
     );
-    const result = compareAllProviders(events, 15, eligibleByEsport);
+    const result = compareAllProviders(events, eligibleByEsport);
     const rows = await tx.providerEvent.findMany({
       include: {
         match: true,
@@ -72,9 +72,8 @@ export class MatchingRepository {
         const h = r.decisions[0]?.canonicalEvent;
         return h &&
           h.esport === c.esport &&
-          tournamentName(h.tournament, c.esport) ===
-            tournamentName(c.tournament, c.esport) &&
-          sameTeams(h.teamA, h.teamB) === sameTeams(c.teamA, c.teamB)
+          sameTeams(h.teamA, h.teamB) === sameTeams(c.teamA, c.teamB) &&
+          h.startsAt.getTime() === new Date(c.startsAt).getTime()
           ? h.id
           : undefined;
       };
@@ -124,7 +123,9 @@ export class MatchingRepository {
           canonicalEventId: canonical.id,
           confidence: group.confidence,
           status: "matched" as const,
-          reason: "exact_normalized_teams_competition_time",
+          reason: group.evidence.sameCompetitionAlias
+            ? "exact_normalized_teams_time_same_competition"
+            : "exact_normalized_teams_time_competition_differs",
           startDeltaSeconds: Math.round(
             Math.abs(row.startsAt.getTime() - canonical.startsAt.getTime()) /
               1000,

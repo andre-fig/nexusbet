@@ -63,11 +63,82 @@ test("Conservative cross-provider matching: aliases, reversed sides, ambiguities
     ).matched.length,
     0,
   );
-  assert.equal(
-    compareProviders([one], [{ ...other, tournament: "Other season" }]).matched
-      .length,
-    0,
+  const differentTournament = compareProviders(
+    [one],
+    [{ ...other, tournament: "Other season" }],
+  ).matched[0];
+  assert.equal(differentTournament.confidence, 0.9);
+  assert.equal(differentTournament.evidence.sameCompetitionAlias, false);
+});
+
+test("matching regressions normalize team names, ignore side order and do not veto different tournaments", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
   );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const cases = [
+    {
+      name: "WW Team vs Ww Team",
+      left: { teamA: "WW Team", teamB: "Opponent" },
+      right: { teamA: "  Ww   Team!! ", teamB: "Opponent" },
+      tournaments: ["Same League", "Same League"],
+      confidence: 1,
+    },
+    {
+      name: "Top Esports vs Invictus Gaming in reversed order",
+      left: { teamA: "Top Esports", teamB: "Invictus Gaming" },
+      right: { teamA: "Invictus Gaming", teamB: "Top Esports" },
+      tournaments: ["LPL", "LPL"],
+      confidence: 1,
+    },
+    {
+      name: "Ranked Episode 5: Open Qualifier vs Stake Ranked",
+      left: { teamA: "Alpha", teamB: "Bravo" },
+      right: { teamA: "Alpha", teamB: "Bravo" },
+      tournaments: ["Ranked Episode 5: Open Qualifier", "Stake Ranked"],
+      confidence: 0.9,
+    },
+    {
+      name: "Logitech G Play Connect vs G Play Connect 2026",
+      left: { teamA: "Charlie", teamB: "Delta" },
+      right: { teamA: "Charlie", teamB: "Delta" },
+      tournaments: ["Logitech G Play Connect", "G Play Connect 2026"],
+      confidence: 0.9,
+    },
+  ] as const;
+
+  for (const regression of cases) {
+    const left = {
+      ...structuredClone(base),
+      ...regression.left,
+      provider: "bet365" as const,
+      eventId: regression.name + "-bet365",
+      tournament: regression.tournaments[0],
+      rawTeamA: regression.left.teamA,
+      rawTeamB: regression.left.teamB,
+      normalizedTeamA: teamName(regression.left.teamA, base.esport),
+      normalizedTeamB: teamName(regression.left.teamB, base.esport),
+    };
+    const right = {
+      ...structuredClone(base),
+      ...regression.right,
+      provider: "betano" as const,
+      eventId: regression.name + "-betano",
+      tournament: regression.tournaments[1],
+      rawTeamA: regression.right.teamA,
+      rawTeamB: regression.right.teamB,
+      normalizedTeamA: teamName(regression.right.teamA, base.esport),
+      normalizedTeamB: teamName(regression.right.teamB, base.esport),
+    };
+    const result = compareAllProviders([left, right]);
+    assert.equal(result.matched.length, 1, regression.name);
+    assert.equal(result.unmatched.length, 0, regression.name);
+    assert.equal(result.matched[0].confidence, regression.confidence);
+  }
 });
 
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {

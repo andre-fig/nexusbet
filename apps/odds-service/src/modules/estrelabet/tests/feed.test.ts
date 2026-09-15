@@ -131,11 +131,11 @@ test("EstrelaBet generic matching supports five providers, reversed names, diffe
   assert.equal(r.matched.length, 1);
   assert.equal(Object.keys(r.matched[0].providers).length, 5);
   assert.equal(compareAllProviders([e]).notApplicable.length, 1);
-  assert.equal(
-    compareAllProviders([e, { ...peers[0], tournament: "Other League" }])
-      .matched.length,
-    0,
-  );
+  const differentTournament = compareAllProviders([
+    e,
+    { ...peers[0], tournament: "Other League" },
+  ]).matched[0];
+  assert.equal(differentTournament.confidence, 0.9);
   assert.equal(
     compareAllProviders([e, ...peers, { ...e, eventId: "ambiguous" }]).matched
       .length,

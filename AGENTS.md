@@ -56,7 +56,7 @@ Upserts preservam entidades; snapshots append-only usam numeric(24,12). Cada sco
 
 # Matching
 
-`compareAllProviders` usa nomes normalizados e aliases explícitos, mesma competição/esporte, status scheduled e tolerância de 15min. Exige compatibilidade de todos os pares e no máximo um evento por provider. Confidence 1 é resultado da regra, não probabilidade. Partial/low_confidence/manual existem no schema, mas não são workflows automáticos completos. [Matching](docs/MATCHING.md) detalha o algoritmo.
+`compareAllProviders` usa nomes normalizados e aliases explícitos, mesmo esporte, mesmo par de times sem considerar ordem, status scheduled e `startsAt` exato. A competição ajusta confidence, mas não veta sozinha. Exige compatibilidade de todos os pares e no máximo um evento por provider. Confidence é resultado da regra, não probabilidade. Partial/low_confidence/manual existem no schema, mas não são workflows automáticos completos. [Matching](docs/MATCHING.md) detalha o algoritmo.
 
 # Testing / Commands
 

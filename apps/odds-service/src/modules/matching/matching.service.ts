@@ -23,6 +23,6 @@ export class MatchingService {
     }
     if (!Object.values(eligible).some((providers) => providers.length))
       throw new StaleDataError("No fresh provider listing");
-    return compareAllProviders(events, 15, eligible);
+    return compareAllProviders(events, eligible);
   }
 }

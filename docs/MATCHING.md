@@ -18,21 +18,20 @@ Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em 
 
 ## Regras exatas
 
-`compareAllProviders(events, toleranceMinutes = 15)` exige:
+`compareAllProviders(events)` exige:
 
 1. Providers diferentes e mesmo esport.
 2. Mesmo par de equipes normalizadas, independentemente da ordem.
 3. Ambos com status `scheduled`.
-4. Mesma competição após normalização/alias.
-5. Diferença absoluta de início ≤15 minutos.
+4. Mesmo instante de início após interpretar `startsAt`, sem tolerância.
 
-A tolerância é argumento da função, não variável de ambiente; serviços atuais usam o default. Eventos suspended/live não são candidatos, mesmo se o scheduler ainda puder coletar um suspended pré-jogo.
+Capitalização, acentos, espaços extras e pontuação irrelevante são ignorados na normalização dos times. A ordem dos dois times também é ignorada. A competição não veta o grupo: igualdade após normalização/alias produz confidence 1; divergência produz confidence 0,9. Eventos suspended/live não são candidatos, mesmo se o scheduler ainda puder coletar um suspended pré-jogo.
 
 O algoritmo deduplica por provider:eventId. Conteúdo divergente para a mesma identidade gera conflito. Monta componentes de candidatos e só aceita um grupo se **todos os pares forem compatíveis**, houver pelo menos dois membros e no máximo um de cada provider. Uma cadeia A↔B↔C em que A não corresponde a C não é fundida.
 
 Não existe quorum fixo de cinco providers. Um grupo pode ser formado por 2, 3, 4 ou 5 fontes desde que continue sendo uma clique completa, sem dois eventos do mesmo provider e sem ambiguidade. A cobertura `matched`/`partial` mostrada pelo monitor é uma projeção operacional separada: compara os membros ativos observados com os providers ativos no runtime, portanto providers intencionalmente desabilitados não tornam o evento parcial.
 
-Confidence retornada é **1** para grupos aprovados e 0 na decisão SQL unmatched. É um indicador da regra, não probabilidade estatística. Evidence registra equivalência de times/competição e diferença temporal. A seleção recebe `canonicalSide` quando seu nome corresponde ao time canônico; `reversed` informa orientação invertida.
+Confidence retornada é **1** para grupos aprovados com competição equivalente, **0,9** quando apenas a competição diverge e 0 na decisão SQL unmatched. É um indicador da regra, não probabilidade estatística. Evidence registra equivalência de times/competição e diferença temporal. A seleção recebe `canonicalSide` quando seu nome corresponde ao time canônico; `reversed` informa orientação invertida.
 
 ## Unmatched e ambiguidades
 
@@ -41,7 +40,7 @@ Razões atuais:
 | Reason | Significado |
 |---|---|
 | `ambiguous` | Grupo conflitante, múltiplos candidatos do mesmo provider ou identidade duplicada inconsistente |
-| `time_competition_or_status_mismatch` | Existe par de times em outro provider, mas outro critério falha |
+| `time_or_status_mismatch` | Existe par de times em outro provider, mas horário ou status diverge |
 | `no_team_pair` | Nenhum par equivalente em outra fonte |
 | `only_one_eligible_provider` | Matching não aplicável porque menos de dois providers têm listagem válida no esporte/contexto |
 
@@ -61,9 +60,9 @@ O repository preserva decisões `manual` existentes. Unmatched recebe canonicalE
 
 1. Capture as duas listagens no mesmo intervalo e confira fetchedAt/status.
 2. Compare rawTeamA/B e normalizedTeamA/B, esporte, competição normalizada e UTC de início.
-3. Confira aliases em names.ts/matching.ts e candidatos adicionais do mesmo provider.
+3. Confira aliases em names.ts/matching.ts e candidatos adicionais do mesmo provider; torneios diferentes reduzem confidence, mas não vetam o match.
 4. Reproduza `compareAllProviders` com fixture mínima sanitizada; inclua caso que **não** deve unir.
 5. Compare `/comparisons` com `/events/:uuid` lembrando que são projeções distintas; consulte match_decisions para identidade histórica.
-6. Não corrija resultado editando ID externo, estendendo tolerância indiscriminadamente ou unindo canônicos ambíguos no banco.
+6. Não corrija resultado editando ID externo ou unindo canônicos ambíguos no banco.
 
 Testes: `modules/matching/tests/{matching,three-providers}.test.ts` e suíte PostgreSQL. Nenhuma etapa calcula melhor preço, margem, probabilidade justa ou odds próprias.

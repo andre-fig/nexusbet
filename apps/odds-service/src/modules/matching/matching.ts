@@ -1,14 +1,11 @@
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import { teamName, tournamentName } from "../../shared/utils/names.js";
 /** Compatibility entry point; all matching uses provider-scoped identities. */
-export function compareProviders(
-  a: NormalizedEvent[],
-  b: NormalizedEvent[],
-  toleranceMinutes = 15,
-) {
-  return compareAllProviders([...a, ...b], toleranceMinutes, [
-    ...new Set([...a, ...b].map((event) => event.provider)),
-  ]);
+export function compareProviders(a: NormalizedEvent[], b: NormalizedEvent[]) {
+  return compareAllProviders(
+    [...a, ...b],
+    [...new Set([...a, ...b].map((event) => event.provider))],
+  );
 }
 export type EligibleProviders = Readonly<
   Partial<Record<NormalizedEvent["esport"], readonly string[]>>
@@ -18,23 +15,19 @@ function pair(e: NormalizedEvent) {
     .sort()
     .join("|");
 }
-function eligible(e: NormalizedEvent, f: NormalizedEvent, tolerance: number) {
+function eligible(e: NormalizedEvent, f: NormalizedEvent) {
   return (
     e.provider !== f.provider &&
     e.esport === f.esport &&
     pair(e) === pair(f) &&
     e.status === "scheduled" &&
     f.status === "scheduled" &&
-    tournamentName(e.tournament, e.esport) ===
-      tournamentName(f.tournament, f.esport) &&
-    Math.abs(Date.parse(e.startsAt) - Date.parse(f.startsAt)) <=
-      tolerance * 60000
+    Date.parse(e.startsAt) === Date.parse(f.startsAt)
   );
 }
 /** A component must be a complete, one-event-per-provider clique. No transitive fuzzy joins. */
 export function compareAllProviders(
   events: NormalizedEvent[],
-  toleranceMinutes = 15,
   eligibleProviders: readonly string[] | EligibleProviders = [
     ...new Set(events.map((event) => event.provider)),
   ],
@@ -78,7 +71,7 @@ export function compareAllProviders(
     seen.add(key(e));
     for (let i = 0; i < group.length; i++)
       for (const f of all)
-        if (!seen.has(key(f)) && eligible(group[i], f, toleranceMinutes)) {
+        if (!seen.has(key(f)) && eligible(group[i], f)) {
           seen.add(key(f));
           group.push(f);
         }
@@ -86,9 +79,7 @@ export function compareAllProviders(
       group.length > 1 &&
       new Set(group.map((x) => x.provider)).size === group.length &&
       !group.some((x) => conflicts.has(key(x))) &&
-      group.every((x, i) =>
-        group.slice(i + 1).every((y) => eligible(x, y, toleranceMinutes)),
-      );
+      group.every((x, i) => group.slice(i + 1).every((y) => eligible(x, y)));
     if (valid) matched.push(comparison(group));
     else
       for (const x of group)
@@ -104,7 +95,7 @@ export function compareAllProviders(
                       f.esport === x.esport &&
                       pair(f) === pair(x),
                   )
-                ? "time_competition_or_status_mismatch"
+                ? "time_or_status_mismatch"
                 : "no_team_pair",
         });
   }
@@ -112,6 +103,10 @@ export function compareAllProviders(
 }
 function comparison(group: NormalizedEvent[]) {
   const e = group[0];
+  const competitions = new Set(
+    group.map((x) => tournamentName(x.tournament, x.esport)),
+  );
+  const sameCompetitionAlias = competitions.size === 1;
   const prices = (x: NormalizedEvent, reversed = false) => ({
     eventId: x.eventId,
     rawTeamA: x.rawTeamA,
@@ -153,11 +148,11 @@ function comparison(group: NormalizedEvent[]) {
       teamB: e.normalizedTeamB,
       startsAt: e.startsAt,
     },
-    confidence: 1,
+    confidence: sameCompetitionAlias ? 1 : 0.9,
     confidenceMeaning: "rule score, not probability",
     evidence: {
       sameTeamPair: true,
-      sameCompetitionAlias: true,
+      sameCompetitionAlias,
       timeDifferenceSeconds:
         Math.max(...group.map((x) => Date.parse(x.startsAt))) / 1000 -
         Math.min(...group.map((x) => Date.parse(x.startsAt))) / 1000,
