@@ -43,6 +43,13 @@ function harness(execute: ExecuteJob, names: Provider[] = ["bet365"]) {
     ...collectionConfiguration(),
     startupDelayMs: 0,
     jitterMs: 0,
+    listIntervalMs: 60000,
+    detail: {
+      gt24h: 600000,
+      h6to24: 300000,
+      h1to6: 120000,
+      lt1h: 60000,
+    },
   };
   const scheduler = new AdaptiveScheduler(
     config,
@@ -69,11 +76,11 @@ async function cycle(s: AdaptiveScheduler) {
   await s.drain();
 }
 for (const [hours, expected] of [
-  [25, 600000],
-  [24, 300000],
-  [6, 300000],
-  [5, 120000],
-  [1, 120000],
+  [25, 3600000],
+  [24, 1800000],
+  [6, 1800000],
+  [5, 300000],
+  [1, 300000],
   [0.5, 60000],
   [0, null],
   [-1, null],

@@ -39,13 +39,13 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 |---|---|---|
 | `COLLECTION_ENABLED` | `false` | Exemplo seguro false; default do código true; aceita true/false/1/0 |
 | `COLLECTION_STARTUP_DELAY_MS` | `3000` | Espera inicial, mínimo 0 |
-| `COLLECTION_TICK_MS` | `1000` | Tick em memória, mínimo 100; não é polling remoto |
-| `COLLECTION_LIST_INTERVAL_MS` | `60000` | Listagem por provider; mínimo 30000 |
-| `DETAIL_INTERVAL_GT_24H_MS` | `600000` | Detalhe >24h; mínimo 30000 |
-| `DETAIL_INTERVAL_6H_24H_MS` | `300000` | Detalhe 6h–24h inclusivo; mínimo 30000 |
-| `DETAIL_INTERVAL_1H_6H_MS` | `120000` | Detalhe >=1h e <6h; mínimo 30000 |
+| `COLLECTION_TICK_MS` | `5000` | Tick em memória, mínimo 100; não é polling remoto |
+| `COLLECTION_LIST_INTERVAL_MS` | `300000` | Listagem por provider; mínimo 30000 |
+| `DETAIL_INTERVAL_GT_24H_MS` | `3600000` | Detalhe >24h; mínimo 30000 |
+| `DETAIL_INTERVAL_6H_24H_MS` | `1800000` | Detalhe 6h–24h inclusivo; mínimo 30000 |
+| `DETAIL_INTERVAL_1H_6H_MS` | `300000` | Detalhe >=1h e <6h; mínimo 30000 |
 | `DETAIL_INTERVAL_LT_1H_MS` | `60000` | Detalhe >0 e <1h; mínimo 30000 |
-| `COLLECTION_JITTER_MS` | `5000` | Mínimo 0; variação efetiva limitada a menos de 10000ms |
+| `COLLECTION_JITTER_MS` | `10000` | Mínimo 0; variação efetiva limitada a menos de 10000ms |
 | `PROVIDER_LIST_TIMEOUT_MS` | `60000` | Timeout listagem; mínimo 1 |
 | `PROVIDER_DETAIL_TIMEOUT_MS` | `60000` | Timeout detalhe; mínimo 1 |
 | `PROVIDER_FAILURE_THRESHOLD` | `5` | Falhas consecutivas para cooldown; mínimo 1 |

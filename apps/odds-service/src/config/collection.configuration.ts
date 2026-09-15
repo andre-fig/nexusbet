@@ -5,9 +5,9 @@ export interface DetailIntervals {
   lt1h: number;
 }
 export const DEFAULT_DETAIL_INTERVALS: DetailIntervals = {
-  gt24h: 600000,
-  h6to24: 300000,
-  h1to6: 120000,
+  gt24h: 3600000,
+  h6to24: 1800000,
+  h1to6: 300000,
   lt1h: 60000,
 };
 export interface CollectionSettings {
@@ -44,8 +44,8 @@ export function collectionConfiguration(): CollectionSettings {
   return {
     enabled: flag === "true" || flag === "1",
     startupDelayMs: n("COLLECTION_STARTUP_DELAY_MS", 3000, 0),
-    tickMs: n("COLLECTION_TICK_MS", 1000, 100),
-    listIntervalMs: n("COLLECTION_LIST_INTERVAL_MS", 60000, 30000),
+    tickMs: n("COLLECTION_TICK_MS", 5000, 100),
+    listIntervalMs: n("COLLECTION_LIST_INTERVAL_MS", 300000, 30000),
     detail: {
       gt24h: n(
         "DETAIL_INTERVAL_GT_24H_MS",
@@ -64,7 +64,7 @@ export function collectionConfiguration(): CollectionSettings {
       ),
       lt1h: n("DETAIL_INTERVAL_LT_1H_MS", DEFAULT_DETAIL_INTERVALS.lt1h, 30000),
     },
-    jitterMs: n("COLLECTION_JITTER_MS", 5000, 0),
+    jitterMs: n("COLLECTION_JITTER_MS", 10000, 0),
     concurrency: {
       bet365: n("BET365_MAX_CONCURRENCY", 1),
       betano: n("BETANO_MAX_CONCURRENCY", 1),

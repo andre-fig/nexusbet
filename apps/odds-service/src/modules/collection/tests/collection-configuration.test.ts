@@ -5,24 +5,37 @@ import { AdaptiveScheduler } from "../adaptive-scheduler.js";
 test("defaults and environment validate provider caps, timeouts and non-aggressive intervals", () => {
   const keys = [
     "COLLECTION_ENABLED",
+    "COLLECTION_TICK_MS",
     "COLLECTION_LIST_INTERVAL_MS",
+    "COLLECTION_JITTER_MS",
     "BET365_MAX_CONCURRENCY",
     "PROVIDER_LIST_TIMEOUT_MS",
     "DETAIL_INTERVAL_GT_24H_MS",
+    "DETAIL_INTERVAL_6H_24H_MS",
+    "DETAIL_INTERVAL_1H_6H_MS",
+    "DETAIL_INTERVAL_LT_1H_MS",
   ];
   const before = keys.map((k) => process.env[k]);
   try {
     for (const k of keys) delete process.env[k];
     const c = collectionConfiguration();
-    assert.equal(c.listIntervalMs, 60000);
-    assert.equal(c.detail.gt24h, 600000);
-    assert.equal(c.detail.h6to24, 300000);
-    assert.equal(c.detail.h1to6, 120000);
+    assert.equal(c.tickMs, 5000);
+    assert.equal(c.listIntervalMs, 300000);
+    assert.equal(c.detail.gt24h, 3600000);
+    assert.equal(c.detail.h6to24, 1800000);
+    assert.equal(c.detail.h1to6, 300000);
     assert.equal(c.detail.lt1h, 60000);
+    assert.equal(c.jitterMs, 10000);
     process.env.COLLECTION_ENABLED = "false";
+    process.env.COLLECTION_TICK_MS = "7000";
+    process.env.COLLECTION_LIST_INTERVAL_MS = "420000";
+    process.env.COLLECTION_JITTER_MS = "9000";
     process.env.BET365_MAX_CONCURRENCY = "2";
     process.env.DETAIL_INTERVAL_GT_24H_MS = "900000";
     assert.equal(collectionConfiguration().enabled, false);
+    assert.equal(collectionConfiguration().tickMs, 7000);
+    assert.equal(collectionConfiguration().listIntervalMs, 420000);
+    assert.equal(collectionConfiguration().jitterMs, 9000);
     assert.equal(collectionConfiguration().concurrency.bet365, 2);
     assert.equal(collectionConfiguration().detail.gt24h, 900000);
     process.env.COLLECTION_LIST_INTERVAL_MS = "5000";

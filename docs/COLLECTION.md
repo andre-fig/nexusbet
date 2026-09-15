@@ -15,22 +15,22 @@ startup → restore → startup delay + jitter → tick global
   → sucesso ou backoff → próximo tick
 ```
 
-O tick padrão de 1000ms **não consulta sites a cada segundo**. Só inicia tarefas vencidas. Não existe scanner de inbox no runtime normal.
+O tick padrão de 5000ms **não consulta sites a cada cinco segundos**. Só inicia tarefas vencidas. Não existe scanner de inbox no runtime normal.
 
 ## Intervalos reais
 
 | Tarefa / tempo restante | Intervalo default |
 |---|---:|
-| Listagem de cada provider ativo no runtime | 60s |
-| Mais de 24h | 600s |
-| De 6h a 24h, incluindo limites | 300s |
-| De 1h até menos de 6h | 120s |
+| Listagem de cada provider ativo no runtime | 300s |
+| Mais de 24h | 3600s |
+| De 6h a 24h, incluindo limites | 1800s |
+| De 1h até menos de 6h | 300s |
 | Mais de zero e menos de 1h | 60s |
 | Iniciado ou startsAt inválido | Sem detalhe pré-jogo |
 
-Função: `getDetailInterval` em scheduling-policy.ts. Exatamente 1h usa 120s; exatamente 6h/24h usa 300s. Elegibilidade também exige !inPlay e status scheduled/suspended. Ao descobrir live/início durante um detalhe, EventStartedError para a tarefa sem contar falha e sem marcar finished. Uma mudança futura de startsAt permite reavaliar parada anterior.
+Função: `getDetailInterval` em scheduling-policy.ts. Exatamente 1h usa 300s; exatamente 6h/24h usa 1800s. Elegibilidade também exige !inPlay e status scheduled/suspended. Ao descobrir live/início durante um detalhe, EventStartedError para a tarefa sem contar falha e sem marcar finished. Uma mudança futura de startsAt permite reavaliar parada anterior.
 
-No sucesso, `nextRunAt = lastAttemptAt + intervalo`. Cada tick recalcula intervalos sem falha ao aproximar-se do início. Jitter é guardado separadamente e somado na verificação de vencimento: aleatório positivo abaixo de min(COLLECTION_JITTER_MS,10000), default até 5s. Health nextListRunAt não inclui esse jitter. Dentro dos detalhes, ordena por startsAt e depois eventId.
+No sucesso, `nextRunAt = lastAttemptAt + intervalo`. Cada tick recalcula intervalos sem falha ao aproximar-se do início. Jitter é guardado separadamente e somado na verificação de vencimento: aleatório positivo abaixo de min(COLLECTION_JITTER_MS,10000), default até 10s. Health nextListRunAt não inclui esse jitter. Dentro dos detalhes, ordena por startsAt e depois eventId.
 
 ## Estado e concorrência
 
@@ -54,11 +54,11 @@ Publicação começa somente após validação. `IngestionCommitService` verific
 
 Listagem válida reconcilia catálogo e agenda: adiciona eventos novos, remove tarefas dos ausentes e atualiza startsAt. Falha não substitui catálogo por vazio. Stores/journal registram EventAdded/EventRemoved nos scopes apropriados; catalogChanges em memória é operacional, não um segundo journal persistente.
 
-`EventRemoved != EventFinished`. Últimos snapshots ficam preservados; rotas normalizadas continuam aplicando TTL de 600s. Detalhes distantes com intervalo 600s podem vencer o TTL por jitter, fila ou lentidão. Não há extensão automática do TTL.
+`EventRemoved != EventFinished`. Últimos snapshots ficam preservados; rotas normalizadas continuam aplicando TTL de 600s. Detalhes distantes com intervalo de até 3600s podem vencer o TTL. Não há extensão automática do TTL.
 
 ## Startup e shutdown
 
-Código default habilita coleta; `.env.example` escolhe false para onboarding seguro. Após startup normal, restaura/ingere estado, espera 3000ms + jitter e executa primeira discovery sem aguardar 60s completos.
+Código default habilita coleta; `.env.example` escolhe false para onboarding seguro. Após startup normal, restaura/ingere estado, espera 3000ms + jitter e executa primeira discovery sem aguardar 300s completos.
 
 SIGTERM/SIGINT: para timers e novos jobs, aguarda até SHUTDOWN_GRACE_MS=30000, aborta operações ainda fora de commit, drena trabalhos e fecha clientes. Commits já iniciados são aguardados mesmo além do grace period; disco/transporte bloqueado pode prolongar shutdown. PostgreSQL desconecta no hook final, depois da drenagem.
 

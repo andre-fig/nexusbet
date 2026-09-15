@@ -70,7 +70,7 @@ ConfigModule lê `.env` dentro do diretório do serviço; ambiente do processo t
 |---|---|---|
 | Aplicação | `PORT`, `ESPORTS`, `MAX_AGE_SECONDS` | 3650, três modalidades, TTL 600s |
 | Banco | `DATABASE_URL`, `PERSISTENCE_MODE`, `POSTGRES_*` | PostgreSQL explícito no exemplo; modo file disponível |
-| Coleta | `COLLECTION_ENABLED`, `COLLECTION_LIST_INTERVAL_MS`, `DETAIL_INTERVAL_*` | Listagem 60s; detalhes adaptativos |
+| Coleta | `COLLECTION_ENABLED`, `COLLECTION_LIST_INTERVAL_MS`, `DETAIL_INTERVAL_*` | Listagem 300s; detalhes adaptativos |
 | Falhas | `PROVIDER_*`, `COLLECTION_BACKOFF_*`, `SHUTDOWN_GRACE_MS` | Timeout, cooldown e drenagem |
 | Browser | `BROWSER_MODE`, `BROWSER_PROFILE_DIR`, `BROWSER_LOCALE` | Chrome próprio headed, Xvfb no container |
 | Ingestão/debug | `INGESTION_MODE`, `RAW_CAPTURE_ENABLED`, `RAW_CAPTURE_RETENTION_HOURS` | Direta; raw desligado por padrão e com retenção |

@@ -76,7 +76,7 @@ ESTRELABET_MAX_CONCURRENCY=1
 # ESTRELABET_INBOX_DIR=estrelabet-inbox
 ```
 
-Sem configurações novas de timeout: list/detail usam `PROVIDER_LIST_TIMEOUT_MS` e `PROVIDER_DETAIL_TIMEOUT_MS`. Discovery 60s; detalhes 10/5/2/1 minutos nas faixas existentes. Usa locks, timeout/AbortSignal, backoff e circuit breaker comuns. Falha mantém snapshots/TTL; um esporte vazio não é tratado como remoção autoritativa do catálogo.
+Sem configurações novas de timeout: list/detail usam `PROVIDER_LIST_TIMEOUT_MS` e `PROVIDER_DETAIL_TIMEOUT_MS`. Discovery 300s; detalhes 60/30/5/1 minutos nas faixas existentes. Usa locks, timeout/AbortSignal, backoff e circuit breaker comuns. Falha mantém snapshots/TTL; um esporte vazio não é tratado como remoção autoritativa do catálogo.
 
 ```sh
 cd apps/odds-service

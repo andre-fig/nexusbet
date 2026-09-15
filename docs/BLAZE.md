@@ -65,7 +65,7 @@ Mercados extras ficam `unknown`, preservando IDs, nome do dicionário, especific
 
 - `BlazeService implements ProviderRuntime` (extensão de `OddsProvider`). Módulo possui client, collector, parser, store, controller, fixtures e testes próprios.
 - Registry/CollectionModule incluem Blaze; `BLAZE_ENABLED` controla participação na agenda e impede coleta manual quando desabilitada.
-- Discovery 60s; detalhe segue os intervalos compartilhados 10/5/2/1 minutos. `BLAZE_MAX_CONCURRENCY=1`; locks, timeout, backoff e circuit breaker existentes.
+- Discovery 300s; detalhe segue os intervalos compartilhados 60/30/5/1 minutos. `BLAZE_MAX_CONCURRENCY=1`; locks, timeout, backoff e circuit breaker existentes.
 - Scope `blaze:list:{esport}:prematch` e `blaze:detail:{eventId}:prematch`; checkpoint `blaze:state`.
 - PostgreSQL confirma antes de publicar arquivo/memória, pelo sistema existente. Seed idempotente cadastra `blaze / Blaze`; nenhuma tabela ou migration específica é necessária.
 - Matching continua genérico. Quatro providers são suportados, sem aliases novos ou regras par-a-par. A validação isolada Blaze gera unmatched; o teste SQL comprova vínculos entre quatro providers usando peers controlados.
