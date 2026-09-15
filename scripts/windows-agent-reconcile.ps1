@@ -1,7 +1,10 @@
-param()
+param(
+  [string] $Root = (Join-Path $env:LOCALAPPDATA 'NexusBet'),
+  [string] $NodePath = ''
+)
 
 $ErrorActionPreference = 'Stop'
-$root = Join-Path $env:LOCALAPPDATA 'NexusBet'
+$root = [IO.Path]::GetFullPath($Root)
 $configPath = Join-Path $root 'agent.json'
 $releases = Join-Path $root 'releases'
 $currentPath = Join-Path $root 'current.txt'
@@ -33,12 +36,15 @@ function AgentProcess {
 try {
   New-Item -ItemType Directory -Force -Path $root,$releases,(Join-Path $root 'logs') | Out-Null
   if (-not (Test-Path -LiteralPath $configPath)) { throw 'Missing private agent.json' }
-  $node = Get-ChildItem -Path (Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages') -Filter node.exe -Recurse |
-    Where-Object FullName -Match 'OpenJS.NodeJS.LTS' | Select-Object -First 1 -ExpandProperty FullName
+  $node = $NodePath
+  if (-not $node) {
+    $node = Get-ChildItem -Path (Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages') -Filter node.exe -Recurse |
+      Where-Object FullName -Match 'OpenJS.NodeJS.LTS' | Select-Object -First 1 -ExpandProperty FullName
+  }
   if (-not $node) { throw 'Node LTS not installed' }
   $nodeDir = Split-Path $node
   $npm = Join-Path $nodeDir 'npm.cmd'
-  $env:PATH = "$nodeDir;$env:PATH"
+  $env:PATH = "$nodeDir;C:\Program Files\Git\cmd;$env:PATH"
   $env:npm_config_script_shell = 'C:\Program Files\Git\bin\bash.exe'
   $current = if (Test-Path -LiteralPath $currentPath) { (Get-Content -LiteralPath $currentPath -Raw).Trim() } else { '' }
   $previous = $current
