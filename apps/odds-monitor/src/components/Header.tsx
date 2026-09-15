@@ -40,9 +40,13 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onNavigate("dashboard")}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-7 h-7 rounded bg-surface-container-high border border-outline-variant/50 flex items-center justify-center transition-transform group-hover:scale-105">
-              <div className="w-3 h-3 bg-primary-container rounded-[2px] transform rotate-45"></div>
-            </div>
+            <img
+              src="/brand/nexusbet-logo-64.png"
+              alt="NexusBet"
+              width={28}
+              height={28}
+              className="w-7 h-7 rounded border border-outline-variant/50 transition-transform group-hover:scale-105"
+            />
             <div className="flex items-baseline gap-1.5">
               <span className="font-semibold text-[16px] text-on-surface tracking-tight group-hover:text-primary transition-colors">
                 Odds Monitor
