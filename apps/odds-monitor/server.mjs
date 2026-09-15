@@ -1,5 +1,6 @@
 import express from "express";
 import { Readable } from "node:stream";
+import { pipeline } from "node:stream/promises";
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
@@ -18,7 +19,9 @@ app.use("/api", async (request, response) => {
   }
 
   const controller = new AbortController();
-  response.on("close", () => controller.abort());
+  response.once("close", () => {
+    if (!response.writableEnded) controller.abort();
+  });
 
   try {
     const url = new URL(request.url, upstream);
@@ -37,7 +40,7 @@ app.use("/api", async (request, response) => {
       response.end();
       return;
     }
-    Readable.fromWeb(result.body).pipe(response);
+    await pipeline(Readable.fromWeb(result.body), response);
   } catch (error) {
     if (controller.signal.aborted) return;
     console.error("odds-service proxy failed", error);
