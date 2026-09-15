@@ -37,6 +37,12 @@ const backoff = [30000, 60000, 120000, 300000];
 let ticking = false;
 let previewing = false;
 
+function safeError(error: unknown) {
+  return error instanceof Error
+    ? error.message.replace(/https?:\/\/\S+/g, "[url]").slice(0, 160)
+    : "Error";
+}
+
 interface DetailTask {
   eventId: string;
   esport: "cs2" | "lol" | "valorant";
@@ -124,7 +130,7 @@ async function runProvider(
         dueAt:
           Date.now() +
           (failures >= 5 ? 300000 : backoff[Math.min(failures - 1, 3)]),
-        error: error instanceof Error ? error.name : "Error",
+        error: safeError(error),
       };
     }
   }
@@ -151,7 +157,7 @@ async function runProvider(
     task.dueAt =
       Date.now() +
       (task.failures >= 5 ? 300000 : backoff[Math.min(task.failures - 1, 3)]);
-    next.error = error instanceof Error ? error.name : "Error";
+    next.error = safeError(error);
   }
   return { ...next, details };
 }
@@ -230,10 +236,7 @@ async function runPreview(selectedProviders: Provider[] = providers) {
             status: "OK",
           };
         } catch (error) {
-          const message =
-            error instanceof Error
-              ? error.message.replace(/https?:\/\/\S+/g, "[url]").slice(0, 160)
-              : "Error";
+          const message = safeError(error);
           return {
             provider,
             events: null,
