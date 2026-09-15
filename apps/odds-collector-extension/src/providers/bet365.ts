@@ -55,6 +55,31 @@ function feedCapture(
   };
 }
 
+async function captureFullFeed(page: OwnedTab, path: string, pd: string) {
+  const route = pageUrl(pd);
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await page.capture(
+        path,
+        (url) => url.searchParams.get("pd") === pd,
+        () => page.navigate(route),
+        25000,
+        (body) => body.startsWith("F|"),
+      );
+    } catch (error) {
+      if (
+        attempt > 0 ||
+        !(error instanceof Error) ||
+        !/^Bookmaker full feed unavailable; skipped=\d+, kind=empty, cache=network, otherPd=0$/.test(
+          error.message,
+        )
+      )
+        throw error;
+    }
+  }
+  throw Error("Bookmaker full feed unavailable");
+}
+
 async function ownTab() {
   if (!tab) {
     tab = await OwnedTab.open("bet365");
@@ -73,14 +98,7 @@ export async function collectBet365() {
     const publications = [];
     for (const esport of esports) {
       const pd = `#AC#B151#C1#D50#E${codes[esport]}#F163#`;
-      const route = pageUrl(pd);
-      const response = await page.capture(
-        listPath,
-        (url) => url.searchParams.get("pd") === pd,
-        () => page.navigate(route),
-        25000,
-        (body) => body.startsWith("F|"),
-      );
+      const response = await captureFullFeed(page, listPath, pd);
       const capture = feedCapture(esport, response);
       publications.push(bet365Publication(capture));
       listings.set(esport, capture);
@@ -104,13 +122,7 @@ export async function collectBet365Detail(esport: Esport, eventId: string) {
     const page = await ownTab();
     const path = "/contentdata/othersportsmatchbettingcontentapi/coupon";
     const capture = async (pd: string) => {
-      const response = await page.capture(
-        path,
-        (url) => url.searchParams.get("pd") === pd,
-        () => page.navigate(pageUrl(pd)),
-        25000,
-        (body) => body.startsWith("F|"),
-      );
+      const response = await captureFullFeed(page, path, pd);
       return feedCapture(esport, response);
     };
     const route = eventRoute(listing, eventId);
