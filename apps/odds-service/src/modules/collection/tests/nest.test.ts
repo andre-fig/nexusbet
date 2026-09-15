@@ -27,6 +27,7 @@ async function setup() {
   const dir = await mkdtemp(join(tmpdir(), "nest-odds-"));
   const settings = {
     ...configuration().settings,
+    runtime: "server" as const,
     collection: { ...configuration().settings.collection, enabled: false },
     ingestEnabled: true,
     scanEnabled: false,
