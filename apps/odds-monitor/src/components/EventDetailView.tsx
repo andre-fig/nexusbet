@@ -221,6 +221,10 @@ export function EventDetailView({
                                     const outlier = m.analytics?.outliers.find(
                                       (item) => item.selectionId === s.id,
                                     );
+                                    const valueBet =
+                                      m.analytics?.valueBets?.find(
+                                        (item) => item.selectionId === s.id,
+                                      );
                                     return (
                                       <div
                                         key={s.id}
@@ -241,6 +245,10 @@ export function EventDetailView({
                                             value={s.displayOdds}
                                             bestPrice={best?.tooltip}
                                             outlier={outlier?.tooltip}
+                                            outlierDirection={
+                                              outlier?.direction
+                                            }
+                                            valueBet={valueBet?.tooltip}
                                             arbitrage={
                                               m.analytics?.arbitrage?.legs.some(
                                                 (leg) =>

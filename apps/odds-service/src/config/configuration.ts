@@ -25,6 +25,7 @@ export interface Settings {
   host: string;
   ttlMs: number;
   oddsOutlierThresholdPercent: number;
+  valueBetMinEdgePercent: number;
   scanIntervalMs: number;
   scanEnabled: boolean;
   pollingEnabled: boolean;
@@ -160,6 +161,7 @@ export function configuration() {
       10,
       0.01,
     ),
+    valueBetMinEdgePercent: positive("VALUE_BET_MIN_EDGE_PERCENT", 5, 0.01),
     scanIntervalMs: positive("INBOX_SCAN_INTERVAL_MS", 5000),
     scanEnabled: process.env.INBOX_SCAN_ENABLED !== "0",
     pollingEnabled: process.env.POLLING_ENABLED === "1",

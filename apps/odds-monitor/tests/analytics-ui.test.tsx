@@ -161,8 +161,8 @@ test("dashboard and detail color API odds values without native tooltips", () =>
   assert.match(matrix, /aria-label="Odds 1,83, Best price"/);
   assert.match(matrix, /text-analytics-best/);
   assert.doesNotMatch(matrix, /aria-label="Odds 1,83, Best price"[^>]*title=/);
-  assert.match(matrix, /aria-label="Odds 2,40, Outlier"/);
-  assert.match(matrix, /text-analytics-outlier/);
+  assert.match(matrix, /aria-label="Odds 2,40, Outlier up"/);
+  assert.match(matrix, /text-analytics-outlier-up/);
   assert.doesNotMatch(
     renderToStaticMarkup(
       <EventDetailView
@@ -181,20 +181,31 @@ test("dashboard and detail color API odds values without native tooltips", () =>
   );
 });
 
-test("an odds number applies Arbitrage before Outlier before Best price", () => {
+test("an odds number applies Arbitrage before Value bet before Outlier before Best price", () => {
   const value = (props: {
     bestPrice?: string;
     outlier?: string;
+    outlierDirection?: "up" | "down";
+    valueBet?: string;
     arbitrage?: string;
   }) => renderToStaticMarkup(<OddsValue value="2,40" {...props} />);
   assert.match(value({ bestPrice: "Best price" }), /text-analytics-best/);
   assert.match(
     value({ bestPrice: "Best price", outlier: "Outlier" }),
+    /text-analytics-outlier-up/,
+  );
+  assert.match(
+    value({ outlier: "Low", outlierDirection: "down" }),
     /text-analytics-outlier/,
+  );
+  assert.match(
+    value({ outlier: "High", valueBet: "Value" }),
+    /text-analytics-value/,
   );
   const all = value({
     bestPrice: "Best price",
     outlier: "Outlier",
+    valueBet: "Value",
     arbitrage: "Arbitrage",
   });
   assert.match(all, /text-analytics-arbitrage/);

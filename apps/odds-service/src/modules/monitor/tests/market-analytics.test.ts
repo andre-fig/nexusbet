@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { analyzeMarkets, type AnalyticsProvider } from "../market-analytics.js";
+import {
+  analyzeMarkets,
+  deVigProbabilities,
+  type AnalyticsProvider,
+} from "../market-analytics.js";
 
 function provider(
   name: string,
@@ -113,14 +117,84 @@ test("outlier uses the median and the configurable threshold without blaming pro
   assert.equal(result.outliers[0].provider, "blaze");
   assert.equal(result.outliers[0].medianOdds, 1.71);
   assert.equal(result.outliers[0].deviationPercent, 19.88);
+  assert.equal(result.outliers[0].direction, "up");
   assert.equal(
     result.outliers[0].tooltip,
-    "This price deviates significantly from the median across providers.",
+    "Price is significantly above the provider median.",
   );
   assert.equal(
     analyze(providers, { outlierThresholdPercent: 25 })[0].outliers.length,
     0,
   );
+});
+
+test("outliers retain direction independently of value edge", () => {
+  const [result] = analyze(
+    [
+      provider("bet365", 1.7, 1.9),
+      provider("betano", 1.71, 1.9),
+      provider("blaze", 1.4, 1.9),
+      provider("superbet", 1.95, 1.9),
+    ],
+    { valueBetMinEdgePercent: 50 },
+  );
+  assert.ok(result.outliers.some((item) => item.direction === "up"));
+  assert.ok(result.outliers.some((item) => item.direction === "down"));
+  assert.deepEqual(result.valueBets, []);
+});
+
+test("value bet uses de-vigged consensus and minimum edge", () => {
+  const providers = [
+    provider("bet365", 1.8, 1.8),
+    provider("betano", 1.82, 1.8),
+    provider("blaze", 1.81, 1.8),
+    provider("superbet", 2.2, 1.8),
+  ];
+  const [result] = analyze(providers, { valueBetMinEdgePercent: 5 });
+  assert.ok(
+    result.valueBets.some(
+      (item) => item.provider === "superbet" && item.edgePercent >= 5,
+    ),
+  );
+  assert.ok(
+    result.outliers.some(
+      (item) => item.provider === "superbet" && item.direction === "up",
+    ),
+  );
+  assert.deepEqual(
+    analyze(providers, { valueBetMinEdgePercent: 30 })[0].valueBets,
+    [],
+  );
+  assert.deepEqual(
+    analyze(providers, { matchingStatus: "partial" })[0].valueBets,
+    [],
+  );
+  assert.deepEqual(
+    analyze(providers, { matchingConfidence: 0.5 })[0].valueBets,
+    [],
+  );
+  assert.deepEqual(analyze(providers.slice(0, 2))[0].valueBets, []);
+  assert.deepEqual(
+    analyze([
+      ...providers.slice(0, 3),
+      provider("superbet", 2.2, 1.8, { status: "stale" }),
+    ])[0].valueBets,
+    [],
+  );
+  assert.deepEqual(
+    analyze([...providers.slice(0, 3), provider("superbet", 2.2, null)])[0]
+      .valueBets,
+    [],
+  );
+});
+
+test("de-vig normalizes complete two and three outcome markets", () => {
+  const two = deVigProbabilities([1.8, 1.8])!;
+  assert.deepEqual(two, [0.5, 0.5]);
+  const three = deVigProbabilities([2, 3, 4])!;
+  assert.ok(Math.abs(three.reduce((sum, p) => sum + p, 0) - 1) < 1e-12);
+  assert.ok(Math.abs(three[0] - 6 / 13) < 1e-12);
+  assert.equal(deVigProbabilities([2, 3, 0]), null);
 });
 
 test("arbitrage computes inverse sum, stake split and equal theoretical returns", () => {

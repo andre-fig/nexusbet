@@ -314,6 +314,8 @@ export class MonitorService {
         ),
         outlierThresholdPercent:
           this.config.settings.oddsOutlierThresholdPercent,
+        valueBetMinEdgePercent: this.config.settings.valueBetMinEdgePercent,
+        matchingConfidence: g.confidence,
       });
       return {
         id: g.id,
@@ -384,6 +386,8 @@ export class MonitorService {
         ),
       ),
       outlierThresholdPercent: this.config.settings.oddsOutlierThresholdPercent,
+      valueBetMinEdgePercent: this.config.settings.valueBetMinEdgePercent,
+      matchingConfidence: g.confidence,
     });
     return {
       ...projected[0],

@@ -61,6 +61,7 @@ export interface BestPrice {
   tooltip: string;
 }
 export interface Outlier {
+  direction: "up" | "down";
   side: "teamA" | "teamB";
   selection: string;
   selectionId: string;
@@ -71,6 +72,17 @@ export interface Outlier {
   medianOdds: number;
   displayMedianOdds: string;
   deviationPercent: number;
+  tooltip: string;
+}
+export interface ValueBet {
+  side: "teamA" | "teamB";
+  selectionId: string;
+  marketId: string;
+  provider: string;
+  odds: number;
+  fairOdd: number;
+  edgePercent: number;
+  providerCount: number;
   tooltip: string;
 }
 export interface Arbitrage {
@@ -112,6 +124,7 @@ export interface MarketAnalytics {
   marketIds: string[];
   bestPrices: BestPrice[];
   outliers: Outlier[];
+  valueBets: ValueBet[];
   arbitrage: Arbitrage | null;
 }
 export interface EventProvider {

@@ -36,6 +36,7 @@ export interface BestPrice {
   tooltip: string;
 }
 export interface Outlier {
+  direction: "up" | "down";
   side: "teamA" | "teamB";
   selection: string;
   selectionId: string;
@@ -46,6 +47,17 @@ export interface Outlier {
   medianOdds: number;
   displayMedianOdds: string;
   deviationPercent: number;
+  tooltip: string;
+}
+export interface ValueBet {
+  side: "teamA" | "teamB";
+  selectionId: string;
+  marketId: string;
+  provider: string;
+  odds: number;
+  fairOdd: number;
+  edgePercent: number;
+  providerCount: number;
   tooltip: string;
 }
 export interface ArbitrageLeg {
@@ -75,6 +87,7 @@ export interface MarketAnalytics {
   marketIds: string[];
   bestPrices: BestPrice[];
   outliers: Outlier[];
+  valueBets: ValueBet[];
   arbitrage: Arbitrage | null;
 }
 
@@ -102,6 +115,17 @@ function median(values: number[]) {
     ? sorted[middle]
     : (sorted[middle - 1] + sorted[middle]) / 2;
 }
+/** Normalizes complete market prices to probabilities without bookmaker margin. */
+export function deVigProbabilities(odds: number[]): number[] | null {
+  if (
+    ![2, 3].includes(odds.length) ||
+    odds.some((odd) => !Number.isFinite(odd) || odd <= 1)
+  )
+    return null;
+  const inverse = odds.map((odd) => 1 / odd);
+  const overround = inverse.reduce((sum, p) => sum + p, 0);
+  return inverse.map((p) => p / overround);
+}
 
 /** Read-only comparison of fresh, equivalent canonical markets. */
 export function analyzeMarkets(input: {
@@ -112,6 +136,8 @@ export function analyzeMarkets(input: {
   teamB: string;
   providers: AnalyticsProvider[];
   outlierThresholdPercent: number;
+  valueBetMinEdgePercent?: number;
+  matchingConfidence?: number;
 }): MarketAnalytics[] {
   if (
     !input.canonicalId ||
@@ -205,6 +231,35 @@ export function analyzeMarkets(input: {
       continue;
     const bestPrices: BestPrice[] = [];
     const outliers: Outlier[] = [];
+    const valueBets: ValueBet[] = [];
+    if (
+      input.matchingStatus === "matched" &&
+      (input.matchingConfidence ?? 1) >= 0.8 &&
+      providerCount >= 3
+    ) {
+      const probabilities = bySide.teamA.map((a) => {
+        const b = bySide.teamB.find((item) => item.provider === a.provider)!;
+        return {
+          provider: a.provider,
+          fair: deVigProbabilities([a.odds, b.odds])!,
+        };
+      });
+      for (const [index, side] of (["teamA", "teamB"] as const).entries()) {
+        const fairProbability = median(probabilities.map((p) => p.fair[index]));
+        const fairOdd = 1 / fairProbability;
+        for (const candidate of bySide[side]) {
+          const edge = (candidate.odds / fairOdd - 1) * 100;
+          if (edge < (input.valueBetMinEdgePercent ?? 5)) continue;
+          valueBets.push({
+            ...candidate,
+            fairOdd: round(fairOdd),
+            edgePercent: round(edge),
+            providerCount,
+            tooltip: `Price is above the estimated fair value. Fair odds: ${fairOdd.toFixed(2)} · Edge: +${edge.toFixed(1)}%`,
+          });
+        }
+      }
+    }
     for (const side of ["teamA", "teamB"] as const) {
       const candidates = [...bySide[side]].sort(
         (a, b) => b.odds - a.odds || a.provider.localeCompare(b.provider),
@@ -225,12 +280,15 @@ export function analyzeMarkets(input: {
         if (Math.abs(deviation) <= input.outlierThresholdPercent) continue;
         outliers.push({
           ...candidate,
+          direction: deviation > 0 ? "up" : "down",
           displayOdds: displayOdds(candidate.odds)!,
           medianOdds,
           displayMedianOdds: displayOdds(medianOdds)!,
           deviationPercent: round(deviation),
           tooltip:
-            "This price deviates significantly from the median across providers.",
+            deviation > 0
+              ? "Price is significantly above the provider median."
+              : "Price is significantly below the provider median.",
         });
       }
     }
@@ -264,6 +322,7 @@ export function analyzeMarkets(input: {
       marketIds: [...new Set(valid.map((candidate) => candidate.marketId))],
       bestPrices,
       outliers,
+      valueBets,
       arbitrage,
     });
   }

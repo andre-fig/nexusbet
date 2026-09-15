@@ -2,10 +2,13 @@ import React, { useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { odd } from "./DataState";
 
-type Kind = "best_price" | "outlier" | "arbitrage";
+type Kind =
+  "best_price" | "outlier_up" | "outlier_down" | "value_bet" | "arbitrage";
 const appearance: Record<Kind, { label: string; className: string }> = {
   best_price: { label: "Best price", className: "text-analytics-best" },
-  outlier: { label: "Outlier", className: "text-analytics-outlier" },
+  outlier_up: { label: "Outlier up", className: "text-analytics-outlier-up" },
+  outlier_down: { label: "Outlier down", className: "text-analytics-outlier" },
+  value_bet: { label: "Value bet", className: "text-analytics-value" },
   arbitrage: { label: "Arbitrage", className: "text-analytics-arbitrage" },
 };
 
@@ -13,11 +16,15 @@ export function OddsValue({
   value,
   bestPrice,
   outlier,
+  outlierDirection,
+  valueBet,
   arbitrage,
 }: {
   value: string | null | undefined;
   bestPrice?: string;
   outlier?: string;
+  outlierDirection?: "up" | "down";
+  valueBet?: string;
   arbitrage?: string;
 }) {
   const number = useRef<HTMLButtonElement>(null);
@@ -29,12 +36,16 @@ export function OddsValue({
   } | null>(null);
   const kind: Kind | null = arbitrage
     ? "arbitrage"
-    : outlier
-      ? "outlier"
-      : bestPrice
-        ? "best_price"
-        : null;
-  const tooltip = arbitrage ?? outlier ?? bestPrice;
+    : valueBet
+      ? "value_bet"
+      : outlier
+        ? outlierDirection === "down"
+          ? "outlier_down"
+          : "outlier_up"
+        : bestPrice
+          ? "best_price"
+          : null;
+  const tooltip = arbitrage ?? valueBet ?? outlier ?? bestPrice;
   if (!value || !kind || !tooltip) return <span>{odd(value)}</span>;
   const visual = appearance[kind];
   const show = () => {

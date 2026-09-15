@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search, ArrowRight, AlertTriangle } from "lucide-react";
 import type { Overview, EventPage, Filters } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
@@ -30,6 +30,32 @@ export function DashboardView({
   onOpenIssuesDrawer,
   onOpenEventDetail,
 }: Props) {
+  const [signal, setSignal] = useState("");
+  const signalCounts = { value: 0, up: 0, down: 0, arbitrage: 0 };
+  for (const event of events.data?.items ?? [])
+    for (const market of event.analytics ?? []) {
+      signalCounts.value += market.valueBets?.length ?? 0;
+      signalCounts.up += market.outliers.filter(
+        (item) => item.direction === "up",
+      ).length;
+      signalCounts.down += market.outliers.filter(
+        (item) => item.direction === "down",
+      ).length;
+      signalCounts.arbitrage += market.arbitrage ? 1 : 0;
+    }
+  const visibleEvents = (events.data?.items ?? []).filter(
+    (event) =>
+      !signal ||
+      (event.analytics ?? []).some((market) =>
+        signal === "value"
+          ? !!market.valueBets?.length
+          : signal === "up"
+            ? market.outliers.some((item) => item.direction === "up")
+            : signal === "down"
+              ? market.outliers.some((item) => item.direction === "down")
+              : !!market.arbitrage,
+      ),
+  );
   const providers = overview.data?.providers ?? [],
     tableProviders = providers.filter((provider) => provider.eventCount > 0),
     health = overview.data?.health,
@@ -174,6 +200,21 @@ export function DashboardView({
             </option>
           ))}
         </select>
+        <select
+          aria-label="Signal on this page"
+          title="Counts and filter apply to the loaded page only."
+          className={control}
+          value={signal}
+          onChange={(e) => setSignal(e.target.value)}
+        >
+          <option value="">All signals on this page</option>
+          <option value="value">Value bets ({signalCounts.value})</option>
+          <option value="up">Outliers up ({signalCounts.up})</option>
+          <option value="down">Outliers down ({signalCounts.down})</option>
+          <option value="arbitrage">
+            Arbitrage ({signalCounts.arbitrage})
+          </option>
+        </select>
         <label className="text-[12px] flex items-center gap-2">
           <input
             type="checkbox"
@@ -225,7 +266,19 @@ export function DashboardView({
                   </td>
                 </tr>
               )}
-              {events.data?.items.map((e) => (
+              {signal &&
+              events.data?.items.length &&
+              visibleEvents.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={tableProviders.length + 5}
+                    className="p-8 text-center text-on-surface-variant"
+                  >
+                    No {signal.replace("_", " ")} signals on this page.
+                  </td>
+                </tr>
+              ) : null}
+              {visibleEvents.map((e) => (
                 <tr
                   key={e.id}
                   className="border-t border-outline-variant/20 hover:bg-surface-container/50"
@@ -308,6 +361,10 @@ export function DashboardView({
                               (item) =>
                                 item.side === side && item.provider === p.id,
                             );
+                            const valueBet = winner?.valueBets?.find(
+                              (item) =>
+                                item.side === side && item.provider === p.id,
+                            );
                             return (
                               <span
                                 key={side}
@@ -326,6 +383,8 @@ export function DashboardView({
                                   }
                                   bestPrice={best?.tooltip}
                                   outlier={outlier?.tooltip}
+                                  outlierDirection={outlier?.direction}
+                                  valueBet={valueBet?.tooltip}
                                   arbitrage={
                                     winner?.arbitrage?.legs.some(
                                       (leg) =>
