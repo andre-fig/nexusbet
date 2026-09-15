@@ -4,7 +4,9 @@ import { teamName } from "../../shared/utils/names.js";
 // Reviewed, sport-scoped equivalences only. Do not strip generic team-name words.
 export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
+    "33": "team 33",
     navi: "natus vincere",
+    "nemiga gaming": "nemiga",
     "nrg esports": "nrg",
     "team brute": "brute",
   },

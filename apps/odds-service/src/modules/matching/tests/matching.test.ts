@@ -304,6 +304,65 @@ test("Valorant team aliases match FENNEL GC with FENNEL (F) and preserve raw nam
   assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "FENNEL (F)");
 });
 
+test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "superbet" as const,
+    eventId: "nemiga-gaming-team-33",
+    teamA: "Nemiga Gaming",
+    teamB: "Team 33",
+    rawTeamA: "Nemiga Gaming",
+    rawTeamB: "Team 33",
+    normalizedTeamA: teamName("Nemiga Gaming", "cs2"),
+    normalizedTeamB: teamName("Team 33", "cs2"),
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "estrelabet" as const,
+    eventId: "nemiga-33",
+    teamA: "Nemiga",
+    teamB: "33",
+    rawTeamA: "Nemiga",
+    rawTeamB: "33",
+    normalizedTeamA: teamName("Nemiga", "cs2"),
+    normalizedTeamB: teamName("33", "cs2"),
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("Nemiga Gaming", "cs2"), "nemiga");
+  assert.equal(canonicalTeamName("Nemiga", "cs2"), "nemiga");
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("33", "cs2"), "team 33");
+  assert.notEqual(
+    canonicalTeamName("33", "valorant"),
+    canonicalTeamName("Team 33", "valorant"),
+  );
+  assert.equal(left.normalizedTeamA, "nemiga gaming");
+  assert.equal(right.normalizedTeamB, "33");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.esport, "cs2");
+  assert.equal(result.matched[0].canonicalEvent.teamA, "nemiga");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "team 33");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "Nemiga Gaming");
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "Team 33");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamA, "Nemiga");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "33");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(
