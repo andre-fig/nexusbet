@@ -59,9 +59,7 @@ export class MonitorService {
     );
     return Object.fromEntries(
       Object.entries(
-        this.collection.matchingEligibleProviders(
-          this.config.settings.esports,
-        ),
+        this.collection.matchingEligibleProviders(this.config.settings.esports),
       ).map(([esport, providers]) => [
         esport,
         providers.filter((provider) => enabled.has(provider)),
@@ -71,12 +69,9 @@ export class MonitorService {
   async overview() {
     const providers = await this.providers();
     const eligibleProviders = await this.eligibleProviders();
-    const hasComparableScope = Object.values(eligibleProviders).some(
-      (eligible) => eligible.length >= 2,
-    );
     const [counts, issues] = await Promise.all([
       this.repo.summary(eligibleProviders),
-      this.repo.issueCount(!hasComparableScope),
+      this.repo.issueCount(eligibleProviders),
     ]);
     const count = (s: string) => counts.find((c) => c.status === s)?.count ?? 0;
     return {
@@ -319,14 +314,7 @@ export class MonitorService {
       throw new ServiceError("Invalid issue status", 400);
     const eligibleProviders = await this.eligibleProviders();
     return {
-      items: (
-        await this.repo.issues(
-          q,
-          !Object.values(eligibleProviders).some(
-            (eligible) => eligible.length >= 2,
-          ),
-        )
-      ).map((i) => ({
+      items: (await this.repo.issues(q, eligibleProviders)).map((i) => ({
         id: i.id,
         type: i.type,
         severity: i.severity,

@@ -12,6 +12,7 @@ import type {
   NormalizedEvent,
   Provider,
 } from "../../../shared/domain/normalized-event.js";
+import { StaleDataError } from "../../../shared/errors/domain-errors.js";
 const config: AppConfiguration = configuration();
 function provider(name: Provider): ProviderRuntime {
   return {
@@ -31,6 +32,23 @@ function provider(name: Provider): ProviderRuntime {
     closeCollection: async () => {},
   };
 }
+test("matching eligibility excludes stale and runtime-disabled providers per esport", () => {
+  const healthy = provider("superbet"),
+    stale = provider("blaze"),
+    disabled = provider("bet365");
+  stale.readEvents = () => {
+    throw new StaleDataError("stale listing");
+  };
+  const settings = structuredClone(config.settings);
+  settings.providerEnabled.bet365 = false;
+  const service = new CollectionService(
+    new ProviderRegistry([healthy, stale, disabled]),
+    { settings } as AppConfiguration,
+  );
+  assert.deepEqual(service.matchingEligibleProviders(["cs2"]), {
+    cs2: ["superbet"],
+  });
+});
 for (const failing of ["bet365", "betano"] as const)
   test(`${failing} failure leaves the other provider available`, async () => {
     const a = provider("bet365"),

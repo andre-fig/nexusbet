@@ -43,8 +43,9 @@ Razões atuais:
 | `ambiguous` | Grupo conflitante, múltiplos candidatos do mesmo provider ou identidade duplicada inconsistente |
 | `time_competition_or_status_mismatch` | Existe par de times em outro provider, mas outro critério falha |
 | `no_team_pair` | Nenhum par equivalente em outra fonte |
+| `only_one_eligible_provider` | Matching não aplicável porque menos de dois providers têm listagem válida no esporte/contexto |
 
-Dois providers podem formar comparação sem o terceiro. Um único provider disponível retorna seus eventos unmatched. Falta/stale de uma fonte não impede comparar as demais; se nenhuma estiver disponível, a API retorna 503.
+Dois providers podem formar comparação sem o terceiro. `eligibleProviders` é calculado por esporte a partir da interseção entre runtime habilitado/operacional e uma listagem válida dentro do TTL. Com menos de dois elegíveis, os eventos saem como `notApplicable`, com reason `only_one_eligible_provider`, e não geram `UNMATCHED_EVENT`. Disabled, indisponibilidade estrutural do runtime, stale e no-data ficam fora do denominador; saúde do provider continua separada. Se nenhum provider tiver listagem fresca, a API retorna 503.
 
 ## API versus persistência
 
@@ -52,7 +53,7 @@ Dois providers podem formar comparação sem o terceiro. Um único provider disp
 
 Na persistência, o repository compara scopes de listagem dentro do TTL relativo ao timestamp da publicação. Isso permite replay histórico sem substituir timestamps por agora. Reutiliza canônico atual ou histórico compatível; múltiplos canônicos anteriores conflitantes geram issue LOW_CONFIDENCE e não são fundidos automaticamente. Canônico novo nasce scheduled; atualização de canônico existente ajusta startsAt, não deduz término.
 
-O repository preserva decisões `manual` existentes. Unmatched recebe canonicalEventId null, motivo e issue UNMATCHED_EVENT; match aceito resolve essa issue. Mudança de vínculo/status/motivo relevante acrescenta decisão histórica.
+O repository preserva decisões `manual` existentes. Unmatched recebe canonicalEventId null, motivo e issue UNMATCHED_EVENT somente quando há ao menos dois providers elegíveis. `notApplicable` resolve uma issue unmatched anterior e não cria decisão negativa. Match aceito também resolve essa issue. Mudança de vínculo/status/motivo relevante acrescenta decisão histórica.
 
 `partial`, `low_confidence` e `manual` são valores modelados no enum SQL; não há fluxo público de revisão manual, score gradual ou classificação automática completa dessas categorias. LOW_CONFIDENCE como issue de conflito não equivale a um workflow de EventMatch low_confidence.
 

@@ -84,7 +84,11 @@ const publicEvent = {
 @Injectable()
 export class MonitorRepository {
   constructor(@Inject(DatabaseService) readonly database: DatabaseService) {}
-  groups(q: EventQuery = {}, id?: string, eligibleProviders: EligibleProviders = {}) {
+  groups(
+    q: EventQuery = {},
+    id?: string,
+    eligibleProviders: EligibleProviders = {},
+  ) {
     const page = integer(q.page, 1, 100000),
       limit = integer(q.limit, 50, 100),
       search = "%" + (q.search ?? "") + "%";
@@ -206,18 +210,31 @@ export class MonitorRepository {
       status?: string;
       limit?: string;
     } = {},
-    suppressUnmatched = false,
+    eligibleProviders?: EligibleProviders,
   ) {
+    const comparableEsports = eligibleProviders
+      ? Object.entries(eligibleProviders)
+          .filter(([, providers]) => providers.length >= 2)
+          .map(([esport]) => esport)
+      : undefined;
     return this.database.read((db) =>
       db.dataIssue.findMany({
         where: {
           status: (q.status ?? "open") as "open" | "resolved" | "ignored",
           severity: q.severity,
-          type: q.type
-            ? q.type
-            : suppressUnmatched
-              ? { not: "UNMATCHED_EVENT" }
-              : undefined,
+          type: q.type,
+          ...(comparableEsports
+            ? {
+                OR: [
+                  { type: { not: "UNMATCHED_EVENT" } },
+                  {
+                    providerEvent: {
+                      esport: { in: comparableEsports },
+                    },
+                  },
+                ],
+              }
+            : {}),
           provider: q.provider ? { slug: q.provider } : undefined,
           ...(q.eventId
             ? {
@@ -267,12 +284,28 @@ export class MonitorRepository {
       }),
     );
   }
-  issueCount(suppressUnmatched = false) {
+  issueCount(eligibleProviders?: EligibleProviders) {
+    const comparableEsports = eligibleProviders
+      ? Object.entries(eligibleProviders)
+          .filter(([, providers]) => providers.length >= 2)
+          .map(([esport]) => esport)
+      : undefined;
     return this.database.read((db) =>
       db.dataIssue.count({
         where: {
           status: "open",
-          type: suppressUnmatched ? { not: "UNMATCHED_EVENT" } : undefined,
+          ...(comparableEsports
+            ? {
+                OR: [
+                  { type: { not: "UNMATCHED_EVENT" } },
+                  {
+                    providerEvent: {
+                      esport: { in: comparableEsports },
+                    },
+                  },
+                ],
+              }
+            : {}),
         },
       }),
     );

@@ -1007,19 +1007,13 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
     collection,
   );
   const base = event();
-  for (const provider of [
-    "bet365",
-    "betano",
-    "superbet",
-    "blaze",
-    "estrelabet",
-  ] as const)
+  for (const provider of ["bet365", "betano", "superbet", "blaze"] as const)
     await service.commit(publication({ ...structuredClone(base), provider }));
-  const result = await monitor.events({ limit: "1" });
-  assert.equal(result.items[0].matching.providerCount, 3);
+  let result = await monitor.events({ limit: "1" });
+  assert.equal(result.items[0].matching.providerCount, 2);
   assert.equal(result.items[0].matching.expectedProviderCount, 3);
-  assert.equal(result.items[0].matching.status, "matched");
-  assert.equal(result.items[0].providers.length, 5);
+  assert.equal(result.items[0].matching.status, "partial");
+  assert.equal(result.items[0].providers.length, 4);
   const providers = await monitor.providers();
   assert.deepEqual(
     providers
@@ -1037,7 +1031,21 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
       ["betano", "disabled", "disabled_in_runtime"],
     ],
   );
-  const overview = await monitor.overview();
+  let overview = await monitor.overview();
+  assert.equal(overview.health.matched, 0);
+  assert.equal(overview.health.partial, 1);
+  await service.commit(
+    publication({ ...structuredClone(base), provider: "estrelabet" }),
+  );
+  result = await monitor.events({ limit: "1" });
+  assert.equal(result.items[0].matching.providerCount, 3);
+  assert.equal(result.items[0].matching.status, "matched");
+  overview = await monitor.overview();
   assert.equal(overview.health.matched, 1);
   assert.equal(overview.health.partial, 0);
+  await database.db.eventMatch.updateMany({
+    data: { status: "low_confidence", confidence: 0.4 },
+  });
+  result = await monitor.events({ limit: "1" });
+  assert.equal(result.items[0].matching.status, "low_confidence");
 });
