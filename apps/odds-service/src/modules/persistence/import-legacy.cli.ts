@@ -108,7 +108,7 @@ if (args.includes("--apply")) {
       );
     const persistence = new PersistenceService(
       database,
-      new CatalogRepository(),
+      new CatalogRepository(new DataIssuesRepository(database)),
       new MatchingRepository(new DataIssuesRepository(database)),
     );
     await persistence.onModuleInit();

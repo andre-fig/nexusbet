@@ -122,7 +122,7 @@ async function connect() {
   issues = new DataIssuesRepository(database);
   service = new PersistenceService(
     database,
-    new CatalogRepository(),
+    new CatalogRepository(issues),
     new MatchingRepository(issues),
   );
   await service.onModuleInit();
@@ -312,7 +312,7 @@ test("failure after relational writes rolls back snapshots, catalogue, matching 
   }
   const broken = new PersistenceService(
     database,
-    new BrokenCatalog(),
+    new BrokenCatalog(issues),
     new MatchingRepository(issues),
   );
   await assert.rejects(
@@ -720,7 +720,7 @@ test("database publication failure leaves provider memory and PostgreSQL history
     const count = await database.db.oddsSnapshot.count();
     const broken = new PersistenceService(
       database,
-      new BrokenCatalog(),
+      new BrokenCatalog(issues),
       new MatchingRepository(issues),
     );
     const failing = new SuperbetStore(
@@ -928,8 +928,8 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   assert.equal(result.pagination.total, 1);
   const id = result.items[0].id;
   assert.equal(result.items[0].canonicalId, null);
-  assert.equal(result.items[0].providers[0].matchWinner.teamA, 1.68);
-  assert.equal(result.items[0].providers[0].matchWinner.displayTeamA, "1,68");
+  assert.equal(result.items[0].providers[0].matchWinner.teamA, null);
+  assert.equal(result.items[0].providers[0].matchWinner.status, "incomplete");
   const detail = await monitor.detail(id);
   assert.equal(detail.markets.length, 1);
   assert.equal(detail.markets[0].selections[0].odds, 1.68);
@@ -954,9 +954,12 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   );
   assert.equal(
     (await monitor.events({ attentionOnly: "true" })).pagination.total,
-    0,
+    1,
   );
-  assert.equal((await monitor.issues({ eventId: id })).items.length, 0);
+  assert.equal(
+    (await monitor.issues({ eventId: id })).items[0].type,
+    "MARKET_INCOMPLETE",
+  );
   const overview = await monitor.overview();
   assert.equal(overview.health.unmatched, 0);
   assert.equal(overview.health.notApplicable, 1);
@@ -968,6 +971,35 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   await service.commit(publication(removed));
   assert.equal((await monitor.detail(id)).markets.length, 0);
   assert.equal((await monitor.history(id, {})).series[0].points.length, 3);
+});
+test("one match-winner odd opens a warning and a complete observation resolves it", async () => {
+  const first = event();
+  first.markets[0].category = "match_winner";
+  first.markets[0].map = null;
+  await service.commit(publication(first));
+  const issue = await database.db.dataIssue.findFirstOrThrow({
+    where: { type: "MARKET_INCOMPLETE" },
+  });
+  assert.equal(issue.severity, "warning");
+  assert.equal(issue.status, "open");
+  assert.equal(issue.message, "Expected 2 valid selections, found 1");
+  assert.ok(issue.marketId);
+  const complete = structuredClone(first);
+  complete.fetchedAt = new Date(
+    Date.parse(first.fetchedAt) + 1000,
+  ).toISOString();
+  complete.markets[0].selections.push({
+    ...structuredClone(complete.markets[0].selections[0]),
+    selectionId: "selection:beta",
+    name: "Beta",
+    odds: 1.95,
+  });
+  await service.commit(publication(complete));
+  assert.equal(
+    (await database.db.dataIssue.findUniqueOrThrow({ where: { id: issue.id } }))
+      .status,
+    "resolved",
+  );
 });
 test("Monitor publication notices occur after commit, never on replay or transaction failure", async () => {
   const { PersistenceNotifications } =
@@ -981,7 +1013,7 @@ test("Monitor publication notices occur after commit, never on replay or transac
   });
   const publishing = new PersistenceService(
     database,
-    new CatalogRepository(),
+    new CatalogRepository(issues),
     new MatchingRepository(issues),
     bus,
   );

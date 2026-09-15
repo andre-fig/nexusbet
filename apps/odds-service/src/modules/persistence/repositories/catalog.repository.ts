@@ -1,12 +1,20 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import type { Prisma } from "../../../generated/prisma/client.js";
 import type { NormalizedEvent } from "../../../shared/domain/normalized-event.js";
 import type { PersistencePublication } from "../../../shared/interfaces/persistence-port.interface.js";
 import { tournamentName } from "../../../shared/utils/names.js";
 import { snapshots } from "../../snapshots/market-journal.js";
 import { sanitize } from "../sanitize.js";
+import { DataIssuesRepository } from "./issues.repository.js";
+import {
+  incompleteMatchWinner,
+  validSelectionCount,
+} from "../../../shared/utils/market-quality.js";
 @Injectable()
 export class CatalogRepository {
+  constructor(
+    @Inject(DataIssuesRepository) private readonly issues: DataIssuesRepository,
+  ) {}
   async write(
     tx: Prisma.TransactionClient,
     providerId: string,
@@ -76,9 +84,16 @@ export class CatalogRepository {
         ),
         e,
       ];
+      const latestMarkets = new Map<
+        string,
+        { market: NormalizedEvent["markets"][number]; at: Date }
+      >();
       for (const observed of observations)
         for (const m of observed.markets) {
           const time = new Date(m.fetchedAt || observed.fetchedAt);
+          const latest = latestMarkets.get(m.marketId);
+          if (!latest || latest.at <= time)
+            latestMarkets.set(m.marketId, { market: m, at: time });
           const md = {
             rawMarketId: m.rawMarketId,
             category: m.category,
@@ -151,6 +166,31 @@ export class CatalogRepository {
             );
           }
         }
+      for (const [marketId, { market, at: time }] of latestMarkets) {
+        const stored = await tx.market.findUniqueOrThrow({
+          where: {
+            providerEventId_providerMarketId: {
+              providerEventId: row.id,
+              providerMarketId: marketId,
+            },
+          },
+        });
+        if (stored.lastSeenAt > time) continue;
+        const issueKey = `market_incomplete:${stored.id}`;
+        if (incompleteMatchWinner(market, e.teamA, e.teamB))
+          await this.issues.open(tx, {
+            key: issueKey,
+            type: "MARKET_INCOMPLETE",
+            severity: "warning",
+            message: `Expected 2 valid selections, found ${validSelectionCount(market)}`,
+            providerId,
+            providerEventId: row.id,
+            marketId: stored.id,
+            details: { marketId },
+            at: time,
+          });
+        else await this.issues.transition(tx, issueKey, "resolved", time);
+      }
     }
     const rows = p.observations.flatMap((b) =>
       snapshots(b.matches).map((s) => ({

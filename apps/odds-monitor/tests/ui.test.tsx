@@ -7,9 +7,28 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { DataState } from "../src/components/DataState";
 import { DashboardView } from "../src/components/DashboardView";
 import { EventDetailView } from "../src/components/EventDetailView";
+import { NeedsAttentionDrawer } from "../src/components/NeedsAttentionDrawer";
 const fixture = JSON.parse(
   await readFile(new URL("./fixtures/monitor.json", import.meta.url), "utf8"),
 );
+test("incomplete-market warning is labeled in Needs attention", () => {
+  const issue = {
+    ...fixture.issues.items[0],
+    type: "MARKET_INCOMPLETE",
+    severity: "warning",
+    message: "Expected 2 valid selections, found 1",
+  };
+  const html = renderToStaticMarkup(
+    <NeedsAttentionDrawer
+      isOpen
+      onClose={() => {}}
+      onInspectIssue={() => {}}
+      issues={{ data: { items: [issue] }, loading: false, refreshing: false, error: null }}
+    />,
+  );
+  assert.match(html, /Incomplete market/);
+  assert.match(html, /Expected 2 valid selections, found 1/);
+});
 test("loading, empty and error states contain no fallback records", () => {
   assert.match(
     renderToStaticMarkup(<DataState loading error={null} />),

@@ -1,6 +1,7 @@
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import { tournamentName } from "../../shared/utils/names.js";
 import { canonicalTeamName } from "./team-aliases.js";
+import { incompleteMatchWinner } from "../../shared/utils/market-quality.js";
 /** Compatibility entry point; all matching uses provider-scoped identities. */
 export function compareProviders(a: NormalizedEvent[], b: NormalizedEvent[]) {
   return compareAllProviders(
@@ -123,7 +124,9 @@ function comparison(group: NormalizedEvent[]) {
     reversed,
     odds: x.markets
       .filter(
-        (m) => m.category === "match_winner" || m.category === "map_winner",
+        (m) =>
+          (m.category === "match_winner" || m.category === "map_winner") &&
+          !incompleteMatchWinner(m, x.teamA, x.teamB),
       )
       .map((m) => ({
         marketId: m.marketId,

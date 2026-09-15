@@ -9,6 +9,7 @@ interface IssueInput {
   message: string;
   providerId?: string;
   providerEventId?: string;
+  marketId?: string;
   canonicalEventId?: string;
   details?: unknown;
   at: Date;
@@ -28,6 +29,7 @@ export class DataIssuesRepository {
       message: input.message,
       providerId: input.providerId,
       providerEventId: input.providerEventId,
+      marketId: input.marketId,
       canonicalEventId: input.canonicalEventId,
       details: sanitize(input.details ?? {}),
       status: "open" as const,

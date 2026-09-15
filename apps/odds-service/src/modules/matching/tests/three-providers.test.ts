@@ -53,6 +53,35 @@ test("real fixtures match three providers, two providers, one provider, and dive
     ),
   );
 });
+test("an incomplete match winner is excluded from matched odds", async () => {
+  const { a, b, c } = await sources();
+  const original = compareAllProviders([...a, ...b, ...c]).matched.find(
+    (match) => match.canonicalEvent.teamA === "red canids",
+  )!;
+  const event = c.find(
+    (candidate) => candidate.eventId === original.providers.superbet.eventId,
+  )!;
+  const incomplete = structuredClone(event);
+  const winner = incomplete.markets.find(
+    (market) => market.category === "match_winner",
+  )!;
+  winner.selections = winner.selections.slice(0, 1);
+  const result = compareAllProviders([
+    ...a,
+    ...b,
+    ...c.filter((candidate) => candidate !== event),
+    incomplete,
+  ]);
+  const match = result.matched.find(
+    (candidate) => candidate.canonicalEvent.teamA === "red canids",
+  )!;
+  assert.ok(match);
+  assert.ok(
+    !match.providers.superbet.odds.some(
+      (market) => market.category === "match_winner",
+    ),
+  );
+});
 test("eligibility quorum distinguishes not-applicable from a real unmatched event", async () => {
   const { c } = await sources();
   const event = c[0];

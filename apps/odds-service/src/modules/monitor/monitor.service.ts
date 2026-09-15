@@ -94,13 +94,23 @@ export class MonitorService {
     const active = p.provider.enabled && runtime.active;
     const markets = p.markets.map((m) => ({
       ...m,
-      status: m.inPlay
-        ? "live"
-        : m.suspended
-          ? "suspended"
-          : this.stale(m.lastSeenAt)
-            ? "stale"
-            : "healthy",
+      status:
+        m.category === "match_winner" &&
+        p.rawTeamA.trim() &&
+        p.rawTeamB.trim() &&
+        p.rawTeamA.trim() !== p.rawTeamB.trim() &&
+        m.selections.filter((s) => {
+          const odds = s.snapshots[0]?.odds;
+          return odds !== null && odds !== undefined && Number(odds) > 1;
+        }).length !== 2
+          ? "incomplete"
+          : m.inPlay
+            ? "live"
+            : m.suspended
+              ? "suspended"
+              : this.stale(m.lastSeenAt)
+                ? "stale"
+                : "healthy",
       selections: m.selections.map((s) => {
         const v = s.snapshots[0];
         const odds = v?.odds == null ? null : Number(v.odds);
@@ -129,7 +139,7 @@ export class MonitorService {
     }));
     const winner = markets.find((m) => m.category === "match_winner");
     const odd = (name: string) =>
-      winner?.selections.find(
+      (winner?.status === "incomplete" ? undefined : winner)?.selections.find(
         (s) =>
           canonicalTeamName(s.name, g.esport as "cs2" | "lol" | "valorant") ===
           canonicalTeamName(name, g.esport as "cs2" | "lol" | "valorant"),
