@@ -5,6 +5,7 @@ import { teamName } from "../../shared/utils/names.js";
 export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
     "33": "team 33",
+    "l g": "leo team",
     navi: "natus vincere",
     "nemiga gaming": "nemiga",
     "nrg esports": "nrg",

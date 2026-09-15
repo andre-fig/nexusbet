@@ -363,6 +363,63 @@ test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async 
   assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "33");
 });
 
+test("CS2 team aliases match Team 33 vs L&G with 33 vs Leo Team", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "superbet" as const,
+    eventId: "team-33-l-and-g",
+    teamA: "Team 33",
+    teamB: "L&G",
+    rawTeamA: "Team 33",
+    rawTeamB: "L&G",
+    normalizedTeamA: teamName("Team 33", "cs2"),
+    normalizedTeamB: teamName("L&G", "cs2"),
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "blaze" as const,
+    eventId: "33-leo-team",
+    teamA: "33",
+    teamB: "Leo Team",
+    rawTeamA: "33",
+    rawTeamB: "Leo Team",
+    normalizedTeamA: teamName("33", "cs2"),
+    normalizedTeamB: teamName("Leo Team", "cs2"),
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("L&G", "cs2"), "leo team");
+  assert.equal(canonicalTeamName("Leo Team", "cs2"), "leo team");
+  assert.notEqual(
+    canonicalTeamName("L&G", "valorant"),
+    canonicalTeamName("Leo Team", "valorant"),
+  );
+  assert.equal(left.normalizedTeamB, "l g");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "team 33");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "leo team");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "Team 33");
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "L&G");
+  assert.equal(result.matched[0].providers.blaze.rawTeamA, "33");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "Leo Team");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(
