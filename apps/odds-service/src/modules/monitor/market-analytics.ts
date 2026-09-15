@@ -87,11 +87,6 @@ type Candidate = {
   odds: number;
 };
 const round = (value: number) => Math.round(value * 100) / 100;
-const percent = (value: number) =>
-  value.toLocaleString("en-US", {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
-  });
 const money = (value: number) =>
   value.toLocaleString("en-US", {
     minimumFractionDigits: 2,
@@ -234,7 +229,8 @@ export function analyzeMarkets(input: {
           medianOdds,
           displayMedianOdds: displayOdds(medianOdds)!,
           deviationPercent: round(deviation),
-          tooltip: `This price deviates significantly from the median across providers. Outlier: ${tooltipOdds(candidate.odds)} at ${providerName(candidate.provider)} vs provider median ${tooltipOdds(medianOdds)} (${deviation >= 0 ? "+" : ""}${percent(deviation)}%). This signals divergence, not an error.`,
+          tooltip:
+            "This price deviates significantly from the median across providers.",
         });
       }
     }

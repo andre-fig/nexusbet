@@ -113,8 +113,10 @@ test("outlier uses the median and the configurable threshold without blaming pro
   assert.equal(result.outliers[0].provider, "blaze");
   assert.equal(result.outliers[0].medianOdds, 1.71);
   assert.equal(result.outliers[0].deviationPercent, 19.88);
-  assert.match(result.outliers[0].tooltip, /provider median 1\.71/);
-  assert.doesNotMatch(result.outliers[0].tooltip, /wrong/i);
+  assert.equal(
+    result.outliers[0].tooltip,
+    "This price deviates significantly from the median across providers.",
+  );
   assert.equal(
     analyze(providers, { outlierThresholdPercent: 25 })[0].outliers.length,
     0,

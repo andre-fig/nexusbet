@@ -48,7 +48,7 @@ test("dashboard and detail color API odds values without native tooltips", () =>
     displayMedianOdds: "1,71",
     deviationPercent: 28.65,
     tooltip:
-      "This price deviates significantly from the median across providers. Outlier: 2.20 vs provider median 1.71 (+28.7%).",
+      "This price deviates significantly from the median across providers.",
   };
   const arbitrage = {
     exists: true,
@@ -104,7 +104,8 @@ test("dashboard and detail color API odds values without native tooltips", () =>
     ...outlier,
     marketId: map2.id,
     selectionId: map2.selections[0].id,
-    tooltip: "Outlier: 2.40 vs provider median 1.71 (+40.4%).",
+    tooltip:
+      "This price deviates significantly from the median across providers.",
   };
   map2.analytics = {
     ...analytics,
