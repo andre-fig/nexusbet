@@ -7,6 +7,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
     "33": "team 33",
     "astral esports": "astral",
     "baks esports": "baks",
+    "furia esports": "furia",
     "l g": "leo team",
     navi: "natus vincere",
     "nemiga gaming": "nemiga",
