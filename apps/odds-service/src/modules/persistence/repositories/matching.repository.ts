@@ -108,7 +108,11 @@ export class MatchingRepository {
       const canonical = priorIds[0]
         ? await tx.canonicalEvent.update({
             where: { id: priorIds[0] },
-            data: { startsAt: new Date(c.startsAt) },
+            data: {
+              teamA: c.teamA,
+              teamB: c.teamB,
+              startsAt: new Date(c.startsAt),
+            },
           })
         : await tx.canonicalEvent.create({
             data: {

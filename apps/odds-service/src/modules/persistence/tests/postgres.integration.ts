@@ -617,6 +617,78 @@ test("canonical identity survives when stale providers make matching not applica
   );
 });
 
+test("fresh matched team names replace an old canonical label without hiding valid odds", async () => {
+  const observed = (
+    provider: NormalizedEvent["provider"],
+    topOdds: number,
+    time = at,
+  ) => {
+    const e = event(provider, 1.57, time, "invictus-top");
+    e.esport = "lol";
+    e.tournament = provider === "superbet" ? "LPL" : "LPL Regional Finals";
+    e.teamA = e.rawTeamA = "Invictus Gaming";
+    e.teamB = e.rawTeamB = "Top Esports";
+    e.normalizedTeamA = "invictus gaming";
+    e.normalizedTeamB = "top esports";
+    e.markets[0].category = "match_winner";
+    e.markets[0].map = null;
+    e.markets[0].selections[0].name = "Invictus Gaming";
+    e.markets[0].selections.push({
+      ...structuredClone(e.markets[0].selections[0]),
+      selectionId: "top-selection",
+      name: "Top Esports",
+      odds: topOdds,
+    });
+    return e;
+  };
+  await service.commit(publication(observed("superbet", 2.25)));
+  await service.commit(publication(observed("estrelabet", 2.2)));
+  const canonical = await database.db.canonicalEvent.findFirstOrThrow();
+  await database.db.canonicalEvent.update({
+    where: { id: canonical.id },
+    data: { teamB: "top" },
+  });
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const repo = new MonitorRepository(database);
+  const collection = {
+    operationalHealth: () => ({ providers: {} }),
+    providerRuntime: (provider: string) => ({
+      active: provider === "superbet" || provider === "estrelabet",
+      status: "active",
+      reason: "active",
+    }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitorConfig = {
+    settings: { ...config.settings, ttlMs: 24 * 60 * 60 * 1000 },
+  } as AppConfiguration;
+  const monitor = new MonitorService(repo, monitorConfig, collection);
+  const before = (await monitor.events({ search: "invictus" })).items[0];
+  assert.equal(before.providers[0].matchWinner.status, "healthy");
+  assert.equal(before.providers[0].matchWinner.teamB, null);
+
+  await service.commit(
+    publication(observed("superbet", 2.25, "2026-09-15T00:00:01.000Z")),
+  );
+  assert.equal(
+    (
+      await database.db.canonicalEvent.findUniqueOrThrow({
+        where: { id: canonical.id },
+      })
+    ).teamB,
+    "top esports",
+  );
+  const after = (await monitor.events({ search: "invictus" })).items[0];
+  assert.equal(after.canonicalId, canonical.id);
+  assert.deepEqual(
+    after.providers.map((provider) => provider.matchWinner.teamB).sort(),
+    [2.2, 2.25],
+  );
+  assert.ok(after.analytics.length > 0);
+  assert.deepEqual(after.issues, []);
+});
+
 test("Nest API restores provider state and scheduler catalogue, keeps TTL, validates reads, and disconnects on shutdown", async () => {
   const { Test } = await import("@nestjs/testing");
   const { AppModule } = await import("../../../app.module.js");
