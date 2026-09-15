@@ -1,0 +1,36 @@
+name: Deploy collector agent
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/odds-service/**'
+      - '.github/workflows/collector-agent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: dedicated-collector-agent
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: [self-hosted, macOS, odds-collector]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/odds-service/package-lock.json
+      - name: Install, verify and build
+        working-directory: apps/odds-service
+        run: |
+          npm ci
+          npm run typecheck
+          npm run format:check
+          npm run build
+          npm test
+      - name: Install release and restart LaunchAgent
+        working-directory: apps/odds-service
+        env:
+          AGENT_RELEASE_ID: ${{ github.sha }}
+        run: bash runtime/agent/deploy-macos.sh

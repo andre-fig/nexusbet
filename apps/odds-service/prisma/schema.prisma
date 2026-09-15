@@ -280,3 +280,13 @@ model LegacyCheckpoint {
 
   @@map("legacy_checkpoints")
 }
+
+model IngestionRun {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  provider String
+  collectionRunId String @map("collection_run_id")
+  hash String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([provider, collectionRunId])
+  @@map("ingestion_runs")
+}

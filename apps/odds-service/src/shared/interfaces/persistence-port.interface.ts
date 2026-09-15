@@ -2,6 +2,7 @@ import type { NormalizedEvent } from "../domain/normalized-event.js";
 import type { MarketBatch } from "../domain/market-model.js";
 import type { Provider } from "../domain/normalized-event.js";
 export interface PersistencePublication {
+  collectionRunId?: string;
   provider: string;
   esport: string;
   kind: "list" | "detail";

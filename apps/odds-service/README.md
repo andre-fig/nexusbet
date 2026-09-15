@@ -1,5 +1,7 @@
 # Odds Service
 
+> Runtime atual: [server + collector-agent](../../docs/RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 ## Runtime suportado: desenvolvimento local
 
 Bet365 e Betano usam exclusivamente **`BROWSER_RUNTIME=local-cdp` no macOS**, conectando ao Chrome headed existente e gerenciando somente suas próprias tabs. **Linux/Xvfb e headless não são suportados** para esses providers. Em Railway: `BET365_ENABLED=false`, `BETANO_ENABLED=false`, `BROWSER_RUNTIME=disabled`. Superbet, Blaze e EstrelaBet mantêm HTTP independente.

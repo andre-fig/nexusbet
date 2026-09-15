@@ -140,7 +140,7 @@ after(async () => {
 });
 beforeEach(async () => {
   await database.db.$executeRawUnsafe(
-    "TRUNCATE providers, canonical_events, legacy_checkpoints CASCADE",
+    "TRUNCATE providers, canonical_events, legacy_checkpoints, ingestion_runs CASCADE",
   );
   await seedProviders(database.db);
 });
@@ -693,7 +693,7 @@ test("historical canonical suffixes cannot hide valid odds after matching-key no
   assert.deepEqual(after.issues, []);
 });
 
-test("Nest API restores provider state and scheduler catalogue, keeps TTL, validates reads, and disconnects on shutdown", async () => {
+test("Server API restores provider state without scheduler, keeps TTL, validates reads, and disconnects on shutdown", async () => {
   const { Test } = await import("@nestjs/testing");
   const { AppModule } = await import("../../../app.module.js");
   const { configureHttp } = await import("../../../bootstrap.js");
@@ -737,8 +737,13 @@ test("Nest API restores provider state and scheduler catalogue, keeps TTL, valid
     const url = await app.getUrl();
     const health = await (await fetch(url + "/health")).json();
     assert.equal(health.database.status, "connected");
-    assert.equal(app.get(CollectionService).scheduler.catalog.size, 10);
-    assert.equal(app.get(CollectionService).scheduler.catalogChanges.size, 0);
+    assert.equal(
+      app.get(CollectionService).operationalHealth().scheduler.running,
+      false,
+    );
+    const { SchedulerService } =
+      await import("../../collection/scheduler.service.js");
+    assert.throws(() => app.get(SchedulerService));
     for (const path of ["/providers", "/provider-events", "/events", "/issues"])
       assert.equal((await fetch(url + path)).status, 200);
     assert.equal((await fetch(url + "/events/not-a-uuid")).status, 400);
@@ -1467,4 +1472,202 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
   });
   result = await monitor.events({ limit: "1" });
   assert.equal(result.items[0].matching.status, "low_confidence");
+});
+
+test("collector delivery → authenticated server → PostgreSQL/matching → Monitor/SSE; five providers and durable run idempotency", async () => {
+  const { Test } = await import("@nestjs/testing");
+  const { AppModule } = await import("../../../app.module.js");
+  const { configureHttp } = await import("../../../bootstrap.js");
+  const { toWire } = await import("../../runtime/wire-payload.js");
+  const { providers } = await import("../../runtime/runtime-settings.js");
+  const { PersistenceNotifications } =
+    await import("../persistence-notifications.js");
+  const previousToken = process.env.ODDS_INGESTION_TOKEN;
+  process.env.ODDS_INGESTION_TOKEN = "integration-test-token-".repeat(3);
+  const module = await Test.createTestingModule({ imports: [AppModule] })
+    .overrideProvider(AppConfiguration)
+    .useValue({
+      settings: {
+        ...config.settings,
+        runtime: "server",
+        collection: { ...config.settings.collection, enabled: true },
+      },
+    })
+    .compile();
+  const app = configureHttp(
+    module.createNestApplication({ logger: false, bodyParser: false }),
+  );
+  const token = process.env.ODDS_INGESTION_TOKEN;
+  const controller = new AbortController();
+  let notices = 0;
+  const committedChecks: Promise<void>[] = [];
+  const sub = app.get(PersistenceNotifications).committed.subscribe(() => {
+    notices++;
+    committedChecks.push(
+      (async () => {
+        assert.ok((await database.db.ingestionRun.count()) > 0);
+        assert.ok((await database.db.oddsSnapshot.count()) > 0);
+      })(),
+    );
+  });
+  try {
+    await app.listen(0, "127.0.0.1");
+    const base = await app.getUrl();
+    const post = (path: string, body: unknown, auth = token) =>
+      fetch(base + path, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${auth}`,
+        },
+        body: JSON.stringify(body),
+      });
+    assert.equal(
+      (await post("/internal/agents/heartbeat", {}, "wrong")).status,
+      401,
+    );
+    assert.equal(
+      (await post("/internal/ingestion/superbet", {}, "wrong")).status,
+      401,
+    );
+    assert.equal((await post("/internal/ingestion/superbet", {})).status, 400);
+    const health = await (await fetch(base + "/health")).json();
+    assert.equal(health.externalCollectorsRunning, 0);
+    assert.equal(health.scheduler.running, false);
+    const { SchedulerService } =
+      await import("../../collection/scheduler.service.js");
+    const { LocalCdpService } =
+      await import("../../../shared/browser/local-cdp.service.js");
+    assert.throws(() => app.get(SchedulerService));
+    assert.throws(() => app.get(LocalCdpService));
+    const stream = await fetch(base + "/monitor/stream", {
+      signal: controller.signal,
+    });
+    const reader = stream.body!.getReader();
+    const now = new Date().toISOString();
+    const deliveryDir = await mkdtemp(join(tmpdir(), "agent-to-server-"));
+    const oldEnv = { ...process.env };
+    Object.assign(process.env, {
+      ODDS_SERVER_URL: base,
+      AGENT_ID: "integration-pc",
+      ODDS_OUTBOX_DIR: deliveryDir,
+    });
+    const { RemotePersistence } =
+      await import("../../runtime/remote-persistence.js");
+    const delivery = new RemotePersistence();
+    const payloads: ReturnType<typeof toWire>[] = [];
+    try {
+      await delivery.onModuleInit();
+      for (const provider of providers)
+        await delivery.commit(
+          publication(event(provider, 1.923456789123, now)),
+        );
+      const { readdir, readFile } = await import("node:fs/promises");
+      for (const file of await readdir(deliveryDir))
+        payloads.push(
+          JSON.parse(await readFile(join(deliveryDir, file), "utf8")),
+        );
+      delivery.tick();
+      const deadline = Date.now() + 10000;
+      while ((await readdir(deliveryDir)).length && Date.now() < deadline)
+        await new Promise((resolve) => setTimeout(resolve, 20));
+      assert.equal(
+        (await readdir(deliveryDir)).length,
+        0,
+        "server acknowledged every durable pending payload",
+      );
+    } finally {
+      await delivery.onModuleDestroy();
+      process.env = oldEnv;
+      await rm(deliveryDir, { recursive: true, force: true });
+    }
+    assert.equal(await database.db.providerEvent.count(), 5);
+    assert.equal(await database.db.oddsSnapshot.count(), 5);
+    assert.equal(await database.db.ingestionRun.count(), 5);
+    assert.equal(await database.db.canonicalEvent.count(), 1);
+    const first = payloads[0];
+    const before = notices;
+    const repeats = await Promise.all([
+      post(`/internal/ingestion/${first.provider}`, first),
+      post(`/internal/ingestion/${first.provider}`, first),
+    ]);
+    assert.ok(repeats.every((r) => r.status === 201));
+    assert.equal(notices, before);
+    assert.equal(await database.db.oddsSnapshot.count(), 5);
+    assert.equal(
+      (
+        await post(`/internal/ingestion/${first.provider}`, {
+          ...first,
+          scope: first.scope + ":changed",
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await post("/internal/agents/heartbeat", {
+          agentId: "test-pc",
+          providers: [...providers],
+          at: now,
+        })
+      ).status,
+      201,
+    );
+    const agents = await (
+      await fetch(base + "/internal/agents", {
+        headers: { authorization: `Bearer ${token}` },
+      })
+    ).json();
+    assert.equal(agents[0].online, true);
+    const monitor = await (await fetch(base + "/monitor/providers")).json();
+    assert.equal(
+      monitor.filter((p: { active: boolean }) => p.active).length,
+      5,
+    );
+    const rows = await (await fetch(base + "/monitor/events")).json();
+    assert.equal(rows.items[0].matching.providerCount, 5);
+    let streamText = "";
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    try {
+      while (!streamText.includes("provider.updated")) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        streamText += new TextDecoder().decode(value);
+      }
+    } finally {
+      clearTimeout(timeout);
+      controller.abort();
+    }
+    assert.match(streamText, /provider.updated/);
+    assert.ok(!streamText.includes("1.923456789123"));
+    await Promise.all(committedChecks);
+  } finally {
+    controller.abort();
+    sub.unsubscribe();
+    await app.close();
+    if (previousToken === undefined) delete process.env.ODDS_INGESTION_TOKEN;
+    else process.env.ODDS_INGESTION_TOKEN = previousToken;
+  }
+});
+
+test("ingestion receipt rolls back with failed catalog transaction and permits retry", async () => {
+  const { toWire, fromWire } = await import("../../runtime/wire-payload.js");
+  const p = fromWire(toWire(publication(event())), "superbet");
+  class FailingCatalog extends CatalogRepository {
+    override async write(...args: Parameters<CatalogRepository["write"]>) {
+      await super.write(...args);
+      throw Error("injected failure");
+    }
+  }
+  const broken = new PersistenceService(
+    database,
+    new FailingCatalog(issues),
+    new MatchingRepository(issues),
+  );
+  await assert.rejects(broken.commit(p));
+  assert.equal(await database.db.ingestionRun.count(), 0);
+  assert.equal(await database.db.oddsSnapshot.count(), 0);
+  await service.commit(p);
+  assert.equal(await database.db.ingestionRun.count(), 1);
+  assert.equal(await database.db.oddsSnapshot.count(), 1);
 });

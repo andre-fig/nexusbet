@@ -11,6 +11,8 @@ import { ConfigService } from "@nestjs/config";
 import { resolve } from "node:path";
 import type { Esport } from "../shared/types/common.js";
 export interface Settings {
+  runtime?: "server" | "collector-agent";
+  collectProviders?: Record<string, boolean>;
   browser: BrowserSettings;
   providerEnabled: Record<"bet365" | "betano", boolean>;
   cdpReconnectCooldownMs: number;
@@ -67,9 +69,14 @@ export function configuration() {
   ) as Esport[];
   if (esports.some((g) => !["cs2", "lol", "valorant"].includes(g)))
     throw Error("Invalid ESPORTS");
+  const runtime = process.env.ODDS_RUNTIME;
+  if (runtime && !["server", "collector-agent"].includes(runtime))
+    throw Error("Invalid ODDS_RUNTIME");
   const persistenceMode =
-    process.env.PERSISTENCE_MODE ||
-    (process.env.DATABASE_URL ? "postgres" : "file");
+    runtime === "collector-agent"
+      ? "file"
+      : process.env.PERSISTENCE_MODE ||
+        (process.env.DATABASE_URL ? "postgres" : "file");
   if (!["file", "postgres"].includes(persistenceMode))
     throw Error("Invalid PERSISTENCE_MODE");
   if (persistenceMode === "postgres" && !process.env.DATABASE_URL)
@@ -90,10 +97,16 @@ export function configuration() {
       throw Error("Invalid " + key);
     return value === "true" || value === "1";
   };
-  const estrelabetFlag = process.env.ESTRELABET_ENABLED ?? "true";
+  const estrelabetFlag =
+    (runtime === "collector-agent"
+      ? process.env.COLLECT_ESTRELABET
+      : process.env.ESTRELABET_ENABLED) ?? "true";
   if (!["true", "false", "1", "0"].includes(estrelabetFlag))
     throw Error("Invalid ESTRELABET_ENABLED");
-  const blazeFlag = process.env.BLAZE_ENABLED ?? "true";
+  const blazeFlag =
+    (runtime === "collector-agent"
+      ? process.env.COLLECT_BLAZE
+      : process.env.BLAZE_ENABLED) ?? "true";
   if (!["true", "false", "1", "0"].includes(blazeFlag))
     throw Error("Invalid BLAZE_ENABLED");
   if (process.env.ODDS_MONITOR_ORIGIN)
@@ -106,10 +119,25 @@ export function configuration() {
         throw Error("Invalid ODDS_MONITOR_ORIGIN");
     }
   const settings: Settings = {
+    runtime: runtime as Settings["runtime"],
+    collectProviders: Object.fromEntries(
+      ["bet365", "betano", "superbet", "blaze", "estrelabet"].map((p) => {
+        const flag = process.env[`COLLECT_${p.toUpperCase()}`] ?? "true";
+        if (!["true", "false", "1", "0"].includes(flag))
+          throw Error("Invalid collect flag");
+        return [p, flag === "true" || flag === "1"];
+      }),
+    ),
     browser: browserConfiguration(),
     providerEnabled: {
-      bet365: enabled("BET365_ENABLED"),
-      betano: enabled("BETANO_ENABLED"),
+      bet365:
+        runtime === "collector-agent"
+          ? process.env.COLLECT_BET365 !== "false"
+          : enabled("BET365_ENABLED"),
+      betano:
+        runtime === "collector-agent"
+          ? process.env.COLLECT_BETANO !== "false"
+          : enabled("BETANO_ENABLED"),
     },
     cdpReconnectCooldownMs: positive(
       "CDP_RECONNECT_COOLDOWN_MS",
@@ -119,7 +147,10 @@ export function configuration() {
     persistenceMode: persistenceMode as "file" | "postgres",
     databaseUrl: process.env.DATABASE_URL,
     monitorOrigin: process.env.ODDS_MONITOR_ORIGIN,
-    collection: collectionConfiguration(),
+    collection: {
+      ...collectionConfiguration(),
+      ...(runtime === "server" ? { enabled: false } : {}),
+    },
     ingestEnabled: process.env.INBOX_INGEST_ENABLED !== "0",
     port: positive("PORT", 3650, 0),
     host: process.env.HOST || "127.0.0.1",

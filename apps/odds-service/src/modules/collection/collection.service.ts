@@ -90,6 +90,14 @@ export class CollectionService {
         status: "disabled",
         reason: "disabled_in_runtime",
       };
+    if (this.config.settings.runtime === "server")
+      return { active: true, status: "active", reason: "active" };
+    if (this.config.settings.collectProviders?.[name] === false)
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_by_config",
+      };
     if (name === "estrelabet" && !this.config.settings.estrelabetEnabled)
       return {
         active: false,
@@ -225,6 +233,8 @@ export class CollectionService {
     names: string[],
     options: CycleOptions,
   ): Promise<CollectionResult[]> {
+    if (this.config.settings.runtime === "server")
+      throw Error("Collection disabled on server");
     return Promise.all(
       names.map(async (name) => {
         if (this.active.has(name) || this.scheduler.health().scheduler.running)
@@ -289,6 +299,8 @@ export class CollectionService {
     );
   }
   async runLoop(names: string[], options: CycleOptions, signal: AbortSignal) {
+    if (this.config.settings.runtime === "server")
+      throw Error("Collection disabled on server");
     return Promise.all(
       names.map(async (name) => {
         if (this.loops.has(name)) return false;

@@ -1,5 +1,7 @@
 # NexusBet — odds-service
 
+> Runtime atual: [server + collector-agent](docs/RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betano, Superbet, Blaze e EstrelaBet, normaliza mercados, compara eventos equivalentes e conserva histórico em PostgreSQL. O serviço NestJS vive em `apps/odds-service` e funciona sem frontend ou BFF.
 
 O escopo atual cobre CS2, League of Legends e Valorant. Os mercados prioritários são vencedor da partida e vencedor dos mapas 1–3; o parser aceita mapas adicionais e preserva mercados desconhecidos. Não há apostas, carteira, pagamentos, cálculo de odds próprias ou coleta live.

@@ -6,7 +6,7 @@ import { mkdtemp, readFile, rm, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { AppModule } from "../../../app.module.js";
+import { AppModule } from "../../collection/tests/provider-harness.js";
 import { configureHttp } from "../../../bootstrap.js";
 import {
   AppConfiguration,

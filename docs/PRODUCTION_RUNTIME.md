@@ -1,5 +1,7 @@
 > **Histórico para Bet365/Betano:** a estratégia Linux/Xvfb/Chrome próprio foi abandonada nesta etapa. O runtime atual usa [Local CDP no Mac](LOCAL_CDP.md). Configure BET365_ENABLED=false, BETANO_ENABLED=false e BROWSER_RUNTIME=disabled em Railway. Os resultados e detalhes anteriores abaixo são preservados como histórico, não suporte atual.
 
+> Runtime atual: [server + collector-agent](RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 > **Arquitetura atual:** um único Chrome/contexto compartilhado, tabs fixas por provider de browser. Ver [SHARED_BROWSER](SHARED_BROWSER.md). Os resultados anteriores no final deste arquivo são históricos, de antes dessa mudança.
 
 # Produção: Linux, Xvfb e Chrome headed

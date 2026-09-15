@@ -19,7 +19,7 @@ export class SchedulerService
     await this.collection.refresh();
     await this.collection.restoreCatalog();
     const c = this.config.settings;
-    if (c.collection.enabled) {
+    if (c.runtime !== "server" && c.collection.enabled) {
       this.collection.scheduler.start();
       this.collection.scheduler.tick();
       this.tickTimer = setInterval(

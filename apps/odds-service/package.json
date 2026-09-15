@@ -43,7 +43,9 @@
     "capture:blaze": "tsx src/modules/collection/collection.cli.ts --blaze",
     "capture:estrelabet": "tsx src/modules/collection/collection.cli.ts --estrelabet",
     "test:monitor:e2e": "tsx src/modules/monitor/tests/monitor.e2e.ts",
-    "prepare": "node ../../scripts/install-git-hooks.mjs"
+    "prepare": "node ../../scripts/install-git-hooks.mjs",
+    "start:server": "tsx src/main.ts",
+    "start:collector-agent": "tsx src/collector-agent.main.ts"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.2",

@@ -1,4 +1,4 @@
-import { CollectionModule } from "../collection/collection.module.js";
+import { CollectionModule } from "../runtime/server-providers.module.js";
 import { Module } from "@nestjs/common";
 import { PersistenceModule } from "../persistence/persistence.module.js";
 import { MonitorRepository } from "../persistence/repositories/monitor.repository.js";

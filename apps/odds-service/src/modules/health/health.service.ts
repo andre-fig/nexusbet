@@ -6,7 +6,7 @@ import { Bet365Service } from "../bet365/bet365.service.js";
 @Injectable()
 export class HealthService {
   constructor(
-    @Inject(Bet365Service) private readonly bet365: Bet365Service,
+    @Optional() @Inject(Bet365Service) private readonly bet365: Bet365Service,
     @Inject(CollectionService) private readonly collection: CollectionService,
     @Optional()
     @Inject(DatabaseService)
@@ -17,7 +17,7 @@ export class HealthService {
   ) {}
   legacy() {
     return {
-      ...this.bet365.legacyHealth(),
+      ...this.bet365?.legacyHealth(),
       ...this.collection.operationalHealth(),
       browser: this.browser?.health(),
       database: {

@@ -1,3 +1,4 @@
+import { json } from "express";
 import { AppConfiguration } from "./config/configuration.js";
 import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
@@ -15,12 +16,21 @@ export function configureHttp(app: INestApplication) {
     });
   app.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader("cache-control", "no-store");
-    if (req.method !== "GET") {
+    if (
+      req.method !== "GET" &&
+      !(
+        req.method === "POST" &&
+        /^\/internal\/(ingestion\/(bet365|betano|superbet|blaze|estrelabet)|agents\/heartbeat)\/?$/.test(
+          req.path,
+        )
+      )
+    ) {
       res.status(405).json({ error: "Read-only API" });
       return;
     }
     next();
   });
+  app.use("/internal", json({ limit: "8mb", strict: true }));
   app.useGlobalFilters(new HttpErrorFilter());
   return app;
 }

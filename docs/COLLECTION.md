@@ -1,5 +1,7 @@
 # Coleta contínua
 
+> Runtime atual: [server + collector-agent](RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 [Índice](../README.md#documentation) · Implementação: [collection/](../apps/odds-service/src/modules/collection) · [Configuração completa](CONFIGURATION.md).
 
 ## Responsabilidades e fluxo

@@ -136,7 +136,7 @@ test("EstrelaBet generic scheduler: concurrency, transport backoff, circuit brea
   await scheduler.stop();
 });
 
-import { AppModule } from "../../../app.module.js";
+import { AppModule } from "../../collection/tests/provider-harness.js";
 import { ODDS_PROVIDERS } from "../../collection/provider-registry.js";
 import { CollectionService } from "../../collection/collection.service.js";
 import { object, rows } from "../types/feed.js";

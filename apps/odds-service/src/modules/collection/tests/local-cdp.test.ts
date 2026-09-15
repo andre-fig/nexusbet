@@ -5,7 +5,7 @@ import { EventEmitter } from "node:events";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import { chromium } from "playwright-core";
-import { AppModule } from "../../../app.module.js";
+import { AppModule } from "../../collection/tests/provider-harness.js";
 import {
   AppConfiguration,
   configuration,

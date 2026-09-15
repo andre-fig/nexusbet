@@ -10,7 +10,7 @@ import { SuperbetService } from "../superbet.service.js";
 import { SuperbetClient } from "../superbet.client.js";
 import { Bet365Service } from "../../bet365/bet365.service.js";
 import { BetanoService } from "../../betano/betano.service.js";
-import { AppModule } from "../../../app.module.js";
+import { AppModule } from "../../collection/tests/provider-harness.js";
 import {
   AppConfiguration,
   configuration,

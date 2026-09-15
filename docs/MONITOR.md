@@ -1,5 +1,7 @@
 # Odds Monitor: REST + SSE
 
+> Runtime atual: [server + collector-agent](RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 O frontend interno `apps/odds-monitor` lê o NestJS diretamente. Não há BFF, WebSocket, acesso do frontend ao banco, preços calculados ou endpoints de escrita. O backend continua independente do monitor.
 
 ## Executar

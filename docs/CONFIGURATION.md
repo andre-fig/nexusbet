@@ -1,5 +1,7 @@
 # Runtime atual Bet365/Betano
 
+> Runtime atual: [server + collector-agent](RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+
 - `BROWSER_RUNTIME`: `local-cdp` ou `disabled` (default disabled).
 - `BET365_ENABLED`, `BETANO_ENABLED`: booleanos; true por default somente com local-cdp explícito fora de NODE_ENV=production. Configure false em Railway.
 - `CDP_ENDPOINT`: WebSocket local opcional, alias prioritário a CDP_URL. Ausente: CHROME_DEBUG_PORT_FILE/DevToolsActivePort do Chrome Mac.

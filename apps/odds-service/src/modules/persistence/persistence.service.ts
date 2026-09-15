@@ -1,3 +1,5 @@
+import { validatePublication } from "../../shared/domain/validate-publication.js";
+export { validatePublication } from "../../shared/domain/validate-publication.js";
 import { PersistenceNotifications } from "./persistence-notifications.js";
 import { isDeepStrictEqual } from "node:util";
 import { Injectable, Inject, Optional, OnModuleInit } from "@nestjs/common";
@@ -48,6 +50,16 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
       await this.database.db.feedScope.findMany({ where: { kind: "list" } })
     ).flatMap((s) => s.events as unknown as NormalizedEvent[]);
   }
+  async detailEvents(): Promise<NormalizedEvent[]> {
+    if (!this.enabled) return [];
+    return (
+      await this.database.db.feedScope.findMany({
+        where: { kind: "detail" },
+        orderBy: { fetchedAt: "asc" },
+        select: { events: true },
+      })
+    ).flatMap((s) => s.events as unknown as NormalizedEvent[]);
+  }
   equivalentObservation(a: MarketBatch, b: MarketBatch) {
     return isDeepStrictEqual(sanitize(a), sanitize(b));
   }
@@ -83,6 +95,31 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
         async (tx) => {
           // One short publication lock makes matching + publication atomic across providers/processes.
           await tx.$executeRaw`SELECT pg_advisory_xact_lock(7140365)`;
+          if (p.collectionRunId) {
+            const receipt = await tx.ingestionRun.findUnique({
+              where: {
+                provider_collectionRunId: {
+                  provider: p.provider,
+                  collectionRunId: p.collectionRunId,
+                },
+              },
+            });
+            const runHash = createHash("sha256")
+              .update(JSON.stringify(p))
+              .digest("hex");
+            if (receipt) {
+              if (receipt.hash !== runHash)
+                throw new ServiceError("Collection run conflict", 409);
+              return;
+            }
+            await tx.ingestionRun.create({
+              data: {
+                provider: p.provider,
+                collectionRunId: p.collectionRunId,
+                hash: runHash,
+              },
+            });
+          }
           const provider = await tx.provider.upsert({
             where: { slug: p.provider },
             create: { slug: p.provider, name: p.provider },
@@ -203,7 +240,8 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
         },
         { maxWait: 30000, timeout: 120000 },
       );
-    } catch {
+    } catch (error) {
+      if (error instanceof ServiceError && error.status === 409) throw error;
       this.database.operationFailed = true;
       throw new ServiceError(
         "PostgreSQL publication failed; last valid state retained",
@@ -213,51 +251,6 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
     this.database.operationFailed = false;
     await afterCommit?.();
     if (notice) this.notifications?.committed.next(notice);
-  }
-}
-export function validatePublication(p: PersistencePublication) {
-  if (
-    !p.provider ||
-    !p.scope ||
-    !p.observations.length ||
-    !Number.isFinite(Date.parse(p.fetchedAt))
-  )
-    throw Error("Invalid publication");
-  const events = new Set<string>();
-  for (const e of p.events) {
-    if (
-      e.provider !== p.provider ||
-      e.esport !== p.esport ||
-      !e.eventId ||
-      events.has(e.eventId) ||
-      !Number.isFinite(Date.parse(e.startsAt))
-    )
-      throw Error("Invalid event");
-    events.add(e.eventId);
-  }
-  for (const b of p.observations) {
-    if (!b.complete || !b.scope || !Number.isFinite(Date.parse(b.fetchedAt)))
-      throw Error("Invalid observation scope");
-    for (const e of b.matches) {
-      if (!events.has(e.eventId) || e.provider !== p.provider)
-        throw Error("Unexpected snapshot event");
-      const markets = new Set<string>();
-      for (const m of e.markets) {
-        if (!m.marketId || markets.has(m.marketId))
-          throw Error("Duplicate market");
-        markets.add(m.marketId);
-        const selections = new Set<string>();
-        for (const s of m.selections) {
-          if (
-            !s.selectionId ||
-            selections.has(s.selectionId) ||
-            (s.odds !== null && (!Number.isFinite(s.odds) || s.odds <= 1))
-          )
-            throw Error("Invalid odds/selection");
-          selections.add(s.selectionId);
-        }
-      }
-    }
   }
 }
 

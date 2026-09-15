@@ -5,7 +5,7 @@ import { Test } from "@nestjs/testing";
 import { access, mkdtemp, readFile, rm, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { AppModule } from "../../../app.module.js";
+import { AppModule } from "../../collection/tests/provider-harness.js";
 import { configureHttp } from "../../../bootstrap.js";
 import {
   AppConfiguration,
