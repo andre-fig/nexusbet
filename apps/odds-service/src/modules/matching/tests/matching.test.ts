@@ -594,6 +594,112 @@ test("Valorant team aliases match FENNEL GC with FENNEL (F) and preserve raw nam
   assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "FENNEL (F)");
 });
 
+test("Valorant final (F) markers match Shopify Rebellion Gold vs FlyQuest RED without changing raw names", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-17T21:00:00.000Z";
+  const observed = (
+    provider: "superbet" | "estrelabet",
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId: `${provider}:shopify-flyquest`,
+    esport: "valorant" as const,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "valorant"),
+    normalizedTeamB: teamName(teamB, "valorant"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const left = observed(
+    "superbet",
+    "Shopify Rebellion Gold (F)",
+    "FlyQuest RED (F)",
+    "Game Changers - NA",
+  );
+  const right = observed(
+    "estrelabet",
+    "Shopify Rebellion Gold",
+    "FlyQuest RED",
+    "VCT 2026: Game Changers North America Stage 2",
+  );
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(
+    canonicalTeamName("Shopify Rebellion Gold (F)", "valorant"),
+    "shopify rebellion gold",
+  );
+  assert.equal(
+    canonicalTeamName("Shopify Rebellion Gold(F)", "valorant"),
+    "shopify rebellion gold",
+  );
+  assert.equal(
+    canonicalTeamName("FlyQuest RED (F)", "valorant"),
+    "flyquest red",
+  );
+  assert.equal(
+    canonicalTeamName("FlyQuest RED(F)", "valorant"),
+    "flyquest red",
+  );
+  assert.equal(left.normalizedTeamA, "shopify rebellion gold f");
+  assert.equal(left.normalizedTeamB, "flyquest red f");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(
+    result.matched[0].canonicalEvent.teamA,
+    "shopify rebellion gold",
+  );
+  assert.equal(result.matched[0].canonicalEvent.teamB, "flyquest red");
+  assert.equal(
+    result.matched[0].providers.superbet.rawTeamA,
+    "Shopify Rebellion Gold (F)",
+  );
+  assert.equal(
+    result.matched[0].providers.superbet.rawTeamB,
+    "FlyQuest RED (F)",
+  );
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.notEqual(
+    canonicalTeamName("FlyQuest RED F", "valorant"),
+    "flyquest red",
+  );
+  assert.notEqual(
+    canonicalTeamName("FlyQuest F RED", "valorant"),
+    "flyquest red",
+  );
+  assert.notEqual(
+    canonicalTeamName("FlyQuest RED (F) Academy", "valorant"),
+    "flyquest red",
+  );
+  assert.notEqual(canonicalTeamName("FlyQuest RED (F)", "cs2"), "flyquest red");
+  assert.equal(canonicalTeamName("FENNEL (F)", "valorant"), "fennel gc");
+  assert.equal(
+    compareAllProviders([
+      left,
+      { ...right, startsAt: "2026-09-17T21:01:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([left, right, { ...right, eventId: "other-shopify" }])
+      .matched.length,
+    0,
+  );
+});
+
 test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async () => {
   const raw = JSON.parse(
     await readFile(

@@ -20,11 +20,20 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
 };
 
 export function canonicalTeamName(value: string, esport: Esport): string {
-  const normalized = teamName(value, esport);
+  const femaleMarker = esport === "valorant" && /\s*\(f\)\s*$/i.test(value);
+  // Preserve the reviewed FENNEL (F) -> FENNEL GC equivalence before removing
+  // a final circuit marker from otherwise equivalent Valorant team names.
+  const markerAlias = femaleMarker
+    ? teamAliases[esport][teamName(value, esport)]
+    : undefined;
+  const normalized = teamName(
+    femaleMarker ? value.replace(/\s*\(f\)\s*$/i, "") : value,
+    esport,
+  );
   const withoutPrefix = normalized.replace(/^team /, "");
   // Punctuation is already normalized, so "e-sports" becomes "e sports".
   const key = withoutPrefix
     .replace(/ (?:esports|esport|e sports|gaming)$/, "")
     .trim();
-  return teamAliases[esport][key] ?? key;
+  return markerAlias ?? teamAliases[esport][key] ?? key;
 }
