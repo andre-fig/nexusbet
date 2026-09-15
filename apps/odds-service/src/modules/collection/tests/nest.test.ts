@@ -125,9 +125,9 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       ).length,
       5,
     );
-    // Fresh accepted listings enter the current matching read even when ingested directly.
-    assert.equal((await get("/comparisons")).status, 200);
-    assert.equal((await get("/matching/unmatched")).status, 200);
+    // Direct fixture ingestion does not mark a listing as scheduler-eligible.
+    assert.equal((await get("/comparisons")).status, 503);
+    assert.equal((await get("/matching/unmatched")).status, 503);
     assert.equal((await get("/health")).body.provider, "bet365");
     assert.equal(
       (await get("/providers/betano/health")).body.provider,
