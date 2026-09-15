@@ -234,6 +234,62 @@ test("learned EAC Extra alias persists and reuses the full EA Copenhagen Extra c
   assert.equal(await database.db.teamAlias.count(), 1);
   assert.equal(await database.db.canonicalEvent.count(), 1);
 });
+test("Lavked capitalization and CS2 European Pro League prefix share one persisted canonical event", async () => {
+  const startsAt = "2026-09-16T08:00:00.000Z";
+  const make = (
+    provider: "superbet" | "blaze",
+    id: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...event(provider, 1.72, at, id),
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamA.toLowerCase(),
+    normalizedTeamB: teamB.toLowerCase(),
+    tournament,
+    startsAt,
+  });
+  await service.commit(
+    publication(
+      make(
+        "superbet",
+        "lavked-upper",
+        "Lavked",
+        "Saint Sinners",
+        "CS2 - European Pro League",
+      ),
+    ),
+  );
+  await service.commit(
+    publication(
+      make(
+        "blaze",
+        "lavked-lower",
+        "lavked",
+        "saint sinners",
+        "European Pro League",
+      ),
+    ),
+  );
+  assert.equal(await database.db.providerEvent.count(), 2);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  const canonical = await database.db.canonicalEvent.findFirstOrThrow();
+  assert.equal(canonical.tournament, "european pro league");
+  assert.equal(canonical.teamA, "lavked");
+  assert.equal(canonical.teamB, "saint sinners");
+  const matches = await database.db.eventMatch.findMany();
+  assert.equal(matches.length, 2);
+  assert.ok(
+    matches.every(
+      (match) =>
+        match.status === "matched" && match.canonicalEventId === canonical.id,
+    ),
+  );
+});
 test("numeric history 1.72 → 1.70 → 1.68, temporal ordering, current odds and unchanged observations", async () => {
   for (const [i, price] of [1.72, 1.7, 1.68, 1.68].entries())
     await service.commit(

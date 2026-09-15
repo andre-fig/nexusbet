@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { teamName } from "../../../shared/utils/names.js";
+import { teamName, tournamentName } from "../../../shared/utils/names.js";
 import { compareAllProviders, compareProviders } from "../matching.js";
 import { canonicalTeamName } from "../team-aliases.js";
 import { normalizedBet365 } from "../../bet365/mappers/bet365.mapper.js";
@@ -208,6 +208,93 @@ test("OldMix vs EAC Extra and OldMix vs EA Copenhagen Extra are one United21 mat
     compareAllProviders([short, full, { ...full, eventId: "other" }]).matched
       .length,
     0,
+  );
+});
+test("Lavked vs Saint Sinners and lavked vs saint sinners are one European Pro League match", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-16T08:00:00.000Z"; // 05:00 America/Sao_Paulo
+  const make = (
+    provider: "superbet" | "blaze",
+    eventId: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const first = make(
+    "superbet",
+    "lavked-upper",
+    "Lavked",
+    "Saint Sinners",
+    "CS2 - European Pro League",
+  );
+  const second = make(
+    "blaze",
+    "lavked-lower",
+    "lavked",
+    "saint sinners",
+    "European Pro League",
+  );
+  assert.equal(tournamentName(first.tournament, "cs2"), "european pro league");
+  assert.equal(tournamentName(second.tournament, "cs2"), "european pro league");
+  const result = compareAllProviders([first, second]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.deepEqual(result.matched[0].canonicalEvent, {
+    esport: "cs2",
+    tournament: "european pro league",
+    teamA: "lavked",
+    teamB: "saint sinners",
+    startsAt,
+  });
+  assert.equal(result.matched[0].confidence, 1);
+  assert.equal(
+    compareAllProviders([
+      first,
+      {
+        ...second,
+        teamA: " LÁVKED!! ",
+        teamB: " SAINT...  SINNERS! ",
+        tournament: "  cS2: Éuropean  PRO-League! ",
+      },
+    ]).matched.length,
+    1,
+  );
+  assert.equal(
+    compareAllProviders([first, { ...second, teamB: "Other Sinners" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      first,
+      { ...second, startsAt: "2026-09-16T09:00:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    tournamentName("CS2 - European Pro League Season 40", "cs2"),
+    "cs2 european pro league season 40",
   );
 });
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
