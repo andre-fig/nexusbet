@@ -420,6 +420,63 @@ test("CS2 team aliases match Team 33 vs L&G with 33 vs Leo Team", async () => {
   assert.equal(result.matched[0].providers.blaze.rawTeamB, "Leo Team");
 });
 
+test("CS2 team aliases match BAKS with BakS eSports across tournament variants", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "bet365" as const,
+    eventId: "baks-cybershoke",
+    teamA: "BAKS",
+    teamB: "CYBERSHOKE",
+    rawTeamA: "BAKS",
+    rawTeamB: "CYBERSHOKE",
+    normalizedTeamA: teamName("BAKS", "cs2"),
+    normalizedTeamB: teamName("CYBERSHOKE", "cs2"),
+    tournament: "CIS LAN Championship",
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "betano" as const,
+    eventId: "baks-esports-cybershoke",
+    teamA: "BakS eSports",
+    teamB: "CYBERSHOKE",
+    rawTeamA: "BakS eSports",
+    rawTeamB: "CYBERSHOKE",
+    normalizedTeamA: teamName("BakS eSports", "cs2"),
+    normalizedTeamB: teamName("CYBERSHOKE", "cs2"),
+    tournament: "CIS LAN Championship 7",
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("BAKS", "cs2"), "baks");
+  assert.equal(canonicalTeamName("BakS eSports", "cs2"), "baks");
+  assert.notEqual(
+    canonicalTeamName("BakS eSports", "valorant"),
+    canonicalTeamName("BAKS", "valorant"),
+  );
+  assert.equal(right.normalizedTeamA, "baks esports");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "baks");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "cybershoke");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.equal(result.matched[0].evidence.sameCompetitionAlias, false);
+  assert.equal(result.matched[0].providers.bet365.rawTeamA, "BAKS");
+  assert.equal(result.matched[0].providers.betano.rawTeamA, "BakS eSports");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(
