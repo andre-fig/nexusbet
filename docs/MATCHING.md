@@ -12,7 +12,7 @@ A identidade SQL CanonicalEvent é separada. Sua ligação atual é `event_match
 
 A função de limpeza aplica NFKD, remove marcas de acentuação, converte para minúsculas, substitui pontuação por espaços e compacta espaços. Nomes de times removem a palavra `esports`. Nomes originais não são perdidos.
 
-Aliases de times são explícitos e por esporte: CS2 `navi` → `natus vincere`; LoL `vivo keyd stars` → `keyd stars`. Não há distância de edição ou fuzzy matching agressivo. Remover `esports` é uma regra já existente; preserve testes de colisão ao ampliá-la.
+Aliases de times são explícitos e por esporte: CS2 `navi` → `natus vincere`; LoL `vivo keyd stars` → `keyd stars` e `movistar koi` → `koi`. Não há distância de edição ou fuzzy matching agressivo. Remover `esports` é uma regra já existente; preserve testes de colisão ao ampliá-la.
 
 Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. A tabela executável está em shared/utils/names.ts; adicionar alias requer evidência de equivalência e teste negativo de times/competições parecidos.
 

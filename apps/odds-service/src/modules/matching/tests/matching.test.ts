@@ -141,6 +141,54 @@ test("matching regressions normalize team names, ignore side order and do not ve
   }
 });
 
+test("LoL team aliases match KOI with Movistar KOI and preserve raw names", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "bet365" as const,
+    eventId: "navi-koi",
+    esport: "lol" as const,
+    teamA: "Natus Vincere",
+    teamB: "KOI",
+    rawTeamA: "Natus Vincere",
+    rawTeamB: "KOI",
+    normalizedTeamA: teamName("Natus Vincere", "lol"),
+    normalizedTeamB: teamName("KOI", "lol"),
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "betano" as const,
+    eventId: "navi-movistar-koi",
+    esport: "lol" as const,
+    teamA: "Natus Vincere",
+    teamB: "Movistar KOI",
+    rawTeamA: "Natus Vincere",
+    rawTeamB: "Movistar KOI",
+    normalizedTeamA: teamName("Natus Vincere", "lol"),
+    normalizedTeamB: teamName("Movistar KOI", "lol"),
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(teamName("KOI", "lol"), "koi");
+  assert.equal(teamName("Movistar KOI", "lol"), "koi");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamB, "koi");
+  assert.equal(result.matched[0].providers.bet365.rawTeamB, "KOI");
+  assert.equal(result.matched[0].providers.betano.rawTeamB, "Movistar KOI");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(

@@ -10,7 +10,10 @@ export function cleanName(value: string): string {
 }
 // Explicit, sport-scoped equivalences observed in the provider feeds. No edit-distance matching.
 export const teamAliases: Record<string, Record<string, string>> = {
-  lol: { "vivo keyd stars": "keyd stars" },
+  lol: {
+    "movistar koi": "koi",
+    "vivo keyd stars": "keyd stars",
+  },
   cs2: { navi: "natus vincere" },
   valorant: {},
 };
