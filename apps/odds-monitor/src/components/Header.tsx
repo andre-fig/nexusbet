@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onSync}
             disabled={isSyncing}
-            className="h-7 px-2.5 flex items-center gap-1.5 rounded bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer disabled:opacity-50"
+            className="h-7 px-2.5 flex items-center gap-1.5 rounded bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             title="Manual Sync"
             type="button"
           >

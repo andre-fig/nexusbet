@@ -56,6 +56,20 @@
     color: var(--color-on-surface);
     -webkit-font-smoothing: antialiased;
   }
+
+  button:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input:is([type="checkbox"], [type="radio"]):not(:disabled),
+  label:has(input:is([type="checkbox"], [type="radio"]):not(:disabled)) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled,
+  input:is([type="checkbox"], [type="radio"]):disabled {
+    cursor: not-allowed;
+  }
 }
 
 /* Light mode overrides when not in dark class */
