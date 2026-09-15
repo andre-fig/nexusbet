@@ -49,6 +49,8 @@ A outbox grava JSON privado por rename atômico e fsync antes de confirmar aceit
 
 ## macOS, Chrome e processo
 
+Para um agent limitado aos três providers HTTP em Windows, veja [Collector-agent neste Windows](WINDOWS_AGENT.md). Bet365 e Betano permanecem desabilitados nessa instalação.
+
 Para os cinco providers, o PC atual precisa ser um **Mac com sessão gráfica e Chrome headed existente**, conforme [Local CDP](LOCAL_CDP.md). O agent não lança Chrome, não fecha o browser pessoal e administra apenas targets próprios. Superbet/Blaze/EstrelaBet continuam HTTP. Linux/systemd não habilita Bet365/Betano nesta etapa.
 
 Use o equivalente nativo **LaunchAgent** na mesma conta do Chrome:

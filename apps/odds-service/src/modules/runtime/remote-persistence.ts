@@ -98,11 +98,15 @@ export class RemotePersistence
         await file.close();
       }
       await rename(`${filename}.tmp`, filename);
-      const dir = await open(this.settings.outboxDir, "r");
-      try {
-        await dir.sync();
-      } finally {
-        await dir.close();
+      // Windows does not permit fsync on a directory handle. The file itself
+      // is synced before the atomic rename on every platform.
+      if (process.platform !== "win32") {
+        const dir = await open(this.settings.outboxDir, "r");
+        try {
+          await dir.sync();
+        } finally {
+          await dir.close();
+        }
       }
       this.checkpoints.set(p.checkpoint.key, p.checkpoint.payload);
       await afterCommit?.();

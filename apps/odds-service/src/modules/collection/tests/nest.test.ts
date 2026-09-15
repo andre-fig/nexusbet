@@ -16,7 +16,6 @@ import { Bet365Module } from "../../bet365/bet365.module.js";
 import { BetanoModule } from "../../betano/betano.module.js";
 import { Bet365Service } from "../../bet365/bet365.service.js";
 import { BetanoService } from "../../betano/betano.service.js";
-import { compareProviders } from "../../matching/matching.js";
 const fixture = async (provider: string, name: string) =>
   JSON.parse(
     await readFile(
@@ -126,18 +125,9 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       ).length,
       5,
     );
-    const comparisons = (await get("/comparisons")).body;
-    const compared = compareProviders(
-      a.readEvents(["cs2", "lol", "valorant"]),
-      b.readEvents(["cs2", "lol", "valorant"]),
-    );
-    assert.equal(comparisons.matched.length, compared.matched.length);
-    assert.deepEqual(comparisons.unmatched, compared.unmatched);
-    assert.deepEqual(comparisons.notApplicable, compared.notApplicable);
-    assert.deepEqual(
-      (await get("/matching/unmatched")).body,
-      (await get("/comparisons")).body.unmatched,
-    );
+    // Direct fixture ingestion does not mark a listing as scheduler-eligible.
+    assert.equal((await get("/comparisons")).status, 503);
+    assert.equal((await get("/matching/unmatched")).status, 503);
     assert.equal((await get("/health")).body.provider, "bet365");
     assert.equal(
       (await get("/providers/betano/health")).body.provider,

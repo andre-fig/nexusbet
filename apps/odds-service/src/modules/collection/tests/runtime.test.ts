@@ -12,6 +12,7 @@ const shell = existsSync("/opt/homebrew/bin/bash")
   : "bash";
 
 const supportedShell =
+  process.platform !== "win32" &&
   spawnSync(shell, ["-c", 'test "${BASH_VERSINFO[0]}" -ge 5']).status === 0;
 
 async function harness(crashDisplay = false, browserRuntime = "local-cdp") {
@@ -140,14 +141,18 @@ test(
   },
 );
 
-test("production runtime rejects headless instead of silently falling back", async () => {
-  const child = spawn(shell, [resolve("runtime/entrypoint.sh"), "true"], {
-    env: {
-      ...process.env,
-      BROWSER_MODE: "headless",
-      BROWSER_RUNTIME: "local-cdp",
-    },
-    stdio: "ignore",
-  });
-  assert.equal((await once(child, "exit"))[0], 64);
-});
+test(
+  "production runtime rejects headless instead of silently falling back",
+  { skip: process.platform === "win32" },
+  async () => {
+    const child = spawn(shell, [resolve("runtime/entrypoint.sh"), "true"], {
+      env: {
+        ...process.env,
+        BROWSER_MODE: "headless",
+        BROWSER_RUNTIME: "local-cdp",
+      },
+      stdio: "ignore",
+    });
+    assert.equal((await once(child, "exit"))[0], 64);
+  },
+);
