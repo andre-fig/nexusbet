@@ -13,6 +13,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
     "vivo keyd stars": "keyd stars",
   },
   valorant: {
+    "fennel f": "fennel gc",
     "t1 esports": "t1",
   },
 };

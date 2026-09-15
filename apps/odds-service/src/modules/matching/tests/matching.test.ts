@@ -251,6 +251,59 @@ test("CS2 team aliases match Brute with Team Brute and preserve raw names", asyn
   assert.equal(result.matched[0].providers.betano.rawTeamA, "Team Brute");
 });
 
+test("Valorant team aliases match FENNEL GC with FENNEL (F) and preserve raw names", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "blaze" as const,
+    eventId: "geng-gc-fennel-gc",
+    esport: "valorant" as const,
+    teamA: "Gen.G GC",
+    teamB: "FENNEL GC",
+    rawTeamA: "Gen.G GC",
+    rawTeamB: "FENNEL GC",
+    normalizedTeamA: teamName("Gen.G GC", "valorant"),
+    normalizedTeamB: teamName("FENNEL GC", "valorant"),
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "estrelabet" as const,
+    eventId: "geng-gc-fennel-f",
+    esport: "valorant" as const,
+    teamA: "Gen.G GC",
+    teamB: "FENNEL (F)",
+    rawTeamA: "Gen.G GC",
+    rawTeamB: "FENNEL (F)",
+    normalizedTeamA: teamName("Gen.G GC", "valorant"),
+    normalizedTeamB: teamName("FENNEL (F)", "valorant"),
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("FENNEL GC", "valorant"), "fennel gc");
+  assert.equal(canonicalTeamName("FENNEL (F)", "valorant"), "fennel gc");
+  assert.notEqual(
+    canonicalTeamName("FENNEL (F)", "cs2"),
+    canonicalTeamName("FENNEL GC", "cs2"),
+  );
+  assert.equal(right.normalizedTeamB, "fennel f");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamB, "fennel gc");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "FENNEL GC");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "FENNEL (F)");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(
