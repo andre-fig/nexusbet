@@ -6,6 +6,7 @@ import { JSDOM } from "jsdom";
 import { renderToStaticMarkup } from "react-dom/server";
 import { DataState } from "../src/components/DataState";
 import { DashboardView } from "../src/components/DashboardView";
+import { EventDetailView } from "../src/components/EventDetailView";
 const fixture = JSON.parse(
   await readFile(new URL("./fixtures/monitor.json", import.meta.url), "utf8"),
 );
@@ -65,6 +66,73 @@ test("not-applicable matching is rendered as neutral single-provider coverage", 
   assert.match(html, /Single provider/);
   assert.match(html, /Only one eligible provider is currently available\./);
   assert.doesNotMatch(html, />UNMATCHED<\/span/i);
+});
+test("dashboard renders API display odds without rounding numeric odds locally", () => {
+  const row = structuredClone(fixture.events.items[0]);
+  row.providers[0].matchWinner.teamA = 1.5556;
+  row.providers[0].matchWinner.displayTeamA = "9,99";
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <DashboardView
+      overview={resource(fixture.overview) as never}
+      events={
+        resource({
+          items: [row],
+          pagination: { page: 1, limit: 50, total: 1, pages: 1 },
+        }) as never
+      }
+      filters={{
+        search: "",
+        esport: "",
+        status: "",
+        start: "",
+        provider: "",
+        attentionOnly: "false",
+        page: "1",
+        limit: "50",
+      }}
+      onFilter={() => {}}
+      onOpenIssuesDrawer={() => {}}
+      onOpenEventDetail={() => {}}
+    />,
+  );
+  assert.match(html, /9,99/);
+  assert.doesNotMatch(html, /1,56/);
+});
+test("detail and history render API display odds while chart uses numeric odds", () => {
+  const detail = structuredClone(fixture.detail);
+  const history = structuredClone(fixture.history);
+  detail.markets[0].selections[0].odds = 1.5556;
+  detail.markets[0].selections[0].displayOdds = "9,99";
+  history.series[0].points[0].odds = 1.5556;
+  history.series[0].points[0].displayOdds = "8,88";
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <EventDetailView
+      detail={resource(detail) as never}
+      history={resource(history) as never}
+      raw={resource(null) as never}
+      showRaw={false}
+      onToggleRaw={() => {}}
+      selection={history.series[0].selectionId}
+      onSelection={() => {}}
+      onBackToDashboard={() => {}}
+      onSyncEvent={() => {}}
+    />,
+  );
+  assert.match(html, /9,99/);
+  assert.match(html, /8,88/);
+  assert.match(html, /Observed odds history/);
 });
 test("event table omits provider columns with zero events", () => {
   const resource = (data: unknown) => ({

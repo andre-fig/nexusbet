@@ -929,14 +929,21 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   const id = result.items[0].id;
   assert.equal(result.items[0].canonicalId, null);
   assert.equal(result.items[0].providers[0].matchWinner.teamA, 1.68);
+  assert.equal(result.items[0].providers[0].matchWinner.displayTeamA, "1,68");
   const detail = await monitor.detail(id);
   assert.equal(detail.markets.length, 1);
+  assert.equal(detail.markets[0].selections[0].odds, 1.68);
+  assert.equal(detail.markets[0].selections[0].displayOdds, "1,68");
   const history = await monitor.history(id, {
     selection: detail.markets[0].selections[0].id,
   });
   assert.deepEqual(
     history.series[0].points.map((p) => p.odds),
     [1.72, 1.7, 1.68],
+  );
+  assert.deepEqual(
+    history.series[0].points.map((p) => p.displayOdds),
+    ["1,72", "1,70", "1,68"],
   );
   assert.ok(
     !JSON.stringify(await monitor.raw(id)).includes("must-not-persist"),

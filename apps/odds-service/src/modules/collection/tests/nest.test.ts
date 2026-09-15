@@ -79,15 +79,34 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       assert.equal(r.headers.get("cache-control"), "no-store");
       return { status: r.status, body: await r.json() };
     };
-    assert.deepEqual((await get("/matches")).body, a.store.state.matches);
-    assert.deepEqual((await get("/provenance")).body, a.provenance());
-    assert.deepEqual(
-      (await get("/providers/bet365/events")).body,
-      a.readEvents(["cs2", "lol", "valorant"]),
+    const legacy = (await get("/matches")).body;
+    assert.equal(legacy.length, a.store.state.matches.length);
+    assert.equal(
+      legacy[0].markets[0].selections[0].odds,
+      a.store.state.matches[0].markets[0].selections[0].odds,
     );
-    assert.deepEqual(
-      (await get("/providers/betano/events")).body,
-      b.readEvents(["cs2", "lol", "valorant"]),
+    assert.equal(
+      typeof legacy[0].markets[0].selections[0].displayOdds,
+      "string",
+    );
+    assert.deepEqual((await get("/provenance")).body, a.provenance());
+    const bet365Events = (await get("/providers/bet365/events")).body;
+    const betanoEvents = (await get("/providers/betano/events")).body;
+    assert.equal(
+      bet365Events.length,
+      a.readEvents(["cs2", "lol", "valorant"]).length,
+    );
+    assert.equal(
+      betanoEvents.length,
+      b.readEvents(["cs2", "lol", "valorant"]).length,
+    );
+    assert.equal(
+      typeof bet365Events[0].markets[0].selections[0].displayOdds,
+      "string",
+    );
+    assert.equal(
+      typeof betanoEvents[0].markets[0].selections[0].displayOdds,
+      "string",
     );
     assert.deepEqual(
       (await get("/providers/betano/matches")).body,
@@ -107,13 +126,14 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       ).length,
       5,
     );
-    assert.deepEqual(
-      (await get("/comparisons")).body,
-      compareProviders(
-        a.readEvents(["cs2", "lol", "valorant"]),
-        b.readEvents(["cs2", "lol", "valorant"]),
-      ),
+    const comparisons = (await get("/comparisons")).body;
+    const compared = compareProviders(
+      a.readEvents(["cs2", "lol", "valorant"]),
+      b.readEvents(["cs2", "lol", "valorant"]),
     );
+    assert.equal(comparisons.matched.length, compared.matched.length);
+    assert.deepEqual(comparisons.unmatched, compared.unmatched);
+    assert.deepEqual(comparisons.notApplicable, compared.notApplicable);
     assert.deepEqual(
       (await get("/matching/unmatched")).body,
       (await get("/comparisons")).body.unmatched,

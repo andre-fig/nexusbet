@@ -26,6 +26,7 @@ export interface Selection {
   selectionId: string;
   name: string;
   odds: number | null;
+  displayOdds: string | null;
   suspended: boolean | null;
   inPlay: boolean | null;
   fetchedAt: string | null;
@@ -53,7 +54,13 @@ export interface EventProvider {
   startsAt: string;
   lastUpdatedAt: string;
   status: string;
-  matchWinner: { teamA: number | null; teamB: number | null; status?: string };
+  matchWinner: {
+    teamA: number | null;
+    teamB: number | null;
+    displayTeamA: string | null;
+    displayTeamB: string | null;
+    status?: string;
+  };
   issues: Issue[];
   markets?: Market[];
 }
@@ -110,6 +117,7 @@ export interface History {
     selectionId: string;
     points: {
       odds: number | null;
+      displayOdds: string | null;
       fetchedAt: string;
       suspended: boolean | null;
       inPlay: boolean | null;

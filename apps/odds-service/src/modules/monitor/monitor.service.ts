@@ -8,6 +8,7 @@ import { AppConfiguration } from "../../config/configuration.js";
 import { sanitize } from "../persistence/sanitize.js";
 import { ServiceError } from "../../shared/errors/domain-errors.js";
 import { canonicalTeamName } from "../matching/team-aliases.js";
+import { displayOdds } from "../../shared/utils/odds-display.js";
 import {
   validate,
   uuid,
@@ -102,11 +103,13 @@ export class MonitorService {
             : "healthy",
       selections: m.selections.map((s) => {
         const v = s.snapshots[0];
+        const odds = v?.odds == null ? null : Number(v.odds);
         return {
           id: s.id,
           selectionId: s.providerSelectionId,
           name: s.name,
-          odds: v?.odds == null ? null : Number(v.odds),
+          odds,
+          displayOdds: displayOdds(odds),
           suspended:
             m.suspended === true ? true : (v?.suspended ?? s.suspended),
           inPlay: v?.inPlay ?? m.inPlay,
@@ -157,6 +160,8 @@ export class MonitorService {
       matchWinner: {
         teamA: odd(g.teamA),
         teamB: odd(g.teamB),
+        displayTeamA: displayOdds(odd(g.teamA)),
+        displayTeamB: displayOdds(odd(g.teamB)),
         status: winner?.status ?? "unavailable",
       },
       markets,
@@ -271,6 +276,7 @@ export class MonitorService {
         selectionId: string;
         points: {
           odds: number | null;
+          displayOdds: string | null;
           fetchedAt: Date;
           suspended: boolean | null;
           inPlay: boolean | null;
@@ -291,8 +297,10 @@ export class MonitorService {
         };
         series.set(s.id, item);
       }
+      const odds = r.odds == null ? null : Number(r.odds);
       item.points.push({
-        odds: r.odds == null ? null : Number(r.odds),
+        odds,
+        displayOdds: displayOdds(odds),
         fetchedAt: r.fetchedAt,
         suspended: r.suspended,
         inPlay: r.inPlay,

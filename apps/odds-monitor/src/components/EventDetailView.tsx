@@ -204,7 +204,7 @@ export function EventDetailView({
                                     >
                                       <span>{s.name}</span>
                                       <span className="font-mono">
-                                        {odd(s.odds)}
+                                        {odd(s.displayOdds)}
                                         {s.status && s.status !== "healthy"
                                           ? ` · ${s.status}`
                                           : ""}
@@ -279,7 +279,7 @@ export function EventDetailView({
                           <td className="p-2 font-mono">
                             {timestamp(p.fetchedAt)}
                           </td>
-                          <td className="p-2 font-mono">{odd(p.odds)}</td>
+                          <td className="p-2 font-mono">{odd(p.displayOdds)}</td>
                           <td className="p-2">
                             {String(p.suspended)} / {String(p.inPlay)}
                           </td>
@@ -358,7 +358,7 @@ function HistoryChart({
         fill="none"
       />
       <text x="22" y="12" fontSize="10" fill="currentColor">
-        {odd(max)}
+        {odd(valid.find((p) => p.odds === max)?.displayOdds)}
       </text>
       <text x="22" y="158" fontSize="10" fill="currentColor">
         {timestamp(valid[0].fetchedAt)}
@@ -376,9 +376,7 @@ function HistoryChart({
               r="3"
               fill="currentColor"
             >
-              <title>
-                {timestamp(p.fetchedAt)}: {p.odds}
-              </title>
+              <title>{`${timestamp(p.fetchedAt)}: ${odd(p.displayOdds)}`}</title>
             </circle>
           ),
       )}

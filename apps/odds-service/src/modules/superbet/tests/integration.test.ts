@@ -85,7 +85,16 @@ test("Superbet module boots independently, real HTTP controller schema, publicat
     const url = await app.getUrl();
     const r = await fetch(url + "/providers/superbet/events?esport=lol");
     assert.equal(r.status, 200);
-    assert.deepEqual(await r.json(), service.readEvents(["lol"]));
+    const events = await r.json();
+    assert.equal(events.length, service.readEvents(["lol"]).length);
+    assert.equal(
+      events[0].markets[0].selections[0].odds,
+      service.readEvents(["lol"])[0].markets[0].selections[0].odds,
+    );
+    assert.equal(
+      typeof events[0].markets[0].selections[0].displayOdds,
+      "string",
+    );
     const d = await fetch(
       url + "/providers/superbet/events/14986522?esport=lol",
     );

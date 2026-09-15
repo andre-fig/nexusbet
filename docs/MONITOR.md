@@ -34,7 +34,7 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 | `/monitor/events` | `{items:EventRow[],pagination:{page,limit,total,pages}}` |
 | `/monitor/events/:id` | EventRow + providers com mercados e `markets[]` prioritários |
 | `/monitor/events/:id/raw` | `{eventId,raw:[{provider,rawData,markets}]}` sanitizado; carregamento sob demanda |
-| `/monitor/events/:id/odds-history` | `{eventId,series:[{provider,market:{id,category,mapNumber},selection,selectionId,points:[{odds,fetchedAt,suspended,inPlay}]}],truncated}` |
+| `/monitor/events/:id/odds-history` | `{eventId,series:[{provider,market:{id,category,mapNumber},selection,selectionId,points:[{odds,displayOdds,fetchedAt,suspended,inPlay}]}],truncated}` |
 | `/monitor/issues` | `{items:[{id,type,severity,status,eventId,provider,title,message,detectedAt}]}` |
 | `/monitor/stream` | `text/event-stream`, invalidações pequenas |
 
@@ -49,10 +49,13 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
     providerEventId: string;
     rawTeamA: string; rawTeamB: string; rawTournament: string;
     startsAt: string; lastUpdatedAt: string; status: string;
-    matchWinner: {teamA: number | null; teamB: number | null; status: string}; issues: Issue[]}];
+    matchWinner: {teamA: number | null; teamB: number | null;
+      displayTeamA: string | null; displayTeamB: string | null; status: string}; issues: Issue[]}];
   issues: Issue[];
 }
 ```
+
+As seleções em `markets[]` retornam `odds: number | null` e `displayOdds: string | null`. O mesmo vale para os pontos de histórico. O valor numérico mantém a precisão observada; `displayOdds` usa duas casas decimais pt-BR com arredondamento normal. A função reutilizável fica em `apps/odds-service/src/shared/utils/odds-display.ts`, fora do MonitorModule, para uso posterior pelo BFF. As rotas normalizadas dos providers, `/comparisons`, `/events` e `/selections/:id/odds-history` também recebem a representação de exibição na camada de leitura. Dados persistidos e SSE não incluem esse campo.
 
 - `id` normalmente é o UUID canônico. Um evento **unmatched** usa seu UUID interno de `provider_events`, com `canonicalId:null`. Isso permite inspecionar eventos sem inventar um canônico. Ambos os IDs funcionam em detail/history/raw e SSE. O ID externo permanece em `providerEventId` e não é globalmente único.
 - Categorias usam os nomes reais do domínio: `match_winner`, `map_winner`. A leitura de mercados prioritários inclui mapas 1–3. Outros mapas/mercados não foram removidos da persistência ou dos parsers. History aceita outros mercados explicitamente.

@@ -36,10 +36,8 @@ export function DataState({
 }
 export const timestamp = (value: string | null | undefined) =>
   value ? new Date(value).toLocaleString() : "Not observed";
-export const odd = (value: number | null | undefined) =>
-  value == null
-    ? "—"
-    : value.toLocaleString(undefined, { maximumFractionDigits: 5 });
+export const odd = (displayOdds: string | null | undefined) =>
+  displayOdds ?? "—";
 export const panel =
   "bg-surface-container-low rounded-lg shadow-sm border border-outline-variant/20";
 export const control =

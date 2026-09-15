@@ -237,8 +237,8 @@ export function DashboardView({
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">
                         <div>
-                          {odd(feed?.matchWinner.teamA)} /{" "}
-                          {odd(feed?.matchWinner.teamB)}
+                          {odd(feed?.matchWinner.displayTeamA)} /{" "}
+                          {odd(feed?.matchWinner.displayTeamB)}
                         </div>
                         <div className="text-[10px] text-on-surface-variant mt-1">
                           {!p.active

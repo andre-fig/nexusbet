@@ -134,7 +134,7 @@ Somente GET; bind local `127.0.0.1`, container `0.0.0.0` via `HOST`; não há au
 | `/issues?status=open` | Issues persistentes |
 | `/selections/:uuid/odds-history?before=ISO` | Histórico por UUID interno |
 
-Rotas normalizadas aplicam TTL; rotas SQL são históricas e exigem inspecionar timestamps/listed. Números decimais SQL serializam como strings; odds das rotas normalizadas continuam numéricas. Contratos, limites e diagnóstico: [Operations](docs/OPERATIONS.md).
+Rotas normalizadas aplicam TTL; rotas SQL são históricas e exigem inspecionar timestamps/listed. Na API de leitura, odds são numéricas e preservam a precisão observada; `displayOdds` acrescenta a exibição pt-BR com duas casas decimais, sem alterar o valor armazenado. Contratos, limites e diagnóstico: [Operations](docs/OPERATIONS.md).
 
 ## Limitações e troubleshooting
 
