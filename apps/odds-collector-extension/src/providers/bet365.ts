@@ -98,11 +98,21 @@ async function ownTab() {
 
 export async function collectBet365() {
   try {
+    const reused = Boolean(tab);
     const page = await ownTab();
+    if (reused) {
+      await page.navigate(origin + "/");
+      await page.retryClick(warmupExpression);
+    }
     const publications = [];
     for (const esport of esports) {
       const pd = `#AC#B151#C1#D50#E${codes[esport]}#F163#`;
-      const response = await captureFullFeed(page, listPath, pd);
+      const response = await captureFullFeed(page, listPath, pd).catch(
+        (error: unknown) => {
+          const message = error instanceof Error ? error.message : "Error";
+          throw Error(`Bet365 ${esport}: ${message}`);
+        },
+      );
       const capture = feedCapture(esport, response);
       publications.push(bet365Publication(capture));
       listings.set(esport, capture);
