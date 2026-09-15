@@ -4,6 +4,8 @@ import { teamName } from "../../shared/utils/names.js";
 // Only semantic, sport-scoped equivalences remain after common edge words are removed.
 export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
+    apogee: "betclic apogee",
+    betclic: "betclic apogee",
     "l g": "leo",
     navi: "natus vincere",
     "wraith pcific": "pcific",
@@ -17,6 +19,19 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   valorant: {
     "fennel f": "fennel gc",
   },
+};
+
+// Matching keys stay normalized; these reviewed labels are written on canonical events.
+export const canonicalTeamLabels: Record<
+  Esport,
+  Readonly<Record<string, string>>
+> = {
+  cs2: {
+    "betclic apogee": "Betclic Apogee Esports",
+    astral: "ASTRAL Esports",
+  },
+  lol: {},
+  valorant: {},
 };
 
 export type PersistedTeamAliases = Readonly<
@@ -94,6 +109,20 @@ export function oneEditTeamName(a: string, b: string): boolean {
   return true;
 }
 
+export function teamAliasKey(value: string, esport: Esport): string {
+  const femaleMarker = esport === "valorant" && /\s*\(f\)\s*$/i.test(value);
+  const normalized = teamName(
+    femaleMarker ? value.replace(/\s*\(f\)\s*$/i, "") : value,
+    esport,
+  ).replace(/\bjuniors$/, "junior");
+  const withoutPrefix = normalized.replace(/^team /, "");
+  // Punctuation is already normalized, so "e-sports" becomes "e sports".
+  const key = withoutPrefix
+    .replace(/ (?:team|esports|esport|e sports|gaming)$/, "")
+    .trim();
+  return key;
+}
+
 export function canonicalTeamName(
   value: string,
   esport: Esport,
@@ -105,15 +134,7 @@ export function canonicalTeamName(
   const markerAlias = femaleMarker
     ? teamAliases[esport][teamName(value, esport)]
     : undefined;
-  const normalized = teamName(
-    femaleMarker ? value.replace(/\s*\(f\)\s*$/i, "") : value,
-    esport,
-  ).replace(/\bjuniors$/, "junior");
-  const withoutPrefix = normalized.replace(/^team /, "");
-  // Punctuation is already normalized, so "e-sports" becomes "e sports".
-  const key = withoutPrefix
-    .replace(/ (?:team|esports|esport|e sports|gaming)$/, "")
-    .trim();
+  const key = teamAliasKey(value, esport);
   return (
     markerAlias ?? persisted[esport]?.[key] ?? teamAliases[esport][key] ?? key
   );

@@ -524,6 +524,101 @@ test("Heroic vs Johny Speeds and heroic vs johnny speeds share Stake Pulse Beat"
     1,
   );
 });
+test("apogee vs astral and Betclic vs ASTRAL Esports share one Pulse Beat match with full canonical names", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-24T10:00:00.000Z"; // 07:00 America/Sao_Paulo
+  const make = (
+    provider: "superbet" | "blaze",
+    eventId: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const apogee = make(
+    "superbet",
+    "apogee-astral",
+    "apogee",
+    "astral",
+    "stake pulse beat",
+  );
+  const betclic = make(
+    "blaze",
+    "betclic-astral",
+    "Betclic",
+    "ASTRAL Esports",
+    "Pulse Beat II",
+  );
+  assert.equal(canonicalTeamName("Apogee", "cs2"), "betclic apogee");
+  assert.equal(canonicalTeamName("Betclic", "cs2"), "betclic apogee");
+  assert.equal(
+    canonicalTeamName("Betclic Apogee Esports", "cs2"),
+    "betclic apogee",
+  );
+  assert.equal(canonicalTeamName("ASTRAL Esports", "cs2"), "astral");
+  const result = compareAllProviders([apogee, betclic]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.deepEqual(result.matched[0].canonicalEvent, {
+    esport: "cs2",
+    tournament: "stake pulse beat",
+    teamA: "Betclic Apogee Esports",
+    teamB: "ASTRAL Esports",
+    startsAt,
+  });
+  assert.equal(result.matched[0].confidence, 1);
+  assert.deepEqual(result.matched[0].learnedAliases, [
+    { esport: "cs2", alias: "apogee", canonical: "betclic apogee" },
+    { esport: "cs2", alias: "betclic", canonical: "betclic apogee" },
+  ]);
+  assert.deepEqual(result.matched[0].learnedTournamentAliases, [
+    { esport: "cs2", alias: "pulse beat ii", canonical: "stake pulse beat" },
+  ]);
+  assert.equal(
+    compareAllProviders([apogee, { ...betclic, teamB: "Other" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      apogee,
+      { ...betclic, startsAt: "2026-09-24T10:06:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([apogee, betclic, { ...betclic, eventId: "duplicate" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      apogee,
+      { ...betclic, teamA: "Betclic Apogee Esports" },
+    ]).matched.length,
+    1,
+  );
+});
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
   const raw = JSON.parse(
     await readFile(
@@ -1497,7 +1592,7 @@ test("CS2 aliases match Astral eSports vs Rune Eaters Esports despite tournament
   assert.equal(left.normalizedTeamB, "rune eaters esports");
   assert.equal(result.matched.length, 1);
   assert.equal(result.unmatched.length, 0);
-  assert.equal(result.matched[0].canonicalEvent.teamA, "astral");
+  assert.equal(result.matched[0].canonicalEvent.teamA, "ASTRAL Esports");
   assert.equal(result.matched[0].canonicalEvent.teamB, "rune eaters");
   assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
   assert.equal(result.matched[0].confidence, 0.9);

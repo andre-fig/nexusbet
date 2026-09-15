@@ -6,9 +6,12 @@ import {
 } from "../../shared/utils/names.js";
 import {
   abbreviatedTeamName,
+  canonicalTeamLabels,
   canonicalTeamName,
   inflectedTeamName,
   oneEditTeamName,
+  teamAliasKey,
+  teamAliases,
   type PersistedTeamAliases,
 } from "./team-aliases.js";
 import { incompleteWinnerMarket } from "../../shared/utils/market-quality.js";
@@ -189,12 +192,12 @@ function comparison(
     namesForSide(side).sort(
       (a, b) => b.length - a.length || a.localeCompare(b),
     )[0];
-  const teamA = fuller(0);
-  const teamB = fuller(1);
-  const learnedAliases = namesForSide(0)
+  const teamAKey = fuller(0);
+  const teamBKey = fuller(1);
+  const inferredAliases = namesForSide(0)
     .concat(namesForSide(1))
     .flatMap((name) => {
-      const target = namesForSide(0).includes(name) ? teamA : teamB;
+      const target = namesForSide(0).includes(name) ? teamAKey : teamBKey;
       return name !== target &&
         (abbreviatedTeamName(name, target) ||
           inflectedTeamName(name, target) ||
@@ -202,6 +205,25 @@ function comparison(
         ? [{ esport: e.esport, alias: name, canonical: target }]
         : [];
     });
+  const reviewedAliases = group.flatMap((x) =>
+    [x.teamA, x.teamB].flatMap((name) => {
+      const alias = teamAliasKey(name, x.esport);
+      const canonical = teamAliases[x.esport][alias];
+      return canonical && canonical !== alias
+        ? [{ esport: x.esport, alias, canonical }]
+        : [];
+    }),
+  );
+  const learnedAliases = [
+    ...new Map(
+      [...inferredAliases, ...reviewedAliases].map((item) => [
+        item.alias,
+        item,
+      ]),
+    ).values(),
+  ];
+  const teamA = canonicalTeamLabels[e.esport][teamAKey] ?? teamAKey;
+  const teamB = canonicalTeamLabels[e.esport][teamBKey] ?? teamBKey;
   const competitions = new Set(
     group.map((x) => tournamentName(x.tournament, x.esport, tournaments)),
   );
