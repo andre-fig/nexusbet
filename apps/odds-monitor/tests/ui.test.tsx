@@ -66,6 +66,33 @@ test("empty table message appears below its header", () => {
   assert.equal(table.querySelector("tbody tr td")?.textContent?.trim(), "No data for the selected filters.");
   assert.equal(table.querySelector("tbody tr td")?.getAttribute("colspan"), String(table.querySelectorAll("thead th").length));
 });
+test("stale retained counts do not imply current matching events", () => {
+  const overview = structuredClone(fixture.overview);
+  overview.health.events = 0;
+  overview.providers[0].eventCount = 58;
+  overview.providers[0].status = "stale";
+  overview.providers[0].stale = true;
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <DashboardView
+      overview={resource(overview) as never}
+      events={resource({ items: [], pagination: { page: 1, limit: 50, total: 0, pages: 0 } }) as never}
+      filters={{ search: "", esport: "", status: "", start: "", provider: "", attentionOnly: "false", page: "1", limit: "50" }}
+      onFilter={() => {}}
+      onOpenIssuesDrawer={() => {}}
+      onOpenEventDetail={() => {}}
+    />,
+  );
+  const document = new JSDOM(html).window.document;
+  assert.match(document.body.textContent ?? "", /58 retained events/);
+  assert.match(document.body.textContent ?? "", /0 current events/);
+  assert.match(document.querySelector("table tbody")?.textContent ?? "", /No fresh events available/);
+});
 test("not-applicable matching is rendered as neutral single-provider coverage", () => {
   const row = structuredClone(fixture.events.items[0]);
   row.matching = {

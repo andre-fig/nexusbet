@@ -72,7 +72,7 @@ export function DashboardView({
                     : undefined
                 }
               >
-                <b>{health[key]}</b> {key}
+                <b>{health[key]}</b> {key === "events" ? "current events" : key}
               </span>
             ))}
           </div>
@@ -101,7 +101,10 @@ export function DashboardView({
               <div className="text-[22px] font-mono font-semibold">
                 {p.eventCount}{" "}
                 <span className="text-[12px] font-normal text-on-surface-variant">
-                  {p.active ? "events" : "retained events"}
+                  {p.status === ProviderStatus.Healthy ||
+                  (p.status === ProviderStatus.Degraded && !p.stale)
+                    ? "listed events"
+                    : "retained events"}
                 </span>
               </div>
               <div className="text-[11px] font-mono text-on-surface-variant">
@@ -209,7 +212,16 @@ export function DashboardView({
               {events.data?.items.length === 0 && (
                 <tr>
                   <td colSpan={tableProviders.length + 5}>
-                    <DataState loading={false} error={null} empty />
+                    {health?.events === 0 &&
+                    providers.some((provider) => provider.eventCount > 0) ? (
+                      <div className="p-8 text-center text-on-surface-variant">
+                        No fresh events available. Retained provider events are
+                        shown above for diagnosis and do not enter current
+                        matching.
+                      </div>
+                    ) : (
+                      <DataState loading={false} error={null} empty />
+                    )}
                   </td>
                 </tr>
               )}
