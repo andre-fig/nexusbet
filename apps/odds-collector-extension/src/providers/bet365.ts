@@ -22,6 +22,10 @@ let tab: OwnedTab | undefined;
 let warmed = false;
 const listings = new Map<Esport, Capture>();
 
+export function bet365HasListingContext() {
+  return esports.every((esport) => listings.has(esport));
+}
+
 export async function closeBet365() {
   await tab?.close();
   tab = undefined;

@@ -3,11 +3,13 @@ import {
   collectBet365,
   collectBet365Detail,
   closeBet365,
+  bet365HasListingContext,
 } from "./providers/bet365.js";
 import {
   collectBetano,
   collectBetanoDetail,
   closeBetano,
+  betanoHasListingContext,
 } from "./providers/betano.js";
 import { config, flush, setPreviewMode } from "./publisher.js";
 import { count } from "./outbox.js";
@@ -111,7 +113,13 @@ async function runProvider(
 ): Promise<ProviderSchedule> {
   const now = Date.now();
   let next = state;
-  if (now >= state.dueAt) {
+  const browserContextReady =
+    provider === "bet365"
+      ? bet365HasListingContext()
+      : provider === "betano"
+        ? betanoHasListingContext()
+        : true;
+  if (now >= state.dueAt || (!browserContextReady && state.failures === 0)) {
     try {
       const events = await collectors[provider]();
       next = {
@@ -134,6 +142,11 @@ async function runProvider(
       };
     }
   }
+  if (
+    (provider === "bet365" && !bet365HasListingContext()) ||
+    (provider === "betano" && !betanoHasListingContext())
+  )
+    return next;
   const task = next.details
     ?.filter(
       (item) =>

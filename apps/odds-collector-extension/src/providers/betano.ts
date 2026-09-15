@@ -21,6 +21,10 @@ const contexts = new Map<
   }
 >();
 
+export function betanoHasListingContext() {
+  return esports.every((esport) => contexts.has(esport));
+}
+
 export async function closeBetano() {
   await tab?.close();
   tab = undefined;
