@@ -296,6 +296,46 @@ test("Lavked vs Saint Sinners and lavked vs saint sinners are one European Pro L
     tournamentName("CS2 - European Pro League Season 40", "cs2"),
     "european pro league season 40",
   );
+  const ib2Capture = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2-ib2-sanitized.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const ib2Parsed = parseCapture(ib2Capture);
+  const bet365 = normalizedBet365(ib2Parsed.matches, ib2Parsed.provenance).find(
+    (event) => event.eventId === "201160585",
+  )!;
+  assert.equal(bet365.status, "suspended");
+  assert.equal(bet365.inPlay, false);
+  assert.equal(bet365.startsAt, startsAt);
+  const realStatusResult = compareAllProviders([bet365, second]);
+  assert.equal(realStatusResult.matched.length, 1);
+  assert.equal(realStatusResult.unmatched.length, 0);
+  assert.equal(realStatusResult.matched[0].providers.bet365.rawTeamA, "Lavked");
+  assert.equal(
+    realStatusResult.matched[0].providers.bet365.rawTeamB,
+    "Saint Sinners",
+  );
+  const third = {
+    ...second,
+    provider: "estrelabet" as const,
+    eventId: "lavked-european-pro-league-series-9",
+    tournament: "European Pro League Series 9",
+  };
+  const threeProviders = compareAllProviders([bet365, second, third]);
+  assert.equal(threeProviders.matched.length, 1);
+  assert.equal(Object.keys(threeProviders.matched[0].providers).length, 3);
+  assert.equal(threeProviders.matched[0].confidence, 0.9);
+  assert.equal(
+    compareAllProviders([bet365, { ...second, status: "live" }]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([{ ...bet365, fetchedAt: bet365.startsAt }, second])
+      .matched.length,
+    0,
+  );
 });
 test("MEIA NOITE vs Sementes do Mal and MEIA NOITE vs Semente do Mal share CCT South America Challenger", async () => {
   const raw = JSON.parse(

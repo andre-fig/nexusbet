@@ -32,10 +32,10 @@ Na chave de matching, o token final `juniors` vira `junior`: `Natus Vincere Juni
 
 1. Providers diferentes e mesmo esport.
 2. Mesmo par de equipes normalizadas, independentemente da ordem.
-3. Ambos com status `scheduled`.
+3. Ambos pré-jogo: `scheduled` ou `suspended` antes de `startsAt`, sem `inPlay`.
 4. Mesmo instante de início após interpretar `startsAt`; até cinco minutos somente quando o torneio também coincide e o par de times é igual por alias conhecido, ou quando uma abreviação/flexão nova é confirmada pelo adversário e torneio.
 
-Capitalização, acentos, espaços extras e pontuação irrelevante são ignorados na normalização dos times. A ordem dos dois times também é ignorada. A competição não veta o grupo: igualdade após normalização/alias produz confidence 1; divergência produz confidence 0,9. Eventos suspended/live não são candidatos, mesmo se o scheduler ainda puder coletar um suspended pré-jogo.
+Capitalização, acentos, espaços extras e pontuação irrelevante são ignorados na normalização dos times. A ordem dos dois times também é ignorada. A competição não veta o grupo: igualdade após normalização/alias produz confidence 1; divergência produz confidence 0,9. Uma observação `suspended` ainda pré-jogo (`inPlay` diferente de true e `startsAt` posterior a `fetchedAt`) pode confirmar a identidade do evento, mas suas odds continuam suspensas e fora das análises atuais. Eventos live ou suspensos depois do início não são candidatos.
 
 O algoritmo deduplica por provider:eventId. Conteúdo divergente para a mesma identidade gera conflito. Monta componentes de candidatos e só aceita um grupo se **todos os pares forem compatíveis**, houver pelo menos dois membros e no máximo um de cada provider. Uma cadeia A↔B↔C em que A não corresponde a C não é fundida.
 

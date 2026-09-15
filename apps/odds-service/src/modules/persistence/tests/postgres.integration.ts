@@ -234,10 +234,10 @@ test("learned EAC Extra alias persists and reuses the full EA Copenhagen Extra c
   assert.equal(await database.db.teamAlias.count(), 1);
   assert.equal(await database.db.canonicalEvent.count(), 1);
 });
-test("Lavked capitalization and CS2 European Pro League prefix share one persisted canonical event", async () => {
+test("prematch-suspended Bet365 Lavked joins scheduled Blaze despite tournament prefix", async () => {
   const startsAt = "2026-09-16T08:00:00.000Z";
   const make = (
-    provider: "superbet" | "blaze",
+    provider: "bet365" | "blaze",
     id: string,
     teamA: string,
     teamB: string,
@@ -252,11 +252,14 @@ test("Lavked capitalization and CS2 European Pro League prefix share one persist
     normalizedTeamB: teamB.toLowerCase(),
     tournament,
     startsAt,
+    status:
+      provider === "bet365" ? ("suspended" as const) : ("scheduled" as const),
+    suspended: provider === "bet365",
   });
   await service.commit(
     publication(
       make(
-        "superbet",
+        "bet365",
         "lavked-upper",
         "Lavked",
         "Saint Sinners",

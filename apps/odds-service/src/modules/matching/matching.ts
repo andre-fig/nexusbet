@@ -71,11 +71,16 @@ function eligible(
 ) {
   const delta = Math.abs(Date.parse(e.startsAt) - Date.parse(f.startsAt));
   const samePair = pair(e, aliases) === pair(f, aliases);
+  const prematch = (event: NormalizedEvent) =>
+    event.status === "scheduled" ||
+    (event.status === "suspended" &&
+      event.inPlay !== true &&
+      Date.parse(event.startsAt) > Date.parse(event.fetchedAt));
   return (
     e.provider !== f.provider &&
     e.esport === f.esport &&
-    e.status === "scheduled" &&
-    f.status === "scheduled" &&
+    prematch(e) &&
+    prematch(f) &&
     (samePair
       ? delta === 0 ||
         (delta <= 5 * 60_000 &&
