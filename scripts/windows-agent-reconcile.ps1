@@ -13,8 +13,11 @@ $pidPath = Join-Path $root 'agent.pid'
 $stopPath = Join-Path $root 'agent.stop'
 $logPath = Join-Path $root 'logs\supervisor.log'
 $extensionPath = Join-Path $root 'collector-extension'
-$mutex = New-Object System.Threading.Mutex($false, 'Local\NexusBetAgentReconcile')
-if (-not $mutex.WaitOne(0)) { exit 0 }
+$mutex = New-Object System.Threading.Mutex($false, 'Global\NexusBetAgentReconcile')
+$claimed = $false
+try { $claimed = $mutex.WaitOne(0) }
+catch [Threading.AbandonedMutexException] { $claimed = $true }
+if (-not $claimed) { $mutex.Dispose(); exit 0 }
 
 function Log([string] $message) {
   Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format o) $message"
