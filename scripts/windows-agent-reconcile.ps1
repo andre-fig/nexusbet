@@ -72,7 +72,7 @@ try {
         if (-not $releaseFull.StartsWith($releasesFull, [StringComparison]::OrdinalIgnoreCase)) { throw 'Release path escapes releases directory' }
         if (Test-Path -LiteralPath $release) { Remove-Item -LiteralPath $release -Recurse -Force }
         Log "Preparing release $target"
-        & git clone --quiet --depth 1 --branch main https://github.com/andre-fig/nexusbet.git $release
+        & git -c core.autocrlf=false clone --quiet --depth 1 --branch main https://github.com/andre-fig/nexusbet.git $release
         CheckExit 'Git clone'
         $cloned = (& git -C $release rev-parse HEAD).Trim()
         CheckExit 'Git SHA check'
