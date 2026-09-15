@@ -2,6 +2,7 @@ import { PersistenceNotifications } from "./persistence-notifications.js";
 import { isDeepStrictEqual } from "node:util";
 import { Injectable, Inject, Optional, OnModuleInit } from "@nestjs/common";
 import { createHash } from "node:crypto";
+import { Prisma } from "../../generated/prisma/client.js";
 import { DatabaseService } from "../database/database.service.js";
 import { seedProviders } from "../database/seed.js";
 import { CatalogRepository } from "./repositories/catalog.repository.js";
@@ -181,14 +182,18 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
             at,
             this.database.config.settings.ttlMs,
           );
-          await tx.legacyCheckpoint.upsert({
-            where: { key: p.checkpoint.key },
-            create: {
-              key: p.checkpoint.key,
-              payload: sanitize(p.checkpoint.payload),
-            },
-            update: { payload: sanitize(p.checkpoint.payload) },
-          });
+          // Prisma's upsert RETURNING includes the entire checkpoint JSON,
+          // although the publication does not use the returned row.
+          const checkpointPayload = JSON.stringify(
+            sanitize(p.checkpoint.payload),
+          );
+          const checkpointAt = new Date();
+          await tx.$executeRaw(
+            Prisma.sql`INSERT INTO legacy_checkpoints (key,payload,updated_at)
+              VALUES (${p.checkpoint.key},${checkpointPayload}::jsonb,${checkpointAt})
+              ON CONFLICT (key) DO UPDATE SET
+                payload=EXCLUDED.payload,updated_at=EXCLUDED.updated_at`,
+          );
           return {
             provider: p.provider,
             at: p.fetchedAt,

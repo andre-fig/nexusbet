@@ -159,10 +159,12 @@ export class MonitorRepository {
             at: string;
           }[]
         >(Prisma.sql`
- WITH batches AS (SELECT DISTINCT ON (fs.provider_id,b->>'scope') fs.provider_id,b
- FROM feed_scopes fs CROSS JOIN LATERAL jsonb_array_elements(fs.observations) b
+ WITH batch_keys AS (SELECT DISTINCT ON (fs.provider_id,b.value->>'scope') fs.provider_id,fs.id AS feed_scope_id,b.ordinality AS batch_number
+ FROM feed_scopes fs CROSS JOIN LATERAL jsonb_array_elements(fs.observations) WITH ORDINALITY AS b(value,ordinality)
  WHERE fs.provider_id IN (SELECT provider_id FROM provider_events WHERE id IN (${Prisma.join(ids)}))
- ORDER BY fs.provider_id,b->>'scope',(b->>'fetchedAt')::timestamptz DESC)
+ ORDER BY fs.provider_id,b.value->>'scope',(b.value->>'fetchedAt')::timestamptz DESC),
+ batches AS (SELECT batch_keys.provider_id,fs.observations->(batch_keys.batch_number::int-1) AS b
+ FROM batch_keys JOIN feed_scopes fs ON fs.id=batch_keys.feed_scope_id)
  SELECT pe.id AS "eventId",m->>'marketId' AS "marketId",ARRAY(SELECT s->>'selectionId' FROM jsonb_array_elements(m->'selections') s) AS "selectionIds",b->>'fetchedAt' AS at
  FROM batches CROSS JOIN LATERAL jsonb_array_elements(b->'matches') e
  JOIN provider_events pe ON pe.provider_id=batches.provider_id AND pe.provider_event_id=e->>'eventId'
