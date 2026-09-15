@@ -1456,14 +1456,37 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
   result = await monitor.events({ limit: "1" });
   assert.equal(result.items[0].matching.providerCount, 3);
   assert.equal(result.items[0].matching.status, "matched");
+  active.delete("estrelabet");
+  result = await monitor.events({ limit: "1" });
+  assert.deepEqual(
+    [
+      result.items[0].matching.status,
+      result.items[0].matching.providerCount,
+      result.items[0].matching.expectedProviderCount,
+    ],
+    ["matched", 2, 2],
+  );
+  active.delete("blaze");
+  result = await monitor.events({ limit: "1" });
+  assert.deepEqual(
+    [
+      result.items[0].matching.status,
+      result.items[0].matching.reason,
+      result.items[0].matching.providerCount,
+      result.items[0].matching.expectedProviderCount,
+    ],
+    ["not_applicable", "only_one_eligible_provider", 1, 1],
+  );
+  assert.equal(result.items[0].analytics.length, 0);
+  active.add("blaze");
+  active.add("estrelabet");
   const staleMonitor = new MonitorService(
     new MonitorRepository(database),
     { settings: { ...config.settings, ttlMs: 1 } } as AppConfiguration,
     collection,
   );
   const staleResult = await staleMonitor.events({ limit: "1" });
-  assert.equal(staleResult.items[0].matching.expectedProviderCount, 3);
-  assert.equal(staleResult.items[0].matching.providerCount, 3);
+  assert.equal(staleResult.items.length, 0);
   overview = await monitor.overview();
   assert.equal(overview.health.matched, 1);
   assert.equal(overview.health.partial, 0);

@@ -44,13 +44,51 @@ test("degraded provider with no listed events is excluded from matching coverage
   });
   degraded = false;
   assert.deepEqual(await monitor.expectedProviders(), {
-    cs2: ["superbet", "blaze", "estrelabet"],
+    cs2: ["superbet", "blaze"],
   });
   degraded = true;
   providers[2].eventCount = 1;
+  providers[2].lastUpdatedAt = new Date();
   assert.deepEqual(await monitor.expectedProviders(), {
     cs2: ["superbet", "blaze", "estrelabet"],
   });
+});
+test("only healthy or fresh degraded providers enter the expected count", async () => {
+  const now = new Date();
+  const providers = [
+    { id: "healthy", enabled: true, eventCount: 1, lastUpdatedAt: now },
+    { id: "degraded", enabled: true, eventCount: 1, lastUpdatedAt: now },
+    ...["unavailable", "stale", "no_data", "down", "disabled"].map((id) => ({
+      id,
+      enabled: id !== "disabled",
+      eventCount: 1,
+      lastUpdatedAt: now,
+    })),
+  ];
+  const repo = { providers: async () => providers } as MonitorRepository;
+  const collection = {
+    operationalHealth: () => ({
+      providers: { degraded: { status: "degraded" } },
+    }),
+    providerRuntime: (id: string) => ({
+      active: !["unavailable", "disabled"].includes(id),
+      status: id === "unavailable" ? "unavailable" : "active",
+      reason: id,
+    }),
+  } as unknown as CollectionService;
+  providers.find((p) => p.id === "stale")!.lastUpdatedAt = new Date(0);
+  providers.find((p) => p.id === "no_data")!.eventCount = 0;
+  providers.find((p) => p.id === "down")!.lastUpdatedAt = new Date(0);
+  const monitor = new MonitorService(
+    repo,
+    { settings: { ttlMs: 600000, esports: ["cs2"] } } as AppConfiguration,
+    collection,
+  );
+  assert.deepEqual(await monitor.expectedProviders(), {
+    cs2: ["healthy", "degraded"],
+  });
+  providers.find((p) => p.id === "degraded")!.lastUpdatedAt = new Date(0);
+  assert.deepEqual(await monitor.expectedProviders(), { cs2: ["healthy"] });
 });
 function setup() {
   let state: Awaited<ReturnType<MonitorRepository["state"]>> = {

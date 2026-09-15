@@ -40,18 +40,19 @@ export function compareAllProviders(
   const key = (e: NormalizedEvent) => e.provider + ":" + e.eventId;
   const unique = new Map<string, NormalizedEvent>();
   const conflicts = new Set<string>();
-  for (const e of events) {
-    const prior = unique.get(key(e));
-    if (prior && JSON.stringify(prior) !== JSON.stringify(e))
-      conflicts.add(key(e));
-    unique.set(key(e), e);
-  }
   const providersFor = (event: NormalizedEvent) =>
     new Set(
       Array.isArray(eligibleProviders)
         ? eligibleProviders
         : ((eligibleProviders as EligibleProviders)[event.esport] ?? []),
     );
+  for (const e of events) {
+    if (!providersFor(e).has(e.provider)) continue;
+    const prior = unique.get(key(e));
+    if (prior && JSON.stringify(prior) !== JSON.stringify(e))
+      conflicts.add(key(e));
+    unique.set(key(e), e);
+  }
   const notApplicable = [...unique.values()]
     .filter((event) => providersFor(event).size < 2)
     .map((event) => ({

@@ -72,13 +72,17 @@ export class MonitorService {
           ? "disabled"
           : runtime.status === "unavailable"
             ? "unavailable"
-            : scheduler?.status === "degraded"
-              ? "degraded"
-              : !p.lastUpdatedAt
-                ? "unavailable"
-                : this.stale(p.lastUpdatedAt)
-                  ? "stale"
-                  : "healthy",
+            : ["down", "no_data", "unavailable", "disabled"].includes(
+                  scheduler?.status ?? "",
+                )
+              ? (scheduler?.status ?? "unavailable")
+              : scheduler?.status === "degraded"
+                ? "degraded"
+                : !p.lastUpdatedAt
+                  ? "unavailable"
+                  : this.stale(p.lastUpdatedAt)
+                    ? "stale"
+                    : "healthy",
       };
     });
   }
@@ -86,8 +90,9 @@ export class MonitorService {
     const active = (await this.providers())
       .filter(
         (provider) =>
-          provider.active &&
-          !(provider.status === "degraded" && provider.eventCount === 0),
+          (provider.status === "healthy" || provider.status === "degraded") &&
+          provider.eventCount > 0 &&
+          !provider.stale,
       )
       .map((provider) => provider.id);
     return Object.fromEntries(
@@ -98,7 +103,10 @@ export class MonitorService {
     const providers = await this.providers();
     const eligibleProviders = await this.expectedProviders();
     const [counts, issues, staleIssues, healthIssues] = await Promise.all([
-      this.repo.summary(eligibleProviders),
+      this.repo.summary(
+        eligibleProviders,
+        new Date(Date.now() - this.config.settings.ttlMs),
+      ),
       this.repo.issueCount(eligibleProviders),
       this.staleIssues(),
       this.repo.healthIssues(),
@@ -264,6 +272,7 @@ export class MonitorService {
     return { ...result, items: await this.project(result.items) };
   }
   async project(groups: EventGroup[]) {
+    const eligibleProviders = await this.expectedProviders();
     const ids = groups.flatMap((g) => g.memberIds);
     const [members, issues, staleIssues] = await Promise.all([
       this.repo.members(ids),
@@ -298,7 +307,11 @@ export class MonitorService {
         esport: g.esport as "cs2" | "lol" | "valorant",
         teamA: g.teamA,
         teamB: g.teamB,
-        providers: renderedProviders,
+        providers: renderedProviders.filter((provider) =>
+          eligibleProviders[g.esport as "cs2" | "lol" | "valorant"]?.includes(
+            provider.provider,
+          ),
+        ),
         outlierThresholdPercent:
           this.config.settings.oddsOutlierThresholdPercent,
       });
@@ -312,6 +325,9 @@ export class MonitorService {
         startsAt: g.startsAt,
         matching: {
           status: g.status,
+          ...(g.status === "not_applicable"
+            ? { reason: "only_one_eligible_provider" }
+            : {}),
           confidence: g.confidence,
           providerCount: g.providerCount,
           expectedProviderCount: g.expectedProviderCount,
@@ -355,13 +371,18 @@ export class MonitorService {
       ...this.provider(p, g),
       issues: projected[0].providers.find((x) => x.id === p.id)?.issues ?? [],
     }));
+    const eligibleProviders = await this.expectedProviders();
     const analytics = analyzeMarkets({
       canonicalId: g.canonicalId,
       matchingStatus: g.status,
       esport: g.esport as "cs2" | "lol" | "valorant",
       teamA: g.teamA,
       teamB: g.teamB,
-      providers,
+      providers: providers.filter((provider) =>
+        eligibleProviders[g.esport as "cs2" | "lol" | "valorant"]?.includes(
+          provider.provider,
+        ),
+      ),
       outlierThresholdPercent: this.config.settings.oddsOutlierThresholdPercent,
     });
     return {

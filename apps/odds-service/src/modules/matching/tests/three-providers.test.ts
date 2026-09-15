@@ -97,6 +97,49 @@ test("eligibility quorum distinguishes not-applicable from a real unmatched even
     { provider: "superbet", eventId: event.eventId, reason: "no_team_pair" },
   ]);
 });
+test("ineligible providers never enter matching or its quorum", async () => {
+  const { c } = await sources();
+  const event = c[0];
+  const peers = ["bet365", "betano", "blaze", "estrelabet"].map((provider) => ({
+    ...event,
+    provider: provider as typeof event.provider,
+  }));
+  const events = [event, ...peers];
+  const two = compareAllProviders(events, ["superbet", "blaze"]);
+  assert.equal(two.matched.length, 1);
+  assert.deepEqual(Object.keys(two.matched[0].providers).sort(), [
+    "blaze",
+    "superbet",
+  ]);
+  assert.equal(two.unmatched.length, 0);
+  const one = compareAllProviders(events, ["superbet"]);
+  assert.deepEqual(one.notApplicable, [
+    {
+      provider: "superbet",
+      eventId: event.eventId,
+      reason: "only_one_eligible_provider",
+    },
+  ]);
+  assert.equal(one.unmatched.length, 0);
+  const three = compareAllProviders(events, [
+    "superbet",
+    "blaze",
+    "estrelabet",
+  ]);
+  assert.equal(three.matched.length, 1);
+  assert.equal(Object.keys(three.matched[0].providers).length, 3);
+  const absent = compareAllProviders(
+    [event, peers[2]],
+    ["superbet", "blaze", "estrelabet"],
+  );
+  assert.equal(absent.matched.length, 1);
+  assert.equal(Object.keys(absent.matched[0].providers).length, 2);
+  const unmatched = compareAllProviders(
+    [event, peers[0]],
+    ["superbet", "blaze"],
+  );
+  assert.equal(unmatched.unmatched.length, 1);
+});
 test("provider-scoped equal IDs do not collide; ambiguity, different starts and false positives stay unmatched", async () => {
   const { c } = await sources(),
     e = c[0];
