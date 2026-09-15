@@ -62,9 +62,11 @@ try {
 
   if ($target -and $target -ne $current) {
     $release = Join-Path $releases $target
+    $verifiedPath = Join-Path $release '.agent-verified'
     $prepared = $false
     try {
-      if (-not (Test-Path -LiteralPath (Join-Path $release 'apps\odds-service\dist\collector-agent.main.js'))) {
+      $verified = (Test-Path -LiteralPath $verifiedPath) -and ((Get-Content -LiteralPath $verifiedPath -Raw).Trim() -eq $target)
+      if (-not $verified) {
         $releaseFull = [IO.Path]::GetFullPath($release)
         $releasesFull = [IO.Path]::GetFullPath($releases).TrimEnd('\') + '\'
         if (-not $releaseFull.StartsWith($releasesFull, [StringComparison]::OrdinalIgnoreCase)) { throw 'Release path escapes releases directory' }
@@ -83,6 +85,7 @@ try {
           & $npm run build; CheckExit 'build'
           & $npm test; CheckExit 'tests'
         } finally { Pop-Location }
+        Set-Content -LiteralPath $verifiedPath -Value $target -Encoding ascii
         Log "Release $target passed checks"
       }
       $prepared = $true
