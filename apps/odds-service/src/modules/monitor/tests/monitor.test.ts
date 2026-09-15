@@ -59,8 +59,11 @@ function setup() {
   };
   const repo = { state: async () => state } as MonitorRepository;
   let stale = false;
+  let staleMarket = false;
   const service = {
     providers: async () => [{ id: "future-provider", stale }],
+    staleIssues: async () =>
+      staleMarket ? [{ id: "stale:market", eventId: id }] : [],
   } as MonitorService;
   const bus = new PersistenceNotifications();
   const stream = new MonitorEventsService(bus, repo, service);
@@ -70,6 +73,7 @@ function setup() {
     bus,
     setState: (s: typeof state) => (state = s),
     setStale: () => (stale = true),
+    setStaleMarket: (value: boolean) => (staleMarket = value),
   };
 }
 test("monitor filters reject malformed, array and SQL-shaped values; IDs and zoned dates validated", () => {
@@ -160,6 +164,22 @@ test("SSE observes matching decisions, issue transitions and provider stale with
   assert.ok(messages.some((x) => x.type === "issue.resolved"));
   assert.ok(messages.some((x) => x.type === "provider.stale"));
   sub.unsubscribe();
+  stream.onModuleDestroy();
+});
+test("SSE invalidates REST when a market crosses freshness TTL or recovers", async () => {
+  const { stream, setStaleMarket } = setup();
+  const messages: MessageEvent[] = [];
+  const subscription = stream
+    .stream()
+    .subscribe((message) => messages.push(message));
+  await stream.refresh();
+  setStaleMarket(true);
+  await stream.refresh();
+  assert.ok(messages.some((message) => message.type === "market.stale"));
+  setStaleMarket(false);
+  await stream.refresh();
+  assert.ok(messages.some((message) => message.type === "market.refreshed"));
+  subscription.unsubscribe();
   stream.onModuleDestroy();
 });
 test("heartbeat occurs at 25 seconds and timer stops after disconnect", async (t) => {

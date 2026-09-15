@@ -7,7 +7,7 @@ import { snapshots } from "../../snapshots/market-journal.js";
 import { sanitize } from "../sanitize.js";
 import { DataIssuesRepository } from "./issues.repository.js";
 import {
-  incompleteMatchWinner,
+  incompleteWinnerMarket,
   validSelectionCount,
 } from "../../../shared/utils/market-quality.js";
 @Injectable()
@@ -177,7 +177,7 @@ export class CatalogRepository {
         });
         if (stored.lastSeenAt > time) continue;
         const issueKey = `market_incomplete:${stored.id}`;
-        if (incompleteMatchWinner(market, e.teamA, e.teamB))
+        if (incompleteWinnerMarket(market, e.teamA, e.teamB))
           await this.issues.open(tx, {
             key: issueKey,
             type: "MARKET_INCOMPLETE",

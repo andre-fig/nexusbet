@@ -46,7 +46,12 @@ export function NeedsAttentionDrawer({
             >
               <div className="text-[11px] text-error flex gap-2 items-center">
                 <AlertTriangle size={13} />
-                {i.severity} · {i.type === "MARKET_INCOMPLETE" ? "Incomplete market" : i.type}
+                {i.severity} ·{" "}
+                {i.type === "MARKET_INCOMPLETE"
+                  ? "Incomplete market"
+                  : i.type === "STALE"
+                    ? "Stale market"
+                    : i.type}
               </div>
               <h3 className="font-semibold text-[14px]">{i.title}</h3>
               <p className="text-[12px] text-on-surface-variant">{i.message}</p>

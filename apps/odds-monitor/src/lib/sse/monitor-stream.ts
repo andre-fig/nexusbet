@@ -12,6 +12,8 @@ export const eventTypes = [
   "issue.resolved",
   "odds.changed",
   "market.updated",
+  "market.stale",
+  "market.refreshed",
 ] as const;
 export type Invalidation =
   "overview" | "events" | "detail" | "issues" | "history" | "raw";
@@ -38,6 +40,13 @@ export function invalidations(
     return [
       "events",
       ...(affects ? (["detail", "history", "raw"] as Invalidation[]) : []),
+    ];
+  if (type === "market.stale" || type === "market.refreshed")
+    return [
+      "overview",
+      "events",
+      "issues",
+      ...(affects ? (["detail"] as Invalidation[]) : []),
     ];
   if (type === "matching.updated")
     return [

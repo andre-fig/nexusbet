@@ -288,6 +288,17 @@ export function DashboardView({
                                     ? feed?.matchWinner.displayTeamA
                                     : feed?.matchWinner.displayTeamB,
                                 )}
+                                {feed?.matchWinner.status === "stale" &&
+                                  (side === "teamA"
+                                    ? feed.matchWinner.displayTeamA
+                                    : feed.matchWinner.displayTeamB) && (
+                                    <span
+                                      className="text-amber-600 dark:text-amber-400"
+                                      title="This market exceeded the freshness TTL. The last observed odd is shown for diagnosis and excluded from comparisons."
+                                    >
+                                      · stale
+                                    </span>
+                                  )}
                                 {best && (
                                   <AnalyticsBadge
                                     kind="best_price"
@@ -304,6 +315,14 @@ export function DashboardView({
                             );
                           })}
                         </div>
+                        {feed?.matchWinner.status === "unavailable" && (
+                          <div
+                            className="text-[10px] text-on-surface-variant"
+                            title="This provider has not observed a Match winner market. Its other markets remain available."
+                          >
+                            Market unavailable
+                          </div>
+                        )}
                         <div
                           className={`text-[10px] mt-1 ${status?.color ?? "text-on-surface-variant"}`}
                         >

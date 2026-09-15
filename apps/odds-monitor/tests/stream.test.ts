@@ -14,6 +14,17 @@ test("targeted invalidation keeps unrelated detail/history intact", () => {
     "events",
   ]);
   assert.ok(invalidations("issue.created", "a", "a").includes("issues"));
+  assert.deepEqual(invalidations("market.stale", "a", "a"), [
+    "overview",
+    "events",
+    "issues",
+    "detail",
+  ]);
+  assert.deepEqual(invalidations("market.refreshed", "a", "b"), [
+    "overview",
+    "events",
+    "issues",
+  ]);
   assert.ok(invalidations("ready", undefined, "a").includes("detail"));
 });
 test("EventSource uses named messages, reconnection status and cleans listeners", () => {

@@ -7,6 +7,7 @@ import type { EligibleProviders } from "../../matching/matching.js";
 const groupSql = (
   eligibleProviders: EligibleProviders,
   includeRemoved = false,
+  staleBefore?: Date,
 ) => {
   const eligibility = JSON.stringify(eligibleProviders);
   const eligible = Prisma.sql`provider_slug IN (SELECT jsonb_array_elements_text(COALESCE(${eligibility}::jsonb -> esport,'[]'::jsonb)))`;
@@ -21,7 +22,7 @@ const groupSql = (
  min(esport) AS esport,min(coalesce(canonical_tournament,raw_tournament)) AS tournament,min(coalesce(canonical_a,raw_team_a)) AS "teamA",min(coalesce(canonical_b,raw_team_b)) AS "teamB",min(coalesce(canonical_start,starts_at)) AS "startsAt",
  count(DISTINCT provider_id) FILTER(WHERE ${eligible})::int AS "providerCount",${expected}::int AS "expectedProviderCount",min(coalesce(confidence,0))::float AS confidence,
  CASE WHEN ${expected}<2 THEN 'not_applicable' WHEN count(DISTINCT provider_id) FILTER(WHERE ${eligible})<2 THEN 'unmatched' WHEN bool_or(match_status='low_confidence') THEN 'low_confidence' WHEN bool_or(match_status='manual') THEN 'manual' WHEN count(DISTINCT provider_id) FILTER(WHERE ${eligible})<${expected} THEN 'partial' ELSE 'matched' END AS status,
- CASE WHEN ${expected}<2 THEN bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND i.type<>'UNMATCHED_EVENT' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) ELSE bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) END AS attention,
+ CASE WHEN ${expected}<2 THEN bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND i.type<>'UNMATCHED_EVENT' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) ELSE bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) END OR bool_or(${eligible} AND base.in_play IS NOT TRUE AND base.suspended IS NOT TRUE AND ${staleBefore ?? null}::timestamptz IS NOT NULL AND EXISTS(SELECT 1 FROM markets m WHERE m.provider_event_id=base.id AND m.in_play IS NOT TRUE AND m.suspended IS NOT TRUE AND m.last_seen_at < ${staleBefore ?? null}::timestamptz AND (m.category='match_winner' OR (m.category='map_winner' AND m.map_number IN (1,2,3))))) AS attention,
  array_agg(id) AS "memberIds", array_agg(provider_id) AS provider_ids
  FROM base GROUP BY group_id
 )`;
@@ -90,6 +91,7 @@ export class MonitorRepository {
     q: EventQuery = {},
     id?: string,
     eligibleProviders: EligibleProviders = {},
+    staleBefore?: Date,
   ) {
     const page = integer(q.page, 1, 100000),
       limit = integer(q.limit, 50, 100),
@@ -105,10 +107,10 @@ export class MonitorRepository {
       const [items, count] = await db.$transaction(
         [
           db.$queryRaw<EventGroup[]>(
-            Prisma.sql`${groupSql(eligibleProviders, !!id)} SELECT * FROM grouped ${where} ORDER BY "startsAt",id LIMIT ${limit} OFFSET ${(page - 1) * limit}`,
+            Prisma.sql`${groupSql(eligibleProviders, !!id, staleBefore)} SELECT * FROM grouped ${where} ORDER BY "startsAt",id LIMIT ${limit} OFFSET ${(page - 1) * limit}`,
           ),
           db.$queryRaw<{ total: number }[]>(
-            Prisma.sql`${groupSql(eligibleProviders, !!id)} SELECT count(*)::int AS total FROM grouped ${where}`,
+            Prisma.sql`${groupSql(eligibleProviders, !!id, staleBefore)} SELECT count(*)::int AS total FROM grouped ${where}`,
           ),
         ],
         { isolationLevel: "RepeatableRead" },
@@ -308,6 +310,47 @@ export class MonitorRepository {
                 ],
               }
             : {}),
+        },
+      }),
+    );
+  }
+  staleMarkets(before: Date, providerEventIds?: string[]) {
+    return this.database.read((db) =>
+      db.market.findMany({
+        where: {
+          lastSeenAt: { lt: before },
+          AND: [
+            { OR: [{ inPlay: false }, { inPlay: null }] },
+            { OR: [{ suspended: false }, { suspended: null }] },
+          ],
+          OR: [
+            { category: "match_winner" },
+            { category: "map_winner", mapNumber: { in: [1, 2, 3] } },
+          ],
+          providerEvent: {
+            listed: true,
+            AND: [
+              { OR: [{ inPlay: false }, { inPlay: null }] },
+              { OR: [{ suspended: false }, { suspended: null }] },
+            ],
+            ...(providerEventIds ? { id: { in: providerEventIds } } : {}),
+            provider: { enabled: true },
+          },
+        },
+        select: {
+          id: true,
+          category: true,
+          mapNumber: true,
+          lastSeenAt: true,
+          providerEvent: {
+            select: {
+              id: true,
+              rawTeamA: true,
+              rawTeamB: true,
+              match: { select: { canonicalEventId: true } },
+              provider: { select: { slug: true } },
+            },
+          },
         },
       }),
     );

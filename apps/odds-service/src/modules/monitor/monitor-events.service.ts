@@ -20,6 +20,8 @@ export class MonitorEventsService implements OnModuleInit, OnModuleDestroy {
   private timer?: ReturnType<typeof setInterval>;
   private previous?: Awaited<ReturnType<MonitorRepository["state"]>>;
   private stale = new Map<string, boolean>();
+  private staleMarkets = new Map<string, string>();
+  private staleMarketsInitialized = false;
   private pending = Promise.resolve();
   private sequence = 0;
   subscribers = 0;
@@ -127,6 +129,22 @@ export class MonitorEventsService implements OnModuleInit, OnModuleDestroy {
         this.emit("provider.stale", { provider: p.id });
       this.stale.set(p.id, p.stale);
     }
+    const staleMarkets = new Map(
+      (await this.service.staleIssues()).map((issue) => [
+        issue.id,
+        issue.eventId,
+      ]),
+    );
+    if (this.staleMarketsInitialized) {
+      for (const [issueId, eventId] of staleMarkets)
+        if (!this.staleMarkets.has(issueId))
+          this.emit("market.stale", { issueId, eventId });
+      for (const [issueId, eventId] of this.staleMarkets)
+        if (!staleMarkets.has(issueId))
+          this.emit("market.refreshed", { issueId, eventId });
+    }
+    this.staleMarkets = staleMarkets;
+    this.staleMarketsInitialized = true;
   }
   stream() {
     return new Observable<MessageEvent>((subscriber) => {

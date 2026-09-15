@@ -210,11 +210,21 @@ export function EventDetailView({
                             </span>
                           )}
                         </td>
-                        {event.providers.map((p) => (
-                          <td className="p-3" key={p.provider}>
-                            {markets
-                              .filter((m) => m.provider === p.provider)
-                              .map((m) => (
+                        {event.providers.map((p) => {
+                          const providerMarkets = markets.filter(
+                            (m) => m.provider === p.provider,
+                          );
+                          return (
+                            <td className="p-3" key={p.provider}>
+                              {!providerMarkets.length && (
+                                <span
+                                  className="text-on-surface-variant"
+                                  title="This provider has not observed this market. Its other markets can still be compared."
+                                >
+                                  Market unavailable
+                                </span>
+                              )}
+                              {providerMarkets.map((m) => (
                                 <div key={m.id}>
                                   {m.selections.map((s) => {
                                     const best = m.analytics?.bestPrices.find(
@@ -229,7 +239,16 @@ export function EventDetailView({
                                         className="flex gap-3 justify-between py-1"
                                       >
                                         <span>{s.name}</span>
-                                        <span className="font-mono inline-flex items-center gap-1">
+                                        <span
+                                          className="font-mono inline-flex items-center gap-1"
+                                          title={
+                                            s.status === "stale"
+                                              ? `Last observed ${timestamp(s.fetchedAt)}. This odd is retained for diagnosis and excluded from comparisons.`
+                                              : s.status === "unavailable"
+                                                ? "No valid odd was observed for this selection."
+                                                : undefined
+                                          }
+                                        >
                                           {odd(s.displayOdds)}
                                           {best && (
                                             <AnalyticsBadge
@@ -252,11 +271,28 @@ export function EventDetailView({
                                   })}
                                   <span className="text-[10px] text-on-surface-variant">
                                     {m.providerMarketId}
+                                    {m.status === "incomplete" && (
+                                      <span
+                                        className="ml-2 text-amber-600 dark:text-amber-400"
+                                        title="This observed market has fewer than two valid selections and is excluded from odds comparisons."
+                                      >
+                                        Incomplete market
+                                      </span>
+                                    )}
+                                    {m.status === "stale" && (
+                                      <span
+                                        className="ml-2 text-amber-600 dark:text-amber-400"
+                                        title="The market exceeded the freshness TTL. Last known odds are retained for diagnosis."
+                                      >
+                                        Stale market
+                                      </span>
+                                    )}
                                   </span>
                                 </div>
                               ))}
-                          </td>
-                        ))}
+                            </td>
+                          );
+                        })}
                       </tr>,
                     ];
                   })}

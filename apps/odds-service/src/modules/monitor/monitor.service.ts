@@ -12,6 +12,7 @@ import { displayOdds } from "../../shared/utils/odds-display.js";
 import { analyzeMarkets } from "./market-analytics.js";
 import {
   validate,
+  integer,
   uuid,
   date,
   strings,
@@ -27,6 +28,31 @@ export class MonitorService {
   ) {}
   stale(at: Date | null) {
     return !at || Date.now() - at.getTime() > this.config.settings.ttlMs;
+  }
+  async staleIssues(providerEventIds?: string[]) {
+    const before = new Date(Date.now() - this.config.settings.ttlMs);
+    const markets = await this.repo.staleMarkets(before, providerEventIds);
+    return markets
+      .filter(
+        (m) =>
+          this.collection.providerRuntime(m.providerEvent.provider.slug).active,
+      )
+      .map((m) => ({
+        id: `stale:${m.id}`,
+        type: "STALE",
+        severity: "warning",
+        status: "open",
+        message: `${m.category === "match_winner" ? "Match winner" : `Map ${m.mapNumber} winner`} last observed at ${m.lastSeenAt.toISOString()}; data exceeded the freshness TTL. Last odds are retained for diagnosis.`,
+        marketId: m.id,
+        providerEventId: m.providerEvent.id,
+        canonicalEventId: m.providerEvent.match?.canonicalEventId ?? null,
+        eventId: m.providerEvent.match?.canonicalEventId ?? m.providerEvent.id,
+        provider: m.providerEvent.provider.slug,
+        title: `${m.providerEvent.rawTeamA} vs ${m.providerEvent.rawTeamB}`,
+        detectedAt: new Date(
+          m.lastSeenAt.getTime() + this.config.settings.ttlMs,
+        ),
+      }));
   }
   async providers() {
     const operational = this.collection.operationalHealth().providers;
@@ -68,16 +94,19 @@ export class MonitorService {
   async overview() {
     const providers = await this.providers();
     const eligibleProviders = await this.expectedProviders();
-    const [counts, issues] = await Promise.all([
+    const [counts, issues, staleIssues] = await Promise.all([
       this.repo.summary(eligibleProviders),
       this.repo.issueCount(eligibleProviders),
+      this.staleIssues(),
     ]);
     const count = (s: string) => counts.find((c) => c.status === s)?.count ?? 0;
     return {
       generatedAt: new Date().toISOString(),
       health: {
         status:
-          issues || providers.some((p) => p.active && p.stale)
+          issues ||
+          staleIssues.length ||
+          providers.some((p) => p.active && p.stale)
             ? "degraded"
             : "healthy",
         events: counts.reduce((n, c) => n + c.count, 0),
@@ -85,7 +114,7 @@ export class MonitorService {
         partial: count("partial"),
         unmatched: count("unmatched"),
         notApplicable: count("not_applicable"),
-        issues,
+        issues: issues + staleIssues.length,
       },
       providers,
     };
@@ -93,51 +122,61 @@ export class MonitorService {
   provider(p: MonitorMember, g: EventGroup) {
     const runtime = this.collection.providerRuntime(p.provider.slug);
     const active = p.provider.enabled && runtime.active;
-    const markets = p.markets.map((m) => ({
-      ...m,
-      status:
-        m.category === "match_winner" &&
+    const markets = p.markets.map((m) => {
+      const stale = this.stale(m.lastSeenAt);
+      const validSelections = m.selections.filter((s) => {
+        const latest = s.snapshots[0];
+        return (
+          s.fetchedAt >= m.lastSeenAt &&
+          latest?.fetchedAt >= m.lastSeenAt &&
+          latest.odds !== null &&
+          Number(latest.odds) > 1
+        );
+      }).length;
+      const incomplete =
+        (m.category === "match_winner" || m.category === "map_winner") &&
         p.rawTeamA.trim() &&
         p.rawTeamB.trim() &&
         p.rawTeamA.trim() !== p.rawTeamB.trim() &&
-        m.selections.filter((s) => {
-          const odds = s.snapshots[0]?.odds;
-          return odds !== null && odds !== undefined && Number(odds) > 1;
-        }).length !== 2
-          ? "incomplete"
-          : m.inPlay
-            ? "live"
-            : m.suspended
-              ? "suspended"
-              : this.stale(m.lastSeenAt)
-                ? "stale"
-                : "healthy",
-      selections: m.selections.map((s) => {
-        const v = s.snapshots[0];
-        const odds = v?.odds == null ? null : Number(v.odds);
-        return {
-          id: s.id,
-          selectionId: s.providerSelectionId,
-          name: s.name,
-          odds,
-          displayOdds: displayOdds(odds),
-          suspended:
-            m.suspended === true ? true : (v?.suspended ?? s.suspended),
-          inPlay: v?.inPlay ?? m.inPlay,
-          fetchedAt: v?.fetchedAt ?? null,
-          status:
-            v?.odds == null
-              ? "unavailable"
-              : m.suspended || v.suspended || s.suspended
+        validSelections < 2;
+      return {
+        ...m,
+        status: stale
+          ? "stale"
+          : incomplete
+            ? "incomplete"
+            : m.inPlay
+              ? "live"
+              : m.suspended
                 ? "suspended"
-                : v.inPlay
-                  ? "live"
-                  : this.stale(v.fetchedAt)
-                    ? "stale"
-                    : "healthy",
-        };
-      }),
-    }));
+                : "healthy",
+        selections: m.selections.map((s) => {
+          const v = s.snapshots[0];
+          const odds = v?.odds == null ? null : Number(v.odds);
+          return {
+            id: s.id,
+            selectionId: s.providerSelectionId,
+            name: s.name,
+            odds,
+            displayOdds: displayOdds(odds),
+            suspended:
+              m.suspended === true ? true : (v?.suspended ?? s.suspended),
+            inPlay: v?.inPlay ?? m.inPlay,
+            fetchedAt: v?.fetchedAt ?? null,
+            status:
+              stale || (v && this.stale(v.fetchedAt))
+                ? "stale"
+                : v?.odds == null
+                  ? "unavailable"
+                  : m.suspended || v.suspended || s.suspended
+                    ? "suspended"
+                    : v.inPlay
+                      ? "live"
+                      : "healthy",
+          };
+        }),
+      };
+    });
     const winner = markets.find((m) => m.category === "match_winner");
     const odd = (name: string) =>
       (winner?.status === "incomplete" ? undefined : winner)?.selections.find(
@@ -175,6 +214,18 @@ export class MonitorService {
         displayTeamB: displayOdds(odd(g.teamB)),
         status: winner?.status ?? "unavailable",
       },
+      marketAvailability: {
+        matchWinner: winner?.status ?? "unavailable",
+        map1Winner:
+          markets.find((m) => m.category === "map_winner" && m.mapNumber === 1)
+            ?.status ?? "unavailable",
+        map2Winner:
+          markets.find((m) => m.category === "map_winner" && m.mapNumber === 2)
+            ?.status ?? "unavailable",
+        map3Winner:
+          markets.find((m) => m.category === "map_winner" && m.mapNumber === 3)
+            ?.status ?? "unavailable",
+      },
       markets,
     };
   }
@@ -184,20 +235,22 @@ export class MonitorService {
       q,
       undefined,
       await this.expectedProviders(),
+      new Date(Date.now() - this.config.settings.ttlMs),
     );
     return { ...result, items: await this.project(result.items) };
   }
   async project(groups: EventGroup[]) {
     const ids = groups.flatMap((g) => g.memberIds);
-    const [members, issues] = await Promise.all([
+    const [members, issues, staleIssues] = await Promise.all([
       this.repo.members(ids),
       this.repo.eventIssues(
         ids,
         groups.flatMap((g) => (g.canonicalId ? [g.canonicalId] : [])),
       ),
+      this.staleIssues(ids),
     ]);
     return groups.map((g) => {
-      const visibleIssues = issues.filter(
+      const visibleIssues = [...issues, ...staleIssues].filter(
         (issue) =>
           g.expectedProviderCount >= 2 || issue.type !== "UNMATCHED_EVENT",
       );
@@ -246,8 +299,14 @@ export class MonitorService {
   }
   async group(id: string) {
     uuid(id);
-    const g = (await this.repo.groups({}, id, await this.expectedProviders()))
-      .items[0];
+    const g = (
+      await this.repo.groups(
+        {},
+        id,
+        await this.expectedProviders(),
+        new Date(Date.now() - this.config.settings.ttlMs),
+      )
+    ).items[0];
     if (!g) throw new ServiceError("Event not found", 404);
     return g;
   }
@@ -355,25 +414,42 @@ export class MonitorService {
     if (q.status && !["open", "resolved", "ignored"].includes(q.status))
       throw new ServiceError("Invalid issue status", 400);
     const eligibleProviders = await this.expectedProviders();
+    const staleIssues =
+      (!q.status || q.status === "open") &&
+      (!q.type || q.type === "STALE") &&
+      (!q.severity || q.severity === "warning")
+        ? (await this.staleIssues()).filter(
+            (issue) =>
+              (!q.eventId ||
+                issue.eventId === q.eventId ||
+                issue.providerEventId === q.eventId) &&
+              (!q.provider || issue.provider === q.provider),
+          )
+        : [];
     return {
-      items: (await this.repo.issues(q, eligibleProviders)).map((i) => ({
-        id: i.id,
-        type: i.type,
-        severity: i.severity,
-        status: i.status,
-        eventId:
-          i.providerEvent?.match?.canonicalEventId ??
-          i.canonicalEventId ??
-          i.providerEventId,
-        provider: i.provider?.slug ?? null,
-        title: i.canonicalEvent
-          ? `${i.canonicalEvent.teamA} vs ${i.canonicalEvent.teamB}`
-          : i.providerEvent
-            ? `${i.providerEvent.rawTeamA} vs ${i.providerEvent.rawTeamB}`
-            : i.type,
-        message: i.message,
-        detectedAt: i.detectedAt,
-      })),
+      items: [
+        ...(await this.repo.issues(q, eligibleProviders)).map((i) => ({
+          id: i.id,
+          type: i.type,
+          severity: i.severity,
+          status: i.status,
+          eventId:
+            i.providerEvent?.match?.canonicalEventId ??
+            i.canonicalEventId ??
+            i.providerEventId,
+          provider: i.provider?.slug ?? null,
+          title: i.canonicalEvent
+            ? `${i.canonicalEvent.teamA} vs ${i.canonicalEvent.teamB}`
+            : i.providerEvent
+              ? `${i.providerEvent.rawTeamA} vs ${i.providerEvent.rawTeamB}`
+              : i.type,
+          message: i.message,
+          detectedAt: i.detectedAt,
+        })),
+        ...staleIssues,
+      ]
+        .sort((a, b) => b.detectedAt.getTime() - a.detectedAt.getTime())
+        .slice(0, integer(q.limit, 100, 500)),
     };
   }
 }

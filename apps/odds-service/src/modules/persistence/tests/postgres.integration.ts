@@ -273,7 +273,14 @@ test("removal retains event/history and never infers finished; failed listing ke
 test("one eligible provider is not applicable and creates no unmatched issue", async () => {
   await service.commit(publication(event()));
   assert.equal(await database.db.eventMatch.count(), 0);
-  assert.equal(await database.db.dataIssue.count(), 0);
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "UNMATCHED_EVENT" } }),
+    0,
+  );
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "MARKET_INCOMPLETE" } }),
+    1,
+  );
   await service.commit(publication(event("betano")));
   assert.equal(await database.db.eventMatch.count(), 2);
   assert.ok(
@@ -281,7 +288,14 @@ test("one eligible provider is not applicable and creates no unmatched issue", a
       (match) => match.status === "matched",
     ),
   );
-  assert.equal(await database.db.dataIssue.count(), 0);
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "UNMATCHED_EVENT" } }),
+    0,
+  );
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "MARKET_INCOMPLETE" } }),
+    2,
+  );
 });
 test("two eligible providers with isolated events create unmatched issues", async () => {
   await service.commit(publication(event()));
@@ -348,7 +362,14 @@ test("restart reconstructs scopes, catalogue, matching, issues and checkpoints w
     canonical,
   );
   assert.equal(await database.db.oddsSnapshot.count(), 2);
-  assert.equal(await database.db.dataIssue.count(), 0);
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "UNMATCHED_EVENT" } }),
+    0,
+  );
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "MARKET_INCOMPLETE" } }),
+    2,
+  );
 });
 test("stale retry cannot replace latest projection; conflicting timestamp is rejected atomically", async () => {
   await service.commit(
@@ -1060,6 +1081,123 @@ test("Monitor API compares only current matched provider markets and leaves odds
     await database.db.dataIssue.count({ where: { type: "OUTLIER" } }),
     0,
   );
+});
+test("market quality separates missing map, observed incomplete map and expired market without using their odds", async () => {
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const observedAt = new Date().toISOString();
+  const old = new Date(Date.now() - 15 * 60 * 1000);
+  const winner = (
+    e: NormalizedEvent,
+    category: string,
+    map: number | null,
+    complete: boolean,
+  ) => {
+    const m = structuredClone(e.markets[0]);
+    m.marketId = `${category}:${map ?? "match"}`;
+    m.category = category;
+    m.map = map;
+    m.selections[0].selectionId = "alpha";
+    if (complete)
+      m.selections.push({
+        ...structuredClone(m.selections[0]),
+        selectionId: "beta",
+        name: "Beta",
+        odds: 2.1,
+      });
+    return m;
+  };
+  for (const name of ["superbet", "blaze"] as const) {
+    const e = event(name, 2.2, observedAt);
+    e.markets = [
+      winner(e, "match_winner", null, true),
+      winner(e, "map_winner", 1, true),
+      winner(e, "map_winner", 2, name === "blaze"),
+      ...(name === "blaze" ? [winner(e, "map_winner", 3, true)] : []),
+    ];
+    if (name === "blaze") e.markets[1].fetchedAt = old.toISOString();
+    await service.commit(publication(e));
+  }
+  const incomplete = await database.db.dataIssue.findMany({
+    where: { type: "MARKET_INCOMPLETE", status: "open" },
+  });
+  assert.equal(incomplete.length, 1);
+  assert.equal(incomplete[0].severity, "warning");
+  assert.equal(incomplete[0].message, "Expected 2 valid selections, found 1");
+  const collection = {
+    operationalHealth: () => ({ providers: {} }),
+    providerRuntime: () => ({
+      active: true,
+      status: "active",
+      reason: "active",
+    }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitor = new MonitorService(
+    new MonitorRepository(database),
+    config,
+    collection,
+  );
+  const page = await monitor.events({ attentionOnly: "true", limit: "1" });
+  assert.equal(page.pagination.total, 1);
+  assert.deepEqual(
+    page.items[0].analytics.map((a) => [a.category, a.mapNumber]),
+    [["match_winner", null]],
+  );
+  const detail = await monitor.detail(page.items[0].id);
+  const superbet = detail.providers.find((p) => p.provider === "superbet")!;
+  assert.equal(superbet.marketAvailability.map3Winner, "unavailable");
+  assert.equal(superbet.marketAvailability.map1Winner, "healthy");
+  assert.equal(superbet.marketAvailability.map2Winner, "incomplete");
+  const stale = detail.markets.find(
+    (m) => m.provider === "blaze" && m.mapNumber === 1,
+  )!;
+  assert.equal(stale.status, "stale");
+  assert.equal(stale.selections[0].displayOdds, "2,20");
+  assert.equal(stale.selections[0].status, "stale");
+  assert.equal(stale.analytics, null);
+  assert.deepEqual(
+    (await monitor.issues({ eventId: detail.id })).items
+      .map((i) => i.type)
+      .sort(),
+    ["MARKET_INCOMPLETE", "STALE"],
+  );
+  assert.equal((await monitor.overview()).health.issues, 2);
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "STALE" } }),
+    0,
+  );
+  const refreshed = event(
+    "superbet",
+    2.2,
+    new Date(Date.now() + 1000).toISOString(),
+  );
+  refreshed.markets = [
+    winner(refreshed, "match_winner", null, true),
+    winner(refreshed, "map_winner", 1, true),
+    winner(refreshed, "map_winner", 2, true),
+  ];
+  await service.commit(publication(refreshed));
+  assert.equal(
+    (
+      await database.db.dataIssue.findUniqueOrThrow({
+        where: { id: incomplete[0].id },
+      })
+    ).status,
+    "resolved",
+  );
+  const onlyStale = await monitor.events({ attentionOnly: "true", limit: "1" });
+  assert.equal(onlyStale.pagination.total, 1);
+  assert.deepEqual(
+    onlyStale.items[0].analytics
+      .map((a) => [a.category, a.mapNumber])
+      .sort((a, b) => String(a).localeCompare(String(b))),
+    [
+      ["map_winner", 2],
+      ["match_winner", null],
+    ],
+  );
+  assert.equal((await monitor.overview()).health.issues, 1);
 });
 test("Monitor publication notices occur after commit, never on replay or transaction failure", async () => {
   const { PersistenceNotifications } =

@@ -131,6 +131,12 @@ export interface EventProvider {
     displayTeamB: string | null;
     status?: string;
   };
+  marketAvailability?: {
+    matchWinner: string;
+    map1Winner: string;
+    map2Winner: string;
+    map3Winner: string;
+  };
   issues: Issue[];
   markets?: Market[];
 }
