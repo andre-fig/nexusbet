@@ -477,6 +477,69 @@ test("CS2 team aliases match BAKS with BakS eSports across tournament variants",
   assert.equal(result.matched[0].providers.betano.rawTeamA, "BakS eSports");
 });
 
+test("CS2 aliases match Astral eSports vs Rune Eaters Esports despite tournament variants", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const left = {
+    ...structuredClone(base),
+    provider: "superbet" as const,
+    eventId: "astral-esports-rune-eaters-esports",
+    teamA: "Astral eSports",
+    teamB: "Rune Eaters Esports",
+    rawTeamA: "Astral eSports",
+    rawTeamB: "Rune Eaters Esports",
+    normalizedTeamA: teamName("Astral eSports", "cs2"),
+    normalizedTeamB: teamName("Rune Eaters Esports", "cs2"),
+    tournament: "Ranked Episode 5: Open Qualifier",
+    startsAt,
+  };
+  const right = {
+    ...structuredClone(base),
+    provider: "blaze" as const,
+    eventId: "astral-rune-eaters",
+    teamA: "ASTRAL",
+    teamB: "Rune Eaters",
+    rawTeamA: "ASTRAL",
+    rawTeamB: "Rune Eaters",
+    normalizedTeamA: teamName("ASTRAL", "cs2"),
+    normalizedTeamB: teamName("Rune Eaters", "cs2"),
+    tournament: "Stake Ranked",
+    startsAt,
+  };
+
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("Astral eSports", "cs2"), "astral");
+  assert.equal(canonicalTeamName("Rune Eaters Esports", "cs2"), "rune eaters");
+  assert.notEqual(
+    canonicalTeamName("Astral eSports", "valorant"),
+    canonicalTeamName("ASTRAL", "valorant"),
+  );
+  assert.equal(left.normalizedTeamA, "astral esports");
+  assert.equal(left.normalizedTeamB, "rune eaters esports");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "astral");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "rune eaters");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.equal(result.matched[0].evidence.sameCompetitionAlias, false);
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "Astral eSports");
+  assert.equal(
+    result.matched[0].providers.superbet.rawTeamB,
+    "Rune Eaters Esports",
+  );
+  assert.equal(result.matched[0].providers.blaze.rawTeamA, "ASTRAL");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "Rune Eaters");
+});
+
 test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
   const raw = JSON.parse(
     await readFile(
