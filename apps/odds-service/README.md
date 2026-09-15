@@ -7,7 +7,7 @@ Bet365 e Betano usam exclusivamente **`BROWSER_RUNTIME=local-cdp` no macOS**, co
 Preparação do Chrome, flags, ownership, indisponibilidade e shutdown: [Local CDP](../../docs/LOCAL_CDP.md).
 
 
-Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes Bet365, Betano, Superbet, Blaze e EstrelaBet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma para persistência e mantém os journals locais durante a migração. Não depende de frontend ou BFF.
+Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes Bet365, Betano, Superbet, Blaze e EstrelaBet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma e ingestão direta; arquivos ficam restritos a debug/replay/import legado. Não depende de frontend ou BFF.
 
 Guia de entrada: [README da raiz](../../README.md). Instruções de trabalho: [AGENTS.md](../../AGENTS.md). Documentação aprofundada: [índice](../../README.md#documentation).
 
@@ -77,15 +77,11 @@ ConfigModule lê variáveis do ambiente e `.env`; nunca lê credentials.txt. Dir
 
 | Diretório | Variável | Uso |
 |---|---|---|
-| `data/` | DATA_DIR | Estados e journals persistentes |
-| `inbox/` | INBOX_DIR | Listagens bet365 |
-| `detail-inbox/` | DETAIL_INBOX_DIR | Detalhes bet365 |
-| `betano-inbox/` | BETANO_INBOX_DIR | Rodadas Betano |
-| `superbet-inbox/` | SUPERBET_INBOX_DIR | Rodadas HTTP Superbet |
-| `captures/` | CAPTURE_DIR | Capturas bet365 para diagnóstico |
-| `captures/betano/` | BETANO_CAPTURE_DIR | Capturas Betano para diagnóstico |
+| `data/` | DATA_DIR | Compatibilidade do modo file; PostgreSQL não duplica estado aqui |
+| `evidence/raw/<provider>/` | RAW_CAPTURE_DIR | Raw opt-in, retenção padrão de 24h |
+| `*-inbox/` | variáveis legadas | Somente importação/replay explícitos; nunca runtime normal |
 
-`data/` e as inboxes contêm dados operacionais, não código. `data/archive/` conserva journals históricos retirados das capturas de investigação. `captures/` e `dist/` são regeneráveis; o build limpa `dist/` antes de compilar. Esses diretórios são ignorados pelo Git. Snapshots/journals são append-only; EventRemoved não implica EventFinished. TTL padrão: 600 segundos (`MAX_AGE_SECONDS`). O scanner de inbox roda a cada 5000 ms (`INBOX_SCAN_INTERVAL_MS`); `INBOX_SCAN_ENABLED=0` desliga seu timer e `INBOX_INGEST_ENABLED=0` desliga a ingestão.
+O runtime PostgreSQL não cria inbox, `latest.json` ou NDJSON. `data/archive/` e evidências históricas existentes não são apagados. `dist/` é regenerável; o build o limpa. Snapshots SQL são append-only; EventRemoved não implica EventFinished. TTL padrão: 600 segundos (`MAX_AGE_SECONDS`).
 
 Use somente uma instância escritora/coletora por diretório. Os locks não atravessam processos. A agenda em memória é reconstruída no restart; os snapshots persistidos são mantidos. Não há nova política de retenção de journals/capturas.
 
@@ -102,7 +98,7 @@ npm run collect -- --existing --detail
 npm run collect:betano -- --detail
 ```
 
-`ESPORTS=cs2,lol,valorant`, `EVENT_ID` e `BETANO_EVENT_ID` filtram a coleta manual. Os CLIs não escrevem diretamente nos journals: publicam nos inboxes para a API ingerir. Os loops manuais mantêm `CAPTURE_INTERVAL_SECONDS=180`, mínimo 60. O scheduler automático tem agenda própria.
+`ESPORTS=cs2,lol,valorant`, `EVENT_ID` e `BETANO_EVENT_ID` filtram a coleta manual. Os CLIs usam o mesmo commit direto; `--save-raw` grava evidência temporária com retenção. Os loops manuais mantêm `CAPTURE_INTERVAL_SECONDS=180`, mínimo 60. O scheduler automático tem agenda própria.
 
 ## Estrutura e limites
 

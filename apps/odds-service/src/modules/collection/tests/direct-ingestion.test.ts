@@ -9,6 +9,7 @@ import {
   rm,
   utimes,
   writeFile,
+  readFile,
 } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -18,6 +19,29 @@ import {
   saveRawCapture,
 } from "../../../shared/utils/raw-capture.js";
 import { IngestionCommitService } from "../ingestion-commit.service.js";
+
+test("all provider runtimes are free of inbox scanners and default raw writes", async () => {
+  for (const provider of [
+    "estrelabet",
+    "blaze",
+    "superbet",
+    "betano",
+    "bet365",
+  ]) {
+    const base = new URL(`../../${provider}/`, import.meta.url);
+    const collector = await readFile(
+      new URL(`${provider}.collector.ts`, base),
+      "utf8",
+    );
+    const service = await readFile(
+      new URL(`${provider}.service.ts`, base),
+      "utf8",
+    );
+    assert.doesNotMatch(collector, /InboxDir|saveJson|writeFile|mkdir/);
+    assert.doesNotMatch(service, /readdir|readFile|processed|scan\(/);
+    assert.match(collector, /publishCapture\(options,/);
+  }
+});
 
 test("raw capture is off by default and enabled capture has bounded retention", async () => {
   const root = await mkdtemp(join(tmpdir(), "direct-raw-"));

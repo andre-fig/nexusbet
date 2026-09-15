@@ -55,9 +55,11 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 | `COLLECTION_BACKOFF_THIRD_MS` | `120000` | Terceira falha; mínimo 30000 |
 | `COLLECTION_BACKOFF_MAX_MS` | `300000` | Quarta falha e seguintes; mínimo 30000 |
 | `SHUTDOWN_GRACE_MS` | `30000` | Espera antes de abort; commits ainda são drenados; mínimo 0 |
-| `INBOX_SCAN_INTERVAL_MS` | `5000` | Scanner local; mínimo 1 |
-| `INBOX_SCAN_ENABLED` | `1` | Somente 0 desabilita timer; false NÃO desabilita |
-| `INBOX_INGEST_ENABLED` | `1` | Somente 0 desabilita ingestão; false NÃO desabilita |
+| `INGESTION_MODE` | `direct` | Único modo de runtime aceito |
+| `RAW_CAPTURE_ENABLED` | `false` | Salva raw somente para diagnóstico |
+| `RAW_CAPTURE_RETENTION_HOURS` | `24` | Retenção automática dos raws habilitados |
+| `RAW_CAPTURE_DIR` | `evidence/raw` | Raiz das evidências temporárias por provider |
+| `LEGACY_INBOX_IMPORT_ENABLED` | `false` | Reserva explícita para ferramentas legadas; não ativa scanner |
 | `CAPTURE_INTERVAL_SECONDS` | `180` | Loop CLI legado, mínimo 60; não altera scheduler |
 
 ## Bet365
@@ -65,24 +67,24 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 | Variável | Default / exemplo | Uso |
 |---|---|---|
 | `BET365_MAX_CONCURRENCY` | `1` | Mínimo 1; efetivamente limitado a 1 |
-| `INBOX_DIR` | `inbox` | Listagens Bet365 |
-| `DETAIL_INBOX_DIR` | `detail-inbox` | Detalhes Bet365 |
-| `CAPTURE_DIR` | `captures` | Capturas de diagnóstico Bet365; Superbet publica em SUPERBET_INBOX_DIR |
+| `INBOX_DIR` | `inbox` | Caminho legado usado apenas pelo importador |
+| `DETAIL_INBOX_DIR` | `detail-inbox` | Caminho legado usado apenas pelo importador |
+| `CAPTURE_DIR` | `captures` | Compatibilidade de configuração; raw novo usa RAW_CAPTURE_DIR |
 
 ## Betano
 
 | Variável | Default / exemplo | Uso |
 |---|---|---|
 | `BETANO_MAX_CONCURRENCY` | `1` | Mínimo 1; efetivamente limitado a 1 |
-| `BETANO_INBOX_DIR` | `betano-inbox` | Rodadas Betano |
-| `BETANO_CAPTURE_DIR` | `captures/betano` | Capturas Betano |
+| `BETANO_INBOX_DIR` | `betano-inbox` | Importação legada |
+| `BETANO_CAPTURE_DIR` | `captures/betano` | Compatibilidade; raw novo usa RAW_CAPTURE_DIR |
 
 ## Superbet
 
 | Variável | Default / exemplo | Uso |
 |---|---|---|
 | `SUPERBET_MAX_CONCURRENCY` | `1` | Mínimo 1; efetivamente limitado a 1 |
-| `SUPERBET_INBOX_DIR` | `superbet-inbox` | Rodadas Superbet |
+| `SUPERBET_INBOX_DIR` | `superbet-inbox` | Importação legada |
 
 ## Browser/CDP
 
@@ -123,7 +125,7 @@ Light colorScheme, deviceScaleFactor=1 e serviceWorkers=allow ficam centralizado
 - Variáveis de collection numéricas exigem inteiros seguros e mínimos indicados. O config geral valida finitude/mínimo, sem prometer a mesma validação de inteiros.
 - CODE default COLLECTION_ENABLED=true contrasta deliberadamente com exemplo false. Se COLLECTION_ENABLED não existir, POLLING_ENABLED é fallback; não configure ambas para controlar loops concorrentes.
 - Os clients atuais usam Chrome próprio em ambos os modos. CDP_URL/--existing/reuseProfile não selecionam o browser pessoal. HEADLESS=false é fallback para headed somente sem BROWSER_MODE; prefira BROWSER_MODE=headed. Utilitários de CDP externo permanecem para compatibilidade/testes, fora desse fluxo.
-- INBOX_SCAN_ENABLED=0 para o timer não impede o refresh inicial; INBOX_INGEST_ENABLED=0 controla ingestão. Não troque esses flags por false: o código legado só reconhece 0 para desabilitar.
+- `refresh` inicial restaura estado do PostgreSQL; não observa diretórios. Variáveis `INBOX_*` antigas não ativam ingestão no runtime.
 - PERSISTENCE_MODE=file não sincroniza automaticamente com PostgreSQL. Modo postgres com URL inválida falha, sem fallback silencioso.
 - Alterar POSTGRES_USER/PASSWORD/DB no Compose não recria usuários de um volume já inicializado. Não apague o volume para solucionar isso sem backup e plano de migração.
 - PROVIDER_* timeouts não são prazo máximo absoluto de commit/shutdown. A drenagem protege histórico.
@@ -148,8 +150,8 @@ O BrowserManagerService exige persistência habilitada; BROWSER_PERSISTENT=false
 
 ## Blaze HTTP
 
-`BLAZE_ENABLED=true` habilita coleta; `BLAZE_MAX_CONCURRENCY=1` usa limite global por provider; `BLAZE_INBOX_DIR=blaze-inbox` seleciona inbox opcional. Utiliza timeouts/intervalos globais, sem configuração de cookies/login/browser. [Protocolo](BLAZE.md).
+`BLAZE_ENABLED=true` habilita coleta; `BLAZE_MAX_CONCURRENCY=1` usa limite global por provider. Utiliza ingestão direta e timeouts/intervalos globais, sem cookies/login/browser. [Protocolo](BLAZE.md).
 
 ## EstrelaBet HTTP
 
-`ESTRELABET_ENABLED=true`, `ESTRELABET_MAX_CONCURRENCY=1`, `ESTRELABET_INBOX_DIR=estrelabet-inbox` (opcional). Usa os intervalos e timeouts globais, sem cookies ou browser. [Protocolo e operação](ESTRELABET.md).
+`ESTRELABET_ENABLED=true`, `ESTRELABET_MAX_CONCURRENCY=1`. Usa ingestão direta, intervalos e timeouts globais, sem cookies ou browser. [Protocolo e operação](ESTRELABET.md).

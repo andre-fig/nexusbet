@@ -65,7 +65,7 @@ O script carrega dotenv e exige TEST_DATABASE_URL no ambiente ou .env; o ambient
 | test:browser | Subconjunto Bet365 com browser local |
 | test:db | Integração SQL destrutiva em banco de teste explícito |
 | format / format:check | Reescreve / verifica formatação src/**/*.ts |
-| capture / capture:betano / capture:superbet | CLI de uma rodada, publica inboxes |
+| capture / capture:betano / capture:superbet | CLI de uma rodada, commit direto; `--save-raw` é opt-in |
 | collect / collect:betano | Loop CLI legado; encerrar após diagnóstico |
 | db:generate | Gera Prisma client ignorado pelo Git |
 | db:migrate | prisma migrate deploy; aplica migrations versionadas |
