@@ -1,6 +1,10 @@
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import { tournamentName } from "../../shared/utils/names.js";
-import { canonicalTeamName } from "./team-aliases.js";
+import {
+  abbreviatedTeamName,
+  canonicalTeamName,
+  type PersistedTeamAliases,
+} from "./team-aliases.js";
 import { incompleteWinnerMarket } from "../../shared/utils/market-quality.js";
 /** Compatibility entry point; all matching uses provider-scoped identities. */
 export function compareProviders(a: NormalizedEvent[], b: NormalizedEvent[]) {
@@ -12,22 +16,59 @@ export function compareProviders(a: NormalizedEvent[], b: NormalizedEvent[]) {
 export type EligibleProviders = Readonly<
   Partial<Record<NormalizedEvent["esport"], readonly string[]>>
 >;
-function pair(e: NormalizedEvent) {
+function pair(e: NormalizedEvent, aliases: PersistedTeamAliases) {
   return [
-    canonicalTeamName(e.teamA, e.esport),
-    canonicalTeamName(e.teamB, e.esport),
+    canonicalTeamName(e.teamA, e.esport, aliases),
+    canonicalTeamName(e.teamB, e.esport, aliases),
   ]
     .sort()
     .join("|");
 }
-function eligible(e: NormalizedEvent, f: NormalizedEvent) {
+function aliasCandidate(
+  e: NormalizedEvent,
+  f: NormalizedEvent,
+  aliases: PersistedTeamAliases,
+) {
+  if (
+    tournamentName(e.tournament, e.esport) !==
+    tournamentName(f.tournament, f.esport)
+  )
+    return false;
+  const sides = [
+    [e.teamA, e.teamB, f.teamA, f.teamB],
+    [e.teamA, e.teamB, f.teamB, f.teamA],
+  ];
+  return sides.some(([a, b, c, d]) => {
+    const first = canonicalTeamName(a, e.esport, aliases);
+    const third = canonicalTeamName(c, e.esport, aliases);
+    const second = canonicalTeamName(b, e.esport, aliases);
+    const fourth = canonicalTeamName(d, e.esport, aliases);
+    return (
+      first === third &&
+      second !== fourth &&
+      (abbreviatedTeamName(second, fourth) ||
+        abbreviatedTeamName(fourth, second))
+    );
+  });
+}
+function eligible(
+  e: NormalizedEvent,
+  f: NormalizedEvent,
+  aliases: PersistedTeamAliases,
+) {
+  const delta = Math.abs(Date.parse(e.startsAt) - Date.parse(f.startsAt));
+  const samePair = pair(e, aliases) === pair(f, aliases);
   return (
     e.provider !== f.provider &&
     e.esport === f.esport &&
-    pair(e) === pair(f) &&
     e.status === "scheduled" &&
     f.status === "scheduled" &&
-    Date.parse(e.startsAt) === Date.parse(f.startsAt)
+    (samePair
+      ? delta === 0 ||
+        (delta <= 5 * 60_000 &&
+          tournamentName(e.tournament, e.esport) ===
+            tournamentName(f.tournament, f.esport))
+      : delta <= 5 * 60_000 && aliasCandidate(e, f, aliases))
   );
 }
 /** A component must be a complete, one-event-per-provider clique. No transitive fuzzy joins. */
@@ -36,6 +77,7 @@ export function compareAllProviders(
   eligibleProviders: readonly string[] | EligibleProviders = [
     ...new Set(events.map((event) => event.provider)),
   ],
+  aliases: PersistedTeamAliases = {},
 ) {
   const key = (e: NormalizedEvent) => e.provider + ":" + e.eventId;
   const unique = new Map<string, NormalizedEvent>();
@@ -77,7 +119,7 @@ export function compareAllProviders(
     seen.add(key(e));
     for (let i = 0; i < group.length; i++)
       for (const f of all)
-        if (!seen.has(key(f)) && eligible(group[i], f)) {
+        if (!seen.has(key(f)) && eligible(group[i], f, aliases)) {
           seen.add(key(f));
           group.push(f);
         }
@@ -85,8 +127,10 @@ export function compareAllProviders(
       group.length > 1 &&
       new Set(group.map((x) => x.provider)).size === group.length &&
       !group.some((x) => conflicts.has(key(x))) &&
-      group.every((x, i) => group.slice(i + 1).every((y) => eligible(x, y)));
-    if (valid) matched.push(comparison(group));
+      group.every((x, i) =>
+        group.slice(i + 1).every((y) => eligible(x, y, aliases)),
+      );
+    if (valid) matched.push(comparison(group, aliases));
     else
       for (const x of group)
         unmatched.push({
@@ -99,7 +143,7 @@ export function compareAllProviders(
                     (f) =>
                       f.provider !== x.provider &&
                       f.esport === x.esport &&
-                      pair(f) === pair(x),
+                      pair(f, aliases) === pair(x, aliases),
                   )
                 ? "time_or_status_mismatch"
                 : "no_team_pair",
@@ -107,8 +151,37 @@ export function compareAllProviders(
   }
   return { matched, unmatched, notApplicable };
 }
-function comparison(group: NormalizedEvent[]) {
+function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
   const e = group[0];
+  const canonicalSides = [e.teamA, e.teamB].map((name) =>
+    canonicalTeamName(name, e.esport, aliases),
+  );
+  const namesForSide = (side: number) =>
+    group.map((x) => {
+      const names = [x.teamA, x.teamB];
+      const mapped = names.map((name) =>
+        canonicalTeamName(name, x.esport, aliases),
+      );
+      return mapped[side] === canonicalSides[side] ||
+        abbreviatedTeamName(mapped[side], canonicalSides[side]) ||
+        abbreviatedTeamName(canonicalSides[side], mapped[side])
+        ? mapped[side]
+        : mapped[1 - side];
+    });
+  const fuller = (side: number) =>
+    namesForSide(side).sort(
+      (a, b) => b.length - a.length || a.localeCompare(b),
+    )[0];
+  const teamA = fuller(0);
+  const teamB = fuller(1);
+  const learnedAliases = namesForSide(0)
+    .concat(namesForSide(1))
+    .flatMap((name) => {
+      const target = namesForSide(0).includes(name) ? teamA : teamB;
+      return name !== target && abbreviatedTeamName(name, target)
+        ? [{ esport: e.esport, alias: name, canonical: target }]
+        : [];
+    });
   const competitions = new Set(
     group.map((x) => tournamentName(x.tournament, x.esport)),
   );
@@ -138,11 +211,11 @@ function comparison(group: NormalizedEvent[]) {
           selectionId: s.selectionId,
           name: s.name,
           canonicalSide:
-            canonicalTeamName(s.name, x.esport) ===
-            canonicalTeamName(e.teamA, e.esport)
+            canonicalTeamName(s.name, x.esport, aliases) ===
+            canonicalTeamName(x.teamA, x.esport, aliases)
               ? "teamA"
-              : canonicalTeamName(s.name, x.esport) ===
-                  canonicalTeamName(e.teamB, e.esport)
+              : canonicalTeamName(s.name, x.esport, aliases) ===
+                  canonicalTeamName(x.teamB, x.esport, aliases)
                 ? "teamB"
                 : null,
           odds: s.odds,
@@ -154,8 +227,8 @@ function comparison(group: NormalizedEvent[]) {
     canonicalEvent: {
       esport: e.esport,
       tournament: tournamentName(e.tournament, e.esport),
-      teamA: canonicalTeamName(e.teamA, e.esport),
-      teamB: canonicalTeamName(e.teamB, e.esport),
+      teamA,
+      teamB,
       startsAt: e.startsAt,
     },
     confidence: sameCompetitionAlias ? 1 : 0.9,
@@ -167,13 +240,14 @@ function comparison(group: NormalizedEvent[]) {
         Math.max(...group.map((x) => Date.parse(x.startsAt))) / 1000 -
         Math.min(...group.map((x) => Date.parse(x.startsAt))) / 1000,
     },
+    learnedAliases,
     providers: Object.fromEntries(
       group.map((x) => [
         x.provider,
         prices(
           x,
-          canonicalTeamName(e.teamA, e.esport) !==
-            canonicalTeamName(x.teamA, x.esport),
+          canonicalTeamName(e.teamA, e.esport, aliases) !==
+            canonicalTeamName(x.teamA, x.esport, aliases),
         ),
       ]),
     ),

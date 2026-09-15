@@ -5,13 +5,16 @@ import { StaleDataError } from "../../shared/errors/domain-errors.js";
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import type { Esport } from "../../shared/types/common.js";
 import { CollectionService } from "../collection/collection.service.js";
+import { DatabaseService } from "../database/database.service.js";
+import type { PersistedTeamAliases } from "./team-aliases.js";
 @Injectable()
 export class MatchingService {
   constructor(
     @Inject(ProviderRegistry) private readonly registry: ProviderRegistry,
     @Inject(CollectionService) private readonly collection: CollectionService,
+    @Inject(DatabaseService) private readonly database: DatabaseService,
   ) {}
-  compare(games: Esport[]) {
+  async compare(games: Esport[]) {
     const events: NormalizedEvent[] = [];
     const eligible = this.collection.matchingEligibleProviders(games);
     for (const provider of this.registry.providers) {
@@ -23,6 +26,17 @@ export class MatchingService {
     }
     if (!Object.values(eligible).some((providers) => providers.length))
       throw new StaleDataError("No fresh provider listing");
-    return compareAllProviders(events, eligible);
+    const aliases: Record<Esport, Record<string, string>> = {
+      cs2: {},
+      lol: {},
+      valorant: {},
+    };
+    if (this.database.enabled) {
+      const rows = await this.database.read((db) => db.teamAlias.findMany());
+      for (const row of rows)
+        if (row.esport in aliases)
+          aliases[row.esport as Esport][row.alias] = row.canonicalName;
+    }
+    return compareAllProviders(events, eligible, aliases);
   }
 }

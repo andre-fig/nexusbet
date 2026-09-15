@@ -19,7 +19,38 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   },
 };
 
-export function canonicalTeamName(value: string, esport: Esport): string {
+export type PersistedTeamAliases = Readonly<
+  Partial<Record<Esport, Readonly<Record<string, string>>>>
+>;
+
+/** Match a compact bookmaker abbreviation against a longer name, retaining its suffix. */
+export function abbreviatedTeamName(
+  shortName: string,
+  longName: string,
+): boolean {
+  const short = shortName.split(" ");
+  const long = longName.split(" ");
+  if (short.length < 2 || long.length <= short.length) return false;
+  for (let prefixLength = 2; prefixLength < long.length; prefixLength++) {
+    const suffix = long.slice(prefixLength);
+    if (suffix.join(" ") !== short.slice(1).join(" ")) continue;
+    const prefix = long.slice(0, prefixLength);
+    const abbreviation =
+      prefix[0] +
+      prefix
+        .slice(1)
+        .map((word) => word[0])
+        .join("");
+    if (short[0].length >= 3 && short[0] === abbreviation) return true;
+  }
+  return false;
+}
+
+export function canonicalTeamName(
+  value: string,
+  esport: Esport,
+  persisted: PersistedTeamAliases = {},
+): string {
   const femaleMarker = esport === "valorant" && /\s*\(f\)\s*$/i.test(value);
   // Preserve the reviewed FENNEL (F) -> FENNEL GC equivalence before removing
   // a final circuit marker from otherwise equivalent Valorant team names.
@@ -35,5 +66,7 @@ export function canonicalTeamName(value: string, esport: Esport): string {
   const key = withoutPrefix
     .replace(/ (?:team|esports|esport|e sports|gaming)$/, "")
     .trim();
-  return markerAlias ?? teamAliases[esport][key] ?? key;
+  return (
+    markerAlias ?? persisted[esport]?.[key] ?? teamAliases[esport][key] ?? key
+  );
 }

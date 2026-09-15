@@ -3,6 +3,7 @@ import type { Prisma } from "../../../generated/prisma/client.js";
 import type { NormalizedEvent } from "../../../shared/domain/normalized-event.js";
 import { compareAllProviders } from "../../matching/matching.js";
 import { canonicalTeamName } from "../../matching/team-aliases.js";
+import type { Esport } from "../../../shared/types/common.js";
 import { DataIssuesRepository } from "./issues.repository.js";
 @Injectable()
 export class MatchingRepository {
@@ -35,7 +36,16 @@ export class MatchingRepository {
         ],
       ]),
     );
-    const result = compareAllProviders(events, eligibleByEsport);
+    const storedAliases = await tx.teamAlias.findMany();
+    const aliases: Record<Esport, Record<string, string>> = {
+      cs2: {},
+      lol: {},
+      valorant: {},
+    };
+    for (const row of storedAliases)
+      if (row.esport in aliases)
+        aliases[row.esport as Esport][row.alias] = row.canonicalName;
+    const result = compareAllProviders(events, eligibleByEsport, aliases);
     const rows = await tx.providerEvent.findMany({
       include: {
         match: true,
@@ -67,7 +77,10 @@ export class MatchingRepository {
       );
       const c = group.canonicalEvent;
       const sameTeams = (a: string, b: string) =>
-        [canonicalTeamName(a, c.esport), canonicalTeamName(b, c.esport)]
+        [
+          canonicalTeamName(a, c.esport, aliases),
+          canonicalTeamName(b, c.esport, aliases),
+        ]
           .sort()
           .join("\0");
       const historicalId = (r: (typeof members)[number]) => {
@@ -75,7 +88,8 @@ export class MatchingRepository {
         return h &&
           h.esport === c.esport &&
           sameTeams(h.teamA, h.teamB) === sameTeams(c.teamA, c.teamB) &&
-          h.startsAt.getTime() === new Date(c.startsAt).getTime()
+          Math.abs(h.startsAt.getTime() - new Date(c.startsAt).getTime()) <=
+            5 * 60_000
           ? h.id
           : undefined;
       };
@@ -105,6 +119,25 @@ export class MatchingRepository {
           });
         continue;
       }
+      for (const alias of group.learnedAliases) {
+        const existing = aliases[alias.esport][alias.alias];
+        if (existing && existing !== alias.canonical) continue;
+        await tx.teamAlias.upsert({
+          where: { esport_alias: { esport: alias.esport, alias: alias.alias } },
+          create: {
+            esport: alias.esport,
+            alias: alias.alias,
+            canonicalName: alias.canonical,
+            evidence: {
+              rule: "abbreviation_same_opponent_tournament_near_time",
+              startsAt: c.startsAt,
+              providers: Object.keys(group.providers),
+            },
+          },
+          update: {},
+        });
+        aliases[alias.esport][alias.alias] = alias.canonical;
+      }
       const canonical = priorIds[0]
         ? await tx.canonicalEvent.update({
             where: { id: priorIds[0] },
@@ -130,9 +163,12 @@ export class MatchingRepository {
           canonicalEventId: canonical.id,
           confidence: group.confidence,
           status: "matched" as const,
-          reason: group.evidence.sameCompetitionAlias
-            ? "exact_normalized_teams_time_same_competition"
-            : "exact_normalized_teams_time_competition_differs",
+          reason:
+            group.evidence.timeDifferenceSeconds > 0
+              ? "normalized_team_alias_near_time_same_competition"
+              : group.evidence.sameCompetitionAlias
+                ? "exact_normalized_teams_time_same_competition"
+                : "exact_normalized_teams_time_competition_differs",
           startDeltaSeconds: Math.round(
             Math.abs(row.startsAt.getTime() - canonical.startsAt.getTime()) /
               1000,

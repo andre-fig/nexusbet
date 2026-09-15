@@ -140,7 +140,7 @@ after(async () => {
 });
 beforeEach(async () => {
   await database.db.$executeRawUnsafe(
-    "TRUNCATE providers, canonical_events, legacy_checkpoints, ingestion_runs CASCADE",
+    "TRUNCATE providers, canonical_events, team_aliases, legacy_checkpoints, ingestion_runs CASCADE",
   );
   await seedProviders(database.db);
 });
@@ -186,6 +186,53 @@ test("same external event ID belongs independently to different providers; three
   );
   const view = await new OddsReadRepository(database).events();
   assert.equal(view[0].matches.length, 3);
+});
+test("learned EAC Extra alias persists and reuses the full EA Copenhagen Extra canonical name", async () => {
+  const make = (
+    provider: "superbet" | "blaze",
+    id: string,
+    name: string,
+    startsAt: string,
+  ) => ({
+    ...event(provider, 1.72, at, id),
+    tournament: "United21",
+    teamA: "OldMix",
+    teamB: name,
+    rawTeamA: "OldMix",
+    rawTeamB: name,
+    normalizedTeamA: "oldmix",
+    normalizedTeamB: name.toLowerCase(),
+    startsAt,
+  });
+  const short = make(
+    "superbet",
+    "oldmix-eac",
+    "EAC Extra",
+    "2026-09-16T10:30:00.000Z",
+  );
+  const full = make(
+    "blaze",
+    "oldmix-ea-copenhagen",
+    "EA Copenhagen Extra",
+    "2026-09-16T10:30:00.000Z",
+  );
+  await service.commit(publication(short));
+  await service.commit(publication(full));
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(
+    (await database.db.canonicalEvent.findFirstOrThrow()).teamB,
+    "ea copenhagen extra",
+  );
+  const alias = await database.db.teamAlias.findUniqueOrThrow({
+    where: { esport_alias: { esport: "cs2", alias: "eac extra" } },
+  });
+  assert.equal(alias.canonicalName, "ea copenhagen extra");
+  const matches = await database.db.eventMatch.findMany();
+  assert.equal(matches.length, 2);
+  assert.equal(matches[0].canonicalEventId, matches[1].canonicalEventId);
+  await service.commit(publication(short));
+  assert.equal(await database.db.teamAlias.count(), 1);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
 });
 test("numeric history 1.72 → 1.70 → 1.68, temporal ordering, current odds and unchanged observations", async () => {
   for (const [i, price] of [1.72, 1.7, 1.68, 1.68].entries())

@@ -7,8 +7,8 @@ export class MatchingController {
   constructor(
     @Inject(MatchingService) private readonly matching: MatchingService,
   ) {}
-  @Get("comparisons") compare(@Query("esport") game?: string) {
-    const result = this.matching.compare(requestedEsports(game));
+  @Get("comparisons") async compare(@Query("esport") game?: string) {
+    const result = await this.matching.compare(requestedEsports(game));
     return {
       ...result,
       matched: result.matched.map((match) => ({
@@ -31,7 +31,7 @@ export class MatchingController {
       })),
     };
   }
-  @Get("matching/unmatched") unmatched(@Query("esport") game?: string) {
-    return this.matching.compare(requestedEsports(game)).unmatched;
+  @Get("matching/unmatched") async unmatched(@Query("esport") game?: string) {
+    return (await this.matching.compare(requestedEsports(game))).unmatched;
   }
 }

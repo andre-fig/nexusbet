@@ -128,6 +128,88 @@ test("matching keys remove only safe team prefixes and suffixes before semantic 
   assert.notEqual(canonicalTeamName("ex-Nexus Gaming", "cs2"), "nexus");
   assert.notEqual(canonicalTeamName("Nexus Gaming Youth", "cs2"), "nexus");
 });
+test("OldMix vs EAC Extra and OldMix vs EA Copenhagen Extra are one United21 match", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const make = (
+    provider: "superbet" | "blaze",
+    eventId: string,
+    teamB: string,
+    startsAt: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA: "OldMix",
+    teamB,
+    rawTeamA: "OldMix",
+    rawTeamB: teamB,
+    normalizedTeamA: teamName("OldMix", "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament: "United21",
+    startsAt,
+    status: "scheduled" as const,
+  });
+  // 07:30 America/Sao_Paulo is 10:30 UTC on 16 September 2026.
+  const short = make(
+    "superbet",
+    "oldmix-eac",
+    "EAC Extra",
+    "2026-09-16T10:30:00.000Z",
+  );
+  const full = make(
+    "blaze",
+    "oldmix-ea-copenhagen",
+    "EA Copenhagen Extra",
+    "2026-09-16T10:30:00.000Z",
+  );
+  const result = compareAllProviders([short, full]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamB, "ea copenhagen extra");
+  assert.deepEqual(result.matched[0].learnedAliases, [
+    {
+      esport: "cs2",
+      alias: "eac extra",
+      canonical: "ea copenhagen extra",
+    },
+  ]);
+  assert.equal(
+    compareAllProviders([
+      short,
+      { ...full, startsAt: "2026-09-16T10:32:00.000Z" },
+    ]).matched.length,
+    1,
+  );
+  assert.equal(
+    compareAllProviders([short, { ...full, tournament: "Other" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([short, { ...full, teamA: "Another" }]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      short,
+      { ...full, startsAt: "2026-09-16T10:36:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([short, full, { ...full, eventId: "other" }]).matched
+      .length,
+    0,
+  );
+});
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
   const raw = JSON.parse(
     await readFile(
