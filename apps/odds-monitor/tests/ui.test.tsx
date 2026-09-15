@@ -43,6 +43,29 @@ test("loading, empty and error states contain no fallback records", () => {
     /role="alert"/,
   );
 });
+test("empty table message appears below its header", () => {
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <DashboardView
+      overview={resource(fixture.overview) as never}
+      events={resource({ items: [], pagination: { page: 1, limit: 50, total: 0, pages: 0 } }) as never}
+      filters={{ search: "", esport: "", status: "", start: "", provider: "", attentionOnly: "false", page: "1", limit: "50" }}
+      onFilter={() => {}}
+      onOpenIssuesDrawer={() => {}}
+      onOpenEventDetail={() => {}}
+    />,
+  );
+  const document = new JSDOM(html).window.document;
+  const table = document.querySelector("table")!;
+  assert.equal(table.querySelector("thead")?.textContent?.includes("Event / tournament"), true);
+  assert.equal(table.querySelector("tbody tr td")?.textContent?.trim(), "No data for the selected filters.");
+  assert.equal(table.querySelector("tbody tr td")?.getAttribute("colspan"), String(table.querySelectorAll("thead th").length));
+});
 test("not-applicable matching is rendered as neutral single-provider coverage", () => {
   const row = structuredClone(fixture.events.items[0]);
   row.matching = {

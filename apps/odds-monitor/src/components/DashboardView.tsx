@@ -186,7 +186,6 @@ export function DashboardView({
         <DataState
           loading={events.loading && !events.data}
           error={events.error}
-          empty={events.data?.items.length === 0}
         />
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[12px]">
@@ -207,6 +206,13 @@ export function DashboardView({
               </tr>
             </thead>
             <tbody>
+              {events.data?.items.length === 0 && (
+                <tr>
+                  <td colSpan={tableProviders.length + 5}>
+                    <DataState loading={false} error={null} empty />
+                  </td>
+                </tr>
+              )}
               {events.data?.items.map((e) => (
                 <tr
                   key={e.id}
