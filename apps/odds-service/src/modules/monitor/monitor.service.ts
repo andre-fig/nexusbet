@@ -51,24 +51,17 @@ export class MonitorService {
       };
     });
   }
-  async eligibleProviders() {
-    const enabled = new Set(
-      (await this.providers())
-        .filter((provider) => provider.enabled)
-        .map((provider) => provider.id),
-    );
+  async expectedProviders() {
+    const active = (await this.providers())
+      .filter((provider) => provider.active)
+      .map((provider) => provider.id);
     return Object.fromEntries(
-      Object.entries(
-        this.collection.matchingEligibleProviders(this.config.settings.esports),
-      ).map(([esport, providers]) => [
-        esport,
-        providers.filter((provider) => enabled.has(provider)),
-      ]),
+      this.config.settings.esports.map((esport) => [esport, [...active]]),
     );
   }
   async overview() {
     const providers = await this.providers();
-    const eligibleProviders = await this.eligibleProviders();
+    const eligibleProviders = await this.expectedProviders();
     const [counts, issues] = await Promise.all([
       this.repo.summary(eligibleProviders),
       this.repo.issueCount(eligibleProviders),
@@ -170,7 +163,7 @@ export class MonitorService {
     const result = await this.repo.groups(
       q,
       undefined,
-      await this.eligibleProviders(),
+      await this.expectedProviders(),
     );
     return { ...result, items: await this.project(result.items) };
   }
@@ -221,7 +214,7 @@ export class MonitorService {
   }
   async group(id: string) {
     uuid(id);
-    const g = (await this.repo.groups({}, id, await this.eligibleProviders()))
+    const g = (await this.repo.groups({}, id, await this.expectedProviders()))
       .items[0];
     if (!g) throw new ServiceError("Event not found", 404);
     return g;
@@ -312,7 +305,7 @@ export class MonitorService {
     if (q.eventId) uuid(q.eventId);
     if (q.status && !["open", "resolved", "ignored"].includes(q.status))
       throw new ServiceError("Invalid issue status", 400);
-    const eligibleProviders = await this.eligibleProviders();
+    const eligibleProviders = await this.expectedProviders();
     return {
       items: (await this.repo.issues(q, eligibleProviders)).map((i) => ({
         id: i.id,

@@ -1052,6 +1052,14 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
   result = await monitor.events({ limit: "1" });
   assert.equal(result.items[0].matching.providerCount, 3);
   assert.equal(result.items[0].matching.status, "matched");
+  const staleMonitor = new MonitorService(
+    new MonitorRepository(database),
+    { settings: { ...config.settings, ttlMs: 1 } } as AppConfiguration,
+    collection,
+  );
+  const staleResult = await staleMonitor.events({ limit: "1" });
+  assert.equal(staleResult.items[0].matching.expectedProviderCount, 3);
+  assert.equal(staleResult.items[0].matching.providerCount, 3);
   overview = await monitor.overview();
   assert.equal(overview.health.matched, 1);
   assert.equal(overview.health.partial, 0);
