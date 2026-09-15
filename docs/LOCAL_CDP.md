@@ -61,6 +61,8 @@ Só inclui Bet365/Betano na agenda se flag enabled, runtime local-cdp e processo
 
 Se o CDP faltar/falhar, a conexão é lazy e o erro não impede bootstrap do Nest. O gerenciador marca unavailable e limita reconexão real a uma tentativa por cooldown (padrão 5min, mínimo configurável 60s), compartilhado pelos dois providers. O scheduler mantém seu backoff/circuit breaker existente; tentativas dentro do cooldown não abrem conexão. Falha de captura também fica unavailable; uma resposta aceita volta a ready no gerenciador/ok no scheduler.
 
+O Chrome pode pedir autorização para cada nova sessão de depuração. As conexões CDP aguardam no máximo 120s pela aprovação. Para uma instalação local que dependa desse aviso, configure `PROVIDER_LIST_TIMEOUT_MS` e `PROVIDER_DETAIL_TIMEOUT_MS` acima desse prazo (por exemplo, 180000); o scheduler continua abortando a tentativa e aplicando backoff quando o limite termina. Sem Chrome aberto e sem aprovação do usuário, os dois providers permanecem unavailable.
+
 O último estado aceito permanece intacto durante falhas; TTL/stale e journal continuam nas implementações existentes. Uma captura rejeitada não publica nem remove eventos. `EventRemoved != EventFinished`.
 
 ## Produção

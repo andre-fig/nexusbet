@@ -46,8 +46,8 @@ export class CdpConnection extends EventEmitter {
     await new Promise<void>((resolve, reject) => {
       const timer = setTimeout(() => {
         socket.close();
-        reject(Error("Chrome connection not approved within 45 seconds"));
-      }, 45000);
+        reject(Error("Chrome connection not approved within 120 seconds"));
+      }, 120000);
       socket.addEventListener(
         "open",
         () => {

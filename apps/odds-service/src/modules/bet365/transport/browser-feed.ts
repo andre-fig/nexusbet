@@ -54,7 +54,7 @@ export class BrowserFeed {
   ) {}
   static async open(endpoint?: string, options: { headless?: boolean } = {}) {
     const browser = endpoint
-      ? await chromium.connectOverCDP(endpoint, { timeout: 45000 })
+      ? await chromium.connectOverCDP(endpoint, { timeout: 120000 })
       : await chromium.launch({
           channel: "chrome",
           headless:
