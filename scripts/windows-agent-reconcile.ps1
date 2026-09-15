@@ -83,7 +83,14 @@ try {
           & $npm run typecheck; CheckExit 'typecheck'
           & $npm run format:check; CheckExit 'format check'
           & $npm run build; CheckExit 'build'
-          & $npm test; CheckExit 'tests'
+          $testStdout = Join-Path $root 'logs\release-tests.out.log'
+          $testStderr = Join-Path $root 'logs\release-tests.err.log'
+          $testProcess = Start-Process -FilePath $npm -ArgumentList 'test' -WorkingDirectory (Get-Location).Path -WindowStyle Hidden -PassThru -RedirectStandardOutput $testStdout -RedirectStandardError $testStderr
+          if (-not $testProcess.WaitForExit(300000)) {
+            & taskkill.exe /PID $testProcess.Id /T /F | Out-Null
+            throw 'tests timed out after 5 minutes'
+          }
+          if ($testProcess.ExitCode -ne 0) { throw "tests failed (exit $($testProcess.ExitCode))" }
         } finally { Pop-Location }
         Set-Content -LiteralPath $verifiedPath -Value $target -Encoding ascii
         Log "Release $target passed checks"
