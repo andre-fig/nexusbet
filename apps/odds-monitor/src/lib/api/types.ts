@@ -1,9 +1,11 @@
+import type { HealthStatus, ProviderStatus } from "./status";
+
 export interface Provider {
   id: string;
   name: string;
   enabled: boolean;
   active: boolean;
-  status: string;
+  status: ProviderStatus;
   statusReason: string;
   eventCount: number;
   lastUpdatedAt: string | null;
@@ -93,7 +95,7 @@ export interface Detail extends EventRow {
 export interface Overview {
   generatedAt: string;
   health: {
-    status: string;
+    status: HealthStatus;
     events: number;
     matched: number;
     partial: number;

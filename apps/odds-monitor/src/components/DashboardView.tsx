@@ -3,6 +3,10 @@ import { Search, ArrowRight, AlertTriangle } from "lucide-react";
 import type { Overview, EventPage, Filters } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
 import { DataState, timestamp, odd, panel, control } from "./DataState";
+import {
+  healthStatusColor,
+  providerStatusPresentation,
+} from "../lib/api/status";
 interface Props {
   overview: Resource<Overview>;
   events: Resource<EventPage>;
@@ -23,14 +27,6 @@ export function DashboardView({
     tableProviders = providers.filter((provider) => provider.eventCount > 0),
     health = overview.data?.health,
     pagination = events.data?.pagination;
-  const providerStatus = (provider: (typeof providers)[number]) => {
-    if (!provider.active && provider.statusReason === "disabled_in_runtime")
-      return "Disabled in this runtime";
-    if (!provider.active) return "Disabled";
-    if (provider.status === "unavailable") return "Unavailable";
-    if (provider.status === "healthy") return "Healthy";
-    return provider.status.charAt(0).toUpperCase() + provider.status.slice(1);
-  };
   return (
     <div className="flex flex-col w-full px-4 md:px-6 py-4 space-y-4">
       <DataState
@@ -42,22 +38,24 @@ export function DashboardView({
           className={`${panel} flex flex-wrap items-center justify-between gap-3 px-4 py-2.5`}
         >
           <div className="flex flex-wrap items-center gap-4 font-mono text-[12px]">
-            <span className="font-semibold capitalize text-[14px]">
+            <span
+              className={`font-semibold capitalize text-[14px] ${healthStatusColor(health.status)}`}
+            >
               Data {health.status}
             </span>
-            {([
-              "events",
-              "matched",
-              "partial",
-              "unmatched",
-              "notApplicable",
-            ] as const).map(
-              (k) => (
-                <span key={k}>
-                  <b>{health[k]}</b> {k}
-                </span>
-              ),
-            )}
+            {(
+              [
+                "events",
+                "matched",
+                "partial",
+                "unmatched",
+                "notApplicable",
+              ] as const
+            ).map((k) => (
+              <span key={k}>
+                <b>{health[k]}</b> {k}
+              </span>
+            ))}
           </div>
           <button
             className={`${control} text-error flex items-center gap-2`}
@@ -69,29 +67,30 @@ export function DashboardView({
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
-        {providers.map((p) => (
-          <div key={p.id} className={`${panel} p-4 space-y-3`}>
-            <div className="flex items-center justify-between">
-              <span className="text-[12px] font-semibold uppercase">
-                {p.name}
-              </span>
-              <span
-                className={`text-[11px] font-mono ${p.active && p.stale ? "text-error" : "text-on-surface-variant"}`}
-              >
-                {providerStatus(p)}
-              </span>
+        {providers.map((p) => {
+          const status = providerStatusPresentation(p);
+          return (
+            <div key={p.id} className={`${panel} p-4 space-y-3`}>
+              <div className="flex items-center justify-between">
+                <span className="text-[12px] font-semibold uppercase">
+                  {p.name}
+                </span>
+                <span className={`text-[11px] font-mono ${status.color}`}>
+                  {status.label}
+                </span>
+              </div>
+              <div className="text-[22px] font-mono font-semibold">
+                {p.eventCount}{" "}
+                <span className="text-[12px] font-normal text-on-surface-variant">
+                  {p.active ? "events" : "retained events"}
+                </span>
+              </div>
+              <div className="text-[11px] font-mono text-on-surface-variant">
+                {timestamp(p.lastUpdatedAt)}
+              </div>
             </div>
-            <div className="text-[22px] font-mono font-semibold">
-              {p.eventCount}{" "}
-              <span className="text-[12px] font-normal text-on-surface-variant">
-                {p.active ? "events" : "retained events"}
-              </span>
-            </div>
-            <div className="text-[11px] font-mono text-on-surface-variant">
-              {timestamp(p.lastUpdatedAt)}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className={`${panel} flex flex-wrap gap-3 p-3`}>
         <div className="relative flex-1 min-w-60">
@@ -234,16 +233,21 @@ export function DashboardView({
                   </td>
                   {tableProviders.map((p) => {
                     const feed = e.providers.find((f) => f.provider === p.id);
+                    const status = !p.active
+                      ? providerStatusPresentation(p)
+                      : feed
+                        ? providerStatusPresentation(feed)
+                        : null;
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">
                         <div>
                           {odd(feed?.matchWinner.displayTeamA)} /{" "}
                           {odd(feed?.matchWinner.displayTeamB)}
                         </div>
-                        <div className="text-[10px] text-on-surface-variant mt-1">
-                          {!p.active
-                            ? providerStatus(p)
-                            : (feed?.status ?? "Not observed")}
+                        <div
+                          className={`text-[10px] mt-1 ${status?.color ?? "text-on-surface-variant"}`}
+                        >
+                          {status?.label ?? "Not observed"}
                         </div>
                       </td>
                     );

@@ -1,4 +1,5 @@
 import React from "react";
+import { providerStatusPresentation } from "../lib/api/status";
 import { ArrowLeft, RefreshCw, Code2 } from "lucide-react";
 import type { Detail, History } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
@@ -126,28 +127,29 @@ export function EventDetailView({
                   </tr>
                 </thead>
                 <tbody>
-                  {event.providers.map((p) => (
-                    <tr
-                      key={p.id}
-                      className="border-t border-outline-variant/20"
-                    >
-                      <td className="p-3 font-semibold">{p.provider}</td>
-                      <td className="p-3 font-mono">{p.providerEventId}</td>
-                      <td className="p-3">
-                        {p.rawTeamA} vs {p.rawTeamB}
-                        <div className="text-on-surface-variant text-[11px]">
-                          {p.rawTournament}
-                        </div>
-                      </td>
-                      <td className="p-3">{timestamp(p.startsAt)}</td>
-                      <td className="p-3">{timestamp(p.lastUpdatedAt)}</td>
-                      <td className="p-3">
-                        {!p.active && p.statusReason === "disabled_in_runtime"
-                          ? "Disabled in this runtime"
-                          : p.status}
-                      </td>
-                    </tr>
-                  ))}
+                  {event.providers.map((p) => {
+                    const status = providerStatusPresentation(p);
+                    return (
+                      <tr
+                        key={p.id}
+                        className="border-t border-outline-variant/20"
+                      >
+                        <td className="p-3 font-semibold">{p.provider}</td>
+                        <td className="p-3 font-mono">{p.providerEventId}</td>
+                        <td className="p-3">
+                          {p.rawTeamA} vs {p.rawTeamB}
+                          <div className="text-on-surface-variant text-[11px]">
+                            {p.rawTournament}
+                          </div>
+                        </td>
+                        <td className="p-3">{timestamp(p.startsAt)}</td>
+                        <td className="p-3">{timestamp(p.lastUpdatedAt)}</td>
+                        <td className={`p-3 ${status.color}`}>
+                          {status.label}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -279,7 +281,9 @@ export function EventDetailView({
                           <td className="p-2 font-mono">
                             {timestamp(p.fetchedAt)}
                           </td>
-                          <td className="p-2 font-mono">{odd(p.displayOdds)}</td>
+                          <td className="p-2 font-mono">
+                            {odd(p.displayOdds)}
+                          </td>
                           <td className="p-2">
                             {String(p.suspended)} / {String(p.inPlay)}
                           </td>
