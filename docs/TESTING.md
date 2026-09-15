@@ -84,7 +84,7 @@ Antes de merge rode build/typecheck/formatação/suíte normal. Para browser alt
 
 ## Git hooks
 
-`npm ci` ou `npm install` em `apps/odds-service` ou `apps/odds-monitor` configura `core.hooksPath=.githooks` por meio do script `prepare`. O hook `pre-commit` roda `format:check` e `typecheck` no backend e `lint` no monitor. O `pre-push` roda build e testes offline nos dois apps; quando `TEST_DATABASE_URL` está definido, também executa a suíte PostgreSQL destrutiva. Sem essa variável, o hook informa explicitamente que a integração SQL foi pulada.
+`npm ci` ou `npm install` em `apps/odds-service` ou `apps/odds-monitor` configura `core.hooksPath=.githooks` por meio do script `prepare`. O hook `pre-commit` roda `format:check` e `typecheck` no backend e `lint` no monitor. O `pre-push` roda build e testes offline nos dois apps e exige Docker para construir a imagem de produção do monitor e testar seu `/healthz`; quando `TEST_DATABASE_URL` está definido, também executa a suíte PostgreSQL destrutiva. Sem essa variável, o hook informa explicitamente que a integração SQL foi pulada.
 
 ## Validação desta revisão documental
 

@@ -14,4 +14,4 @@ else
 fi
 
 echo "[pre-push] odds-monitor build + tests"
-(cd "$root/apps/odds-monitor" && npm run build && npm test)
+(cd "$root/apps/odds-monitor" && npm run build && npm test && npm run test:container)

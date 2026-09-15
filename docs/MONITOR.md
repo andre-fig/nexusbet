@@ -131,6 +131,8 @@ npm run build
 npm run typecheck
 npm run lint
 npm test
+# Reproduz o build do Railway e valida o processo/healthcheck do container:
+npm run test:container
 ```
 
 Testes normais: zero bookmakers/rede externa/Postgres. Backend testa filtros, rotas, CORS, conexão SSE, heartbeat, múltiplos assinantes, cleanup, matching/issues/stale. Suíte SQL testa projeção, filtros, histórico, sanitização, mercado removido, provider dinâmico e notificações somente após commit. Frontend testa REST, invalidação seletiva, loading/empty/error, providers, filtros, drawer, refresh, desconexão/reconexão e cleanup.

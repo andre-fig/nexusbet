@@ -92,7 +92,7 @@ BROWSER_TESTS=1 npm test
 
 Não há ESLint/script `lint` no backend. Prettier verifica formatação, não substitui análise estática. [Testing](docs/TESTING.md) lista todos os scripts, testes SQL e critérios de regressão.
 
-Os hooks versionados em `.githooks/` são instalados por `npm ci`/`npm install` em qualquer um dos apps. O `pre-commit` executa formatação e typecheck; o `pre-push` executa builds e suítes offline dos dois apps. A integração PostgreSQL também roda no `pre-push` quando `TEST_DATABASE_URL` aponta para um banco descartável terminado em `_test`.
+Os hooks versionados em `.githooks/` são instalados por `npm ci`/`npm install` em qualquer um dos apps. O `pre-commit` executa formatação e typecheck; o `pre-push` executa builds e suítes offline dos dois apps, além de construir o container do monitor e validar seu `/healthz`. A integração PostgreSQL também roda no `pre-push` quando `TEST_DATABASE_URL` aponta para um banco descartável terminado em `_test`.
 
 Prisma: `db:generate` gera o cliente, `db:migrate` aplica migrations, `db:status` consulta pendências e `db:seed` é idempotente. A criação de migrations de desenvolvimento e a importação opcional estão em [Data model](docs/DATA_MODEL.md) e no [guia PostgreSQL existente](apps/odds-service/docs/postgres.md). Não há comando de reset seguro automático; testes SQL exigem banco descartável separado.
 
