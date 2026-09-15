@@ -418,6 +418,112 @@ test("MEIA NOITE vs Sementes do Mal and MEIA NOITE vs Semente do Mal share CCT S
     0,
   );
 });
+test("Heroic vs Johny Speeds and heroic vs johnny speeds share Stake Pulse Beat", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-22T10:00:00.000Z"; // 07:00 America/Sao_Paulo
+  const make = (
+    provider: "superbet" | "blaze",
+    eventId: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const typo = make(
+    "superbet",
+    "heroic-johny",
+    "Heroic",
+    "Johny Speeds",
+    "Stake Pulse Beat",
+  );
+  const full = make(
+    "blaze",
+    "heroic-johnny",
+    "heroic",
+    "johnny speeds",
+    "pulse beat ii",
+  );
+  assert.equal(tournamentName(typo.tournament, "cs2"), "stake pulse beat");
+  assert.equal(tournamentName(full.tournament, "cs2"), "stake pulse beat");
+  const result = compareAllProviders([typo, full]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.deepEqual(result.matched[0].canonicalEvent, {
+    esport: "cs2",
+    tournament: "stake pulse beat",
+    teamA: "heroic",
+    teamB: "johnny speeds",
+    startsAt,
+  });
+  assert.equal(result.matched[0].confidence, 1);
+  assert.deepEqual(result.matched[0].learnedAliases, [
+    {
+      esport: "cs2",
+      alias: "johny speeds",
+      canonical: "johnny speeds",
+    },
+  ]);
+  assert.deepEqual(result.matched[0].learnedTournamentAliases, [
+    {
+      esport: "cs2",
+      alias: "pulse beat ii",
+      canonical: "stake pulse beat",
+    },
+  ]);
+  assert.equal(
+    compareAllProviders([typo, { ...full, tournament: "Other Cup" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([typo, { ...full, teamA: "Other" }]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([typo, { ...full, teamB: "Johnny Speedsters" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      typo,
+      { ...full, startsAt: "2026-09-22T10:06:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([typo, full, { ...full, eventId: "other-johnny" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      typo,
+      { ...full, startsAt: "2026-09-22T10:02:00.000Z" },
+    ]).matched.length,
+    1,
+  );
+});
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
   const raw = JSON.parse(
     await readFile(

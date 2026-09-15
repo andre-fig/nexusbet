@@ -63,6 +63,37 @@ export function inflectedTeamName(a: string, b: string): boolean {
   return pluralOf(first, second) || pluralOf(second, first);
 }
 
+/** Exactly one insertion, deletion or substitution in one substantive word. */
+export function oneEditTeamName(a: string, b: string): boolean {
+  const left = a.split(" ");
+  const right = b.split(" ");
+  if (left.length < 2 || left.length !== right.length) return false;
+  const different = left.flatMap((word, index) =>
+    word === right[index] ? [] : [[word, right[index]]],
+  );
+  if (different.length !== 1) return false;
+  const [first, second] = different[0];
+  if (
+    Math.min(first.length, second.length) < 5 ||
+    Math.abs(first.length - second.length) > 1
+  )
+    return false;
+  if (first.length === second.length)
+    return (
+      [...first].filter((letter, index) => letter !== second[index]).length ===
+      1
+    );
+  const shorter = first.length < second.length ? first : second;
+  const longer = first.length < second.length ? second : first;
+  let skipped = false;
+  for (let i = 0, j = 0; i < longer.length; i++) {
+    if (longer[i] === shorter[j]) j++;
+    else if (!skipped) skipped = true;
+    else return false;
+  }
+  return true;
+}
+
 export function canonicalTeamName(
   value: string,
   esport: Esport,

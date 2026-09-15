@@ -356,6 +356,76 @@ test("MEIA NOITE singular/plural team and CCT tournament aliases persist as one 
   assert.equal(await database.db.teamAlias.count(), 1);
   assert.equal(await database.db.tournamentAlias.count(), 1);
 });
+test("Heroic Johny/Johnny Speeds and Stake/Pulse Beat II persist one match with both aliases", async () => {
+  const startsAt = "2026-09-22T10:00:00.000Z";
+  const make = (
+    provider: "superbet" | "blaze",
+    id: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...event(provider, 1.72, at, id),
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamA.toLowerCase(),
+    normalizedTeamB: teamB.toLowerCase(),
+    tournament,
+    startsAt,
+  });
+  const typo = make(
+    "superbet",
+    "heroic-johny",
+    "Heroic",
+    "Johny Speeds",
+    "Stake Pulse Beat",
+  );
+  const full = make(
+    "blaze",
+    "heroic-johnny",
+    "heroic",
+    "johnny speeds",
+    "pulse beat ii",
+  );
+  await service.commit(publication(typo));
+  await service.commit(publication(full));
+  assert.equal(await database.db.providerEvent.count(), 2);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  const canonical = await database.db.canonicalEvent.findFirstOrThrow();
+  assert.equal(canonical.teamA, "heroic");
+  assert.equal(canonical.teamB, "johnny speeds");
+  assert.equal(canonical.tournament, "stake pulse beat");
+  assert.equal(
+    (
+      await database.db.teamAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "johny speeds" } },
+      })
+    ).canonicalName,
+    "johnny speeds",
+  );
+  assert.equal(
+    (
+      await database.db.tournamentAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "pulse beat ii" } },
+      })
+    ).canonicalName,
+    "stake pulse beat",
+  );
+  const matches = await database.db.eventMatch.findMany();
+  assert.equal(matches.length, 2);
+  assert.ok(
+    matches.every(
+      (match) =>
+        match.status === "matched" && match.canonicalEventId === canonical.id,
+    ),
+  );
+  await service.commit(publication(typo));
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(await database.db.teamAlias.count(), 1);
+  assert.equal(await database.db.tournamentAlias.count(), 1);
+});
 test("numeric history 1.72 → 1.70 → 1.68, temporal ordering, current odds and unchanged observations", async () => {
   for (const [i, price] of [1.72, 1.7, 1.68, 1.68].entries())
     await service.commit(

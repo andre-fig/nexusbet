@@ -8,6 +8,7 @@ import {
   abbreviatedTeamName,
   canonicalTeamName,
   inflectedTeamName,
+  oneEditTeamName,
   type PersistedTeamAliases,
 } from "./team-aliases.js";
 import { incompleteWinnerMarket } from "../../shared/utils/market-quality.js";
@@ -54,7 +55,8 @@ function aliasCandidate(
       second !== fourth &&
       (abbreviatedTeamName(second, fourth) ||
         abbreviatedTeamName(fourth, second) ||
-        inflectedTeamName(second, fourth))
+        inflectedTeamName(second, fourth) ||
+        oneEditTeamName(second, fourth))
     );
   });
 }
@@ -178,7 +180,8 @@ function comparison(
       return mapped[side] === canonicalSides[side] ||
         abbreviatedTeamName(mapped[side], canonicalSides[side]) ||
         abbreviatedTeamName(canonicalSides[side], mapped[side]) ||
-        inflectedTeamName(mapped[side], canonicalSides[side])
+        inflectedTeamName(mapped[side], canonicalSides[side]) ||
+        oneEditTeamName(mapped[side], canonicalSides[side])
         ? mapped[side]
         : mapped[1 - side];
     });
@@ -193,7 +196,9 @@ function comparison(
     .flatMap((name) => {
       const target = namesForSide(0).includes(name) ? teamA : teamB;
       return name !== target &&
-        (abbreviatedTeamName(name, target) || inflectedTeamName(name, target))
+        (abbreviatedTeamName(name, target) ||
+          inflectedTeamName(name, target) ||
+          oneEditTeamName(name, target))
         ? [{ esport: e.esport, alias: name, canonical: target }]
         : [];
     });
