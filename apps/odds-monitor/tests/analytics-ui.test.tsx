@@ -236,6 +236,14 @@ test("odds number tooltips open on hover and keyboard focus", async () => {
     const number = view.getByRole("button", { name: "Odds 2,20, Arbitrage" });
     assert.equal(number.hasAttribute("title"), false);
     fireEvent.mouseEnter(number);
+    assert.match(
+      view.getByRole("tooltip").className,
+      /border-analytics-arbitrage/,
+    );
+    assert.match(
+      view.getByRole("tooltip").querySelector("strong")?.className ?? "",
+      /text-analytics-arbitrage/,
+    );
     assert.match(view.getByRole("tooltip").textContent ?? "", /R\$107\.44/);
     fireEvent.mouseLeave(number);
     assert.equal(view.queryByRole("tooltip"), null);
@@ -271,6 +279,11 @@ test("Best price uses one short custom tooltip on hover and keyboard focus", asy
     const number = view.getByRole("button", { name: "Odds 1,83, Best price" });
     assert.equal(number.hasAttribute("title"), false);
     fireEvent.mouseEnter(number);
+    assert.match(view.getByRole("tooltip").className, /border-analytics-best/);
+    assert.match(
+      view.getByRole("tooltip").querySelector("strong")?.className ?? "",
+      /text-analytics-best/,
+    );
     assert.equal(
       view.getByRole("tooltip").textContent,
       "Best priceHighest available odd for this selection.",
@@ -279,6 +292,65 @@ test("Best price uses one short custom tooltip on hover and keyboard focus", asy
     assert.equal(view.queryByRole("tooltip"), null);
     fireEvent.focus(number);
     assert.ok(view.getByRole("tooltip"));
+  } finally {
+    cleanup();
+    dom.window.close();
+  }
+});
+
+test("tooltip and odd share the highest-priority signal color", async () => {
+  const dom = new JSDOM("<html><body></body></html>", {
+    url: "http://localhost:3000",
+  });
+  Object.assign(globalThis, {
+    window: dom.window,
+    document: dom.window.document,
+    HTMLElement: dom.window.HTMLElement,
+    MutationObserver: dom.window.MutationObserver,
+  });
+  const { render, fireEvent, cleanup } =
+    await import("@testing-library/react/pure");
+  try {
+    for (const [props, color, border] of [
+      [
+        { bestPrice: "Best", outlier: "Low", outlierDirection: "down" },
+        "text-analytics-outlier",
+        "border-analytics-outlier",
+      ],
+      [
+        { bestPrice: "Best", outlier: "High", outlierDirection: "up" },
+        "text-analytics-outlier-up",
+        "border-analytics-outlier-up",
+      ],
+      [
+        { bestPrice: "Best", outlier: "High", valueBet: "Value" },
+        "text-analytics-value",
+        "border-analytics-value",
+      ],
+      [
+        {
+          bestPrice: "Best",
+          outlier: "High",
+          valueBet: "Value",
+          arbitrage: "Arbitrage",
+        },
+        "text-analytics-arbitrage",
+        "border-analytics-arbitrage",
+      ],
+    ] as const) {
+      const view = render(<OddsValue value="2,40" {...props} />);
+      const number = view.getByRole("button");
+      assert.match(number.className, new RegExp(color));
+      fireEvent.mouseEnter(number);
+      const tooltip = view.getByRole("tooltip");
+      assert.match(tooltip.className, new RegExp(border));
+      assert.match(
+        tooltip.querySelector("strong")?.className ?? "",
+        new RegExp(color),
+      );
+      assert.equal(tooltip.querySelector("svg, img, i"), null);
+      cleanup();
+    }
   } finally {
     cleanup();
     dom.window.close();

@@ -4,12 +4,35 @@ import { odd } from "./DataState";
 
 type Kind =
   "best_price" | "outlier_up" | "outlier_down" | "value_bet" | "arbitrage";
-const appearance: Record<Kind, { label: string; className: string }> = {
-  best_price: { label: "Best price", className: "text-analytics-best" },
-  outlier_up: { label: "Outlier up", className: "text-analytics-outlier-up" },
-  outlier_down: { label: "Outlier down", className: "text-analytics-outlier" },
-  value_bet: { label: "Value bet", className: "text-analytics-value" },
-  arbitrage: { label: "Arbitrage", className: "text-analytics-arbitrage" },
+const appearance: Record<
+  Kind,
+  { label: string; color: string; border: string }
+> = {
+  best_price: {
+    label: "Best price",
+    color: "text-analytics-best",
+    border: "border-analytics-best",
+  },
+  outlier_up: {
+    label: "Outlier up",
+    color: "text-analytics-outlier-up",
+    border: "border-analytics-outlier-up",
+  },
+  outlier_down: {
+    label: "Outlier down",
+    color: "text-analytics-outlier",
+    border: "border-analytics-outlier",
+  },
+  value_bet: {
+    label: "Value bet",
+    color: "text-analytics-value",
+    border: "border-analytics-value",
+  },
+  arbitrage: {
+    label: "Arbitrage",
+    color: "text-analytics-arbitrage",
+    border: "border-analytics-arbitrage",
+  },
 };
 
 export function OddsValue({
@@ -69,7 +92,7 @@ export function OddsValue({
         onMouseLeave={() => setPosition(null)}
         onFocus={show}
         onBlur={() => setPosition(null)}
-        className={`font-mono font-semibold cursor-help focus:outline focus:outline-2 focus:outline-offset-2 rounded-sm ${visual.className}`}
+        className={`font-mono font-semibold cursor-help focus:outline focus:outline-2 focus:outline-offset-2 rounded-sm ${visual.color}`}
       >
         {value}
       </button>
@@ -79,14 +102,16 @@ export function OddsValue({
           <div
             id={id}
             role="tooltip"
-            className="fixed z-[100] max-w-[22rem] rounded border border-outline-variant bg-surface-container-highest px-3 py-2 text-[12px] font-normal leading-relaxed text-on-surface shadow-xl pointer-events-none"
+            className={`fixed z-[100] max-w-[22rem] rounded border bg-surface-container-highest px-3 py-2 text-[12px] font-normal leading-relaxed text-on-surface shadow-xl pointer-events-none ${visual.border}`}
             style={{
               top: position.top,
               left: position.left,
               transform: position.above ? "translateY(-100%)" : undefined,
             }}
           >
-            <strong className="block mb-1">{visual.label}</strong>
+            <strong className={`block mb-1 ${visual.color}`}>
+              {visual.label}
+            </strong>
             {tooltip}
           </div>,
           document.body,
