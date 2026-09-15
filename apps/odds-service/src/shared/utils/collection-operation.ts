@@ -1,5 +1,4 @@
 import type { CollectOptions } from "../interfaces/odds-provider.interface.js";
-import { saveJson } from "./files.js";
 /** Stop the caller promptly; the provider closes its owned transport before releasing its lock. */
 export async function collectionStep<T>(
   operation: Promise<T>,
@@ -20,13 +19,14 @@ export async function collectionStep<T>(
 }
 export async function publishCapture(
   options: CollectOptions,
-  path: string,
   value: unknown,
 ) {
   options.signal?.throwIfAborted();
+  if (!options.publish) throw Error("Direct publication target unavailable");
+  const publish = () => options.publish!(value);
   if (options.publications) {
-    options.publications.push(() => saveJson(path, value));
+    options.publications.push(publish);
     return;
   }
-  await saveJson(path, value);
+  await publish();
 }

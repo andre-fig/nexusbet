@@ -26,6 +26,11 @@ export interface Settings {
   scanEnabled: boolean;
   pollingEnabled: boolean;
   pollingIntervalMs: number;
+  ingestionMode: "direct";
+  legacyInboxImportEnabled: boolean;
+  rawCaptureEnabled: boolean;
+  rawCaptureRetentionHours: number;
+  rawCaptureDir: string;
   dataDir: string;
   inboxDir: string;
   detailInboxDir: string;
@@ -115,6 +120,20 @@ export function configuration() {
     scanEnabled: process.env.INBOX_SCAN_ENABLED !== "0",
     pollingEnabled: process.env.POLLING_ENABLED === "1",
     pollingIntervalMs: positive("CAPTURE_INTERVAL_SECONDS", 180, 60) * 1000,
+    ingestionMode: "direct",
+    legacyInboxImportEnabled:
+      process.env.LEGACY_INBOX_IMPORT_ENABLED === "true" ||
+      process.env.LEGACY_INBOX_IMPORT_ENABLED === "1",
+    rawCaptureEnabled:
+      process.env.RAW_CAPTURE_ENABLED === "true" ||
+      process.env.RAW_CAPTURE_ENABLED === "1" ||
+      process.env.DEBUG_CAPTURE_RAW === "true" ||
+      process.env.DEBUG_CAPTURE_RAW === "1",
+    rawCaptureRetentionHours: positive(
+      "RAW_CAPTURE_RETENTION_HOURS",
+      24,
+    ),
+    rawCaptureDir: resolve(process.env.RAW_CAPTURE_DIR || "evidence/raw"),
     dataDir: resolve(process.env.DATA_DIR || "data"),
     inboxDir: resolve(process.env.INBOX_DIR || "inbox"),
     detailInboxDir: resolve(process.env.DETAIL_INBOX_DIR || "detail-inbox"),

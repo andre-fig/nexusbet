@@ -42,7 +42,17 @@ export function validate(q: EventQuery) {
   strings(q);
   for (const [v, allowed] of [
     [q.esport, ["cs2", "lol", "valorant"]],
-    [q.status, ["matched", "partial", "unmatched", "low_confidence", "manual"]],
+    [
+      q.status,
+      [
+        "matched",
+        "partial",
+        "unmatched",
+        "low_confidence",
+        "manual",
+        "not_applicable",
+      ],
+    ],
     [q.start, ["today", "24h", "7d"]],
     [q.attentionOnly, ["true", "false"]],
   ] as const)

@@ -6,8 +6,13 @@ export function compareProviders(
   b: NormalizedEvent[],
   toleranceMinutes = 15,
 ) {
-  return compareAllProviders([...a, ...b], toleranceMinutes);
+  return compareAllProviders([...a, ...b], toleranceMinutes, [
+    ...new Set([...a, ...b].map((event) => event.provider)),
+  ]);
 }
+export type EligibleProviders = Readonly<
+  Partial<Record<NormalizedEvent["esport"], readonly string[]>>
+>;
 function pair(e: NormalizedEvent) {
   return [teamName(e.teamA, e.esport), teamName(e.teamB, e.esport)]
     .sort()
@@ -30,6 +35,9 @@ function eligible(e: NormalizedEvent, f: NormalizedEvent, tolerance: number) {
 export function compareAllProviders(
   events: NormalizedEvent[],
   toleranceMinutes = 15,
+  eligibleProviders: readonly string[] | EligibleProviders = [
+    ...new Set(events.map((event) => event.provider)),
+  ],
 ) {
   const key = (e: NormalizedEvent) => e.provider + ":" + e.eventId;
   const unique = new Map<string, NormalizedEvent>();
@@ -40,7 +48,22 @@ export function compareAllProviders(
       conflicts.add(key(e));
     unique.set(key(e), e);
   }
-  const all = [...unique.values()],
+  const providersFor = (event: NormalizedEvent) =>
+    new Set(
+      Array.isArray(eligibleProviders)
+        ? eligibleProviders
+        : ((eligibleProviders as EligibleProviders)[event.esport] ?? []),
+    );
+  const notApplicable = [...unique.values()]
+    .filter((event) => providersFor(event).size < 2)
+    .map((event) => ({
+      provider: event.provider,
+      eventId: event.eventId,
+      reason: "only_one_eligible_provider" as const,
+    }));
+  const all = [...unique.values()].filter(
+      (event) => providersFor(event).size >= 2,
+    ),
     seen = new Set<string>(),
     matched: ReturnType<typeof comparison>[] = [],
     unmatched: {
@@ -85,7 +108,7 @@ export function compareAllProviders(
                 : "no_team_pair",
         });
   }
-  return { matched, unmatched };
+  return { matched, unmatched, notApplicable };
 }
 function comparison(group: NormalizedEvent[]) {
   const e = group[0];

@@ -10,6 +10,11 @@ import { setTimeout as delay } from "node:timers/promises";
 import { ProviderRegistry } from "./provider-registry.js";
 import { AppConfiguration } from "../../config/configuration.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
+import type { Esport } from "../../shared/types/common.js";
+import {
+  ProviderUnavailableError,
+  StaleDataError,
+} from "../../shared/errors/domain-errors.js";
 export interface CycleOptions extends CollectOptions {
   details?: boolean;
   retainClients?: boolean;
@@ -20,6 +25,15 @@ export interface CollectionResult {
   events: number;
   details: number;
   error?: string;
+}
+export interface ProviderRuntimeState {
+  active: boolean;
+  status: "active" | "disabled" | "unavailable";
+  reason:
+    | "active"
+    | "disabled_by_config"
+    | "disabled_in_runtime"
+    | "transport_unavailable";
 }
 @Injectable()
 export class CollectionService {
@@ -40,7 +54,7 @@ export class CollectionService {
     this.scheduler = new AdaptiveScheduler(
       config.settings.collection,
       registry.providers
-        .filter((p) => this.runtimeEnabled(p.name))
+        .filter((p) => this.providerRuntime(p.name).active)
         .map((p) => p.name),
       async (job, signal, commit) => {
         if (this.active.has(job.provider))
@@ -61,39 +75,104 @@ export class CollectionService {
       (entry) => this.logger.log(JSON.stringify(entry)),
     );
   }
-  private runtimeEnabled(name: string) {
-    if (name === "estrelabet") return this.config.settings.estrelabetEnabled;
-    if (name === "blaze") return this.config.settings.blazeEnabled;
-    if (name !== "bet365" && name !== "betano") return true;
-    return (
-      this.config.settings.providerEnabled[name] &&
-      this.config.settings.browser.runtime === "local-cdp" &&
-      process.platform === "darwin"
-    );
+  providerRuntime(name: string): ProviderRuntimeState {
+    if (!this.registry.providers.some((provider) => provider.name === name))
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_in_runtime",
+      };
+    if (name === "estrelabet" && !this.config.settings.estrelabetEnabled)
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_by_config",
+      };
+    if (name === "blaze" && !this.config.settings.blazeEnabled)
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_by_config",
+      };
+    if (name !== "bet365" && name !== "betano")
+      return { active: true, status: "active", reason: "active" };
+    if (
+      this.config.settings.browser.runtime !== "local-cdp" ||
+      process.platform !== "darwin"
+    )
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_in_runtime",
+      };
+    if (!this.config.settings.providerEnabled[name])
+      return {
+        active: false,
+        status: "disabled",
+        reason: "disabled_by_config",
+      };
+    if (!this.localCdp || this.localCdp.availability(name) === "unavailable")
+      return {
+        active: true,
+        status: "unavailable",
+        reason: "transport_unavailable",
+      };
+    return { active: true, status: "active", reason: "active" };
+  }
+  activeProviderNames() {
+    return this.registry.providers
+      .map((provider) => provider.name)
+      .filter((name) => this.providerRuntime(name).active);
+  }
+  matchingEligibleProviders(games: Esport[]) {
+    const eligible: Partial<Record<Esport, string[]>> = {};
+    for (const provider of this.registry.providers) {
+      const runtime = this.providerRuntime(provider.name);
+      if (!runtime.active || runtime.status !== "active") continue;
+      for (const game of games)
+        try {
+          provider.readEvents([game]);
+          (eligible[game] ??= []).push(provider.name);
+        } catch (error) {
+          if (
+            !(error instanceof StaleDataError) &&
+            !(error instanceof ProviderUnavailableError)
+          )
+            throw error;
+        }
+    }
+    return eligible;
   }
   operationalHealth() {
     const health = this.scheduler.health();
     const providers: Record<string, unknown> = { ...health.providers };
-    if (this.localCdp)
-      for (const name of ["bet365", "betano"] as const) {
-        const status = this.localCdp.availability(name);
-        if (status === "disabled" || status === "unavailable")
-          providers[name] = {
-            ...(health.providers[name] ?? {
-              lastListAttemptAt: null,
-              lastListSuccessAt: null,
-              nextListRunAt: null,
-              consecutiveFailures: 0,
-              lastError: null,
-              cooldownUntil: null,
-              activeJobs: 0,
-              configuredConcurrency:
-                this.config.settings.collection.concurrency[name],
-              effectiveConcurrency: 1,
-            }),
-            status,
-          };
-      }
+    for (const { name } of this.registry.providers) {
+      const runtime = this.providerRuntime(name);
+      if (!runtime.active || runtime.status === "unavailable")
+        providers[name] = {
+          ...(health.providers[name] ?? {
+            lastListAttemptAt: null,
+            lastListSuccessAt: null,
+            nextListRunAt: null,
+            consecutiveFailures: 0,
+            lastError: null,
+            cooldownUntil: null,
+            activeJobs: 0,
+            configuredConcurrency:
+              this.config.settings.collection.concurrency[name],
+            effectiveConcurrency: 1,
+          }),
+          status: runtime.status,
+          active: runtime.active,
+          reason: runtime.reason,
+        };
+      else
+        providers[name] = {
+          ...((providers[name] as Record<string, unknown>) ?? {}),
+          active: true,
+          reason: "active",
+        };
+    }
     return { ...health, providers };
   }
   async restoreCatalog() {

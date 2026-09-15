@@ -22,6 +22,14 @@ export function DashboardView({
   const providers = overview.data?.providers ?? [],
     health = overview.data?.health,
     pagination = events.data?.pagination;
+  const providerStatus = (provider: (typeof providers)[number]) => {
+    if (!provider.active && provider.statusReason === "disabled_in_runtime")
+      return "Disabled in this runtime";
+    if (!provider.active) return "Disabled";
+    if (provider.status === "unavailable") return "Unavailable";
+    if (provider.status === "healthy") return "Healthy";
+    return provider.status.charAt(0).toUpperCase() + provider.status.slice(1);
+  };
   return (
     <div className="flex flex-col w-full px-4 md:px-6 py-4 space-y-4">
       <DataState
@@ -36,7 +44,13 @@ export function DashboardView({
             <span className="font-semibold capitalize text-[14px]">
               Data {health.status}
             </span>
-            {(["events", "matched", "partial", "unmatched"] as const).map(
+            {([
+              "events",
+              "matched",
+              "partial",
+              "unmatched",
+              "notApplicable",
+            ] as const).map(
               (k) => (
                 <span key={k}>
                   <b>{health[k]}</b> {k}
@@ -61,15 +75,15 @@ export function DashboardView({
                 {p.name}
               </span>
               <span
-                className={`text-[11px] font-mono ${p.stale ? "text-error" : "text-on-surface-variant"}`}
+                className={`text-[11px] font-mono ${p.active && p.stale ? "text-error" : "text-on-surface-variant"}`}
               >
-                {p.status}
+                {providerStatus(p)}
               </span>
             </div>
             <div className="text-[22px] font-mono font-semibold">
               {p.eventCount}{" "}
               <span className="text-[12px] font-normal text-on-surface-variant">
-                events
+                {p.active ? "events" : "retained events"}
               </span>
             </div>
             <div className="text-[11px] font-mono text-on-surface-variant">
@@ -110,7 +124,13 @@ export function DashboardView({
           onChange={(e) => onFilter("status", e.target.value)}
         >
           <option value="">All statuses</option>
-          {["matched", "partial", "unmatched", "low_confidence"].map((s) => (
+          {[
+            "matched",
+            "partial",
+            "unmatched",
+            "low_confidence",
+            "not_applicable",
+          ].map((s) => (
             <option key={s}>{s}</option>
           ))}
         </select>
@@ -151,7 +171,7 @@ export function DashboardView({
       </div>
       <div className={`${panel} overflow-hidden`}>
         <DataState
-          loading={events.loading}
+          loading={events.loading && !events.data}
           error={events.error}
           empty={events.data?.items.length === 0}
         />
@@ -194,8 +214,17 @@ export function DashboardView({
                     {timestamp(e.startsAt)}
                   </td>
                   <td className="px-4 py-3">
-                    <span className="px-2 py-1 bg-surface-container-high rounded">
-                      {e.matching.status}
+                    <span
+                      className="px-2 py-1 bg-surface-container-high rounded"
+                      title={
+                        e.matching.status === "not_applicable"
+                          ? "Only one eligible provider is currently available."
+                          : undefined
+                      }
+                    >
+                      {e.matching.status === "not_applicable"
+                        ? "Single provider"
+                        : e.matching.status}
                     </span>
                     <div className="text-on-surface-variant mt-2">
                       {e.matching.providerCount}/
@@ -211,7 +240,9 @@ export function DashboardView({
                           {odd(feed?.matchWinner.teamB)}
                         </div>
                         <div className="text-[10px] text-on-surface-variant mt-1">
-                          {feed?.status ?? "Not observed"}
+                          {!p.active
+                            ? providerStatus(p)
+                            : (feed?.status ?? "Not observed")}
                         </div>
                       </td>
                     );

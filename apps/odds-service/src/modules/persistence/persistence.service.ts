@@ -58,8 +58,14 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
       ),
     );
   }
-  async commit(input: PersistencePublication) {
-    if (!this.enabled) return;
+  async commit(
+    input: PersistencePublication,
+    afterCommit?: () => Promise<void> | void,
+  ) {
+    if (!this.enabled) {
+      await afterCommit?.();
+      return;
+    }
     validatePublication(input);
     const p = sanitize(input) as unknown as PersistencePublication;
     const hash = createHash("sha256")
@@ -67,8 +73,9 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
         JSON.stringify({ events: p.events, observations: p.observations }),
       )
       .digest("hex");
+    let notice;
     try {
-      const notice = await this.database.db.$transaction(
+      notice = await this.database.db.$transaction(
         async (tx) => {
           // One short publication lock makes matching + publication atomic across providers/processes.
           await tx.$executeRaw`SELECT pg_advisory_xact_lock(7140365)`;
@@ -188,8 +195,6 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
         },
         { maxWait: 30000, timeout: 120000 },
       );
-      this.database.operationFailed = false;
-      if (notice) this.notifications?.committed.next(notice);
     } catch {
       this.database.operationFailed = true;
       throw new ServiceError(
@@ -197,6 +202,9 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
         503,
       );
     }
+    this.database.operationFailed = false;
+    await afterCommit?.();
+    if (notice) this.notifications?.committed.next(notice);
   }
 }
 export function validatePublication(p: PersistencePublication) {

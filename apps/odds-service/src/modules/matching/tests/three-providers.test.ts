@@ -43,8 +43,30 @@ test("real fixtures match three providers, two providers, one provider, and dive
   assert.ok(result.unmatched.some((m) => m.provider === "superbet"));
   assert.ok(compareAllProviders([...a, ...c]).matched.length);
   assert.ok(compareAllProviders([...b, ...c]).matched.length);
-  assert.equal(compareAllProviders(c).matched.length, 0);
-  assert.equal(compareAllProviders(c).unmatched.length, c.length);
+  const single = compareAllProviders(c);
+  assert.equal(single.matched.length, 0);
+  assert.equal(single.unmatched.length, 0);
+  assert.equal(single.notApplicable.length, c.length);
+  assert.ok(
+    single.notApplicable.every(
+      (event) => event.reason === "only_one_eligible_provider",
+    ),
+  );
+});
+test("eligibility quorum distinguishes not-applicable from a real unmatched event", async () => {
+  const { c } = await sources();
+  const event = c[0];
+  const alone = compareAllProviders([event], 15, ["superbet"]);
+  assert.equal(alone.notApplicable.length, 1);
+  assert.equal(alone.unmatched.length, 0);
+  const withAnotherEligibleProvider = compareAllProviders([event], 15, [
+    "superbet",
+    "blaze",
+  ]);
+  assert.equal(withAnotherEligibleProvider.notApplicable.length, 0);
+  assert.deepEqual(withAnotherEligibleProvider.unmatched, [
+    { provider: "superbet", eventId: event.eventId, reason: "no_team_pair" },
+  ]);
 });
 test("provider-scoped equal IDs do not collide; ambiguity, transitive time chains and false positives stay unmatched", async () => {
   const { c } = await sources(),

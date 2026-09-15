@@ -16,7 +16,10 @@ export interface PersistencePort {
   catalogEvents?(): Promise<NormalizedEvent[]>;
   equivalentObservation?(a: MarketBatch, b: MarketBatch): boolean;
   baselines(): Promise<MarketBatch[]>;
-  commit(publication: PersistencePublication): Promise<void>;
+  commit(
+    publication: PersistencePublication,
+    afterCommit?: () => Promise<void> | void,
+  ): Promise<void>;
   restore<T>(key: string): Promise<T | undefined>;
 }
 export const PERSISTENCE = Symbol("PERSISTENCE");

@@ -29,50 +29,76 @@ export class MonitorService {
   async providers() {
     const operational = this.collection.operationalHealth().providers;
     return (await this.repo.providers()).map((p) => {
-      const runtime = operational[p.id] as { status?: string } | undefined;
-      const enabled = p.enabled && !!runtime && runtime.status !== "disabled";
+      const runtime = this.collection.providerRuntime(p.id);
+      const scheduler = operational[p.id] as { status?: string } | undefined;
+      const active = p.enabled && runtime.active;
       return {
         ...p,
-        enabled,
+        active,
+        statusReason: p.enabled ? runtime.reason : "disabled_by_config",
         stale: this.stale(p.lastUpdatedAt),
-        status: !enabled
+        status: !active
           ? "disabled"
-          : runtime?.status === "unavailable"
+          : runtime.status === "unavailable"
             ? "unavailable"
-            : !p.lastUpdatedAt
-              ? "unavailable"
-              : this.stale(p.lastUpdatedAt)
-                ? "stale"
-                : runtime?.status === "degraded"
-                  ? "degraded"
+            : scheduler?.status === "degraded"
+              ? "degraded"
+              : !p.lastUpdatedAt
+                ? "unavailable"
+                : this.stale(p.lastUpdatedAt)
+                  ? "stale"
                   : "healthy",
       };
     });
   }
+  async eligibleProviders() {
+    const enabled = new Set(
+      (await this.providers())
+        .filter((provider) => provider.enabled)
+        .map((provider) => provider.id),
+    );
+    return Object.fromEntries(
+      Object.entries(
+        this.collection.matchingEligibleProviders(
+          this.config.settings.esports,
+        ),
+      ).map(([esport, providers]) => [
+        esport,
+        providers.filter((provider) => enabled.has(provider)),
+      ]),
+    );
+  }
   async overview() {
-    const [counts, issues, providers] = await Promise.all([
-      this.repo.summary(),
-      this.repo.issueCount(),
-      this.providers(),
+    const providers = await this.providers();
+    const eligibleProviders = await this.eligibleProviders();
+    const hasComparableScope = Object.values(eligibleProviders).some(
+      (eligible) => eligible.length >= 2,
+    );
+    const [counts, issues] = await Promise.all([
+      this.repo.summary(eligibleProviders),
+      this.repo.issueCount(!hasComparableScope),
     ]);
     const count = (s: string) => counts.find((c) => c.status === s)?.count ?? 0;
     return {
       generatedAt: new Date().toISOString(),
       health: {
         status:
-          issues || providers.some((p) => p.enabled && p.stale)
+          issues || providers.some((p) => p.active && p.stale)
             ? "degraded"
             : "healthy",
         events: counts.reduce((n, c) => n + c.count, 0),
         matched: count("matched"),
         partial: count("partial"),
         unmatched: count("unmatched"),
+        notApplicable: count("not_applicable"),
         issues,
       },
       providers,
     };
   }
   provider(p: MonitorMember, g: EventGroup) {
+    const runtime = this.collection.providerRuntime(p.provider.slug);
+    const active = p.provider.enabled && runtime.active;
     const markets = p.markets.map((m) => ({
       ...m,
       status: m.inPlay
@@ -116,21 +142,25 @@ export class MonitorService {
     return {
       id: p.id,
       provider: p.provider.slug,
+      active,
+      statusReason: p.provider.enabled ? runtime.reason : "disabled_by_config",
       providerEventId: p.providerEventId,
       rawTeamA: p.rawTeamA,
       rawTeamB: p.rawTeamB,
       rawTournament: p.rawTournament,
       startsAt: p.startsAt,
       lastUpdatedAt: p.fetchedAt,
-      status: !p.listed
-        ? "removed"
-        : p.inPlay
-          ? "live"
-          : p.suspended
-            ? "suspended"
-            : this.stale(p.fetchedAt)
-              ? "stale"
-              : "healthy",
+      status: !active
+        ? "disabled"
+        : !p.listed
+          ? "removed"
+          : p.inPlay
+            ? "live"
+            : p.suspended
+              ? "suspended"
+              : this.stale(p.fetchedAt)
+                ? "stale"
+                : "healthy",
       providerStatus: p.providerStatus,
       matchWinner: {
         teamA: odd(g.teamA),
@@ -142,7 +172,11 @@ export class MonitorService {
   }
   async events(q: EventQuery = {}) {
     validate(q);
-    const result = await this.repo.groups(q);
+    const result = await this.repo.groups(
+      q,
+      undefined,
+      await this.eligibleProviders(),
+    );
     return { ...result, items: await this.project(result.items) };
   }
   async project(groups: EventGroup[]) {
@@ -154,39 +188,46 @@ export class MonitorService {
         groups.flatMap((g) => (g.canonicalId ? [g.canonicalId] : [])),
       ),
     ]);
-    return groups.map((g) => ({
-      id: g.id,
-      canonicalId: g.canonicalId,
-      esport: g.esport,
-      tournament: g.tournament,
-      teamA: g.teamA,
-      teamB: g.teamB,
-      startsAt: g.startsAt,
-      matching: {
-        status: g.status,
-        confidence: g.confidence,
-        providerCount: g.providerCount,
-        expectedProviderCount: g.expectedProviderCount,
-      },
-      providers: members
-        .filter((p) => g.memberIds.includes(p.id))
-        .map((p) => {
-          const { markets, ...item } = this.provider(p, g);
-          return {
-            ...item,
-            issues: issues.filter((i) => i.providerEventId === p.id),
-          };
-        }),
-      issues: issues.filter(
-        (i) =>
-          g.memberIds.includes(i.providerEventId ?? "") ||
-          (!!g.canonicalId && i.canonicalEventId === g.canonicalId),
-      ),
-    }));
+    return groups.map((g) => {
+      const visibleIssues = issues.filter(
+        (issue) =>
+          g.expectedProviderCount >= 2 || issue.type !== "UNMATCHED_EVENT",
+      );
+      return {
+        id: g.id,
+        canonicalId: g.canonicalId,
+        esport: g.esport,
+        tournament: g.tournament,
+        teamA: g.teamA,
+        teamB: g.teamB,
+        startsAt: g.startsAt,
+        matching: {
+          status: g.status,
+          confidence: g.confidence,
+          providerCount: g.providerCount,
+          expectedProviderCount: g.expectedProviderCount,
+        },
+        providers: members
+          .filter((p) => g.memberIds.includes(p.id))
+          .map((p) => {
+            const { markets, ...item } = this.provider(p, g);
+            return {
+              ...item,
+              issues: visibleIssues.filter((i) => i.providerEventId === p.id),
+            };
+          }),
+        issues: visibleIssues.filter(
+          (i) =>
+            g.memberIds.includes(i.providerEventId ?? "") ||
+            (!!g.canonicalId && i.canonicalEventId === g.canonicalId),
+        ),
+      };
+    });
   }
   async group(id: string) {
     uuid(id);
-    const g = (await this.repo.groups({}, id)).items[0];
+    const g = (await this.repo.groups({}, id, await this.eligibleProviders()))
+      .items[0];
     if (!g) throw new ServiceError("Event not found", 404);
     return g;
   }
@@ -276,8 +317,16 @@ export class MonitorService {
     if (q.eventId) uuid(q.eventId);
     if (q.status && !["open", "resolved", "ignored"].includes(q.status))
       throw new ServiceError("Invalid issue status", 400);
+    const eligibleProviders = await this.eligibleProviders();
     return {
-      items: (await this.repo.issues(q)).map((i) => ({
+      items: (
+        await this.repo.issues(
+          q,
+          !Object.values(eligibleProviders).some(
+            (eligible) => eligible.length >= 2,
+          ),
+        )
+      ).map((i) => ({
         id: i.id,
         type: i.type,
         severity: i.severity,

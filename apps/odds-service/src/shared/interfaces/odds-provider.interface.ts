@@ -4,6 +4,8 @@ import type { Esport } from "../types/common.js";
 export interface CollectOptions {
   signal?: AbortSignal;
   publications?: Array<() => Promise<void>>;
+  /** Provider-private round delivery. Collection keeps it deferred until beginCommit. */
+  publish?: (payload: unknown) => Promise<void>;
   esports: Esport[];
   existing?: boolean;
   reuseProfile?: boolean;

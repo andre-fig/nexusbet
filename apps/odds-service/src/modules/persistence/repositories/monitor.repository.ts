@@ -3,20 +3,29 @@ import { Prisma } from "../../../generated/prisma/client.js";
 import { DatabaseService } from "../../database/database.service.js";
 import type { EventGroup, EventQuery } from "../../monitor/dto/monitor.dto.js";
 import { integer } from "../../monitor/dto/monitor.dto.js";
-const groupSql = (includeRemoved = false) => Prisma.sql`WITH base AS (
+import type { EligibleProviders } from "../../matching/matching.js";
+const groupSql = (
+  eligibleProviders: EligibleProviders,
+  includeRemoved = false,
+) => {
+  const eligibility = JSON.stringify(eligibleProviders);
+  const eligible = Prisma.sql`provider_slug IN (SELECT jsonb_array_elements_text(COALESCE(${eligibility}::jsonb -> esport,'[]'::jsonb)))`;
+  const expected = Prisma.sql`max(jsonb_array_length(COALESCE(${eligibility}::jsonb -> esport,'[]'::jsonb)))`;
+  return Prisma.sql`WITH base AS (
  SELECT pe.*, em.canonical_event_id, em.status AS match_status, em.confidence,
- coalesce(em.canonical_event_id,pe.id) AS group_id, c.team_a AS canonical_a,c.team_b AS canonical_b,c.tournament AS canonical_tournament,c.starts_at AS canonical_start
- FROM provider_events pe LEFT JOIN event_matches em ON em.provider_event_id=pe.id LEFT JOIN canonical_events c ON c.id=em.canonical_event_id
+ p.slug AS provider_slug,coalesce(em.canonical_event_id,pe.id) AS group_id, c.team_a AS canonical_a,c.team_b AS canonical_b,c.tournament AS canonical_tournament,c.starts_at AS canonical_start
+ FROM provider_events pe JOIN providers p ON p.id=pe.provider_id LEFT JOIN event_matches em ON em.provider_event_id=pe.id LEFT JOIN canonical_events c ON c.id=em.canonical_event_id
  WHERE ${includeRemoved} OR pe.listed
 ), grouped AS (
  SELECT group_id AS id, CASE WHEN bool_or(canonical_event_id IS NOT NULL) THEN group_id ELSE NULL END AS "canonicalId",
  min(esport) AS esport,min(coalesce(canonical_tournament,raw_tournament)) AS tournament,min(coalesce(canonical_a,raw_team_a)) AS "teamA",min(coalesce(canonical_b,raw_team_b)) AS "teamB",min(coalesce(canonical_start,starts_at)) AS "startsAt",
- count(DISTINCT provider_id)::int AS "providerCount",(SELECT count(*)::int FROM providers WHERE enabled) AS "expectedProviderCount",min(coalesce(confidence,0))::float AS confidence,
- CASE WHEN bool_or(match_status='low_confidence') THEN 'low_confidence' WHEN bool_or(match_status='manual') THEN 'manual' WHEN NOT bool_or(canonical_event_id IS NOT NULL) THEN 'unmatched' WHEN count(DISTINCT provider_id)<(SELECT count(*) FROM providers WHERE enabled) THEN 'partial' ELSE 'matched' END AS status,
- bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) AS attention,
+ count(DISTINCT provider_id) FILTER(WHERE ${eligible})::int AS "providerCount",${expected}::int AS "expectedProviderCount",min(coalesce(confidence,0))::float AS confidence,
+ CASE WHEN ${expected}<2 THEN 'not_applicable' WHEN count(DISTINCT provider_id) FILTER(WHERE ${eligible})<2 THEN 'unmatched' WHEN bool_or(match_status='low_confidence') THEN 'low_confidence' WHEN bool_or(match_status='manual') THEN 'manual' WHEN count(DISTINCT provider_id) FILTER(WHERE ${eligible})<${expected} THEN 'partial' ELSE 'matched' END AS status,
+ CASE WHEN ${expected}<2 THEN bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND i.type<>'UNMATCHED_EVENT' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) ELSE bool_or(EXISTS(SELECT 1 FROM data_issues i WHERE i.status='open' AND (i.provider_event_id=base.id OR i.canonical_event_id=base.canonical_event_id))) END AS attention,
  array_agg(id) AS "memberIds", array_agg(provider_id) AS provider_ids
  FROM base GROUP BY group_id
 )`;
+};
 const publicEvent = {
   id: true,
   providerEventId: true,
@@ -75,7 +84,7 @@ const publicEvent = {
 @Injectable()
 export class MonitorRepository {
   constructor(@Inject(DatabaseService) readonly database: DatabaseService) {}
-  groups(q: EventQuery = {}, id?: string) {
+  groups(q: EventQuery = {}, id?: string, eligibleProviders: EligibleProviders = {}) {
     const page = integer(q.page, 1, 100000),
       limit = integer(q.limit, 50, 100),
       search = "%" + (q.search ?? "") + "%";
@@ -85,15 +94,15 @@ export class MonitorRepository {
         : q.start === "7d"
           ? new Date(Date.now() + 7 * 86400000)
           : undefined;
-    const where = Prisma.sql`WHERE (${id ?? null}::uuid IS NULL OR id=${id ?? null}::uuid) AND (${q.esport ?? null}::text IS NULL OR esport=${q.esport ?? null}) AND (${q.status ?? null}::text IS NULL OR status=${q.status ?? null}) AND (${q.search ?? null}::text IS NULL OR concat("teamA",' ',"teamB",' ',tournament) ILIKE ${search}) AND (${q.attentionOnly === "true"}=false OR attention OR status<>'matched') AND (${q.provider ?? null}::text IS NULL OR EXISTS(SELECT 1 FROM providers p WHERE p.slug=${q.provider ?? null} AND p.id=ANY(provider_ids))) AND (${until ?? null}::timestamptz IS NULL OR "startsAt" BETWEEN now() AND ${until ?? null}::timestamptz) AND (${q.start === "today"}=false OR ("startsAt" AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date)`;
+    const where = Prisma.sql`WHERE (${id ?? null}::uuid IS NULL OR id=${id ?? null}::uuid) AND (${q.esport ?? null}::text IS NULL OR esport=${q.esport ?? null}) AND (${q.status ?? null}::text IS NULL OR status=${q.status ?? null}) AND (${q.search ?? null}::text IS NULL OR concat("teamA",' ',"teamB",' ',tournament) ILIKE ${search}) AND (${q.attentionOnly === "true"}=false OR attention OR status IN ('partial','unmatched','low_confidence')) AND (${q.provider ?? null}::text IS NULL OR EXISTS(SELECT 1 FROM providers p WHERE p.slug=${q.provider ?? null} AND p.id=ANY(provider_ids))) AND (${until ?? null}::timestamptz IS NULL OR "startsAt" BETWEEN now() AND ${until ?? null}::timestamptz) AND (${q.start === "today"}=false OR ("startsAt" AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date)`;
     return this.database.read(async (db) => {
       const [items, count] = await db.$transaction(
         [
           db.$queryRaw<EventGroup[]>(
-            Prisma.sql`${groupSql(!!id)} SELECT * FROM grouped ${where} ORDER BY "startsAt",id LIMIT ${limit} OFFSET ${(page - 1) * limit}`,
+            Prisma.sql`${groupSql(eligibleProviders, !!id)} SELECT * FROM grouped ${where} ORDER BY "startsAt",id LIMIT ${limit} OFFSET ${(page - 1) * limit}`,
           ),
           db.$queryRaw<{ total: number }[]>(
-            Prisma.sql`${groupSql(!!id)} SELECT count(*)::int AS total FROM grouped ${where}`,
+            Prisma.sql`${groupSql(eligibleProviders, !!id)} SELECT count(*)::int AS total FROM grouped ${where}`,
           ),
         ],
         { isolationLevel: "RepeatableRead" },
@@ -109,10 +118,10 @@ export class MonitorRepository {
       };
     });
   }
-  summary() {
+  summary(eligibleProviders: EligibleProviders = {}) {
     return this.database.read((db) =>
       db.$queryRaw<{ status: string; count: number }[]>(
-        Prisma.sql`${groupSql()} SELECT status,count(*)::int AS count FROM grouped GROUP BY status`,
+        Prisma.sql`${groupSql(eligibleProviders)} SELECT status,count(*)::int AS count FROM grouped GROUP BY status`,
       ),
     );
   }
@@ -197,13 +206,18 @@ export class MonitorRepository {
       status?: string;
       limit?: string;
     } = {},
+    suppressUnmatched = false,
   ) {
     return this.database.read((db) =>
       db.dataIssue.findMany({
         where: {
           status: (q.status ?? "open") as "open" | "resolved" | "ignored",
           severity: q.severity,
-          type: q.type,
+          type: q.type
+            ? q.type
+            : suppressUnmatched
+              ? { not: "UNMATCHED_EVENT" }
+              : undefined,
           provider: q.provider ? { slug: q.provider } : undefined,
           ...(q.eventId
             ? {
@@ -253,9 +267,14 @@ export class MonitorRepository {
       }),
     );
   }
-  issueCount() {
+  issueCount(suppressUnmatched = false) {
     return this.database.read((db) =>
-      db.dataIssue.count({ where: { status: "open" } }),
+      db.dataIssue.count({
+        where: {
+          status: "open",
+          type: suppressUnmatched ? { not: "UNMATCHED_EVENT" } : undefined,
+        },
+      }),
     );
   }
   history(

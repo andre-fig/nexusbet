@@ -5,6 +5,7 @@ import { readFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 import { renderToStaticMarkup } from "react-dom/server";
 import { DataState } from "../src/components/DataState";
+import { DashboardView } from "../src/components/DashboardView";
 const fixture = JSON.parse(
   await readFile(new URL("./fixtures/monitor.json", import.meta.url), "utf8"),
 );
@@ -21,6 +22,49 @@ test("loading, empty and error states contain no fallback records", () => {
     renderToStaticMarkup(<DataState loading={false} error="HTTP 503" />),
     /role="alert"/,
   );
+});
+test("not-applicable matching is rendered as neutral single-provider coverage", () => {
+  const row = structuredClone(fixture.events.items[0]);
+  row.matching = {
+    status: "not_applicable",
+    confidence: 0,
+    providerCount: 1,
+    expectedProviderCount: 1,
+  };
+  row.issues = [];
+  const resource = (data: unknown) => ({
+    data,
+    loading: false,
+    refreshing: false,
+    error: null,
+  });
+  const html = renderToStaticMarkup(
+    <DashboardView
+      overview={resource(fixture.overview) as never}
+      events={
+        resource({
+          items: [row],
+          pagination: { page: 1, limit: 50, total: 1, pages: 1 },
+        }) as never
+      }
+      filters={{
+        search: "",
+        esport: "",
+        status: "",
+        start: "",
+        provider: "",
+        attentionOnly: "false",
+        page: "1",
+        limit: "50",
+      }}
+      onFilter={() => {}}
+      onOpenIssuesDrawer={() => {}}
+      onOpenEventDetail={() => {}}
+    />,
+  );
+  assert.match(html, /Single provider/);
+  assert.match(html, /Only one eligible provider is currently available\./);
+  assert.doesNotMatch(html, />UNMATCHED<\/span/i);
 });
 test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filtering and manual refresh", async () => {
   const dom = new JSDOM("<html><body></body></html>", {
@@ -63,6 +107,8 @@ test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filt
   }
   Object.assign(globalThis, { EventSource: FakeSource });
   let failing = false;
+  let hold = false;
+  const pendingResponses: (() => void)[] = [];
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (input) => {
     const u = new URL(String(input));
@@ -75,6 +121,8 @@ test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filt
     else if (u.pathname.endsWith("/issues")) body = fixture.issues;
     else if (u.pathname === "/monitor/events") body = fixture.events;
     else body = fixture.detail;
+    if (hold)
+      await new Promise<void>((resolve) => pendingResponses.push(resolve));
     return Response.json(body);
   };
   try {
@@ -83,14 +131,44 @@ test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filt
     assert.ok(screen.getByText("Team Brute vs G2 Ares"));
     for (const p of fixture.overview.providers)
       assert.ok(screen.getAllByText(p.name).length);
+    assert.ok(screen.getAllByText("Disabled in this runtime").length >= 2);
     assert.ok(!screen.queryByText("Pinnacle"));
     assert.ok(calls.some((c) => c === "/monitor/overview"));
     assert.ok(calls.some((c) => c.startsWith("/monitor/events?")));
+    const dashboardRow = screen.getByText("Team Brute vs G2 Ares");
+    hold = true;
+    await act(async () => {
+      sources[0].emit("provider.updated");
+      await new Promise((r) => setTimeout(r, 350));
+    });
+    assert.ok(pendingResponses.length >= 2);
+    assert.equal(screen.getByText("Team Brute vs G2 Ares"), dashboardRow);
+    assert.equal(screen.queryByText("Loading data…"), null);
+    hold = false;
+    await act(async () => {
+      pendingResponses.splice(0).forEach((resolve) => resolve());
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    hold = true;
+    fireEvent.click(screen.getByTitle("Manual Sync"));
+    await waitFor(() => assert.ok(pendingResponses.length >= 2));
+    assert.equal(screen.getByText("Team Brute vs G2 Ares"), dashboardRow);
+    assert.equal(screen.queryByText("Loading data…"), null);
+    assert.equal(
+      screen.getByTitle("Manual Sync").getAttribute("disabled"),
+      "",
+    );
+    hold = false;
+    await act(async () => {
+      pendingResponses.splice(0).forEach((resolve) => resolve());
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
     fireEvent.click(screen.getByText("Team Brute vs G2 Ares"));
     await waitFor(() =>
       assert.ok(calls.includes("/monitor/events/" + fixture.detail.id)),
     );
     await waitFor(() => assert.ok(screen.getByText("Priority markets")));
+    assert.ok(screen.getByText("1/3 providers"));
     const selection = fixture.detail.markets[0].selections[0].id;
     fireEvent.change(screen.getByLabelText("History selection"), {
       target: { value: selection },
@@ -98,6 +176,20 @@ test("Dashboard/detail use REST; dynamic providers, SSE, drawer, reconnect, filt
     await waitFor(() =>
       assert.ok(calls.some((c) => c.includes("odds-history?selection="))),
     );
+    const detailSection = screen.getByText("Priority markets");
+    hold = true;
+    await act(async () => {
+      sources[0].emit("odds.changed", fixture.detail.id);
+      await new Promise((r) => setTimeout(r, 350));
+    });
+    assert.ok(pendingResponses.length >= 3);
+    assert.equal(screen.getByText("Priority markets"), detailSection);
+    assert.equal(screen.queryByText("Loading data…"), null);
+    hold = false;
+    await act(async () => {
+      pendingResponses.splice(0).forEach((resolve) => resolve());
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
     const count = () =>
       calls.filter((c) => c === "/monitor/events/" + fixture.detail.id).length;
     const before = count();

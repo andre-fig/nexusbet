@@ -30,7 +30,7 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 | GET | Resposta / filtros |
 | --- | --- |
 | `/monitor/overview` | `generatedAt`, `health {status,events,matched,partial,unmatched,issues}`, `providers[]` |
-| `/monitor/providers` | Array dinâmico `{id,name,enabled,status,eventCount,lastUpdatedAt,stale}` |
+| `/monitor/providers` | Array dinâmico `{id,name,enabled,active,status,statusReason,eventCount,lastUpdatedAt,stale}` |
 | `/monitor/events` | `{items:EventRow[],pagination:{page,limit,total,pages}}` |
 | `/monitor/events/:id` | EventRow + providers com mercados e `markets[]` prioritários |
 | `/monitor/events/:id/raw` | `{eventId,raw:[{provider,rawData,markets}]}` sanitizado; carregamento sob demanda |
@@ -45,7 +45,8 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
   id: string; canonicalId: string | null;
   esport: string; tournament: string; teamA: string; teamB: string; startsAt: string;
   matching: {status: string; confidence: number; providerCount: number; expectedProviderCount: number};
-  providers: [{id: string; provider: string; providerEventId: string;
+  providers: [{id: string; provider: string; active: boolean; statusReason: string;
+    providerEventId: string;
     rawTeamA: string; rawTeamB: string; rawTournament: string;
     startsAt: string; lastUpdatedAt: string; status: string;
     matchWinner: {teamA: number | null; teamB: number | null; status: string}; issues: Issue[]}];
@@ -58,7 +59,7 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 - Snapshot atual é o último por seleção, ordenado por `fetchedAt` e `createdAt`. Mercados/seleções atuais são limitados à união da cobertura dos últimos batches de cada scope; registros históricos removidos não reaparecem apenas porque existem nas tabelas. Entre observações do mesmo mercado prevalece a mais recente para a composição das seleções.
 - `status` de provider combina configuração/runtime e frescor persistido; não significa que uma coleta foi executada ao abrir o monitor. `lastUpdatedAt` é timestamp da observação, não o horário do GET. Cada mercado/seleção também expõe seu estado, evitando que uma listagem recente esconda um detalhe antigo.
 - `stale` usa o TTL existente (`MAX_AGE_SECONDS`, default 600). Odds antigas continuam identificadas, nunca são transformadas em dados atuais fictícios. Suspensão, in-play e odd null são preservados.
-- Matching usa vínculos/decisões existentes. `partial` na visão representa cobertura inferior ao número de providers habilitados **no cadastro PostgreSQL**. Esse denominador não muda ao desligar temporariamente um transporte no runtime. Não é quorum de pricing. Confidence é o mínimo das decisões associadas, não uma probabilidade de vitória.
+- Matching usa vínculos/decisões existentes. `partial` na visão representa cobertura inferior aos providers ativos neste runtime e habilitados no cadastro PostgreSQL. No Railway, onde Bet365/Betano são intencionalmente excluídos sem `local-cdp`, três feeds HTTP produzem `providerCount:3` e `expectedProviderCount:3`; snapshots antigos dos providers desabilitados continuam visíveis, identificados como `Disabled in this runtime`, mas não entram no denominador. Isso não é quorum de pricing. Confidence é o mínimo das decisões associadas, não uma probabilidade de vitória.
 - A tabela reúne eventos ainda `listed`; detail/history podem recuperar representações removidas. Desaparecimento não significa evento finalizado. Não se exclui evento apenas porque seu startsAt passou.
 
 ### Filtros

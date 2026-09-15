@@ -115,7 +115,6 @@ export class MarketJournal {
     private readonly persistence?: PersistencePort,
   ) {}
   async load() {
-    await mkdir(this.directory, { recursive: true });
     if (this.persistence?.enabled) {
       for (const batch of await this.persistence.baselines())
         this.latest.set(batch.scope, {
@@ -128,6 +127,7 @@ export class MarketJournal {
         });
       return;
     }
+    await mkdir(this.directory, { recursive: true });
     let text: string;
     try {
       text = await readFile(
@@ -220,11 +220,14 @@ export class MarketJournal {
       throw Error(
         "Partial capture requires a separate scope; not accepted as a full snapshot",
       );
-    await appendFile(
-      join(this.directory, "market-snapshots.ndjson"),
-      JSON.stringify(entry) + "\n",
-      { mode: 0o600 },
-    );
+    if (!this.persistence?.enabled) {
+      await mkdir(this.directory, { recursive: true });
+      await appendFile(
+        join(this.directory, "market-snapshots.ndjson"),
+        JSON.stringify(entry) + "\n",
+        { mode: 0o600 },
+      );
+    }
     this.latest.set(batch.scope, entry);
     return entry;
   }

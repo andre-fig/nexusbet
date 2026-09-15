@@ -21,7 +21,7 @@ O tick padrão de 1000ms **não consulta sites a cada segundo**. Só inicia tare
 
 | Tarefa / tempo restante | Intervalo default |
 |---|---:|
-| Listagem de cada um dos três providers | 60s |
+| Listagem de cada provider ativo no runtime | 60s |
 | Mais de 24h | 600s |
 | De 6h a 24h, incluindo limites | 300s |
 | De 1h até menos de 6h | 120s |
@@ -65,6 +65,8 @@ SIGTERM/SIGINT: para timers e novos jobs, aguarda até SHUTDOWN_GRACE_MS=30000, 
 ## Health, CLI e limites
 
 `/health` expõe providers com starting/ok/degraded, lastListAttemptAt/SuccessAt, consecutiveFailures, cooldown, activeJobs e limites; scheduler mostra running/queuedJobs/activeJobs/scheduledDetails. queuedJobs conta entradas vencidas, inclusive temporariamente bloqueadas; não é tamanho de uma fila externa.
+
+O scheduler constrói sua agenda somente com providers ativos no ambiente. Bet365/Betano exigem `BROWSER_RUNTIME=local-cdp`, flags habilitadas e macOS; fora desse runtime aparecem como `disabled` com razão `disabled_in_runtime`, sem criar jobs, falhas ou circuit breaker. Se o runtime local-cdp é compatível mas o Chrome/CDP não está acessível, continuam ativos e aparecem como `unavailable`, pois nesse caso existe uma falha operacional recuperável. Superbet é HTTP; Blaze e EstrelaBet seguem suas flags próprias. O monitor usa a interseção entre esse conjunto ativo e `providers.enabled` no banco para calcular cobertura.
 
 CLIs `capture*` fazem ciclo manual; `--detail` escolhe um evento por modalidade. `collect*` são loops legados com CAPTURE_INTERVAL_SECONDS=180, não a agenda adaptativa. Eles desabilitam scheduler/ingestão próprios e escrevem inboxes. Não rode coletor manual junto com scheduler ativo da mesma instalação.
 

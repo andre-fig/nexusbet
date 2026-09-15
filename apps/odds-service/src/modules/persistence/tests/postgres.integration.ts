@@ -270,33 +270,36 @@ test("removal retains event/history and never infers finished; failed listing ke
   );
   assert.ok(changes.some((c) => c.type === "EventRemoved"));
 });
-test("unmatched has no canonical, issues open/resolve/reopen with retained history", async () => {
+test("one eligible provider is not applicable and creates no unmatched issue", async () => {
   await service.commit(publication(event()));
-  let link = await database.db.eventMatch.findFirstOrThrow();
-  assert.equal(link.canonicalEventId, null);
-  let issue = await database.db.dataIssue.findFirstOrThrow();
-  assert.equal(issue.status, "open");
+  assert.equal(await database.db.eventMatch.count(), 0);
+  assert.equal(await database.db.dataIssue.count(), 0);
   await service.commit(publication(event("betano")));
-  issue = await database.db.dataIssue.findUniqueOrThrow({
-    where: { id: issue.id },
-  });
-  assert.equal(issue.status, "resolved");
-  assert.ok((await database.db.issueTransition.count()) >= 2);
-  await database.db.$transaction((tx) =>
-    issues.open(tx, {
-      key: issue.dedupeKey,
-      type: issue.type,
-      severity: issue.severity,
-      message: issue.message,
-      at: new Date("2026-09-15T00:01:00Z"),
-    }),
+  assert.equal(await database.db.eventMatch.count(), 2);
+  assert.ok(
+    (await database.db.eventMatch.findMany()).every(
+      (match) => match.status === "matched",
+    ),
+  );
+  assert.equal(await database.db.dataIssue.count(), 0);
+});
+test("two eligible providers with isolated events create unmatched issues", async () => {
+  await service.commit(publication(event()));
+  const other = event("betano");
+  other.teamA = other.rawTeamA = other.normalizedTeamA = "Gamma";
+  await service.commit(publication(other));
+  assert.equal(await database.db.eventMatch.count(), 2);
+  assert.ok(
+    (await database.db.eventMatch.findMany()).every(
+      (match) => match.status === "unmatched",
+    ),
   );
   assert.equal(
-    (await database.db.dataIssue.findUniqueOrThrow({ where: { id: issue.id } }))
-      .status,
-    "open",
+    await database.db.dataIssue.count({
+      where: { status: "open", type: "UNMATCHED_EVENT" },
+    }),
+    2,
   );
-  assert.equal(await database.db.issueTransition.count(), 3);
 });
 test("failure after relational writes rolls back snapshots, catalogue, matching and checkpoint", async () => {
   await service.commit(publication(event()));
@@ -344,7 +347,7 @@ test("restart reconstructs scopes, catalogue, matching, issues and checkpoints w
     canonical,
   );
   assert.equal(await database.db.oddsSnapshot.count(), 2);
-  assert.equal(await database.db.dataIssue.count(), 1);
+  assert.equal(await database.db.dataIssue.count(), 0);
 });
 test("stale retry cannot replace latest projection; conflicting timestamp is rejected atomically", async () => {
   await service.commit(
@@ -558,7 +561,7 @@ test("concurrent duplicate publications serialize and do not duplicate snapshots
   assert.equal(await database.db.publication.count(), 1);
   assert.equal(await database.db.oddsSnapshot.count(), 1);
 });
-test("canonical identity survives temporary unmatched decisions caused by stale providers", async () => {
+test("canonical identity survives when stale providers make matching not applicable", async () => {
   await service.commit(publication(event()));
   await service.commit(publication(event("betano")));
   const id = (await database.db.canonicalEvent.findFirstOrThrow()).id;
@@ -570,7 +573,7 @@ test("canonical identity survives temporary unmatched decisions caused by stale 
   );
   assert.ok(
     (await database.db.eventMatch.findMany()).every(
-      (m) => m.status === "unmatched",
+      (m) => m.status === "matched" && m.canonicalEventId === id,
     ),
   );
   await service.commit(
@@ -891,8 +894,18 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   const repo = new MonitorRepository(database);
   const collection = {
     operationalHealth: () => ({ providers: { superbet: { status: "ok" } } }),
+    providerRuntime: (provider: string) => ({
+      active: provider === "superbet",
+      status: provider === "superbet" ? "active" : "disabled",
+      reason: provider === "superbet" ? "active" : "disabled_in_runtime",
+    }),
+    activeProviderNames: () => ["superbet"],
+    matchingEligibleProviders: () => ({ cs2: ["superbet"] }),
   } as unknown as import("../../collection/collection.service.js").CollectionService;
-  const monitor = new MonitorService(repo, config, collection);
+  const monitorConfig = {
+    settings: { ...config.settings, ttlMs: 24 * 60 * 60 * 1000 },
+  } as AppConfiguration;
+  const monitor = new MonitorService(repo, monitorConfig, collection);
   const e = event();
   e.markets[0].category = "match_winner";
   e.markets[0].map = null;
@@ -925,10 +938,12 @@ test("Monitor reads paginated real groups, current markets, sanitized raw and ch
   );
   assert.equal(
     (await monitor.events({ attentionOnly: "true" })).pagination.total,
-    1,
+    0,
   );
-  assert.equal((await monitor.issues({ eventId: id })).items.length, 1);
-  assert.equal((await monitor.overview()).health.unmatched, 1);
+  assert.equal((await monitor.issues({ eventId: id })).items.length, 0);
+  const overview = await monitor.overview();
+  assert.equal(overview.health.unmatched, 0);
+  assert.equal(overview.health.notApplicable, 1);
   await database.db.provider.create({ data: { slug: "sixth", name: "Sixth" } });
   assert.equal((await monitor.providers()).length, 6);
   const removed = structuredClone(e);
@@ -960,4 +975,69 @@ test("Monitor publication notices occur after commit, never on replay or transac
   conflict.events[0].markets[0].selections[0].odds = 1.1;
   await assert.rejects(publishing.commit(conflict));
   assert.equal(notices.length, 1);
+});
+
+test("Monitor coverage counts only runtime-active providers while retaining disabled feeds", async () => {
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const active = new Set(["superbet", "blaze", "estrelabet"]);
+  const collection = {
+    operationalHealth: () => ({
+      providers: Object.fromEntries(
+        ["bet365", "betano", ...active].map((provider) => [
+          provider,
+          { status: active.has(provider) ? "ok" : "disabled" },
+        ]),
+      ),
+    }),
+    providerRuntime: (provider: string) => ({
+      active: active.has(provider),
+      status: active.has(provider) ? "active" : "disabled",
+      reason: active.has(provider) ? "active" : "disabled_in_runtime",
+    }),
+    activeProviderNames: () => [...active],
+    matchingEligibleProviders: () => ({ cs2: [...active] }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitor = new MonitorService(
+    new MonitorRepository(database),
+    {
+      settings: { ...config.settings, ttlMs: 24 * 60 * 60 * 1000 },
+    } as AppConfiguration,
+    collection,
+  );
+  const base = event();
+  for (const provider of [
+    "bet365",
+    "betano",
+    "superbet",
+    "blaze",
+    "estrelabet",
+  ] as const)
+    await service.commit(publication({ ...structuredClone(base), provider }));
+  const result = await monitor.events({ limit: "1" });
+  assert.equal(result.items[0].matching.providerCount, 3);
+  assert.equal(result.items[0].matching.expectedProviderCount, 3);
+  assert.equal(result.items[0].matching.status, "matched");
+  assert.equal(result.items[0].providers.length, 5);
+  const providers = await monitor.providers();
+  assert.deepEqual(
+    providers
+      .filter((provider) => provider.active)
+      .map((provider) => provider.id)
+      .sort(),
+    ["blaze", "estrelabet", "superbet"],
+  );
+  assert.deepEqual(
+    providers
+      .filter((provider) => !provider.active)
+      .map((provider) => [provider.id, provider.status, provider.statusReason]),
+    [
+      ["bet365", "disabled", "disabled_in_runtime"],
+      ["betano", "disabled", "disabled_in_runtime"],
+    ],
+  );
+  const overview = await monitor.overview();
+  assert.equal(overview.health.matched, 1);
+  assert.equal(overview.health.partial, 0);
 });

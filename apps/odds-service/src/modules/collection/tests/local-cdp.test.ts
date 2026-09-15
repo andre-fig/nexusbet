@@ -217,11 +217,35 @@ test("Nest boots with unavailable browser and scheduler excludes unsupported pro
     const health = collection.operationalHealth();
     assert.equal(
       (health.providers.bet365 as { status: string }).status,
-      "unavailable",
+      "disabled",
     );
     assert.equal(
       (health.providers.betano as { status: string }).status,
       "disabled",
+    );
+    assert.deepEqual(collection.activeProviderNames(), [
+      "superbet",
+      "blaze",
+      "estrelabet",
+    ]);
+    assert.deepEqual(collection.providerRuntime("bet365"), {
+      active: false,
+      status: "disabled",
+      reason: "disabled_in_runtime",
+    });
+    assert.deepEqual(collection.providerRuntime("betano"), {
+      active: false,
+      status: "disabled",
+      reason: "disabled_in_runtime",
+    });
+    assert.equal(
+      (health.providers.bet365 as { consecutiveFailures: number })
+        .consecutiveFailures,
+      0,
+    );
+    assert.equal(
+      (health.providers.bet365 as { lastError: string | null }).lastError,
+      null,
     );
   } finally {
     await app.close();

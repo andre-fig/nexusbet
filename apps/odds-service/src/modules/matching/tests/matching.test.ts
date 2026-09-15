@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { teamName } from "../../../shared/utils/names.js";
-import { compareProviders } from "../matching.js";
+import { compareAllProviders, compareProviders } from "../matching.js";
 import { normalizedBet365 } from "../../bet365/mappers/bet365.mapper.js";
 import { parseCapture } from "../../bet365/parsers/list.parser.js";
 import {
@@ -68,4 +68,33 @@ test("Conservative cross-provider matching: aliases, reversed sides, ambiguities
       .length,
     0,
   );
+});
+
+test("matching forms complete groups with three, four or five providers without a fixed quorum", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const providers = [
+    "bet365",
+    "betano",
+    "superbet",
+    "blaze",
+    "estrelabet",
+  ] as const;
+  for (const count of [3, 4, 5]) {
+    const events = providers.slice(0, count).map((provider, index) => ({
+      ...structuredClone(base),
+      provider,
+      eventId: `${provider}-${index}`,
+    }));
+    const result = compareAllProviders(events);
+    assert.equal(result.matched.length, 1);
+    assert.equal(Object.keys(result.matched[0].providers).length, count);
+    assert.equal(result.unmatched.length, 0);
+  }
 });

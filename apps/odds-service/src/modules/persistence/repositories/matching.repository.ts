@@ -19,9 +19,23 @@ export class MatchingRepository {
     const events = scopes.flatMap(
       (s) => s.events as unknown as NormalizedEvent[],
     );
-    const result = compareAllProviders(events);
     const providers = await tx.provider.findMany();
     const providerMap = new Map(providers.map((p) => [p.slug, p.id]));
+    const providerSlugs = new Map(providers.map((p) => [p.id, p.slug]));
+    const eligibleByEsport = Object.fromEntries(
+      [...new Set(scopes.map((scope) => scope.esport))].map((esport) => [
+        esport,
+        [
+          ...new Set(
+            scopes
+              .filter((scope) => scope.esport === esport)
+              .map((scope) => providerSlugs.get(scope.providerId)!)
+              .filter(Boolean),
+          ),
+        ],
+      ]),
+    );
+    const result = compareAllProviders(events, 15, eligibleByEsport);
     const rows = await tx.providerEvent.findMany({
       include: {
         match: true,
@@ -40,6 +54,13 @@ export class MatchingRepository {
         r,
       ]),
     );
+    for (const item of result.notApplicable) {
+      const row = byKey.get(JSON.stringify([item.provider, item.eventId]));
+      if (!row || row.match?.status === "manual") continue;
+      await this.issues.transition(tx, "unmatched:" + row.id, "resolved", at);
+      if (row.match?.status === "unmatched")
+        await tx.eventMatch.delete({ where: { providerEventId: row.id } });
+    }
     for (const group of result.matched) {
       const members = Object.entries(group.providers).map(([slug, e]) =>
         byKey.get(JSON.stringify([slug, e.eventId]))!,

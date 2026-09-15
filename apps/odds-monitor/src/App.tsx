@@ -133,13 +133,23 @@ export default function App() {
             ...(drawer ? (["issues"] as Invalidation[]) : []),
           ],
     );
+  const isSyncing =
+    view === "dashboard"
+      ? overview.loading ||
+        overview.refreshing ||
+        events.loading ||
+        events.refreshing
+      : detail.loading ||
+        detail.refreshing ||
+        history.refreshing ||
+        raw.refreshing;
   return (
     <div className="min-h-screen flex flex-col bg-surface-container-lowest text-on-surface antialiased transition-colors duration-200">
       <Header
         currentView={view}
         onNavigate={setView}
         onSync={sync}
-        isSyncing={overview.loading || events.loading || detail.loading}
+        isSyncing={isSyncing}
         isDarkMode={dark}
         onToggleTheme={() => setDark(!dark)}
         liveStatus={

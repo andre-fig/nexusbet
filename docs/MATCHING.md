@@ -30,6 +30,8 @@ A tolerância é argumento da função, não variável de ambiente; serviços at
 
 O algoritmo deduplica por provider:eventId. Conteúdo divergente para a mesma identidade gera conflito. Monta componentes de candidatos e só aceita um grupo se **todos os pares forem compatíveis**, houver pelo menos dois membros e no máximo um de cada provider. Uma cadeia A↔B↔C em que A não corresponde a C não é fundida.
 
+Não existe quorum fixo de cinco providers. Um grupo pode ser formado por 2, 3, 4 ou 5 fontes desde que continue sendo uma clique completa, sem dois eventos do mesmo provider e sem ambiguidade. A cobertura `matched`/`partial` mostrada pelo monitor é uma projeção operacional separada: compara os membros ativos observados com os providers ativos no runtime, portanto providers intencionalmente desabilitados não tornam o evento parcial.
+
 Confidence retornada é **1** para grupos aprovados e 0 na decisão SQL unmatched. É um indicador da regra, não probabilidade estatística. Evidence registra equivalência de times/competição e diferença temporal. A seleção recebe `canonicalSide` quando seu nome corresponde ao time canônico; `reversed` informa orientação invertida.
 
 ## Unmatched e ambiguidades

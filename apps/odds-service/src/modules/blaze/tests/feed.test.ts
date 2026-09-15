@@ -108,7 +108,7 @@ test("Blaze works with generic matching: four providers, reversed names, ambiguo
   const result = compareAllProviders([e, ...peers]);
   assert.equal(result.matched.length, 1);
   assert.equal(Object.keys(result.matched[0].providers).length, 4);
-  assert.equal(compareAllProviders([e]).unmatched.length, 1);
+  assert.equal(compareAllProviders([e]).notApplicable.length, 1);
   assert.equal(
     compareAllProviders([
       e,

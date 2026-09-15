@@ -2,7 +2,9 @@ export interface Provider {
   id: string;
   name: string;
   enabled: boolean;
+  active: boolean;
   status: string;
+  statusReason: string;
   eventCount: number;
   lastUpdatedAt: string | null;
   stale: boolean;
@@ -42,6 +44,8 @@ export interface Market {
 export interface EventProvider {
   id: string;
   provider: string;
+  active: boolean;
+  statusReason: string;
   providerEventId: string;
   rawTeamA: string;
   rawTeamB: string;
@@ -62,7 +66,13 @@ export interface EventRow {
   teamB: string;
   startsAt: string;
   matching: {
-    status: string;
+    status:
+      | "matched"
+      | "partial"
+      | "unmatched"
+      | "low_confidence"
+      | "manual"
+      | "not_applicable";
     confidence: number;
     providerCount: number;
     expectedProviderCount: number;
@@ -81,6 +91,7 @@ export interface Overview {
     matched: number;
     partial: number;
     unmatched: number;
+    notApplicable: number;
     issues: number;
   };
   providers: Provider[];

@@ -75,13 +75,24 @@ export function EventDetailView({
               <div className="font-mono text-[10px] text-on-surface-variant mt-2">
                 {event.canonicalId
                   ? "Canonical event"
-                  : "Unmatched provider event"}
+                  : event.matching.status === "not_applicable"
+                    ? "Single-provider event"
+                    : "Unmatched provider event"}
                 : {event.id}
               </div>
             </div>
             <div className="text-right">
-              <div className="text-primary uppercase text-[12px] font-semibold">
-                {event.matching.status}
+              <div
+                className={`${event.matching.status === "not_applicable" ? "text-on-surface-variant" : "text-primary"} uppercase text-[12px] font-semibold`}
+                title={
+                  event.matching.status === "not_applicable"
+                    ? "Only one eligible provider is currently available."
+                    : undefined
+                }
+              >
+                {event.matching.status === "not_applicable"
+                  ? "Matching unavailable"
+                  : event.matching.status}
               </div>
               <div className="text-[12px] mt-2">
                 Confidence: {(event.matching.confidence * 100).toFixed(0)}%
@@ -130,7 +141,11 @@ export function EventDetailView({
                       </td>
                       <td className="p-3">{timestamp(p.startsAt)}</td>
                       <td className="p-3">{timestamp(p.lastUpdatedAt)}</td>
-                      <td className="p-3">{p.status}</td>
+                      <td className="p-3">
+                        {!p.active && p.statusReason === "disabled_in_runtime"
+                          ? "Disabled in this runtime"
+                          : p.status}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
