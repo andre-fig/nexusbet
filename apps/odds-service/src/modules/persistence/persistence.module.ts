@@ -1,3 +1,4 @@
+import { PersistenceNotifications } from "./persistence-notifications.js";
 import { Global, Module } from "@nestjs/common";
 import { DatabaseModule } from "../database/database.module.js";
 import { PersistenceService } from "./persistence.service.js";
@@ -11,6 +12,7 @@ import { PERSISTENCE } from "../../shared/interfaces/persistence-port.interface.
 @Module({
   imports: [DatabaseModule],
   providers: [
+    PersistenceNotifications,
     PersistenceService,
     CatalogRepository,
     MatchingRepository,
@@ -19,6 +21,11 @@ import { PERSISTENCE } from "../../shared/interfaces/persistence-port.interface.
     { provide: PERSISTENCE, useExisting: PersistenceService },
   ],
   controllers: [PersistenceController],
-  exports: [PERSISTENCE, PersistenceService, DatabaseModule],
+  exports: [
+    PersistenceNotifications,
+    PERSISTENCE,
+    PersistenceService,
+    DatabaseModule,
+  ],
 })
 export class PersistenceModule {}

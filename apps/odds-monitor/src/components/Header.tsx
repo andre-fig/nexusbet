@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { RefreshCw, Moon, Sun, User, LayoutDashboard, FileText, Layers, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  RefreshCw,
+  Moon,
+  Sun,
+  User,
+  LayoutDashboard,
+  FileText,
+  Layers,
+  ExternalLink,
+} from "lucide-react";
 
 interface HeaderProps {
-  currentView: 'dashboard' | 'event-detail';
-  onNavigate: (view: 'dashboard' | 'event-detail') => void;
-  onOpenIssues: () => void;
-  onOpenDirectImages: () => void;
-  issueCount: number;
-  lastUpdatedSeconds: number;
+  currentView: "dashboard" | "event-detail";
+  onNavigate: (view: "dashboard" | "event-detail") => void;
+  liveStatus: string;
+  eventTitle?: string;
   onSync: () => void;
   isSyncing: boolean;
   isDarkMode: boolean;
@@ -17,10 +24,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentView,
   onNavigate,
-  onOpenIssues,
-  onOpenDirectImages,
-  issueCount,
-  lastUpdatedSeconds,
+  liveStatus,
+  eventTitle,
   onSync,
   isSyncing,
   isDarkMode,
@@ -31,8 +36,8 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="h-14 w-full px-4 md:px-6 flex items-center justify-between">
         {/* Left Section: Logo & Environment */}
         <div className="flex items-center gap-3 sm:gap-4">
-          <div 
-            onClick={() => onNavigate('dashboard')}
+          <div
+            onClick={() => onNavigate("dashboard")}
             className="flex items-center gap-2 cursor-pointer group"
           >
             <div className="w-7 h-7 rounded bg-surface-container-high border border-outline-variant/50 flex items-center justify-center transition-transform group-hover:scale-105">
@@ -42,7 +47,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="font-semibold text-[16px] text-on-surface tracking-tight group-hover:text-primary transition-colors">
                 Odds Monitor
               </span>
-              <span className="font-mono text-[11px] text-on-surface-variant/70">v2.4</span>
             </div>
           </div>
 
@@ -50,53 +54,45 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low border border-outline-variant/30">
             <span className="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span className="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">prod-us-east-1</span>
+            <span className="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">
+              internal · read only
+            </span>
           </div>
 
           {/* Quick View Navigation Tabs */}
           <div className="hidden lg:flex items-center gap-1 ml-2 bg-surface-container-low p-1 rounded-md border border-outline-variant/30">
             <button
-              onClick={() => onNavigate('dashboard')}
+              onClick={() => onNavigate("dashboard")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[12px] font-medium transition-all ${
-                currentView === 'dashboard'
-                  ? 'bg-surface-bright text-on-surface shadow-sm font-semibold'
-                  : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
+                currentView === "dashboard"
+                  ? "bg-surface-bright text-on-surface shadow-sm font-semibold"
+                  : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
               }`}
             >
               <LayoutDashboard size={13} />
               <span>Dashboard</span>
             </button>
             <button
-              onClick={() => onNavigate('event-detail')}
+              disabled={!eventTitle}
+              onClick={() => onNavigate("event-detail")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[12px] font-medium transition-all ${
-                currentView === 'event-detail'
-                  ? 'bg-surface-bright text-on-surface shadow-sm font-semibold'
-                  : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
+                currentView === "event-detail"
+                  ? "bg-surface-bright text-on-surface shadow-sm font-semibold"
+                  : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
               }`}
             >
               <FileText size={13} />
-              <span>FURIA vs NAVI</span>
+              <span>{eventTitle || "Event detail"}</span>
             </button>
           </div>
         </div>
 
         {/* Right Section: Sync, Direct Images link, Theme & Avatar */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Reference Images & HTML link modal button */}
-          <button
-            onClick={onOpenDirectImages}
-            title="Ver imagens de referência & HTML original"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 text-on-surface text-[12px] font-medium transition-colors"
-          >
-            <Layers size={14} className="text-primary" />
-            <span className="hidden md:inline">Imagens &amp; HTML</span>
-            <span className="md:hidden">Links</span>
-          </button>
-
           {/* Realtime Status */}
           <div className="hidden md:flex items-center gap-1.5 text-on-surface-variant font-mono text-[11px]">
             <span className="w-2 h-2 rounded-full bg-primary-container"></span>
-            <span>Updated {lastUpdatedSeconds}s ago</span>
+            <span>{liveStatus}</span>
           </div>
 
           {/* Manual Sync Button */}
@@ -107,8 +103,13 @@ export const Header: React.FC<HeaderProps> = ({
             title="Manual Sync"
             type="button"
           >
-            <RefreshCw size={14} className={isSyncing ? 'animate-spin text-primary' : ''} />
-            <span className="font-semibold text-[11px] uppercase tracking-wider hidden sm:inline">Sync</span>
+            <RefreshCw
+              size={14}
+              className={isSyncing ? "animate-spin text-primary" : ""}
+            />
+            <span className="font-semibold text-[11px] uppercase tracking-wider hidden sm:inline">
+              Sync
+            </span>
           </button>
 
           <div className="h-4 w-px bg-outline-variant/40"></div>
@@ -117,19 +118,13 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onToggleTheme}
             className="w-7 h-7 rounded flex items-center justify-center bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer"
-            title={isDarkMode ? 'Mudar para modo claro' : 'Mudar para modo escuro'}
+            title={
+              isDarkMode ? "Mudar para modo claro" : "Mudar para modo escuro"
+            }
             type="button"
           >
             {isDarkMode ? <Moon size={15} /> : <Sun size={15} />}
           </button>
-
-          {/* Profile Circle */}
-          <div 
-            className="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-xs font-semibold cursor-pointer"
-            title="User Profile: a_figueiredo@icloud.com"
-          >
-            <User size={15} />
-          </div>
         </div>
       </div>
     </header>

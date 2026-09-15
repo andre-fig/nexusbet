@@ -1,5 +1,6 @@
+import { PersistenceNotifications } from "./persistence-notifications.js";
 import { isDeepStrictEqual } from "node:util";
-import { Injectable, Inject, OnModuleInit } from "@nestjs/common";
+import { Injectable, Inject, Optional, OnModuleInit } from "@nestjs/common";
 import { createHash } from "node:crypto";
 import { DatabaseService } from "../database/database.service.js";
 import { seedProviders } from "../database/seed.js";
@@ -20,6 +21,9 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
     @Inject(DatabaseService) private readonly database: DatabaseService,
     @Inject(CatalogRepository) private readonly catalog: CatalogRepository,
     @Inject(MatchingRepository) private readonly matching: MatchingRepository,
+    @Optional()
+    @Inject(PersistenceNotifications)
+    private readonly notifications?: PersistenceNotifications,
   ) {}
   get enabled() {
     return this.database.enabled;
@@ -64,7 +68,7 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
       )
       .digest("hex");
     try {
-      await this.database.db.$transaction(
+      const notice = await this.database.db.$transaction(
         async (tx) => {
           // One short publication lock makes matching + publication atomic across providers/processes.
           await tx.$executeRaw`SELECT pg_advisory_xact_lock(7140365)`;
@@ -175,10 +179,17 @@ export class PersistenceService implements PersistencePort, OnModuleInit {
             },
             update: { payload: sanitize(p.checkpoint.payload) },
           });
+          return {
+            provider: p.provider,
+            at: p.fetchedAt,
+            changes,
+            eventIds: p.events.map((e) => e.eventId),
+          };
         },
         { maxWait: 30000, timeout: 120000 },
       );
       this.database.operationFailed = false;
+      if (notice) this.notifications?.committed.next(notice);
     } catch {
       this.database.operationFailed = true;
       throw new ServiceError(

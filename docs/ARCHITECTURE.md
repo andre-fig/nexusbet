@@ -4,7 +4,7 @@
 
 ## Limites do sistema
 
-O backend é um processo NestJS independente, em [apps/odds-service](../apps/odds-service). O monitor existente usa mocks e não participa da coleta. Não há BFF, betting engine, fila externa ou microservices. A API é GET, vinculada a 127.0.0.1; configuração em `.env`/ConfigModule.
+O backend é um processo NestJS independente, em [apps/odds-service](../apps/odds-service). O monitor lê PostgreSQL por meio do MonitorModule (REST/SSE) e não participa da coleta. [Fluxo e contratos](MONITOR.md). Não há BFF, betting engine, fila externa ou microservices. A API é GET, vinculada a 127.0.0.1; configuração em `.env`/ConfigModule.
 
 ## Módulos e dependências
 

@@ -7,7 +7,7 @@ Bet365 e Betano usam exclusivamente **`BROWSER_RUNTIME=local-cdp` no macOS**, co
 Preparação do Chrome, flags, ownership, indisponibilidade e shutdown: [Local CDP](../../docs/LOCAL_CDP.md).
 
 
-Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes bet365, Betano e Superbet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma para persistência e mantém os journals locais durante a migração. Não depende de frontend ou BFF.
+Backend NestJS somente leitura para odds pré-jogo de CS2, LoL e Valorant, com providers independentes Bet365, Betano, Superbet, Blaze e EstrelaBet, scheduler adaptativo, snapshots persistentes e matching conservador. Usa PostgreSQL com Prisma para persistência e mantém os journals locais durante a migração. Não depende de frontend ou BFF.
 
 Guia de entrada: [README da raiz](../../README.md). Instruções de trabalho: [AGENTS.md](../../AGENTS.md). Documentação aprofundada: [índice](../../README.md#documentation).
 
@@ -124,3 +124,7 @@ A comparação aceita múltiplas fontes (cinco providers implementados) e conser
 ## EstrelaBet — HTTP anônimo
 
 `ESTRELABET_ENABLED=true`, `ESTRELABET_MAX_CONCURRENCY=1`. Captura: `npm run capture:estrelabet -- --detail`; scheduler: `npm start`. Rotas `/providers/estrelabet/events`, `/providers/estrelabet/events/:id`, `/providers/estrelabet/health`. [Protocolo e dois ciclos reais com PostgreSQL](../../docs/ESTRELABET.md).
+
+## Monitor interno
+
+`/monitor/*` expõe REST sobre PostgreSQL e `/monitor/stream` emite invalidações SSE. Configure `ODDS_MONITOR_ORIGIN` com a origin exata do frontend. [Contratos, configuração, testes e limitações](../../docs/MONITOR.md). A coleta não depende de clientes SSE conectados.

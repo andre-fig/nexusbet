@@ -4,7 +4,7 @@ Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betan
 
 O escopo atual cobre CS2, League of Legends e Valorant. Os mercados prioritários são vencedor da partida e vencedor dos mapas 1–3; o parser aceita mapas adicionais e preserva mercados desconhecidos. Não há apostas, carteira, pagamentos, cálculo de odds próprias ou coleta live.
 
-`apps/odds-monitor` é uma aplicação React/Vite separada com dados mockados, ainda sem integração com este backend. Não é necessário instalá-la para trabalhar no odds-service. Não há workspace npm ou comando de instalação na raiz.
+`apps/odds-monitor` é o frontend interno React/Vite conectado ao backend por REST GET + SSE; usa somente dados reais persistidos. Guia de execução, API, invalidação e testes: [Monitor](docs/MONITOR.md). Não é necessário instalá-la para trabalhar no odds-service. Não há workspace npm ou comando de instalação na raiz.
 
 ## Runtime suportado: desenvolvimento local
 

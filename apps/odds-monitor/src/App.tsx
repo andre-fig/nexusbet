@@ -1,175 +1,196 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { DashboardView } from './components/DashboardView';
-import { EventDetailView } from './components/EventDetailView';
-import { NeedsAttentionDrawer } from './components/NeedsAttentionDrawer';
-import { EventInspectionModal } from './components/EventInspectionModal';
-import { DirectImagesModal } from './components/DirectImagesModal';
-import { Footer } from './components/Footer';
-import { 
-  PROVIDER_METRICS, 
-  OPERATIONAL_EVENTS, 
-  ISSUES_LIST 
-} from './data/mockData';
-import { OperationalOddsEvent, IssueItem, ProviderMetric } from './types';
-import { Check, Info } from 'lucide-react';
-
+import React, { useEffect, useRef, useState } from "react";
+import { Header } from "./components/Header";
+import { DashboardView } from "./components/DashboardView";
+import { EventDetailView } from "./components/EventDetailView";
+import { NeedsAttentionDrawer } from "./components/NeedsAttentionDrawer";
+import { Footer } from "./components/Footer";
+import { monitor } from "./lib/api/monitor";
+import { useResource } from "./lib/api/use-resource";
+import type { Filters } from "./lib/api/types";
+import {
+  connectStream,
+  invalidations,
+  type Invalidation,
+} from "./lib/sse/monitor-stream";
+const initialVersions = {
+  overview: 0,
+  events: 0,
+  detail: 0,
+  issues: 0,
+  history: 0,
+  raw: 0,
+};
 export default function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'event-detail'>('dashboard');
-  const [isIssuesDrawerOpen, setIsIssuesDrawerOpen] = useState(false);
-  const [isInspectionModalOpen, setIsInspectionModalOpen] = useState(false);
-  const [selectedInspectionEvent, setSelectedInspectionEvent] = useState<OperationalOddsEvent | null>(null);
-  const [isDirectImagesModalOpen, setIsDirectImagesModalOpen] = useState(false);
-  
-  const [isDarkMode, setIsDarkMode] = useState(true);
-  const [lastUpdatedSeconds, setLastUpdatedSeconds] = useState(18);
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const [providers, setProviders] = useState<ProviderMetric[]>(PROVIDER_METRICS);
-  const [events, setEvents] = useState<OperationalOddsEvent[]>(OPERATIONAL_EVENTS);
-  const [issues, setIssues] = useState<IssueItem[]>(ISSUES_LIST);
-
-  // Sync dark mode class with document root
+  const [versions, setVersions] = useState(initialVersions),
+    [selected, setSelected] = useState<string | null>(null),
+    [view, setView] = useState<"dashboard" | "event-detail">("dashboard"),
+    [drawer, setDrawer] = useState(false),
+    [dark, setDark] = useState(true),
+    [showRaw, setShowRaw] = useState(false),
+    [selection, setSelection] = useState(""),
+    [live, setLive] = useState<"connected" | "reconnecting">("reconnecting");
+  const [filters, setFilters] = useState<Filters>({
+    search: "",
+    esport: "",
+    status: "",
+    start: "",
+    provider: "",
+    attentionOnly: "false",
+    page: "1",
+    limit: "50",
+  });
+  const active = useRef<string | null>(null);
+  active.current = view === "event-detail" ? selected : null;
+  const overview = useResource(
+      (s) => monitor.overview(s),
+      String(versions.overview),
+      true,
+      "overview",
+    ),
+    events = useResource(
+      (s) => monitor.events(filters, s),
+      JSON.stringify(filters) + versions.events,
+      true,
+      JSON.stringify(filters),
+    ),
+    detail = useResource(
+      (s) => monitor.detail(selected!, s),
+      selected + ":" + versions.detail,
+      view === "event-detail" && !!selected,
+      selected ?? "",
+    ),
+    issues = useResource(
+      (s) => monitor.issues(s),
+      String(versions.issues),
+      drawer,
+      "issues",
+    ),
+    history = useResource(
+      (s) => monitor.history(selected!, { selection }, s),
+      selected + ":" + selection + ":" + versions.history,
+      view === "event-detail" && !!selected && !!selection,
+      selected + ":" + selection,
+    ),
+    raw = useResource(
+      (s) => monitor.raw(selected!, s),
+      selected + ":" + versions.raw,
+      view === "event-detail" && !!selected && showRaw,
+      selected ?? "",
+    );
+  const bump = (keys: Invalidation[]) =>
+    setVersions((v) => {
+      const next = { ...v };
+      for (const k of new Set(keys)) next[k]++;
+      return next;
+    });
+  const initialized = !overview.loading && !events.loading;
+  const [streamStarted, setStreamStarted] = useState(false);
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  // Live timer for "Updated Xs ago"
+    if (initialized) setStreamStarted(true);
+  }, [initialized]);
   useEffect(() => {
-    const interval = setInterval(() => {
-      setLastUpdatedSeconds((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => {
-      setToastMessage((current) => (current === msg ? null : current));
-    }, 3000);
+    if (!streamStarted) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const pending = new Set<Invalidation>();
+    const close = connectStream((type, data) => {
+      for (const key of invalidations(type, data.eventId, active.current))
+        pending.add(key);
+      if (!timer)
+        timer = setTimeout(() => {
+          bump([...pending]);
+          pending.clear();
+          timer = undefined;
+        }, 300);
+    }, setLive);
+    return () => {
+      close();
+      clearTimeout(timer);
+    };
+  }, [streamStarted]);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
+  const open = (id: string) => {
+    setSelected(id);
+    setView("event-detail");
+    setSelection("");
+    setShowRaw(false);
+    setDrawer(false);
+    window.scrollTo({ top: 0 });
   };
-
-  const handleSync = () => {
-    setIsSyncing(true);
-    setTimeout(() => {
-      setIsSyncing(false);
-      setLastUpdatedSeconds(1);
-      showToast('All 4 bookmaker feeds synced successfully · Latency: 14ms');
-    }, 850);
-  };
-
-  const handleOpenEventDetail = (eventId: string) => {
-    setCurrentView('event-detail');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleOpenInspectionModal = (event: OperationalOddsEvent) => {
-    setSelectedInspectionEvent(event);
-    setIsInspectionModalOpen(true);
-  };
-
-  const handleInspectIssue = (issue: IssueItem) => {
-    setIsIssuesDrawerOpen(false);
-    if (issue.eventId === 'iem-cologne-2025-m39') {
-      setCurrentView('event-detail');
-    } else {
-      const foundEvent = events.find((e) => e.id === issue.eventId) || events[1];
-      setSelectedInspectionEvent(foundEvent);
-      setIsInspectionModalOpen(true);
-    }
-  };
-
-  const handleBatchAcknowledge = () => {
-    setIssues([]);
-    setIsIssuesDrawerOpen(false);
-    showToast('Batch acknowledged all 7 active issues.');
-  };
-
-  const handleResolveSingleIssue = (issueId: string) => {
-    setIssues((prev) => prev.filter((i) => i.id !== issueId));
-    showToast('Issue marked as resolved.');
-  };
-
-  const handleBlacklistProvider = (providerName: string) => {
-    showToast(`Quarantined and blacklisted ${providerName} for this market.`);
-  };
-
+  const sync = () =>
+    bump(
+      view === "dashboard"
+        ? [
+            "overview",
+            "events",
+            ...(drawer ? (["issues"] as Invalidation[]) : []),
+          ]
+        : [
+            "detail",
+            ...(selection ? (["history"] as Invalidation[]) : []),
+            ...(showRaw ? (["raw"] as Invalidation[]) : []),
+            ...(drawer ? (["issues"] as Invalidation[]) : []),
+          ],
+    );
   return (
     <div className="min-h-screen flex flex-col bg-surface-container-lowest text-on-surface antialiased transition-colors duration-200">
-      {/* Toast Notification Banner */}
-      {toastMessage && (
-        <div className="fixed top-16 right-4 z-50 flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high border border-primary/40 text-on-surface shadow-xl animate-fade-in text-[12px] font-mono">
-          <Check size={14} className="text-primary" />
-          <span>{toastMessage}</span>
-        </div>
-      )}
-
-      {/* Main App Header */}
       <Header
-        currentView={currentView}
-        onNavigate={(view) => setCurrentView(view)}
-        onOpenIssues={() => setIsIssuesDrawerOpen(true)}
-        onOpenDirectImages={() => setIsDirectImagesModalOpen(true)}
-        issueCount={issues.length}
-        lastUpdatedSeconds={lastUpdatedSeconds}
-        onSync={handleSync}
-        isSyncing={isSyncing}
-        isDarkMode={isDarkMode}
-        onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+        currentView={view}
+        onNavigate={setView}
+        onSync={sync}
+        isSyncing={overview.loading || events.loading || detail.loading}
+        isDarkMode={dark}
+        onToggleTheme={() => setDark(!dark)}
+        liveStatus={
+          live === "connected"
+            ? "Live updates connected"
+            : "Live updates reconnecting…"
+        }
+        eventTitle={
+          detail.data
+            ? `${detail.data.teamA} vs ${detail.data.teamB}`
+            : undefined
+        }
       />
-
-      {/* Main Screen Content */}
-      <main className="w-full pt-14 flex-1 flex flex-col">
-        {currentView === 'dashboard' ? (
+      <main className="flex-1 pt-14">
+        {view === "dashboard" ? (
           <DashboardView
-            providers={providers}
+            overview={overview}
             events={events}
-            onOpenIssuesDrawer={() => setIsIssuesDrawerOpen(true)}
-            onOpenEventDetail={handleOpenEventDetail}
-            onOpenInspectionModal={handleOpenInspectionModal}
-            issueCount={issues.length}
+            filters={filters}
+            onFilter={(key, value) =>
+              setFilters((f) => ({
+                ...f,
+                [key]: value,
+                page: key === "page" ? value : "1",
+              }))
+            }
+            onOpenIssuesDrawer={() => setDrawer(true)}
+            onOpenEventDetail={open}
           />
         ) : (
           <EventDetailView
-            onBackToDashboard={() => setCurrentView('dashboard')}
-            onSyncEvent={handleSync}
-            isSyncing={isSyncing}
+            key={selected}
+            detail={detail}
+            history={history}
+            raw={raw}
+            showRaw={showRaw}
+            onToggleRaw={() => setShowRaw(!showRaw)}
+            selection={selection}
+            onSelection={setSelection}
+            onBackToDashboard={() => setView("dashboard")}
+            onSyncEvent={sync}
           />
         )}
       </main>
-
-      {/* Slide-over Issues Drawer */}
-      <NeedsAttentionDrawer
-        isOpen={isIssuesDrawerOpen}
-        onClose={() => setIsIssuesDrawerOpen(false)}
-        issues={issues}
-        onInspectIssue={handleInspectIssue}
-        onBatchAcknowledge={handleBatchAcknowledge}
-        onResolveSingleIssue={handleResolveSingleIssue}
-      />
-
-      {/* Outlier Inspection Modal */}
-      <EventInspectionModal
-        isOpen={isInspectionModalOpen}
-        onClose={() => setIsInspectionModalOpen(false)}
-        event={selectedInspectionEvent}
-        onBlacklistProvider={handleBlacklistProvider}
-      />
-
-      {/* Direct Images & HTML Explanation Modal */}
-      <DirectImagesModal
-        isOpen={isDirectImagesModalOpen}
-        onClose={() => setIsDirectImagesModalOpen(false)}
-        onNavigateToScreen={(screen) => setCurrentView(screen)}
-      />
-
-      {/* Global Footer */}
       <Footer />
+      <NeedsAttentionDrawer
+        isOpen={drawer}
+        onClose={() => setDrawer(false)}
+        issues={issues}
+        onInspectIssue={open}
+      />
     </div>
   );
 }

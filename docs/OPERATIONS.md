@@ -111,3 +111,7 @@ Use `npm run capture:blaze -- --detail` e `/providers/blaze/health`. Em falha, v
 ## EstrelaBet
 
 Use `npm run capture:estrelabet -- --detail`, `/providers/estrelabet/health` e `/health`. HTTP 403/non-JSON ou mudança de pageCount interrompem a rodada; não copie cookies nem abra Chrome como fallback. Valide todas as páginas de GetUpcoming e referências de IDs antes de substituir catálogo. Mercado auxiliar com novo ID pode produzir MarketAdded/Removed legítimos. Compare odds com a UI considerando truncamento de apresentação, preservando precisão no domínio. [Diagnóstico completo](ESTRELABET.md).
+
+## Monitor interno
+
+Consulte [Monitor](MONITOR.md) para rotas, CORS, SSE e testes. Se a tela mostra reconexão, confirme `/monitor/stream` e a origin exata; Sync continua sendo GET. Se receber 503, verifique PostgreSQL/PERSISTENCE_MODE, sem ativar fallback para mock. Uma UI vazia em banco novo é esperada; seed não cria eventos.

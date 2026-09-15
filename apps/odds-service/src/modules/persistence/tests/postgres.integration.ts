@@ -883,3 +883,81 @@ test("EstrelaBet real fixture persists maps and IDs, joins canonical peers, rest
   );
   assert.ok(await service.restore("estrelabet:test"));
 });
+
+test("Monitor reads paginated real groups, current markets, sanitized raw and chronological history without changing matching", async () => {
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const repo = new MonitorRepository(database);
+  const collection = {
+    operationalHealth: () => ({ providers: { superbet: { status: "ok" } } }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitor = new MonitorService(repo, config, collection);
+  const e = event();
+  e.markets[0].category = "match_winner";
+  e.markets[0].map = null;
+  for (const [index, odds] of [1.72, 1.7, 1.68].entries()) {
+    const next = structuredClone(e);
+    next.fetchedAt = new Date(Date.parse(at) + index * 1000).toISOString();
+    next.markets[0].selections[0].odds = odds;
+    await service.commit(publication(next));
+  }
+  const result = await monitor.events({ provider: "superbet", limit: "1" });
+  assert.equal(result.pagination.total, 1);
+  const id = result.items[0].id;
+  assert.equal(result.items[0].canonicalId, null);
+  assert.equal(result.items[0].providers[0].matchWinner.teamA, 1.68);
+  const detail = await monitor.detail(id);
+  assert.equal(detail.markets.length, 1);
+  const history = await monitor.history(id, {
+    selection: detail.markets[0].selections[0].id,
+  });
+  assert.deepEqual(
+    history.series[0].points.map((p) => p.odds),
+    [1.72, 1.7, 1.68],
+  );
+  assert.ok(
+    !JSON.stringify(await monitor.raw(id)).includes("must-not-persist"),
+  );
+  assert.equal(
+    (await monitor.events({ search: "does not exist" })).items.length,
+    0,
+  );
+  assert.equal(
+    (await monitor.events({ attentionOnly: "true" })).pagination.total,
+    1,
+  );
+  assert.equal((await monitor.issues({ eventId: id })).items.length, 1);
+  assert.equal((await monitor.overview()).health.unmatched, 1);
+  await database.db.provider.create({ data: { slug: "sixth", name: "Sixth" } });
+  assert.equal((await monitor.providers()).length, 6);
+  const removed = structuredClone(e);
+  removed.fetchedAt = new Date(Date.parse(at) + 3000).toISOString();
+  removed.markets = [];
+  await service.commit(publication(removed));
+  assert.equal((await monitor.detail(id)).markets.length, 0);
+  assert.equal((await monitor.history(id, {})).series[0].points.length, 3);
+});
+test("Monitor publication notices occur after commit, never on replay or transaction failure", async () => {
+  const { PersistenceNotifications } =
+    await import("../persistence-notifications.js");
+  const bus = new PersistenceNotifications();
+  const notices: unknown[] = [];
+  bus.committed.subscribe((n) => notices.push(n));
+  const publishing = new PersistenceService(
+    database,
+    new CatalogRepository(),
+    new MatchingRepository(issues),
+    bus,
+  );
+  const p = publication(event());
+  await publishing.commit(p);
+  assert.equal(notices.length, 1);
+  assert.equal(await database.db.oddsSnapshot.count(), 1);
+  await publishing.commit(p);
+  assert.equal(notices.length, 1);
+  const conflict = structuredClone(p);
+  conflict.events[0].markets[0].selections[0].odds = 1.1;
+  await assert.rejects(publishing.commit(conflict));
+  assert.equal(notices.length, 1);
+});

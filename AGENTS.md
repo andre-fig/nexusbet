@@ -1,6 +1,6 @@
 # Project Overview
 
-NexusBet contém o backend NestJS de leitura `apps/odds-service`: odds pré-jogo de CS2, LoL e Valorant de Bet365, Betano, Superbet, Blaze e EstrelaBet. Coleta, normaliza, publica snapshots, preserva histórico PostgreSQL/journal e compara eventos. Não implementa apostas, pagamentos, carteira, BFF ou live. `apps/odds-monitor` é separado e usa mocks; não é dependência do backend.
+NexusBet contém o backend NestJS de leitura `apps/odds-service`: odds pré-jogo de CS2, LoL e Valorant de Bet365, Betano, Superbet, Blaze e EstrelaBet. Coleta, normaliza, publica snapshots, preserva histórico PostgreSQL/journal e compara eventos. Não implementa apostas, pagamentos, carteira, BFF ou live. `apps/odds-monitor` é separado e usa REST GET como verdade + SSE como invalidação; não é dependência do backend. Leia [Monitor](docs/MONITOR.md) antes de alterar a integração. Não reintroduzir mocks na UI nem enviar snapshots/raw no SSE.
 
 Leia [README](README.md), depois o documento da área em [docs](docs/ARCHITECTURE.md). Código, schema, migrations e testes atuais são a fonte principal; registre divergências em vez de mudar comportamento para corresponder a uma descrição antiga.
 
@@ -122,7 +122,7 @@ Procedimentos: [Operations](docs/OPERATIONS.md).
 
 # Do Not
 
-Não apostar, inferir finished por ausência, apagar histórico, misturar protocolos, relaxar validações para passar testes, iniciar polling indefinidamente para documentar ou implementar frontend/BFF/risk engine por iniciativa própria. Não apresentar deploy Railway, Sentry ou dashboard integrado como validados: o runtime está preparado, a implantação remota exige validação. Veja [produção](docs/PRODUCTION_RUNTIME.md).
+Não apostar, inferir finished por ausência, apagar histórico, misturar protocolos, relaxar validações para passar testes, iniciar polling indefinidamente para documentar ou implementar frontend/BFF/risk engine por iniciativa própria. O monitor integrado foi validado localmente. Não apresentar deploy Railway ou Sentry como validados: o runtime está preparado, a implantação remota exige validação. Veja [produção](docs/PRODUCTION_RUNTIME.md).
 
 Diagnóstico de browser: [HEADLESS_DIAGNOSTICS.md](docs/HEADLESS_DIAGNOSTICS.md). `browser:diagnose` não publica snapshots; `browser:compare` compara metadados sanitizados. A validação atual usa targets próprios no Chrome pessoal existente; não copia cookies.
 

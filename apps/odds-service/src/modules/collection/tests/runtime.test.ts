@@ -39,12 +39,13 @@ ${crashDisplay ? "setTimeout(()=>{log('display-crash');process.exit(1)},500);" :
 const fs = require('node:fs');
 const log = (s) => fs.appendFileSync(process.env.RUNTIME_TEST_LOG, s+'\\n');
 log('app-start');
-console.log('APP_READY');
 setInterval(()=>{}, 1000);
 process.once('SIGTERM',()=>{
  log('draining');
  setTimeout(()=>{log('commit-and-browser-close');process.exit(0)},150);
 });
+// Readiness must follow signal registration, otherwise the test races SIGTERM.
+console.log('APP_READY');
 `,
   );
   const child = spawn(

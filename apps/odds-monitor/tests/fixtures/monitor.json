@@ -1,0 +1,473 @@
+{
+  "overview": {
+    "generatedAt": "2026-09-15T02:51:54.475Z",
+    "health": {
+      "status": "degraded",
+      "events": 169,
+      "matched": 0,
+      "partial": 7,
+      "unmatched": 162,
+      "issues": 165
+    },
+    "providers": [
+      {
+        "id": "bet365",
+        "name": "Bet365",
+        "enabled": false,
+        "eventCount": 67,
+        "lastUpdatedAt": "2026-09-14T20:56:06.605Z",
+        "stale": true,
+        "status": "disabled"
+      },
+      {
+        "id": "betano",
+        "name": "Betano",
+        "enabled": false,
+        "eventCount": 68,
+        "lastUpdatedAt": "2026-09-14T20:58:29.190Z",
+        "stale": true,
+        "status": "disabled"
+      },
+      {
+        "id": "blaze",
+        "name": "Blaze",
+        "enabled": true,
+        "eventCount": 0,
+        "lastUpdatedAt": null,
+        "stale": true,
+        "status": "unavailable"
+      },
+      {
+        "id": "estrelabet",
+        "name": "EstrelaBet",
+        "enabled": true,
+        "eventCount": 41,
+        "lastUpdatedAt": "2026-09-15T02:22:08.592Z",
+        "stale": true,
+        "status": "stale"
+      },
+      {
+        "id": "superbet",
+        "name": "Superbet",
+        "enabled": true,
+        "eventCount": 0,
+        "lastUpdatedAt": null,
+        "stale": true,
+        "status": "unavailable"
+      }
+    ]
+  },
+  "events": {
+    "items": [
+      {
+        "id": "7a62b705-3498-4e51-8364-37ea25cda527",
+        "canonicalId": null,
+        "esport": "cs2",
+        "tournament": "NODWIN Clutch Series 12",
+        "teamA": "Team Brute",
+        "teamB": "G2 Ares",
+        "startsAt": "2026-09-15T08:00:00.000Z",
+        "matching": {
+          "status": "unmatched",
+          "confidence": 0,
+          "providerCount": 1,
+          "expectedProviderCount": 5
+        },
+        "providers": [
+          {
+            "id": "7a62b705-3498-4e51-8364-37ea25cda527",
+            "provider": "estrelabet",
+            "providerEventId": "17707439",
+            "rawTeamA": "Team Brute",
+            "rawTeamB": "G2 Ares",
+            "rawTournament": "NODWIN Clutch Series 12",
+            "startsAt": "2026-09-15T08:00:00.000Z",
+            "lastUpdatedAt": "2026-09-15T02:22:07.975Z",
+            "status": "stale",
+            "providerStatus": "scheduled",
+            "matchWinner": {
+              "teamA": 1.5264,
+              "teamB": 2.3
+            },
+            "issues": [
+              {
+                "id": "e675ad44-53db-4678-b11b-a913f06737af",
+                "type": "UNMATCHED_EVENT",
+                "severity": "info",
+                "message": "No unambiguous cross-provider match",
+                "providerEventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+                "canonicalEventId": null
+              }
+            ]
+          }
+        ],
+        "issues": [
+          {
+            "id": "e675ad44-53db-4678-b11b-a913f06737af",
+            "type": "UNMATCHED_EVENT",
+            "severity": "info",
+            "message": "No unambiguous cross-provider match",
+            "providerEventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+            "canonicalEventId": null
+          }
+        ]
+      },
+      {
+        "id": "d37e931b-975e-4668-87e7-c1d6f706773b",
+        "canonicalId": null,
+        "esport": "valorant",
+        "tournament": "VCT 2026: Game Changers Pacific",
+        "teamA": "Gen.G GC",
+        "teamB": "FENNEL GC",
+        "startsAt": "2026-09-15T09:00:00.000Z",
+        "matching": {
+          "status": "unmatched",
+          "confidence": 0,
+          "providerCount": 1,
+          "expectedProviderCount": 5
+        },
+        "providers": [
+          {
+            "id": "d37e931b-975e-4668-87e7-c1d6f706773b",
+            "provider": "estrelabet",
+            "providerEventId": "17708904",
+            "rawTeamA": "Gen.G GC",
+            "rawTeamB": "FENNEL GC",
+            "rawTournament": "VCT 2026: Game Changers Pacific",
+            "startsAt": "2026-09-15T09:00:00.000Z",
+            "lastUpdatedAt": "2026-09-15T02:22:08.592Z",
+            "status": "stale",
+            "providerStatus": "scheduled",
+            "matchWinner": {
+              "teamA": 1.4762,
+              "teamB": 2.4
+            },
+            "issues": [
+              {
+                "id": "13f5640a-5bf6-4075-b2a3-36bcd3930de2",
+                "type": "UNMATCHED_EVENT",
+                "severity": "info",
+                "message": "No unambiguous cross-provider match",
+                "providerEventId": "d37e931b-975e-4668-87e7-c1d6f706773b",
+                "canonicalEventId": null
+              }
+            ]
+          }
+        ],
+        "issues": [
+          {
+            "id": "13f5640a-5bf6-4075-b2a3-36bcd3930de2",
+            "type": "UNMATCHED_EVENT",
+            "severity": "info",
+            "message": "No unambiguous cross-provider match",
+            "providerEventId": "d37e931b-975e-4668-87e7-c1d6f706773b",
+            "canonicalEventId": null
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 2,
+      "total": 41,
+      "pages": 21
+    }
+  },
+  "detail": {
+    "id": "7a62b705-3498-4e51-8364-37ea25cda527",
+    "canonicalId": null,
+    "esport": "cs2",
+    "tournament": "NODWIN Clutch Series 12",
+    "teamA": "Team Brute",
+    "teamB": "G2 Ares",
+    "startsAt": "2026-09-15T08:00:00.000Z",
+    "matching": {
+      "status": "unmatched",
+      "confidence": 0,
+      "providerCount": 1,
+      "expectedProviderCount": 5
+    },
+    "providers": [
+      {
+        "id": "7a62b705-3498-4e51-8364-37ea25cda527",
+        "provider": "estrelabet",
+        "providerEventId": "17707439",
+        "rawTeamA": "Team Brute",
+        "rawTeamB": "G2 Ares",
+        "rawTournament": "NODWIN Clutch Series 12",
+        "startsAt": "2026-09-15T08:00:00.000Z",
+        "lastUpdatedAt": "2026-09-15T02:22:07.975Z",
+        "status": "stale",
+        "providerStatus": "scheduled",
+        "matchWinner": {
+          "teamA": 1.5264,
+          "teamB": 2.3
+        },
+        "markets": [
+          {
+            "id": "8ff62c93-1210-4419-baa1-674790e083aa",
+            "providerMarketId": "1732121407",
+            "category": "match_winner",
+            "name": "Vencedor da partida",
+            "mapNumber": null,
+            "suspended": false,
+            "inPlay": false,
+            "lastSeenAt": "2026-09-15T02:22:07.975Z",
+            "selections": [
+              {
+                "id": "1dfac42c-1326-4275-9701-f3dfb3b62d4d",
+                "selectionId": "4499161413",
+                "name": "Team Brute",
+                "odds": 1.5264,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              },
+              {
+                "id": "d9bf9245-e6b4-4a87-bd7b-4959455c576f",
+                "selectionId": "4499161414",
+                "name": "G2 Ares",
+                "odds": 2.3,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              }
+            ]
+          },
+          {
+            "id": "69bf9449-8b33-4585-9ebf-b8d2c98b05e7",
+            "providerMarketId": "1732121556",
+            "category": "map_winner",
+            "name": "Primeiro Mapa - Vencedor",
+            "mapNumber": 1,
+            "suspended": false,
+            "inPlay": false,
+            "lastSeenAt": "2026-09-15T02:22:07.975Z",
+            "selections": [
+              {
+                "id": "497f65d5-0cfc-455e-9902-75f95100cba3",
+                "selectionId": "4499161789",
+                "name": "Team Brute",
+                "odds": 1.8334,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              },
+              {
+                "id": "9d437e5e-8932-4e65-b043-0a98ef4939b0",
+                "selectionId": "4499161790",
+                "name": "G2 Ares",
+                "odds": 1.9091,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              }
+            ]
+          },
+          {
+            "id": "5ca22a25-c198-4ec5-b3bb-472c1cd7c192",
+            "providerMarketId": "1732121557",
+            "category": "map_winner",
+            "name": "Segundo Mapa - Vencedor",
+            "mapNumber": 2,
+            "suspended": false,
+            "inPlay": false,
+            "lastSeenAt": "2026-09-15T02:22:07.975Z",
+            "selections": [
+              {
+                "id": "c2c1f56b-148b-4601-8b51-9ab0b495d132",
+                "selectionId": "4499161791",
+                "name": "Team Brute",
+                "odds": 1.625,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              },
+              {
+                "id": "dead6216-55b5-4c3f-b4bc-20ba5511649a",
+                "selectionId": "4499161792",
+                "name": "G2 Ares",
+                "odds": 2.2,
+                "suspended": false,
+                "inPlay": false,
+                "fetchedAt": "2026-09-15T02:22:07.975Z"
+              }
+            ]
+          }
+        ],
+        "issues": [
+          {
+            "id": "e675ad44-53db-4678-b11b-a913f06737af",
+            "type": "UNMATCHED_EVENT",
+            "severity": "info",
+            "message": "No unambiguous cross-provider match",
+            "providerEventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+            "canonicalEventId": null
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "id": "e675ad44-53db-4678-b11b-a913f06737af",
+        "type": "UNMATCHED_EVENT",
+        "severity": "info",
+        "message": "No unambiguous cross-provider match",
+        "providerEventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+        "canonicalEventId": null
+      }
+    ],
+    "markets": [
+      {
+        "id": "8ff62c93-1210-4419-baa1-674790e083aa",
+        "providerMarketId": "1732121407",
+        "category": "match_winner",
+        "name": "Vencedor da partida",
+        "mapNumber": null,
+        "suspended": false,
+        "inPlay": false,
+        "lastSeenAt": "2026-09-15T02:22:07.975Z",
+        "selections": [
+          {
+            "id": "1dfac42c-1326-4275-9701-f3dfb3b62d4d",
+            "selectionId": "4499161413",
+            "name": "Team Brute",
+            "odds": 1.5264,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          },
+          {
+            "id": "d9bf9245-e6b4-4a87-bd7b-4959455c576f",
+            "selectionId": "4499161414",
+            "name": "G2 Ares",
+            "odds": 2.3,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          }
+        ],
+        "provider": "estrelabet"
+      },
+      {
+        "id": "69bf9449-8b33-4585-9ebf-b8d2c98b05e7",
+        "providerMarketId": "1732121556",
+        "category": "map_winner",
+        "name": "Primeiro Mapa - Vencedor",
+        "mapNumber": 1,
+        "suspended": false,
+        "inPlay": false,
+        "lastSeenAt": "2026-09-15T02:22:07.975Z",
+        "selections": [
+          {
+            "id": "497f65d5-0cfc-455e-9902-75f95100cba3",
+            "selectionId": "4499161789",
+            "name": "Team Brute",
+            "odds": 1.8334,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          },
+          {
+            "id": "9d437e5e-8932-4e65-b043-0a98ef4939b0",
+            "selectionId": "4499161790",
+            "name": "G2 Ares",
+            "odds": 1.9091,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          }
+        ],
+        "provider": "estrelabet"
+      },
+      {
+        "id": "5ca22a25-c198-4ec5-b3bb-472c1cd7c192",
+        "providerMarketId": "1732121557",
+        "category": "map_winner",
+        "name": "Segundo Mapa - Vencedor",
+        "mapNumber": 2,
+        "suspended": false,
+        "inPlay": false,
+        "lastSeenAt": "2026-09-15T02:22:07.975Z",
+        "selections": [
+          {
+            "id": "c2c1f56b-148b-4601-8b51-9ab0b495d132",
+            "selectionId": "4499161791",
+            "name": "Team Brute",
+            "odds": 1.625,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          },
+          {
+            "id": "dead6216-55b5-4c3f-b4bc-20ba5511649a",
+            "selectionId": "4499161792",
+            "name": "G2 Ares",
+            "odds": 2.2,
+            "suspended": false,
+            "inPlay": false,
+            "fetchedAt": "2026-09-15T02:22:07.975Z"
+          }
+        ],
+        "provider": "estrelabet"
+      }
+    ]
+  },
+  "history": {
+    "eventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+    "series": [
+      {
+        "provider": "estrelabet",
+        "market": {
+          "id": "8ff62c93-1210-4419-baa1-674790e083aa",
+          "category": "match_winner",
+          "mapNumber": null
+        },
+        "selection": "Team Brute",
+        "selectionId": "1dfac42c-1326-4275-9701-f3dfb3b62d4d",
+        "points": [
+          {
+            "odds": 1.5264,
+            "fetchedAt": "2026-09-15T02:21:05.143Z",
+            "suspended": false,
+            "inPlay": false
+          },
+          {
+            "odds": 1.5264,
+            "fetchedAt": "2026-09-15T02:21:05.958Z",
+            "suspended": false,
+            "inPlay": false
+          },
+          {
+            "odds": 1.5264,
+            "fetchedAt": "2026-09-15T02:22:07.168Z",
+            "suspended": false,
+            "inPlay": false
+          },
+          {
+            "odds": 1.5264,
+            "fetchedAt": "2026-09-15T02:22:07.975Z",
+            "suspended": false,
+            "inPlay": false
+          }
+        ]
+      }
+    ],
+    "truncated": false
+  },
+  "issues": {
+    "items": [
+      {
+        "id": "e675ad44-53db-4678-b11b-a913f06737af",
+        "type": "UNMATCHED_EVENT",
+        "severity": "info",
+        "status": "open",
+        "eventId": "7a62b705-3498-4e51-8364-37ea25cda527",
+        "provider": "estrelabet",
+        "title": "Team Brute vs G2 Ares",
+        "message": "No unambiguous cross-provider match",
+        "detectedAt": "2026-09-15T02:21:05.143Z"
+      }
+    ]
+  }
+}

@@ -109,3 +109,7 @@ A suíte opcional `owned-browser.test.ts` usa Chrome headed quando DISPLAY exist
 ## EstrelaBet
 
 `src/modules/estrelabet/tests` cobre 17 testes offline com fixtures reais: protocolo paginado, detalhe, mapas 1–5, precisão, IDs, unknown, suspensão, dedupe, snapshots, isolamento Nest, HTTP/timeout, scheduler/backoff e matching de cinco providers. `test:db` testa persistência, histórico e vínculos canônicos. `npm run capture:estrelabet -- --detail` é captura real opcional, fora da suíte normal. [Resultados e evidências](ESTRELABET.md).
+
+## Monitor REST/SSE
+
+[Guia e E2E](MONITOR.md#testar). `apps/odds-monitor`: npm test, npm run typecheck, npm run build. Backend: suíte comum inclui MonitorModule; suíte SQL inclui projeções e notificação após commit. E2E opcional exige cópia isolada do banco e publica uma alteração controlada; não acessa bookmakers.

@@ -16,6 +16,7 @@ export interface Settings {
   cdpReconnectCooldownMs: number;
   persistenceMode: "file" | "postgres";
   databaseUrl?: string;
+  monitorOrigin?: string;
   collection: CollectionSettings;
   ingestEnabled: boolean;
   port: number;
@@ -82,6 +83,15 @@ export function configuration() {
   const blazeFlag = process.env.BLAZE_ENABLED ?? "true";
   if (!["true", "false", "1", "0"].includes(blazeFlag))
     throw Error("Invalid BLAZE_ENABLED");
+  if (process.env.ODDS_MONITOR_ORIGIN)
+    for (const origin of process.env.ODDS_MONITOR_ORIGIN.split(",")) {
+      const u = new URL(origin.trim());
+      if (
+        !["http:", "https:"].includes(u.protocol) ||
+        u.origin !== origin.trim()
+      )
+        throw Error("Invalid ODDS_MONITOR_ORIGIN");
+    }
   const settings: Settings = {
     browser: browserConfiguration(),
     providerEnabled: {
@@ -95,6 +105,7 @@ export function configuration() {
     ),
     persistenceMode: persistenceMode as "file" | "postgres",
     databaseUrl: process.env.DATABASE_URL,
+    monitorOrigin: process.env.ODDS_MONITOR_ORIGIN,
     collection: collectionConfiguration(),
     ingestEnabled: process.env.INBOX_INGEST_ENABLED !== "0",
     port: positive("PORT", 3650, 0),

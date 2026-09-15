@@ -19,3 +19,7 @@ apps/odds-service/evidence/
 apps/odds-service/blaze-inbox/
 
 apps/odds-service/estrelabet-inbox/
+
+# Internal monitor build output / local environment
+apps/odds-monitor/dist/
+!apps/odds-monitor/.env.example

@@ -35,7 +35,7 @@ Este registro descreve decisões verificáveis no código e limites explícitos 
 ## Não implementado / limites atuais
 
 - Não há integração Sentry nem configuração Railway encontrada no repositório. Não são ferramentas operacionais já disponíveis.
-- odds-monitor existente é React/Vite com mocks, não dashboard conectado. Backend não depende dele. Não há BFF nem frontend público de apostas.
+- odds-monitor é React/Vite conectado por REST GET + SSE de invalidação, sem mocks em runtime. Backend não depende dele. Não há BFF nem frontend público de apostas.
 - partial/low_confidence/manual existem no schema, mas workflow completo de revisão humana/classificação gradual não está implementado. Issues automáticas cobrem unmatched e conflitos canônicos, não todos os detectores previstos.
 - Matching da API compara listagens, sem juntar automaticamente todos os detalhes; não há consenso, escolha de melhor preço ou odds próprias.
 - Não há live collector, aposta, carteira, pagamento, liquidação ou risk engine. Valores live/finished modelados não equivalem a implementá-los.
@@ -55,3 +55,5 @@ Após a matriz homepage Linux headed 200/headless 403, o padrão passa a headed 
 ## Um browser/contexto, tabs por provider
 
 O custo do processo e do contexto é compartilhado, mantendo parser/collector e locks separados por provider. Storage continua sujeito às origens normais do Chrome; não há evidência que justifique contextos isolados. Não abrir tabs para coletores HTTP. Contexto persistente é dono do Chrome, portanto falha real do contexto/processo exige recriação conjunta; falhas de página só substituem a tab. Não mesclar perfis antigos nem copiar cookies para formar o perfil compartilhado. Ver [SHARED_BROWSER](SHARED_BROWSER.md).
+
+- MonitorModule usa as tabelas e transações existentes; publica invalidações após commit. REST continua a fonte da verdade. SSE inicialmente suporta uma instância, sem Redis/broker. [Detalhes](MONITOR.md).
