@@ -18,7 +18,7 @@ const resource = (data: unknown) => ({
   error: null,
 });
 
-test("dashboard and detail color API odds values with contextual English tooltips", () => {
+test("dashboard and detail color API odds values without native tooltips", () => {
   const detail = structuredClone(fixture.detail);
   const row = structuredClone(fixture.events.items[0]);
   const market = detail.markets[0];
@@ -40,7 +40,7 @@ test("dashboard and detail color API odds values with contextual English tooltip
     displayOdds: "2,20",
     nextBestOdds: 2.05,
     displayNextBestOdds: "2,05",
-    tooltip: `Best price available for this selection across eligible providers. Best price: 2.20 for ${first.name}. Next best: 2.05.`,
+    tooltip: "Highest available odd for this selection.",
   };
   const outlier = {
     ...best,
@@ -89,7 +89,7 @@ test("dashboard and detail color API odds values with contextual English tooltip
     ...best,
     marketId: map1.id,
     selectionId: map1.selections[0].id,
-    tooltip: "Best price: 1.83. Next best: 1.77.",
+    tooltip: "Highest available odd for this selection.",
   };
   map1.analytics = {
     ...analytics,
@@ -153,17 +153,15 @@ test("dashboard and detail color API odds values with contextual English tooltip
   for (const html of [dashboard, matrix]) {
     assert.match(html, /aria-label="Odds 2,20, Arbitrage"/);
     assert.match(html, /text-analytics-arbitrage/);
-    assert.match(html, /estimated theoretical edge \+7\.44%/);
-    assert.match(html, /For R\$100/);
+    assert.doesNotMatch(html, /aria-label="Odds [^"]+"[^>]*title=/);
     assert.doesNotMatch(html, /BEST PRICE|OUTLIER|ARBITRAGE|★|↔/);
   }
   assert.doesNotMatch(matrix, /Arbitrage \+7,44%/);
   assert.match(matrix, /aria-label="Odds 1,83, Best price"/);
   assert.match(matrix, /text-analytics-best/);
-  assert.match(matrix, /Best price: 1\.83\. Next best: 1\.77/);
+  assert.doesNotMatch(matrix, /aria-label="Odds 1,83, Best price"[^>]*title=/);
   assert.match(matrix, /aria-label="Odds 2,40, Outlier"/);
   assert.match(matrix, /text-analytics-outlier/);
-  assert.match(matrix, /Outlier: 2\.40 vs provider median 1\.71/);
   assert.doesNotMatch(
     renderToStaticMarkup(
       <EventDetailView
@@ -199,7 +197,7 @@ test("an odds number applies Arbitrage before Outlier before Best price", () => 
     arbitrage: "Arbitrage",
   });
   assert.match(all, /text-analytics-arbitrage/);
-  assert.match(all, /title="Arbitrage"/);
+  assert.doesNotMatch(all, /title=/);
   assert.doesNotMatch(all, /★|↔|text-analytics-best|text-analytics-outlier/);
   assert.equal(value({}), "<span>2,40</span>");
 });
@@ -224,6 +222,7 @@ test("odds number tooltips open on hover and keyboard focus", async () => {
       />,
     );
     const number = view.getByRole("button", { name: "Odds 2,20, Arbitrage" });
+    assert.equal(number.hasAttribute("title"), false);
     fireEvent.mouseEnter(number);
     assert.match(view.getByRole("tooltip").textContent ?? "", /R\$107\.44/);
     fireEvent.mouseLeave(number);
@@ -232,6 +231,42 @@ test("odds number tooltips open on hover and keyboard focus", async () => {
     assert.match(view.getByRole("tooltip").textContent ?? "", /R\$48\.84/);
     fireEvent.blur(number);
     assert.equal(view.queryByRole("tooltip"), null);
+  } finally {
+    cleanup();
+    dom.window.close();
+  }
+});
+
+test("Best price uses one short custom tooltip on hover and keyboard focus", async () => {
+  const dom = new JSDOM("<html><body></body></html>", {
+    url: "http://localhost:3000",
+  });
+  Object.assign(globalThis, {
+    window: dom.window,
+    document: dom.window.document,
+    HTMLElement: dom.window.HTMLElement,
+    MutationObserver: dom.window.MutationObserver,
+  });
+  const { render, fireEvent, cleanup } =
+    await import("@testing-library/react/pure");
+  try {
+    const view = render(
+      <OddsValue
+        value="1,83"
+        bestPrice="Highest available odd for this selection."
+      />,
+    );
+    const number = view.getByRole("button", { name: "Odds 1,83, Best price" });
+    assert.equal(number.hasAttribute("title"), false);
+    fireEvent.mouseEnter(number);
+    assert.equal(
+      view.getByRole("tooltip").textContent,
+      "Best priceHighest available odd for this selection.",
+    );
+    fireEvent.mouseLeave(number);
+    assert.equal(view.queryByRole("tooltip"), null);
+    fireEvent.focus(number);
+    assert.ok(view.getByRole("tooltip"));
   } finally {
     cleanup();
     dom.window.close();

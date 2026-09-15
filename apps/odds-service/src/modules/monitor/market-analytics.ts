@@ -221,7 +221,7 @@ export function analyzeMarkets(input: {
         displayOdds: displayOdds(best.odds)!,
         nextBestOdds,
         displayNextBestOdds: displayOdds(nextBestOdds),
-        tooltip: `Best price available for this selection across eligible providers. Best price: ${tooltipOdds(best.odds)} at ${providerName(best.provider)} for ${best.selection}. Next best: ${tooltipOdds(nextBestOdds)}.`,
+        tooltip: "Highest available odd for this selection.",
       });
       if (candidates.length < 3) continue;
       const medianOdds = median(candidates.map((candidate) => candidate.odds));

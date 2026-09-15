@@ -74,8 +74,10 @@ test("best price chooses the highest valid odd and breaks ties by provider name"
   assert.equal(result.bestPrices[0].odds, 1.8);
   assert.equal(result.bestPrices[0].displayOdds, "1,80");
   assert.equal(result.bestPrices[0].nextBestOdds, 1.75);
-  assert.match(result.bestPrices[0].tooltip, /Best price: 1\.80/);
-  assert.match(result.bestPrices[0].tooltip, /Next best: 1\.75/);
+  assert.equal(
+    result.bestPrices[0].tooltip,
+    "Highest available odd for this selection.",
+  );
   const [tie] = analyze([
     provider("betano", 1.8, 1.9),
     provider("blaze", 1.8, 1.9),

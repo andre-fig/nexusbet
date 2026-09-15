@@ -54,7 +54,6 @@ export function OddsValue({
         type="button"
         aria-label={`Odds ${value}, ${visual.label}`}
         aria-describedby={position ? id : undefined}
-        title={tooltip}
         onMouseEnter={show}
         onMouseLeave={() => setPosition(null)}
         onFocus={show}
