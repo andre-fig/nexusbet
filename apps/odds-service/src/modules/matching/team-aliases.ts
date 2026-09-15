@@ -6,6 +6,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
     "l g": "leo",
     navi: "natus vincere",
+    "wraith pcific": "pcific",
   },
   lol: {
     "9z globant": "9z",

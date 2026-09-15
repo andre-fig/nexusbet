@@ -16,6 +16,8 @@ Depois da regra de borda, aliases explícitos por esporte cobrem apenas equival�
 
 Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. As tabelas executáveis ficam em `modules/matching/team-aliases.ts` para equipes e `shared/utils/names.ts` para torneios; adicionar alias requer evidência de equivalência e teste negativo de nomes parecidos.
 
+O alias específico de CS2 `wraith pcific` → `pcific` une `Wraith Pcific` com `Pcific Esports` após a remoção genérica do sufixo `esports`. `Wraith` não é removido de outros nomes.
+
 ## Regras exatas
 
 `compareAllProviders(events)` exige:

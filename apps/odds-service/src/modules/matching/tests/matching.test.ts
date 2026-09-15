@@ -128,6 +128,53 @@ test("matching keys remove only safe team prefixes and suffixes before semantic 
   assert.notEqual(canonicalTeamName("ex-Nexus Gaming", "cs2"), "nexus");
   assert.notEqual(canonicalTeamName("Nexus Gaming Youth", "cs2"), "nexus");
 });
+test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-19T09:00:00.000Z";
+  const event = (
+    provider: "superbet" | "blaze",
+    eventId: string,
+    teamB: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    teamA: "UPGRADE",
+    teamB,
+    rawTeamA: "UPGRADE",
+    rawTeamB: teamB,
+    normalizedTeamA: teamName("UPGRADE", "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    startsAt,
+  });
+  const left = event("superbet", "upgrade-wraith-pcific", "Wraith Pcific");
+  const right = event("blaze", "upgrade-pcific", "Pcific Esports");
+  assert.equal(canonicalTeamName("Wraith Pcific", "cs2"), "pcific");
+  assert.equal(canonicalTeamName("Pcific Esports", "cs2"), "pcific");
+  assert.equal(canonicalTeamName("Wraith Pcific", "valorant"), "wraith pcific");
+  assert.equal(canonicalTeamName("Wraith Other", "cs2"), "wraith other");
+  const result = compareAllProviders([left, right]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamB, "pcific");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "Wraith Pcific");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "Pcific Esports");
+  assert.equal(
+    compareAllProviders([
+      left,
+      { ...right, startsAt: "2026-09-19T10:00:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+});
 
 test("ex-RUSTEC vs Nexus Gaming matches ex-RUSTEC vs Nexus without a Nexus alias", async () => {
   const raw = JSON.parse(
