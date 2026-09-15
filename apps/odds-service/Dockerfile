@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 WORKDIR /service
 COPY package.json package-lock.json prisma.config.ts ./
 COPY prisma ./prisma
-RUN npm ci
+RUN npm ci --ignore-scripts && npm run db:generate
 COPY tsconfig*.json ./
 COPY src ./src
 RUN npm run build
@@ -32,9 +32,8 @@ ENV NODE_ENV=production HOST=0.0.0.0 PORT=3650 \
     DATA_DIR=/service/data BROWSER_PROFILE_DIR=/service/data/chrome-profile \
     BROWSER_SHARED_INSTANCE=true BROWSER_SHARED_CONTEXT=true PROVIDER_MAIN_TAB=true PROVIDER_DETAIL_TAB_MAX=1 \
     BROWSER_EVIDENCE_DIR=/service/data/evidence \
-    INBOX_DIR=/service/data/inbox DETAIL_INBOX_DIR=/service/data/detail-inbox \
-    BETANO_INBOX_DIR=/service/data/betano-inbox SUPERBET_INBOX_DIR=/service/data/superbet-inbox \
-    CAPTURE_DIR=/service/data/captures BETANO_CAPTURE_DIR=/service/data/captures/betano
+    INGESTION_MODE=direct RAW_CAPTURE_ENABLED=false \
+    RAW_CAPTURE_RETENTION_HOURS=24 RAW_CAPTURE_DIR=/service/data/evidence/raw
 STOPSIGNAL SIGTERM
 EXPOSE 3650
 ENTRYPOINT ["/usr/bin/tini", "--", "/service/runtime/entrypoint.sh"]
