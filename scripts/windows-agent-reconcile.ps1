@@ -56,36 +56,48 @@ try {
 
   if ($target -and $target -ne $current) {
     $release = Join-Path $releases $target
-    if (-not (Test-Path -LiteralPath (Join-Path $release 'apps\odds-service\dist\collector-agent.main.js'))) {
-      if (Test-Path -LiteralPath $release) { Remove-Item -LiteralPath $release -Recurse -Force }
-      Log "Preparing release $target"
-      & git clone --quiet --depth 1 --branch main https://github.com/andre-fig/nexusbet.git $release
-      CheckExit 'Git clone'
-      $cloned = (& git -C $release rev-parse HEAD).Trim()
-      CheckExit 'Git SHA check'
-      if ($cloned -ne $target) { throw 'Main moved during clone; retry on next check' }
-      Push-Location (Join-Path $release 'apps\odds-service')
-      try {
-        & $npm ci; CheckExit 'npm ci'
-        & $npm run typecheck; CheckExit 'typecheck'
-        & $npm run format:check; CheckExit 'format check'
-        & $npm run build; CheckExit 'build'
-        & $npm test; CheckExit 'tests'
-      } finally { Pop-Location }
-      Log "Release $target passed checks"
+    $prepared = $false
+    try {
+      if (-not (Test-Path -LiteralPath (Join-Path $release 'apps\odds-service\dist\collector-agent.main.js'))) {
+        $releaseFull = [IO.Path]::GetFullPath($release)
+        $releasesFull = [IO.Path]::GetFullPath($releases).TrimEnd('\') + '\'
+        if (-not $releaseFull.StartsWith($releasesFull, [StringComparison]::OrdinalIgnoreCase)) { throw 'Release path escapes releases directory' }
+        if (Test-Path -LiteralPath $release) { Remove-Item -LiteralPath $release -Recurse -Force }
+        Log "Preparing release $target"
+        & git clone --quiet --depth 1 --branch main https://github.com/andre-fig/nexusbet.git $release
+        CheckExit 'Git clone'
+        $cloned = (& git -C $release rev-parse HEAD).Trim()
+        CheckExit 'Git SHA check'
+        if ($cloned -ne $target) { throw 'Main moved during clone; retry on next check' }
+        Push-Location (Join-Path $release 'apps\odds-service')
+        try {
+          & $npm ci; CheckExit 'npm ci'
+          & $npm run typecheck; CheckExit 'typecheck'
+          & $npm run format:check; CheckExit 'format check'
+          & $npm run build; CheckExit 'build'
+          & $npm test; CheckExit 'tests'
+        } finally { Pop-Location }
+        Log "Release $target passed checks"
+      }
+      $prepared = $true
+    } catch {
+      Log "Release $target failed checks: $($_.Exception.Message); keeping current release"
+      Set-Content -LiteralPath $failedPath -Value $target -Encoding ascii
     }
 
-    $old = AgentProcess
-    if ($old) {
-      New-Item -ItemType File -Force -Path $stopPath | Out-Null
-      Log "Requesting graceful stop of PID $($old.Id)"
-      if (-not $old.WaitForExit(180000)) {
-        Log "Grace period expired; terminating PID $($old.Id)"
-        Stop-Process -Id $old.Id -Force
+    if ($prepared) {
+      $old = AgentProcess
+      if ($old) {
+        New-Item -ItemType File -Force -Path $stopPath | Out-Null
+        Log "Requesting graceful stop of PID $($old.Id)"
+        if (-not $old.WaitForExit(180000)) {
+          Log "Grace period expired; terminating PID $($old.Id)"
+          Stop-Process -Id $old.Id -Force
+        }
       }
+      Set-Content -LiteralPath $currentPath -Value $target -Encoding ascii
+      $current = $target
     }
-    Set-Content -LiteralPath $currentPath -Value $target -Encoding ascii
-    $current = $target
   }
 
   $running = AgentProcess
