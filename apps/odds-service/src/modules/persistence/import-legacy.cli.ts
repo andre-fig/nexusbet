@@ -18,14 +18,24 @@ import {
 import type { Capture } from "../bet365/types/model.js";
 import { BetanoStore } from "../betano/persistence/betano.store.js";
 import { SuperbetStore } from "../superbet/persistence/superbet.store.js";
+import { BlazeStore } from "../blaze/persistence/blaze.store.js";
+import { EstrelaBetStore } from "../estrelabet/persistence/estrelabet.store.js";
 import { MarketJournal } from "../snapshots/market-journal.js";
 
 type Payload =
   | Capture
   | DetailRound
   | Parameters<BetanoStore["ingest"]>[0]
-  | Parameters<SuperbetStore["ingest"]>[0];
-type Kind = "bet365-list" | "bet365-detail" | "betano" | "superbet";
+  | Parameters<SuperbetStore["ingest"]>[0]
+  | Parameters<BlazeStore["ingest"]>[0]
+  | Parameters<EstrelaBetStore["ingest"]>[0];
+type Kind =
+  | "bet365-list"
+  | "bet365-detail"
+  | "betano"
+  | "superbet"
+  | "blaze"
+  | "estrelabet";
 function captureTime(value: unknown): number {
   if (!value || typeof value !== "object") return NaN;
   const v = value as Record<string, unknown>;
@@ -48,6 +58,8 @@ for (const [folder, kind] of [
   ["detail-inbox", "bet365-detail"],
   ["betano-inbox", "betano"],
   ["superbet-inbox", "superbet"],
+  ["blaze-inbox", "blaze"],
+  ["estrelabet-inbox", "estrelabet"],
 ] as const) {
   const path = join(root, folder);
   let files: string[];
@@ -71,10 +83,14 @@ console.log(
     mode: args.includes("--apply") ? "apply" : "dry-run",
     captures: entries.length,
     byKind: Object.fromEntries(
-      ["bet365-list", "bet365-detail", "betano", "superbet"].map((kind) => [
-        kind,
-        entries.filter((e) => e.kind === kind).length,
-      ]),
+      [
+        "bet365-list",
+        "bet365-detail",
+        "betano",
+        "superbet",
+        "blaze",
+        "estrelabet",
+      ].map((kind) => [kind, entries.filter((e) => e.kind === kind).length]),
     ),
   }),
 );
@@ -112,11 +128,23 @@ if (args.includes("--apply")) {
       new MarketJournal(join(work, "superbet"), persistence),
       persistence,
     );
+    const blaze = new BlazeStore(
+      join(work, "blaze"),
+      new MarketJournal(join(work, "blaze"), persistence),
+      persistence,
+    );
+    const estrelabet = new EstrelaBetStore(
+      join(work, "estrelabet"),
+      new MarketJournal(join(work, "estrelabet"), persistence),
+      persistence,
+    );
     await Promise.all([
       list.load(),
       detail.load(),
       betano.load(),
       superbet.load(),
+      blaze.load(),
+      estrelabet.load(),
     ]);
     const before = await database.db.publication.count();
     for (const entry of entries) {
@@ -135,6 +163,14 @@ if (args.includes("--apply")) {
         case "superbet":
           await superbet.ingest(
             entry.data as Parameters<SuperbetStore["ingest"]>[0],
+          );
+          break;
+        case "blaze":
+          await blaze.ingest(entry.data as Parameters<BlazeStore["ingest"]>[0]);
+          break;
+        case "estrelabet":
+          await estrelabet.ingest(
+            entry.data as Parameters<EstrelaBetStore["ingest"]>[0],
           );
           break;
       }

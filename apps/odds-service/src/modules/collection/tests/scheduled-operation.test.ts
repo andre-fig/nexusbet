@@ -1,10 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { scheduledOperation } from "../scheduled-operation.js";
-import { publishCapture } from "../../../shared/utils/collection-operation.js";
-import { readFile, mkdtemp, rm, access } from "node:fs/promises";
-import { join } from "node:path";
-import { tmpdir } from "node:os";
+import { readFile } from "node:fs/promises";
 import type {
   ProviderRuntime,
   CollectOptions,
@@ -42,34 +39,31 @@ async function context() {
 }
 test("timeout after staged capture discards publication and closes owned transport", async () => {
   const c = await context(),
-    dir = await mkdtemp(join(tmpdir(), "scheduled-late-")),
-    file = join(dir, "inbox.json"),
     abort = new AbortController();
-  let release!: () => void;
-  try {
-    c.provider.collectEvents = async (options) => {
-      await publishCapture(options, file, { complete: true });
-      await new Promise<void>((r) => {
-        release = r;
-      });
-      return c.events;
-    };
-    const result = scheduledOperation(
-      c.provider,
-      { kind: "list", provider: "bet365" },
-      { esports: ["cs2"] },
-      abort.signal,
-      () => {},
-    );
-    while (!release) await new Promise((r) => setImmediate(r));
-    abort.abort(new Error("timeout"));
-    release();
-    await assert.rejects(result, /timeout/);
-    await assert.rejects(access(file));
-    assert.equal(c.closed(), 1);
-  } finally {
-    await rm(dir, { recursive: true, force: true });
-  }
+  let release!: () => void,
+    published = false;
+  c.provider.collectEvents = async (options) => {
+    options.publications!.push(async () => {
+      published = true;
+    });
+    await new Promise<void>((r) => {
+      release = r;
+    });
+    return c.events;
+  };
+  const result = scheduledOperation(
+    c.provider,
+    { kind: "list", provider: "bet365" },
+    { esports: ["cs2"] },
+    abort.signal,
+    () => {},
+  );
+  while (!release) await new Promise((r) => setImmediate(r));
+  abort.abort(new Error("timeout"));
+  release();
+  await assert.rejects(result, /timeout/);
+  assert.equal(published, false);
+  assert.equal(c.closed(), 1);
 });
 test("valid deferred capture commits once; invalid result never commits", async () => {
   const c = await context();

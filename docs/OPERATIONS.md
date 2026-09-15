@@ -24,7 +24,7 @@ Compare fetchedAt com MAX_AGE_SECONDS=600. A leitura normalizada exige cobertura
 
 ## Captura manual limitada
 
-Desative/pare scheduler ativo antes de rodar outro coletor. Estes CLIs fazem uma rodada e fecham recursos; publicam inboxes, cuja ingestão pela API persistirá os dados:
+Desative/pare scheduler ativo antes de rodar outro coletor. Estes CLIs fazem uma rodada, persistem diretamente e fecham recursos:
 
 ```sh
 ESPORTS=cs2 npm run capture -- --detail
@@ -34,7 +34,7 @@ ESPORTS=cs2 npm run capture:superbet -- --detail
 
 `--detail` seleciona um evento por modalidade, não todos. EVENT_ID escolhe Bet365; BETANO_EVENT_ID escolhe Betano, com ESPORTS restrito. `--main-only` controla diagnóstico Bet365. `BROWSER_RUNTIME=local-cdp` usa Chrome existente; `--existing`/`--reuse-profile` não mudam essa política. Não há endpoint HTTP de trigger de coleta.
 
-Para consumir capturas sem novo polling: `COLLECTION_ENABLED=false npm start`; INBOX_INGEST_ENABLED deve permitir ingestão. Não deixe `collect`/`collect:betano` rodando após diagnóstico. Somente Chrome pessoal/headed macOS para Bet365/Betano; indisponibilidade preserva dados até TTL, sem fallback.
+Use `--save-raw` somente para diagnóstico; sem a flag nenhum payload é salvo. Não deixe `collect`/`collect:betano` rodando após diagnóstico. Somente Chrome pessoal/headed macOS para Bet365/Betano; indisponibilidade preserva dados até TTL, sem fallback.
 
 ## Sintomas e investigação
 
@@ -86,7 +86,7 @@ npm run db:import-legacy -- --root /caminho/para/diretorio-de-capturas --apply
 npm run db:import-legacy -- --root /caminho/para/diretorio-de-capturas --apply --resume
 ```
 
-Sem --apply não conecta/grava. Lê inbox/detail-inbox/betano-inbox/superbet-inbox e reaplica parsers por timestamp. Não importa NDJSON isolado nem faz backfill antes do último scope já publicado. O scanner normal também ingere inboxes: planeje diretórios novos para não confundir importação e coleta. [Guia PostgreSQL](../apps/odds-service/docs/postgres.md).
+Sem --apply não conecta/grava. Lê inbox/detail-inbox/betano-inbox/superbet-inbox/blaze-inbox/estrelabet-inbox e reaplica parsers por timestamp. Não importa NDJSON isolado nem faz backfill antes do último scope já publicado. Não há scanner normal: somente esse comando explícito lê os diretórios legados. [Guia PostgreSQL](../apps/odds-service/docs/postgres.md).
 
 ## Evidência de incidente
 

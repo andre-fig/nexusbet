@@ -958,7 +958,11 @@ test("Monitor publication notices occur after commit, never on replay or transac
     await import("../persistence-notifications.js");
   const bus = new PersistenceNotifications();
   const notices: unknown[] = [];
-  bus.committed.subscribe((n) => notices.push(n));
+  let memoryPublished = false;
+  bus.committed.subscribe((n) => {
+    assert.equal(memoryPublished, true);
+    notices.push(n);
+  });
   const publishing = new PersistenceService(
     database,
     new CatalogRepository(),
@@ -966,14 +970,22 @@ test("Monitor publication notices occur after commit, never on replay or transac
     bus,
   );
   const p = publication(event());
-  await publishing.commit(p);
+  await publishing.commit(p, () => {
+    memoryPublished = true;
+  });
   assert.equal(notices.length, 1);
   assert.equal(await database.db.oddsSnapshot.count(), 1);
   await publishing.commit(p);
   assert.equal(notices.length, 1);
   const conflict = structuredClone(p);
   conflict.events[0].markets[0].selections[0].odds = 1.1;
-  await assert.rejects(publishing.commit(conflict));
+  let rollbackPublished = false;
+  await assert.rejects(
+    publishing.commit(conflict, () => {
+      rollbackPublished = true;
+    }),
+  );
+  assert.equal(rollbackPublished, false);
   assert.equal(notices.length, 1);
 });
 

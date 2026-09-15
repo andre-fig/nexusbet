@@ -15,7 +15,7 @@ startup → restore → startup delay + jitter → tick global
   → sucesso ou backoff → próximo tick
 ```
 
-O tick padrão de 1000ms **não consulta sites a cada segundo**. Só inicia tarefas vencidas. O scanner de inbox é independente (5000ms), com proteção contra refresh simultâneo do próprio timer.
+O tick padrão de 1000ms **não consulta sites a cada segundo**. Só inicia tarefas vencidas. Não existe scanner de inbox no runtime normal.
 
 ## Intervalos reais
 
@@ -48,7 +48,7 @@ Falha mantém catálogo/snapshot válido. failureCount da tarefa sobe, e nextRun
 
 Cada falha contada também incrementa consecutiveFailures do provider. Após **5**, cooldown de **300s** bloqueia novos jobs. Qualquer sucesso global zera a sequência do provider; não zera falhas independentes de outros detalhes. Ao terminar cooldown, força tentativa de listagem. EventStartedError e cancelamento de shutdown tratado não contam como falha normal.
 
-Publicação começa somente após validação. `beginCommit` limpa timeout e protege escrita já iniciada. O sucesso exige que refresh aceite a versão publicada; escrever inbox sozinho não basta.
+Publicação começa somente após validação. `IngestionCommitService` verifica o collectionRunId/AbortSignal, serializa o provider e chama `beginCommit` imediatamente antes da transação. O sucesso exige que o store aceite a versão persistida.
 
 ## Discovery e remoção
 
@@ -68,7 +68,7 @@ SIGTERM/SIGINT: para timers e novos jobs, aguarda até SHUTDOWN_GRACE_MS=30000, 
 
 O scheduler constrói sua agenda somente com providers ativos no ambiente. Bet365/Betano exigem `BROWSER_RUNTIME=local-cdp`, flags habilitadas e macOS; fora desse runtime aparecem como `disabled` com razão `disabled_in_runtime`, sem criar jobs, falhas ou circuit breaker. Se o runtime local-cdp é compatível mas o Chrome/CDP não está acessível, continuam ativos e aparecem como `unavailable`, pois nesse caso existe uma falha operacional recuperável. Superbet é HTTP; Blaze e EstrelaBet seguem suas flags próprias. O monitor usa a interseção entre esse conjunto ativo e `providers.enabled` no banco para calcular cobertura.
 
-CLIs `capture*` fazem ciclo manual; `--detail` escolhe um evento por modalidade. `collect*` são loops legados com CAPTURE_INTERVAL_SECONDS=180, não a agenda adaptativa. Eles desabilitam scheduler/ingestão próprios e escrevem inboxes. Não rode coletor manual junto com scheduler ativo da mesma instalação.
+CLIs `capture*` fazem ciclo manual; `--detail` escolhe um evento por modalidade. `collect*` são loops legados com CAPTURE_INTERVAL_SECONDS=180, não a agenda adaptativa. Ambos persistem diretamente; `--save-raw` habilita evidência temporária. Não rode coletor manual junto com scheduler ativo da mesma instalação.
 
 Intervalos são metas de elegibilidade. Listagens demoradas, prioridade de discovery e capacidade 1 podem atrasar detalhes. Testes de relógio falso, publicação tardia e shutdown estão em collection/tests; não é necessário consultar sites para validar a agenda.
 

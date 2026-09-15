@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Test } from "@nestjs/testing";
-import { mkdtemp, readFile, rm, mkdir } from "node:fs/promises";
+import { access, mkdtemp, readFile, rm, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AppModule } from "../../../app.module.js";
@@ -73,7 +73,7 @@ test("Nest lifecycle starts both providers immediately; health, journals and gra
     .overrideProvider(Bet365Collector)
     .useValue({
       collectEvents: async (options: CollectOptions) => {
-        await publishCapture(options, join(settings.inboxDir, "a.json"), a);
+        await publishCapture(options, a);
         return events;
       },
       close: async () => {
@@ -84,11 +84,7 @@ test("Nest lifecycle starts both providers immediately; health, journals and gra
     .overrideProvider(BetanoCollector)
     .useValue({
       collectEvents: async (options: CollectOptions) => {
-        await publishCapture(
-          options,
-          join(settings.betanoInboxDir, "b.json"),
-          b,
-        );
+        await publishCapture(options, b);
         return normalizeListingRound(b).matches;
       },
       close: async () => {
@@ -130,6 +126,9 @@ test("Nest lifecycle starts both providers immediately; health, journals and gra
     );
     assert.match(aJournal, /EventAdded/);
     assert.match(bJournal, /EventAdded/);
+    await assert.rejects(access(settings.inboxDir));
+    await assert.rejects(access(settings.detailInboxDir));
+    await assert.rejects(access(settings.betanoInboxDir));
     assert.equal(collection.scheduler.catalog.size, events.length + 50);
   } finally {
     await app.close();

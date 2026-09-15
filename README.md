@@ -20,11 +20,11 @@ Betano (Chrome) ─┼→ módulos de provider → validação / domínio normal
 Superbet (HTTP) ─┤
 Blaze (HTTP) ────┤
 EstrelaBet (HTTP)┘                         ↓
-Collection: agenda → coleta → inbox → stores → PersistencePort
+Collection: agenda → coleta/parse → commit direto → PersistencePort
                                          ↓
                       PostgreSQL: entidades + snapshots + matching
                                          ↓
-                             journal local → estado em memória
+                              estado em memória pós-commit
                                          ↓
                    API normalizada + comparação + consultas históricas
 ```
@@ -73,7 +73,7 @@ ConfigModule lê `.env` dentro do diretório do serviço; ambiente do processo t
 | Coleta | `COLLECTION_ENABLED`, `COLLECTION_LIST_INTERVAL_MS`, `DETAIL_INTERVAL_*` | Listagem 60s; detalhes adaptativos |
 | Falhas | `PROVIDER_*`, `COLLECTION_BACKOFF_*`, `SHUTDOWN_GRACE_MS` | Timeout, cooldown e drenagem |
 | Browser | `BROWSER_MODE`, `BROWSER_PROFILE_DIR`, `BROWSER_LOCALE` | Chrome próprio headed, Xvfb no container |
-| Arquivos/testes | `DATA_DIR`, `*_INBOX_DIR`, `BROWSER_TESTS`, `TEST_DATABASE_URL` | Journal, ingestão e testes opcionais |
+| Ingestão/debug | `INGESTION_MODE`, `RAW_CAPTURE_ENABLED`, `RAW_CAPTURE_RETENTION_HOURS` | Direta; raw desligado por padrão e com retenção |
 
 Referência completa de todas as variáveis e seus defaults: [Configuration](docs/CONFIGURATION.md) e [.env.example](apps/odds-service/.env.example). Nunca copie segredos para exemplos, fixtures ou documentação.
 

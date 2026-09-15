@@ -41,16 +41,16 @@ flowchart TD
   Z --> P
   E --> P
   P --> N[NormalizedEvent e publicações diferidas]
-  N --> I[Inboxes e refresh dos stores]
-  I --> V[Validação e MarketJournal]
+  N --> I[IngestionCommitService: generation e lock]
+  I --> V[Stores e validação de scope]
   V --> DB[PersistencePort / transação PostgreSQL]
   DB --> M[Matching sobre domínio]
-  DB --> F[Journal em arquivo e memória]
+  DB --> F[Estado/journal mínimo em memória]
   F --> A[API normalizada / comparisons]
   DB --> Q[Repositories / API histórica]
 ```
 
-As setas mostram fluxo, não que parsers compartilhem implementação. A validação ocorre também antes de publicar inbox. O scheduler só confirma sucesso após refresh e leitura do estado aceito.
+As setas mostram fluxo, não que parsers compartilhem implementação. A validação ocorre antes do commit direto. O scheduler só confirma sucesso depois de o store aceitar a versão persistida.
 
 ## Contratos reais
 
@@ -67,11 +67,11 @@ As setas mostram fluxo, não que parsers compartilhem implementação. A valida�
 1. O scheduler seleciona uma tarefa elegível, reservando provider e evento.
 2. O provider navega/consulta, valida cobertura e devolve domínio mais publicações diferidas.
 3. `scheduledOperation` valida identidade, esporte, timestamps e elegibilidade pré-jogo.
-4. O commit publica inboxes; `refresh` reutiliza stores e validações existentes.
+4. `IngestionCommitService` valida generation/abort, adquire o lock do provider e entrega as rodadas em memória aos stores.
 5. PersistenceService grava entidades, snapshots, scopes, mudanças, matching e checkpoint em transação.
-6. Confirmado SQL, atualiza journal em arquivo e projeção em memória. A leitura confirma aceitação da captura.
+6. Confirmado SQL, atualiza journal mínimo/projeção em memória e somente então libera notificações SSE. A leitura confirma aceitação da captura.
 
-A unidade atômica é um scope de publicação, não uma rodada global de providers. Falha SQL não publica projeção parcial. PostgreSQL e arquivo não têm transação conjunta: falha de arquivo após commit pode deixá-lo atrasado. Restart restaura PostgreSQL. Mais detalhes em [Data model](DATA_MODEL.md) e [Odds history](ODDS_HISTORY.md).
+A unidade atômica é um scope de publicação, não uma rodada global de providers. Falha SQL não publica projeção parcial. No modo PostgreSQL o runtime não grava journal/latest em arquivo e o restart restaura checkpoints e scopes do banco. O modo file permanece apenas para testes/replay. Mais detalhes em [Data model](DATA_MODEL.md) e [Odds history](ODDS_HISTORY.md).
 
 ## Leitura, erros e stale
 

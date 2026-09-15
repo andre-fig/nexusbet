@@ -38,11 +38,11 @@ A comparação de baselines restaurados considera valores, tolerando a reordena�
 
 ## SQL e arquivos
 
-A transação grava entidades, snapshots, publications.changes, feed_scopes e legacy_checkpoints, além do matching. Depois confirma journal local/memória. `odds_snapshots` usa numeric(24,12); trigger proíbe UPDATE/DELETE. A proteção não é autorização para TRUNCATE nem substitui backup.
+A transação grava entidades, snapshots, publications.changes, feed_scopes e legacy_checkpoints, além do matching. Depois confirma a projeção/journal mínimo em memória e emite notificações. `odds_snapshots` usa numeric(24,12); trigger proíbe UPDATE/DELETE. A proteção não é autorização para TRUNCATE nem substitui backup.
 
 Unique `(publication_id, selection_id, source_scope, fetched_at)` impede duplicação da mesma observação na publicação. A consulta atual usa último snapshot por seleção, ordenado por fetchedAt DESC e createdAt DESC; não há current_odds separado.
 
-Journals em arquivo e checkpoints JSONB continuam necessários à compatibilidade. Em modo postgres, restart restaura do banco sem depender de arquivos presentes. Falha SQL mantém memória/journal anterior. Falha do arquivo depois do commit SQL pode deixá-lo atrasado: banco permanece fonte de recuperação, pois não há commit distribuído.
+Em modo postgres, checkpoints JSONB e feed scopes são a recuperação persistente; o journal mantém somente baselines em memória e não duplica NDJSON/latest no filesystem. Falha SQL mantém memória/journal anterior. Journals em arquivo permanecem apenas no modo file para testes/replay e o importador legado lê capturas antigas explicitamente.
 
 ## Inspeção e reprocessamento
 
