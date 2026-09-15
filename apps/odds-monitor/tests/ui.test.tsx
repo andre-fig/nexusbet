@@ -66,6 +66,28 @@ test("empty table message appears below its header", () => {
   assert.equal(table.querySelector("tbody tr td")?.textContent?.trim(), "No data for the selected filters.");
   assert.equal(table.querySelector("tbody tr td")?.getAttribute("colspan"), String(table.querySelectorAll("thead th").length));
 });
+test("loading and error messages appear below the event table header", () => {
+  for (const state of [
+    { loading: true, error: null, message: "Loading data…" },
+    { loading: false, error: "odds-service returned HTTP 502", message: "odds-service returned HTTP 502" },
+  ]) {
+    const html = renderToStaticMarkup(
+      <DashboardView
+        overview={{ data: fixture.overview, loading: false, refreshing: false, error: null } as never}
+        events={{ data: null, loading: state.loading, refreshing: false, error: state.error } as never}
+        filters={{ search: "", esport: "", status: "", start: "", provider: "", attentionOnly: "false", page: "1", limit: "50" }}
+        onFilter={() => {}}
+        onOpenIssuesDrawer={() => {}}
+        onOpenEventDetail={() => {}}
+      />,
+    );
+    const table = new JSDOM(html).window.document.querySelector("table")!;
+    assert.equal(table.querySelector("thead")?.textContent?.includes("Event / tournament"), true);
+    assert.match(table.querySelector("tbody tr td")?.textContent ?? "", new RegExp(state.message));
+    assert.equal(table.querySelector("tbody tr td")?.getAttribute("colspan"), String(table.querySelectorAll("thead th").length));
+    assert.equal(table.previousElementSibling, null);
+  }
+});
 test("stale retained counts do not imply current matching events", () => {
   const overview = structuredClone(fixture.overview);
   overview.health.events = 0;

@@ -227,10 +227,6 @@ export function DashboardView({
         </label>
       </div>
       <div className={`${panel} overflow-hidden`}>
-        <DataState
-          loading={events.loading && !events.data}
-          error={events.error}
-        />
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[12px]">
             <thead className="bg-surface-container text-on-surface-variant uppercase text-[10px] tracking-wider">
@@ -250,7 +246,17 @@ export function DashboardView({
               </tr>
             </thead>
             <tbody>
-              {events.data?.items.length === 0 && (
+              {(events.error || (events.loading && !events.data)) && (
+                <tr>
+                  <td colSpan={tableProviders.length + 5}>
+                    <DataState
+                      loading={events.loading && !events.data}
+                      error={events.error}
+                    />
+                  </td>
+                </tr>
+              )}
+              {!events.error && !events.loading && events.data?.items.length === 0 && (
                 <tr>
                   <td colSpan={tableProviders.length + 5}>
                     {health?.events === 0 &&
