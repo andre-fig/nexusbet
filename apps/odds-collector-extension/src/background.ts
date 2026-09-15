@@ -36,6 +36,7 @@ const details: Record<
   estrelabet: (esport, id) => collectHttpDetail("estrelabet", esport, id),
 };
 const backoff = [30000, 60000, 120000, 300000];
+const listingIntervalMs = 300000;
 let ticking = false;
 let previewing = false;
 
@@ -123,7 +124,7 @@ async function runProvider(
     try {
       const events = await collectors[provider]();
       next = {
-        dueAt: Date.now() + 60000,
+        dueAt: Date.now() + listingIntervalMs,
         failures: 0,
         lastSuccessAt: new Date().toISOString(),
         events: events.length,
