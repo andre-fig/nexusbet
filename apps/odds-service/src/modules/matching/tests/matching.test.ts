@@ -350,6 +350,56 @@ test("LoL team aliases match KOI with Movistar KOI and preserve raw names", asyn
   assert.equal(result.matched[0].providers.bet365.rawTeamB, "KOI");
   assert.equal(result.matched[0].providers.betano.rawTeamB, "Movistar KOI");
 });
+test("LoL LOUD vs LOS matches LOUD vs MIBR LOS with raw names intact", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-19T09:00:00.000Z";
+  const event = (
+    provider: "bet365" | "blaze",
+    eventId: string,
+    teamB: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "lol" as const,
+    teamA: "LOUD",
+    teamB,
+    rawTeamA: "LOUD",
+    rawTeamB: teamB,
+    normalizedTeamA: teamName("LOUD", "lol"),
+    normalizedTeamB: teamName(teamB, "lol"),
+    startsAt,
+  });
+  const left = event("bet365", "loud-los", "LOS");
+  const right = event("blaze", "loud-mibr-los", "MIBR LOS");
+  assert.equal(canonicalTeamName("MIBR LOS", "lol"), "los");
+  assert.equal(canonicalTeamName("LOS", "lol"), "los");
+  assert.equal(canonicalTeamName("MIBR LOS", "cs2"), "mibr los");
+  assert.equal(canonicalTeamName("MIBR Other", "lol"), "mibr other");
+  const result = compareAllProviders([left, right]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.esport, "lol");
+  assert.equal(result.matched[0].canonicalEvent.teamA, "loud");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "los");
+  assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
+  assert.equal(result.matched[0].providers.bet365.rawTeamB, "LOS");
+  assert.equal(result.matched[0].providers.blaze.rawTeamB, "MIBR LOS");
+  assert.equal(
+    compareAllProviders([
+      left,
+      { ...right, startsAt: "2026-09-19T10:00:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+});
 
 test("LoL 9z Globant alias and generic Team suffix match 9z", async () => {
   const raw = JSON.parse(

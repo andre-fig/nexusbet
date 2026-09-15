@@ -18,6 +18,8 @@ Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em 
 
 O alias específico de CS2 `wraith pcific` → `pcific` une `Wraith Pcific` com `Pcific Esports` após a remoção genérica do sufixo `esports`. `Wraith` não é removido de outros nomes.
 
+O alias específico de LoL `mibr los` → `los` une `MIBR LOS` com `LOS`. `MIBR` permanece em outros nomes e esports.
+
 ## Regras exatas
 
 `compareAllProviders(events)` exige:
