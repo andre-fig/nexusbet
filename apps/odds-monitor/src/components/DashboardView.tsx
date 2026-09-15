@@ -267,16 +267,34 @@ export function DashboardView({
                     const winner = e.analytics?.find(
                       (analysis) => analysis.category === "match_winner",
                     );
+                    const marketStatus = feed?.matchWinner.status;
+                    const hasDisplayedOdds =
+                      feed?.matchWinner.displayTeamA != null &&
+                      feed.matchWinner.displayTeamB != null;
                     const status = !p.active
                       ? providerStatusPresentation(p)
                       : feed
-                        ? providerStatusPresentation({
-                            ...feed,
-                            status:
-                              feed.matchWinner.status === ProviderStatus.Stale
-                                ? ProviderStatus.Stale
-                                : feed.status,
-                          })
+                        ? marketStatus === ProviderStatus.Stale
+                          ? providerStatusPresentation({
+                              ...feed,
+                              status: ProviderStatus.Stale,
+                            })
+                          : marketStatus === "incomplete"
+                            ? {
+                                label: "Incomplete market",
+                                color: "text-error",
+                              }
+                            : marketStatus === "unavailable"
+                              ? {
+                                  label: "Market unavailable",
+                                  color: "text-on-surface-variant",
+                                }
+                              : !hasDisplayedOdds && feed.status === "healthy"
+                                ? {
+                                    label: "Odds unavailable",
+                                    color: "text-on-surface-variant",
+                                  }
+                                : providerStatusPresentation(feed)
                         : null;
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">
@@ -322,20 +340,14 @@ export function DashboardView({
                             );
                           })}
                         </div>
-                        {feed?.matchWinner.status === "unavailable" && (
-                          <div
-                            className="text-[10px] text-on-surface-variant"
-                            title="This provider has not observed a Match winner market. Its other markets remain available."
-                          >
-                            Market unavailable
-                          </div>
-                        )}
                         <div
                           className={`text-[10px] mt-1 ${status?.color ?? "text-on-surface-variant"}`}
                           title={
-                            feed?.matchWinner.status === ProviderStatus.Stale
+                            marketStatus === ProviderStatus.Stale
                               ? "This market exceeded the freshness TTL. The last observed odds are shown for diagnosis and excluded from comparisons."
-                              : undefined
+                              : marketStatus === "unavailable"
+                                ? "This provider has not observed a Match winner market. Its other markets remain available."
+                                : undefined
                           }
                         >
                           {status?.label ?? "Not observed"}

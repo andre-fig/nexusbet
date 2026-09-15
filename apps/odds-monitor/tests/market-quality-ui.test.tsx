@@ -3,6 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { renderToStaticMarkup } from "react-dom/server";
+import { JSDOM } from "jsdom";
 import { EventDetailView } from "../src/components/EventDetailView";
 import { DashboardView } from "../src/components/DashboardView";
 import { NeedsAttentionDrawer } from "../src/components/NeedsAttentionDrawer";
@@ -15,6 +16,62 @@ const resource = (data: unknown) => ({
   loading: false,
   refreshing: false,
   error: null,
+});
+test("dashboard labels missing winner odds by market quality instead of event health", () => {
+  const row = structuredClone(fixture.events.items[0]);
+  const feed = row.providers[0];
+  feed.status = "healthy";
+  feed.matchWinner.teamA = null;
+  feed.matchWinner.teamB = null;
+  feed.matchWinner.displayTeamA = null;
+  feed.matchWinner.displayTeamB = null;
+  const overview = structuredClone(fixture.overview);
+  overview.providers.find(
+    (p: { id: string }) => p.id === feed.provider,
+  ).status = "healthy";
+  const render = () => {
+    const html = renderToStaticMarkup(
+      <DashboardView
+        overview={resource(overview) as never}
+        events={
+          resource({
+            items: [row],
+            pagination: { page: 1, limit: 50, total: 1, pages: 1 },
+          }) as never
+        }
+        filters={{
+          search: "",
+          esport: "",
+          status: "",
+          start: "",
+          provider: "",
+          attentionOnly: "false",
+          page: "1",
+          limit: "50",
+        }}
+        onFilter={() => {}}
+        onOpenIssuesDrawer={() => {}}
+        onOpenEventDetail={() => {}}
+      />,
+    );
+    const table = new JSDOM(html).window.document.querySelector("table")!;
+    const headers = [...table.querySelectorAll("thead th")];
+    const index = headers.findIndex(
+      (header) => header.textContent === "EstrelaBet",
+    );
+    return (
+      table.querySelectorAll("tbody tr")[0].children[index].textContent ?? ""
+    );
+  };
+  feed.matchWinner.status = "incomplete";
+  assert.match(render(), /Incomplete market/);
+  assert.doesNotMatch(render(), /Healthy/);
+  feed.matchWinner.status = "unavailable";
+  assert.match(render(), /Market unavailable/);
+  assert.doesNotMatch(render(), /Healthy/);
+  feed.matchWinner.status = "healthy";
+  assert.match(render(), /Odds unavailable/);
+  assert.doesNotMatch(render(), /Healthy/);
 });
 
 test("detail shows stale retained odds, incomplete market and missing provider map separately", () => {
