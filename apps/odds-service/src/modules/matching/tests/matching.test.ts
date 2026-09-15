@@ -296,6 +296,80 @@ test("CS2 team aliases match Brute with Team Brute and preserve raw names", asyn
   assert.equal(result.matched[0].providers.betano.rawTeamA, "Team Brute");
 });
 
+test("CS2 RUSH Gaming and RUSH match Gremio despite different CCT tournament labels", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-18T15:00:00.000Z";
+  const observed = (
+    provider: "superbet" | "estrelabet",
+    teamA: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId: `${provider}:rush-gremio`,
+    esport: "cs2" as const,
+    teamA,
+    teamB: "Gremio",
+    rawTeamA: teamA,
+    rawTeamB: "Gremio",
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName("Gremio", "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const left = observed(
+    "superbet",
+    "RUSH Gaming",
+    "CCT South America 2026 Challengers 3",
+  );
+  const right = observed("estrelabet", "RUSH", "CCT Challengers - SA");
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(canonicalTeamName("RUSH Gaming", "cs2"), "rush");
+  assert.equal(canonicalTeamName("RUSH", "cs2"), "rush");
+  assert.equal(canonicalTeamName("RUSH Gaming", "lol"), "rush gaming");
+  assert.notEqual(canonicalTeamName("RUSH Academy", "cs2"), "rush");
+  assert.equal(left.normalizedTeamA, "rush gaming");
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "rush");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "gremio");
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "RUSH Gaming");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamA, "RUSH");
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.equal(result.matched[0].evidence.sameCompetitionAlias, false);
+  assert.equal(
+    compareAllProviders([
+      left,
+      { ...right, startsAt: "2026-09-18T15:01:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([left, { ...right, esport: "lol" as const }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([left, { ...right, provider: "superbet" as const }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([left, right, { ...right, eventId: "another-rush" }])
+      .matched.length,
+    0,
+  );
+});
+
 test("Valorant team aliases match FENNEL GC with FENNEL (F) and preserve raw names", async () => {
   const raw = JSON.parse(
     await readFile(

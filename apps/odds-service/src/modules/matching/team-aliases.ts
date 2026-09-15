@@ -12,6 +12,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
     navi: "natus vincere",
     "nemiga gaming": "nemiga",
     "nrg esports": "nrg",
+    "rush gaming": "rush",
     "rune eaters esports": "rune eaters",
     "team brute": "brute",
     "team vitality": "vitality",
