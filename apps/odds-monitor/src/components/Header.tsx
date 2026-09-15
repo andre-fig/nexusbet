@@ -76,18 +76,15 @@ export const Header: React.FC<HeaderProps> = ({
               <LayoutDashboard size={13} />
               <span>Dashboard</span>
             </button>
-            <button
-              disabled={!eventTitle}
-              onClick={() => onNavigate("event-detail")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[12px] font-medium transition-all ${
-                currentView === "event-detail"
-                  ? "bg-surface-bright text-on-surface shadow-sm font-semibold"
-                  : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
-              }`}
-            >
-              <FileText size={13} />
-              <span>{eventTitle || "Event detail"}</span>
-            </button>
+            {currentView === "event-detail" && eventTitle && (
+              <button
+                onClick={() => onNavigate("event-detail")}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded text-[12px] font-medium transition-all bg-surface-bright text-on-surface shadow-sm font-semibold"
+              >
+                <FileText size={13} />
+                <span>{eventTitle}</span>
+              </button>
+            )}
           </div>
         </div>
 
