@@ -14,6 +14,7 @@ export function teamName(value: string, _esport: Esport): string {
 // Competition equivalences are reviewed entries, not automatic stripping of season/phase.
 export const tournamentAliases: Record<string, Record<string, string>> = {
   cs2: {
+    "cct challengers sa": "cct south america challenger",
     "cs2 starladder starseries fall": "starladder starseries",
     "cs2 european pro league": "european pro league",
     starseries: "starladder starseries",
@@ -27,9 +28,28 @@ export const tournamentAliases: Record<string, Record<string, string>> = {
     "vct champions": "champions",
   },
 };
-export function tournamentName(value: string, esport: Esport): string {
+export type PersistedTournamentAliases = Readonly<
+  Partial<Record<Esport, Readonly<Record<string, string>>>>
+>;
+export function tournamentAliasKey(value: string, esport: Esport): string {
+  const sportPrefix =
+    esport === "cs2" ? "CS2" : esport === "lol" ? "LoL" : "Valorant";
+  const prefix = new RegExp(`^\\s*${sportPrefix}\\s*[-:|/]\\s*`, "i");
+  return cleanName(value.replace(prefix, ""));
+}
+export function tournamentName(
+  value: string,
+  esport: Esport,
+  persisted: PersistedTournamentAliases = {},
+): string {
   const n = cleanName(value);
-  return tournamentAliases[esport]?.[n] ?? n;
+  const key = tournamentAliasKey(value, esport);
+  return (
+    persisted[esport]?.[key] ??
+    tournamentAliases[esport]?.[n] ??
+    tournamentAliases[esport]?.[key] ??
+    key
+  );
 }
 export function names(teamA: string, teamB: string, esport: Esport) {
   return {

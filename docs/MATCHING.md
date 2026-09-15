@@ -6,7 +6,7 @@
 
 Comparar versões do mesmo jogo sem confundir IDs externos. `bet365:123` e `betano:123` não são o mesmo evento por causa do ID. A comparação opera exclusivamente sobre NormalizedEvent e produz `{ matched, unmatched }`, com objeto canônico, referências dos providers, nomes raw/normalizados, orientação das equipes e odds observadas.
 
-A identidade SQL CanonicalEvent é separada. Sua ligação atual é `event_matches`, e mudanças ficam em `match_decisions`. Eventos isolados permanecem unmatched sem criar um canônico artificial. `team_aliases` guarda abreviações aprendidas por esporte, com nome canônico e evidência, para reutilização após reinício.
+A identidade SQL CanonicalEvent é separada. Sua ligação atual é `event_matches`, e mudanças ficam em `match_decisions`. Eventos isolados permanecem unmatched sem criar um canônico artificial. `team_aliases` e `tournament_aliases` guardam variantes aprovadas por esporte, com nome canônico e evidência, para reutilização após reinício.
 
 ## Normalização auditável
 
@@ -14,7 +14,7 @@ A função de limpeza aplica NFKD, remove marcas de acentuação, converte para 
 
 Depois da regra de borda, aliases explícitos por esporte cobrem apenas equivalências semânticas: CS2 inclui `navi` → `natus vincere` e `l g` → `leo`; LoL inclui `vivo keyd stars` → `keyd stars`, `movistar koi` → `koi` e `9z globant` → `9z`; Valorant inclui `fennel f` → `fennel gc`. Os aliases `33` → `team 33` e `9z team` → `9z` ficaram redundantes e foram removidos. A equivalência revisada prevalece para `FENNEL (F)` antes de retirar o marcador final, evitando confundir `FENNEL GC` com um `FENNEL` sem marcador. `academy`, `junior`, `young`, `gc`, `female`, `ex`, `fe` e `youth` permanecem na chave: `Nexus Gaming` e `Nexus` podem unir, mas `Nexus Academy Gaming` não vira `Nexus`. A regra não usa distância de edição nem fuzzy matching; preserve testes de colisão ao acrescentar novos aliases.
 
-Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `cs2 european pro league` → `european pro league`, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. As tabelas executáveis ficam em `modules/matching/team-aliases.ts` para equipes e `shared/utils/names.ts` para torneios; aliases aprendidos ficam em `team_aliases`. Um alias novo requer grupo não ambíguo, mesmo adversário e torneio normalizados, horários a até cinco minutos e abreviação composta pelas iniciais de um prefixo do nome completo com sufixo idêntico. Por exemplo, `EAC Extra` → `EA Copenhagen Extra` em `OldMix`/`United21`. O nome canônico escolhe a forma mais completa. Não há distância de edição geral.
+Aliases de competição atuais incluem as variantes de StarLadder/StarSeries em CS2, `cs2 european pro league` → `european pro league`, `cct challengers sa` → `cct south america challenger`, `lol lec summer playoffs` → `lec`, `lol cblol split 2 playoffs` → `cblol`, e variantes VCT Champions → `champions`. Um prefixo explícito do esporte seguido de `-`, `:`, `|` ou `/` é removido da chave do torneio; fase, temporada e número continuam na chave. As tabelas executáveis ficam em `modules/matching/team-aliases.ts` para equipes e `shared/utils/names.ts` para torneios; aliases confirmados ficam em `team_aliases` e `tournament_aliases`. Um alias de time novo requer grupo não ambíguo, mesmo adversário e torneio normalizados, horário a até cinco minutos e abreviação com sufixo idêntico ou uma única flexão de plural. Por exemplo, `EAC Extra` → `EA Copenhagen Extra` e `Semente do Mal` → `Sementes do Mal`. A variante do torneio só é gravada quando uma equivalência revisada é confirmada por esse grupo. Não há distância de edição geral.
 
 O alias específico de CS2 `wraith pcific` → `pcific` une `Wraith Pcific` com `Pcific Esports` após a remoção genérica do sufixo `esports`. `Wraith` não é removido de outros nomes.
 
@@ -29,7 +29,7 @@ Na chave de matching, o token final `juniors` vira `junior`: `Natus Vincere Juni
 1. Providers diferentes e mesmo esport.
 2. Mesmo par de equipes normalizadas, independentemente da ordem.
 3. Ambos com status `scheduled`.
-4. Mesmo instante de início após interpretar `startsAt`; até cinco minutos somente quando o torneio também coincide e o par de times é igual por alias conhecido, ou quando uma abreviação nova é confirmada pelo adversário e torneio.
+4. Mesmo instante de início após interpretar `startsAt`; até cinco minutos somente quando o torneio também coincide e o par de times é igual por alias conhecido, ou quando uma abreviação/flexão nova é confirmada pelo adversário e torneio.
 
 Capitalização, acentos, espaços extras e pontuação irrelevante são ignorados na normalização dos times. A ordem dos dois times também é ignorada. A competição não veta o grupo: igualdade após normalização/alias produz confidence 1; divergência produz confidence 0,9. Eventos suspended/live não são candidatos, mesmo se o scheduler ainda puder coletar um suspended pré-jogo.
 

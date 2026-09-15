@@ -140,7 +140,7 @@ after(async () => {
 });
 beforeEach(async () => {
   await database.db.$executeRawUnsafe(
-    "TRUNCATE providers, canonical_events, team_aliases, legacy_checkpoints, ingestion_runs CASCADE",
+    "TRUNCATE providers, canonical_events, team_aliases, tournament_aliases, legacy_checkpoints, ingestion_runs CASCADE",
   );
   await seedProviders(database.db);
 });
@@ -289,6 +289,72 @@ test("Lavked capitalization and CS2 European Pro League prefix share one persist
         match.status === "matched" && match.canonicalEventId === canonical.id,
     ),
   );
+});
+test("MEIA NOITE singular/plural team and CCT tournament aliases persist as one match", async () => {
+  const startsAt = "2026-09-15T23:45:00.000Z";
+  const make = (
+    provider: "superbet" | "estrelabet",
+    id: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...event(provider, 1.72, at, id),
+    teamA: "MEIA NOITE",
+    teamB,
+    rawTeamA: "MEIA NOITE",
+    rawTeamB: teamB,
+    normalizedTeamA: "meia noite",
+    normalizedTeamB: teamB.toLowerCase(),
+    tournament,
+    startsAt,
+  });
+  const plural = make(
+    "superbet",
+    "meia-noite-plural",
+    "Sementes do Mal",
+    "CS2 - CCT South America Challenger",
+  );
+  const singular = make(
+    "estrelabet",
+    "meia-noite-singular",
+    "Semente do Mal",
+    "CCT Challengers - SA",
+  );
+  await service.commit(publication(plural));
+  await service.commit(publication(singular));
+  assert.equal(await database.db.providerEvent.count(), 2);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  const canonical = await database.db.canonicalEvent.findFirstOrThrow();
+  assert.equal(canonical.teamB, "sementes do mal");
+  assert.equal(canonical.tournament, "cct south america challenger");
+  assert.equal(
+    (
+      await database.db.teamAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "semente do mal" } },
+      })
+    ).canonicalName,
+    "sementes do mal",
+  );
+  assert.equal(
+    (
+      await database.db.tournamentAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "cct challengers sa" } },
+      })
+    ).canonicalName,
+    "cct south america challenger",
+  );
+  const matches = await database.db.eventMatch.findMany();
+  assert.equal(matches.length, 2);
+  assert.ok(
+    matches.every(
+      (match) =>
+        match.status === "matched" && match.canonicalEventId === canonical.id,
+    ),
+  );
+  await service.commit(publication(singular));
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(await database.db.teamAlias.count(), 1);
+  assert.equal(await database.db.tournamentAlias.count(), 1);
 });
 test("numeric history 1.72 → 1.70 → 1.68, temporal ordering, current odds and unchanged observations", async () => {
   for (const [i, price] of [1.72, 1.7, 1.68, 1.68].entries())
@@ -1525,10 +1591,29 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
     } as AppConfiguration,
     collection,
   );
-  const base = event();
+  const freshAt = new Date().toISOString();
+  const base = event("superbet", 1.72, freshAt);
+  // An active provider with a fresh, unrelated listing belongs in the
+  // expected count while it has not yet joined this canonical group.
+  await service.commit(
+    publication({
+      ...event(
+        "estrelabet",
+        1.72,
+        new Date(Date.parse(freshAt) - 60_000).toISOString(),
+        "other-event",
+      ),
+      teamA: "Gamma",
+      teamB: "Delta",
+      rawTeamA: "Gamma",
+      rawTeamB: "Delta",
+      normalizedTeamA: "gamma",
+      normalizedTeamB: "delta",
+    }),
+  );
   for (const provider of ["bet365", "betano", "superbet", "blaze"] as const)
     await service.commit(publication({ ...structuredClone(base), provider }));
-  let result = await monitor.events({ limit: "1" });
+  let result = await monitor.events({ limit: "1", search: "Alpha" });
   assert.equal(result.items[0].matching.providerCount, 2);
   assert.equal(result.items[0].matching.expectedProviderCount, 3);
   assert.equal(result.items[0].matching.status, "partial");
@@ -1556,11 +1641,11 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
   await service.commit(
     publication({ ...structuredClone(base), provider: "estrelabet" }),
   );
-  result = await monitor.events({ limit: "1" });
+  result = await monitor.events({ limit: "1", search: "Alpha" });
   assert.equal(result.items[0].matching.providerCount, 3);
   assert.equal(result.items[0].matching.status, "matched");
   active.delete("estrelabet");
-  result = await monitor.events({ limit: "1" });
+  result = await monitor.events({ limit: "1", search: "Alpha" });
   assert.deepEqual(
     [
       result.items[0].matching.status,
@@ -1570,7 +1655,7 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
     ["matched", 2, 2],
   );
   active.delete("blaze");
-  result = await monitor.events({ limit: "1" });
+  result = await monitor.events({ limit: "1", search: "Alpha" });
   assert.deepEqual(
     [
       result.items[0].matching.status,
@@ -1594,9 +1679,10 @@ test("Monitor coverage counts only runtime-active providers while retaining disa
   assert.equal(overview.health.matched, 1);
   assert.equal(overview.health.partial, 0);
   await database.db.eventMatch.updateMany({
+    where: { canonicalEventId: { not: null } },
     data: { status: "low_confidence", confidence: 0.4 },
   });
-  result = await monitor.events({ limit: "1" });
+  result = await monitor.events({ limit: "1", search: "Alpha" });
   assert.equal(result.items[0].matching.status, "low_confidence");
 });
 

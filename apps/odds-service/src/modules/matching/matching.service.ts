@@ -31,12 +31,22 @@ export class MatchingService {
       lol: {},
       valorant: {},
     };
+    const tournaments: Record<Esport, Record<string, string>> = {
+      cs2: {},
+      lol: {},
+      valorant: {},
+    };
     if (this.database.enabled) {
-      const rows = await this.database.read((db) => db.teamAlias.findMany());
-      for (const row of rows)
+      const [teamRows, tournamentRows] = await this.database.read((db) =>
+        Promise.all([db.teamAlias.findMany(), db.tournamentAlias.findMany()]),
+      );
+      for (const row of teamRows)
         if (row.esport in aliases)
           aliases[row.esport as Esport][row.alias] = row.canonicalName;
+      for (const row of tournamentRows)
+        if (row.esport in tournaments)
+          tournaments[row.esport as Esport][row.alias] = row.canonicalName;
     }
-    return compareAllProviders(events, eligible, aliases);
+    return compareAllProviders(events, eligible, aliases, tournaments);
   }
 }

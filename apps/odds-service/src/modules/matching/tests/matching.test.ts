@@ -294,7 +294,128 @@ test("Lavked vs Saint Sinners and lavked vs saint sinners are one European Pro L
   );
   assert.equal(
     tournamentName("CS2 - European Pro League Season 40", "cs2"),
-    "cs2 european pro league season 40",
+    "european pro league season 40",
+  );
+});
+test("MEIA NOITE vs Sementes do Mal and MEIA NOITE vs Semente do Mal share CCT South America Challenger", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-15T23:45:00.000Z"; // 20:45 America/Sao_Paulo
+  const make = (
+    provider: "superbet" | "estrelabet",
+    eventId: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA: "MEIA NOITE",
+    teamB,
+    rawTeamA: "MEIA NOITE",
+    rawTeamB: teamB,
+    normalizedTeamA: teamName("MEIA NOITE", "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const plural = make(
+    "superbet",
+    "meia-noite-plural",
+    "Sementes do Mal",
+    "CS2 - CCT South America Challenger",
+  );
+  const singular = make(
+    "estrelabet",
+    "meia-noite-singular",
+    "Semente do Mal",
+    "CCT Challengers - SA",
+  );
+  assert.equal(
+    tournamentName(plural.tournament, "cs2"),
+    "cct south america challenger",
+  );
+  assert.equal(
+    tournamentName(singular.tournament, "cs2"),
+    "cct south america challenger",
+  );
+  const result = compareAllProviders([plural, singular]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.deepEqual(result.matched[0].canonicalEvent, {
+    esport: "cs2",
+    tournament: "cct south america challenger",
+    teamA: "meia noite",
+    teamB: "sementes do mal",
+    startsAt,
+  });
+  assert.equal(result.matched[0].confidence, 1);
+  assert.deepEqual(result.matched[0].learnedAliases, [
+    {
+      esport: "cs2",
+      alias: "semente do mal",
+      canonical: "sementes do mal",
+    },
+  ]);
+  assert.deepEqual(result.matched[0].learnedTournamentAliases, [
+    {
+      esport: "cs2",
+      alias: "cct challengers sa",
+      canonical: "cct south america challenger",
+    },
+  ]);
+  const reused = {
+    ...singular,
+    tournament: "CCT SA saved variant",
+    startsAt: "2026-09-15T23:46:00.000Z",
+  };
+  assert.equal(compareAllProviders([plural, reused]).matched.length, 0);
+  assert.equal(
+    compareAllProviders(
+      [plural, reused],
+      [plural.provider, reused.provider],
+      { cs2: { "semente do mal": "sementes do mal" } },
+      { cs2: { "cct sa saved variant": "cct south america challenger" } },
+    ).matched.length,
+    1,
+  );
+  assert.equal(
+    compareAllProviders([plural, { ...singular, teamA: "OTHER" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([plural, { ...singular, teamB: "Semente do Bem" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([plural, { ...singular, tournament: "Other Cup" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      plural,
+      { ...singular, startsAt: "2026-09-16T00:00:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      plural,
+      singular,
+      { ...singular, eventId: "ambiguous" },
+    ]).matched.length,
+    0,
   );
 });
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {

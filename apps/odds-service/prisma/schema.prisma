@@ -77,6 +77,18 @@ model TeamAlias {
   @@map("team_aliases")
 }
 
+model TournamentAlias {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  esport        String
+  alias         String
+  canonicalName String   @map("canonical_name")
+  evidence      Json     @db.JsonB
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([esport, alias])
+  @@map("tournament_aliases")
+}
+
 model ProviderEvent {
   id                   String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   providerId           String          @map("provider_id") @db.Uuid

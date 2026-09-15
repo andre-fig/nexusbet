@@ -37,6 +37,7 @@ export class MatchingRepository {
       ]),
     );
     const storedAliases = await tx.teamAlias.findMany();
+    const storedTournaments = await tx.tournamentAlias.findMany();
     const aliases: Record<Esport, Record<string, string>> = {
       cs2: {},
       lol: {},
@@ -45,7 +46,20 @@ export class MatchingRepository {
     for (const row of storedAliases)
       if (row.esport in aliases)
         aliases[row.esport as Esport][row.alias] = row.canonicalName;
-    const result = compareAllProviders(events, eligibleByEsport, aliases);
+    const tournaments: Record<Esport, Record<string, string>> = {
+      cs2: {},
+      lol: {},
+      valorant: {},
+    };
+    for (const row of storedTournaments)
+      if (row.esport in tournaments)
+        tournaments[row.esport as Esport][row.alias] = row.canonicalName;
+    const result = compareAllProviders(
+      events,
+      eligibleByEsport,
+      aliases,
+      tournaments,
+    );
     const rows = await tx.providerEvent.findMany({
       include: {
         match: true,
@@ -129,7 +143,7 @@ export class MatchingRepository {
             alias: alias.alias,
             canonicalName: alias.canonical,
             evidence: {
-              rule: "abbreviation_same_opponent_tournament_near_time",
+              rule: "team_name_variant_same_opponent_tournament_near_time",
               startsAt: c.startsAt,
               providers: Object.keys(group.providers),
             },
@@ -138,12 +152,32 @@ export class MatchingRepository {
         });
         aliases[alias.esport][alias.alias] = alias.canonical;
       }
+      for (const alias of group.learnedTournamentAliases) {
+        const existing = tournaments[alias.esport][alias.alias];
+        if (existing && existing !== alias.canonical) continue;
+        await tx.tournamentAlias.upsert({
+          where: { esport_alias: { esport: alias.esport, alias: alias.alias } },
+          create: {
+            esport: alias.esport,
+            alias: alias.alias,
+            canonicalName: alias.canonical,
+            evidence: {
+              rule: "reviewed_tournament_alias_confirmed_by_team_pair_time",
+              startsAt: c.startsAt,
+              providers: Object.keys(group.providers),
+            },
+          },
+          update: {},
+        });
+        tournaments[alias.esport][alias.alias] = alias.canonical;
+      }
       const canonical = priorIds[0]
         ? await tx.canonicalEvent.update({
             where: { id: priorIds[0] },
             data: {
               teamA: c.teamA,
               teamB: c.teamB,
+              tournament: c.tournament,
               startsAt: new Date(c.startsAt),
             },
           })

@@ -1,8 +1,13 @@
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
-import { tournamentName } from "../../shared/utils/names.js";
+import {
+  tournamentAliasKey,
+  tournamentName,
+  type PersistedTournamentAliases,
+} from "../../shared/utils/names.js";
 import {
   abbreviatedTeamName,
   canonicalTeamName,
+  inflectedTeamName,
   type PersistedTeamAliases,
 } from "./team-aliases.js";
 import { incompleteWinnerMarket } from "../../shared/utils/market-quality.js";
@@ -28,10 +33,11 @@ function aliasCandidate(
   e: NormalizedEvent,
   f: NormalizedEvent,
   aliases: PersistedTeamAliases,
+  tournaments: PersistedTournamentAliases,
 ) {
   if (
-    tournamentName(e.tournament, e.esport) !==
-    tournamentName(f.tournament, f.esport)
+    tournamentName(e.tournament, e.esport, tournaments) !==
+    tournamentName(f.tournament, f.esport, tournaments)
   )
     return false;
   const sides = [
@@ -47,7 +53,8 @@ function aliasCandidate(
       first === third &&
       second !== fourth &&
       (abbreviatedTeamName(second, fourth) ||
-        abbreviatedTeamName(fourth, second))
+        abbreviatedTeamName(fourth, second) ||
+        inflectedTeamName(second, fourth))
     );
   });
 }
@@ -55,6 +62,7 @@ function eligible(
   e: NormalizedEvent,
   f: NormalizedEvent,
   aliases: PersistedTeamAliases,
+  tournaments: PersistedTournamentAliases,
 ) {
   const delta = Math.abs(Date.parse(e.startsAt) - Date.parse(f.startsAt));
   const samePair = pair(e, aliases) === pair(f, aliases);
@@ -66,9 +74,9 @@ function eligible(
     (samePair
       ? delta === 0 ||
         (delta <= 5 * 60_000 &&
-          tournamentName(e.tournament, e.esport) ===
-            tournamentName(f.tournament, f.esport))
-      : delta <= 5 * 60_000 && aliasCandidate(e, f, aliases))
+          tournamentName(e.tournament, e.esport, tournaments) ===
+            tournamentName(f.tournament, f.esport, tournaments))
+      : delta <= 5 * 60_000 && aliasCandidate(e, f, aliases, tournaments))
   );
 }
 /** A component must be a complete, one-event-per-provider clique. No transitive fuzzy joins. */
@@ -78,6 +86,7 @@ export function compareAllProviders(
     ...new Set(events.map((event) => event.provider)),
   ],
   aliases: PersistedTeamAliases = {},
+  tournaments: PersistedTournamentAliases = {},
 ) {
   const key = (e: NormalizedEvent) => e.provider + ":" + e.eventId;
   const unique = new Map<string, NormalizedEvent>();
@@ -119,7 +128,7 @@ export function compareAllProviders(
     seen.add(key(e));
     for (let i = 0; i < group.length; i++)
       for (const f of all)
-        if (!seen.has(key(f)) && eligible(group[i], f, aliases)) {
+        if (!seen.has(key(f)) && eligible(group[i], f, aliases, tournaments)) {
           seen.add(key(f));
           group.push(f);
         }
@@ -128,9 +137,9 @@ export function compareAllProviders(
       new Set(group.map((x) => x.provider)).size === group.length &&
       !group.some((x) => conflicts.has(key(x))) &&
       group.every((x, i) =>
-        group.slice(i + 1).every((y) => eligible(x, y, aliases)),
+        group.slice(i + 1).every((y) => eligible(x, y, aliases, tournaments)),
       );
-    if (valid) matched.push(comparison(group, aliases));
+    if (valid) matched.push(comparison(group, aliases, tournaments));
     else
       for (const x of group)
         unmatched.push({
@@ -151,7 +160,11 @@ export function compareAllProviders(
   }
   return { matched, unmatched, notApplicable };
 }
-function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
+function comparison(
+  group: NormalizedEvent[],
+  aliases: PersistedTeamAliases,
+  tournaments: PersistedTournamentAliases,
+) {
   const e = group[0];
   const canonicalSides = [e.teamA, e.teamB].map((name) =>
     canonicalTeamName(name, e.esport, aliases),
@@ -164,7 +177,8 @@ function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
       );
       return mapped[side] === canonicalSides[side] ||
         abbreviatedTeamName(mapped[side], canonicalSides[side]) ||
-        abbreviatedTeamName(canonicalSides[side], mapped[side])
+        abbreviatedTeamName(canonicalSides[side], mapped[side]) ||
+        inflectedTeamName(mapped[side], canonicalSides[side])
         ? mapped[side]
         : mapped[1 - side];
     });
@@ -178,14 +192,29 @@ function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
     .concat(namesForSide(1))
     .flatMap((name) => {
       const target = namesForSide(0).includes(name) ? teamA : teamB;
-      return name !== target && abbreviatedTeamName(name, target)
+      return name !== target &&
+        (abbreviatedTeamName(name, target) || inflectedTeamName(name, target))
         ? [{ esport: e.esport, alias: name, canonical: target }]
         : [];
     });
   const competitions = new Set(
-    group.map((x) => tournamentName(x.tournament, x.esport)),
+    group.map((x) => tournamentName(x.tournament, x.esport, tournaments)),
   );
   const sameCompetitionAlias = competitions.size === 1;
+  const canonicalTournament = tournamentName(
+    e.tournament,
+    e.esport,
+    tournaments,
+  );
+  const learnedTournamentAliases = sameCompetitionAlias
+    ? [...new Set(group.map((x) => tournamentAliasKey(x.tournament, x.esport)))]
+        .filter((alias) => alias !== canonicalTournament)
+        .map((alias) => ({
+          esport: e.esport,
+          alias,
+          canonical: canonicalTournament,
+        }))
+    : [];
   const prices = (x: NormalizedEvent, reversed = false) => ({
     eventId: x.eventId,
     rawTeamA: x.rawTeamA,
@@ -226,7 +255,7 @@ function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
   return {
     canonicalEvent: {
       esport: e.esport,
-      tournament: tournamentName(e.tournament, e.esport),
+      tournament: canonicalTournament,
       teamA,
       teamB,
       startsAt: e.startsAt,
@@ -241,6 +270,7 @@ function comparison(group: NormalizedEvent[], aliases: PersistedTeamAliases) {
         Math.min(...group.map((x) => Date.parse(x.startsAt))) / 1000,
     },
     learnedAliases,
+    learnedTournamentAliases,
     providers: Object.fromEntries(
       group.map((x) => [
         x.provider,

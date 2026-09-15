@@ -46,6 +46,23 @@ export function abbreviatedTeamName(
   return false;
 }
 
+/** One plural marker may differ when all other words of a team name agree. */
+export function inflectedTeamName(a: string, b: string): boolean {
+  const left = a.split(" ");
+  const right = b.split(" ");
+  if (left.length < 2 || left.length !== right.length) return false;
+  const different = left.flatMap((word, index) =>
+    word === right[index] ? [] : [[word, right[index]]],
+  );
+  if (different.length !== 1) return false;
+  const [first, second] = different[0];
+  const pluralOf = (plural: string, singular: string) =>
+    plural.length >= 5 &&
+    plural.endsWith("s") &&
+    plural.slice(0, -1) === singular;
+  return pluralOf(first, second) || pluralOf(second, first);
+}
+
 export function canonicalTeamName(
   value: string,
   esport: Esport,
