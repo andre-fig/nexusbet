@@ -22,6 +22,7 @@ export interface Settings {
   port: number;
   host: string;
   ttlMs: number;
+  oddsOutlierThresholdPercent: number;
   scanIntervalMs: number;
   scanEnabled: boolean;
   pollingEnabled: boolean;
@@ -123,6 +124,11 @@ export function configuration() {
     port: positive("PORT", 3650, 0),
     host: process.env.HOST || "127.0.0.1",
     ttlMs: positive("MAX_AGE_SECONDS", 600) * 1000,
+    oddsOutlierThresholdPercent: positive(
+      "ODDS_OUTLIER_THRESHOLD_PERCENT",
+      10,
+      0.01,
+    ),
     scanIntervalMs: positive("INBOX_SCAN_INTERVAL_MS", 5000),
     scanEnabled: process.env.INBOX_SCAN_ENABLED !== "0",
     pollingEnabled: process.env.POLLING_ENABLED === "1",

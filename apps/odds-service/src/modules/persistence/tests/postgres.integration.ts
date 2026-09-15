@@ -1001,6 +1001,66 @@ test("one match-winner odd opens a warning and a complete observation resolves i
     "resolved",
   );
 });
+test("Monitor API compares only current matched provider markets and leaves odds history unchanged", async () => {
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const observations = [
+    ["superbet", 2.2, 1.85],
+    ["blaze", 2.05, 2.1],
+    ["estrelabet", 1.7, 1.95],
+    ["betano", 5, 5],
+  ] as const;
+  const observedAt = new Date().toISOString();
+  for (const [name, oddA, oddB] of observations) {
+    const e = event(name, oddA, observedAt);
+    e.markets[0].category = "match_winner";
+    e.markets[0].map = null;
+    e.markets[0].selections.push({
+      ...structuredClone(e.markets[0].selections[0]),
+      selectionId: `${name}:beta`,
+      name: "Beta",
+      odds: oddB,
+    });
+    await service.commit(publication(e));
+  }
+  const collection = {
+    operationalHealth: () => ({ providers: {} }),
+    providerRuntime: (name: string) => ({
+      active: name !== "betano",
+      status: name !== "betano" ? "active" : "disabled",
+      reason: name !== "betano" ? "active" : "disabled_in_runtime",
+    }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitor = new MonitorService(
+    new MonitorRepository(database),
+    config,
+    collection,
+  );
+  const page = await monitor.events({ limit: "1" });
+  assert.equal(page.items[0].canonicalId !== null, true);
+  assert.equal(page.items[0].analytics.length, 1);
+  const analysis = page.items[0].analytics[0];
+  assert.equal(analysis.bestPrices[0].provider, "superbet");
+  assert.equal(analysis.bestPrices[1].provider, "blaze");
+  assert.deepEqual(
+    analysis.outliers.map((x) => x.provider),
+    ["estrelabet"],
+  );
+  assert.equal(analysis.arbitrage?.marginPercent, 7.44);
+  assert.equal(analysis.arbitrage?.displayMarginPercent, "7,44%");
+  const detail = await monitor.detail(page.items[0].id);
+  assert.equal(detail.markets.filter((m) => m.analytics !== null).length, 3);
+  assert.equal(
+    detail.markets.find((m) => m.provider === "betano")?.analytics,
+    null,
+  );
+  assert.equal(await database.db.oddsSnapshot.count(), 8);
+  assert.equal(
+    await database.db.dataIssue.count({ where: { type: "OUTLIER" } }),
+    0,
+  );
+});
 test("Monitor publication notices occur after commit, never on replay or transaction failure", async () => {
   const { PersistenceNotifications } =
     await import("../persistence-notifications.js");

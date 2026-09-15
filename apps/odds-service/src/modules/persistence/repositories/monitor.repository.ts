@@ -56,6 +56,8 @@ const publicEvent = {
       category: true,
       name: true,
       mapNumber: true,
+      line: true,
+      period: true,
       suspended: true,
       inPlay: true,
       lastSeenAt: true,

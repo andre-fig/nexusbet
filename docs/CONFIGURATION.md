@@ -20,6 +20,7 @@ ConfigModule lê .env e o ambiente do processo tem precedência. Execute no dire
 | `PORT` | `3650` | Porta; mínimo configurável 0 |
 | `ESPORTS` | `cs2,lol,valorant` | Lista separada por vírgulas sem espaços |
 | `MAX_AGE_SECONDS` | `600` | TTL em segundos, mínimo 1 |
+| `ODDS_OUTLIER_THRESHOLD_PERCENT` | `10` | Diferença percentual absoluta mínima para marcar outlier no Monitor API; mínimo 0,01. Só compara seleções com ao menos três providers válidos. |
 | `DATA_DIR` | `data` | Diretório dos estados/journals |
 
 ## Database

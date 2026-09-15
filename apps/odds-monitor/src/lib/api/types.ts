@@ -44,6 +44,73 @@ export interface Market {
   mapNumber: number | null;
   suspended: boolean | null;
   selections: Selection[];
+  analytics?: MarketAnalytics | null;
+}
+export interface BestPrice {
+  side: "teamA" | "teamB";
+  selection: string;
+  selectionId: string;
+  marketId: string;
+  provider: string;
+  odds: number;
+  displayOdds: string;
+  nextBestOdds: number | null;
+  displayNextBestOdds: string | null;
+  tooltip: string;
+}
+export interface Outlier {
+  side: "teamA" | "teamB";
+  selection: string;
+  selectionId: string;
+  marketId: string;
+  provider: string;
+  odds: number;
+  displayOdds: string;
+  medianOdds: number;
+  displayMedianOdds: string;
+  deviationPercent: number;
+  tooltip: string;
+}
+export interface Arbitrage {
+  exists: boolean;
+  inverseSum: number;
+  marginPercent: number;
+  displayMarginPercent: string;
+  stakeReference: number;
+  expectedReturn: number;
+  tooltip: string;
+  legs: [
+    {
+      side: "teamA" | "teamB";
+      selection: string;
+      selectionId: string;
+      marketId: string;
+      provider: string;
+      odds: number;
+      displayOdds: string;
+      stakePercent: number;
+      stakeAmount: number;
+    },
+    {
+      side: "teamA" | "teamB";
+      selection: string;
+      selectionId: string;
+      marketId: string;
+      provider: string;
+      odds: number;
+      displayOdds: string;
+      stakePercent: number;
+      stakeAmount: number;
+    },
+  ];
+}
+export interface MarketAnalytics {
+  category: string;
+  mapNumber: number | null;
+  marketIds: string[];
+  bestPrices: BestPrice[];
+  outliers: Outlier[];
+  arbitrage: Arbitrage | null;
 }
 export interface EventProvider {
   id: string;
@@ -83,6 +150,7 @@ export interface EventRow {
   };
   providers: EventProvider[];
   issues: Issue[];
+  analytics?: MarketAnalytics[];
 }
 export interface Detail extends EventRow {
   markets: Market[];

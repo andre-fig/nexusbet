@@ -9,6 +9,7 @@ import { sanitize } from "../persistence/sanitize.js";
 import { ServiceError } from "../../shared/errors/domain-errors.js";
 import { canonicalTeamName } from "../matching/team-aliases.js";
 import { displayOdds } from "../../shared/utils/odds-display.js";
+import { analyzeMarkets } from "./market-analytics.js";
 import {
   validate,
   uuid,
@@ -200,6 +201,19 @@ export class MonitorService {
         (issue) =>
           g.expectedProviderCount >= 2 || issue.type !== "UNMATCHED_EVENT",
       );
+      const renderedProviders = members
+        .filter((p) => g.memberIds.includes(p.id))
+        .map((p) => this.provider(p, g));
+      const analytics = analyzeMarkets({
+        canonicalId: g.canonicalId,
+        matchingStatus: g.status,
+        esport: g.esport as "cs2" | "lol" | "valorant",
+        teamA: g.teamA,
+        teamB: g.teamB,
+        providers: renderedProviders,
+        outlierThresholdPercent:
+          this.config.settings.oddsOutlierThresholdPercent,
+      });
       return {
         id: g.id,
         canonicalId: g.canonicalId,
@@ -214,15 +228,14 @@ export class MonitorService {
           providerCount: g.providerCount,
           expectedProviderCount: g.expectedProviderCount,
         },
-        providers: members
-          .filter((p) => g.memberIds.includes(p.id))
-          .map((p) => {
-            const { markets, ...item } = this.provider(p, g);
-            return {
-              ...item,
-              issues: visibleIssues.filter((i) => i.providerEventId === p.id),
-            };
-          }),
+        analytics,
+        providers: renderedProviders.map((p) => {
+          const { markets, ...item } = p;
+          return {
+            ...item,
+            issues: visibleIssues.filter((i) => i.providerEventId === p.id),
+          };
+        }),
         issues: visibleIssues.filter(
           (i) =>
             g.memberIds.includes(i.providerEventId ?? "") ||
@@ -248,11 +261,25 @@ export class MonitorService {
       ...this.provider(p, g),
       issues: projected[0].providers.find((x) => x.id === p.id)?.issues ?? [],
     }));
+    const analytics = analyzeMarkets({
+      canonicalId: g.canonicalId,
+      matchingStatus: g.status,
+      esport: g.esport as "cs2" | "lol" | "valorant",
+      teamA: g.teamA,
+      teamB: g.teamB,
+      providers,
+      outlierThresholdPercent: this.config.settings.oddsOutlierThresholdPercent,
+    });
     return {
       ...projected[0],
+      analytics,
       providers,
       markets: providers.flatMap((p) =>
-        p.markets.map((m) => ({ ...m, provider: p.provider })),
+        p.markets.map((m) => ({
+          ...m,
+          provider: p.provider,
+          analytics: analytics.find((a) => a.marketIds.includes(m.id)) ?? null,
+        })),
       ),
     };
   }

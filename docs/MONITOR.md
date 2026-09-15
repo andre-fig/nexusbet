@@ -31,8 +31,8 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 | --- | --- |
 | `/monitor/overview` | `generatedAt`, `health {status,events,matched,partial,unmatched,issues}`, `providers[]` |
 | `/monitor/providers` | Array dinâmico `{id,name,enabled,active,status,statusReason,eventCount,lastUpdatedAt,stale}` |
-| `/monitor/events` | `{items:EventRow[],pagination:{page,limit,total,pages}}` |
-| `/monitor/events/:id` | EventRow + providers com mercados e `markets[]` prioritários |
+| `/monitor/events` | `{items:EventRow[],pagination:{page,limit,total,pages}}`; cada row inclui `analytics[]` para indicadores |
+| `/monitor/events/:id` | EventRow + providers com mercados e `markets[]` prioritários; cada mercado equivalente inclui `analytics` |
 | `/monitor/events/:id/raw` | `{eventId,raw:[{provider,rawData,markets}]}` sanitizado; carregamento sob demanda |
 | `/monitor/events/:id/odds-history` | `{eventId,series:[{provider,market:{id,category,mapNumber},selection,selectionId,points:[{odds,displayOdds,fetchedAt,suspended,inPlay}]}],truncated}` |
 | `/monitor/issues` | `{items:[{id,type,severity,status,eventId,provider,title,message,detectedAt}]}` |
@@ -52,8 +52,11 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
     matchWinner: {teamA: number | null; teamB: number | null;
       displayTeamA: string | null; displayTeamB: string | null; status: string}; issues: Issue[]}];
   issues: Issue[];
+  analytics: MarketAnalytics[];
 }
 ```
+
+`MarketAnalytics` contém `category`, `mapNumber`, `marketIds`, `bestPrices[]`, `outliers[]` e `arbitrage` (null quando não existe). BEST PRICE traz provider, seleção, odd, exibição e próxima melhor odd; empates são resolvidos pelo nome do provider. OUTLIER traz odd, mediana e desvio percentual assinado. ARBITRAGE traz inverseSum, margem percentual, legs, distribuição de R$100 e retorno teórico. Os tooltips contextuais são produzidos no backend e apenas exibidos pelo React. A análise exige um vínculo canônico `matched` ou `partial`, ao menos dois providers válidos, mesma categoria/mapa/período/linha e dois resultados que correspondam aos times canônicos. Mercados ambíguos, incompletos, suspensos, live, stale, disabled ou com odds inválidas não entram. Outlier exige pelo menos três providers válidos e usa `ODDS_OUTLIER_THRESHOLD_PERCENT=10` por padrão. Best price e arbitragem não criam issues; outlier é sinal de divergência na leitura, sem afirmar erro do provider e sem aumentar o contador persistido de issues.
 
 As seleções em `markets[]` retornam `odds: number | null` e `displayOdds: string | null`. O mesmo vale para os pontos de histórico. O valor numérico mantém a precisão observada; `displayOdds` usa duas casas decimais pt-BR com arredondamento normal. A função reutilizável fica em `apps/odds-service/src/shared/utils/odds-display.ts`, fora do MonitorModule, para uso posterior pelo BFF. As rotas normalizadas dos providers, `/comparisons`, `/events` e `/selections/:id/odds-history` também recebem a representação de exibição na camada de leitura. Dados persistidos e SSE não incluem esse campo.
 
@@ -69,7 +72,7 @@ As seleções em `markets[]` retornam `odds: number | null` e `displayOdds: stri
 
 Events: `search` (times/campeonato, até 200 caracteres), `esport=cs2|lol|valorant`, `status=matched|partial|unmatched|low_confidence|manual`, `start=today|24h|7d`, `provider=slug`, `attentionOnly=true|false`, `page>=1`, `limit=1..100` (default 50). `today` usa America/Sao_Paulo; 24h/7d usam janela futura a partir do relógio do servidor. Necessidade de atenção inclui issues abertas ou status diferente de matched. Providers desconhecidos retornam resultado vazio.
 
-Issues: `severity`, `type`, `provider`, `eventId`, `status=open|resolved|ignored` (default open), `limit=1..500` (default 100). Somente issues persistidas; nenhuma criação de outlier/pricing foi adicionada. `MARKET_INCOMPLETE` é warning para `match_winner` de dois participantes com quantidade de seleções de odd válida diferente de duas; o drawer o rotula `Incomplete market`. Enquanto incompleto, o mercado não entra nas odds da comparação e o monitor oculta seu preço de vencedor. Drawer carrega até 500, informando o limite.
+Issues: `severity`, `type`, `provider`, `eventId`, `status=open|resolved|ignored` (default open), `limit=1..500` (default 100). Somente issues persistidas; outliers de leitura não geram issue nesta etapa. `MARKET_INCOMPLETE` é warning para `match_winner` de dois participantes com quantidade de seleções de odd válida diferente de duas; o drawer o rotula `Incomplete market`. Enquanto incompleto, o mercado não entra nas odds da comparação e o monitor oculta seu preço de vencedor. Drawer carrega até 500, informando o limite.
 
 History: `provider`, `market` (categoria, UUID interno ou ID externo), `selection` (UUID interno ou ID externo), `from`, `to` (ISO com timezone). Resultado cronológico, limitado a 2.000 pontos por resposta; `truncated=true` sinaliza a necessidade de restringir seleção/período. Não inventa pontos nem elimina observações repetidas. `series` permite uma consulta não específica sem misturar linhas de seleções diferentes. O frontend solicita uma seleção por vez.
 
@@ -115,7 +118,7 @@ Frontend agrega invalidações por 300 ms: provider altera overview/tabela; issu
 
 Mantidos tema, header, cards, filtros, tabelas, detalhe, histórico e drawer. Removidos `src/data/mockData.ts`, tipos antigos fixos, modal de inspeção com ações fictícias e modal de referências. Não há fallback para mocks. Dados de teste ficam somente em `tests/fixtures/monitor.json`, capturados da API sobre dados reais sanitizados.
 
-Sem Pinnacle inexistente, Max Arbitrage, benchmark/consensus/delta/best price, Provider Quorum fictício, percentuais de barras inventados, latência/versão/região fake, usuário fake, purge/blacklist/acknowledge/resolve simulados. Loading/empty/error são explícitos. Nenhuma resolução de issue é fingida pelo frontend.
+Sem Pinnacle inexistente, benchmark/consensus/delta ou Provider Quorum fictício, percentuais de barras inventados, latência/versão/região fake, usuário fake, purge/blacklist/acknowledge/resolve simulados. BEST PRICE, OUTLIER e ARBITRAGE vêm da comparação de odds reais do Monitor API; não são preços próprios da NexusBet. Loading/empty/error são explícitos. Nenhuma resolução de issue é fingida pelo frontend.
 
 ## Testar
 
@@ -155,7 +158,7 @@ O browser headless do E2E navega **somente a UI local**, não é uma estratégia
 
 PostgreSQL de validação com 169 grupos (7 partial, 162 unmatched), 5 providers cadastrados e 165 issues. A leitura de dados antigos mostrou stale/disabled, sem simular saúde. Teste Chrome Stable 152.0.7977.83 sobre cópia `odds_monitor_validation`: Team Brute × G2 Ares, mercados match/map 1/map 2, histórico e raw reais. Alterações **controladas, não coletas de bookmaker** 1.5264 → 1.5394 → 1.5524 via PersistenceService disparou SSE e novo GET; DOM atualizou preservando marcador em window (sem reload), com zero page errors. Sync e drawer também passaram. Evidências locais ignoradas em `apps/odds-service/evidence/monitor/` (`e2e.json`, screenshots).
 
-Limitações: histórico paginado por filtro/limite, não por cursor; SSE sem replay durável/multi-réplica; metadados de issues/matching são varridos para detectar mudanças e deverão ser incrementais se o volume crescer; métricas de pricing/outlier não foram criadas; dados reais existentes podem estar stale. O harness de um teste legado de SIGTERM foi corrigido para anunciar readiness somente após registrar o handler; o runtime não foi alterado.
+Limitações observadas naquela validação: histórico paginado por filtro/limite, não por cursor; SSE sem replay durável/multi-réplica; metadados de issues/matching são varridos para detectar mudanças e deverão ser incrementais se o volume crescer; métricas de pricing/outlier ainda não tinham sido criadas; dados reais existentes podiam estar stale. O harness de um teste legado de SIGTERM foi corrigido para anunciar readiness somente após registrar o handler; o runtime não foi alterado.
 
 Resultado final: backend **149 aprovados / 153 descobertos, 4 browser opcionais pulados**; PostgreSQL **27/27**; frontend **5/5**; builds, typechecks e format:check/lint aprovados. E2E repetido com sucesso, sempre encerrando browser e Nest ao terminar.
 

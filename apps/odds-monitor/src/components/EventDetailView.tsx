@@ -8,6 +8,7 @@ import { ArrowLeft, RefreshCw, Code2 } from "lucide-react";
 import type { Detail, History } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
 import { DataState, timestamp, odd, panel, control } from "./DataState";
+import { AnalyticsBadge } from "./AnalyticsBadge";
 interface Props {
   detail: Resource<Detail>;
   history: Resource<History>;
@@ -189,6 +190,9 @@ export function EventDetailView({
                         : m.category === "map_winner" && m.mapNumber === map,
                     );
                     if (!markets.length) return [];
+                    const arbitrage = markets.find(
+                      (m) => m.analytics?.arbitrage?.exists,
+                    )?.analytics?.arbitrage;
                     return [
                       <tr
                         key={String(map)}
@@ -196,6 +200,15 @@ export function EventDetailView({
                       >
                         <td className="p-3 font-semibold">
                           {map === null ? "Match winner" : `Map ${map} winner`}
+                          {arbitrage && (
+                            <span className="ml-2 inline-flex">
+                              <AnalyticsBadge
+                                kind="arbitrage"
+                                label={`Arbitrage +${arbitrage.displayMarginPercent}`}
+                                tooltip={arbitrage.tooltip}
+                              />
+                            </span>
+                          )}
                         </td>
                         {event.providers.map((p) => (
                           <td className="p-3" key={p.provider}>
@@ -203,20 +216,40 @@ export function EventDetailView({
                               .filter((m) => m.provider === p.provider)
                               .map((m) => (
                                 <div key={m.id}>
-                                  {m.selections.map((s) => (
-                                    <div
-                                      key={s.id}
-                                      className="flex gap-3 justify-between py-1"
-                                    >
-                                      <span>{s.name}</span>
-                                      <span className="font-mono">
-                                        {odd(s.displayOdds)}
-                                        {s.status && s.status !== "healthy"
-                                          ? ` · ${s.status}`
-                                          : ""}
-                                      </span>
-                                    </div>
-                                  ))}
+                                  {m.selections.map((s) => {
+                                    const best = m.analytics?.bestPrices.find(
+                                      (price) => price.selectionId === s.id,
+                                    );
+                                    const outlier = m.analytics?.outliers.find(
+                                      (item) => item.selectionId === s.id,
+                                    );
+                                    return (
+                                      <div
+                                        key={s.id}
+                                        className="flex gap-3 justify-between py-1"
+                                      >
+                                        <span>{s.name}</span>
+                                        <span className="font-mono inline-flex items-center gap-1">
+                                          {odd(s.displayOdds)}
+                                          {best && (
+                                            <AnalyticsBadge
+                                              kind="best_price"
+                                              tooltip={best.tooltip}
+                                            />
+                                          )}
+                                          {outlier && (
+                                            <AnalyticsBadge
+                                              kind="outlier"
+                                              tooltip={outlier.tooltip}
+                                            />
+                                          )}
+                                          {s.status && s.status !== "healthy"
+                                            ? ` · ${s.status}`
+                                            : ""}
+                                        </span>
+                                      </div>
+                                    );
+                                  })}
                                   <span className="text-[10px] text-on-surface-variant">
                                     {m.providerMarketId}
                                   </span>

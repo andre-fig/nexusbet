@@ -3,6 +3,7 @@ import { Search, ArrowRight, AlertTriangle } from "lucide-react";
 import type { Overview, EventPage, Filters } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
 import { DataState, timestamp, odd, panel, control } from "./DataState";
+import { AnalyticsBadge } from "./AnalyticsBadge";
 import {
   healthStatusColor,
   providerStatusPresentation,
@@ -232,6 +233,19 @@ export function DashboardView({
                         ? "Single provider"
                         : e.matching.status}
                     </span>
+                    {e.analytics?.find((market) => market.arbitrage?.exists)
+                      ?.arbitrage && (
+                      <span className="ml-1">
+                        <AnalyticsBadge
+                          kind="arbitrage"
+                          tooltip={
+                            e.analytics.find(
+                              (market) => market.arbitrage?.exists,
+                            )!.arbitrage!.tooltip
+                          }
+                        />
+                      </span>
+                    )}
                     <div className="text-on-surface-variant mt-2">
                       {e.matching.providerCount}/
                       {e.matching.expectedProviderCount} providers
@@ -239,6 +253,9 @@ export function DashboardView({
                   </td>
                   {tableProviders.map((p) => {
                     const feed = e.providers.find((f) => f.provider === p.id);
+                    const winner = e.analytics?.find(
+                      (analysis) => analysis.category === "match_winner",
+                    );
                     const status = !p.active
                       ? providerStatusPresentation(p)
                       : feed
@@ -246,9 +263,46 @@ export function DashboardView({
                         : null;
                     return (
                       <td key={p.id} className="px-4 py-3 font-mono">
-                        <div>
-                          {odd(feed?.matchWinner.displayTeamA)} /{" "}
-                          {odd(feed?.matchWinner.displayTeamB)}
+                        <div className="flex flex-wrap items-center gap-1">
+                          {(["teamA", "teamB"] as const).map((side, index) => {
+                            const best = winner?.bestPrices.find(
+                              (item) =>
+                                item.side === side && item.provider === p.id,
+                            );
+                            const outlier = winner?.outliers.find(
+                              (item) =>
+                                item.side === side && item.provider === p.id,
+                            );
+                            return (
+                              <span
+                                key={side}
+                                className="inline-flex items-center gap-0.5"
+                              >
+                                {index === 1 && (
+                                  <span className="text-on-surface-variant mr-0.5">
+                                    /
+                                  </span>
+                                )}
+                                {odd(
+                                  side === "teamA"
+                                    ? feed?.matchWinner.displayTeamA
+                                    : feed?.matchWinner.displayTeamB,
+                                )}
+                                {best && (
+                                  <AnalyticsBadge
+                                    kind="best_price"
+                                    tooltip={best.tooltip}
+                                  />
+                                )}
+                                {outlier && (
+                                  <AnalyticsBadge
+                                    kind="outlier"
+                                    tooltip={outlier.tooltip}
+                                  />
+                                )}
+                              </span>
+                            );
+                          })}
                         </div>
                         <div
                           className={`text-[10px] mt-1 ${status?.color ?? "text-on-surface-variant"}`}
