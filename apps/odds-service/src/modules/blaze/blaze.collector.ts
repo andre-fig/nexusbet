@@ -1,8 +1,5 @@
 import { projectCapture } from "./parsers/capture-projection.js";
 import { Inject, Injectable, Logger } from "@nestjs/common";
-import { mkdir } from "node:fs/promises";
-import { randomUUID } from "node:crypto";
-import { join } from "node:path";
 import { AppConfiguration } from "../../config/configuration.js";
 import {
   ProviderParseError,
@@ -12,6 +9,7 @@ import { EventStartedError } from "../collection/scheduling-policy.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import { publishCapture } from "../../shared/utils/collection-operation.js";
+import { saveRawCapture } from "../../shared/utils/raw-capture.js";
 import { BlazeClient } from "./blaze.client.js";
 import { parseListing, parseDetail } from "./parsers/feed.parser.js";
 import type { BlazeRound } from "./types/feed.js";
@@ -35,15 +33,17 @@ export class BlazeCollector {
     }
   }
   private async publish(round: BlazeRound, options: CollectOptions) {
-    await mkdir(this.config.settings.blazeInboxDir, { recursive: true });
-    await publishCapture(
-      options,
-      join(
-        this.config.settings.blazeInboxDir,
-        `${Date.now()}-${randomUUID()}.json`,
-      ),
-      { ...round, capture: projectCapture(round.capture, round.esport) },
+    const projected = {
+      ...round,
+      capture: projectCapture(round.capture, round.esport),
+    };
+    await saveRawCapture(
+      this.config.settings,
+      "blaze",
+      `${round.kind}-${round.esport}.json`,
+      projected,
     );
+    await publishCapture(options, projected);
   }
   async collectEvents(options: CollectOptions) {
     this.enabled();

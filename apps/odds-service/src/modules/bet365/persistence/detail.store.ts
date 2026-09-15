@@ -1,4 +1,7 @@
-import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
+import type {
+  PersistencePort,
+  PersistencePublication,
+} from "../../../shared/interfaces/persistence-port.interface.js";
 import { normalizedBet365 } from "../mappers/bet365.mapper.js";
 import { readFile, mkdir, writeFile, rename, readdir } from "node:fs/promises";
 import { join } from "node:path";
@@ -99,15 +102,16 @@ export class DetailStore {
     this.journal = journal ?? new MarketJournal(directory);
   }
   async load() {
-    await mkdir(this.directory, { recursive: true });
-    await this.journal.load();
     if (this.persistence?.enabled) {
+      await this.journal.load();
       for (const [id, result] of (await this.persistence.restore<
         Array<[string, ReturnType<typeof normalizeRound>]>
       >("bet365:details")) ?? [])
         this.latest.set(id, result);
       return;
     }
+    await mkdir(this.directory, { recursive: true });
+    await this.journal.load();
     for (const file of (await readdir(this.directory)).filter((f) =>
       /^\d+\.json$/.test(f),
     )) {
@@ -132,7 +136,7 @@ export class DetailStore {
       )!;
     const next = new Map(this.latest);
     next.set(round.eventId, result);
-    await this.persistence?.commit({
+    const publication: PersistencePublication = {
       provider: "bet365",
       esport: result.match.esport,
       kind: "detail",
@@ -147,20 +151,28 @@ export class DetailStore {
         source: round.captures[i].source,
       })),
       checkpoint: { key: "bet365:details", payload: [...next] },
-    });
-    for (const [i, part] of result.parts.entries())
-      await this.journal.ingest({
-        scope: `detail:${part.match.esport}:${part.match.eventId}:${result.routes[i]}`,
-        complete: true,
-        matches: [part.match],
-        fetchedAt: part.match.fetchedAt,
-        source: round.captures[i].source,
-      });
-    // Publish only after every advertised tab is present and parsed. Per-market timestamps remain exact.
-    const path = join(this.directory, round.eventId + ".json");
-    await writeFile(path + ".tmp", JSON.stringify(result), { mode: 0o600 });
-    await rename(path + ".tmp", path);
-    this.latest.set(round.eventId, result);
+    };
+    const afterCommit = async () => {
+      for (const [i, part] of result.parts.entries())
+        await this.journal.ingest({
+          scope: `detail:${part.match.esport}:${part.match.eventId}:${result.routes[i]}`,
+          complete: true,
+          matches: [part.match],
+          fetchedAt: part.match.fetchedAt,
+          source: round.captures[i].source,
+        });
+      if (!this.persistence?.enabled) {
+        // File mode remains available only for tests/replay compatibility.
+        const path = join(this.directory, round.eventId + ".json");
+        await writeFile(path + ".tmp", JSON.stringify(result), { mode: 0o600 });
+        await rename(path + ".tmp", path);
+      }
+      // Publish only after every advertised tab is present, parsed and committed.
+      this.latest.set(round.eventId, result);
+    };
+    if (this.persistence)
+      await this.persistence.commit(publication, afterCommit);
+    else await afterCommit();
     return true;
   }
 }

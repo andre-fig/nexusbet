@@ -70,10 +70,28 @@ for (const failing of ["bet365", "betano"] as const)
     assert.equal(refresh.filter((r) => r.status === "fulfilled").length, 1);
   });
 test("unknown provider is isolated and partial listing survives detail failure", async () => {
-  const a = provider("bet365");
-  a.collectEvents = async () => [
-    { eventId: "1", provider: "bet365", esport: "cs2" } as NormalizedEvent,
-  ];
+  const a = provider("bet365"),
+    event = {
+      eventId: "1",
+      provider: "bet365",
+      esport: "cs2",
+      tournament: "Test League",
+      teamA: "Alpha",
+      teamB: "Beta",
+      rawTeamA: "Alpha",
+      rawTeamB: "Beta",
+      normalizedTeamA: "alpha",
+      normalizedTeamB: "beta",
+      markets: [],
+      fetchedAt: new Date().toISOString(),
+      startsAt: new Date(Date.now() + 3_600_000).toISOString(),
+      status: "scheduled",
+      inPlay: false,
+      suspended: false,
+      provenance: {},
+    } satisfies NormalizedEvent;
+  a.collectEvents = async () => [event];
+  a.readEvents = () => [event];
   a.selectDetail = () => ({ provider: "bet365", eventId: "1", esport: "cs2" });
   const service = new CollectionService(new ProviderRegistry([a]), config);
   const r = await service.collectCycle(["missing", "bet365"], {

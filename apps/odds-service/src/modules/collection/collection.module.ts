@@ -14,6 +14,7 @@ import { SuperbetService } from "../superbet/superbet.service.js";
 import { CollectionService } from "./collection.service.js";
 import { SchedulerService } from "./scheduler.service.js";
 import { ODDS_PROVIDERS, ProviderRegistry } from "./provider-registry.js";
+import { IngestionCommitService } from "./ingestion-commit.service.js";
 @Module({
   imports: [
     BrowserModule,
@@ -43,6 +44,7 @@ import { ODDS_PROVIDERS, ProviderRegistry } from "./provider-registry.js";
       ],
     },
     ProviderRegistry,
+    IngestionCommitService,
     CollectionService,
     SchedulerService,
   ],

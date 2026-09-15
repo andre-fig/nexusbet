@@ -681,7 +681,7 @@ test("optional legacy importer replays archived captures and resumes without dup
   }
 });
 
-test("database publication failure leaves provider memory and legacy journal untouched", async () => {
+test("database publication failure leaves provider memory and PostgreSQL history untouched", async () => {
   const root = await mkdtemp(join(tmpdir(), "odds-pg-failed-store-"));
   class BrokenCatalog extends CatalogRepository {
     override async write(...args: Parameters<CatalogRepository["write"]>) {
@@ -704,9 +704,9 @@ test("database publication failure leaves provider memory and legacy journal unt
     };
     await store.ingest(round);
     const old = new Map(store.listings);
-    const journal = await readFile(
-      join(root, "market-snapshots.ndjson"),
-      "utf8",
+    await assert.rejects(
+      readFile(join(root, "market-snapshots.ndjson"), "utf8"),
+      { code: "ENOENT" },
     );
     const count = await database.db.oddsSnapshot.count();
     const broken = new PersistenceService(
@@ -725,9 +725,9 @@ test("database publication failure leaves provider memory and legacy journal unt
     ).toISOString();
     await assert.rejects(failing.ingest(round));
     assert.deepEqual(failing.listings, old);
-    assert.equal(
-      await readFile(join(root, "market-snapshots.ndjson"), "utf8"),
-      journal,
+    await assert.rejects(
+      readFile(join(root, "market-snapshots.ndjson"), "utf8"),
+      { code: "ENOENT" },
     );
     assert.equal(await database.db.oddsSnapshot.count(), count);
   } finally {

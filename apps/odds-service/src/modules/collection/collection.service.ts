@@ -3,13 +3,15 @@ import {
   PERSISTENCE,
   type PersistencePort,
 } from "../../shared/interfaces/persistence-port.interface.js";
-import { AdaptiveScheduler } from "./adaptive-scheduler.js";
+import { AdaptiveScheduler, type CollectionJob } from "./adaptive-scheduler.js";
 import { scheduledOperation } from "./scheduled-operation.js";
 import { Injectable, Inject, Logger, Optional } from "@nestjs/common";
 import { setTimeout as delay } from "node:timers/promises";
 import { ProviderRegistry } from "./provider-registry.js";
 import { AppConfiguration } from "../../config/configuration.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
+import { IngestionCommitService } from "./ingestion-commit.service.js";
+import type { ProviderRuntime } from "../../shared/interfaces/odds-provider.interface.js";
 import type { Esport } from "../../shared/types/common.js";
 import {
   ProviderUnavailableError,
@@ -44,6 +46,8 @@ export class CollectionService {
   constructor(
     @Inject(ProviderRegistry) private readonly registry: ProviderRegistry,
     @Inject(AppConfiguration) private readonly config: AppConfiguration,
+    @Inject(IngestionCommitService)
+    private readonly ingestion: IngestionCommitService = new IngestionCommitService(),
     @Optional()
     @Inject(PERSISTENCE)
     private readonly persistence?: PersistencePort,
@@ -60,6 +64,7 @@ export class CollectionService {
         if (this.active.has(job.provider))
           throw Error("Provider already collecting");
         this.active.add(job.provider);
+        const run = this.ingestion.begin(job.provider);
         try {
           return await scheduledOperation(
             registry.get(job.provider),
@@ -67,8 +72,11 @@ export class CollectionService {
             { esports: config.settings.esports, existing: true },
             signal,
             commit,
+            (publications) =>
+              this.ingestion.commit(run, signal, commit, publications),
           );
         } finally {
+          this.ingestion.finish(run);
           this.active.delete(job.provider);
         }
       },
@@ -186,10 +194,31 @@ export class CollectionService {
     outcomes.forEach((r, i) => {
       if (r.status === "rejected")
         this.logger.warn(
-          `${this.registry.providers[i].name}: inbox unavailable`,
+          `${this.registry.providers[i].name}: persisted state unavailable`,
         );
     });
     return outcomes;
+  }
+  private async directOperation(
+    provider: ProviderRuntime,
+    job: CollectionJob,
+    options: CollectOptions,
+  ) {
+    const signal = options.signal ?? new AbortController().signal;
+    const run = this.ingestion.begin(provider.name);
+    try {
+      return await scheduledOperation(
+        provider,
+        job,
+        options,
+        signal,
+        () => {},
+        (publications) =>
+          this.ingestion.commit(run, signal, () => {}, publications),
+      );
+    } finally {
+      this.ingestion.finish(run);
+    }
   }
   async collectCycle(
     names: string[],
@@ -209,7 +238,11 @@ export class CollectionService {
         this.active.add(name);
         try {
           const provider = this.registry.get(name);
-          const events = await provider.collectEvents(options);
+          const events = await this.directOperation(
+            provider,
+            { kind: "list", provider: provider.name },
+            options,
+          );
           count = events.length;
           if (options.details)
             for (const game of options.esports) {
@@ -218,7 +251,11 @@ export class CollectionService {
                 options,
               );
               if (!ref) throw Error("No requested pre-game event");
-              await provider.collectEventDetails(ref, options);
+              await this.directOperation(
+                provider,
+                { kind: "detail", provider: provider.name, event: ref },
+                options,
+              );
               details++;
             }
           return {

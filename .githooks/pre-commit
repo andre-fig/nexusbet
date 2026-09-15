@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+root="$(git rev-parse --show-toplevel)"
+
+echo "[pre-commit] odds-service format + typecheck"
+(cd "$root/apps/odds-service" && npm run format:check && npm run typecheck)
+
+echo "[pre-commit] odds-monitor lint/typecheck"
+(cd "$root/apps/odds-monitor" && npm run lint)

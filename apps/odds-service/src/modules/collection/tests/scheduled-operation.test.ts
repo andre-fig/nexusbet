@@ -71,7 +71,7 @@ test("timeout after staged capture discards publication and closes owned transpo
     await rm(dir, { recursive: true, force: true });
   }
 });
-test("valid deferred capture commits once before successful refresh; invalid result never commits", async () => {
+test("valid deferred capture commits once; invalid result never commits", async () => {
   const c = await context();
   const order: string[] = [];
   c.provider.collectEvents = async (options) => {
@@ -79,9 +79,6 @@ test("valid deferred capture commits once before successful refresh; invalid res
       order.push("publish");
     });
     return c.events;
-  };
-  c.provider.refresh = async () => {
-    order.push("refresh");
   };
   await scheduledOperation(
     c.provider,
@@ -92,7 +89,7 @@ test("valid deferred capture commits once before successful refresh; invalid res
       order.push("commit");
     },
   );
-  assert.deepEqual(order, ["commit", "publish", "refresh"]);
+  assert.deepEqual(order, ["commit", "publish"]);
   order.length = 0;
   c.provider.collectEvents = async (options) => {
     options.publications!.push(async () => {

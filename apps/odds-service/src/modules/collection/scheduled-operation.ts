@@ -6,13 +6,16 @@ import type {
 import type { CollectionJob } from "./adaptive-scheduler.js";
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import { EventStartedError } from "./scheduling-policy.js";
-/** Deferred inbox publication is the commit point: no late/partial browser result is published. */
+/** Deferred direct publication is the commit point: late/partial results never reach a store. */
 export async function scheduledOperation(
   provider: ProviderRuntime,
   job: CollectionJob,
   options: CollectOptions,
   signal: AbortSignal,
   beginCommit: () => void,
+  coordinateCommit?: (
+    publications: Array<() => Promise<void>>,
+  ) => Promise<void>,
 ): Promise<NormalizedEvent[]> {
   const publications: Array<() => Promise<void>> = [];
   const args = { ...options, signal, publications };
@@ -46,11 +49,13 @@ export async function scheduledOperation(
       )
         throw new EventStartedError();
     }
-    beginCommit();
-    // Do not abort an append/rename already begun. Shutdown drains this critical section.
-    for (const publish of publications) await publish();
-    await provider.refresh();
-    // Refresh reuses provider-specific validation/journals. Confirm accepted publication, not just a written inbox.
+    if (coordinateCommit) await coordinateCommit(publications);
+    else {
+      beginCommit();
+      // Do not abort a PostgreSQL transaction already begun. Shutdown drains this section.
+      for (const publish of publications) await publish();
+    }
+    // Confirm that the provider-specific store accepted the committed publication.
     const accepted =
       job.kind === "list"
         ? provider.readEvents(options.esports)

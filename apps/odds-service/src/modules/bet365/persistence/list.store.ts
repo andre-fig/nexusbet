@@ -1,4 +1,7 @@
-import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
+import type {
+  PersistencePort,
+  PersistencePublication,
+} from "../../../shared/interfaces/persistence-port.interface.js";
 import { normalizedBet365 } from "../mappers/bet365.mapper.js";
 import { listMarkets } from "../mappers/list.mapper.js";
 import { snapshots, marketChanges } from "../../snapshots/market-journal.js";
@@ -89,12 +92,12 @@ export class Store {
     private readonly persistence?: PersistencePort,
   ) {}
   async load() {
-    await mkdir(this.directory, { recursive: true });
     if (this.persistence?.enabled) {
       this.state =
         (await this.persistence.restore<State>("bet365:list")) ?? this.state;
       return;
     }
+    await mkdir(this.directory, { recursive: true });
     try {
       this.state = JSON.parse(
         await readFile(join(this.directory, "latest.json"), "utf8"),
@@ -143,7 +146,7 @@ export class Store {
     };
     for (const m of previous)
       if (!parsed.provenance[m.eventId]) delete next.provenance[m.eventId];
-    await this.persistence?.commit({
+    const publication: PersistencePublication = {
       provider: "bet365",
       esport: capture.esport,
       kind: "list",
@@ -160,36 +163,47 @@ export class Store {
         },
       ],
       checkpoint: { key: "bet365:list", payload: next },
-    });
-    // The authoritative journal includes both snapshot and associated changes in one append.
-    await appendFile(
-      join(this.directory, "snapshots.ndjson"),
-      JSON.stringify({
-        capture: { ...capture, body: undefined },
-        hash,
-        matches: parsed.matches,
-        provenance: parsed.provenance,
-        changes: diff,
-        oddsSnapshots: snapshots(listMarkets(parsed)),
-        marketChanges: marketChanges(
-          listMarkets({ matches: previous, provenance: this.state.provenance }),
-          listMarkets(parsed),
-          capture.capturedAt,
-          true,
-        ),
-      }) + "\n",
-      { mode: 0o600 },
-    );
-    await writeFile(
-      join(this.directory, "latest.json.tmp"),
-      JSON.stringify(next, null, 2),
-      { mode: 0o600 },
-    );
-    await rename(
-      join(this.directory, "latest.json.tmp"),
-      join(this.directory, "latest.json"),
-    );
-    this.state = next;
+    };
+    const afterCommit = async () => {
+      if (!this.persistence?.enabled) {
+        await mkdir(this.directory, { recursive: true });
+        // File mode keeps the legacy journal as its authoritative persistence.
+        await appendFile(
+          join(this.directory, "snapshots.ndjson"),
+          JSON.stringify({
+            capture: { ...capture, body: undefined },
+            hash,
+            matches: parsed.matches,
+            provenance: parsed.provenance,
+            changes: diff,
+            oddsSnapshots: snapshots(listMarkets(parsed)),
+            marketChanges: marketChanges(
+              listMarkets({
+                matches: previous,
+                provenance: this.state.provenance,
+              }),
+              listMarkets(parsed),
+              capture.capturedAt,
+              true,
+            ),
+          }) + "\n",
+          { mode: 0o600 },
+        );
+        await writeFile(
+          join(this.directory, "latest.json.tmp"),
+          JSON.stringify(next, null, 2),
+          { mode: 0o600 },
+        );
+        await rename(
+          join(this.directory, "latest.json.tmp"),
+          join(this.directory, "latest.json"),
+        );
+      }
+      this.state = next;
+    };
+    if (this.persistence)
+      await this.persistence.commit(publication, afterCommit);
+    else await afterCommit();
     return {
       ignored: false,
       changes: diff.length,

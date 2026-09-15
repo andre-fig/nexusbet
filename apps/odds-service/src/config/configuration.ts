@@ -68,6 +68,8 @@ export function configuration() {
     throw Error("Invalid PERSISTENCE_MODE");
   if (persistenceMode === "postgres" && !process.env.DATABASE_URL)
     throw Error("DATABASE_URL required for PostgreSQL");
+  const ingestionMode = process.env.INGESTION_MODE || "direct";
+  if (ingestionMode !== "direct") throw Error("Invalid INGESTION_MODE");
   const headless = process.env.HEADLESS ?? "false";
   if (!["true", "false", "1", "0"].includes(headless))
     throw Error("Invalid HEADLESS");
@@ -120,7 +122,7 @@ export function configuration() {
     scanEnabled: process.env.INBOX_SCAN_ENABLED !== "0",
     pollingEnabled: process.env.POLLING_ENABLED === "1",
     pollingIntervalMs: positive("CAPTURE_INTERVAL_SECONDS", 180, 60) * 1000,
-    ingestionMode: "direct",
+    ingestionMode,
     legacyInboxImportEnabled:
       process.env.LEGACY_INBOX_IMPORT_ENABLED === "true" ||
       process.env.LEGACY_INBOX_IMPORT_ENABLED === "1",
@@ -129,10 +131,7 @@ export function configuration() {
       process.env.RAW_CAPTURE_ENABLED === "1" ||
       process.env.DEBUG_CAPTURE_RAW === "true" ||
       process.env.DEBUG_CAPTURE_RAW === "1",
-    rawCaptureRetentionHours: positive(
-      "RAW_CAPTURE_RETENTION_HOURS",
-      24,
-    ),
+    rawCaptureRetentionHours: positive("RAW_CAPTURE_RETENTION_HOURS", 24),
     rawCaptureDir: resolve(process.env.RAW_CAPTURE_DIR || "evidence/raw"),
     dataDir: resolve(process.env.DATA_DIR || "data"),
     inboxDir: resolve(process.env.INBOX_DIR || "inbox"),

@@ -1,4 +1,7 @@
-import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
+import type {
+  PersistencePort,
+  PersistencePublication,
+} from "../../../shared/interfaces/persistence-port.interface.js";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
 import { join } from "node:path";
 import { MarketJournal } from "../../snapshots/market-journal.js";
@@ -61,6 +64,28 @@ export class BetanoStore {
       if ((e as any).code !== "ENOENT") throw e;
     }
   }
+  private async commit(
+    publication: PersistencePublication,
+    afterCommit: () => Promise<void>,
+  ) {
+    if (this.persistence)
+      await this.persistence.commit(publication, afterCommit);
+    else await afterCommit();
+  }
+  private async writeFileState() {
+    if (this.persistence?.enabled) return;
+    await mkdir(this.directory, { recursive: true });
+    const file = join(this.directory, "latest.json");
+    await writeFile(
+      file + ".tmp",
+      JSON.stringify({
+        listings: [...this.listings],
+        details: [...this.details],
+      }),
+      { mode: 0o600 },
+    );
+    await rename(file + ".tmp", file);
+  }
   async ingest(round: ListingRound | DetailRound) {
     if (!regions[round.esport]) throw Error("Invalid esport");
     let at: string,
@@ -74,36 +99,48 @@ export class BetanoStore {
       if (this.listings.get(round.esport)?.at! > at) return;
       const nextListings = new Map(this.listings);
       nextListings.set(round.esport, { at, matches, coverage: [...expected] });
-      await this.persistence?.commit({
-        provider: "betano",
-        esport: round.esport,
-        kind: "list",
-        scope,
-        fetchedAt: at,
-        events: matches,
-        observations: [
-          {
+      await this.commit(
+        {
+          provider: "betano",
+          esport: round.esport,
+          kind: "list",
+          scope,
+          fetchedAt: at,
+          events: matches,
+          observations: [
+            {
+              scope,
+              complete: true,
+              fetchedAt: at,
+              source,
+              matches: matches.map((e) => ({ ...e, fetchedAt: at })),
+            },
+          ],
+          checkpoint: {
+            key: "betano:state",
+            payload: {
+              listings: [...nextListings],
+              details: [...this.details],
+            },
+          },
+        },
+        async () => {
+          // Round-level additions/removals; each market retains its original response timestamp.
+          await this.journal.ingest({
             scope,
             complete: true,
             fetchedAt: at,
             source,
             matches: matches.map((e) => ({ ...e, fetchedAt: at })),
-          },
-        ],
-        checkpoint: {
-          key: "betano:state",
-          payload: { listings: [...nextListings], details: [...this.details] },
+          });
+          this.listings.set(round.esport, {
+            at,
+            matches,
+            coverage: [...expected],
+          });
+          await this.writeFileState();
         },
-      });
-      // Round-level additions/removals; each market retains its original response timestamp.
-      await this.journal.ingest({
-        scope,
-        complete: true,
-        fetchedAt: at,
-        source,
-        matches: matches.map((e) => ({ ...e, fetchedAt: at })),
-      });
-      this.listings.set(round.esport, { at, matches, coverage: [...expected] });
+      );
     } else if (round.kind === "detail") {
       const event = parseDetail(
         round.capture,
@@ -121,41 +158,38 @@ export class BetanoStore {
       matches = [event];
       const nextDetails = new Map(this.details);
       nextDetails.set(event.eventId, event);
-      await this.persistence?.commit({
-        provider: "betano",
-        esport: round.esport,
-        kind: "detail",
-        scope,
-        fetchedAt: at,
-        events: matches,
-        observations: [
-          { scope, complete: true, fetchedAt: at, source, matches },
-        ],
-        checkpoint: {
-          key: "betano:state",
-          payload: { listings: [...this.listings], details: [...nextDetails] },
+      await this.commit(
+        {
+          provider: "betano",
+          esport: round.esport,
+          kind: "detail",
+          scope,
+          fetchedAt: at,
+          events: matches,
+          observations: [
+            { scope, complete: true, fetchedAt: at, source, matches },
+          ],
+          checkpoint: {
+            key: "betano:state",
+            payload: {
+              listings: [...this.listings],
+              details: [...nextDetails],
+            },
+          },
         },
-      });
-      await this.journal.ingest({
-        scope,
-        complete: true,
-        fetchedAt: at,
-        source,
-        matches,
-      });
-      this.details.set(event.eventId, event);
+        async () => {
+          await this.journal.ingest({
+            scope,
+            complete: true,
+            fetchedAt: at,
+            source,
+            matches,
+          });
+          this.details.set(event.eventId, event);
+          await this.writeFileState();
+        },
+      );
     } else throw Error("Unknown round kind");
-    await mkdir(this.directory, { recursive: true });
-    const file = join(this.directory, "latest.json");
-    await writeFile(
-      file + ".tmp",
-      JSON.stringify({
-        listings: [...this.listings],
-        details: [...this.details],
-      }),
-      { mode: 0o600 },
-    );
-    await rename(file + ".tmp", file);
   }
 }
 

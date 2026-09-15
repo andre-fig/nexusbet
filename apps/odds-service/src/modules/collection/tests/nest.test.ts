@@ -2,14 +2,7 @@ import "reflect-metadata";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Test } from "@nestjs/testing";
-import {
-  mkdtemp,
-  readFile,
-  rm,
-  mkdir,
-  writeFile,
-  readdir,
-} from "node:fs/promises";
+import { mkdtemp, readFile, rm, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -60,39 +53,25 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
     module.createNestApplication({ logger: false, bodyParser: false }),
   );
   try {
-    for (const path of [
-      settings.inboxDir,
-      settings.detailInboxDir,
-      settings.betanoInboxDir,
-    ])
-      await mkdir(path, { recursive: true });
+    const a = app.get(Bet365Service),
+      b = app.get(BetanoService);
     for (const game of ["cs2", "lol", "valorant"]) {
-      await writeFile(
-        join(settings.inboxDir, game + ".json"),
-        JSON.stringify(await fixture("bet365", "details/" + game + "-list")),
+      await a.store.ingest(
+        await fixture("bet365", "details/" + game + "-list"),
       );
-      await writeFile(
-        join(settings.betanoInboxDir, game + ".json"),
-        JSON.stringify(await fixture("betano", game + "-round")),
-      );
+      await b.store.ingest(await fixture("betano", game + "-round"));
     }
     const tabs = ["main", "match", "map1", "map2", "map3"];
-    await writeFile(
-      join(settings.detailInboxDir, "lol.json"),
-      JSON.stringify({
-        eventId: "200976787",
-        listing: await fixture("bet365", "details/lol-list"),
-        captures: await Promise.all(
-          tabs.map((t) => fixture("bet365", "details/lol-" + t)),
-        ),
-        coverage: "all_tabs",
-      }),
-    );
+    await a.details.ingest({
+      eventId: "200976787",
+      listing: await fixture("bet365", "details/lol-list"),
+      captures: await Promise.all(
+        tabs.map((t) => fixture("bet365", "details/lol-" + t)),
+      ),
+      coverage: "all_tabs",
+    });
     const d = await fixture("betano", "lol-detail");
-    await writeFile(
-      join(settings.betanoInboxDir, "lol-detail.json"),
-      JSON.stringify({ kind: "detail", esport: "lol", capture: d }),
-    );
+    await b.store.ingest({ kind: "detail", esport: "lol", capture: d });
     await app.listen(0, "127.0.0.1");
     const url = await app.getUrl();
     const get = async (path: string) => {
@@ -100,8 +79,6 @@ test("Nest HTTP preserves existing schemas, fixtures, detail, matching, TTL and 
       assert.equal(r.headers.get("cache-control"), "no-store");
       return { status: r.status, body: await r.json() };
     };
-    const a = app.get(Bet365Service),
-      b = app.get(BetanoService);
     assert.deepEqual((await get("/matches")).body, a.store.state.matches);
     assert.deepEqual((await get("/provenance")).body, a.provenance());
     assert.deepEqual(

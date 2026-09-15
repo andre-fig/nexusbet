@@ -7,11 +7,9 @@ import {
   publishCapture,
 } from "../../shared/utils/collection-operation.js";
 import { Injectable, Inject, Logger } from "@nestjs/common";
-import { mkdir, writeFile } from "node:fs/promises";
-import { join } from "node:path";
 import { BetanoClient } from "./betano.client.js";
 import { AppConfiguration } from "../../config/configuration.js";
-import { saveJson } from "../../shared/utils/files.js";
+import { saveRawCapture } from "../../shared/utils/raw-capture.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import type { Esport } from "../../shared/types/common.js";
@@ -36,7 +34,6 @@ interface Context {
 export class BetanoCollector {
   private readonly logger = new Logger("Betano");
   private browser?: Awaited<ReturnType<BetanoClient["open"]>>;
-  private out = "";
   private number = 0;
   private signal?: AbortSignal;
   private contexts = new Map<Esport, Context>();
@@ -53,7 +50,12 @@ export class BetanoCollector {
       this.browser!.capture(action, accept),
       this.signal,
     );
-    await saveJson(join(this.out, `${++this.number}.json`), c);
+    await saveRawCapture(
+      this.config.settings,
+      "betano",
+      `${++this.number}-response.json`,
+      c,
+    );
     return c;
   }
   collectEvents(options: CollectOptions) {
@@ -76,13 +78,7 @@ export class BetanoCollector {
     }
     this.browser = opened;
     this.browser.signal = options.signal;
-    this.out = join(
-      this.config.settings.betanoCaptureDir,
-      new Date().toISOString().replace(/[:.]/g, "-"),
-    );
     this.number = 0;
-    await mkdir(this.out, { recursive: true });
-    await mkdir(this.config.settings.betanoInboxDir, { recursive: true });
     const b = this.browser;
     await collectionStep(b.start(), options.signal);
     const directory = await this.capture(
@@ -129,21 +125,14 @@ export class BetanoCollector {
       }
       const matches = listings.flatMap((c) => parseListing(c, esport)),
         dedup = [...new Map(matches.map((e) => [e.eventId, e])).values()];
-      await publishListing(
-        options,
-        join(
-          this.config.settings.betanoInboxDir,
-          `${Date.now()}-${esport}-list.json`,
-        ),
-        {
-          kind: "listing",
-          esport,
-          directory,
-          regionId: region.id,
-          expectedLeagues: leagues.map((l) => String(l.id)),
-          captures: listings,
-        },
-      );
+      await publishListing(options, {
+        kind: "listing",
+        esport,
+        directory,
+        regionId: region.id,
+        expectedLeagues: leagues.map((l) => String(l.id)),
+        captures: listings,
+      });
       this.contexts.set(esport, { region, leagues, events: dedup });
       events.push(...dedup);
       this.logger.log(
@@ -189,29 +178,42 @@ export class BetanoCollector {
         ?.type !== "popular"
     )
       throw new ProviderParseError("betano", Error("Unexpected detail scope"));
-    await publishCapture(
-      options,
-      join(
-        this.config.settings.betanoInboxDir,
-        `${Date.now()}-${ref.esport}-detail.json`,
-      ),
-      { kind: "detail", esport: ref.esport, capture: detail },
+    await publishCapture(options, {
+      kind: "detail",
+      esport: ref.esport,
+      capture: detail,
+    });
+    await saveRawCapture(
+      this.config.settings,
+      "betano",
+      `${ref.esport}-normalized.json`,
+      parsed,
     );
-    await saveJson(join(this.out, ref.esport + "-normalized.json"), parsed);
-    const evidence = await collectionStep(b.evidence(), options.signal);
-    await saveJson(join(this.out, ref.esport + "-ui.json"), evidence.state);
-    await writeFile(join(this.out, ref.esport + "-ui.png"), evidence.png);
+    if (this.config.settings.rawCaptureEnabled) {
+      const evidence = await collectionStep(b.evidence(), options.signal);
+      await saveRawCapture(
+        this.config.settings,
+        "betano",
+        `${ref.esport}-ui.json`,
+        evidence.state,
+      );
+      await saveRawCapture(
+        this.config.settings,
+        "betano",
+        `${ref.esport}-ui.png`,
+        evidence.png,
+      );
+    }
     this.logger.log(`${ref.esport}: ${parsed.markets.length} markets`);
     await collectionStep(b.clickLink("/sport/esports/"), options.signal);
     return parsed;
   }
   async recordFailure(operation: string, error: unknown) {
-    if (this.out)
-      await saveJson(join(this.out, "failure.json"), {
-        at: new Date().toISOString(),
-        operation,
-        error: error instanceof Error ? error.name : "Error",
-      });
+    await saveRawCapture(this.config.settings, "betano", "failure.json", {
+      at: new Date().toISOString(),
+      operation,
+      error: error instanceof Error ? error.name : "Error",
+    });
   }
   async close() {
     const b = this.browser;
@@ -221,11 +223,7 @@ export class BetanoCollector {
   }
 }
 
-async function publishListing(
-  options: CollectOptions,
-  path: string,
-  round: ListingRound,
-) {
+async function publishListing(options: CollectOptions, round: ListingRound) {
   normalizeListingRound(round);
-  await publishCapture(options, path, round);
+  await publishCapture(options, round);
 }

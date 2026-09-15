@@ -82,6 +82,10 @@ Parser: acrescente fixture sanitizada da variação e testes positivos/negativos
 
 Antes de merge rode build/typecheck/formatação/suíte normal. Para browser alterado, habilite casos opcionais; para banco, execute test:db. Diferencie skip de pass e validação real de fixture. Validação de sites é opcional e limitada, não parte da rotina CI; não mantenha polling indefinido nem contorne proteção para satisfazer teste.
 
+## Git hooks
+
+`npm ci` ou `npm install` em `apps/odds-service` ou `apps/odds-monitor` configura `core.hooksPath=.githooks` por meio do script `prepare`. O hook `pre-commit` roda `format:check` e `typecheck` no backend e `lint` no monitor. O `pre-push` roda build e testes offline nos dois apps; quando `TEST_DATABASE_URL` está definido, também executa a suíte PostgreSQL destrutiva. Sem essa variável, o hook informa explicitamente que a integração SQL foi pulada.
+
 ## Validação desta revisão documental
 
 Build, typecheck e format:check passaram. `BROWSER_TESTS=1 npm test`: 90/90, sem skips; `test:db`: 23/23 em PostgreSQL descartável. Total 113 testes aprovados. Links relativos de arquivos e cobertura das variáveis da configuração central no .env.example foram conferidos. Não houve coleta remota nessa validação nem alteração de parser/regra de negócio. Esses resultados são um registro da revisão, não garantia permanente de disponibilidade dos sites.

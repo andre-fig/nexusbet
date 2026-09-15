@@ -1,7 +1,4 @@
 import { Inject, Injectable, Logger } from "@nestjs/common";
-import { mkdir } from "node:fs/promises";
-import { randomUUID } from "node:crypto";
-import { join } from "node:path";
 import { AppConfiguration } from "../../config/configuration.js";
 import {
   ProviderParseError,
@@ -11,6 +8,7 @@ import { EventStartedError } from "../collection/scheduling-policy.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import { publishCapture } from "../../shared/utils/collection-operation.js";
+import { saveRawCapture } from "../../shared/utils/raw-capture.js";
 import { EstrelaBetClient } from "./estrelabet.client.js";
 import { parseListing, parseDetail } from "./parsers/feed.parser.js";
 import type { EstrelaBetRound } from "./types/feed.js";
@@ -37,15 +35,13 @@ export class EstrelaBetCollector {
     }
   }
   private async publish(round: EstrelaBetRound, options: CollectOptions) {
-    await mkdir(this.config.settings.estrelabetInboxDir, { recursive: true });
-    await publishCapture(
-      options,
-      join(
-        this.config.settings.estrelabetInboxDir,
-        `${Date.now()}-${randomUUID()}.json`,
-      ),
+    await saveRawCapture(
+      this.config.settings,
+      "estrelabet",
+      `${round.kind}-${round.esport}.json`,
       round,
     );
+    await publishCapture(options, round);
   }
   async collectEvents(options: CollectOptions) {
     this.enabled();

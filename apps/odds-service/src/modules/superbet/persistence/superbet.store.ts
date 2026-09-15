@@ -1,4 +1,7 @@
-import type { PersistencePort } from "../../../shared/interfaces/persistence-port.interface.js";
+import type {
+  PersistencePort,
+  PersistencePublication,
+} from "../../../shared/interfaces/persistence-port.interface.js";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
 import { join } from "node:path";
 import type { Esport } from "../../../shared/types/common.js";
@@ -65,7 +68,7 @@ export class SuperbetStore {
       details = new Map(this.details);
     if (round.kind === "listing") listings.set(round.esport, { at, matches });
     else details.set(matches[0].eventId, matches[0]);
-    await this.persistence?.commit({
+    const publication = {
       provider: "superbet",
       esport: round.esport,
       kind: round.kind === "listing" ? "list" : "detail",
@@ -85,26 +88,32 @@ export class SuperbetStore {
         key: "superbet:state",
         payload: { listings: [...listings], details: [...details] },
       },
-    });
-    await this.journal.ingest({
-      scope,
-      complete: true,
-      matches,
-      fetchedAt: at,
-      source: round.capture.source,
-    });
-
-    await mkdir(this.directory, { recursive: true });
-    const file = join(this.directory, "latest.json");
-    await writeFile(
-      file + ".tmp",
-      JSON.stringify({ listings: [...listings], details: [...details] }),
-      { mode: 0o600 },
-    );
-    await rename(file + ".tmp", file);
-    this.listings.clear();
-    for (const [k, v] of listings) this.listings.set(k, v);
-    this.details.clear();
-    for (const [k, v] of details) this.details.set(k, v);
+    } satisfies PersistencePublication;
+    const afterCommit = async () => {
+      await this.journal.ingest({
+        scope,
+        complete: true,
+        matches,
+        fetchedAt: at,
+        source: round.capture.source,
+      });
+      if (!this.persistence?.enabled) {
+        await mkdir(this.directory, { recursive: true });
+        const file = join(this.directory, "latest.json");
+        await writeFile(
+          file + ".tmp",
+          JSON.stringify({ listings: [...listings], details: [...details] }),
+          { mode: 0o600 },
+        );
+        await rename(file + ".tmp", file);
+      }
+      this.listings.clear();
+      for (const [k, v] of listings) this.listings.set(k, v);
+      this.details.clear();
+      for (const [k, v] of details) this.details.set(k, v);
+    };
+    if (this.persistence)
+      await this.persistence.commit(publication, afterCommit);
+    else await afterCommit();
   }
 }

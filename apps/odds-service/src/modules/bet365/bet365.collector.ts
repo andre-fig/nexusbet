@@ -3,11 +3,9 @@ import {
   publishCapture,
 } from "../../shared/utils/collection-operation.js";
 import { Injectable, Inject, Logger } from "@nestjs/common";
-import { mkdir } from "node:fs/promises";
-import { join } from "node:path";
 import { Bet365Client } from "./bet365.client.js";
 import { AppConfiguration } from "../../config/configuration.js";
-import { saveJson } from "../../shared/utils/files.js";
+import { saveRawCapture } from "../../shared/utils/raw-capture.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import type { Capture, Esport } from "./types/model.js";
@@ -29,7 +27,6 @@ import {
 export class Bet365Collector {
   private readonly logger = new Logger("Bet365");
   private client?: Awaited<ReturnType<Bet365Client["open"]>>;
-  private out = "";
   private listings = new Map<Esport, Capture>();
   constructor(
     @Inject(Bet365Client) private readonly factory: Bet365Client,
@@ -47,13 +44,6 @@ export class Bet365Collector {
         options.signal.throwIfAborted();
       }
       this.client = opened;
-      this.out = join(
-        this.config.settings.captureDir,
-        new Date().toISOString().replace(/[:.]/g, "-"),
-      );
-      await mkdir(this.out, { recursive: true });
-      await mkdir(this.config.settings.inboxDir, { recursive: true });
-      await mkdir(this.config.settings.detailInboxDir, { recursive: true });
     }
     return this.client;
   }
@@ -82,18 +72,14 @@ export class Bet365Collector {
         throw new ProviderTransportError("bet365", e);
       }
       const file = c.capturedAt.replace(/[:.]/g, "-") + "-" + esport + ".json";
-      await saveJson(join(this.out, file), c);
+      await saveRawCapture(this.config.settings, "bet365", file, c);
       let parsed;
       try {
         parsed = parseCapture(c);
       } catch (e) {
         throw new ProviderParseError("bet365", e);
       }
-      await publishCapture(
-        options,
-        join(this.config.settings.inboxDir, file),
-        c,
-      );
+      await publishCapture(options, c);
       this.listings.set(esport, c);
       events.push(...normalizedBet365(parsed.matches, parsed.provenance));
       this.logger.log(`${esport}: ${parsed.matches.length} events`);
@@ -132,16 +118,10 @@ export class Bet365Collector {
         ),
         options.signal,
       );
-      await saveJson(
-        join(
-          this.out,
-          c.capturedAt.replace(/[:.]/g, "-") +
-            "-" +
-            ref.esport +
-            "-coupon-" +
-            index +
-            ".json",
-        ),
+      await saveRawCapture(
+        this.config.settings,
+        "bet365",
+        `${c.capturedAt.replace(/[:.]/g, "-")}-${ref.esport}-coupon-${index}.json`,
         c,
       );
       return c;
@@ -166,16 +146,14 @@ export class Bet365Collector {
       result = normalizeRound(round),
       stamp = result.match.fetchedAt.replace(/[:.]/g, "-"),
       file = `${stamp}-${ref.esport}-${ref.eventId}.json`;
-    await saveJson(join(this.out, file), round);
-    await saveJson(
-      join(this.out, `${stamp}-${ref.esport}-${ref.eventId}-normalized.json`),
+    await saveRawCapture(this.config.settings, "bet365", file, round);
+    await saveRawCapture(
+      this.config.settings,
+      "bet365",
+      `${stamp}-${ref.esport}-${ref.eventId}-normalized.json`,
       result.match,
     );
-    await publishCapture(
-      options,
-      join(this.config.settings.detailInboxDir, file),
-      round,
-    );
+    await publishCapture(options, round);
     this.logger.log(`${ref.esport}: ${result.match.markets.length} markets`);
     return {
       ...normalizedBet365([match], parsed.provenance)[0],
@@ -183,12 +161,11 @@ export class Bet365Collector {
     };
   }
   async recordFailure(operation: string, error: unknown) {
-    if (this.out)
-      await saveJson(join(this.out, "failure.json"), {
-        at: new Date().toISOString(),
-        operation,
-        error: error instanceof Error ? error.name : "Error",
-      });
+    await saveRawCapture(this.config.settings, "bet365", "failure.json", {
+      at: new Date().toISOString(),
+      operation,
+      error: error instanceof Error ? error.name : "Error",
+    });
   }
   async close() {
     const client = this.client;

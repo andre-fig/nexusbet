@@ -72,6 +72,8 @@ npm test
 
 Antes de merge, os checks acima devem passar. Alterações em persistência exigem `npm run test:db` com `TEST_DATABASE_URL` de banco **descartável terminado em _test**: a suíte aplica migrations e TRUNCATE. Nunca aponte para banco útil. Browser opcional: `BROWSER_TESTS=1 npm test` usa Chrome invisível/feeds locais, sem bookmaker real. Preserve fixtures reais, não ajuste odds/IDs para mascarar regressão.
 
+Os hooks em `.githooks` são instalados pelo `prepare` dos dois apps. Não use `--no-verify`: pre-commit protege formatação/typecheck e pre-push protege build/testes; a integração SQL entra no pre-push quando `TEST_DATABASE_URL` está configurado com banco `_test`.
+
 Comandos operacionais: `npm start`, `npm run start:prod`, `db:generate`, `db:migrate`, `db:seed`, `db:status`. Captura: `capture`, `capture:betano`, `capture:superbet`, `capture:blaze`, `capture:estrelabet`; loops CLI legados: `collect`, `collect:betano`. Importação opcional: `db:import-legacy`. `format` modifica arquivos; `format:check` só verifica. Lista completa/efeitos: [Testing](docs/TESTING.md).
 
 # Development Rules

@@ -2,8 +2,6 @@ import { mkdir, readdir, stat, unlink, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { Settings } from "../../config/configuration.js";
 
-const cleaned = new Set<string>();
-
 export async function saveRawCapture(
   settings: Settings,
   provider: string,
@@ -13,10 +11,7 @@ export async function saveRawCapture(
   if (!settings.rawCaptureEnabled) return;
   const directory = join(settings.rawCaptureDir, provider);
   await mkdir(directory, { recursive: true });
-  if (!cleaned.has(directory)) {
-    await removeExpiredRaw(directory, settings.rawCaptureRetentionHours);
-    cleaned.add(directory);
-  }
+  await removeExpiredRaw(directory, settings.rawCaptureRetentionHours);
   const stamp = new Date().toISOString().replace(/[:.]/g, "-");
   const safe = label.replace(/[^a-zA-Z0-9._-]/g, "-");
   const path = join(directory, `${stamp}-${safe}`);

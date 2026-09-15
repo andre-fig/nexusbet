@@ -1,5 +1,4 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { mkdir, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { AppConfiguration } from "../../config/configuration.js";
 import { SnapshotsService } from "../snapshots/snapshots.service.js";
@@ -11,6 +10,7 @@ import type {
 } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
+import type { SuperbetRound } from "./types/feed.js";
 import type { Esport } from "../../shared/types/common.js";
 import { isFresh } from "../../shared/utils/freshness.js";
 import {
@@ -25,8 +25,7 @@ export class SuperbetService implements ProviderRuntime {
   readonly store: SuperbetStore;
   lastError: string | null = null;
   private loaded = false;
-  private scanning?: Promise<void>;
-  private readonly processed = new Set<string>();
+  private loading?: Promise<void>;
   constructor(
     @Inject(AppConfiguration) private readonly config: AppConfiguration,
     @Inject(SuperbetCollector) private readonly collector: SuperbetCollector,
@@ -40,40 +39,27 @@ export class SuperbetService implements ProviderRuntime {
     );
   }
   refresh() {
-    if (!this.config.settings.ingestEnabled) return Promise.resolve();
-    if (this.scanning) return this.scanning;
-    const task = this.scan();
-    this.scanning = task;
-    return task.finally(() => {
-      this.scanning = undefined;
-    });
-  }
-  private async scan() {
-    try {
-      if (!this.loaded) {
-        await this.store.load();
+    if (this.loaded) return Promise.resolve();
+    if (this.loading) return this.loading;
+    this.loading = this.store
+      .load()
+      .then(() => {
         this.loaded = true;
-      }
-      const directory = this.config.settings.superbetInboxDir;
-      await mkdir(directory, { recursive: true });
-      for (const file of (await readdir(directory))
-        .filter((f) => f.endsWith(".json"))
-        .sort()) {
-        if (this.processed.has(file)) continue;
-        try {
-          await this.store.ingest(
-            JSON.parse(await readFile(join(directory, file), "utf8")),
-          );
-          this.processed.add(file);
-          this.lastError = null;
-        } catch (e) {
-          this.lastError = `${file}: ${(e as Error).message}`;
-        }
-      }
-    } catch (e) {
-      this.lastError = "Inbox scan failed";
-      throw new ProviderUnavailableError(this.name, e);
-    }
+        this.lastError = null;
+      })
+      .catch((error) => {
+        this.lastError = "State restore failed";
+        throw new ProviderUnavailableError(this.name, error);
+      })
+      .finally(() => {
+        this.loading = undefined;
+      });
+    return this.loading;
+  }
+  private async publish(payload: unknown) {
+    await this.refresh();
+    await this.store.ingest(payload as SuperbetRound);
+    this.lastError = null;
   }
   health() {
     return {
@@ -116,18 +102,28 @@ export class SuperbetService implements ProviderRuntime {
   }
   async collectEvents(options: CollectOptions) {
     try {
-      return await this.collector.collectEvents(options);
-    } finally {
-      if (!options.publications) await this.refresh();
+      await this.refresh();
+      return await this.collector.collectEvents({
+        ...options,
+        publish: (payload) => this.publish(payload),
+      });
+    } catch (error) {
+      this.lastError = "Collection failed; state preserved";
+      throw error;
     }
   }
   async collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
     if (ref.provider !== this.name)
       throw new ServiceError("Wrong provider reference", 400);
     try {
-      return await this.collector.collectEventDetails(ref, options);
-    } finally {
-      if (!options.publications) await this.refresh();
+      await this.refresh();
+      return await this.collector.collectEventDetails(ref, {
+        ...options,
+        publish: (payload) => this.publish(payload),
+      });
+    } catch (error) {
+      this.lastError = "Collection failed; state preserved";
+      throw error;
     }
   }
   selectDetail(events: NormalizedEvent[], options: CollectOptions) {

@@ -1,13 +1,11 @@
 import { Injectable, Inject, Logger } from "@nestjs/common";
-import { mkdir } from "node:fs/promises";
-import { randomUUID } from "node:crypto";
-import { join } from "node:path";
 import { AppConfiguration } from "../../config/configuration.js";
 import { ProviderParseError } from "../../shared/errors/domain-errors.js";
 import { EventStartedError } from "../collection/scheduling-policy.js";
 import type { CollectOptions } from "../../shared/interfaces/odds-provider.interface.js";
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import { publishCapture } from "../../shared/utils/collection-operation.js";
+import { saveRawCapture } from "../../shared/utils/raw-capture.js";
 import { SuperbetClient } from "./superbet.client.js";
 import { parseDetail, parseListing } from "./parsers/feed.parser.js";
 import type { SuperbetCapture, SuperbetRound } from "./types/feed.js";
@@ -28,15 +26,13 @@ export class SuperbetCollector {
     }
   }
   private async publish(round: SuperbetRound, options: CollectOptions) {
-    await mkdir(this.config.settings.superbetInboxDir, { recursive: true });
-    return publishCapture(
-      options,
-      join(
-        this.config.settings.superbetInboxDir,
-        `${Date.now()}-${randomUUID()}.json`,
-      ),
+    await saveRawCapture(
+      this.config.settings,
+      "superbet",
+      `${round.kind}-${round.esport}.json`,
       round,
     );
+    return publishCapture(options, round);
   }
   async collectEvents(options: CollectOptions) {
     const structure = await this.client.structure(options.signal),

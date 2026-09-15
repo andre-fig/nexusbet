@@ -6,7 +6,8 @@ import { CollectionService } from "./collection.service.js";
 // CLI owns the loop; never also start an application-level polling scheduler.
 process.env.POLLING_ENABLED = "0";
 process.env.COLLECTION_ENABLED = "false";
-process.env.INBOX_INGEST_ENABLED = "0";
+if (process.argv.includes("--save-raw"))
+  process.env.RAW_CAPTURE_ENABLED = "true";
 const app = await NestFactory.createApplicationContext(AppModule);
 const collection = app.get(CollectionService),
   c = app.get(AppConfiguration).settings;

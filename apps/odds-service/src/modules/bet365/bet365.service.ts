@@ -1,5 +1,4 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { mkdir, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { AppConfiguration } from "../../config/configuration.js";
 import { SnapshotsService } from "../snapshots/snapshots.service.js";
@@ -14,6 +13,8 @@ import type {
 import type { ProviderEventRef } from "../../shared/domain/provider-event-ref.js";
 import type { NormalizedEvent } from "../../shared/domain/normalized-event.js";
 import type { Esport } from "../../shared/types/common.js";
+import type { Capture } from "./types/model.js";
+import type { DetailRound } from "./persistence/detail.store.js";
 import { isFresh } from "../../shared/utils/freshness.js";
 import {
   ServiceError,
@@ -28,8 +29,7 @@ export class Bet365Service implements ProviderRuntime {
   readonly details: DetailStore;
   lastError: string | null = null;
   private loaded = false;
-  private scanning?: Promise<void>;
-  private readonly processed = new Set<string>();
+  private loading?: Promise<void>;
   constructor(
     @Inject(AppConfiguration) private readonly config: AppConfiguration,
     @Inject(Bet365Collector) private readonly collector: Bet365Collector,
@@ -44,49 +44,28 @@ export class Bet365Service implements ProviderRuntime {
     );
   }
   refresh() {
-    if (!this.config.settings.ingestEnabled) return Promise.resolve();
-    if (this.scanning) return this.scanning;
-    const task = this.scan();
-    this.scanning = task;
-    return task.finally(() => {
-      this.scanning = undefined;
-    });
-  }
-  private async scan() {
-    try {
-      if (!this.loaded) {
-        await this.store.load();
-        await this.details.load();
+    if (this.loaded) return Promise.resolve();
+    if (this.loading) return this.loading;
+    this.loading = Promise.all([this.store.load(), this.details.load()])
+      .then(() => {
         this.loaded = true;
-      }
-      const c = this.config.settings;
-      for (const [directory, detail] of [
-        [c.inboxDir, false],
-        [c.detailInboxDir, true],
-      ] as const) {
-        await mkdir(directory, { recursive: true });
-        for (const file of (await readdir(directory))
-          .filter((f) => f.endsWith(".json"))
-          .sort()) {
-          const key = (detail ? "detail:" : "") + file;
-          if (this.processed.has(key)) continue;
-          try {
-            const data = JSON.parse(
-              await readFile(join(directory, file), "utf8"),
-            );
-            if (detail) await this.details.ingest(data);
-            else await this.store.ingest(data);
-            this.processed.add(key);
-            this.lastError = null;
-          } catch (e) {
-            this.lastError = `${key}: ${(e as Error).message}`;
-          }
-        }
-      }
-    } catch (e) {
-      this.lastError = "Inbox scan failed";
-      throw new ProviderUnavailableError(this.name, e);
-    }
+        this.lastError = null;
+      })
+      .catch((error) => {
+        this.lastError = "State restore failed";
+        throw new ProviderUnavailableError(this.name, error);
+      })
+      .finally(() => {
+        this.loading = undefined;
+      });
+    return this.loading;
+  }
+  private async publish(payload: unknown) {
+    await this.refresh();
+    if (Array.isArray((payload as DetailRound).captures))
+      await this.details.ingest(payload as DetailRound);
+    else await this.store.ingest(payload as Capture);
+    this.lastError = null;
   }
   health() {
     return {
@@ -160,24 +139,30 @@ export class Bet365Service implements ProviderRuntime {
   }
   async collectEvents(options: CollectOptions) {
     try {
-      return await this.collector.collectEvents(options);
+      await this.refresh();
+      return await this.collector.collectEvents({
+        ...options,
+        publish: (payload) => this.publish(payload),
+      });
     } catch (error) {
       await this.collector.recordFailure("listing", error);
+      this.lastError = "Collection failed; state preserved";
       throw error;
-    } finally {
-      if (!options.publications) await this.refresh();
     }
   }
   async collectEventDetails(ref: ProviderEventRef, options: CollectOptions) {
     if (ref.provider !== this.name)
       throw new ServiceError("Wrong provider reference", 400);
     try {
-      return await this.collector.collectEventDetails(ref, options);
+      await this.refresh();
+      return await this.collector.collectEventDetails(ref, {
+        ...options,
+        publish: (payload) => this.publish(payload),
+      });
     } catch (error) {
       await this.collector.recordFailure("detail", error);
+      this.lastError = "Collection failed; state preserved";
       throw error;
-    } finally {
-      if (!options.publications) await this.refresh();
     }
   }
   selectDetail(events: NormalizedEvent[], options: CollectOptions) {
