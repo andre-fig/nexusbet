@@ -15,6 +15,25 @@ const fixture = async (s: Esport) =>
   JSON.parse(
     await readFile(new URL(`../fixtures/${s}.json`, import.meta.url), "utf8"),
   ) as Capture;
+test("current CS2 feed retains an IB=2 event as suspended with its observed odds", async () => {
+  const c = JSON.parse(
+    await readFile(
+      new URL("../fixtures/cs2-ib2-sanitized.json", import.meta.url),
+      "utf8",
+    ),
+  ) as Capture;
+  const parsed = parseCapture(c);
+  assert.equal(parsed.matches.length, 48);
+  const event = parsed.matches.find((match) => match.eventId === "201160585");
+  assert.ok(event);
+  assert.equal(event.status, "suspended");
+  assert.equal(event.markets[0].selections.length, 2);
+  assert.ok(
+    event.markets[0].selections.every((selection) => selection.odds > 1),
+  );
+  assert.equal(parsed.provenance[event.eventId].inPlay, false);
+  assert.equal(parsed.provenance[event.eventId].marketSuspended, true);
+});
 test("real responses: identify all 3 games, IDs, numeric odds and associations", async () => {
   for (const game of ["cs2", "lol", "valorant"] as const) {
     const c = await fixture(game),

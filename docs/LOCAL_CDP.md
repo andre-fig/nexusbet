@@ -63,6 +63,8 @@ Se o CDP faltar/falhar, a conexão é lazy e o erro não impede bootstrap do Nes
 
 O Chrome pode pedir autorização para cada nova sessão de depuração. As conexões CDP aguardam no máximo 120s pela aprovação. Para uma instalação local que dependa desse aviso, configure `PROVIDER_LIST_TIMEOUT_MS` e `PROVIDER_DETAIL_TIMEOUT_MS` acima desse prazo (por exemplo, 180000); o scheduler continua abortando a tentativa e aplicando backoff quando o limite termina. Sem Chrome aberto e sem aprovação do usuário, os dois providers permanecem unavailable.
 
+Em uma captura sanitizada de CS2 no Windows (15/09/2026), a Bet365 retornou um evento futuro com `IB=2`, duas odds e `SU=0`. Como o significado de `IB=2` ainda não está confirmado, o parser conserva o evento/odds e o marca suspenso, sem tratá-lo como finished nem incluí-lo no matching automático. A fixture retém somente campos permitidos do protocolo; não contém headers, cookies ou corpo bruto.
+
 O último estado aceito permanece intacto durante falhas; TTL/stale e journal continuam nas implementações existentes. Uma captura rejeitada não publica nem remove eventos. `EventRemoved != EventFinished`.
 
 ## Produção

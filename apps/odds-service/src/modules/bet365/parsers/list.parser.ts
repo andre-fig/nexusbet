@@ -177,14 +177,16 @@ export function parseCapture(input: unknown): Parsed {
         !tournament ||
         !f.NA ||
         !f.N2 ||
-        !["0", "1"].includes(f.IB) ||
+        !["0", "1", "2"].includes(f.IB) ||
         !["0", "1"].includes(f.SU)
       )
         throw new Error("Incomplete match metadata");
       const competitionId = id(/#C(\d+)#/.exec(f.PD || "")?.[1]);
       const pageEventId = id(/#E(\d+)#/.exec(f.PD || "")?.[1]);
       const inPlay = f.IB === "1",
-        suspended = f.SU === "1" || groupSuspended;
+        // IB=2 occurs in the current prematch feed with future start and odds.
+        // Its meaning is unconfirmed, so keep the observation but exclude it from matching.
+        suspended = f.SU === "1" || groupSuspended || f.IB === "2";
       const match: Match = {
         provider: "bet365",
         esport: c.esport,
