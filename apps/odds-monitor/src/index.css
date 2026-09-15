@@ -34,6 +34,16 @@
   --color-on-error-container: #ffdad6;
   --color-status-healthy: #4ade80;
   --color-status-disabled: #858b96;
+  --color-match-matched: #37c978;
+  --color-match-matched-bg: rgba(55, 201, 120, .10);
+  --color-match-partial: #e4a84b;
+  --color-match-partial-bg: rgba(228, 168, 75, .10);
+  --color-match-unmatched: #f08a5d;
+  --color-match-unmatched-bg: rgba(240, 138, 93, .10);
+  --color-match-low-confidence: #c79bf2;
+  --color-match-low-confidence-bg: rgba(199, 155, 242, .10);
+  --color-match-not-applicable: #7d8794;
+  --color-match-not-applicable-bg: rgba(125, 135, 148, .08);
 }
 
 @layer base {

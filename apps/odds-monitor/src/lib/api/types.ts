@@ -1,4 +1,5 @@
 import type { HealthStatus, ProviderStatus } from "./status";
+import type { MatchingStatus } from "./matching-status";
 
 export interface Provider {
   id: string;
@@ -75,13 +76,7 @@ export interface EventRow {
   teamB: string;
   startsAt: string;
   matching: {
-    status:
-      | "matched"
-      | "partial"
-      | "unmatched"
-      | "low_confidence"
-      | "manual"
-      | "not_applicable";
+    status: MatchingStatus;
     confidence: number;
     providerCount: number;
     expectedProviderCount: number;

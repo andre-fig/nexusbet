@@ -1,5 +1,9 @@
 import React from "react";
 import { providerStatusPresentation } from "../lib/api/status";
+import {
+  MatchingStatus,
+  matchingStatusColors,
+} from "../lib/api/matching-status";
 import { ArrowLeft, RefreshCw, Code2 } from "lucide-react";
 import type { Detail, History } from "../lib/api/types";
 import type { Resource } from "../lib/api/use-resource";
@@ -76,7 +80,7 @@ export function EventDetailView({
               <div className="font-mono text-[10px] text-on-surface-variant mt-2">
                 {event.canonicalId
                   ? "Canonical event"
-                  : event.matching.status === "not_applicable"
+                  : event.matching.status === MatchingStatus.NotApplicable
                     ? "Single-provider event"
                     : "Unmatched provider event"}
                 : {event.id}
@@ -84,14 +88,14 @@ export function EventDetailView({
             </div>
             <div className="text-right">
               <div
-                className={`${event.matching.status === "not_applicable" ? "text-on-surface-variant" : "text-primary"} uppercase text-[12px] font-semibold`}
+                className={`inline-block px-2 py-1 rounded ${matchingStatusColors(event.matching.status)} uppercase text-[12px] font-semibold`}
                 title={
-                  event.matching.status === "not_applicable"
+                  event.matching.status === MatchingStatus.NotApplicable
                     ? "Only one eligible provider is currently available."
                     : undefined
                 }
               >
-                {event.matching.status === "not_applicable"
+                {event.matching.status === MatchingStatus.NotApplicable
                   ? "Matching unavailable"
                   : event.matching.status}
               </div>

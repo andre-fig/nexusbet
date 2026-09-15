@@ -7,6 +7,11 @@ import {
   healthStatusColor,
   providerStatusPresentation,
 } from "../lib/api/status";
+import {
+  MatchingStatus,
+  matchingFilterStatuses,
+  matchingStatusColors,
+} from "../lib/api/matching-status";
 interface Props {
   overview: Resource<Overview>;
   events: Resource<EventPage>;
@@ -45,15 +50,22 @@ export function DashboardView({
             </span>
             {(
               [
-                "events",
-                "matched",
-                "partial",
-                "unmatched",
-                "notApplicable",
+                { key: "events", status: undefined },
+                { key: "matched", status: MatchingStatus.Matched },
+                { key: "partial", status: MatchingStatus.Partial },
+                { key: "unmatched", status: MatchingStatus.Unmatched },
+                { key: "notApplicable", status: MatchingStatus.NotApplicable },
               ] as const
-            ).map((k) => (
-              <span key={k}>
-                <b>{health[k]}</b> {k}
+            ).map(({ key, status }) => (
+              <span
+                key={key}
+                className={
+                  status
+                    ? `px-2 py-1 rounded ${matchingStatusColors(status)}`
+                    : undefined
+                }
+              >
+                <b>{health[key]}</b> {key}
               </span>
             ))}
           </div>
@@ -124,13 +136,7 @@ export function DashboardView({
           onChange={(e) => onFilter("status", e.target.value)}
         >
           <option value="">All statuses</option>
-          {[
-            "matched",
-            "partial",
-            "unmatched",
-            "low_confidence",
-            "not_applicable",
-          ].map((s) => (
+          {matchingFilterStatuses.map((s) => (
             <option key={s}>{s}</option>
           ))}
         </select>
@@ -215,14 +221,14 @@ export function DashboardView({
                   </td>
                   <td className="px-4 py-3">
                     <span
-                      className="px-2 py-1 bg-surface-container-high rounded"
+                      className={`px-2 py-1 rounded ${matchingStatusColors(e.matching.status)}`}
                       title={
-                        e.matching.status === "not_applicable"
+                        e.matching.status === MatchingStatus.NotApplicable
                           ? "Only one eligible provider is currently available."
                           : undefined
                       }
                     >
-                      {e.matching.status === "not_applicable"
+                      {e.matching.status === MatchingStatus.NotApplicable
                         ? "Single provider"
                         : e.matching.status}
                     </span>
