@@ -9,6 +9,7 @@ export enum ProviderStatus {
 export enum HealthStatus {
   Healthy = "healthy",
   Degraded = "degraded",
+  Critical = "critical",
 }
 
 export enum ProviderStatusReason {
@@ -48,5 +49,12 @@ export function providerStatusPresentation(provider: {
 }
 
 export function healthStatusColor(status: HealthStatus) {
-  return status === HealthStatus.Healthy ? "text-status-healthy" : "text-error";
+  switch (status) {
+    case HealthStatus.Healthy:
+      return "text-status-healthy";
+    case HealthStatus.Critical:
+      return "text-red-800 dark:text-red-300 bg-red-500/10 px-1.5 py-0.5 rounded";
+    default:
+      return "text-error";
+  }
 }

@@ -29,13 +29,13 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 
 | GET | Resposta / filtros |
 | --- | --- |
-| `/monitor/overview` | `generatedAt`, `health {status,events,matched,partial,unmatched,issues}`, `providers[]` |
+| `/monitor/overview` | `generatedAt`, `health {status,reasons[],events,matched,partial,unmatched,issues}`, `providers[]` |
 | `/monitor/providers` | Array dinâmico `{id,name,enabled,active,status,statusReason,eventCount,lastUpdatedAt,stale}` |
 | `/monitor/events` | `{items:EventRow[],pagination:{page,limit,total,pages}}`; cada row inclui `analytics[]` para indicadores |
 | `/monitor/events/:id` | EventRow + providers com mercados e `markets[]` prioritários; cada mercado equivalente inclui `analytics` |
 | `/monitor/events/:id/raw` | `{eventId,raw:[{provider,rawData,markets}]}` sanitizado; carregamento sob demanda |
 | `/monitor/events/:id/odds-history` | `{eventId,series:[{provider,market:{id,category,mapNumber},selection,selectionId,points:[{odds,displayOdds,fetchedAt,suspended,inPlay}]}],truncated}` |
-| `/monitor/issues` | `{items:[{id,type,severity,status,eventId,provider,title,message,detectedAt}]}` |
+| `/monitor/issues` | `{items:[{id,type,severity,scope,systemic,status,eventId,provider,title,message,detectedAt}]}` |
 | `/monitor/stream` | `text/event-stream`, invalidações pequenas |
 
 `EventRow`:
@@ -57,6 +57,8 @@ Origin é exata, incluindo esquema/host/porta, sem barra final. `localhost` e `1
 ```
 
 `MarketAnalytics` contém `category`, `mapNumber`, `marketIds`, `bestPrices[]`, `outliers[]` e `arbitrage` (null quando não existe). BEST PRICE traz provider, seleção, odd, exibição e próxima melhor odd; empates são resolvidos pelo nome do provider. OUTLIER traz odd, mediana e desvio percentual assinado. ARBITRAGE traz inverseSum, margem percentual, legs, distribuição de R$100 e retorno teórico. Os tooltips contextuais são produzidos no backend e apenas exibidos pelo React. A análise exige um vínculo canônico `matched` ou `partial`, ao menos dois providers válidos, mesma categoria/mapa/período/linha e dois resultados que correspondam aos times canônicos. Mercados ambíguos, incompletos, suspensos, live, stale, disabled ou com odds inválidas não entram. Outlier exige pelo menos três providers válidos e usa `ODDS_OUTLIER_THRESHOLD_PERCENT=10` por padrão. Best price e arbitragem não criam issues; outlier é sinal de divergência na leitura, sem afirmar erro do provider e sem aumentar o contador persistido de issues.
+
+`health.status` é independente de `health.issues`. Issues locais de evento continuam em Needs attention sem degradar o Data Health. A classificação expõe `scope: event|provider|system` e `systemic: boolean`; novas issues podem declarar esses campos em `data_issues.details`, e as antigas são classificadas pelos vínculos e tipo. `healthy` significa que não há provider ativo stale/sem dados/indisponível/degraded nem warning ou critical sistêmico. Um provider ativo nesse estado, issue warning sistêmica ou `MARKET_INCOMPLETE` em ao menos três eventos e 10% dos eventos observados produz `degraded`. Issue critical sistêmica ou dois providers ativos sem dados/indisponíveis (ou todos os ativos quando só há um) produz `critical`. Uma issue critical de provider essencial pode usar `details.essential: true`. `reasons[]` explica o estado ao passar o mouse; o dashboard mostra Critical com destaque mais forte. Tipos pontuais como `UNMATCHED_EVENT`, `PARTIAL_MATCH`, `LOW_CONFIDENCE`, `MARKET_UNAVAILABLE` e `ODD_OUTLIER` são locais por padrão. Tipos operacionais como `EVENT_COUNT_DROP`, `PARSER_FAILURE` e falha de coleta são sistêmicos por padrão; `details.systemic: false` pode declarar uma ocorrência localizada. Issues de provider desabilitado não entram no Data Health.
 
 As seleções em `markets[]` retornam `odds: number | null` e `displayOdds: string | null`. O mesmo vale para os pontos de histórico. O valor numérico mantém a precisão observada; `displayOdds` usa duas casas decimais pt-BR com arredondamento normal. A função reutilizável fica em `apps/odds-service/src/shared/utils/odds-display.ts`, fora do MonitorModule, para uso posterior pelo BFF. As rotas normalizadas dos providers, `/comparisons`, `/events` e `/selections/:id/odds-history` também recebem a representação de exibição na camada de leitura. Dados persistidos e SSE não incluem esse campo.
 

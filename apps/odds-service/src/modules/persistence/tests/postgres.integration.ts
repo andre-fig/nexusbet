@@ -1199,6 +1199,75 @@ test("market quality separates missing map, observed incomplete map and expired 
   );
   assert.equal((await monitor.overview()).health.issues, 1);
 });
+test("Monitor Data Health stays healthy for local issues and exposes systemic warning and critical impact", async () => {
+  const { MonitorRepository } =
+    await import("../repositories/monitor.repository.js");
+  const { MonitorService } = await import("../../monitor/monitor.service.js");
+  const now = new Date();
+  for (const name of ["superbet", "blaze"] as const)
+    await service.commit(publication(event(name, 1.72, now.toISOString())));
+  const collection = {
+    operationalHealth: () => ({ providers: {} }),
+    providerRuntime: (name: string) => ({
+      active: name === "superbet" || name === "blaze",
+      status: "active",
+      reason: "active",
+    }),
+  } as unknown as import("../../collection/collection.service.js").CollectionService;
+  const monitor = new MonitorService(
+    new MonitorRepository(database),
+    config,
+    collection,
+  );
+  let overview = await monitor.overview();
+  assert.equal(overview.health.status, "healthy");
+  assert.equal(overview.health.issues, 2);
+  const local = (await monitor.issues({ type: "MARKET_INCOMPLETE" })).items;
+  assert.equal(local.length, 2);
+  assert.ok(
+    local.every((issue) => issue.scope === "event" && issue.systemic === false),
+  );
+  const page = await monitor.events({ attentionOnly: "true", limit: "1" });
+  assert.equal(page.pagination.total, 1);
+  assert.equal(page.items[0].issues.length, 2);
+  await database.db.dataIssue.create({
+    data: {
+      dedupeKey: "systemic-parser-warning",
+      type: "PARSER_FAILURE",
+      severity: "warning",
+      message: "Parser coverage degraded across providers",
+      details: { scope: "system", systemic: true },
+      detectedAt: now,
+    },
+  });
+  overview = await monitor.overview();
+  assert.equal(overview.health.status, "degraded");
+  assert.ok(
+    overview.health.reasons.some((reason) =>
+      reason.includes("systemic warning"),
+    ),
+  );
+  assert.deepEqual(
+    (await monitor.issues({ type: "PARSER_FAILURE" })).items.map((issue) => [
+      issue.scope,
+      issue.systemic,
+    ]),
+    [["system", true]],
+  );
+  await database.db.dataIssue.create({
+    data: {
+      dedupeKey: "systemic-global-critical",
+      type: "COLLECTION_GLOBAL_FAILURE",
+      severity: "critical",
+      message: "All collection pipelines failed",
+      details: { scope: "system", systemic: true },
+      detectedAt: now,
+    },
+  });
+  overview = await monitor.overview();
+  assert.equal(overview.health.status, "critical");
+  assert.equal(overview.health.issues, 4);
+});
 test("Monitor publication notices occur after commit, never on replay or transaction failure", async () => {
   const { PersistenceNotifications } =
     await import("../persistence-notifications.js");

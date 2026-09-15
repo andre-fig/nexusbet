@@ -281,9 +281,12 @@ export class MonitorRepository {
           id: true,
           type: true,
           severity: true,
+          details: true,
           message: true,
+          providerId: true,
           providerEventId: true,
           canonicalEventId: true,
+          marketId: true,
         },
       }),
     );
@@ -310,6 +313,26 @@ export class MonitorRepository {
                 ],
               }
             : {}),
+        },
+      }),
+    );
+  }
+  healthIssues() {
+    return this.database.read((db) =>
+      db.dataIssue.findMany({
+        where: { status: "open" },
+        select: {
+          type: true,
+          severity: true,
+          details: true,
+          providerId: true,
+          provider: { select: { slug: true } },
+          providerEventId: true,
+          canonicalEventId: true,
+          marketId: true,
+          providerEvent: {
+            select: { match: { select: { canonicalEventId: true } } },
+          },
         },
       }),
     );

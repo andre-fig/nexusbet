@@ -46,6 +46,11 @@ export function DashboardView({
           <div className="flex flex-wrap items-center gap-4 font-mono text-[12px]">
             <span
               className={`font-semibold capitalize text-[14px] ${healthStatusColor(health.status)}`}
+              title={
+                health.reasons?.length
+                  ? health.reasons.join("; ")
+                  : "Active providers and systemic quality are healthy. Event-level issues remain in Needs attention."
+              }
             >
               Data {health.status}
             </span>

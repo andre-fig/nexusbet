@@ -186,7 +186,7 @@ export class CatalogRepository {
             providerId,
             providerEventId: row.id,
             marketId: stored.id,
-            details: { marketId },
+            details: { marketId, scope: "event", systemic: false },
             at: time,
           });
         else await this.issues.transition(tx, issueKey, "resolved", time);

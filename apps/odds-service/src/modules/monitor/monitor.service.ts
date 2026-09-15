@@ -10,6 +10,7 @@ import { ServiceError } from "../../shared/errors/domain-errors.js";
 import { canonicalTeamName } from "../matching/team-aliases.js";
 import { displayOdds } from "../../shared/utils/odds-display.js";
 import { analyzeMarkets } from "./market-analytics.js";
+import { assessDataHealth, issueImpact } from "./data-health.js";
 import {
   validate,
   integer,
@@ -41,6 +42,8 @@ export class MonitorService {
         id: `stale:${m.id}`,
         type: "STALE",
         severity: "warning",
+        scope: "event" as const,
+        systemic: false,
         status: "open",
         message: `${m.category === "match_winner" ? "Match winner" : `Map ${m.mapNumber} winner`} last observed at ${m.lastSeenAt.toISOString()}; data exceeded the freshness TTL. Last odds are retained for diagnosis.`,
         marketId: m.id,
@@ -94,22 +97,43 @@ export class MonitorService {
   async overview() {
     const providers = await this.providers();
     const eligibleProviders = await this.expectedProviders();
-    const [counts, issues, staleIssues] = await Promise.all([
+    const [counts, issues, staleIssues, healthIssues] = await Promise.all([
       this.repo.summary(eligibleProviders),
       this.repo.issueCount(eligibleProviders),
       this.staleIssues(),
+      this.repo.healthIssues(),
     ]);
     const count = (s: string) => counts.find((c) => c.status === s)?.count ?? 0;
+    const events = counts.reduce((n, c) => n + c.count, 0);
+    const activeProviders = new Set(
+      providers
+        .filter((provider) => provider.active)
+        .map((provider) => provider.id),
+    );
+    const dataHealth = assessDataHealth({
+      providers,
+      issues: healthIssues
+        .filter(
+          (issue) =>
+            issueImpact(issue).scope !== "provider" ||
+            !issue.provider?.slug ||
+            activeProviders.has(issue.provider.slug),
+        )
+        .map((issue) => ({
+          ...issue,
+          eventKey:
+            issue.providerEvent?.match?.canonicalEventId ??
+            issue.canonicalEventId ??
+            issue.providerEventId,
+        })),
+      eventCount: events,
+    });
     return {
       generatedAt: new Date().toISOString(),
       health: {
-        status:
-          issues ||
-          staleIssues.length ||
-          providers.some((p) => p.active && p.stale)
-            ? "degraded"
-            : "healthy",
-        events: counts.reduce((n, c) => n + c.count, 0),
+        status: dataHealth.status,
+        reasons: dataHealth.reasons,
+        events,
         matched: count("matched"),
         partial: count("partial"),
         unmatched: count("unmatched"),
@@ -250,7 +274,18 @@ export class MonitorService {
       this.staleIssues(ids),
     ]);
     return groups.map((g) => {
-      const visibleIssues = [...issues, ...staleIssues].filter(
+      const visibleIssues = [
+        ...issues.map((issue) => ({
+          id: issue.id,
+          type: issue.type,
+          severity: issue.severity,
+          message: issue.message,
+          providerEventId: issue.providerEventId,
+          canonicalEventId: issue.canonicalEventId,
+          ...issueImpact(issue),
+        })),
+        ...staleIssues,
+      ].filter(
         (issue) =>
           g.expectedProviderCount >= 2 || issue.type !== "UNMATCHED_EVENT",
       );
@@ -432,6 +467,7 @@ export class MonitorService {
           id: i.id,
           type: i.type,
           severity: i.severity,
+          ...issueImpact(i),
           status: i.status,
           eventId:
             i.providerEvent?.match?.canonicalEventId ??

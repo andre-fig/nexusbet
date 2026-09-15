@@ -52,6 +52,7 @@ export function NeedsAttentionDrawer({
                   : i.type === "STALE"
                     ? "Stale market"
                     : i.type}
+                {i.systemic && " · Systemic"}
               </div>
               <h3 className="font-semibold text-[14px]">{i.title}</h3>
               <p className="text-[12px] text-on-surface-variant">{i.message}</p>

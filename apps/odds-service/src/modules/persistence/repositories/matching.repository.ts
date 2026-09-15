@@ -100,6 +100,7 @@ export class MatchingRepository {
               "Existing canonical identities disagree; automatic merge withheld",
             providerId: row.providerId,
             providerEventId: row.id,
+            details: { scope: "event", systemic: false },
             at,
           });
         continue;
@@ -197,7 +198,7 @@ export class MatchingRepository {
         message: "No unambiguous cross-provider match",
         providerId: providerMap.get(unmatched.provider),
         providerEventId: row.id,
-        details: { reason: unmatched.reason },
+        details: { reason: unmatched.reason, scope: "event", systemic: false },
         at,
       });
     }

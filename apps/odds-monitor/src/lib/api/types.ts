@@ -16,6 +16,8 @@ export interface Issue {
   id: string;
   type: string;
   severity: string;
+  scope?: "event" | "provider" | "system";
+  systemic?: boolean;
   status?: string;
   eventId?: string | null;
   provider?: string | null;
@@ -165,6 +167,7 @@ export interface Overview {
   generatedAt: string;
   health: {
     status: HealthStatus;
+    reasons?: string[];
     events: number;
     matched: number;
     partial: number;
