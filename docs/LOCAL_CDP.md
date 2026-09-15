@@ -2,20 +2,20 @@
 
 ## Matriz de suporte atual
 
-| Provider | LOCAL MAC/CDP | LINUX/XVFB | HEADLESS |
+| Provider | LOCAL MAC/CDP | LOCAL WINDOWS/CDP | LINUX/XVFB | HEADLESS |
 |---|---|---|---|
-| Bet365 | SUPPORTED | UNSUPPORTED | UNSUPPORTED |
-| Betano | SUPPORTED | UNSUPPORTED | UNSUPPORTED |
+| Bet365 | SUPPORTED | SUPPORTED | UNSUPPORTED | UNSUPPORTED |
+| Betano | SUPPORTED | SUPPORTED | UNSUPPORTED | UNSUPPORTED |
 
 SUPPORTED significa estratégia de transporte mantida para desenvolvimento/validação, não garantia de cobertura do feed em qualquer instante. Parsers continuam rejeitando estruturas inválidas. A implementação HTTP da Superbet permanece independente. Bet365/Betano não são production-ready em Railway.
 
 As investigações de headless, Linux/Xvfb e HTTP pós-bootstrap estão encerradas nesta etapa. Os relatórios permanecem históricos; não são instruções para retomar experimentos.
 
-## Preparar o Chrome existente no Mac
+## Preparar o Chrome existente no Mac ou Windows
 
 1. Abra o Chrome pessoal/headed já funcional, no perfil usual. Não copie seu perfil nem inicie outro Chrome apontando para o mesmo diretório.
 2. No Chrome que suporta a interface nativa usada neste projeto (validada com Chrome 152), abra `chrome://inspect/#remote-debugging`, habilite depuração remota e aceite o pedido de conexão quando o Chrome o apresentar. Essa autorização é do browser, não autenticação do odds-service.
-3. O serviço lê o arquivo `~/Library/Application Support/Google/Chrome/DevToolsActivePort`. Se o Chrome usa outro caminho, configure `CHROME_DEBUG_PORT_FILE`.
+3. O serviço lê `~/Library/Application Support/Google/Chrome/DevToolsActivePort` no Mac e `%LOCALAPPDATA%\Google\Chrome\User Data\DevToolsActivePort` no Windows. Se o Chrome usa outro caminho ou o agent roda como SYSTEM, configure `CHROME_DEBUG_PORT_FILE` com o caminho absoluto da conta do Chrome.
 4. Alternativamente, defina `CDP_ENDPOINT=ws://127.0.0.1:<porta>/devtools/browser/<id>` obtido do próprio Chrome. Apenas WebSocket local é aceito; não exponha depuração à rede. Não commite o endpoint real. `CDP_URL` é alias legado.
 
 O serviço não ativa a depuração sozinho, não altera preferências e não remove cookies. Se a versão do Chrome não oferecer esse fluxo, não crie automaticamente profile alternativo ou estratégia de acesso: marque a indisponibilidade e use a configuração local suportada.
@@ -57,7 +57,7 @@ O transporte Bet365 usa homepage/eSports no aquecimento e as rotas PD existentes
 
 ## Scheduler, indisponibilidade e dados antigos
 
-Só inclui Bet365/Betano na agenda se flag enabled, runtime local-cdp e processo em macOS. Fora disso, `/health` informa `disabled` (flag false) ou `unavailable` (runtime/plataforma inadequado), sem impedir Superbet/API de funcionar.
+Só inclui Bet365/Betano na agenda se flag enabled, runtime local-cdp e processo em macOS ou Windows. Fora disso, `/health` informa `disabled` (flag false) ou `unavailable` (runtime/plataforma inadequado), sem impedir Superbet/API de funcionar.
 
 Se o CDP faltar/falhar, a conexão é lazy e o erro não impede bootstrap do Nest. O gerenciador marca unavailable e limita reconexão real a uma tentativa por cooldown (padrão 5min, mínimo configurável 60s), compartilhado pelos dois providers. O scheduler mantém seu backoff/circuit breaker existente; tentativas dentro do cooldown não abrem conexão. Falha de captura também fica unavailable; uma resposta aceita volta a ready no gerenciador/ok no scheduler.
 

@@ -18,16 +18,14 @@ import { Bet365Client } from "../../bet365/bet365.client.js";
 import { BetanoClient } from "../../betano/betano.client.js";
 
 class FakeCdp extends EventEmitter {
+  userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X) Chrome/152.0.0.0";
   calls: { method: string; params: Record<string, unknown> }[] = [];
   targets = new Set(["personal-tab"]);
   sequence = 0;
   closeCount = 0;
   async send(method: string, params: Record<string, unknown> = {}) {
     this.calls.push({ method, params });
-    if (method === "Browser.getVersion")
-      return {
-        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X) Chrome/152.0.0.0",
-      };
+    if (method === "Browser.getVersion") return { userAgent: this.userAgent };
     if (method === "Target.createTarget") {
       const targetId = "owned-" + ++this.sequence;
       this.targets.add(targetId);
@@ -47,9 +45,10 @@ class FakeCdp extends EventEmitter {
 function harness(
   t: TestContext,
   runtime: "local-cdp" | "disabled" = "local-cdp",
+  platformName: "darwin" | "win32" = "darwin",
 ) {
   const platform = Object.getOwnPropertyDescriptor(process, "platform")!;
-  Object.defineProperty(process, "platform", { value: "darwin" });
+  Object.defineProperty(process, "platform", { value: platformName });
   t.after(() => Object.defineProperty(process, "platform", platform));
   const base = configuration().settings;
   const config = new AppConfiguration(
@@ -63,6 +62,9 @@ function harness(
     }),
   );
   const cdp = new FakeCdp();
+  if (platformName === "win32")
+    cdp.userAgent =
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/152.0.0.0";
   const connect = t.mock.method(
     CdpConnection,
     "connect",
@@ -123,6 +125,17 @@ test("local-cdp reuses owned targets, keeps personal tabs, adapters only detach 
     if (c.method === "Target.closeTarget")
       assert.match(String(c.params.targetId), /^owned-/);
   }
+});
+test("Windows headed Chrome supports both collectors and closes only owned tabs", async (t) => {
+  const { manager, cdp, connect, launch } = harness(t, "local-cdp", "win32");
+  await manager.runExclusive("bet365", async () => {});
+  await manager.runExclusive("betano", async () => {});
+  assert.equal(manager.availability("bet365"), "ready");
+  assert.equal(manager.availability("betano"), "ready");
+  assert.equal(connect.mock.callCount(), 1);
+  assert.equal(launch.mock.callCount(), 0);
+  await manager.close();
+  assert.deepEqual([...cdp.targets], ["personal-tab"]);
 });
 test("local-cdp serializes same provider while allowing peers", async (t) => {
   const { manager } = harness(t);

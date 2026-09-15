@@ -12,7 +12,7 @@ interface OwnedTab {
   status: "starting" | "ready" | "unavailable";
   lastSuccessAt: string | null;
 }
-/** Borrows the existing macOS Chrome process. Owns targets, never the browser/context/profile. */
+/** Borrows an existing headed Chrome process. Owns targets, never the browser/context/profile. */
 @Injectable()
 export class LocalCdpService implements OnApplicationShutdown {
   private readonly tabs = new Map<LocalProvider, OwnedTab>();
@@ -27,7 +27,7 @@ export class LocalCdpService implements OnApplicationShutdown {
     if (!this.config.settings.providerEnabled[provider]) return "disabled";
     if (
       this.config.settings.browser.runtime !== "local-cdp" ||
-      process.platform !== "darwin"
+      !["darwin", "win32"].includes(process.platform)
     )
       return "unavailable";
     if (Date.now() < this.retryAt) return "unavailable";
@@ -48,7 +48,7 @@ export class LocalCdpService implements OnApplicationShutdown {
       status === "disabled" ||
       Date.now() < this.retryAt ||
       this.config.settings.browser.runtime !== "local-cdp" ||
-      process.platform !== "darwin"
+      !["darwin", "win32"].includes(process.platform)
     )
       throw new ProviderUnavailableError(provider);
     const state = this.state(provider);
@@ -62,8 +62,10 @@ export class LocalCdpService implements OnApplicationShutdown {
         const tab = await ChromeTab.open(this.endpoint);
         try {
           const version = await tab.cdp.send("Browser.getVersion");
+          const expectedPlatform =
+            process.platform === "win32" ? /Windows NT/ : /Macintosh/;
           if (
-            !/Macintosh/.test(version.userAgent ?? "") ||
+            !expectedPlatform.test(version.userAgent ?? "") ||
             /HeadlessChrome/.test(version.userAgent ?? "")
           )
             throw new ProviderUnavailableError(provider);

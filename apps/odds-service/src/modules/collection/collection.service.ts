@@ -114,7 +114,7 @@ export class CollectionService {
       return { active: true, status: "active", reason: "active" };
     if (
       this.config.settings.browser.runtime !== "local-cdp" ||
-      process.platform !== "darwin"
+      !["darwin", "win32"].includes(process.platform)
     )
       return {
         active: false,
