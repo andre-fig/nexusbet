@@ -22,6 +22,24 @@ import type {
 import type { MarketBatch } from "../../shared/domain/market-model.js";
 import { providers, runtimeSettings } from "./runtime-settings.js";
 import { toWire, fromWire, type WirePayload } from "./wire-payload.js";
+
+class DeliveryResponseError extends Error {
+  constructor(readonly status: number) {
+    super("Ingestion response rejected");
+  }
+}
+
+function deliveryFailureKind(error: unknown): string {
+  if (error instanceof DeliveryResponseError) return `HTTP ${error.status}`;
+  if (!(error instanceof Error)) return "unknown";
+  const cause = error.cause;
+  if (cause && typeof cause === "object" && "code" in cause) {
+    const code = cause.code;
+    if (typeof code === "string" && /^E[A-Z0-9_]+$/.test(code))
+      return `${error.name}/${code}`;
+  }
+  return error.name;
+}
 @Injectable()
 export class RemotePersistence
   implements
@@ -143,7 +161,7 @@ export class RemotePersistence
       signal: AbortSignal.timeout(this.settings.requestTimeoutMs),
     });
     await response.body?.cancel();
-    if (!response.ok) throw Error("Server did not acknowledge payload");
+    if (!response.ok) throw new DeliveryResponseError(response.status);
   }
   tick() {
     if (this.stopped || this.sending || Date.now() < this.nextAttempt) return;
@@ -162,12 +180,12 @@ export class RemotePersistence
         this.failures = 0;
         this.nextAttempt = 0;
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         this.nextAttempt =
           Date.now() +
           [30000, 60000, 120000, 300000][Math.min(this.failures++, 3)];
         this.logger.warn(
-          "Delivery failed; pending publications retained for retry",
+          `Delivery failed (${deliveryFailureKind(error)}); pending publications retained for retry`,
         );
       })
       .finally(() => {
@@ -188,8 +206,10 @@ export class RemotePersistence
         ),
         at: new Date().toISOString(),
       });
-    } catch {
-      this.logger.warn("Heartbeat delivery failed");
+    } catch (error) {
+      this.logger.warn(
+        `Heartbeat delivery failed (${deliveryFailureKind(error)})`,
+      );
     }
   }
   async onModuleDestroy() {
