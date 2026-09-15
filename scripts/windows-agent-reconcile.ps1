@@ -85,12 +85,30 @@ try {
           & $npm run build; CheckExit 'build'
           $testStdout = Join-Path $root 'logs\release-tests.out.log'
           $testStderr = Join-Path $root 'logs\release-tests.err.log'
-          $testProcess = Start-Process -FilePath $npm -ArgumentList 'test' -WorkingDirectory (Get-Location).Path -WindowStyle Hidden -PassThru -RedirectStandardOutput $testStdout -RedirectStandardError $testStderr
-          if (-not $testProcess.WaitForExit(300000)) {
-            & taskkill.exe /PID $testProcess.Id /T /F | Out-Null
-            throw 'tests timed out after 5 minutes'
-          }
-          if ($testProcess.ExitCode -ne 0) { throw "tests failed (exit $($testProcess.ExitCode))" }
+          $testStart = New-Object Diagnostics.ProcessStartInfo
+          $testStart.FileName = 'cmd.exe'
+          $testStart.Arguments = '/d /c ""' + $npm + '" test"'
+          $testStart.WorkingDirectory = (Get-Location).Path
+          $testStart.UseShellExecute = $false
+          $testStart.CreateNoWindow = $true
+          $testStart.RedirectStandardOutput = $true
+          $testStart.RedirectStandardError = $true
+          $testStart.StandardOutputEncoding = [Text.Encoding]::UTF8
+          $testStart.StandardErrorEncoding = [Text.Encoding]::UTF8
+          $testProcess = New-Object Diagnostics.Process
+          $testProcess.StartInfo = $testStart
+          try {
+            if (-not $testProcess.Start()) { throw 'tests did not start' }
+            $stdoutTask = $testProcess.StandardOutput.ReadToEndAsync()
+            $stderrTask = $testProcess.StandardError.ReadToEndAsync()
+            if (-not $testProcess.WaitForExit(300000)) {
+              & taskkill.exe /PID $testProcess.Id /T /F | Out-Null
+              throw 'tests timed out after 5 minutes'
+            }
+            [IO.File]::WriteAllText($testStdout, $stdoutTask.Result)
+            [IO.File]::WriteAllText($testStderr, $stderrTask.Result)
+            if ($testProcess.ExitCode -ne 0) { throw "tests failed (exit $($testProcess.ExitCode))" }
+          } finally { $testProcess.Dispose() }
         } finally { Pop-Location }
         Set-Content -LiteralPath $verifiedPath -Value $target -Encoding ascii
         Log "Release $target passed checks"
