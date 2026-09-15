@@ -78,6 +78,12 @@ test("matching keys remove only safe team prefixes and suffixes before semantic 
     ["Team Brute", "brute"],
     ["Brute", "brute"],
     ["Team Vitality", "vitality"],
+    ["Vitality", "vitality"],
+    ["33 Team", "33"],
+    ["Team 33", "33"],
+    ["Nemiga Gaming", "nemiga"],
+    ["Nemiga", "nemiga"],
+    ["RUSH", "rush"],
     ["FURIA Esports", "furia"],
     ["Astral eSports", "astral"],
     ["Rune Eaters Esports", "rune eaters"],
@@ -96,8 +102,10 @@ test("matching keys remove only safe team prefixes and suffixes before semantic 
   assert.equal(canonicalTeamName("T1 Esports", "valorant"), "t1");
   assert.equal(teamName("Nexus Gaming", "cs2"), "nexus gaming");
   assert.equal(canonicalTeamName("Team NÁVI Esports", "cs2"), "natus vincere");
-  assert.equal(canonicalTeamName("L&G", "cs2"), "leo team");
-  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("L&G", "cs2"), "leo");
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "33");
+  assert.equal(canonicalTeamName("Brute Team", "cs2"), "brute");
+  assert.equal(canonicalTeamName("Alpha Team Beta", "cs2"), "alpha team beta");
   assert.equal(canonicalTeamName("Movistar KOI", "lol"), "koi");
   assert.equal(canonicalTeamName("9z Globant", "lol"), "9z");
   assert.equal(canonicalTeamName("9z Team", "lol"), "9z");
@@ -296,7 +304,7 @@ test("LoL team aliases match KOI with Movistar KOI and preserve raw names", asyn
   assert.equal(result.matched[0].providers.betano.rawTeamB, "Movistar KOI");
 });
 
-test("LoL 9z aliases match only the two explicit team variants", async () => {
+test("LoL 9z Globant alias and generic Team suffix match 9z", async () => {
   const raw = JSON.parse(
     await readFile(
       new URL("../../bet365/fixtures/cs2.json", import.meta.url),
@@ -337,7 +345,7 @@ test("LoL 9z aliases match only the two explicit team variants", async () => {
   assert.equal(result.matched[0].providers.betano.rawTeamA, "9z Globant");
   assert.equal(result.matched[0].providers.superbet.rawTeamA, "9z Team");
   assert.equal(canonicalTeamName("9z Globant", "cs2"), "9z globant");
-  assert.equal(canonicalTeamName("9z Team", "valorant"), "9z team");
+  assert.equal(canonicalTeamName("9z Team", "valorant"), "9z");
   assert.notEqual(canonicalTeamName("9z Academy", "lol"), "9z");
 });
 
@@ -700,7 +708,7 @@ test("Valorant final (F) markers match Shopify Rebellion Gold vs FlyQuest RED wi
   );
 });
 
-test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async () => {
+test("Nemiga Gaming vs 33 Team matches Nemiga vs Team 33 at the same CS2 start", async () => {
   const raw = JSON.parse(
     await readFile(
       new URL("../../bet365/fixtures/cs2.json", import.meta.url),
@@ -715,11 +723,11 @@ test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async 
     provider: "superbet" as const,
     eventId: "nemiga-gaming-team-33",
     teamA: "Nemiga Gaming",
-    teamB: "Team 33",
+    teamB: "33 Team",
     rawTeamA: "Nemiga Gaming",
-    rawTeamB: "Team 33",
+    rawTeamB: "33 Team",
     normalizedTeamA: teamName("Nemiga Gaming", "cs2"),
-    normalizedTeamB: teamName("Team 33", "cs2"),
+    normalizedTeamB: teamName("33 Team", "cs2"),
     startsAt,
   };
   const right = {
@@ -727,11 +735,11 @@ test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async 
     provider: "estrelabet" as const,
     eventId: "nemiga-33",
     teamA: "Nemiga",
-    teamB: "33",
+    teamB: "Team 33",
     rawTeamA: "Nemiga",
-    rawTeamB: "33",
+    rawTeamB: "Team 33",
     normalizedTeamA: teamName("Nemiga", "cs2"),
-    normalizedTeamB: teamName("33", "cs2"),
+    normalizedTeamB: teamName("Team 33", "cs2"),
     startsAt,
   };
 
@@ -739,24 +747,24 @@ test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async 
 
   assert.equal(canonicalTeamName("Nemiga Gaming", "cs2"), "nemiga");
   assert.equal(canonicalTeamName("Nemiga", "cs2"), "nemiga");
-  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
-  assert.equal(canonicalTeamName("33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("33 Team", "cs2"), "33");
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "33");
   assert.equal(
     canonicalTeamName("33", "valorant"),
     canonicalTeamName("Team 33", "valorant"),
   );
   assert.equal(left.normalizedTeamA, "nemiga gaming");
-  assert.equal(right.normalizedTeamB, "33");
+  assert.equal(right.normalizedTeamB, "team 33");
   assert.equal(result.matched.length, 1);
   assert.equal(result.unmatched.length, 0);
   assert.equal(result.matched[0].canonicalEvent.esport, "cs2");
   assert.equal(result.matched[0].canonicalEvent.teamA, "nemiga");
-  assert.equal(result.matched[0].canonicalEvent.teamB, "team 33");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "33");
   assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
   assert.equal(result.matched[0].providers.superbet.rawTeamA, "Nemiga Gaming");
-  assert.equal(result.matched[0].providers.superbet.rawTeamB, "Team 33");
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "33 Team");
   assert.equal(result.matched[0].providers.estrelabet.rawTeamA, "Nemiga");
-  assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "33");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "Team 33");
 });
 
 test("CS2 team aliases match Team 33 vs L&G with 33 vs Leo Team", async () => {
@@ -796,10 +804,10 @@ test("CS2 team aliases match Team 33 vs L&G with 33 vs Leo Team", async () => {
 
   const result = compareAllProviders([left, right]);
 
-  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
-  assert.equal(canonicalTeamName("33", "cs2"), "team 33");
-  assert.equal(canonicalTeamName("L&G", "cs2"), "leo team");
-  assert.equal(canonicalTeamName("Leo Team", "cs2"), "leo team");
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "33");
+  assert.equal(canonicalTeamName("33", "cs2"), "33");
+  assert.equal(canonicalTeamName("L&G", "cs2"), "leo");
+  assert.equal(canonicalTeamName("Leo Team", "cs2"), "leo");
   assert.notEqual(
     canonicalTeamName("L&G", "valorant"),
     canonicalTeamName("Leo Team", "valorant"),
@@ -807,8 +815,8 @@ test("CS2 team aliases match Team 33 vs L&G with 33 vs Leo Team", async () => {
   assert.equal(left.normalizedTeamB, "l g");
   assert.equal(result.matched.length, 1);
   assert.equal(result.unmatched.length, 0);
-  assert.equal(result.matched[0].canonicalEvent.teamA, "team 33");
-  assert.equal(result.matched[0].canonicalEvent.teamB, "leo team");
+  assert.equal(result.matched[0].canonicalEvent.teamA, "33");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "leo");
   assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
   assert.equal(result.matched[0].providers.superbet.rawTeamA, "Team 33");
   assert.equal(result.matched[0].providers.superbet.rawTeamB, "L&G");

@@ -4,13 +4,11 @@ import { teamName } from "../../shared/utils/names.js";
 // Only semantic, sport-scoped equivalences remain after common edge words are removed.
 export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
-    "33": "team 33",
-    "l g": "leo team",
+    "l g": "leo",
     navi: "natus vincere",
   },
   lol: {
     "9z globant": "9z",
-    "9z team": "9z",
     "movistar koi": "koi",
     "vivo keyd stars": "keyd stars",
   },
@@ -33,7 +31,7 @@ export function canonicalTeamName(value: string, esport: Esport): string {
   const withoutPrefix = normalized.replace(/^team /, "");
   // Punctuation is already normalized, so "e-sports" becomes "e sports".
   const key = withoutPrefix
-    .replace(/ (?:esports|esport|e sports|gaming)$/, "")
+    .replace(/ (?:team|esports|esport|e sports|gaming)$/, "")
     .trim();
   return markerAlias ?? teamAliases[esport][key] ?? key;
 }
