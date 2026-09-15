@@ -31,7 +31,18 @@ const log = (s) => fs.appendFileSync(process.env.RUNTIME_TEST_LOG, s+'\\n');
 log('display-start');
 setInterval(()=>{}, 1000);
 process.on('SIGTERM',()=>{log('display-stop');process.exit(0)});
-${crashDisplay ? "setTimeout(()=>{log('display-crash');process.exit(1)},500);" : ""}
+${
+  crashDisplay
+    ? `const timer = setInterval(() => {
+ if (fs.existsSync(process.env.RUNTIME_TEST_LOG) &&
+     fs.readFileSync(process.env.RUNTIME_TEST_LOG, 'utf8').includes('app-ready')) {
+  clearInterval(timer);
+  log('display-crash');
+  process.exit(1);
+ }
+}, 10);`
+    : ""
+}
 `,
   );
   await executable(
@@ -46,6 +57,7 @@ process.once('SIGTERM',()=>{
  setTimeout(()=>{log('commit-and-browser-close');process.exit(0)},150);
 });
 // Readiness must follow signal registration, otherwise the test races SIGTERM.
+${crashDisplay ? "log('app-ready');" : ""}
 console.log('APP_READY');
 `,
   );
