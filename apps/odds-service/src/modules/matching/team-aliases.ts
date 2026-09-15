@@ -6,6 +6,7 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
     apogee: "betclic apogee",
     betclic: "betclic apogee",
+    "faze clan": "faze",
     "l g": "leo",
     navi: "natus vincere",
     "wraith pcific": "pcific",
@@ -29,6 +30,8 @@ export const canonicalTeamLabels: Record<
   cs2: {
     "betclic apogee": "Betclic Apogee Esports",
     astral: "ASTRAL Esports",
+    faze: "FaZe Clan",
+    nemiga: "Nemiga",
   },
   lol: {},
   valorant: {},

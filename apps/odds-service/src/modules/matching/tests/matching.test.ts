@@ -619,6 +619,111 @@ test("apogee vs astral and Betclic vs ASTRAL Esports share one Pulse Beat match 
     1,
   );
 });
+test("faze vs nemiga and FaZe Clan vs Nemiga share one StarLadder Ranked match", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-10-01T17:30:00.000Z"; // 14:30 America/Sao_Paulo
+  const make = (
+    provider: "superbet" | "betano",
+    eventId: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "cs2" as const,
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamName(teamA, "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const short = make(
+    "superbet",
+    "faze-nemiga",
+    "faze",
+    "nemiga",
+    "starladder ranked",
+  );
+  const full = make(
+    "betano",
+    "faze-clan-nemiga",
+    "FaZe Clan",
+    "Nemiga",
+    "Stake Ranked",
+  );
+  assert.equal(canonicalTeamName("FaZe Clan", "cs2"), "faze");
+  assert.equal(canonicalTeamName("Nova Clan", "cs2"), "nova clan");
+  assert.equal(tournamentName(full.tournament, "cs2"), "starladder ranked");
+  const result = compareAllProviders([short, full]);
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.deepEqual(result.matched[0].canonicalEvent, {
+    esport: "cs2",
+    tournament: "starladder ranked",
+    teamA: "FaZe Clan",
+    teamB: "Nemiga",
+    startsAt,
+  });
+  assert.equal(result.matched[0].confidence, 1);
+  assert.deepEqual(result.matched[0].learnedAliases, [
+    { esport: "cs2", alias: "faze clan", canonical: "faze" },
+  ]);
+  assert.deepEqual(result.matched[0].learnedTournamentAliases, [
+    { esport: "cs2", alias: "stake ranked", canonical: "starladder ranked" },
+  ]);
+  assert.equal(
+    compareAllProviders([short, { ...full, teamB: "Other" }]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([short, { ...full, teamA: "Nova Clan" }]).matched
+      .length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      short,
+      { ...full, startsAt: "2026-10-01T17:36:00.000Z" },
+    ]).matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([short, full, { ...full, eventId: "duplicate" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([
+      short,
+      { ...full, startsAt: "2026-10-01T17:32:00.000Z" },
+    ]).matched.length,
+    1,
+  );
+  assert.equal(
+    compareAllProviders([
+      short,
+      {
+        ...full,
+        tournament: "Other Cup",
+        startsAt: "2026-10-01T17:32:00.000Z",
+      },
+    ]).matched.length,
+    0,
+  );
+});
 test("CS2 UPGRADE vs Wraith Pcific matches UPGRADE vs Pcific Esports via a scoped alias", async () => {
   const raw = JSON.parse(
     await readFile(
@@ -1420,7 +1525,7 @@ test("Nemiga Gaming vs 33 Team matches Nemiga vs Team 33 at the same CS2 start",
   assert.equal(result.matched.length, 1);
   assert.equal(result.unmatched.length, 0);
   assert.equal(result.matched[0].canonicalEvent.esport, "cs2");
-  assert.equal(result.matched[0].canonicalEvent.teamA, "nemiga");
+  assert.equal(result.matched[0].canonicalEvent.teamA, "Nemiga");
   assert.equal(result.matched[0].canonicalEvent.teamB, "33");
   assert.equal(result.matched[0].canonicalEvent.startsAt, startsAt);
   assert.equal(result.matched[0].providers.superbet.rawTeamA, "Nemiga Gaming");

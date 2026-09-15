@@ -497,6 +497,76 @@ test("Apogee/Betclic and Astral Esports persist one Pulse Beat match with full c
   assert.equal(await database.db.teamAlias.count(), 2);
   assert.equal(await database.db.tournamentAlias.count(), 1);
 });
+test("FaZe Clan and Nemiga persist one StarLadder/Stake Ranked match with aliases", async () => {
+  const startsAt = "2026-10-01T17:30:00.000Z";
+  const make = (
+    provider: "superbet" | "betano",
+    id: string,
+    teamA: string,
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...event(provider, 1.72, at, id),
+    teamA,
+    teamB,
+    rawTeamA: teamA,
+    rawTeamB: teamB,
+    normalizedTeamA: teamA.toLowerCase(),
+    normalizedTeamB: teamB.toLowerCase(),
+    tournament,
+    startsAt,
+  });
+  const short = make(
+    "superbet",
+    "faze-nemiga",
+    "faze",
+    "nemiga",
+    "starladder ranked",
+  );
+  const full = make(
+    "betano",
+    "faze-clan-nemiga",
+    "FaZe Clan",
+    "Nemiga",
+    "Stake Ranked",
+  );
+  await service.commit(publication(short));
+  await service.commit(publication(full));
+  assert.equal(await database.db.providerEvent.count(), 2);
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  const canonical = await database.db.canonicalEvent.findFirstOrThrow();
+  assert.equal(canonical.teamA, "FaZe Clan");
+  assert.equal(canonical.teamB, "Nemiga");
+  assert.equal(canonical.tournament, "starladder ranked");
+  assert.equal(
+    (
+      await database.db.teamAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "faze clan" } },
+      })
+    ).canonicalName,
+    "faze",
+  );
+  assert.equal(
+    (
+      await database.db.tournamentAlias.findUniqueOrThrow({
+        where: { esport_alias: { esport: "cs2", alias: "stake ranked" } },
+      })
+    ).canonicalName,
+    "starladder ranked",
+  );
+  const matches = await database.db.eventMatch.findMany();
+  assert.equal(matches.length, 2);
+  assert.ok(
+    matches.every(
+      (match) =>
+        match.status === "matched" && match.canonicalEventId === canonical.id,
+    ),
+  );
+  await service.commit(publication(short));
+  assert.equal(await database.db.canonicalEvent.count(), 1);
+  assert.equal(await database.db.teamAlias.count(), 1);
+  assert.equal(await database.db.tournamentAlias.count(), 1);
+});
 test("numeric history 1.72 → 1.70 → 1.68, temporal ordering, current odds and unchanged observations", async () => {
   for (const [i, price] of [1.72, 1.7, 1.68, 1.68].entries())
     await service.commit(

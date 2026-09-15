@@ -16,6 +16,7 @@ export const tournamentAliases: Record<string, Record<string, string>> = {
   cs2: {
     "cct challengers sa": "cct south america challenger",
     "pulse beat ii": "stake pulse beat",
+    "stake ranked": "starladder ranked",
     "cs2 starladder starseries fall": "starladder starseries",
     "cs2 european pro league": "european pro league",
     starseries: "starladder starseries",
