@@ -1,22 +1,12 @@
 import type { Esport } from "../../shared/types/common.js";
 import { teamName } from "../../shared/utils/names.js";
 
-// Reviewed, sport-scoped equivalences only. Do not strip generic team-name words.
+// Only semantic, sport-scoped equivalences remain after common edge words are removed.
 export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   cs2: {
     "33": "team 33",
-    "astral esports": "astral",
-    "baks esports": "baks",
-    "furia esports": "furia",
     "l g": "leo team",
     navi: "natus vincere",
-    "nemiga gaming": "nemiga",
-    "nrg esports": "nrg",
-    "rush gaming": "rush",
-    "rune eaters esports": "rune eaters",
-    "team brute": "brute",
-    "team quazar": "quazar",
-    "team vitality": "vitality",
   },
   lol: {
     "9z globant": "9z",
@@ -26,11 +16,15 @@ export const teamAliases: Record<Esport, Readonly<Record<string, string>>> = {
   },
   valorant: {
     "fennel f": "fennel gc",
-    "t1 esports": "t1",
   },
 };
 
 export function canonicalTeamName(value: string, esport: Esport): string {
   const normalized = teamName(value, esport);
-  return teamAliases[esport][normalized] ?? normalized;
+  const withoutPrefix = normalized.replace(/^team /, "");
+  // Punctuation is already normalized, so "e-sports" becomes "e sports".
+  const key = withoutPrefix
+    .replace(/ (?:esports|esport|e sports|gaming)$/, "")
+    .trim();
+  return teamAliases[esport][key] ?? key;
 }

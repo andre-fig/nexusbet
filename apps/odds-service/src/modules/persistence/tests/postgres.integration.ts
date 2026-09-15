@@ -617,7 +617,7 @@ test("canonical identity survives when stale providers make matching not applica
   );
 });
 
-test("fresh matched team names replace an old canonical label without hiding valid odds", async () => {
+test("historical canonical suffixes cannot hide valid odds after matching-key normalization", async () => {
   const observed = (
     provider: NormalizedEvent["provider"],
     topOdds: number,
@@ -646,7 +646,7 @@ test("fresh matched team names replace an old canonical label without hiding val
   const canonical = await database.db.canonicalEvent.findFirstOrThrow();
   await database.db.canonicalEvent.update({
     where: { id: canonical.id },
-    data: { teamB: "top" },
+    data: { teamB: "top esports" },
   });
   const { MonitorRepository } =
     await import("../repositories/monitor.repository.js");
@@ -666,7 +666,11 @@ test("fresh matched team names replace an old canonical label without hiding val
   const monitor = new MonitorService(repo, monitorConfig, collection);
   const before = (await monitor.events({ search: "invictus" })).items[0];
   assert.equal(before.providers[0].matchWinner.status, "healthy");
-  assert.equal(before.providers[0].matchWinner.teamB, null);
+  assert.equal(before.teamB, "top esports");
+  assert.deepEqual(
+    before.providers.map((provider) => provider.matchWinner.teamB).sort(),
+    [2.2, 2.25],
+  );
 
   await service.commit(
     publication(observed("superbet", 2.25, "2026-09-15T00:00:01.000Z")),
@@ -677,7 +681,7 @@ test("fresh matched team names replace an old canonical label without hiding val
         where: { id: canonical.id },
       })
     ).teamB,
-    "top esports",
+    "top",
   );
   const after = (await monitor.events({ search: "invictus" })).items[0];
   assert.equal(after.canonicalId, canonical.id);
@@ -1135,9 +1139,9 @@ test("Monitor API compares only current matched provider markets and leaves odds
   assert.equal(page.items[0].analytics.length, 1);
   const analysis = page.items[0].analytics[0];
   assert.equal(analysis.bestPrices[0].provider, "superbet");
-  assert.match(
+  assert.equal(
     analysis.bestPrices[0].tooltip,
-    /Best price available for this selection/,
+    "Highest available odd for this selection.",
   );
   assert.equal(analysis.bestPrices[1].provider, "blaze");
   assert.deepEqual(

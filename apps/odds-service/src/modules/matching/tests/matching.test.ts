@@ -73,6 +73,110 @@ test("Conservative cross-provider matching: aliases, reversed sides, ambiguities
   assert.equal(differentTournament.evidence.sameCompetitionAlias, false);
 });
 
+test("matching keys remove only safe team prefixes and suffixes before semantic aliases", () => {
+  const examples = [
+    ["Team Brute", "brute"],
+    ["Brute", "brute"],
+    ["Team Vitality", "vitality"],
+    ["FURIA Esports", "furia"],
+    ["Astral eSports", "astral"],
+    ["Rune Eaters Esports", "rune eaters"],
+    ["BAKS Esports", "baks"],
+    ["RUSH Gaming", "rush"],
+    ["Nexus Gaming", "nexus"],
+    ["NRG Esports", "nrg"],
+    ["Team QUAZAR", "quazar"],
+    ["T1 Esports", "t1"],
+    ["Téam  Brute E-Sports!", "brute"],
+    ["FURIA e-sports", "furia"],
+    ["Nexus Esport", "nexus"],
+  ] as const;
+  for (const [name, expected] of examples)
+    assert.equal(canonicalTeamName(name, "cs2"), expected, name);
+  assert.equal(canonicalTeamName("T1 Esports", "valorant"), "t1");
+  assert.equal(teamName("Nexus Gaming", "cs2"), "nexus gaming");
+  assert.equal(canonicalTeamName("Team NÁVI Esports", "cs2"), "natus vincere");
+  assert.equal(canonicalTeamName("L&G", "cs2"), "leo team");
+  assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
+  assert.equal(canonicalTeamName("Movistar KOI", "lol"), "koi");
+  assert.equal(canonicalTeamName("9z Globant", "lol"), "9z");
+  assert.equal(canonicalTeamName("9z Team", "lol"), "9z");
+  assert.equal(canonicalTeamName("FENNEL (F)", "valorant"), "fennel gc");
+  for (const term of [
+    "Academy",
+    "Junior",
+    "Young",
+    "GC",
+    "Female",
+    "ex",
+    "fe",
+    "Youth",
+  ])
+    assert.notEqual(
+      canonicalTeamName(`Nexus ${term} Gaming`, "cs2"),
+      "nexus",
+      term,
+    );
+  assert.notEqual(canonicalTeamName("ex-Nexus Gaming", "cs2"), "nexus");
+  assert.notEqual(canonicalTeamName("Nexus Gaming Youth", "cs2"), "nexus");
+});
+
+test("ex-RUSTEC vs Nexus Gaming matches ex-RUSTEC vs Nexus without a Nexus alias", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const startsAt = "2026-09-16T17:00:00.000Z";
+  const observed = (
+    provider: "estrelabet" | "superbet",
+    teamB: string,
+    tournament: string,
+  ) => ({
+    ...structuredClone(base),
+    provider,
+    eventId: `${provider}:ex-rustec-nexus`,
+    esport: "cs2" as const,
+    teamA: "ex-RUSTEC",
+    teamB,
+    rawTeamA: "ex-RUSTEC",
+    rawTeamB: teamB,
+    normalizedTeamA: teamName("ex-RUSTEC", "cs2"),
+    normalizedTeamB: teamName(teamB, "cs2"),
+    tournament,
+    startsAt,
+    status: "scheduled" as const,
+  });
+  const left = observed(
+    "estrelabet",
+    "Nexus Gaming",
+    "CCT Europe 2026 Series 9",
+  );
+  const right = observed("superbet", "Nexus", "CCT - EU");
+  const result = compareAllProviders([left, right]);
+
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.unmatched.length, 0);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "ex rustec");
+  assert.equal(result.matched[0].canonicalEvent.teamB, "nexus");
+  assert.equal(result.matched[0].providers.estrelabet.rawTeamB, "Nexus Gaming");
+  assert.equal(result.matched[0].providers.superbet.rawTeamB, "Nexus");
+  assert.equal(left.normalizedTeamB, "nexus gaming");
+  assert.equal(result.matched[0].confidence, 0.9);
+  assert.equal(
+    compareAllProviders([left, right, { ...right, eventId: "other-nexus" }])
+      .matched.length,
+    0,
+  );
+  assert.equal(
+    compareAllProviders([left, { ...right, teamA: "RUSTEC" }]).matched.length,
+    0,
+  );
+});
+
 test("matching regressions normalize team names, ignore side order and do not veto different tournaments", async () => {
   const raw = JSON.parse(
     await readFile(
@@ -276,18 +380,11 @@ test("CS2 team aliases match Brute with Team Brute and preserve raw names", asyn
 
   assert.equal(canonicalTeamName("Brute", "cs2"), "brute");
   assert.equal(canonicalTeamName("Team Brute", "cs2"), "brute");
-  assert.notEqual(
-    canonicalTeamName("Team Liquid", "cs2"),
-    canonicalTeamName("Liquid", "cs2"),
-  );
-  assert.notEqual(
-    canonicalTeamName("Example Esports", "cs2"),
-    canonicalTeamName("Example", "cs2"),
-  );
-  assert.notEqual(
-    canonicalTeamName("Team Brute", "lol"),
-    canonicalTeamName("Brute", "lol"),
-  );
+  assert.equal(canonicalTeamName("Team Liquid", "cs2"), "liquid");
+  assert.equal(canonicalTeamName("Example Esports", "cs2"), "example");
+  assert.equal(canonicalTeamName("Team Brute", "lol"), "brute");
+  assert.notEqual(canonicalTeamName("Team Liquid Academy", "cs2"), "liquid");
+  assert.notEqual(canonicalTeamName("Example Youth Esports", "cs2"), "example");
   assert.equal(right.normalizedTeamA, "team brute");
   assert.equal(result.matched.length, 1);
   assert.equal(result.unmatched.length, 0);
@@ -335,7 +432,7 @@ test("CS2 RUSH Gaming and RUSH match Gremio despite different CCT tournament lab
 
   assert.equal(canonicalTeamName("RUSH Gaming", "cs2"), "rush");
   assert.equal(canonicalTeamName("RUSH", "cs2"), "rush");
-  assert.equal(canonicalTeamName("RUSH Gaming", "lol"), "rush gaming");
+  assert.equal(canonicalTeamName("RUSH Gaming", "lol"), "rush");
   assert.notEqual(canonicalTeamName("RUSH Academy", "cs2"), "rush");
   assert.equal(left.normalizedTeamA, "rush gaming");
   assert.equal(result.matched.length, 1);
@@ -409,7 +506,7 @@ test("CS2 QUAZAR and Team QUAZAR match ex-RUSTEC across NODWIN tournament labels
 
   assert.equal(canonicalTeamName("QUAZAR", "cs2"), "quazar");
   assert.equal(canonicalTeamName("Team QUAZAR", "cs2"), "quazar");
-  assert.equal(canonicalTeamName("Team QUAZAR", "lol"), "team quazar");
+  assert.equal(canonicalTeamName("Team QUAZAR", "lol"), "quazar");
   assert.notEqual(canonicalTeamName("Team QUAZAR Academy", "cs2"), "quazar");
   assert.equal(right.normalizedTeamA, "team quazar");
   assert.equal(result.matched.length, 1);
@@ -538,7 +635,7 @@ test("CS2 team aliases match Nemiga Gaming vs Team 33 with Nemiga vs 33", async 
   assert.equal(canonicalTeamName("Nemiga", "cs2"), "nemiga");
   assert.equal(canonicalTeamName("Team 33", "cs2"), "team 33");
   assert.equal(canonicalTeamName("33", "cs2"), "team 33");
-  assert.notEqual(
+  assert.equal(
     canonicalTeamName("33", "valorant"),
     canonicalTeamName("Team 33", "valorant"),
   );
@@ -654,7 +751,7 @@ test("CS2 team aliases match BAKS with BakS eSports across tournament variants",
 
   assert.equal(canonicalTeamName("BAKS", "cs2"), "baks");
   assert.equal(canonicalTeamName("BakS eSports", "cs2"), "baks");
-  assert.notEqual(
+  assert.equal(
     canonicalTeamName("BakS eSports", "valorant"),
     canonicalTeamName("BAKS", "valorant"),
   );
@@ -711,7 +808,7 @@ test("CS2 aliases match Astral eSports vs Rune Eaters Esports despite tournament
 
   assert.equal(canonicalTeamName("Astral eSports", "cs2"), "astral");
   assert.equal(canonicalTeamName("Rune Eaters Esports", "cs2"), "rune eaters");
-  assert.notEqual(
+  assert.equal(
     canonicalTeamName("Astral eSports", "valorant"),
     canonicalTeamName("ASTRAL", "valorant"),
   );
@@ -776,7 +873,7 @@ test("CS2 aliases match Team Vitality vs magic with Vitality vs Magic despite to
   assert.equal(canonicalTeamName("Vitality", "cs2"), "vitality");
   assert.equal(canonicalTeamName("magic", "cs2"), "magic");
   assert.equal(canonicalTeamName("Magic", "cs2"), "magic");
-  assert.notEqual(
+  assert.equal(
     canonicalTeamName("Team Vitality", "valorant"),
     canonicalTeamName("Vitality", "valorant"),
   );
@@ -835,7 +932,7 @@ test("CS2 aliases match FURIA with FURIA Esports despite StarSeries tournament v
 
   assert.equal(canonicalTeamName("FURIA", "cs2"), "furia");
   assert.equal(canonicalTeamName("FURIA Esports", "cs2"), "furia");
-  assert.notEqual(
+  assert.equal(
     canonicalTeamName("FURIA Esports", "valorant"),
     canonicalTeamName("FURIA", "valorant"),
   );
