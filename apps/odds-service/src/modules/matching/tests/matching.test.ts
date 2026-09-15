@@ -192,6 +192,51 @@ test("LoL team aliases match KOI with Movistar KOI and preserve raw names", asyn
   assert.equal(result.matched[0].providers.betano.rawTeamB, "Movistar KOI");
 });
 
+test("LoL 9z aliases match only the two explicit team variants", async () => {
+  const raw = JSON.parse(
+    await readFile(
+      new URL("../../bet365/fixtures/cs2.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const parsed = parseCapture(raw);
+  const base = normalizedBet365(parsed.matches, parsed.provenance)[0];
+  const variants = [
+    { provider: "bet365" as const, teamA: "9z", eventId: "9z-bet365" },
+    {
+      provider: "betano" as const,
+      teamA: "9z Globant",
+      eventId: "9z-betano",
+    },
+    {
+      provider: "superbet" as const,
+      teamA: "9z Team",
+      eventId: "9z-superbet",
+    },
+  ];
+  const events = variants.map(({ provider, teamA, eventId }) => ({
+    ...structuredClone(base),
+    provider,
+    eventId,
+    esport: "lol" as const,
+    teamA,
+    teamB: "Opponent",
+    rawTeamA: teamA,
+    rawTeamB: "Opponent",
+    normalizedTeamA: teamName(teamA, "lol"),
+    normalizedTeamB: teamName("Opponent", "lol"),
+  }));
+  const result = compareAllProviders(events);
+
+  assert.equal(result.matched.length, 1);
+  assert.equal(result.matched[0].canonicalEvent.teamA, "9z");
+  assert.equal(result.matched[0].providers.betano.rawTeamA, "9z Globant");
+  assert.equal(result.matched[0].providers.superbet.rawTeamA, "9z Team");
+  assert.equal(canonicalTeamName("9z Globant", "cs2"), "9z globant");
+  assert.equal(canonicalTeamName("9z Team", "valorant"), "9z team");
+  assert.notEqual(canonicalTeamName("9z Academy", "lol"), "9z");
+});
+
 test("CS2 team aliases match Brute with Team Brute and preserve raw names", async () => {
   const raw = JSON.parse(
     await readFile(
