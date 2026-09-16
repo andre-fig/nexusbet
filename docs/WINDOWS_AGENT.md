@@ -1,4 +1,6 @@
-# Collector-agent neste Windows
+# Collector-agent legado neste Windows
+
+Este procedimento descreve a instalação anterior do collector-agent local. Nesta máquina, a tarefa `NexusBetCollectorAgent` foi removida e o agent está parado. A atualização ativa da extensão está em [Atualização da extensão no Windows](WINDOWS_EXTENSION.md). Preserve este guia para rollback e migração de dados legados.
 
 O Windows 11 deste PC executa Superbet, Blaze e EstrelaBet por HTTP e pode executar Bet365 e Betano pelo Chrome pessoal com `local-cdp`. O Chrome precisa estar aberto na sessão do usuário, com depuração remota habilitada em `chrome://inspect/#remote-debugging`; o agent cria e fecha apenas abas próprias. A tarefa SYSTEM pode iniciar antes do login, mas Bet365 e Betano ficam indisponíveis até o Chrome/CDP estar pronto. Configure `BROWSER_RUNTIME=local-cdp`, `BET365_ENABLED=true`, `BETANO_ENABLED=true`, `COLLECT_BET365=true`, `COLLECT_BETANO=true` e `CHROME_DEBUG_PORT_FILE` com o caminho absoluto do `DevToolsActivePort` da conta do Chrome, pois `%LOCALAPPDATA%` de SYSTEM é diferente. O agent envia scopes por HTTPS ao server no Railway; não recebe `DATABASE_URL` e não acessa PostgreSQL. O token e a outbox ficam em `%LOCALAPPDATA%\NexusBet`, fora do checkout. O server continua responsável pelas transações SQL.
 

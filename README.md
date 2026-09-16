@@ -1,8 +1,8 @@
 # NexusBet — odds-service
 
-> Runtime atual: [server + collector-agent](docs/RUNTIMES.md). Todos os cinco coletores rodam no PC; Railway recebe ingestão autenticada e não coleta. As descrições de processo único/coleta HTTP no Railway abaixo são históricas.
+> Runtime atual nesta máquina: a extensão Chrome coleta os cinco providers e envia por HTTPS ao odds-service no Railway. O collector-agent local está parado; a tarefa do Windows atualiza apenas a extensão a partir da `main`. Veja [Atualização da extensão no Windows](docs/WINDOWS_EXTENSION.md). Os demais runtimes em [Runtimes](docs/RUNTIMES.md) são históricos.
 
-`apps/odds-collector-extension` é o novo projeto de coleta por extensão Chrome, separado de `apps/odds-monitor`. Ele incorpora os parsers puros existentes no bundle, agenda listagem/detalhes e prepara publicações HTTPS para Railway. Ainda não substituiu o collector-agent em produção; instalação, entrega real e atualização automática da extensão exigem validação. [Guia da extensão](apps/odds-collector-extension/README.md).
+`apps/odds-collector-extension` é o projeto de coleta por extensão Chrome, separado de `apps/odds-monitor`. Ele agenda listagem/detalhes, normaliza e publica por HTTPS no Railway. A extensão está instalada e ativa neste PC; os parsers ainda são importados do código-fonte de `apps/odds-service` durante o build, portanto a separação do código-fonte dos providers ainda precisa ser concluída. [Guia da extensão](apps/odds-collector-extension/README.md).
 
 Backend de leitura de odds pré-jogo de eSports: coleta ofertas de Bet365, Betano, Superbet, Blaze e EstrelaBet, normaliza mercados, compara eventos equivalentes e conserva histórico em PostgreSQL. O serviço NestJS vive em `apps/odds-service` e funciona sem frontend ou BFF.
 

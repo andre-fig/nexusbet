@@ -1,0 +1,9 @@
+# Atualização da extensão no Windows
+
+Nesta máquina, `NexusBetExtensionUpdater` é a única tarefa NexusBet do Windows. Ela roda no login da conta André e a cada minuto, usando `%LOCALAPPDATA%\NexusBet\extension-reconcile.ps1`. A tarefa consulta a `main` por HTTPS, prepara uma release por SHA, executa `npm ci`, typecheck, formatação, testes e build em `apps/odds-collector-extension`, e instala o bundle aprovado em `%LOCALAPPDATA%\NexusBet\collector-extension`.
+
+O updater não inicia odds-service nem collector-agent local, não acessa `agent.json` e não lê o token da extensão. `private-config.json` permanece na pasta estável e não é copiado de uma release. `build-id.txt` é o hash do bundle público: uma mudança de `main` sem alteração do bundle avança `extension-current.txt`, mas não recarrega o Chrome. A extensão instalada nessa pasta faz coleta somente enquanto o Chrome da conta estiver aberto após o login; sua fila IndexedDB conserva publicações até o Railway confirmar o envio.
+
+Arquivos operacionais ficam fora do repositório: `extension-current.txt`, `extension-releases/` e `logs/extension-updater.log` em `%LOCALAPPDATA%\NexusBet`. Falha de GitHub, clone ou checks não troca o bundle atual. A tarefa legada `NexusBetCollectorAgent` foi removida nesta máquina; sua definição foi guardada em `legacy-agent-task.xml` para rollback. Releases e journals antigos permanecem como dados legados, sem processo escritor.
+
+Verifique a tarefa com `Get-ScheduledTask -TaskName NexusBetExtensionUpdater` e `Get-ScheduledTaskInfo -TaskName NexusBetExtensionUpdater`. Compare o SHA de `extension-current.txt` com `git ls-remote https://github.com/andre-fig/nexusbet.git refs/heads/main`, e veja o hash de `collector-extension\build-id.txt`. Para validar entrega, consulte `/health` no odds-service do Railway e o contador de envios pendentes no popup da extensão. Não imprima `private-config.json` nem tokens em logs.
